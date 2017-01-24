@@ -11,16 +11,16 @@
 
 						&nbsp; &nbsp;
 						<span class="action-buttons">
-							<a href="#">
+							<a href="https://twitter.com/OsepMza">
 								<i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
 							</a>
 
-							<a href="#">
+							<a href="https://www.facebook.com/OSEP.MendozaArg/">
 								<i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
 							</a>
 
-							<a href="#">
-								<i class="ace-icon fa fa-rss-square orange bigger-150"></i>
+							<a href="https://www.instagram.com/osepmza/">
+								<i class="ace-icon fa fa-instagram orange bigger-150"></i>
 							</a>
 						</span>
 					</div>
