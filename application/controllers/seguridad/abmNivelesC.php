@@ -94,7 +94,7 @@ class AbmNivelesC extends CI_Controller{
 	}
 
 	function editarNivel(){
-		if($this->session->userdata('logged_in')){
+		//if($this->session->userdata('logged_in')){
 			$data['codN'] = $this->uri->segment(4);
 			$data['nivel1'] = $this->abmNiveles_model->obtenerNivel($data['codN']);
 
@@ -107,10 +107,10 @@ class AbmNivelesC extends CI_Controller{
 			$this->load->view('backend/seguridad/abmNivelesModificar', $data);
 			$this->load->view('backend/footer');
 
-		}else{
-			$this->load->helper(array('form'));
-			$this->load->view('backend/login_view');
-		}
+		//}else{
+		//	$this->load->helper(array('form'));
+		//	$this->load->view('backend/login_view');
+		//}
 	}	
 
 	function actualizarDatos(){

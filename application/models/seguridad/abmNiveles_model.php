@@ -42,7 +42,7 @@ class AbmNiveles_model extends CI_Model {
 		);
 
 		$this->db->where('idNivel', $codN);
-		$query = $this->db->update('tb_nivel', $datos);
+		$query = $this->db->update('nivel', $datos);
 	}
 
 	function eliminarNivel($codN){
