@@ -11,7 +11,7 @@
 
 		<!-- Tabla para asignar Usuarios a cada Empleado-->	
 
-		<form class="form-horizontal" role="form" action="<?php echo base_url() ?>abms/abmResponsablesC/mostrarTablaResponsables" method="post"><!-- Comienza formulario -->
+		<form class="form-horizontal" role="form" action="<?php echo base_url() ?>abms/abmEmpleadosC/mostrarTablaEmpleados" method="post"><!-- Comienza formulario -->
 			
 			
 		<div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
@@ -57,6 +57,7 @@
 								<th>Nº Documento</th>
 								<th>Teléfono</th>
 								<th>E-Mail</th>
+								<th>Tipo Empleado</th>
 								<th></th>
 							</tr>
 					</thead>
@@ -82,6 +83,7 @@
 							<td><?= $tabla->dni;?></td>
 							<td><?= $tabla->telefono;?></td>	
 							<td><?= $tabla->email;?></td>	
+							<td><?= $tabla->tipoEmpleado;?></td>
 							
 							<td>
 								<div class="hidden-sm hidden-xs action-buttons">

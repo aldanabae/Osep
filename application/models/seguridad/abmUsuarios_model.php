@@ -15,15 +15,15 @@ class AbmUsuarios_model extends CI_Model {
 				'idNivel'=>$data['idNivel']));
 	}
 
-	function obtenerUsuarios($nombresUsuarios){
-		if ($nombresUsuarios == ''){
+	function obtenerUsuarios($nombresU){
+		if ($nombresU == ''){
 			$this->db->from('usuario');
 			$this->db->join('empleado', 'empleado.idEmpleado = usuario.idEmpleado');
 			$this->db->join('nivel', 'nivel.idNivel = usuario.idNivel');
 			$query = $this->db->get();
 
 		}else{
-			$this->db->where('nombreUsuario', $nombresUsuarios);
+			$this->db->where('usuario', $nombresU);
 			$this->db->from('usuario');
 			$this->db->join('empleado', 'empleado.idEmpleado = usuario.idEmpleado');
 			$this->db->join('nivel', 'nivel.idNivel = usuario.idNivel');
@@ -47,15 +47,17 @@ class AbmUsuarios_model extends CI_Model {
 		if ($nroLegajo == ''){
 			$this->db->select('empleado.idEmpleado,empleado.apellidoE,
 				empleado.nombreE,empleado.direccion,empleado.telefono,
-				empleado.dni,empleado.nroLegajo,empleado.email, empleado.convenio'
+				empleado.dni,empleado.nroLegajo,empleado.email, 
+				empleado.convenio,empleado.tipoEmpleado'
 				);
 			$this->db->from('empleado');
 			$query = $this->db->get();
 
 		}else{
 			$this->db->select(empleado.idEmpleado,empleado.apellidoE,
-				empleado.nombreE,empleado.direccion,empleado.telefono,empleado.dni,
-				empleado.nroLegajo,empleado.email,empleado.convenio
+				empleado.nombreE,empleado.direccion,empleado.telefono,
+				empleado.dni,empleado.nroLegajo,empleado.email,
+				empleado.convenio,empleado.tipoEmpleado
 				);
 			$this->db->where('empleado.nroLegajo', $nroLegajo);
 			$this->db->from('empleado');

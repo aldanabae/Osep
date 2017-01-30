@@ -1388,7 +1388,7 @@ pre.prettyprint {
     padding-bottom: 6px;
   }
   .ace-nav > li.open:before {
-    background-color: #000;
+    background-color: #612761; /* #000 */
     opacity: 0.5;
     border-width: 0;
     position: fixed;
@@ -2047,7 +2047,7 @@ pre.prettyprint {
   width: 3px;
   max-width: 3px;
   overflow: hidden;
-  background-color: #629cc9;
+  background-color: #ff892a; /* #629cc9 */
 }
 @media only screen and (min-width: 992px) {
   .main-container.container .sidebar:not(.h-sidebar) .nav-list > li:before {
@@ -19139,8 +19139,8 @@ input.typeahead.scrollable ~ .tt-dropdown-menu {
   color: #616161;
 }
 .no-skin .nav-list > li .submenu > li > a:hover {
-  color: #4b88b7;
-  background-color: #f1f5f9;
+  color: #882c84; /* #4b88b7 */
+  background-color: rgba(97, 39, 97, 0.15); /* #f1f5f9 */
 }
 .no-skin .nav-list > li .submenu > li.active > a {
   color: #2b7dbc;
