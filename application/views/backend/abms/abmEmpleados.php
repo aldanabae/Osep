@@ -21,11 +21,11 @@
 							<label>Mostrar Tipo Empleado
 							<select aria-controls="dynamic-table" class="form-control input-sm" name="tipoTabla" OnChange= "tipoROnChange(this)">
 								<option value="1">Todos</option>
-								<option value="3">Auditor</option>
-								<option value="4">Administrador</option>
-								<option value="7">Administrador Base de Datos</option>
+								<option value="2">Administrador</option>
+								<option value="3">Administrador Base de Datos</option>
+								<option value="4">Auditor</option>
 								<option value="5">Directivo</option>
-								<option value="2">Facilitador</option>							
+								<option value="6">Facilitador</option>							
 							</select> 
 							</label>
 						</div>
@@ -34,8 +34,8 @@
 					<div class="col-xs-6">
 							<div id="dynamic-table_filter" class="dataTables_filter">
 
-								<label>Nº Documento:
-									<input type="search" class="form-control input-sm" placeholder="" name="dniR" aria-controls="dynamic-table">
+								<label>Nº Legajo:
+									<input type="search" class="form-control input-sm" placeholder="" name="nroLegajo" aria-controls="dynamic-table">
 								</label>
 
 								<button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
@@ -47,841 +47,604 @@
 				</div>
 
 
+				<div id="todos" style="display:;">
 
-
-			<div id="todos" style="display:;">
-
-				<table id="dynamic-table" class="table table-striped table-bordered table-hover">
-					<thead>
-							<tr>
-								<th>Apellido y Nombre</th>
-								<th>Nº Documento</th>
-								<th>Teléfono</th>
-								<th>Tipo Empleado</th>
-								<th>
-									<div class="hidden-sm hidden-xs action-buttons">
-										<a class="orange" href="<?php echo base_url() ?>abms/abmEmpleadosC/cargarNuevoEmpleado">
-											<i class="ui-icon ace-icon fa fa-plus-circle orange bigger-130"></i>Agregar Empleado
-										</a>
-									</div>
-								</th>
-							</tr>
-					</thead>
-
-					<tbody>
-
-						<?php //Limitar los datos segun lo que trae el select de cantidad de lineas a mostrar
-							if ($tablaEmpleados){
-							$contador = 0;
-									
-								foreach($tablaEmpleados->result() as $tabla){
-
-									if( $contador == $limiteTabla )    break;
-						?>
-
-						<tr>
-							<td>
-								<label class="pos-rel">
-									<?php echo $tabla->apellidoE; ?> <?php echo $tabla->nombreE; ?>
-								</label>
-							</td>
-							<td><?= $tabla->dni;?></td>
-							<td><?= $tabla->telefono;?></td>
-							<td><?= $tabla->tipoEmpleado;?></td><!-- Nombre via de administracion no codigo -->
-							
-							<td>
-								<div class="hidden-sm hidden-xs action-buttons">
-										
-										<a class="green" href="<?php echo base_url()?>abms/abmEmpleadosC/editarEmpleado/<?= $tabla->idEmpleado;?>">
-											<i class="ace-icon fa fa-pencil bigger-130"></i>	
-										</a>
-
-										<a class="red" href="<?php echo base_url()?>abms/abmEmpleadosC/borrarEmpleado/<?= $tabla->idEmpleado;?>">
-											<i class="ace-icon fa fa-trash-o bigger-130"></i>
-										</a>
-								</div>
-
-								<div class="hidden-md hidden-lg">
-										<div class="inline pos-rel">
-
-											<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-												<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-											</button>
-
-											<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-													
-												<li>
-													<a href="<?php echo base_url()?>abms/abmEmpleadosC/editarEmpleado/<?= $tabla->idEmpleado;?>" class="tooltip-success" data-rel="tooltip" title="Edit">
-														<span class="green">
-															<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-														</span>
-													</a>
-												</li>
-
-												<li>
-													<a href="<?php echo base_url()?>abms/abmEmpleadosC/borrarEmpleado/<?= $tabla->idEmpleado;?>" class="tooltip-error" data-rel="tooltip" title="Delete">
-														<span class="red">
-															<i class="ace-icon fa fa-trash-o bigger-120"></i>
-														</span>
-													</a>
-												</li>
-											</ul>
+					<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+						<thead>
+								<tr>
+									<th>Apellido y Nombre</th>
+									<th>N° Legajo</th>
+									<th>Nº Documento</th>
+									<th>Teléfono</th>
+									<th>E-Mail</th>
+									<th>Convenio</th>
+									<th>Tipo Empleado</th>
+									<th>
+										<div class="hidden-sm hidden-xs action-buttons">
+											<a class="orange" href="<?php echo base_url() ?>abms/abmEmpleadosC/cargarNuevoEmpleado">
+												<i class="ui-icon ace-icon fa fa-plus-circle orange bigger-130"></i>Agregar Empleado
+											</a>
 										</div>
-								</div>
-							</td>
-						</tr>
+									</th>
+								</tr>
+						</thead>
 
-						<?php	 $contador++;}
+						<tbody>
 
-							}	
-						?>
-
-					</tbody>
-				</table>
-			</div> 
-
-
-
-
-			<div id="medico" style="display:none;">
-
-				<table id="dynamic-table" class="table table-striped table-bordered table-hover">
-					<thead>
-							<tr>
-								<th>Apellido y Nombre</th>
-								<th>Nº Documento</th>
-								<th>Teléfono</th>
-								<th>Tipo Responsable</th>
-								<th>Matrícula</th>
-								<th>Especialidad</th>
-								<th>
-									<div class="hidden-sm hidden-xs action-buttons">
-										<a class="orange" href="<?php echo base_url() ?>abms/abmResponsablesC/cargarNuevoEmpleado">
-											<i class="ui-icon ace-icon fa fa-plus-circle orange bigger-130"></i>Agregar Empleado
-										</a>
-									</div>
-								</th>
-							</tr>
-					</thead>
-
-					<tbody>
-
-						<?php //Limitar los datos segun lo que trae el select de cantidad de lineas a mostrar
-							if ($tablaResponsables){
-							$contador = 0;
-									
-								foreach($tablaResponsables->result() as $tabla){
-
-									if( $contador == $limiteTabla )    break;
-
-										if($tabla->tipoResponsable == "Médico"){
-						?>
-
-						<tr>
-							<td>
-								<label class="pos-rel">
-									<?php echo $tabla->apellidoR; ?> <?php echo $tabla->nombreR; ?>
-								</label>
-							</td>
-							<td><?= $tabla->dniR;?></td>
-							<td><?= $tabla->telefonoR;?></td>
-							<td><?= $tabla->tipoResponsable;?></td>
-							<td><?= $tabla->matricula;?></td>
-							<td><?= $tabla->nombreEspecialidad;?></td>
-							
-							<td>
-								<div class="hidden-sm hidden-xs action-buttons">
+							<?php //Limitar los datos segun lo que trae el select de cantidad de lineas a mostrar
+								if ($tablaEmpleados){
+								$contador = 0;
 										
-										<a class="green" href="<?php echo base_url()?>abms/abmResponsablesC/editarResponsable/<?= $tabla->codResponsable;?>">
-											<i class="ace-icon fa fa-pencil bigger-130"></i>	
-										</a>
+									foreach($tablaEmpleados->result() as $tabla){
 
-										<a class="red" href="<?php echo base_url()?>abms/abmResponsablesC/borrarResponsable/<?= $tabla->codResponsable;?>">
-											<i class="ace-icon fa fa-trash-o bigger-130"></i>
-										</a>
-								</div>
+										if( $contador == $limiteTabla )  break;
+							?>
 
-								<div class="hidden-md hidden-lg">
-										<div class="inline pos-rel">
-
-											<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-												<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-											</button>
-
-											<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-													
-												<li>
-													<a href="<?php echo base_url()?>abms/abmResponsablesC/editarResponsable/<?= $tabla->codResponsable;?>" class="tooltip-success" data-rel="tooltip" title="Edit">
-														<span class="green">
-															<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-														</span>
-													</a>
-												</li>
-
-												<li>
-													<a href="<?php echo base_url()?>abms/abmResponsablesC/borrarResponsable/<?= $tabla->codResponsable;?>" class="tooltip-error" data-rel="tooltip" title="Delete">
-														<span class="red">
-															<i class="ace-icon fa fa-trash-o bigger-120"></i>
-														</span>
-													</a>
-												</li>
-											</ul>
-										</div>
-								</div>
-							</td>
-						</tr>
-
-						<?php	 				}
-								$contador++;}
-
-							}	
-						?>
-
-					</tbody>
-				</table>
-			</div>
-
-
-
-
-			<div id="enfermero" style="display:none;">
-
-				<table id="dynamic-table" class="table table-striped table-bordered table-hover">
-					<thead>
 							<tr>
-								<th>Apellido y Nombre</th>
-								<th>Nº Documento</th>
-								<th>Teléfono</th>
-								<th>Tipo Responsable</th>
-								<th>Legajo Enfermero</th>
-								<th>Servicio</th>
-								<th>
+								<td>
+									<label class="pos-rel">
+										<?php echo $tabla->apellidoE; ?> <?php echo $tabla->nombreE; ?>
+									</label>
+								</td>
+								<td><?= $tabla->nroLegajo;?></td>
+								<td><?= $tabla->dni;?></td>
+								<td><?= $tabla->telefono;?></td>
+								<td><?= $tabla->email;?></td>
+								<td><?= $tabla->convenio;?></td>
+								<td><?= $tabla->tipoEmpleado;?></td><!-- Nombre via de administracion no codigo -->
+								
+								<td>
 									<div class="hidden-sm hidden-xs action-buttons">
-										<a class="purple" href="<?php echo base_url() ?>abms/abmResponsablesC/cargarNuevoResponsable">
-											<i class="ui-icon ace-icon fa fa-plus-circle purple bigger-130"></i>Agregar
-										</a>
+											
+											<a class="green" href="<?php echo base_url()?>abms/abmEmpleadosC/editarEmpleado/<?= $tabla->idEmpleado;?>">
+												<i class="ace-icon fa fa-pencil bigger-130"></i>	
+											</a>
+
+											<a class="red" href="<?php echo base_url()?>abms/abmEmpleadosC/borrarEmpleado/<?= $tabla->idEmpleado;?>">
+												<i class="ace-icon fa fa-trash-o bigger-130"></i>
+											</a>
 									</div>
-								</th>
+
+									<div class="hidden-md hidden-lg">
+											<div class="inline pos-rel">
+
+												<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
+													<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
+												</button>
+
+												<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+														
+													<li>
+														<a href="<?php echo base_url()?>abms/abmEmpleadosC/editarEmpleado/<?= $tabla->idEmpleado;?>" class="tooltip-success" data-rel="tooltip" title="Edit">
+															<span class="green">
+																<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+															</span>
+														</a>
+													</li>
+
+													<li>
+														<a href="<?php echo base_url()?>abms/abmEmpleadosC/borrarEmpleado/<?= $tabla->idEmpleado;?>" class="tooltip-error" data-rel="tooltip" title="Delete">
+															<span class="red">
+																<i class="ace-icon fa fa-trash-o bigger-120"></i>
+															</span>
+														</a>
+													</li>
+												</ul>
+											</div>
+									</div>
+								</td>
 							</tr>
-					</thead>
 
-					<tbody>
+							<?php	 $contador++;}
+								}	
+							?>
 
-						<?php //Limitar los datos segun lo que trae el select de cantidad de lineas a mostrar
-							if ($tablaResponsables){
-							$contador = 0;
-									
-								foreach($tablaResponsables->result() as $tabla){
+						</tbody>
+					</table>
+				</div> 
 
-									if( $contador == $limiteTabla )    break;
 
-										if($tabla->tipoResponsable == "Enfermero"){
-						?>
+				<div id="facilitador" style="display:none;">
 
-						<tr>
-							<td>
-								<label class="pos-rel">
-									<?php echo $tabla->apellidoR; ?> <?php echo $tabla->nombreR; ?>
-								</label>
-							</td>
-							<td><?= $tabla->dniR;?></td>
-							<td><?= $tabla->telefonoR;?></td>
-							<td><?= $tabla->tipoResponsable;?></td>
-							<td><?= $tabla->nroLegajo;?></td>
-							<td><?= $tabla->nombreServicio;?></td><!-- Nombre via de administracion no codigo -->
-							
-							<td>
-								<div class="hidden-sm hidden-xs action-buttons">
-										
-										<a class="green" href="<?php echo base_url()?>abms/abmResponsablesC/editarResponsable/<?= $tabla->codResponsable;?>">
-											<i class="ace-icon fa fa-pencil bigger-130"></i>	
-										</a>
-
-										<a class="red" href="<?php echo base_url()?>abms/abmResponsablesC/borrarResponsable/<?= $tabla->codResponsable;?>">
-											<i class="ace-icon fa fa-trash-o bigger-130"></i>
-										</a>
-								</div>
-
-								<div class="hidden-md hidden-lg">
-										<div class="inline pos-rel">
-
-											<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-												<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-											</button>
-
-											<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-													
-												<li>
-													<a href="<?php echo base_url()?>abms/abmResponsablesC/editarResponsable/<?= $tabla->codResponsable;?>" class="tooltip-success" data-rel="tooltip" title="Edit">
-														<span class="green">
-															<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-														</span>
-													</a>
-												</li>
-
-												<li>
-													<a href="<?php echo base_url()?>abms/abmResponsablesC/borrarResponsable/<?= $tabla->codResponsable;?>" class="tooltip-error" data-rel="tooltip" title="Delete">
-														<span class="red">
-															<i class="ace-icon fa fa-trash-o bigger-120"></i>
-														</span>
-													</a>
-												</li>
-											</ul>
+					<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+						<thead>
+								<tr>
+									<th>Apellido y Nombre</th>
+									<th>N° Legajo</th>
+									<th>Nº Documento</th>
+									<th>Teléfono</th>
+									<th>E-Mail</th>
+									<th>Convenio</th>
+									<th>Tipo Empleado</th>
+									<th>
+										<div class="hidden-sm hidden-xs action-buttons">
+											<a class="orange" href="<?php echo base_url() ?>abms/abmEmpleadosC/cargarNuevoEmpleado">
+												<i class="ui-icon ace-icon fa fa-plus-circle orange bigger-130"></i>Agregar Empleado
+											</a>
 										</div>
-								</div>
-							</td>
-						</tr>
+									</th>
+								</tr>
+						</thead>
 
-						<?php					}
-								$contador++;}
+						<tbody>
 
-							}	
-						?>
+							<?php //Limitar los datos segun lo que trae el select de cantidad de lineas a mostrar
+								if ($tablaEmpleados){
+								$contador = 0;
+										
+									foreach($tablaEmpleados->result() as $tabla){
 
-					</tbody>
-				</table>
-			</div>
+										if( $contador == $limiteTabla )    break;
 
+											if($tabla->tipoEmpleado == "Facilitador"){
+							?>
 
-			<div id="recepcionista" style="display:none;">
-
-				<table id="dynamic-table" class="table table-striped table-bordered table-hover">
-					<thead>
 							<tr>
-								<th>Apellido y Nombre</th>
-								<th>Nº Documento</th>
-								<th>Teléfono</th>
-								<th>Tipo Responsable</th>
-								<th>
+								<td>
+									<label class="pos-rel">
+										<?php echo $tabla->apellidoE; ?> <?php echo $tabla->nombreE; ?>
+									</label>
+								</td>
+								<td><?= $tabla->nroLegajo;?></td>
+								<td><?= $tabla->dni;?></td>
+								<td><?= $tabla->telefono;?></td>
+								<td><?= $tabla->email;?></td>
+								<td><?= $tabla->convenio;?></td>
+								<td><?= $tabla->tipoEmpleado;?></td><!-- Nombre via de administracion no codigo -->
+								
+								<td>
 									<div class="hidden-sm hidden-xs action-buttons">
-										<a class="purple" href="<?php echo base_url() ?>abms/abmResponsablesC/cargarNuevoResponsable">
-											<i class="ui-icon ace-icon fa fa-plus-circle purple bigger-130"></i>Agregar
-										</a>
+											
+											<a class="green" href="<?php echo base_url()?>abms/abmEmpleadosC/editarEmpleado/<?= $tabla->idEmpleado;?>">
+												<i class="ace-icon fa fa-pencil bigger-130"></i>	
+											</a>
+
+											<a class="red" href="<?php echo base_url()?>abms/abmEmpleadosC/borrarEmpleado/<?= $tabla->idEmpleado;?>">
+												<i class="ace-icon fa fa-trash-o bigger-130"></i>
+											</a>
 									</div>
-								</th>
+
+									<div class="hidden-md hidden-lg">
+											<div class="inline pos-rel">
+
+												<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
+													<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
+												</button>
+
+												<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+														
+													<li>
+														<a href="<?php echo base_url()?>abms/abmEmpleadosC/editarEmpleado/<?= $tabla->idEmpleado;?>" class="tooltip-success" data-rel="tooltip" title="Edit">
+															<span class="green">
+																<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+															</span>
+														</a>
+													</li>
+
+													<li>
+														<a href="<?php echo base_url()?>abms/abmEmpleadosC/borrarEmpleado/<?= $tabla->idEmpleado;?>" class="tooltip-error" data-rel="tooltip" title="Delete">
+															<span class="red">
+																<i class="ace-icon fa fa-trash-o bigger-120"></i>
+															</span>
+														</a>
+													</li>
+												</ul>
+											</div>
+									</div>
+								</td>
 							</tr>
-					</thead>
 
-					<tbody>
+							<?php	 				}
+									$contador++;}
 
-						<?php //Limitar los datos segun lo que trae el select de cantidad de lineas a mostrar
-							if ($tablaResponsables){
-							$contador = 0;
-									
-								foreach($tablaResponsables->result() as $tabla){
+								}	
+							?>
 
-									if( $contador == $limiteTabla )    break;
+						</tbody>
+					</table>
+				</div>
 
-										if($tabla->tipoResponsable == "Recepcionista"){
-						?>
 
-						<tr>
-							<td>
-								<label class="pos-rel">
-									<?php echo $tabla->apellidoR; ?> <?php echo $tabla->nombreR; ?>
-								</label>
-							</td>
-							<td><?= $tabla->dniR;?></td>
-							<td><?= $tabla->telefonoR;?></td>
-							<td><?= $tabla->tipoResponsable;?></td><!-- Nombre via de administracion no codigo -->
-							
-							<td>
-								<div class="hidden-sm hidden-xs action-buttons">
-										
-										<a class="green" href="<?php echo base_url()?>abms/abmResponsablesC/editarResponsable/<?= $tabla->codResponsable;?>">
-											<i class="ace-icon fa fa-pencil bigger-130"></i>	
-										</a>
+				<div id="auditor" style="display:none;">
 
-										<a class="red" href="<?php echo base_url()?>abms/abmResponsablesC/borrarResponsable/<?= $tabla->codResponsable;?>">
-											<i class="ace-icon fa fa-trash-o bigger-130"></i>
-										</a>
-								</div>
-
-								<div class="hidden-md hidden-lg">
-										<div class="inline pos-rel">
-
-											<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-												<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-											</button>
-
-											<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-													
-												<li>
-													<a href="<?php echo base_url()?>abms/abmResponsablesC/editarResponsable/<?= $tabla->codResponsable;?>" class="tooltip-success" data-rel="tooltip" title="Edit">
-														<span class="green">
-															<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-														</span>
-													</a>
-												</li>
-
-												<li>
-													<a href="<?php echo base_url()?>abms/abmResponsablesC/borrarResponsable/<?= $tabla->codResponsable;?>" class="tooltip-error" data-rel="tooltip" title="Delete">
-														<span class="red">
-															<i class="ace-icon fa fa-trash-o bigger-120"></i>
-														</span>
-													</a>
-												</li>
-											</ul>
+					<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+						<thead>
+								<tr>
+									<th>Apellido y Nombre</th>
+									<th>N° Legajo</th>
+									<th>Nº Documento</th>
+									<th>Teléfono</th>
+									<th>E-Mail</th>
+									<th>Convenio</th>
+									<th>Tipo Empleado</th>
+									<th>
+										<div class="hidden-sm hidden-xs action-buttons">
+											<a class="orange" href="<?php echo base_url() ?>abms/abmEmpleadosC/cargarNuevoEmpleado">
+												<i class="ui-icon ace-icon fa fa-plus-circle orange bigger-130"></i>Agregar Empleado
+											</a>
 										</div>
-								</div>
-							</td>
-						</tr>
+									</th>
+								</tr>
+						</thead>
 
-						<?php	 		}
-						$contador++;}
+						<tbody>
 
-							}	
-						?>
+							<?php //Limitar los datos segun lo que trae el select de cantidad de lineas a mostrar
+								if ($tablaEmpleados){
+								$contador = 0;
+										
+									foreach($tablaEmpleados->result() as $tabla){
 
-					</tbody>
-				</table>
-			</div>
+										if( $contador == $limiteTabla )    break;
 
+											if($tabla->tipoEmpleado == "Auditor"){
+							?>
 
-			<div id="directivo" style="display:none;">
-
-				<table id="dynamic-table" class="table table-striped table-bordered table-hover">
-					<thead>
 							<tr>
-								<th>Apellido y Nombre</th>
-								<th>Nº Documento</th>
-								<th>Teléfono</th>
-								<th>Tipo Responsable</th>
-								<th>
+								<td>
+									<label class="pos-rel">
+										<?php echo $tabla->apellidoE; ?> <?php echo $tabla->nombreE; ?>
+									</label>
+								</td>
+								<td><?= $tabla->nroLegajo;?></td>
+								<td><?= $tabla->dni;?></td>
+								<td><?= $tabla->telefono;?></td>
+								<td><?= $tabla->email;?></td>
+								<td><?= $tabla->convenio;?></td>
+								<td><?= $tabla->tipoEmpleado;?></td><!-- Nombre via de administracion no codigo -->
+								
+								<td>
 									<div class="hidden-sm hidden-xs action-buttons">
-										<a class="purple" href="<?php echo base_url() ?>abms/abmResponsablesC/cargarNuevoResponsable">
-											<i class="ui-icon ace-icon fa fa-plus-circle purple bigger-130"></i>Agregar
-										</a>
+											
+											<a class="green" href="<?php echo base_url()?>abms/abmEmpleadosC/editarEmpleado/<?= $tabla->idEmpleado;?>">
+												<i class="ace-icon fa fa-pencil bigger-130"></i>	
+											</a>
+
+											<a class="red" href="<?php echo base_url()?>abms/abmEmpleadosC/borrarEmpleado/<?= $tabla->idEmpleado;?>">
+												<i class="ace-icon fa fa-trash-o bigger-130"></i>
+											</a>
 									</div>
-								</th>
+
+									<div class="hidden-md hidden-lg">
+											<div class="inline pos-rel">
+
+												<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
+													<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
+												</button>
+
+												<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+														
+													<li>
+														<a href="<?php echo base_url()?>abms/abmEmpleadosC/editarEmpleado/<?= $tabla->idEmpleado;?>" class="tooltip-success" data-rel="tooltip" title="Edit">
+															<span class="green">
+																<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+															</span>
+														</a>
+													</li>
+
+													<li>
+														<a href="<?php echo base_url()?>abms/abmEmpleadosC/borrarEmpleado/<?= $tabla->idEmpleado;?>" class="tooltip-error" data-rel="tooltip" title="Delete">
+															<span class="red">
+																<i class="ace-icon fa fa-trash-o bigger-120"></i>
+															</span>
+														</a>
+													</li>
+												</ul>
+											</div>
+									</div>
+								</td>
 							</tr>
-					</thead>
 
-					<tbody>
+							<?php	 				}
+									$contador++;}
 
-						<?php //Limitar los datos segun lo que trae el select de cantidad de lineas a mostrar
-							if ($tablaResponsables){
-							$contador = 0;
-									
-								foreach($tablaResponsables->result() as $tabla){
+								}	
+							?>
 
-									if( $contador == $limiteTabla )    break;
+						</tbody>
+					</table>
+				</div>
 
-										if($tabla->tipoResponsable == "Directivo"){
-						?>
 
-						<tr>
-							<td>
-								<label class="pos-rel">
-									<?php echo $tabla->apellidoR; ?> <?php echo $tabla->nombreR; ?>
-								</label>
-							</td>
-							<td><?= $tabla->dniR;?></td>
-							<td><?= $tabla->telefonoR;?></td>
-							<td><?= $tabla->tipoResponsable;?></td><!-- Nombre via de administracion no codigo -->
-							
-							<td>
-								<div class="hidden-sm hidden-xs action-buttons">
-										
-										<a class="green" href="<?php echo base_url()?>abms/abmResponsablesC/editarResponsable/<?= $tabla->codResponsable;?>">
-											<i class="ace-icon fa fa-pencil bigger-130"></i>	
-										</a>
+				<div id="directivo" style="display:none;">
 
-										<a class="red" href="<?php echo base_url()?>abms/abmResponsablesC/borrarResponsable/<?= $tabla->codResponsable;?>">
-											<i class="ace-icon fa fa-trash-o bigger-130"></i>
-										</a>
-								</div>
-
-								<div class="hidden-md hidden-lg">
-										<div class="inline pos-rel">
-
-											<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-												<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-											</button>
-
-											<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-													
-												<li>
-													<a href="<?php echo base_url()?>abms/abmResponsablesC/editarResponsable/<?= $tabla->codResponsable;?>" class="tooltip-success" data-rel="tooltip" title="Edit">
-														<span class="green">
-															<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-														</span>
-													</a>
-												</li>
-
-												<li>
-													<a href="<?php echo base_url()?>abms/abmResponsablesC/borrarResponsable/<?= $tabla->codResponsable;?>" class="tooltip-error" data-rel="tooltip" title="Delete">
-														<span class="red">
-															<i class="ace-icon fa fa-trash-o bigger-120"></i>
-														</span>
-													</a>
-												</li>
-											</ul>
+					<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+						<thead>
+								<tr>
+									<th>Apellido y Nombre</th>
+									<th>N° Legajo</th>
+									<th>Nº Documento</th>
+									<th>Teléfono</th>
+									<th>E-Mail</th>
+									<th>Convenio</th>
+									<th>Tipo Empleado</th>
+									<th>
+										<div class="hidden-sm hidden-xs action-buttons">
+											<a class="orange" href="<?php echo base_url() ?>abms/abmEmpleadosC/cargarNuevoEmpleado">
+												<i class="ui-icon ace-icon fa fa-plus-circle orange bigger-130"></i>Agregar Empleado
+											</a>
 										</div>
-								</div>
-							</td>
-						</tr>
+									</th>
+								</tr>
+						</thead>
 
-						<?php	 		}
-						$contador++;}
+						<tbody>
 
-							}	
-						?>
+							<?php //Limitar los datos segun lo que trae el select de cantidad de lineas a mostrar
+								if ($tablaEmpleados){
+								$contador = 0;
+										
+									foreach($tablaEmpleados->result() as $tabla){
 
-					</tbody>
-				</table>
-			</div>
+										if( $contador == $limiteTabla )    break;
 
+											if($tabla->tipoEmpleado == "Directivo"){
+							?>
 
-			<div id="admin" style="display:none;">
-
-				<table id="dynamic-table" class="table table-striped table-bordered table-hover">
-					<thead>
 							<tr>
-								<th>Apellido y Nombre</th>
-								<th>Nº Documento</th>
-								<th>Teléfono</th>
-								<th>Tipo Responsable</th>
-								<th>
+								<td>
+									<label class="pos-rel">
+										<?php echo $tabla->apellidoE; ?> <?php echo $tabla->nombreE; ?>
+									</label>
+								</td>
+								<td><?= $tabla->nroLegajo;?></td>
+								<td><?= $tabla->dni;?></td>
+								<td><?= $tabla->telefono;?></td>
+								<td><?= $tabla->email;?></td>
+								<td><?= $tabla->convenio;?></td>
+								<td><?= $tabla->tipoEmpleado;?></td><!-- Nombre via de administracion no codigo -->
+								
+								<td>
 									<div class="hidden-sm hidden-xs action-buttons">
-										<a class="purple" href="<?php echo base_url() ?>abms/abmResponsablesC/cargarNuevoResponsable">
-											<i class="ui-icon ace-icon fa fa-plus-circle purple bigger-130"></i>Agregar
-										</a>
+											
+											<a class="green" href="<?php echo base_url()?>abms/abmEmpleadosC/editarEmpleado/<?= $tabla->idEmpleado;?>">
+												<i class="ace-icon fa fa-pencil bigger-130"></i>	
+											</a>
+
+											<a class="red" href="<?php echo base_url()?>abms/abmEmpleadosC/borrarEmpleado/<?= $tabla->idEmpleado;?>">
+												<i class="ace-icon fa fa-trash-o bigger-130"></i>
+											</a>
 									</div>
-								</th>
+
+									<div class="hidden-md hidden-lg">
+											<div class="inline pos-rel">
+
+												<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
+													<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
+												</button>
+
+												<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+														
+													<li>
+														<a href="<?php echo base_url()?>abms/abmEmpleadosC/editarEmpleado/<?= $tabla->idEmpleado;?>" class="tooltip-success" data-rel="tooltip" title="Edit">
+															<span class="green">
+																<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+															</span>
+														</a>
+													</li>
+
+													<li>
+														<a href="<?php echo base_url()?>abms/abmEmpleadosC/borrarEmpleado/<?= $tabla->idEmpleado;?>" class="tooltip-error" data-rel="tooltip" title="Delete">
+															<span class="red">
+																<i class="ace-icon fa fa-trash-o bigger-120"></i>
+															</span>
+														</a>
+													</li>
+												</ul>
+											</div>
+									</div>
+								</td>
 							</tr>
-					</thead>
 
-					<tbody>
+							<?php	 				}
+									$contador++;}
 
-						<?php //Limitar los datos segun lo que trae el select de cantidad de lineas a mostrar
-							if ($tablaResponsables){
-							$contador = 0;
-									
-								foreach($tablaResponsables->result() as $tabla){
+								}	
+							?>
 
-									if( $contador == $limiteTabla )    break;
+						</tbody>
+					</table>
+				</div>
 
-										if($tabla->tipoResponsable == "Administrador"){
-						?>
 
-						<tr>
-							<td>
-								<label class="pos-rel">
-									<?php echo $tabla->apellidoR; ?> <?php echo $tabla->nombreR; ?>
-								</label>
-							</td>
-							<td><?= $tabla->dniR;?></td>
-							<td><?= $tabla->telefonoR;?></td>
-							<td><?= $tabla->tipoResponsable;?></td><!-- Nombre via de administracion no codigo -->
-							
-							<td>
-								<div class="hidden-sm hidden-xs action-buttons">
-										
-										<a class="green" href="<?php echo base_url()?>abms/abmResponsablesC/editarResponsable/<?= $tabla->codResponsable;?>">
-											<i class="ace-icon fa fa-pencil bigger-130"></i>	
-										</a>
+				<div id="admin" style="display:none;">
 
-										<a class="red" href="<?php echo base_url()?>abms/abmResponsablesC/borrarResponsable/<?= $tabla->codResponsable;?>">
-											<i class="ace-icon fa fa-trash-o bigger-130"></i>
-										</a>
-								</div>
-
-								<div class="hidden-md hidden-lg">
-										<div class="inline pos-rel">
-
-											<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-												<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-											</button>
-
-											<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-													
-												<li>
-													<a href="<?php echo base_url()?>abms/abmResponsablesC/editarResponsable/<?= $tabla->codResponsable;?>" class="tooltip-success" data-rel="tooltip" title="Edit">
-														<span class="green">
-															<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-														</span>
-													</a>
-												</li>
-
-												<li>
-													<a href="<?php echo base_url()?>abms/abmResponsablesC/borrarResponsable/<?= $tabla->codResponsable;?>" class="tooltip-error" data-rel="tooltip" title="Delete">
-														<span class="red">
-															<i class="ace-icon fa fa-trash-o bigger-120"></i>
-														</span>
-													</a>
-												</li>
-											</ul>
+					<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+						<thead>
+								<tr>
+									<th>Apellido y Nombre</th>
+									<th>N° Legajo</th>
+									<th>Nº Documento</th>
+									<th>Teléfono</th>
+									<th>E-Mail</th>
+									<th>Convenio</th>
+									<th>Tipo Empleado</th>
+									<th>
+										<div class="hidden-sm hidden-xs action-buttons">
+											<a class="orange" href="<?php echo base_url() ?>abms/abmEmpleadosC/cargarNuevoEmpleado">
+												<i class="ui-icon ace-icon fa fa-plus-circle orange bigger-130"></i>Agregar Empleado
+											</a>
 										</div>
-								</div>
-							</td>
-						</tr>
+									</th>
+								</tr>
+						</thead>
 
-						<?php	 		}
-						$contador++;}
+						<tbody>
 
-							}	
-						?>
+							<?php //Limitar los datos segun lo que trae el select de cantidad de lineas a mostrar
+								if ($tablaEmpleados){
+								$contador = 0;
+										
+									foreach($tablaEmpleados->result() as $tabla){
 
-					</tbody>
-				</table>
-			</div>
+										if( $contador == $limiteTabla )    break;
 
+											if($tabla->tipoEmpleado == "Administrador"){
+							?>
 
-			<div id="adminDB" style="display:none;">
-
-				<table id="dynamic-table" class="table table-striped table-bordered table-hover">
-					<thead>
 							<tr>
-								<th>Apellido y Nombre</th>
-								<th>Nº Documento</th>
-								<th>Teléfono</th>
-								<th>Tipo Responsable</th>
-								<th>
+								<td>
+									<label class="pos-rel">
+										<?php echo $tabla->apellidoE; ?> <?php echo $tabla->nombreE; ?>
+									</label>
+								</td>
+								<td><?= $tabla->nroLegajo;?></td>
+								<td><?= $tabla->dni;?></td>
+								<td><?= $tabla->telefono;?></td>
+								<td><?= $tabla->email;?></td>
+								<td><?= $tabla->convenio;?></td>
+								<td><?= $tabla->tipoEmpleado;?></td><!-- Nombre via de administracion no codigo -->
+								
+								<td>
 									<div class="hidden-sm hidden-xs action-buttons">
-										<a class="purple" href="<?php echo base_url() ?>abms/abmResponsablesC/cargarNuevoResponsable">
-											<i class="ui-icon ace-icon fa fa-plus-circle purple bigger-130"></i>Agregar
-										</a>
+											
+											<a class="green" href="<?php echo base_url()?>abms/abmEmpleadosC/editarEmpleado/<?= $tabla->idEmpleado;?>">
+												<i class="ace-icon fa fa-pencil bigger-130"></i>	
+											</a>
+
+											<a class="red" href="<?php echo base_url()?>abms/abmEmpleadosC/borrarEmpleado/<?= $tabla->idEmpleado;?>">
+												<i class="ace-icon fa fa-trash-o bigger-130"></i>
+											</a>
 									</div>
-								</th>
+
+									<div class="hidden-md hidden-lg">
+											<div class="inline pos-rel">
+
+												<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
+													<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
+												</button>
+
+												<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+														
+													<li>
+														<a href="<?php echo base_url()?>abms/abmEmpleadosC/editarEmpleado/<?= $tabla->idEmpleado;?>" class="tooltip-success" data-rel="tooltip" title="Edit">
+															<span class="green">
+																<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+															</span>
+														</a>
+													</li>
+
+													<li>
+														<a href="<?php echo base_url()?>abms/abmEmpleadosC/borrarEmpleado/<?= $tabla->idEmpleado;?>" class="tooltip-error" data-rel="tooltip" title="Delete">
+															<span class="red">
+																<i class="ace-icon fa fa-trash-o bigger-120"></i>
+															</span>
+														</a>
+													</li>
+												</ul>
+											</div>
+									</div>
+								</td>
 							</tr>
-					</thead>
 
-					<tbody>
+							<?php	 				}
+									$contador++;}
 
-						<?php //Limitar los datos segun lo que trae el select de cantidad de lineas a mostrar
-							if ($tablaResponsables){
-							$contador = 0;
-									
-								foreach($tablaResponsables->result() as $tabla){
+								}	
+							?>
 
-									if( $contador == $limiteTabla )    break;
+						</tbody>
+					</table>
+				</div>
 
-										if($tabla->tipoResponsable == "Administrador de Base de Datos"){
-						?>
 
-						<tr>
-							<td>
-								<label class="pos-rel">
-									<?php echo $tabla->apellidoR; ?> <?php echo $tabla->nombreR; ?>
-								</label>
-							</td>
-							<td><?= $tabla->dniR;?></td>
-							<td><?= $tabla->telefonoR;?></td>
-							<td><?= $tabla->tipoResponsable;?></td><!-- Nombre via de administracion no codigo -->
-							
-							<td>
-								<div class="hidden-sm hidden-xs action-buttons">
-										
-										<a class="green" href="<?php echo base_url()?>abms/abmResponsablesC/editarResponsable/<?= $tabla->codResponsable;?>">
-											<i class="ace-icon fa fa-pencil bigger-130"></i>	
-										</a>
+				<div id="adminDB" style="display:none;">
 
-										<a class="red" href="<?php echo base_url()?>abms/abmResponsablesC/borrarResponsable/<?= $tabla->codResponsable;?>">
-											<i class="ace-icon fa fa-trash-o bigger-130"></i>
-										</a>
-								</div>
-
-								<div class="hidden-md hidden-lg">
-										<div class="inline pos-rel">
-
-											<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-												<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-											</button>
-
-											<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-													
-												<li>
-													<a href="<?php echo base_url()?>abms/abmResponsablesC/editarResponsable/<?= $tabla->codResponsable;?>" class="tooltip-success" data-rel="tooltip" title="Edit">
-														<span class="green">
-															<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-														</span>
-													</a>
-												</li>
-
-												<li>
-													<a href="<?php echo base_url()?>abms/abmResponsablesC/borrarResponsable/<?= $tabla->codResponsable;?>" class="tooltip-error" data-rel="tooltip" title="Delete">
-														<span class="red">
-															<i class="ace-icon fa fa-trash-o bigger-120"></i>
-														</span>
-													</a>
-												</li>
-											</ul>
+					<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+						<thead>
+								<tr>
+									<th>Apellido y Nombre</th>
+									<th>N° Legajo</th>
+									<th>Nº Documento</th>
+									<th>Teléfono</th>
+									<th>E-Mail</th>
+									<th>Convenio</th>
+									<th>Tipo Empleado</th>
+									<th>
+										<div class="hidden-sm hidden-xs action-buttons">
+											<a class="orange" href="<?php echo base_url() ?>abms/abmEmpleadosC/cargarNuevoEmpleado">
+												<i class="ui-icon ace-icon fa fa-plus-circle orange bigger-130"></i>Agregar Empleado
+											</a>
 										</div>
-								</div>
-							</td>
-						</tr>
+									</th>
+								</tr>
+						</thead>
 
-						<?php	 		}
-						$contador++;}
+						<tbody>
 
-							}	
-						?>
+							<?php //Limitar los datos segun lo que trae el select de cantidad de lineas a mostrar
+								if ($tablaEmpleados){
+								$contador = 0;
+										
+									foreach($tablaEmpleados->result() as $tabla){
 
-					</tbody>
-				</table>
-			</div>
+										if( $contador == $limiteTabla )    break;
 
-<script>
-function tipoROnChange(sel) {
-    if (sel.value=="1"){
-        	divT = document.getElementById("todos");
-      		divT.style.display = "";
+											if($tabla->tipoEmpleado == "Administrador Base de Datos"){
+							?>
 
-       		divM = document.getElementById("medico");
-      		divM.style.display = "none";
+							<tr>
+								<td>
+									<label class="pos-rel">
+										<?php echo $tabla->apellidoE; ?> <?php echo $tabla->nombreE; ?>
+									</label>
+								</td>
+								<td><?= $tabla->nroLegajo;?></td>
+								<td><?= $tabla->dni;?></td>
+								<td><?= $tabla->telefono;?></td>
+								<td><?= $tabla->email;?></td>
+								<td><?= $tabla->convenio;?></td>
+								<td><?= $tabla->tipoEmpleado;?></td><!-- Nombre via de administracion no codigo -->
+								
+								<td>
+									<div class="hidden-sm hidden-xs action-buttons">
+											
+											<a class="green" href="<?php echo base_url()?>abms/abmEmpleadosC/editarEmpleado/<?= $tabla->idEmpleado;?>">
+												<i class="ace-icon fa fa-pencil bigger-130"></i>	
+											</a>
 
-      		divE = document.getElementById("enfermero");
-      		divE.style.display = "none";
+											<a class="red" href="<?php echo base_url()?>abms/abmEmpleadosC/borrarEmpleado/<?= $tabla->idEmpleado;?>">
+												<i class="ace-icon fa fa-trash-o bigger-130"></i>
+											</a>
+									</div>
 
-      		divE = document.getElementById("recepcionista");
-      		divE.style.display = "none";
+									<div class="hidden-md hidden-lg">
+											<div class="inline pos-rel">
 
-      		divE = document.getElementById("directivo");
-      		divE.style.display = "none";
+												<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
+													<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
+												</button>
 
-      		divE = document.getElementById("admin");
-      		divE.style.display = "none";
+												<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+														
+													<li>
+														<a href="<?php echo base_url()?>abms/abmEmpleadosC/editarEmpleado/<?= $tabla->idEmpleado;?>" class="tooltip-success" data-rel="tooltip" title="Edit">
+															<span class="green">
+																<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+															</span>
+														</a>
+													</li>
 
-      		divE = document.getElementById("adminDB");
-      		divE.style.display = "none";
+													<li>
+														<a href="<?php echo base_url()?>abms/abmEmpleadosC/borrarEmpleado/<?= $tabla->idEmpleado;?>" class="tooltip-error" data-rel="tooltip" title="Delete">
+															<span class="red">
+																<i class="ace-icon fa fa-trash-o bigger-120"></i>
+															</span>
+														</a>
+													</li>
+												</ul>
+											</div>
+									</div>
+								</td>
+							</tr>
+							<?php	 				}
+									$contador++;}
 
-    }else if (sel.value=="2"){
-     		divT = document.getElementById("todos");
-      		divT.style.display = "none";
-
-       		divM = document.getElementById("medico");
-      		divM.style.display = "";
-
-      		divE = document.getElementById("enfermero");
-      		divE.style.display = "none";
-
-      		divE = document.getElementById("recepcionista");
-      		divE.style.display = "none";
-
-      		divE = document.getElementById("directivo");
-      		divE.style.display = "none";
-
-      		divE = document.getElementById("admin");
-      		divE.style.display = "none";
-
-      		divE = document.getElementById("adminDB");
-      		divE.style.display = "none";
-
-	}else if (sel.value=="3"){
-       		divT = document.getElementById("todos");
-      		divT.style.display = "none";
-
-       		divM = document.getElementById("medico");
-      		divM.style.display = "none";
-
-      		divE = document.getElementById("enfermero");
-      		divE.style.display = "";
-
-      		divE = document.getElementById("recepcionista");
-      		divE.style.display = "none";
-
-      		divE = document.getElementById("directivo");
-      		divE.style.display = "none";
-
-      		divE = document.getElementById("admin");
-      		divE.style.display = "none";
-
-      		divE = document.getElementById("adminDB");
-      		divE.style.display = "none";
-
-    }else if (sel.value=="4"){
-       		divT = document.getElementById("todos");
-      		divT.style.display = "none";
-
-       		divM = document.getElementById("medico");
-      		divM.style.display = "none";
-
-      		divE = document.getElementById("enfermero");
-      		divE.style.display = "none";
-
-      		divE = document.getElementById("recepcionista");
-      		divE.style.display = "";
-
-      		divE = document.getElementById("directivo");
-      		divE.style.display = "none";
-
-      		divE = document.getElementById("admin");
-      		divE.style.display = "none";
-
-      		divE = document.getElementById("adminDB");
-      		divE.style.display = "none";
-
-    }else if (sel.value=="5"){
-
-       		divT = document.getElementById("todos");
-      		divT.style.display = "none";
-
-       		divM = document.getElementById("medico");
-      		divM.style.display = "none";
-
-      		divE = document.getElementById("enfermero");
-      		divE.style.display = "none";
-
-      		divE = document.getElementById("recepcionista");
-      		divE.style.display = "none";
-
-      		divE = document.getElementById("directivo");
-      		divE.style.display = "";
-
-      		divE = document.getElementById("admin");
-      		divE.style.display = "none";
-
-      		divE = document.getElementById("adminDB");
-      		divE.style.display = "none";
-
-    }else if (sel.value=="6"){
-       		divT = document.getElementById("todos");
-      		divT.style.display = "none";
-
-       		divM = document.getElementById("medico");
-      		divM.style.display = "none";
-
-      		divE = document.getElementById("enfermero");
-      		divE.style.display = "none";
-
-      		divE = document.getElementById("recepcionista");
-      		divE.style.display = "none";
-
-      		divE = document.getElementById("directivo");
-      		divE.style.display = "none";
-
-      		divE = document.getElementById("admin");
-      		divE.style.display = "";
-
-      		divE = document.getElementById("adminDB");
-      		divE.style.display = "none";
-
-    }else if (sel.value=="7"){
-       		divT = document.getElementById("todos");
-      		divT.style.display = "none";
-
-       		divM = document.getElementById("medico");
-      		divM.style.display = "none";
-
-      		divE = document.getElementById("enfermero");
-      		divE.style.display = "none";
-
-      		divE = document.getElementById("recepcionista");
-      		divE.style.display = "none";
-
-      		divE = document.getElementById("directivo");
-      		divE.style.display = "none";
-
-      		divE = document.getElementById("admin");
-      		divE.style.display = "none";
-
-      		divE = document.getElementById("adminDB");
-      		divE.style.display = "";
-    }
-}
-
-</script>
+								}	
+							?>
+						</tbody>
+					</table>
+				</div>
 
 		</div><!-- Termina el cuadro con Medicamentos de la bd -->
 
@@ -893,31 +656,151 @@ function tipoROnChange(sel) {
 </div><!-- /.main-content -->
 
 
+<!-- Script para cuadro dinamico segun tipo de Empleado -->
+	<script>
+	function tipoROnChange(sel) {
+	    if (sel.value=="1"){
+	        	divT = document.getElementById("todos");
+	      		divT.style.display = "";
+
+	       		divM = document.getElementById("facilitador");
+	      		divM.style.display = "none";
+
+	      		divE = document.getElementById("auditor");
+	      		divE.style.display = "none";
+
+	      		divE = document.getElementById("directivo");
+	      		divE.style.display = "none";
+
+	      		divE = document.getElementById("admin");
+	      		divE.style.display = "none";
+
+	      		divE = document.getElementById("adminDB");
+	      		divE.style.display = "none";
+
+	    }else if (sel.value=="2"){
+	     		divT = document.getElementById("todos");
+	      		divT.style.display = "none";
+
+	       		divM = document.getElementById("facilitador");
+	      		divM.style.display = "none";
+
+	      		divE = document.getElementById("auditor");
+	      		divE.style.display = "none";
+
+	      		divE = document.getElementById("directivo");
+	      		divE.style.display = "none";
+
+	      		divE = document.getElementById("admin");
+	      		divE.style.display = "";
+
+	      		divE = document.getElementById("adminDB");
+	      		divE.style.display = "none";
+
+		}else if (sel.value=="3"){
+	       		divT = document.getElementById("todos");
+	      		divT.style.display = "none";
+
+	       		divM = document.getElementById("facilitador");
+	      		divM.style.display = "none";
+
+	      		divE = document.getElementById("auditor");
+	      		divE.style.display = "none";
+
+	      		divE = document.getElementById("directivo");
+	      		divE.style.display = "none";
+
+	      		divE = document.getElementById("admin");
+	      		divE.style.display = "none";
+
+	      		divE = document.getElementById("adminDB");
+	      		divE.style.display = "";
+
+	    }else if (sel.value=="4"){
+	       		divT = document.getElementById("todos");
+	      		divT.style.display = "none";
+
+	       		divM = document.getElementById("facilitador");
+	      		divM.style.display = "none";
+
+	      		divE = document.getElementById("auditor");
+	      		divE.style.display = "";
+
+	      		divE = document.getElementById("directivo");
+	      		divE.style.display = "none";
+
+	      		divE = document.getElementById("admin");
+	      		divE.style.display = "none";
+
+	      		divE = document.getElementById("adminDB");
+	      		divE.style.display = "none";
+
+	    }else if (sel.value=="5"){
+
+	       		divT = document.getElementById("todos");
+	      		divT.style.display = "none";
+
+	       		divM = document.getElementById("facilitador");
+	      		divM.style.display = "none";
+
+	      		divE = document.getElementById("auditor");
+	      		divE.style.display = "none";
+
+	      		divE = document.getElementById("directivo");
+	      		divE.style.display = "";
+
+	      		divE = document.getElementById("admin");
+	      		divE.style.display = "none";
+
+	      		divE = document.getElementById("adminDB");
+	      		divE.style.display = "none";
+
+	    }else if (sel.value=="6"){
+	       		divT = document.getElementById("todos");
+	      		divT.style.display = "none";
+
+	       		divM = document.getElementById("facilitador");
+	      		divM.style.display = "";
+
+	      		divE = document.getElementById("auditor");
+	      		divE.style.display = "none";
+
+	      		divE = document.getElementById("directivo");
+	      		divE.style.display = "none";
+
+	      		divE = document.getElementById("admin");
+	      		divE.style.display = "none";
+
+	      		divE = document.getElementById("adminDB");
+	      		divE.style.display = "none";
+	    }
+	}
+	</script>
 
 <!--Para que se vean los botones de la tabla responsive-->
 
-		<script type="text/javascript">
-			window.jQuery || document.write("<script src='../assets/js/jquery.js'>"+"<"+"/script>");
-		</script>
+	<script type="text/javascript">
+		window.jQuery || document.write("<script src='../assets/js/jquery.js'>"+"<"+"/script>");
+	</script>
 
 
-		<script type="text/javascript">
-			if('ontouchstart' in document.documentElement) document.write("<script src='../assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
-		</script>
-		<script src="../assets/js/bootstrap.js"></script>
+	<script type="text/javascript">
+		if('ontouchstart' in document.documentElement) document.write("<script src='../assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
+	</script>
+	<script src="../assets/js/bootstrap.js"></script>
 
 
 
 <!--Para que se vean los botones de la tabla responsive-->
 
-		<script type="text/javascript">
-			window.jQuery || document.write("<script src='../../assets/js/jquery.js'>"+"<"+"/script>");
-		</script>
+	<script type="text/javascript">
+		window.jQuery || document.write("<script src='../../assets/js/jquery.js'>"+"<"+"/script>");
+	</script>
 
 
-		<script type="text/javascript">
-			if('ontouchstart' in document.documentElement) document.write("<script src='../../assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
-		</script>
-		<script src="../../assets/js/bootstrap.js"></script>
+	<script type="text/javascript">
+		if('ontouchstart' in document.documentElement) document.write("<script src='../../assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
+	</script>
+	<script src="../../assets/js/bootstrap.js"></script>
 
 

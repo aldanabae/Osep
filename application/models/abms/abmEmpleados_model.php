@@ -7,38 +7,28 @@ class AbmEmpleados_model extends CI_Model {
 		$this->load->database();
 	}
 
-	function crearResponsable($data){
-		$this->db->insert('tb_responsable', 
-			array('nombreR'=>$data['nombreR'], 
-				'apellidoR'=>$data['apellidoR'], 
-				'telefonoR'=>$data['telefonoR'], 
-				'direccionR'=>$data['direccionR'],
-				'dniR'=>$data['dniR'],
-				'tipoResponsable'=>$data['tipoResponsable']));
-		$codResp = $this->db->insert_id();
-
-		if ($data['tipoResponsable'] == "Médico"){
-			$this->db->insert('tb_medico', 
-			array('codResponsable'=>$codResp, 
-				'matricula'=>$data['matricula'], 
-				'codEspecialidad'=>$data['codEspecialidad']));
-
-		}elseif ($data['tipoResponsable'] == "Enfermero"){
-			$this->db->insert('tb_enfermero', 
-			array('codResponsable'=>$codResp, 
-				'nroLegajo'=>$data['nroLegajo'], 
-				'codServicio'=>$data['codServicio']));
-		}
+	function crearEmpleado($data){
+		$this->db->insert('empleado', 
+			array('nombreE'=>$data['nombreE'], 
+				'apellidoE'=>$data['apellidoE'], 
+				'telefono'=>$data['telefono'], 
+				'direccion'=>$data['direccion'],
+				'dni'=>$data['dni'],
+				'nroLegajo'=>$data['nroLegajo'],
+				'email'=>$data['email'],
+				'convenio'=>$data['convenio'],
+				'tipoEmpleado'=>$data['tipoEmpleado']));
+		$codEmp = $this->db->insert_id();
 	}
 
 	function obtenerEmpleados($nroL){
 		if ($nroL == ''){
 			$this->db->select('empleado.idEmpleado,empleado.apellidoE,
-				empleado.nombreE,empleado.direccion,
-				empleado.telefono,empleado.nroLegajo,
-				empleado.convenio,empleado.email,
-				empleado.dni,empleado.tipoEmpleado'
-				);
+								empleado.nombreE,empleado.direccion,
+								empleado.telefono,empleado.nroLegajo,
+								empleado.convenio,empleado.email,
+								empleado.dni,empleado.tipoEmpleado'
+								);
 			$this->db->from('empleado');
 			//$this->db->join('tb_medico', 'tb_medico.codResponsable = tb_responsable.codResponsable', 'left');
 			$query = $this->db->get();
@@ -60,20 +50,16 @@ class AbmEmpleados_model extends CI_Model {
 			else return false;	
 	}
 
-	function obtenerResponsable($codR){
-		$this->db->select('tb_responsable.codResponsable,tb_responsable.apellidoR,
-				tb_responsable.nombreR,tb_responsable.direccionR,
-				tb_responsable.telefonoR,tb_responsable.dniR,
-				tb_responsable.tipoResponsable,
-				tb_medico.matricula, tb_medico.codEspecialidad, tb_especialidad.nombreEspecialidad,
-				tb_enfermero.nroLegajo, tb_enfermero.codServicio, tb_servicio.nombreServicio'
-				);
-		$this->db->where('tb_responsable.codResponsable', $codR);
-		$this->db->from('tb_responsable');
-		$this->db->join('tb_medico', 'tb_medico.codResponsable = tb_responsable.codResponsable', 'left');
-		$this->db->join('tb_enfermero', 'tb_enfermero.codResponsable = tb_responsable.codResponsable', 'left');
-		$this->db->join('tb_especialidad', 'tb_medico.codEspecialidad = tb_especialidad.codEspecialidad', 'left');
-		$this->db->join('tb_servicio', 'tb_enfermero.codServicio = tb_servicio.codServicio', 'left');
+	function obtenerEmpleado($codE){
+		$this->db->select('empleado.idEmpleado,empleado.apellidoE,
+							empleado.nombreE,empleado.direccion,
+							empleado.telefono,empleado.nroLegajo,
+							empleado.convenio,empleado.email,
+							empleado.dni,empleado.tipoEmpleado'
+							);
+		$this->db->where('empleado.idEmpleado', $codE);
+		$this->db->from('empleado');
+		//$this->db->join('tb_medico', 'tb_medico.codResponsable = tb_responsable.codResponsable', 'left');
 		$query = $this->db->get();
 
 		if ($query->num_rows() > 0) return $query;

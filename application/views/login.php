@@ -8,6 +8,9 @@
 		<meta name="description" content="User login page" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="<?php echo base_url() ?>assets/images/favicon.jpg" />
+
 		<!-- bootstrap & fontawesome -->
 		<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/bootstrap.css" />
 		<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/font-awesome.css" />
