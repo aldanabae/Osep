@@ -139,45 +139,47 @@ class AbmEmpleadosC extends CI_Controller{
 	}
 
 	function actualizarDatos(){
-		$data['codR'] = $this->uri->segment(4);
+		$data['codE'] = $this->uri->segment(4);
 		$datos = array(
-			'nombreR' => $this->input->post('nombreR'),
-			'apellidoR' => $this->input->post('apellidoR'),
-			'telefonoR' => $this->input->post('telefonoR'),
-			'direccionR' => $this->input->post('direccionR'),
-			'dniR' => $this->input->post('dniR'),
-			'tipoResponsable' => $this->input->post('tipoResponsable'),
-			'matricula' => $this->input->post('matricula'),
-			'nroLegajo' => $this->input->post('nroLegajo'),
-			'codEspecialidad' => $this->input->post('especialidad'),
-			'codServicio' => $this->input->post('servicio'));
-
-		$this->form_validation->set_rules('nombreR','Nombre Responsable','trim|required');
-        $this->form_validation->set_rules('apellidoR','Apellido Responsable','trim|required');
-        $this->form_validation->set_rules('telefonoR','Telefono','trim|required');
-        $this->form_validation->set_rules('direccionR','Direccion','trim|required');
-        $this->form_validation->set_rules('dniR','Nº Documento','trim|required');
-        $this->form_validation->set_rules('tipoResponsable','Tipo Responsable','trim|required');
+					'nombreE' => $this->input->post('nombreE'),
+					'apellidoE' => $this->input->post('apellidoE'),
+					'telefono' => $this->input->post('telefono'),
+					'direccion' => $this->input->post('direccion'),
+					'dni' => $this->input->post('dni'),
+					'tipoEmpleado' => $this->input->post('tipoEmpleado'),
+					'nroLegajo' => $this->input->post('nroLegajo'),
+					'email' => $this->input->post('email'),
+					'convenio' => $this->input->post('convenio'));
+ 
+        $this->form_validation->set_rules('nombreE','Nombre Empleado','trim|required');
+        $this->form_validation->set_rules('apellidoE','Apellido Empleado','trim|required');
+        $this->form_validation->set_rules('telefono','Telefono','trim|required');
+        $this->form_validation->set_rules('direccion','Direccion','trim|required');
+        $this->form_validation->set_rules('dni','Nº Documento','trim|required');
+        $this->form_validation->set_rules('tipoEmpleado','Tipo Responsable','trim|required');
+        $this->form_validation->set_rules('nroLegajo','Nº Legajo','trim|required');
+        $this->form_validation->set_rules('email','E-Mail','trim|required');
+        $this->form_validation->set_rules('convenio','Convenio','trim|required');
 
        	$this->form_validation->set_message('required','Debe completar este campo');  
  
         if ($this->form_validation->run() == FALSE) {
        		echo '<script >alert("Debe completar todos los campos con *");</script>';
-       		redirect('/abms/abmResponsablesC/editarResponsable/'.$data['codR'],'refresh');
+       		redirect('/abms/abmEmpleadosC/editarEmpleado/'.$data['codE'],'refresh');
 
         } else {
            	if (isset($_POST['ActualizarEnDB'])){
-				$this->abmResponsables_model->actualizarResponsable($this->uri->segment(4),$datos);
+				$this->abmEmpleados_model->actualizarEmpleado($this->uri->segment(4),$datos);
 			}
 
-			redirect('/abms/abmResponsablesC','refresh');
+			redirect('/abms/abmEmpleadosC','refresh');
         }	
 	}
 
-	function borrarResponsable(){
-		$codR = $this->uri->segment(4);
-		$this->abmResponsables_model->eliminarResponsable($codR);
+	function borrarEmpleado(){
+		$codE = $this->uri->segment(4);
+		$this->abmEmpleados_model->eliminarEmpleado($codE);
 
-		redirect('/abms/abmResponsablesC','refresh');		
+		redirect('/abms/abmEmpleadosC','refresh');		
 	}
 }

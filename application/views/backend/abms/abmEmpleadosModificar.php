@@ -22,21 +22,20 @@
 					</div>
 
 					<div class="widget-body">
+						<div class="widget-main">
 							<div class="widget-main">
-									<div class="widget-main">
 
-										<?php 	if ($empleado){
-													foreach ($empleado->result() as $emp){
-        								?>
+								<?php 	if ($empleado){
+											foreach ($empleado->result() as $emp){
+								?>
 
-										<form class="form-horizontal" role="form" action="<?php echo base_url() ?>abms/abmEmpleadosC/actualizarDatos/<?= $emp->idEmpleado;?>" method="post"><!-- Comienza formulario Modificar -->
-
-										  
-	                                    <div class="form-group"> <!-- Empieza una linea del formulario -->
-											<label class="col-sm-3 control-label no-padding-right" for="apellido">Apellidos Empleado(*) </label>
+									<form class="form-horizontal" role="form" action="<?php echo base_url() ?>abms/abmEmpleadosC/actualizarDatos/<?= $emp->idEmpleado;?>" method="post"><!-- Comienza formulario Modificar -->
+									  
+		                                <div class="form-group"> <!-- Empieza una linea del formulario -->
+											<label class="col-sm-3 control-label no-padding-right" for="apellidoE">Apellidos Empleado(*) </label>
 
 											<div class="col-sm-4">
-												<input class="form-control" id="apellido" name="apellido" value="<?= $emp->apellidoE;?>"  type="text">		                        
+												<input class="form-control" id="apellidoE" name="apellidoE" value="<?= $emp->apellidoE;?>"  type="text">		                        
 											</div>
 										</div>	                        
 										
@@ -69,6 +68,14 @@
 											<label class="col-sm-3 control-label no-padding-right" for="telefono"> Teléfono </label>
 											<div class="col-sm-4">
 												<input class="form-control" id="telefono" name="telefono" placeholder="" value="<?= $emp->telefono;?>" type="tel">
+		                					</div> 
+										</div>
+
+										<div class="form-group"> <!-- Empieza una linea del formulario -->
+
+											<label class="col-sm-3 control-label no-padding-right" for="email"> E-Mail </label>
+											<div class="col-sm-4">
+												<input class="form-control" id="email" name="email" placeholder="" value="<?= $emp->email;?>" type="tel">
 		                					</div> 
 										</div>
 
@@ -172,16 +179,15 @@
 											</div>
 										</div>
 
+									</form><!-- Termina formulario -->	
 
-										</form><!-- Termina formulario -->	
+								<?php
+											}
+										}
+								?>
 
-										<?php
-													}
-												}
-										?>
-
-									</div>
 							</div>
+						</div>
 					</div>
 			</div><!--Termina cuadro Modificar Medicamento -->	
 
