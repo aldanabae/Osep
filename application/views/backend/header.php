@@ -19,7 +19,8 @@
 
 		<!-- text fonts -->
 		<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/ace-fonts.css" />
-
+		<!--estilos propios de osep-->
+		<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/styleOsep.css" />
 		<!-- ace styles -->
 		<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
 
