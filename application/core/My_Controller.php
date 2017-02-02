@@ -102,26 +102,29 @@ class My_Controller extends Ci_Controller {
 function __construct(){
     	parent::__construct();
 
-        //Cargar todos los model del sistema
-    	   $this->load->model('bienvenida_model');
-    	
-      	$this->load->view('backend/header');
-				$this->load->view('backend/sidebar');
+      //Cargar todos los model del sistema
+    	$this->load->model('bienvenida_model');
+    	$this->load->model('abms/abmEmpleados_model');
+      $this->load->model('seguridad/abmNiveles_model');
+      $this->load->model('seguridad/abmUsuarios_model');
+
+      $this->load->view('backend/header');
+			$this->load->view('backend/sidebar');
 				//$this->load->view('bienvenida');
-				$this->load->view('backend/footer');
+			$this->load->view('backend/footer');
    
   	}
 
   	function index(){
-  		//if($this->session->userdata('logged_in')){
+  		if($this->session->userdata('logged_in')){
 
-       // $session_data = $this->session->userdata('logged_in'); 
-      	//$data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
+        $session_data = $this->session->userdata('logged_in'); 
+      	$data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
 
-			//}else{
-			//	$this->load->helper(array('form'));
-			//	$this->load->view('backend/login_view');
- 	    //}   
+			}else{
+				$this->load->helper(array('form'));
+				$this->load->view('login');
+ 	    }   
     }
 
 
