@@ -8,7 +8,7 @@
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle" aria-expanded="true">
 								<span class="menu-text">
 									<small><?php $session_data = $this->session->userdata('logged_in'); 
-													echo 'Bienvenido, &nbsp'.$session_data['nombreR'];?> 
+													echo 'Bienvenido, &nbsp'.$session_data['nombreE'];?> 
 									</small>									
 								</span>
 								<i class="ace-icon fa fa-caret-down"></i>
@@ -92,10 +92,10 @@
 			<ul class="nav nav-list">
 
 				<?php 
-					/*if ($nivel){							
-						foreach($nivel->result() as $niv){
-      						if ($niv->descripcionNivel == "Enfermero" || $niv->descripcionNivel == "Médico" || $niv->descripcionNivel == "Recepcionista" || $niv->descripcionNivel == "Administrador"){
-				*/?>
+					//if ($nivel){							
+					//	foreach($nivel->result() as $niv){
+      				//		if ($niv->descripNivel == "Adminitrador Base de Datos" || $niv->descripNivel == "Facilitador" || $niv->descripNivel == "Administrador" || $niv->descripNivel == "Auditor"){
+				?>
 				<!-- 	
 				<li class="">
 					<a href="<?php echo base_url()?>pacientes/pacientes">
@@ -133,8 +133,9 @@
 				<?php 
 					/*if ($nivel){							
 						foreach($nivel->result() as $niv){
-      						if ($niv->descripcionNivel == "Administrador"){
-				*/?>
+      						if ($niv->descripNivel == "Administrador Base de Datos"){
+      				*/
+				?>
 
 				<li class="">
 					<a href="#" class="dropdown-toggle">
@@ -182,7 +183,8 @@
 				<?php /*		}
 						}	
 					}
-				*/?>
+					*/
+				?>
 
 
 				<?php 

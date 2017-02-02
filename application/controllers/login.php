@@ -13,11 +13,10 @@ class Login extends CI_Controller {
 		if($this->session->userdata('logged_in')){
 
       		redirect('bienvenidaC', 'refresh');
-    	}
-    	else{
+    	}else{
 
          $this->load->helper(array('form'));
-			   $this->load->view('backend/login_view');
+			   $this->load->view('login');
 		}
 	}	
 
@@ -28,13 +27,10 @@ class Login extends CI_Controller {
     	$this->form_validation->set_rules('username', 'Username', 'trim|required');
     	$this->form_validation->set_rules('password', 'Password', 'trim|required|callback_check_database');
 
-    	if($this->form_validation->run() == FALSE)
-    	{
+    	if($this->form_validation->run() == FALSE){
      		 //Field validation failed.  User redirected to login page
-          $this->load->view('login_view');
-    	}
-    	else
-    	{    		
+          $this->load->view('login');
+    	}else{    		
           //Go to private area
         redirect('bienvenidaC', 'refresh');
     	}
@@ -48,24 +44,22 @@ class Login extends CI_Controller {
     	//query the database
     	$result = $this->login_model->login($username, $password);
   
-    	if($result)
-    	{
-     		$sess_array = array();
-      		foreach($result as $row){
-        		$sess_array = array(
-          		'id' => $row->idUsuario,
-          		'username' => $row->usuario,
-              'nombreR' => $row->nombreR,
-              'nivel' => $row->idNivel
-        		);
+    	if($result){
+          $sess_array = array();
+      		    foreach($result as $row){
+        		      $sess_array = array(
+          		        'id' => $row->idUsuario,
+          		        'username' => $row->usuario,
+                      'nombreE' => $row->nombreE,
+                      'nivel' => $row->idNivel
+        		      );
             
-        	 $this->session->set_userdata('logged_in', $sess_array);
-      		}
+        	        $this->session->set_userdata('logged_in', $sess_array);
+      		    }
       		return TRUE;
-    	}
-    	else
-    	{
-         $this->form_validation->set_message('check_database', 'Usuario o Contraseña inválidos.'); 
+
+    	}else{
+          $this->form_validation->set_message('check_database', 'Usuario o Contraseña inválidos.'); 
      
       		return FALSE;
     	}
@@ -73,31 +67,29 @@ class Login extends CI_Controller {
 
 	function login(){
 
-    	if($this->session->userdata('logged_in'))
-    	{
+    	if($this->session->userdata('logged_in')){
      	
           $session_data = $this->session->userdata('logged_in');
       		$data['username'] = $session_data['username'];
-          $data['nombreR'] = $session_data['nombreR'];
+          $data['nombreE'] = $session_data['nombreE'];
           $data['nivel'] = $session_data['nivel'];
           $this->session->set_flashdata('username', $data);
-          $this->session->set_flashdata('nombreR', $data);
+          $this->session->set_flashdata('nombreE', $data);
           $this->session->set_flashdata('nivel', $data);
            // redirect('some_controller');
       		
           redirect('bienvenidaC', 'refresh');
-    	}
-    	else
-    	{
+
+    	}else{
 
         	//If no session, redirect to login page
       		redirect('login', 'refresh');
 		  }
-  	}
+  }
   
-  	function logout(){
+  function logout(){
     	$this->session->unset_userdata('logged_in');
     	session_destroy();
     	redirect('login/login', 'refresh');
-  	}
+  }
 }

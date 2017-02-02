@@ -47,10 +47,10 @@
 							<div class="center">
 
 								<h1><![LOGO]-->
-									<img src="<?php echo base_url() ?>assets/images/osep.jpg" width="190px" heigth="240px" />		
-								</h1>
-							
+								</br><!-- Espacio arriba del logo -->
+									<img src="<?php echo base_url() ?>assets/images/osep.jpg" width="190px" heigth="240px" />
 							</div>
+								</br><!-- Espacio abajo del logo -->
 
 							<div class="space-6"></div>
 
@@ -65,28 +65,35 @@
 
 											<div class="space-6"></div>
 												
-    									<?php echo form_open('login/verificarLogin'); ?>
+    										<?php echo form_open('login/verificarLogin'); 
+    										?>
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
 															<input type="text" class="form-control" placeholder="Usuario" id="username" name="username" />
-															<i class="ace-icon fa fa-user"></i>
+															<i class="ace-icon fa fa-user orange"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
 															<input type="password" class="form-control" placeholder="Contraseña" id="password"  name="password" />
-															<i class="ace-icon fa fa-lock"></i>
+															<i class="ace-icon fa fa-lock orange"></i>
 														</span>
 													</label>
-													<?php if(validation_errors()){ ?>
-												<div class="alert alert-danger">
-													
-														<?php echo validation_errors(); ?>
-												
-												</div>
-										<?php }?>
+													<?php if(validation_errors()){ 
+													?>
+
+													<div class="alert alert-danger">
+														
+														<?php echo validation_errors(); 
+														?>
+
+													</div>
+
+													<?php }
+													?>
+
 													<div class="space"></div>
 
 													<div class="clearfix">
@@ -104,7 +111,6 @@
 													<div class="space-4"></div>
 												</fieldset>
 											</form>
-
 											
 										</div><!-- /.widget-main -->
 
@@ -263,13 +269,14 @@
 				</div><!-- /.row -->
 			</div><!-- /.main-content -->
 		</div><!-- /.main-container -->
-
+	</body>
+</html>
 		<!-- basic scripts -->
 
 		<!--[if !IE]> -->
-		<script type="text/javascript">
-			window.jQuery || document.write("<script src='<?php echo base_url() ?>assets/js/jquery.js'>"+"<"+"/script>");
-		</script>
+	<script type="text/javascript">
+		window.jQuery || document.write("<script src='<?php echo base_url() ?>assets/js/jquery.js'>"+"<"+"/script>");
+	</script>
 
 		<!-- <![endif]-->
 
@@ -278,48 +285,46 @@
  window.jQuery || document.write("<script src='../assets/js/jquery1x.js'>"+"<"+"/script>");
 </script>
 <![endif]-->
-		<script type="text/javascript">
-			if('ontouchstart' in document.documentElement) document.write("<script src='<?php echo base_url() ?>assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
-		</script>
+	<script type="text/javascript">
+		if('ontouchstart' in document.documentElement) document.write("<script src='<?php echo base_url() ?>assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
+	</script>
 
-		<!-- inline scripts related to this page -->
-		<script type="text/javascript">
-			jQuery(function($) {
-			 $(document).on('click', '.toolbar a[data-target]', function(e) {
-				e.preventDefault();
-				var target = $(this).data('target');
-				$('.widget-box.visible').removeClass('visible');//hide others
-				$(target).addClass('visible');//show target
-			 });
-			});
+	<!-- inline scripts related to this page -->
+	<script type="text/javascript">
+		jQuery(function($) {
+		 $(document).on('click', '.toolbar a[data-target]', function(e) {
+			e.preventDefault();
+			var target = $(this).data('target');
+			$('.widget-box.visible').removeClass('visible');//hide others
+			$(target).addClass('visible');//show target
+		 });
+		});
+		
+		
+		
+		//you don't need this, just used for changing background
+		jQuery(function($) {
+		 $('#btn-login-dark').on('click', function(e) {
+			$('body').attr('class', 'login-layout');
+			$('#id-text2').attr('class', 'white');
+			$('#id-company-text').attr('class', 'blue');
 			
+			e.preventDefault();
+		 });
+		 $('#btn-login-light').on('click', function(e) {
+			$('body').attr('class', 'login-layout light-login');
+			$('#id-text2').attr('class', 'grey');
+			$('#id-company-text').attr('class', 'blue');
 			
+			e.preventDefault();
+		 });
+		 $('#btn-login-blur').on('click', function(e) {
+			$('body').attr('class', 'login-layout blur-login');
+			$('#id-text2').attr('class', 'white');
+			$('#id-company-text').attr('class', 'light-blue');
 			
-			//you don't need this, just used for changing background
-			jQuery(function($) {
-			 $('#btn-login-dark').on('click', function(e) {
-				$('body').attr('class', 'login-layout');
-				$('#id-text2').attr('class', 'white');
-				$('#id-company-text').attr('class', 'blue');
-				
-				e.preventDefault();
-			 });
-			 $('#btn-login-light').on('click', function(e) {
-				$('body').attr('class', 'login-layout light-login');
-				$('#id-text2').attr('class', 'grey');
-				$('#id-company-text').attr('class', 'blue');
-				
-				e.preventDefault();
-			 });
-			 $('#btn-login-blur').on('click', function(e) {
-				$('body').attr('class', 'login-layout blur-login');
-				$('#id-text2').attr('class', 'white');
-				$('#id-company-text').attr('class', 'light-blue');
-				
-				e.preventDefault();
-			 });
-			 
-			});
-		</script>
-	</body>
-</html>
+			e.preventDefault();
+		 });
+		 
+		});
+	</script>
