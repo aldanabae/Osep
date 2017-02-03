@@ -10,7 +10,7 @@
 
 			<div class="widget-box"><!--Empieza cuadro Modificar Medicamento -->
 					<div class="widget-header">
-						<h5 class="widget-title">Crear Encuesta</h5>
+						<h5 class="widget-title">Nueva Encuesta</h5>
 
 							<!-- #section:custom/widget-box.toolbar -->
 								<div class="widget-toolbar">

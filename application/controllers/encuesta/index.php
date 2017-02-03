@@ -1,6 +1,6 @@
 <?php
 
-
+// Este es el controlador general de encuestas
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Index extends CI_Controller{
@@ -10,8 +10,7 @@ class Index extends CI_Controller{
 
 		$this->load->helper('form');
 		$this->load->helper('url');
-		$this->load->model(''); //modelo de preguntas
-		//$this->load->model('encuesta/encuesta_model');
+		$this->load->model('encuesta/encuesta_model');
 		//$this->load->model('encuesta/tipo_pregunta_model');
 		// $this->load->model('encuesta/pregunta_model');
 		// $this->load->model('encuesta/respuesta_model');
@@ -21,23 +20,17 @@ class Index extends CI_Controller{
 	}
 
 
+  	function index(){  
 
-  	function index(){
-
-
-		  		// $data = array ('bloques' => $this->bloque_model->get_all_bloques(),
-				//   			   'tipos' => $this->tipo_pregunta_model->get_all_tipos() 
-				// );
+		  		$data = array ('encuestas' => $this->encuesta_model->get_all_encuesta(),
+                               'limiteTabla' => 20
+                              );
 
       			$this->load->view('backend/header');
 				$this->load->view('backend/sidebar');
-				$this->load->view('backend/encuesta/encuesta_view');
+				$this->load->view('backend/encuesta/encuesta_view',$data);
 				$this->load->view('backend/footer');
-   
-			//}else{
-			//	$this->load->helper(array('form'));
-			//	$this->load->view('backend/login_view');
- 	    //}   
+ 
     }
 
 
@@ -69,12 +62,26 @@ class Index extends CI_Controller{
       		$data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
 		*/
 
-        
-			$this->load->view('backend/header');
-			$this->load->view('backend/sidebar');
-			//$this->load->view('backend/sidebar', $data);
-			$this->load->view('backend/encuesta/ver_encuesta_view');
-			$this->load->view('backend/footer');
+        if($id_encuesta != NULL)
+        {
+
+
+            $data = array ('encuestas' => $this->encuesta_model->get_encuesta($id_encuesta));
+
+
+
+
+            $this->load->view('backend/header');
+            $this->load->view('backend/sidebar');
+            $this->load->view('backend/encuesta/ver_encuesta_view',$data);
+            $this->load->view('backend/footer');
+
+        }else{
+
+            redirect(base_url("encuesta/index/"), "refresh");
+        }
+
+    
 
 		/*}else{
 			$this->load->helper(array('form'));
@@ -91,9 +98,6 @@ class Index extends CI_Controller{
 			$descripcion =  $this->input->post('descripcion');
 			$bloque = 		$this->input->post('op_bloque');
 			$tipo = 		$this->input->post('op_tipo');
-
-			var_dump($_POST);
-
 
 			echo($descripcion);
 

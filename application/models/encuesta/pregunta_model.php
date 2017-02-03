@@ -8,9 +8,10 @@ class Pregunta_model extends CI_Model {
 
 
 
-    function get_all_pregunta($id_encuesta){  // metodo que devuelve todos las preguntas de una encuesta
+    function get_all_pregunta($id_bloque){  // metodo que devuelve todos las preguntas de una encuesta
         
-        $this->db->from('tipo_pregunta');
+        $this->db->from('pregunta');
+        $this->db->where('idBloque', $id_bloque);
         $query = $this->db->get();
         if($query->num_rows()>0){
             foreach ($query->result() as $fila){

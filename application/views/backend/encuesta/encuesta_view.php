@@ -9,7 +9,7 @@
 				</div>				
 					
 		<!-- Empieza el cuadro con Medicamentos de la bd -->	
-		<form class="form-horizontal" role="form" action="<?php echo base_url() ?>seguridad/abmNivelesC/mostrarTablaNiveles" method="post"><!-- Comienza formulario -->
+		<form class="form-horizontal" role="form" action="<?php echo base_url('encuesta/index') ?>" method="post"><!-- Comienza formulario -->
 						
 			<div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
 				<div class="row">
@@ -63,34 +63,37 @@
 					<tbody>
 
 						<?php //Limitar los datos segun lo que trae el select de cantidad de lineas a mostrar
-							// if ($tablaNiveles){
-							// $contador = 0;
-									
-							// 	foreach($tablaNiveles->result() as $tabla){
+							if ($encuestas){
 
-							// 		if( $contador == $limiteTabla )    break;
+							$contador = 0;
+									
+								foreach($encuestas as $tabla){
+
+									if( $contador == $limiteTabla )    break;
 						?>
 
 						<tr>
 							<td>
 								<label class="pos-rel">
-									<?php  //= // $tabla->descripNivel;?>
+									<a href="<?php echo base_url('encuesta/index/ver/'.$tabla->idEncuesta) ?>" 
+									class="tooltip-success" data-rel="tooltip" title="encuesta">	
+									<?=  $tabla->nombreEncuesta;?></a>
 								</label>
 							</td>
 							<td>
 								<label class="pos-rel">
-									<?php  //= // $tabla->descripNivel;?>
+									descripcion de la encuesta..........
 								</label>
 							</td>							
 							
 							<td>
 								<div class="hidden-sm hidden-xs action-buttons">
 										
-										<a class="green" href="<?php echo base_url()?>seguridad/abmNivelesC/editarNivel/<?//= $tabla->idNivel;?>">
+										<a class="green" href="#">
 											<i class="ace-icon fa fa-pencil bigger-130"></i>	
 										</a>
 
-										<a class="red" href="<?php echo base_url()?>seguridad/abmNivelesC/borrarNivel/<?//= $tabla->idNivel;?>">
+										<a class="red" href="#">
 											<i class="ace-icon fa fa-trash-o bigger-130"></i>
 										</a>
 								</div>
@@ -105,7 +108,7 @@
 											<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
 													
 													<li>
-														<a href="<?php echo base_url()?>seguridad/abmNivelesC/editarNivel/<?//= $tabla->idNivel;?>" class="tooltip-success" data-rel="tooltip" title="Edit">
+														<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
 															<span class="green">
 																<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
 															</span>
@@ -113,7 +116,7 @@
 													</li>
 
 													<li>
-														<a href="<?php echo base_url()?>seguridad/abmNivelesC/borrarNivel/<?//= $tabla->idNivel;?>" class="tooltip-error" data-rel="tooltip" title="Delete">
+														<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
 															<span class="red">
 																<i class="ace-icon fa fa-trash-o bigger-120"></i>
 															</span>
@@ -125,9 +128,9 @@
 							</td>
 						</tr>
 
-						<?php	 //$contador++;}
+						<?php	 $contador++;}
 
-							//}	
+							}	
 						?>
 
 					</tbody>

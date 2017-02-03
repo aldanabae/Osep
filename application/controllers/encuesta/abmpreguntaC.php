@@ -44,7 +44,7 @@ class AbmpreguntaC extends CI_Controller{
     }
 
 
-	function validar(){
+	function validar(){   // funcion que guarda la pregunta y sus respuestas
 
 
 
