@@ -6,7 +6,7 @@ $(document).ready(function(){
         e.preventDefault();
         next++;
 
-    $('#panel-respuestas').append( '<div class="input-group add-more formSpace" id ="con-preg-'+next+'"><input class="form-control " id="preg-'+next+'" class="col-xs-12" type="text" name=respuesta[]><span class="input-group-addon btn-del" id= ""><i class="ace-icon fa fa-minus"></i></span></div>');
+    $('#panel-respuestas').append( '<div class="input-group add-more formSpace" id ="con-preg-'+next+'"><input class="form-control " id="preg-'+next+'" class="col-xs-12" type="text" name=respuesta[] required><span class="input-group-addon btn-del" id= ""><i class="ace-icon fa fa-minus"></i></span></div>');
 
     })
 	

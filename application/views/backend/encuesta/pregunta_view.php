@@ -43,7 +43,7 @@
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Enunciado</label>
 
 										<div class="col-sm-9">
-											<input id="form-field-1" placeholder="Enunciado de la pregunta" class="col-xs-12" type="text" name="enunciado">
+											<input id="form-field-1" placeholder="Enunciado de la pregunta" class="col-xs-12" type="text" name="enunciado" required>
 										</div>
 
 									</div>
@@ -52,7 +52,7 @@
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Descripcion</label>
 
 										<div class="col-sm-9">
-											<input id="form-field-1" placeholder="Descripcion" class="col-xs-12" type="text" name="descripcion">
+											<input id="form-field-1" placeholder="Descripcion" class="col-xs-12" type="text" name="descripcion" required>
 										</div>
 
 									</div>
@@ -94,7 +94,7 @@
 															
 																<div class="input-group add-more formSpace" id ="con-preg-1">
 			
-																	<input class="form-control " id="preg-1" class="col-xs-12" type="text" name=respuesta[]>
+																	<input class="form-control " id="preg-1" class="col-xs-12" type="text" name=respuesta[] required>
 																	<span class="input-group-addon btn-del" id= "btn-del">
 																		<i class="ace-icon fa fa-minus"></i>
 																	</span>
