@@ -1,0 +1,1 @@
+aqui mostrar un resumen de toda la encuensta con sus preguntas

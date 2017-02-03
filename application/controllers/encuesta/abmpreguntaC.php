@@ -13,8 +13,8 @@ class AbmpreguntaC extends CI_Controller{
 		$this->load->model(''); //modelo de preguntas
 		$this->load->model('encuesta/bloque_model');
 		$this->load->model('encuesta/tipo_pregunta_model');
-		// $this->load->model('encuesta/pregunta_model');
-		// $this->load->model('encuesta/respuesta_model');
+		$this->load->model('encuesta/pregunta_model');
+		$this->load->model('encuesta/respuesta_model');
 
 
 		$this->load->library('form_validation'); 
@@ -44,48 +44,36 @@ class AbmpreguntaC extends CI_Controller{
     }
 
 
-
-
-
-
-	// function index(){
-	// 	//if($this->session->userdata('logged_in')){
-	// 		if (!isset($_POST['CargarTabla'])){
-	// 			$data['nroLegajo'] = '';
-	// 			$data['limiteTabla'] = "1000";
-	// 			$data['tablaEmpleados'] = $this->abmEmpleados_model->obtenerEmpleados($data['nroLegajo']);	
-	// 		}
-	// 		//mantener sidebar dinamica
-	// 		//$session_data = $this->session->userdata('logged_in');
-    //   		//$data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
-
-	// 		$this->load->view('backend/header');
-	// 		$this->load->view('backend/sidebar');
-	// 		$this->load->view('backend/encuenta/pregunta_view');
-	// 		$this->load->view('backend/footer');
-
-	// 	//}else{
-	// 	//	$this->load->helper(array('form'));
-	// 	//	$this->load->view('backend/login_view');
-	// 	//}
-	// }
-
-
-
 	function validar(){
 
 
 
-			$prueba = 		$this->input->post('respuesta');
+			$respuestas = 	$this->input->post('respuesta');
 			$pregunta = 	$this->input->post('enunciado');
 			$descripcion =  $this->input->post('descripcion');
 			$bloque = 		$this->input->post('op_bloque');
 			$tipo = 		$this->input->post('op_tipo');
 
-			var_dump($_POST);
+
+			//ahora procesamos los datos hacía el modelo que debemos crear
+			$nueva_pregunta = $this->pregunta_model->create_pregunta($pregunta,$descripcion,"",$bloque,$tipo);
 
 
-			echo($descripcion);
+			if($nueva_pregunta>0){
+
+				foreach ($respuestas as $resp) {
+
+					
+					$this->respuesta_model->create_respuesta($resp,"",$nueva_pregunta);
+					
+				}
+
+
+			}
+
+			redirect(base_url("encuesta/abmpreguntaC"), "refresh");
+			
+	
 
 	}
 

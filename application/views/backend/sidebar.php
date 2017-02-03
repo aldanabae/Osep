@@ -152,13 +152,38 @@
 							<ul class="submenu">
 
 								<li class="">
-									<a href="<?php echo base_url()?>abms/abmEnfermedadesC">
+									<a href="<?php echo base_url()?>encuesta/index/crear">
 										<i class="menu-icon fa fa-caret-right"></i>
 										Crear Encuesta
 									</a>
 
 									<b class="arrow"></b>
 								</li>
+
+
+
+								<li class="">
+									<a href="<?php echo base_url()?>encuesta/index">
+										<i class="menu-icon fa fa-caret-right"></i>
+										Ver Encuestas
+									</a>
+
+									<b class="arrow"></b>
+								</li>
+
+
+
+
+								<li class="">
+									<a href="<?php echo base_url()?>encuesta/index">
+										<i class="menu-icon fa fa-caret-right"></i>
+										Bloques
+									</a>
+
+									<b class="arrow"></b>
+								</li>								
+
+
 
 								<li class="">
 									<a href="<?php echo base_url()?>abms/abmHabitacionesC/">
