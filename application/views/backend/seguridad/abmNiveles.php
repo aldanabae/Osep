@@ -50,7 +50,7 @@
 							<tr>
 								<th>Nombre Nivel</th>
 								<th>
-									<div class="hidden-sm hidden-xs action-buttons">
+									<div class="hidden-sm hidden-xs action-buttons text-center">
 										<a class="orange" href="<?php echo base_url() ?>seguridad/abmNivelesC/cargarNuevoNivel">
 											<i class="ui-icon ace-icon fa fa-plus-circle orange bigger-130"></i>Agregar Nivel
 										</a>

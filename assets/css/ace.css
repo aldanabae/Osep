@@ -1057,7 +1057,7 @@ pre.prettyprint {
   border-bottom: 1px solid #CCC;
 }
 .header.blue {
-  border-bottom-color: #612761 ; /* #d5e3ef */
+  border-bottom-color: #ff892a ; /* #d5e3ef */
 }
 .header.green {
   border-bottom-color: #cce2c1;
@@ -5489,8 +5489,8 @@ fieldset[disabled] .btn-default.active {
 .btn-primary:hover,
 .btn-primary:active,
 .open > .btn-primary.dropdown-toggle {
-  background-color: #1b6aaa !important;
-  border-color: #428bca;
+  background-color: #882c84 !important; /*#1b6aaa*/
+  border-color: #ae4ebb; /*#428bca*/
 }
 .btn-primary.no-border:hover,
 .btn-primary.no-border:active {

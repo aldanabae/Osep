@@ -33,7 +33,7 @@
 					<div class="col-xs-6">
 							<div id="dynamic-table_filter" class="dataTables_filter">
 
-								<label>Nombre encuesta:
+								<label>Nombre Encuesta:
 									<input type="search" class="form-control input-sm" placeholder="" name="nombresNiveles" aria-controls="dynamic-table">
 								</label>
 
@@ -49,7 +49,7 @@
 					<thead>
 							<tr>
 								<th>Nombre Encuesta</th>
-                                <th>Descripcion</th>
+                                <th>Descripción</th>
 								<th>
 									<div class="hidden-sm hidden-xs action-buttons text-center">
 										<a class="orange" href="<?php echo base_url()?>encuesta/index/crear">
@@ -76,7 +76,7 @@
 							<td>
 								<label class="pos-rel">
 									<a href="<?php echo base_url('encuesta/index/ver/'.$tabla->idEncuesta) ?>" 
-									class="tooltip-success" data-rel="tooltip" title="encuesta">	
+									class="tooltip-success" data-rel="tooltip" title="Encuesta">	
 									<?=  $tabla->nombreEncuesta;?></a>
 								</label>
 							</td>

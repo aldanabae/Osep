@@ -86,7 +86,7 @@
 							<td><?= $tabla->tipoEmpleado;?></td>
 							
 							<td>
-								<div class="hidden-sm hidden-xs action-buttons">
+								<div class="hidden-sm hidden-xs action-buttons text-center">
 						
 										<?php if(!$this->abmUsuarios_model->tieneUsuario($tabla->idEmpleado)){?>			
 										

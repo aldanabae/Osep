@@ -60,7 +60,7 @@
 									<th>Convenio</th>
 									<th>Tipo Empleado</th>
 									<th>
-										<div class="hidden-sm hidden-xs action-buttons">
+										<div class="hidden-sm hidden-xs action-buttons text-center text-center">
 											<a class="orange" href="<?php echo base_url() ?>abms/abmEmpleadosC/cargarNuevoEmpleado">
 												<i class="ui-icon ace-icon fa fa-plus-circle orange bigger-130"></i>Agregar Empleado
 											</a>
@@ -157,7 +157,7 @@
 									<th>Convenio</th>
 									<th>Tipo Empleado</th>
 									<th>
-										<div class="hidden-sm hidden-xs action-buttons">
+										<div class="hidden-sm hidden-xs action-buttons text-center">
 											<a class="orange" href="<?php echo base_url() ?>abms/abmEmpleadosC/cargarNuevoEmpleado">
 												<i class="ui-icon ace-icon fa fa-plus-circle orange bigger-130"></i>Agregar Empleado
 											</a>
@@ -258,7 +258,7 @@
 									<th>Convenio</th>
 									<th>Tipo Empleado</th>
 									<th>
-										<div class="hidden-sm hidden-xs action-buttons">
+										<div class="hidden-sm hidden-xs action-buttons text-center">
 											<a class="orange" href="<?php echo base_url() ?>abms/abmEmpleadosC/cargarNuevoEmpleado">
 												<i class="ui-icon ace-icon fa fa-plus-circle orange bigger-130"></i>Agregar Empleado
 											</a>
@@ -359,7 +359,7 @@
 									<th>Convenio</th>
 									<th>Tipo Empleado</th>
 									<th>
-										<div class="hidden-sm hidden-xs action-buttons">
+										<div class="hidden-sm hidden-xs action-buttons text-center">
 											<a class="orange" href="<?php echo base_url() ?>abms/abmEmpleadosC/cargarNuevoEmpleado">
 												<i class="ui-icon ace-icon fa fa-plus-circle orange bigger-130"></i>Agregar Empleado
 											</a>
@@ -460,7 +460,7 @@
 									<th>Convenio</th>
 									<th>Tipo Empleado</th>
 									<th>
-										<div class="hidden-sm hidden-xs action-buttons">
+										<div class="hidden-sm hidden-xs action-buttons text-center">
 											<a class="orange" href="<?php echo base_url() ?>abms/abmEmpleadosC/cargarNuevoEmpleado">
 												<i class="ui-icon ace-icon fa fa-plus-circle orange bigger-130"></i>Agregar Empleado
 											</a>
@@ -561,7 +561,7 @@
 									<th>Convenio</th>
 									<th>Tipo Empleado</th>
 									<th>
-										<div class="hidden-sm hidden-xs action-buttons">
+										<div class="hidden-sm hidden-xs action-buttons text-center">
 											<a class="orange" href="<?php echo base_url() ?>abms/abmEmpleadosC/cargarNuevoEmpleado">
 												<i class="ui-icon ace-icon fa fa-plus-circle orange bigger-130"></i>Agregar Empleado
 											</a>

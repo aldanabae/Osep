@@ -37,7 +37,7 @@
 										</div>	                        
 										
 										<div class="form-group"> <!-- Empieza una linea del formulario -->
-											<label class="col-sm-3 control-label no-padding-right" for="descripcion">Descripcion </label>
+											<label class="col-sm-3 control-label no-padding-right" for="descripcion">Descripción </label>
 
 											<div class="col-sm-9">
 												<input class="form-control" id="descripcion" name="descripcion" value=""  type="text">				                                
