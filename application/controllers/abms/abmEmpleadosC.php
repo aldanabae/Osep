@@ -1,5 +1,5 @@
 <?php
-class AbmEmpleadosC extends CI_Controller{
+class AbmEmpleadosC extends My_Controller{
 
 	function __construct(){
 		parent::__construct();
@@ -12,66 +12,29 @@ class AbmEmpleadosC extends CI_Controller{
 	}
 
 	function index(){
-		//if($this->session->userdata('logged_in')){
-			if (!isset($_POST['CargarTabla'])){
-				$data['nroLegajo'] = '';
-				$data['limiteTabla'] = "1000";
-				$data['tablaEmpleados'] = $this->abmEmpleados_model->obtenerEmpleados($data['nroLegajo']);	
-			}
-			//mantener sidebar dinamica
-			//$session_data = $this->session->userdata('logged_in');
-      		//$data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
+		if (!isset($_POST['CargarTabla'])){
+			$data['nroLegajo'] = '';
+			$data['limiteTabla'] = "1000";
+			$data['tablaEmpleados'] = $this->abmEmpleados_model->obtenerEmpleados($data['nroLegajo']);	
+		}
 
-			$this->load->view('backend/header');
-			$this->load->view('backend/sidebar', $data);
-			$this->load->view('backend/abms/abmEmpleados', $data);
-			$this->load->view('backend/footer');
-
-		//}else{
-		//	$this->load->helper(array('form'));
-		//	$this->load->view('backend/login_view');
-		//}
+		$nombreVista="backend/abms/abmEmpleados";
+		$this->cargarVista($nombreVista, $data);
 	}
 
 	function mostrarTablaEmpleados(){
-		//if($this->session->userdata('logged_in')){
-			$data['nroLegajo'] = $this->input->post('nroLegajo');	
-			$data['limiteTabla'] = "1000";
-			$data['tablaEmpleados'] = $this->abmEmpleados_model->obtenerEmpleados($data['nroLegajo']);
+		$data['nroLegajo'] = $this->input->post('nroLegajo');	
+		$data['limiteTabla'] = "1000";
+		$data['tablaEmpleados'] = $this->abmEmpleados_model->obtenerEmpleados($data['nroLegajo']);	
 
-			//mantener sidebar dinamica
-			//$session_data = $this->session->userdata('logged_in');
-      		//$data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
-				
-			$this->load->view('backend/header');
-			$this->load->view('backend/sidebar', $data);
-			$this->load->view('backend/abms/abmEmpleados', $data);
-			$this->load->view('backend/footer');
-
-		//}else{
-		//	$this->load->helper(array('form'));
-		//	$this->load->view('backend/login_view');
-		//}	
+      	$nombreVista="backend/abms/abmEmpleados";
+		$this->cargarVista($nombreVista, $data);
 	}
 
 	function cargarNuevoEmpleado(){	
-		//if($this->session->userdata('logged_in')){
-			//$data['servicio'] = $this->abmResponsables_model->getServicio();
-
-			//mantener sidebar dinamica
-			//$session_data = $this->session->userdata('logged_in');
-      		//$data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
-
-			$this->load->view('backend/header');
-			$this->load->view('backend/sidebar');
-			//$this->load->view('backend/sidebar', $data);
-			$this->load->view('backend/abms/abmEmpleadosAlta');
-			$this->load->view('backend/footer');
-
-		//}else{
-			//$this->load->helper(array('form'));
-			//$this->load->view('backend/login_view');
-		//}
+		$data="";
+		$nombreVista="backend/abms/abmEmpleadosAlta";
+		$this->cargarVista($nombreVista, $data);
 	}
 
 	function recibirDatos(){
@@ -112,30 +75,11 @@ class AbmEmpleadosC extends CI_Controller{
 	}
 
 	function editarEmpleado(){
-		//if($this->session->userdata('logged_in')){
-			//$data['servicio'] = $this->abmResponsables_model->getServicio();
-			//$data['especialidad'] = $this->abmResponsables_model->getEspecialidad();
-			//$data['ultimoEnfermero'] = $this->abmResponsables_model->getUltimoEnfermero();
-
-			$data['codE'] = $this->uri->segment(4);
-			$data['empleado'] = $this->abmEmpleados_model->obtenerEmpleado($data['codE']);
-
-			//mantener sidebar dinamica
-		//	$session_data = $this->session->userdata('logged_in');
-      	//	$data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
-			
-			
-			$this->load->view('backend/header');
-			$this->load->view('backend/sidebar', $data);
-			$this->load->view('backend/abms/abmEmpleadosModificar', $data);
-			$this->load->view('backend/footer');
-	
+		$data['codE'] = $this->uri->segment(4);
+		$data['empleado'] = $this->abmEmpleados_model->obtenerEmpleado($data['codE']);
 		
-
-		//}else{
-		//	$this->load->helper(array('form'));
-		//	$this->load->view('backend/login_view');
-		//}	
+		$nombreVista="backend/abms/abmEmpleadosModificar";
+		$this->cargarVista($nombreVista, $data);
 	}
 
 	function actualizarDatos(){

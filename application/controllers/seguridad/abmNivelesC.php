@@ -1,5 +1,5 @@
 <?php
-class AbmNivelesC extends CI_Controller{
+class AbmNivelesC extends My_Controller{
 
 	function __construct(){
 		parent::__construct();
@@ -12,65 +12,27 @@ class AbmNivelesC extends CI_Controller{
 	}
 
 	function index(){
-		//if($this->session->userdata('logged_in')){
-			if (!isset($_POST['CargarTabla'])){
-				$data['nombresNiveles'] = '';
-				$data['limiteTabla'] = 1000;
-				$data['tablaNiveles'] = $this->abmNiveles_model->obtenerNiveles($data['nombresNiveles']);	
-			}
-			//mantener sidebar dinamica
-			$session_data = $this->session->userdata('logged_in');
-      		$data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
-
-			$this->load->view('backend/header');
-			$this->load->view('backend/sidebar', $data);
-			$this->load->view('backend/seguridad/abmNiveles', $data);
-			$this->load->view('backend/footer');
-
-		//}else{
-		//	$this->load->helper(array('form'));
-		//	$this->load->view('backend/login_view');
-		//}
+		if (!isset($_POST['CargarTabla'])){
+			$data['nombresNiveles'] = '';
+			$data['limiteTabla'] = 1000;
+			$data['tablaNiveles'] = $this->abmNiveles_model->obtenerNiveles($data['nombresNiveles']);	
+		}
+		
+    	$nombreVista="backend/seguridad/abmNiveles";
+		$this->cargarVista($nombreVista,$data);
 	}
 
 	function mostrarTablaNiveles(){
-		/*if($this->session->userdata('logged_in')){
-			$data['nombresNiveles'] = $this->input->post('nombresNiveles');	
-			$data['limiteTabla'] = $this->input->post('longitudTabla');
-		*/	
-			$data['tablaNiveles'] = $this->abmNiveles_model->obtenerNiveles($data['nombresNiveles']);
+		$data['tablaNiveles'] = $this->abmNiveles_model->obtenerNiveles($data['nombresNiveles']);
 
-			//mantener sidebar dinamica
-		//	$session_data = $this->session->userdata('logged_in');
-      	//	$data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
-
-			$this->load->view('backend/header');
-			$this->load->view('backend/sidebar', $data);
-			$this->load->view('backend/seguridad/abmNiveles', $data);
-			$this->load->view('backend/footer');
-
-		/*}else{
-			$this->load->helper(array('form'));
-			$this->load->view('backend/login_view');
-		}	*/
+		$nombreVista="backend/seguridad/abmNiveles";
+		$this->cargarVista($nombreVista,$data);
 	}
 
 	function cargarNuevoNivel(){
-		/*if($this->session->userdata('logged_in')){
-			//mantener sidebar dinamica
-			$session_data = $this->session->userdata('logged_in');
-      		$data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
-		*/
-			$this->load->view('backend/header');
-			$this->load->view('backend/sidebar');
-			//$this->load->view('backend/sidebar', $data);
-			$this->load->view('backend/seguridad/abmNivelesAlta');
-			$this->load->view('backend/footer');
-
-		/*}else{
-			$this->load->helper(array('form'));
-			$this->load->view('backend/login_view');
-		}*/
+      	$data="";
+      	$nombreVista="backend/seguridad/abmNivelesAltas";
+		$this->cargarVista($nombreVista,$data);
 	}
 
 	function recibirDatos(){
@@ -94,23 +56,11 @@ class AbmNivelesC extends CI_Controller{
 	}
 
 	function editarNivel(){
-		//if($this->session->userdata('logged_in')){
-			$data['codN'] = $this->uri->segment(4);
-			$data['nivel1'] = $this->abmNiveles_model->obtenerNivel($data['codN']);
+		$data['codN'] = $this->uri->segment(4);
+		$data['nivel1'] = $this->abmNiveles_model->obtenerNivel($data['codN']);
 
-			//mantener sidebar dinamica
-			$session_data = $this->session->userdata('logged_in');
-      		$data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
-
-			$this->load->view('backend/header');
-			$this->load->view('backend/sidebar', $data);
-			$this->load->view('backend/seguridad/abmNivelesModificar', $data);
-			$this->load->view('backend/footer');
-
-		//}else{
-		//	$this->load->helper(array('form'));
-		//	$this->load->view('backend/login_view');
-		//}
+      	$nombreVista="backend/seguridad/abmNivelesModificar";
+		$this->cargarVista($nombreVista,$data);
 	}	
 
 	function actualizarDatos(){

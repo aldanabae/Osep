@@ -12,11 +12,11 @@ class Login extends CI_Controller {
 	public function index(){
 		if($this->session->userdata('logged_in')){
 
-      		redirect('bienvenidaC', 'refresh');
-    	}else{
+      	redirect('bienvenidaC', 'refresh');
+    }else{
 
-         $this->load->helper(array('form'));
-			   $this->load->view('login');
+        $this->load->helper(array('form'));
+        $this->load->view('login_view');
 		}
 	}	
 
@@ -29,7 +29,7 @@ class Login extends CI_Controller {
 
     	if($this->form_validation->run() == FALSE){
      		 //Field validation failed.  User redirected to login page
-          $this->load->view('login');
+          $this->load->view('login_view');
     	}else{    		
           //Go to private area
         redirect('bienvenidaC', 'refresh');
@@ -40,7 +40,6 @@ class Login extends CI_Controller {
  	function check_database($password){
     	//Field validation succeeded.  Validate against database
     	$username = $this->input->post('username');
-    
     	//query the database
     	$result = $this->login_model->login($username, $password);
   
@@ -53,7 +52,7 @@ class Login extends CI_Controller {
                       'nombreE' => $row->nombreE,
                       'nivel' => $row->idNivel
         		      );
-            
+
         	        $this->session->set_userdata('logged_in', $sess_array);
       		    }
       		return TRUE;
@@ -65,28 +64,26 @@ class Login extends CI_Controller {
     	}
   	}
 
-	function login(){
+  function login(){
 
-    	if($this->session->userdata('logged_in')){
-     	
+      if($this->session->userdata('logged_in')){
+      
           $session_data = $this->session->userdata('logged_in');
-      		$data['username'] = $session_data['username'];
-          $data['nombreE'] = $session_data['nombreE'];
+          $data['username'] = $session_data['username'];
+          $data['nombreR'] = $session_data['nombreR'];
           $data['nivel'] = $session_data['nivel'];
           $this->session->set_flashdata('username', $data);
-          $this->session->set_flashdata('nombreE', $data);
+          $this->session->set_flashdata('nombreR', $data);
           $this->session->set_flashdata('nivel', $data);
            // redirect('some_controller');
-      		
           redirect('bienvenidaC', 'refresh');
+      }else{
+          //If no session, redirect to login page
+          redirect('login', 'refresh');
+      }
+    }
 
-    	}else{
 
-        	//If no session, redirect to login page
-      		redirect('login', 'refresh');
-		  }
-  }
-  
   function logout(){
     	$this->session->unset_userdata('logged_in');
     	session_destroy();

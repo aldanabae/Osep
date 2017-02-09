@@ -1,5 +1,5 @@
 <?php
-class AbmUsuariosC extends CI_Controller{
+class AbmUsuariosC extends My_Controller{
 
 	function __construct(){
 		parent::__construct();
@@ -13,83 +13,45 @@ class AbmUsuariosC extends CI_Controller{
 	}
 
 	function index(){
-		//if($this->session->userdata('logged_in')){
-			if (!isset($_POST['CargarTabla1'])){
-				$data['nroLegajo'] = '';
-				$data['limiteTabla'] = "1000";
-				$data['tablaEmpleados'] = $this->abmUsuarios_model->obtenerEmpleados($data['nroLegajo']);
-				$data['nombresNiveles']	="";
-				$data['niveles'] = $this->abmNiveles_model->obtenerNiveles($data['nombresNiveles']);
-			//}
-
-			if (!isset($_POST['CargarTabla2'])){
-				$data['nombresUsuarios'] = '';
-				$data['limiteTabla'] = 1000;
-				$data['tablaUsuarios'] = $this->abmUsuarios_model->obtenerUsuarios($data['nombresUsuarios']);	
-			}
-
-			//mantener sidebar dinamica
-			//$session_data = $this->session->userdata('logged_in');
-      		//$data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
-
-			$this->load->view('backend/header');
-			$this->load->view('backend/sidebar', $data);
-			$this->load->view('backend/seguridad/abmUsuarios', $data);
-			$this->load->view('backend/footer');
-
-		//}else{
-		//	$this->load->helper(array('form'));
-		//	$this->load->view('backend/login_view');
-		//}
-	}
-	}
-
-	function mostrarTablaUsuarios(){
-		//if($this->session->userdata('logged_in')){
-			$data['dniE'] = $this->input->post('dniE');	
-			$data['tablaEmpleados'] = $this->abmUsuarios_model->obtenerEmpleados($data['dniE']);
-
-			$data['nombresUsuarios'] = $this->input->post('nombresUsuarios');	
-			$data['limiteTabla'] = $this->input->post('longitudTabla');
-			$data['tablaUsuarios'] = $this->abmUsuarios_model->obtenerUsuarios($data['nombresUsuarios']);
+		if (!isset($_POST['CargarTabla1'])){
+			$data['nroLegajo'] = '';
+			$data['limiteTabla'] = "1000";
+			$data['tablaEmpleados'] = $this->abmUsuarios_model->obtenerEmpleados($data['nroLegajo']);
 			$data['nombresNiveles']	="";
 			$data['niveles'] = $this->abmNiveles_model->obtenerNiveles($data['nombresNiveles']);
+		}
 
-			//mantener sidebar dinamica
-			//$session_data = $this->session->userdata('logged_in');
-      		//$data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
+		if (!isset($_POST['CargarTabla2'])){
+			$data['nombresUsuarios'] = '';
+			$data['limiteTabla'] = 1000;
+			$data['tablaUsuarios'] = $this->abmUsuarios_model->obtenerUsuarios($data['nombresUsuarios']);	
+		}
 
-			$this->load->view('backend/header');
-			$this->load->view('backend/sidebar', $data);
-			$this->load->view('backend/seguridad/abmUsuarios', $data);
-			$this->load->view('backend/footer');
+        $nombreVista="backend/seguridad/abmUsuarios";
+  		$this->cargarVista($nombreVista,$data);
+	}
 
-		//}else{
-		//	$this->load->helper(array('form'));
-		//	$this->load->view('backend/login_view');
-		//}	
+	function mostrarTablaUsuarios(){	
+		$data['dniE'] = $this->input->post('dniE');	
+		$data['tablaEmpleados'] = $this->abmUsuarios_model->obtenerEmpleados($data['dniE']);
+
+		$data['nombresUsuarios'] = $this->input->post('nombresUsuarios');	
+		$data['limiteTabla'] = $this->input->post('longitudTabla');
+		$data['tablaUsuarios'] = $this->abmUsuarios_model->obtenerUsuarios($data['nombresUsuarios']);
+		$data['nombresNiveles']	="";
+		$data['niveles'] = $this->abmNiveles_model->obtenerNiveles($data['nombresNiveles']);
+
+		$nombreVista="backend/seguridad/abmUsuarios";
+		$this->cargarVista($nombreVista,$data);
 	}
 
 	function cargarNuevoUsuario(){	
-		//if($this->session->userdata('logged_in')){
-			$data['idEmp'] = $this->uri->segment(4);
-			$data['empleado'] = $this->abmUsuarios_model->obtenerEmpleado($data['idEmp']);
-			$data['nivelU'] = $this->abmUsuarios_model->getNiveles();
+		$data['idEmp'] = $this->uri->segment(4);
+		$data['empleado'] = $this->abmUsuarios_model->obtenerEmpleado($data['idEmp']);
+		$data['nivelU'] = $this->abmUsuarios_model->getNiveles();
 
-
-			//mantener sidebar dinamica
-			//$session_data = $this->session->userdata('logged_in');
-      		//$data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
-
-			$this->load->view('backend/header');
-			$this->load->view('backend/sidebar', $data);
-			$this->load->view('backend/seguridad/abmUsuariosAlta', $data);
-			$this->load->view('backend/footer');
-
-		//}else{
-		//	$this->load->helper(array('form'));
-		//	$this->load->view('backend/login_view');
-		//}
+		$nombreVista="backend/seguridad/abmUsuariosAlta";
+		$this->cargarVista($nombreVista,$data);
 	}
 
 	function recibirDatos(){
@@ -119,7 +81,6 @@ class AbmUsuariosC extends CI_Controller{
        		redirect('/seguridad/abmUsuariosC/cargarNuevoUsuario/'.$this->input->post('idEmpleado'),'refresh');
 
         } else {
-
             if (isset($_POST['GuardarEnDB'])){
 			$this->abmUsuarios_model->crearUsuario($data);
 			}
@@ -129,24 +90,12 @@ class AbmUsuariosC extends CI_Controller{
 	}
 
 	function editarUsuario(){
-		//if($this->session->userdata('logged_in')){
-			$data['codU'] = $this->uri->segment(4);
-			$data['usuario'] = $this->abmUsuarios_model->obtenerUsuario($data['codU']);
-			$data['nivelU'] = $this->abmUsuarios_model->getNiveles();
+		$data['codU'] = $this->uri->segment(4);
+		$data['usuario'] = $this->abmUsuarios_model->obtenerUsuario($data['codU']);
+		$data['nivelU'] = $this->abmUsuarios_model->getNiveles();
 
-			//mantener sidebar dinamica
-		//	$session_data = $this->session->userdata('logged_in');
-      	//	$data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
-
-			$this->load->view('backend/header');
-			$this->load->view('backend/sidebar', $data);
-			$this->load->view('backend/seguridad/abmUsuariosModificar', $data);
-			$this->load->view('backend/footer');
-
-		//}else{
-		//	$this->load->helper(array('form'));
-		//	$this->load->view('backend/login_view');
-		//}
+		$nombreVista="backend/seguridad/abmUsuariosModificar";
+		$this->cargarVista($nombreVista,$data);
 	}	
 
 	function actualizarDatos(){
