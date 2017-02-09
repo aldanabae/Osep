@@ -9,7 +9,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 		<!-- Favicon -->
-		<link rel="shortcut icon" href="<?php echo base_url() ?>assets/images/favicon.jpg" />
+		<link rel="shortcut icon" href="<?php echo base_url() ?>assets/images/favicon2.png" />
 
 		<!-- bootstrap & fontawesome -->
 		<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/bootstrap.css" />

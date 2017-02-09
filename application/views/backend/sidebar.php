@@ -92,6 +92,21 @@
 			<ul class="nav nav-list">
 
 				<?php 
+					/*if ($nivel){							
+						foreach($nivel->result() as $niv){
+      						if ($niv->descripcionNivel == "Directivo"){
+				*/?>
+
+				<li class="">
+					<a href="<?php echo base_url()?>estadisticas/estadisticasC">
+						<i class="menu-icon fa fa-search-plus"></i>
+						<span class="menu-text">Auditoria</span>
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+				<?php 
 					//if ($nivel){							
 					//	foreach($nivel->result() as $niv){
       				//		if ($niv->descripNivel == "Adminitrador Base de Datos" || $niv->descripNivel == "Facilitador" || $niv->descripNivel == "Administrador" || $niv->descripNivel == "Auditor"){
@@ -212,29 +227,9 @@
 				?>
 
 
-				<?php 
-					/*if ($nivel){							
-						foreach($nivel->result() as $niv){
-      						if ($niv->descripcionNivel == "Directivo"){
-				*/?>
-
-				<li class="">
-					<a href="<?php echo base_url()?>estadisticas/estadisticasC">
-						<i class="menu-icon fa fa-search-plus"></i>
-						<span class="menu-text">Auditoria</span>
-					</a>
-
-					<b class="arrow"></b>
-				</li>
+				
 				<!--
-				<li class="">
-					<a href="<?php echo base_url()?>reportes/reportesC">
-						<i class="menu-icon fa fa-list-alt"></i>
-						<span class="menu-text"> Reportes</span>
-					</a>
-
-					<b class="arrow"></b>
-				</li>
+				
 
 				<?php /*		}
 						}	
@@ -247,6 +242,43 @@
 						foreach($nivel->result() as $niv){
       						if ($niv->descripcionNivel == "Directivo" || $niv->descripcionNivel == "Administrador de Base de Datos"){
 				*/?>
+
+				<li class="">
+					<a href="#" class="dropdown-toggle">
+
+						<i class="menu-icon fa fa-cogs"></i> 
+
+						<span class="menu-text">Gestiones Internas</span>
+
+						<b class="arrow fa fa-angle-down"></b>
+					</a>
+
+						<b class="arrow"></b>
+
+							<ul class="submenu">
+
+								<li class="">
+									<a href="<?php echo base_url()?>abms/abmEmpleadosC">
+										<i class="menu-icon fa fa-caret-right"></i>
+										Empleados
+									</a>
+
+									<b class="arrow"></b>
+								</li>
+								
+							</ul>
+				</li>
+
+
+				<li class="">
+					<a href="<?php echo base_url()?>reportes/reportesC">
+						<i class="menu-icon fa fa-list-alt"></i>
+						<span class="menu-text"> Reportes</span>
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
 					
 				<li class="">
 					<a href="#" class="dropdown-toggle">
@@ -283,33 +315,7 @@
 				<?php /*		}
 						}	
 					}
-				*/?>	
-
-				<li class="">
-					<a href="#" class="dropdown-toggle">
-
-						<i class="menu-icon fa fa-cogs"></i> 
-
-						<span class="menu-text">Gestiones Internas</span>
-
-						<b class="arrow fa fa-angle-down"></b>
-					</a>
-
-						<b class="arrow"></b>
-
-							<ul class="submenu">
-
-								<li class="">
-									<a href="<?php echo base_url()?>abms/abmEmpleadosC">
-										<i class="menu-icon fa fa-caret-right"></i>
-										Empleados
-									</a>
-
-									<b class="arrow"></b>
-								</li>
-								
-							</ul>
-				</li>	
+				*/?>		
 
 			</ul><!-- /.nav-list -->
 
@@ -322,4 +328,4 @@
 					try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
 				</script>
 		</div>
-		
+	

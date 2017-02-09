@@ -1,6 +1,9 @@
+</br>
+</br>
 
-<div class="main-content"><img src="<?php echo base_url() ?>assets/images/osep_logo.jpg" width="70%" heigth="50%"></div>
+<div class="main-content" align="center"><img src="<?php echo base_url() ?>assets/images/osep_logo.jpg" width="70%" heigth="50%"  ></div>
 
+</br>
 
 <!--Para que se vean los botones de la tabla responsive-->
 
