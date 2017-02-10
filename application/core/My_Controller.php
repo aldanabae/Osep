@@ -64,7 +64,6 @@ class My_Controller extends Ci_Controller {
 
     function cargarVista($nombreV, $dataC){
       if($this->session->userdata('logged_in')){
-
         $session_data = $this->session->userdata('logged_in');
         $data['username'] = $session_data['username'];
         $data['nombreE'] = $session_data['nombreE'];
@@ -76,7 +75,7 @@ class My_Controller extends Ci_Controller {
 
     //mantener sidebar dinamica
     //  $session_data = $this->session->userdata('logged_in');
-    //  $data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
+     $data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
 
 
         $this->load->view('backend/header');

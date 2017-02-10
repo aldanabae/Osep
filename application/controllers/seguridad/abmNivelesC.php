@@ -31,7 +31,7 @@ class AbmNivelesC extends My_Controller{
 
 	function cargarNuevoNivel(){
       	$data="";
-      	$nombreVista="backend/seguridad/abmNivelesAltas";
+      	$nombreVista="backend/seguridad/abmNivelesAlta";
 		$this->cargarVista($nombreVista,$data);
 	}
 

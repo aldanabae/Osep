@@ -144,7 +144,7 @@
 					<div class="col-xs-6">
 						<div class="dataTables_length" id="longitudTabla">
 							<label>Mostrar 
-							<select aria-controls="dynamic-table" class="form-control input-sm" name="longitudTabla">
+							<select aria-controls="dynamic-table" class="form-control input-sm" name="longitudTabla" id="longitudTabla" OnChange="longitudOnChange(this)">
 								<option value="1000">Todos</option>
 								<option value="10">10</option>
 								<option value="20">20</option>
@@ -274,6 +274,27 @@
 </div><!-- /.main-content -->
 
 
+
+<script type="text/javascript">
+	function longitudOnChange(sel){
+		if (sel.value=="10"){
+			
+		}else if (sel.value=="20"){
+
+		}else if (sel.value=="40"){
+			
+		}else if (sel.value=="60"){
+			
+		}else if (sel.value=="80"){
+			
+		}else if (sel.value=="100"){
+			
+		}
+
+
+	}
+
+</script>
 
 <!--Para que se vean los botones de la tabla responsive-->
 
