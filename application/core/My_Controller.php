@@ -73,10 +73,8 @@ class My_Controller extends Ci_Controller {
         $this->session->set_flashdata('nombreE', $data);
         $this->session->set_flashdata('nivel', $data);
 
-    //mantener sidebar dinamica
-    //  $session_data = $this->session->userdata('logged_in');
-     $data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
-
+        //mantener sidebar dinamica
+        $data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
 
         $this->load->view('backend/header');
         $this->load->view('backend/sidebar',$data);
