@@ -52,7 +52,7 @@
                                 <th>Descripción</th>
 								<th>
 									<div class="hidden-sm hidden-xs action-buttons text-center">
-										<a class="orange" href="<?php echo base_url()?>encuesta/index/crear">
+										<a class="orange" href="<?php echo base_url()?>encuesta/abmencuesta/crear">
 											<i class="ui-icon ace-icon fa fa-plus-circle orange bigger-130"></i>Agregar Encuesta
 										</a>
 									</div>
@@ -75,7 +75,7 @@
 						<tr>
 							<td>
 								<label class="pos-rel">
-									<a href="<?php echo base_url('encuesta/index/ver/'.$tabla->idEncuesta) ?>" 
+									<a href="<?php echo base_url('encuesta/abmencuesta/ver/'.$tabla->idEncuesta) ?>" 
 									class="tooltip-success" data-rel="tooltip" title="Encuesta">	
 									<?=  $tabla->nombreEncuesta;?></a>
 								</label>

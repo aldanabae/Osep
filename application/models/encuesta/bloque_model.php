@@ -7,9 +7,10 @@ class Bloque_model extends CI_Model {
 
 
 
-  function get_all_bloques(){  // metodo que devuelve todos los bloques cargados
+  function get_all_bloques($id_encuesta){  // metodo que devuelve todos los bloques cargados
     
     $this->db->from('bloque');
+    $this->db->where('idEncuesta', $id_encuesta);
     $this->db->order_by('nroBloque', 'ASC');
     $query = $this->db->get();
       if($query->num_rows()>0){
@@ -38,10 +39,6 @@ class Bloque_model extends CI_Model {
 
         }	
 
-
-
-
-
           return $data;
       }else{
           return $data=0;
@@ -52,17 +49,26 @@ class Bloque_model extends CI_Model {
 
 
 
+  function create_bloque($numero, $nombre, $id_encuesta)
+  {
 
-  function obtenerNivel($idNivel){
-    $this->db->where('idNivel', $idNivel);
-    $this->db->from('nivel');
-    $query = $this->db->get();
+		$data = array(
+				'nroBloque' => $numero,
+				'nombreBloque' => $nombre,
+				'idEncuesta' => $id_encuesta,
+				);
+		//aqui se realiza la inserción, si queremos devolver algo deberíamos usar delantre return
+		//y en el controlador despues de $nueva_insercion poner lo que queremos hacer, redirigir,
+		//envíar un email, en fin, lo que deseemos hacer
+		$valor = $this->db->insert('bloque',$data);
+        
+        
+        
+        return $valor;
 
-    if ($query->num_rows() > 0) return $query;
-    else return false;
+
+    
   }
-
-
 
 
 

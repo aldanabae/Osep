@@ -60,6 +60,15 @@ class Encuesta_model extends CI_Model {
 
 
 
+	function create_encuesta($data){
+		$this->db->insert('encuesta', 
+			array( 'nombreEncuesta'=>$data['nombreE']));
+
+		 $codEmp = $this->db->insert_id();
+         return  $codEmp;
+	}
+
+
 
 
     function edit_encuesta($id_bloque){}

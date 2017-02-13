@@ -13,9 +13,11 @@
                                     </h1>
 
                             </div>
-                            <div class="col-xs-4">
-                                    <h1> <a href="<?php  echo base_url('encuesta/abmpreguntaC/') ?>" >Nueva Pregunta</a> 
-                                    </h1>
+                            <div class="col-xs-4 text-left">
+							        <h4> <a href="<?php  echo base_url('encuesta/abmbloque/create/').$id_encuesta ?>" >Nuevo Bloque</a> /
+                                    
+                                     <a href="<?php  echo base_url('encuesta/abmpreguntaC/crear/').$id_encuesta ?>" >Nueva Pregunta</a> 
+                                    </h4>
                             </div>
                                                         
 						</div><!-- /.page-header -->
@@ -33,6 +35,10 @@
 $this->load->model('encuesta/pregunta_model', 'pregunta');
 //$data['preguntas']= $this->pregunta->get_all_pregunta(5);
 
+
+
+if($encuestas['bloques'])  // si no hay bloques no procesa nada
+{
 
     foreach($encuestas['bloques'] as $bloque){
 
@@ -115,6 +121,8 @@ if($data['preguntas'] != 0){
     }
 
 
+
+} // cierro filtro de bloques, si no hay bloques para la encuesta no muestra nada
 
 ?>
 				

@@ -3,7 +3,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class AbmpreguntaC extends CI_Controller{
+class AbmpreguntaC extends My_Controller{
 
 	function __construct(){
 		parent::__construct();
@@ -23,25 +23,47 @@ class AbmpreguntaC extends CI_Controller{
 
 
   	function index(){
+
+
+		redirect(base_url("encuesta/abmencuesta/"), "refresh");
+
+
+    }
+
+
+
+
+
+
+
+  	function crear(){
   		//if($this->session->userdata('logged_in')){
 
        // $session_data = $this->session->userdata('logged_in'); 
       	//$data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
 
-		  		$data = array ('bloques' => $this->bloque_model->get_all_bloques(),
+			$id = $this->uri->segment(4);
+
+
+
+		  		$data = array ('bloques' => $this->bloque_model->get_all_bloques($id),
 				  			   'tipos' => $this->tipo_pregunta_model->get_all_tipos() 
 				);
 
-      			$this->load->view('backend/header');
-				$this->load->view('backend/sidebar');
-				$this->load->view('backend/encuesta/pregunta_view', $data);
-				$this->load->view('backend/footer');
+				$nombreVista="backend/encuesta/pregunta_view";
+				$this->cargarVista($nombreVista, $data);
    
 			//}else{
 			//	$this->load->helper(array('form'));
 			//	$this->load->view('backend/login_view');
  	    //}   
+
+
     }
+
+
+
+
 
 
 	function validar(){   // funcion que guarda la pregunta y sus respuestas
@@ -71,7 +93,7 @@ class AbmpreguntaC extends CI_Controller{
 
 			}
 
-			redirect(base_url("encuesta/abmpreguntaC"), "refresh");
+			redirect( base_url(uri_string()));
 			
 	
 

@@ -132,7 +132,7 @@
 							<ul class="submenu">
 
 								<li class="">
-									<a href="<?php echo base_url()?>encuesta/index/crear">
+									<a href="<?php echo base_url()?>encuesta/abmencuesta/crear">
 										<i class="menu-icon fa fa-caret-right"></i>
 										Crear Encuesta
 									</a>
@@ -141,7 +141,7 @@
 								</li>
 
 								<li class="">
-									<a href="<?php echo base_url()?>encuesta/index">
+									<a href="<?php echo base_url()?>encuesta/abmencuesta">
 										<i class="menu-icon fa fa-caret-right"></i>
 										Ver Encuestas
 									</a>
@@ -150,7 +150,7 @@
 								</li>
 
 								<li class="">
-									<a href="<?php echo base_url()?>encuesta/index">
+									<a href="<?php echo base_url()?>encuesta/abmencuesta">
 										<i class="menu-icon fa fa-caret-right"></i>
 										Bloques
 									</a>

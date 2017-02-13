@@ -125,7 +125,7 @@
 
 											
 											&nbsp; &nbsp; &nbsp;
-											<button class="btn btn-info" type="button">
+											<button class="btn btn-info disabled" type="button" >
 												<i class="ace-icon fa fa-check bigger-110"></i>
 												Crear Sub Pregunta
 											</button>

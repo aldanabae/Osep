@@ -26,13 +26,13 @@
 							<div class="widget-main">
 
 	
-									<form class="form-horizontal" role="form" action="<?php //echo base_url() ?>abms/abmEmpleadosC/actualizarDatos/<? //= $emp->idEmpleado;?>" method="post"><!-- Comienza formulario Modificar -->
+									<form class="form-horizontal" role="form" action="<?php echo base_url('encuesta/abmencuesta/recibirDatos/') ?>" method="post"><!-- Comienza formulario Modificar -->
 									  
 		                                <div class="form-group"> <!-- Empieza una linea del formulario -->
 											<label class="col-sm-3 control-label no-padding-right" for="nombre">Nombre Encuesta </label>
 
 											<div class="col-sm-9">
-												<input class="form-control" id="nombre" name="nombre" value=""  type="text">		                        
+												<input class="form-control" id="nombre_encuesta" name="nombre_encuesta" value=""  type="text" required>		                        
 											</div>
 										</div>	                        
 										
@@ -40,18 +40,11 @@
 											<label class="col-sm-3 control-label no-padding-right" for="descripcion">Descripción </label>
 
 											<div class="col-sm-9">
-												<input class="form-control" id="descripcion" name="descripcion" value=""  type="text">				                                
+												<input class="form-control" id="descripcion" name="descripcion" value=""  type="text"required>				                                
 											</div> <!-- Cambiar lo de date picker??? -->
 										</div>
 
 
-										<div class="form-group"> <!-- Empieza una linea del formulario -->
-
-											<label class="col-sm-3 control-label no-padding-right" for="telefono"> Estado </label>
-											<div class="col-sm-4">
-												<input class="form-control" id="telefono" name="telefono" placeholder="" value="" type="tel" disabled>
-		                					</div> 
-										</div>
 
 
 
@@ -59,7 +52,7 @@
 
 										<div class="clearfix form-actions"> <!-- Empiezan botones de modificar y limpiar -->
 											<div class="col-md-offset-3 col-md-9">
-												<button class="btn btn-info" type="submit" name="ActualizarEnDB">
+												<button class="btn btn-info" type="submit" name="GuardarEnDB">
 													<i class="ace-icon fa fa-check bigger-110"></i>
 													Guardar
 												</button>
