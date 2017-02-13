@@ -10,7 +10,7 @@ class AbmpreguntaC extends My_Controller{
 
 		$this->load->helper('form');
 		$this->load->helper('url');
-		$this->load->model(''); //modelo de preguntas
+		$this->load->model('encuesta/encuesta_model'); //modelo de preguntas
 		$this->load->model('encuesta/bloque_model');
 		$this->load->model('encuesta/tipo_pregunta_model');
 		$this->load->model('encuesta/pregunta_model');
@@ -47,6 +47,8 @@ class AbmpreguntaC extends My_Controller{
 
 
 		  		$data = array ('bloques' => $this->bloque_model->get_all_bloques($id),
+				  	           'encuesta' => $this->encuesta_model->get_nom_encuesta($id),
+
 				  			   'tipos' => $this->tipo_pregunta_model->get_all_tipos() 
 				);
 
@@ -75,6 +77,7 @@ class AbmpreguntaC extends My_Controller{
 			$descripcion =  $this->input->post('descripcion');
 			$bloque = 		$this->input->post('op_bloque');
 			$tipo = 		$this->input->post('op_tipo');
+			$redirect=      $this->input->post('url_refresh');
 
 
 			//ahora procesamos los datos hacía el modelo que debemos crear
@@ -93,7 +96,7 @@ class AbmpreguntaC extends My_Controller{
 
 			}
 
-			redirect( base_url(uri_string()));
+			redirect( $redirect);
 			
 	
 

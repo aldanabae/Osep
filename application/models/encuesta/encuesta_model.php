@@ -60,6 +60,31 @@ class Encuesta_model extends CI_Model {
 
 
 
+
+    function get_nom_encuesta($id_encuesta){  // metodo que devuelve todos las encuestas
+
+
+        $this->db->from('encuesta');
+        $this->db->where('idEncuesta', $id_encuesta);
+
+        $query = $this->db->get();       // hago la consulta  y traigo los datos de la encuesta que pido
+        if($query->num_rows()>0){
+            foreach ($query->result() as $fila){
+                $data = $fila;
+                
+            }	
+
+            return $data;
+        }else{
+            return $data=0;
+        }
+    }
+
+
+
+
+
+
 	function create_encuesta($data){
 		$this->db->insert('encuesta', 
 			array( 'nombreEncuesta'=>$data['nombreE']));

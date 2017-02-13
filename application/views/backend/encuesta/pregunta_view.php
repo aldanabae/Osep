@@ -6,9 +6,10 @@
 
 						<!-- /section:settings.box -->
 						<div class="page-header">
-							<h1>Encuesta abordaje Poblacional <small>
+							<h1>Encuesta <?php echo($encuesta->nombreEncuesta); ?> <small>
 								</small>
 							</h1>
+
 						</div><!-- /.page-header -->
 
 
@@ -18,7 +19,7 @@
 								<!-- PAGE CONTENT BEGINS -->
 								<form class="form-horizontal" id ="formPregunta" role="form" method ="POST" action="<?php echo base_url().'encuesta/abmpreguntaC/validar'?>">
 									<!-- #section: de bloque -->
-
+									<input type="hidden" name="url_refresh" value="<?php echo(current_url()); ?>">
 									<div class="form-group">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Bloque </label>
 
