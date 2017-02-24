@@ -25,7 +25,7 @@
 
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-tags"> </label>
 
-										<div class="col-sm-9">
+										<div class="col-sm-12">
 														<div class="panel panel-default" id="panel-general">
 															<div class="panel-heading">Añadir bloques</div>
 															<div class="panel-body" id ="panel-respuestas">
@@ -36,9 +36,26 @@
 																	<span class="input-group-addon btn-del" id= "btn-del">
 																		<i class="ace-icon fa fa-minus"></i>
 																	</span>
+
+												<div class="checkbox">
+													<label class="block">
+														<input name="form-field-checkbox" class="ace input-lg" type="checkbox">
+														<span class="lbl bigger-120"> Requerido</span>
+													</label>
+												</div>
+
 																</div>
 
+
 															</div>
+
+
+
+
+
+
+
+
 															
 														<div class="text-right">
                                                                     <button type="button" class="btn btn-sm btn-success" id="btn-nueva">Nuevo Bloque
@@ -47,7 +64,16 @@
 																</div>	<br>												
 													
 														</div>
-										</div>									
+										</div>	
+
+
+
+
+
+
+
+										
+																		
 
 									 </div>
 
@@ -104,7 +130,12 @@ $(document).ready(function(){
         e.preventDefault();
         next++;
 
-    $('#panel-respuestas').append( '<div class="input-group add-more formSpace" id ="con-preg-'+next+'"><input class="form-control " id="preg-'+next+'" class="col-xs-12" type="text" name=bloque[] required><span class="input-group-addon btn-del" id= ""><i class="ace-icon fa fa-minus"></i></span></div>');
+		var html= '<div class="input-group add-more formSpace" id ="con-preg-'+next+'"><input class="form-control " id="preg-'+next+'" class="col-xs-12" type="text" name=bloque[] required>';
+
+		html+='<span class="input-group-addon btn-del" id= ""><i class="ace-icon fa fa-minus"></i></span> ';
+		html+='<div class="checkbox"><label class="block"><input name="form-field-checkbox" class="ace input-lg" type="checkbox"><span class="lbl bigger-120"> Requerido</span></label></div>';
+
+    $('#panel-respuestas').append( html);
 
     })
 	

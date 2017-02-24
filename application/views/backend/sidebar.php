@@ -148,15 +148,7 @@
 
 									<b class="arrow"></b>
 								</li>
-
-								<li class="">
-									<a href="<?php echo base_url()?>encuesta/abmencuesta">
-										<i class="menu-icon fa fa-caret-right"></i>
-										Bloques
-									</a>
-
-									<b class="arrow"></b>
-								</li>								
+							
 
 								<li class="">
 									<a href="<?php echo base_url()?>abms/abmHabitacionesC/">
