@@ -35,7 +35,7 @@ $config['base_url'] = 'http://localhost/Osep/';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -375,7 +375,7 @@ $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;
 $config['sess_regenerate_destroy'] = FALSE;
 
-$config['sess_encrypt_cookie']	= TRUE;
+//$config['sess_encrypt_cookie']	= TRUE;
 
 /*
 |--------------------------------------------------------------------------
