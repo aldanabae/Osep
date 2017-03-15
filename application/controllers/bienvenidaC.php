@@ -11,7 +11,7 @@ class BienvenidaC extends My_Controller{
   	function index(){
         $data="";
         $nombreVista="backend/bienvenida";
-  			$this->cargarVista($nombreVista,$data);
+  		$this->cargarVista($nombreVista,$data);
     }
     
 }

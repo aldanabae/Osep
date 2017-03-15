@@ -1,6 +1,6 @@
-				<!-- #section:basics/navbar.dropdown -->
+<!-- #section:basics/navbar.dropdown -->
 				<div class="navbar-buttons navbar-header pull-right" role="navigation">
-				<!--Comienza Menú de usuario-->	
+				<!--Comienza MenÃº de usuario-->	
 					<ul class="nav ace-nav">
 						<!-- #section:basics/navbar.user_menu -->
 						<li class="light-blue">
@@ -50,9 +50,7 @@
 					try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
 				</script>
 
-
 			<!-- ICONOS DE ACCESOS RAPIDOS!!!
-
 
 			<div class="sidebar-shortcuts" id="sidebar-shortcuts">
 				<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
@@ -85,9 +83,7 @@
 					<span class="btn btn-danger"></span>
 				</div>
 			</div><!-- /.sidebar-shortcuts
-
 			--> 
-
 
 			<ul class="nav nav-list">
 
@@ -119,35 +115,31 @@
 
 				<li class="">
 					<a href="#" class="dropdown-toggle">
-
 						<i class="menu-icon fa fa-pencil-square-o"></i> 
 
-						<span class="menu-text">Encuestas</span>
-
+							<span class="menu-text">Encuestas</span>
 						<b class="arrow fa fa-angle-down"></b>
 					</a>
 
 						<b class="arrow"></b>
-
 							<ul class="submenu">
+
+								<li class="">
+									<a href="<?php echo base_url()?>abms/abmMedicamentosC/">
+										<i class="menu-icon fa fa-caret-right"></i>
+										Cargar Relevamiento Realizado
+									</a>
+									<b class="arrow"></b>
+								</li>
 
 								<li class="">
 									<a href="<?php echo base_url()?>encuesta/abmencuesta/crear">
 										<i class="menu-icon fa fa-caret-right"></i>
 										Crear Encuesta
 									</a>
-
 									<b class="arrow"></b>
 								</li>
-
-								<li class="">
-									<a href="<?php echo base_url()?>encuesta/abmencuesta">
-										<i class="menu-icon fa fa-caret-right"></i>
-										Ver Encuestas
-									</a>
-
-									<b class="arrow"></b>
-								</li>
+<<<<<<< HEAD
 							
 
 								<li class="">
@@ -156,17 +148,24 @@
 										Registrar Cita
 									</a>
 
+=======
+
+								<li class="">
+									<a href="<?php echo base_url()?>abms/abmVisitasC/">
+										<i class="menu-icon fa fa-caret-right"></i>
+										Pactar Visita 
+									</a>
+>>>>>>> cb1313e7760a7a49f69c14ef8ecd1ac7ad6f066e
 									<b class="arrow"></b>
 								</li>
 
 								<li class="">
-									<a href="<?php echo base_url()?>abms/abmMedicamentosC/">
+									<a href="<?php echo base_url()?>encuesta/abmencuesta">
 										<i class="menu-icon fa fa-caret-right"></i>
-										Cargar Relevamiento Realizado
+										Ver Encuestas
 									</a>
-
 									<b class="arrow"></b>
-								</li>
+								</li>										
 							</ul>
 				</li>
 
@@ -183,16 +182,14 @@
 
 				<li class="">
 					<a href="#" class="dropdown-toggle">
-
 						<i class="menu-icon fa fa-cogs"></i> 
 
-						<span class="menu-text">Gestiones Internas</span>
+							<span class="menu-text">Gestiones Internas</span>
 
 						<b class="arrow fa fa-angle-down"></b>
 					</a>
 
 						<b class="arrow"></b>
-
 							<ul class="submenu">
 
 								<li class="">
@@ -200,10 +197,8 @@
 										<i class="menu-icon fa fa-caret-right"></i>
 										Empleados
 									</a>
-
 									<b class="arrow"></b>
 								</li>
-								
 							</ul>
 				</li>
 
@@ -211,7 +206,6 @@
 						}	
 					}
 				?>
-
 
 				<?php 
 					if ($nivel){							
@@ -224,7 +218,6 @@
 						<i class="menu-icon fa fa-list-alt"></i>
 						<span class="menu-text"> Reportes</span>
 					</a>
-
 					<b class="arrow"></b>
 				</li>
 
@@ -233,7 +226,6 @@
 					}
 				?>
 					
-
 				<?php 
 					if ($nivel){							
 						foreach($nivel->result() as $niv){
@@ -247,7 +239,6 @@
 					</a>
 
 					<b class="arrow"></b>
-
 						<ul class="submenu">
 
 							<li class="">
@@ -255,17 +246,14 @@
 									<i class="menu-icon fa fa-caret-right"></i>
 									Gestionar Usuarios
 								</a>
-
 								<b class="arrow"></b>
 							</li>
-
 
 							<li class="">
 								<a href="<?php echo base_url()?>seguridad/abmNivelesC">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Gestionar Niveles de Seguridad
 								</a>
-
 								<b class="arrow"></b>
 							</li>
 						</ul>
