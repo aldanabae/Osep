@@ -16,6 +16,7 @@ class ProbandoC extends My_Controller{
 		
 		$data['respuestas'] = $this->probando_model->obtenerRespuestas();	
 		
+		
 
 		$nombreVista="backend/abms/probando";
 		$this->cargarVista($nombreVista, $data);
