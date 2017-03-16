@@ -10,8 +10,11 @@ $this->db->join('etiqueta','etiqueta.idEtiqueta=pregunta.idEtiqueta','left');
 $this->db->join('respuesta','respuesta.idRespuesta=pregunta_respuesta.idRespuesta','left');
 $query = $this->db->get();	
 
-if ($query->num_rows() > 0) return $query;
-			else return false;	
-    }
+if ($query->num_rows() > 0) 
+{
+    return $query;
+}else{
+ return false;	
+}
 
 ?>
