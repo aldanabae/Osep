@@ -108,16 +108,19 @@
 														
 								<div class="clearfix form-actions"> <!-- Empiezan botones de guardar y limpiar -->
 									<div class="col-md-offset-3 col-md-9">
+									<label>
 										<button class="btn btn-info" type="submit" name="GuardarEnDB">
 											<i class="ace-icon fa fa-check bigger-110"></i>
 												Guardar
 										</button>
-
+									</label>
 										&nbsp; &nbsp; &nbsp;
+									<label>
 										<button class="btn" type="reset">
 											<i class="ace-icon fa fa-undo bigger-110"></i>
 												Limpiar
 										</button>
+									</label>
 									</div>
 								</div>
 

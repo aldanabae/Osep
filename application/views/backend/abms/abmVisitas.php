@@ -150,11 +150,11 @@
 								</div>
 
 								<div class="form-group"> <!-- Empieza una linea del formulario -->
-									<label class="col-sm-3 control-label no-padding-right"> Numero</label>
+									<label class="col-sm-3 control-label no-padding-right"> Número</label>
 										<div class="col-sm-1">
 											<input class="form-control" id="numero" name="numero" placeholder=""  type="nro">
 						                </div> 
-						            <label class="col-sm-2 control-label no-padding-right" > Numero Departamento </label>
+						            <label class="col-sm-2 control-label no-padding-right" > Número Departamento</label>
 										<div class="col-sm-1">
 											<input class="form-control" id="nroDpto" name="nroDpto" placeholder=""  type="nro">
 						                </div> 
@@ -194,16 +194,19 @@
 														
 								<div class="clearfix form-actions"> <!-- Empiezan botones de guardar y limpiar -->
 									<div class="col-md-offset-3 col-md-9">
+									<label>
 										<button class="btn btn-info" type="submit" name="GuardarEnDB">
 											<i class="ace-icon fa fa-check bigger-110"></i>
 												Guardar
 										</button>
-
+									</label>
 										&nbsp; &nbsp; &nbsp;
+									<label>
 										<button class="btn" type="reset">
 											<i class="ace-icon fa fa-undo bigger-110"></i>
 												Limpiar
 										</button>
+									</label>
 									</div>
 								</div>
 

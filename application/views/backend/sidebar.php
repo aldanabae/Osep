@@ -94,7 +94,7 @@
 				?>
 
 				<li class="">
-					<a href="<?php echo base_url()?>auditoria/auditoriaC">
+					<a href="<?php echo base_url()?>abms/probandoC">
 						<i class="menu-icon fa fa-search-plus"></i>
 						<span class="menu-text">Auditoria</span>
 					</a>
