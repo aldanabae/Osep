@@ -12,7 +12,7 @@ var bloque1= {
 
     mostrar : function(){
 
-        bloque2.template.hide();
+       
         console.log(this.conf.visible);
 
     },
@@ -21,36 +21,20 @@ var bloque1= {
     {
         if(this.conf.visible){
 
-            console.log('esta visible');
+            this.mostrar(true);
         }else{
 
             this.mostrar(false);
         }
 
-        $( "#bloque_1 input[name$='genderRadios']" ).on('click', function(){
 
-                if($(this).val() == 'm'){
-
-                    bloque3_a.mostrar(false);
-                    bloque4.mostrar(false);
-                    bloque7.mostrar(false);
-
-                }else{
-
-                    bloque4.mostrar(true);
-                    
-                    
-                }
-                console.log($(this).val())
-
-        })
-
-        this.listenerEdad();
+        this.bindSex();
+        this.bindEdad();
 
     },
 
     
-    listenerEdad: function(){
+    bindEdad: function(){
 
         $( "#b1_edad" ).on('change, click' ,function(){
 
@@ -71,9 +55,28 @@ var bloque1= {
         })
 
 
+    },
+
+    bindSex: function(){
+
+                $( "#bloque_1 input[name$='genderRadios']" ).on('click', function(){
+
+                if($(this).val() == 'm'){
+
+                    bloque3_a.mostrar(false);
+                    bloque4.mostrar(false);
+                    bloque7.mostrar(false);
+
+                }else{
+
+                    bloque4.mostrar(true);
+                    
+                    
+                }
+                
+
+        })
     }
-
-
 
 
 
@@ -158,6 +161,38 @@ var bloque3_a= {
 } ;
 
 
+var bloque3_a= {
+
+    conf: {
+        nombre: '#bloque_3_b',
+        visible: false
+
+    },
+
+    template: $('#bloque_3_b'),
+
+        mostrar : function(valor)
+        {
+
+            if (valor)
+            {
+                this.template.show();
+            }else
+            {
+                this.template.hide();
+            }
+        },
+
+        init: function()
+        {
+            if(this.conf.visible){ this.mostrar(true); }else{ this.mostrar(false); }
+
+
+
+
+        }
+
+} ;
 
 
 var bloque4= {
@@ -399,6 +434,7 @@ $(function() {
   bloque1.init();
   bloque2.init();
   bloque3_a.init();
+  bloque3_b.init(); 
   bloque4.init();
   bloque5.init();
   bloque6.init();

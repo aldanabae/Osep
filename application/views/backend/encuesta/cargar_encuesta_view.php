@@ -5,10 +5,6 @@
 
 
 
-
-
-
-
 <!--<div class="container">   contenedor principal -->
  
  
@@ -29,20 +25,20 @@
 					 <div class="form-group">
 						 <label for="inputName" class="control-label col-xs-6">Nombre y apellido:</label>
 						 <div class="col-xs-6">
-							 <input type="name" class="form-control" placeholder="Calle">
+							 <input type="name" class="form-control" placeholder="Nombre y appellido">
 						 </div>
 					 </div>
 					 <div class="form-group">
 						 <label for="inputEmail" class="control-label col-xs-6">fecha:</label>
 						 <div class="col-xs-6">
-							 <input type="text" class="form-control" placeholder="Entre que calle?">
+							 <input type="text" class="form-control" placeholder="dd/mm/aa">
 						 </div>
 					 </div>
 					 
 					<div class="form-group">
 						<label class="control-label col-xs-6">Departamento</label>
 						<div class="col-xs-6">
-							<select class="form-control">
+							<select class="form-control" id="departamento">
 							<option>Date</option>
 							</select>
 						</div>
@@ -52,7 +48,7 @@
 					<div class="form-group">
 						<label class="control-label col-xs-6">Distrito:</label>
 						<div class="col-xs-6">
-							<select class="form-control">
+							<select class="form-control" id="distrito">
 							<option>Date</option>
 							</select>
 						</div>
@@ -61,7 +57,7 @@
 					 <div class="form-group">
 						 <label for="inputPassword" class="control-label col-xs-6">Barrio:</label>
 						 <div class="col-xs-6">
-							 <input type="text" class="form-control" placeholder="Asunto">
+							 <input type="text" class="form-control" placeholder="Barrio">
 						 </div>
 					 </div>
 					 
@@ -103,10 +99,6 @@
 		
 		
 </div>	
- 
- 
- 
- 
  
  
  
@@ -1428,6 +1420,19 @@
 		
 	 
 </div>	 <!-- Cierre row -->
+
+
+
+
+
+
+        <br>
+        <div class="form-group">
+            <div class="col-xs-offset-3 col-xs-9">
+                <input type="submit" class="btn btn-primary" value="Finalizar Encuesta">
+                <input type="reset" class="btn btn-default" value="Nuevo integrante">
+            </div>
+        </div>
 
 
 
