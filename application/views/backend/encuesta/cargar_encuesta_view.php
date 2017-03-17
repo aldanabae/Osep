@@ -1,0 +1,1461 @@
+<div class="main-content">
+	<div class="main-content-inner">
+		<div class="page-content">
+			
+
+
+
+
+
+
+
+<!--<div class="container">   contenedor principal -->
+ 
+ 
+
+  <div class="row form-horizontal">     <!-- bloque 0 -->
+		<div class="panel panel-default">
+		
+			<div class="panel-heading">Bloque 0 Identificacion de territorio , facilitador</div>
+				<div class="panel-body">
+				
+					 <div class="form-group">
+						 <label for="inputName" class="control-label col-xs-6">Numero relevamiento:</label>
+						 <div class="col-xs-6">
+							 <input type="name" class="form-control" placeholder="Numero">
+						 </div>
+					 </div>				
+				
+					 <div class="form-group">
+						 <label for="inputName" class="control-label col-xs-6">Nombre y apellido:</label>
+						 <div class="col-xs-6">
+							 <input type="name" class="form-control" placeholder="Calle">
+						 </div>
+					 </div>
+					 <div class="form-group">
+						 <label for="inputEmail" class="control-label col-xs-6">fecha:</label>
+						 <div class="col-xs-6">
+							 <input type="text" class="form-control" placeholder="Entre que calle?">
+						 </div>
+					 </div>
+					 
+					<div class="form-group">
+						<label class="control-label col-xs-6">Departamento</label>
+						<div class="col-xs-6">
+							<select class="form-control">
+							<option>Date</option>
+							</select>
+						</div>
+
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label col-xs-6">Distrito:</label>
+						<div class="col-xs-6">
+							<select class="form-control">
+							<option>Date</option>
+							</select>
+						</div>
+
+					</div>	
+					 <div class="form-group">
+						 <label for="inputPassword" class="control-label col-xs-6">Barrio:</label>
+						 <div class="col-xs-6">
+							 <input type="text" class="form-control" placeholder="Asunto">
+						 </div>
+					 </div>
+					 
+					 <hr>
+					 
+					 <div class="form-group">
+						 <label for="inputPassword" class="control-label col-xs-6">Calle:</label>
+						 <div class="col-xs-6">
+							 <input type="text" class="form-control" placeholder="Asunto">
+						 </div>
+					 </div>				 
+					 
+					 <div class="form-group">
+						 <label for="inputPassword" class="control-label col-xs-6">Numero:</label>
+						 <div class="col-xs-6">
+							 <input type="text" class="form-control" placeholder="Asunto">
+						 </div>
+					 </div>					 
+					 
+					 
+					 <div class="form-group">
+						 <label for="inputPassword" class="control-label col-xs-6">entre que calles?:</label>
+						 <div class="col-xs-6">
+							 <input type="text" class="form-control" placeholder="Asunto">
+						 </div>
+					 </div>		
+					 
+					 <div class="form-group">
+						 <label for="inputPassword" class="control-label col-xs-6">Observaciones:</label>
+						 <div class="col-xs-6">
+							 <input type="text" class="form-control" placeholder="Asunto">
+						 </div>
+					 </div>						 
+
+
+				</div>
+
+		</div>		
+		
+		
+</div>	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ <div class="row form-horizontal" id="bloque_1">   <!-- bloque 1 -->
+		<div class="panel panel-default">
+		
+			<div class="panel-heading">Bloque 1 Composicion y salud Familiar</div>
+				<div class="panel-body">
+				
+			<div class="form-group">
+				 <label for="inputName" class="control-label col-xs-6">Nombre:</label>
+				 <div class="col-xs-6">
+					 <input type="name" class="form-control" placeholder="Nombre">
+				 </div>
+			 </div>
+			 <div class="form-group">
+				 <label for="inputEmail" class="control-label col-xs-6">Edad:</label>
+				 <div class="col-xs-6">
+					 <input type="text" name="b1_edad"  class="form-control" placeholder="Edad" id="b1_edad">
+				 </div>
+			 </div>
+			 <div class="form-group">
+				 <label for="inputPassword" class="control-label col-xs-6">Sexo:</label>
+					<div class="col-xs-2">
+						<label class="radio-inline">
+							<input type="radio" name="genderRadios" value="m"> Masculino
+						</label>
+					</div>
+					<div class="col-xs-2">
+						<label class="radio-inline">
+							<input type="radio" name="genderRadios" value="f"> Femenino
+						</label>
+					</div>
+			 </div>
+			 
+			 
+		
+					<div class="form-group">
+						<label class="control-label col-xs-6">Parentezco con el titular:</label>
+						<div class="col-xs-6">
+							<select class="form-control">
+							<option>Date</option>
+							</select>
+						</div>
+
+					</div>	
+					 <div class="form-group">
+						 <label for="inputEmail" class="control-label col-xs-6">cobertura de salud:</label>
+						<div class="col-xs-6">
+							<select class="form-control">
+							<option>Date</option>
+							</select>
+						</div>
+					 </div>
+
+					 <div class="form-group">
+						 <label for="inputPassword" class="control-label col-xs-6">Tiene Osep:</label>
+						<div class="col-xs-6">
+							<select class="form-control">
+							<option value="0">SI</option>
+							<option value="1">NO</option>
+							</select>
+						</div>
+					 </div>
+				
+
+					 <div class="form-group">
+						 <label for="inputEmail" class="control-label col-xs-6">Tiene otra cobertura:</label>
+						<div class="col-xs-6">
+							<select class="form-control">
+							<option>Date</option>
+							</select>
+						</div>
+					 </div>
+
+					 <div class="form-group">
+						 <label for="inputPassword" class="control-label col-xs-6">Esta embarazada:</label>
+						<div class="col-xs-6">
+							<select class="form-control">
+							<option value="0">SI</option>
+							<option value="1">NO</option>
+							</select>
+						</div>
+					 </div>
+
+					 <div class="form-group">
+						 <label for="inputPassword" class="control-label col-xs-6">Padece enfermedad Cronica:</label>
+						<div class="col-xs-6">
+							<select class="form-control">
+							<option value="0">SI</option>
+							<option value="1">NO</option>
+							</select>
+						</div>
+					 </div>
+
+					 <div class="form-group">
+						 <label for="inputPassword" class="control-label col-xs-6">Tiene alguna Discapacidad:</label>
+						<div class="col-xs-6">
+							<select class="form-control">
+							<option value="0">SI</option>
+							<option value="1">NO</option>
+							</select>
+						</div>
+					 </div>
+
+
+					 <div class="form-group">
+						 <label for="inputPassword" class="control-label col-xs-6">Dependencia:</label>
+						<div class="col-xs-6">
+							<select class="form-control">
+							<option value="0">SI</option>
+							<option value="1">NO</option>
+							</select>
+						</div>
+					 </div>
+
+					 <div class="form-group">
+						 <label for="inputPassword" class="control-label col-xs-6">Tiene algun pariente con OSEP a su cargo que no viva en la casa?:</label>
+						<div class="col-xs-6">
+							<select class="form-control">
+							<option value="0">SI</option>
+							<option value="1">NO</option>
+							</select>
+						</div>
+					 </div>
+
+				</div>
+
+		</div>		
+</div>			
+			
+			
+	
+	
+	
+	
+	
+ <div class="row form-horizontal" id="bloque_2">    <!-- bloque 2 servicios de Salud -->
+			<div class="panel panel-default">
+			
+				<div class="panel-heading">Bloque 2 Utilizacion de servicios de Salud</div>
+					<div class="panel-body">
+				
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">En los ultimos 6 meses, Utilizaron el servicio de la obra Social?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>	
+
+						
+						<div class="form-group">
+							<label class="control-label col-xs-6" for="postalAddress">Para que lo utilizo?:</label>
+							<div class="col-xs-6">
+								<textarea rows="3" class="form-control" id="postalAddress" placeholder="Postal Address"></textarea>
+							</div>
+						</div>
+
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Motivo</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-xs-6" for="ZipCode">Otro otivo:</label>
+							<div class="col-xs-6">
+								<input type="text" class="form-control" id="ZipCode" placeholder="Otro motivo">
+							</div>
+						</div>
+			
+					</div>	
+
+		</div>
+		
+	 
+</div>	 <!-- Cierre row -->
+
+
+
+
+
+
+<div class="row form-horizontal" id="bloque_3_a">      <!-- Bloque 3 bebes -->
+			<div class="panel panel-default">
+			
+				<div class="panel-heading">Bloque 3 Salud de los Niños</div>
+					<div class="panel-body">
+				
+						<blockquote>
+						<p>Osep esta muy interesada en fortalecer sus servicios en la etapa  de la infacia</p>
+						</blockquote>
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">El embarazo fue normal?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >Normal</option>
+								<option >De riesgo</option>							
+								</select>
+							</div>
+
+						</div>	
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Nacio en termino</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >A termino</option>
+								<option >Prematuro</option>							
+								</select>
+							</div>
+
+						</div>	
+
+
+						
+						<div class="form-group">
+							<label class="control-label col-xs-6" for="ZipCode">Recuerda cuanto peso al nacer?</label>
+							<div class="col-xs-6">
+								<input type="text" class="form-control" id="ZipCode" placeholder="Zip Code">
+							</div>
+						</div>
+
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Camino cerca o alrededor de cumplir el Año?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>
+
+						<blockquote>
+						<p>Controles de Salud</p>
+						</blockquote>
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Controles auditivos de recien nacido</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Realizo algun control de salud en los ultimos 3 Meses?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">En el ultimo control de Salud, el profecional anotó que es Normal?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >Normal</option>
+								<option >Bajo</option>							
+								<option >Sobrepeso</option>							
+								</select>
+							</div>
+
+						</div>
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Tiene vacunas al Dia?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Esta recibiendo la Leche de Osep?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>
+
+
+			
+					</div>	
+
+		</div>
+		
+	 
+</div>	 <!-- Cierre row -->
+
+
+
+
+<div class="row form-horizontal" id="bloque_3_b">      <!-- Bloque 3 niños -->
+			<div class="panel panel-default">
+			
+				<div class="panel-heading">Bloque 3 Salud de los Niños</div>
+					<div class="panel-body">
+				
+						<blockquote>
+						<p>Ahora vamos a hablar sobre los chicos de 2 o mas años, Haciendo referencia a aspectos de salud y Actividades.</p>
+						</blockquote>
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">En el ultimo año , ¿Ha realizado un control con un  oculista?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>	
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Con un odontologo?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>	
+
+
+						
+						<div class="form-group">
+							<label class="control-label col-xs-6" for="ZipCode">Durante el año pasado / Este año. ¿Ha tenido algun tipo de dificultad en la escuela?</label>
+							<div class="col-xs-4">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>
+								<option >NO asiste Todavia</option>							
+								</select>
+							</div>
+
+							<div class="col-xs-5">
+								<input type="text" class="form-control" id="ZipCode" placeholder="Cual fue el Problema?">
+							</div>
+						</div>
+
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Camino cerca o alrededor de cumplir el Año?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6"> ¿Realiza en forma regular alguna actividad (extraescolar). Es decir Hace deportes, alguna actividad artistica u otra semanalmente?</label>
+							<div class="col-xs-4">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+							<div class="col-xs-5">
+								<select class="form-control">
+								<option >Deportiva</option>
+								<option >Artistica</option>
+								<option >Educativa</option>
+								<option >Comunitaria</option>
+								<option >Religiosa</option>							
+								<option >No realiza</option>							
+								</select>
+							</div>
+
+						</div>
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Donde</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >Club</option>
+								<option >Instituto</option>							
+								<option >CIC</option>							
+								<option >Biblioteca</option>							
+								<option >Union Vecinal</option>							
+								<option >otro</option>							
+								</select>
+							</div>
+
+						</div>
+
+			
+					</div>	
+
+		</div>
+		
+	 
+</div>	 <!-- Cierre row -->
+
+
+
+
+
+
+<div class="row form-horizontal" id="bloque_4">      <!-- Bloque 4 mujeres -->
+			<div class="panel panel-default">
+			
+				<div class="panel-heading">Bloque 4 Salud  de las mujeres</div>
+					<div class="panel-body">
+				
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Como diria que es su estado general de salud en este momento?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >Muy bueno</option>
+								<option >Bueno</option>							
+								<option >Regular</option>							
+								<option >Malo</option>							
+								</select>
+							</div>
+
+						</div>	
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">En los ultimos  2 años concurrio a realizarse el Papanicolaou?</label>
+							<div class="col-xs-4">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+							<div class="col-xs-5">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+
+
+
+						</div>	
+
+
+						
+						<div class="form-group">
+							<label class="control-label col-xs-6" for="ZipCode">En los ultimos 2 años se ha realizado una mamografia ?</label>
+							<div class="col-xs-4">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+							<div class="col-xs-5">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+						</div>
+
+
+			
+					</div>	
+
+		</div>
+		
+	 
+</div>	 <!-- Cierre row -->
+
+
+
+
+
+
+
+<div class="row form-horizontal" id="bloque_5">      <!-- Bloque 5 Adultos mayores -->
+			<div class="panel panel-default">
+			
+				<div class="panel-heading">Bloque 5 Adultos mayores</div>
+					<div class="panel-body">
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Necesita usar en forma permanente silla de ruedas , baston , andador, o algun otro instrumeto para caminar?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>	
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Usa audifonos o tiene dificultad para escuchar conversaciones o la television a un volumen normal?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>	
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Ha sufrido alguna caida en el ultimo mes?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>	
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Necesita o ha tenido que realizar modificaciones e su casa para no caerse o realizar sus tareas cotidianas?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>	
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Experimenta en forma cotidiana problemas de olvidos o confusiones?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>	
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Experimenta en forma cotidiana problemas de olvidos o confusiones?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>	
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Normalmente, ¿ Necesita ayuda para realizar tramites, como cobrar la juvilacion, pedir turno al medico por ejemplo?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>	
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Si tiene una  dificultad de salud  o una urgencia, ¿Cuenta con alguien que lo pueda ayudar a resolverla?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>	
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">¿ Concurre habitualmente a un centro de jubilados, Iglesia, Club u otro ambito de tipo social?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+							<div class="col-xs-6">
+								<input type="text" class="form-control" id="ZipCode" placeholder="Que actividad realiza?">
+							</div>
+
+						</div>	
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Tiene alguna actividad o Hobbie que haga frecuentemente para ocupar el tiempo libre ?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>	
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Respecto a la atencion Medica. ¿Tiene un medico de cabecera, es decir un profesional que lo conozca y que lo atienda habitualmente?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>	
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">El medico es de OSEP o recibe OSEP ?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>	
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Que tan complicado le resulta ver a un profesional cuando tiene que atenderse por algun motivo?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >Simple</option>
+								<option >Complicado</option>
+								<option >Muy Complicado</option>
+								<option >Viene a domicilio</option>
+
+								</select>
+							</div>
+
+						</div>	
+			
+					</div>	
+
+		</div>
+		
+	 
+</div>	 <!-- Cierre row -->
+
+
+
+
+
+<div class="row form-horizontal" id="bloque_6">      <!-- Bloque 6 discapacidad -->
+			<div class="panel panel-default">
+			
+				<div class="panel-heading">Bloque 6 Familias que tienen miembrs con discapacidad afiliados a OSEP</div>
+					<div class="panel-body">
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Cual es su Discapacidad?</label>
+							<div class="col-xs-6">
+
+								<div class="checkbox">
+								<label><input type="checkbox" value="">Motora</label>
+								</div>
+								<div class="checkbox">
+								<label><input type="checkbox" value="">Sensorial - Visual</label>
+								</div>
+								<div class="checkbox ">
+								<label><input type="checkbox" value="" >Sensorial - Auditiva</label>
+								</div>
+								<div class="checkbox ">
+								<label><input type="checkbox" value="" >Viceral</label>
+								</div>
+								<div class="checkbox ">
+								<label><input type="checkbox" value="" >Mental o Cognitiva</label>
+								</div>
+
+							</div>
+
+						</div>	
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">¿Realizo el empadronamiento en OSEP, Es decir hizo el tramite de registro de su situacion en la obra social?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								<option >NO sabia que habia que hacerlo</option>							
+								</select>
+							</div>
+
+						</div>	
+						<hr>
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">¿Quien o quienes lo orienta sobre los tratamientos que necesita? Es decir, ¿Quien o quienes que ustedes Valores le indica que tratamientos seria bueno realizar por su discapacidad?</label>
+							<div class="col-xs-6">
+
+								<div class="checkbox">
+								<label><input type="checkbox" value="">Medico general o Pediatra</label>
+								</div>
+								<div class="checkbox">
+								<label><input type="checkbox" value="">Medico Especialista</label>
+								</div>
+								<div class="checkbox ">
+								<label><input type="checkbox" value="" >Psicologo - Psiquiatra</label>
+								</div>
+								<div class="checkbox ">
+								<label><input type="checkbox" value="" >Medico Fisiátra</label>
+								</div>
+								<div class="checkbox ">
+								<label><input type="checkbox" value="" >Otro profecional de la salud</label>
+								</div>
+								<div class="checkbox ">
+								<label><input type="checkbox" value="" >Docente</label>
+								</div>
+								<div class="checkbox ">
+								<label><input type="checkbox" value="" >Integrante de la red de Madres</label>
+								</div>
+								<div class="checkbox ">
+								<label><input type="checkbox" value="" >Integrante de otra organizacion sivil o de ayuda</label>
+								</div>
+								<div class="checkbox ">
+								<label><input type="checkbox" value="" >Otra persona que tiene una discapacidad, o un familiar con una dicapacidad que no esta en ninguna organizacion</label>
+								</div>
+								<div class="checkbox ">
+								<label><input type="checkbox" value="" >Otro</label>
+								</div>
+
+							</div>
+
+						</div>	
+	
+						<hr>
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">De los profesionales de la salud que mencionó, ¿Alguno es profesional de cabecera?</label>
+							<div class="col-xs-6">
+
+								<div class="checkbox ">
+								<label><input type="checkbox" value="" >Medico general  Pediatra</label>
+								</div>
+								<div class="checkbox ">
+								<label><input type="checkbox" value="" >Medico especialista</label>
+								</div>
+								<div class="checkbox ">
+								<label><input type="checkbox" value="" >Psicologo - Psiquiatra</label>
+								</div>
+								<div class="checkbox ">
+								<label><input type="checkbox" value="" >Otro profecional de la salud</label>
+								</div>
+
+							</div>
+
+						</div>	
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Que le gustaria que OSEP hiciera por X ?</label>
+							<div class="col-xs-6">
+								<textarea rows="3" class="form-control" id="postalAddress" placeholder=""></textarea>
+							</div>
+
+						</div>	
+
+			
+					</div>	
+
+		</div>
+		
+	 
+</div>	 <!-- Cierre row -->
+
+
+<div class="row form-horizontal" id="bloque_7">      <!-- Bloque 7 Embarazadas -->
+			<div class="panel panel-default">
+			
+				<div class="panel-heading">Bloque 7 Embarazadas</div>
+					<div class="panel-body">
+				
+						<blockquote>
+						<p>Le voy a preguntar por la/s  afiliada/s integrante/s de la familia que estan embarazada/s.</p>
+						</blockquote>
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">De cuantos meses esta embarazada?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >1</option>
+								<option >2</option>							
+								<option >3</option>							
+								<option >4</option>	
+								<option >5</option>
+								<option >6</option>							
+								<option >7</option>							
+								<option >8</option>	
+								<option >9</option>	
+								</select>
+							</div>
+
+						</div>	
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Concurrio al control el mes pasado?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>	
+
+
+						
+						<div class="form-group">
+							<label class="control-label col-xs-6" for="ZipCode">Que tan complicado le resulto en esa oportunidad todo el proceso que implicó hacerse el control , 
+								teniendo en cuenta los pasos desde conseguir tueno hasta que la atiendan?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >Simple</option>
+								<option >Complicado</option>							
+								</select>
+							</div>
+						
+						</div>
+
+
+						<div class="form-group">
+							<label class="control-label col-xs-6" for="ZipCode">Por que no concurrio?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >Simple</option>
+								<option >Complicado</option>							
+								</select>
+							</div>
+						
+						</div>
+
+
+
+
+						<div class="form-group">
+							<label class="control-label col-xs-6" for="ZipCode">El embarazo lo esta llevando un profesional en especial  o se atiende con distintos profesionales? </label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >Un profesional</option>
+								<option >Distintos profesionales en un mismo lugar de atencion</option>							
+								<option >Distintos lugares de atencion</option>							
+								</select>
+							</div>
+						
+						</div>
+
+
+						<div class="form-group">
+							<label class="control-label col-xs-6" for="ZipCode">El o los profesionales que la atienden, han detectado algun problema en el embarazo?</label>
+							<div class="col-xs-6">
+								<input type="text" class="form-control" id="ZipCode" placeholder=" Cual?">
+							</div>
+						</div>
+
+
+
+						<div class="form-group">
+							<label class="control-label col-xs-6" for="ZipCode">Cuenta con apoyo familiar, de su pareja o de alguna otra persona que la acompañe  y la auyde mientras transcurre el embarazo?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >Si</option>
+								<option >NO</option>							
+								</select>
+							</div>
+						
+						</div>
+
+
+			
+					</div>	
+
+		</div>
+		
+	 
+</div>	 <!-- Cierre row -->
+
+
+
+
+
+<div class="row form-horizontal" id="bloque_8">      <!-- Bloque 8 Vivienda y habitat -->
+			<div class="panel panel-default">
+			
+				<div class="panel-heading">Bloque 8 Vivienda y Habitat</div>
+					<div class="panel-body">
+
+						<blockquote>
+						<p>Voy a preguntar sobre caracteristicas muy generales de la vivienda.</p>
+						</blockquote>
+
+
+						<div class="form-group text-center">
+							
+							<label class="control-label col-xs-6 ">Respecto de los servicios basicos, ¿esta casa tiene conexion a?</label>
+
+						</div>
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Red de energia Electrica</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>	
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Red de gas natural</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>	
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Red de Agua potable</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>	
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Cloacas</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>							
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Telefono Fijo</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>	
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Internet</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>	
+						<hr>
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">La vivienda es propia?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>	
+
+						<hr>
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">En su barrio / Zona donde vive. Hay presencia de ?</label>
+
+						</div>	
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Basurales a cielo abierto</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Fabricas contaminantes</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Animales Abandonados</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Lugares de Cria de Animales </label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>
+
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Desague de Cloacas, Abuas Servidas</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Insectos y roedores</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Agroquimicos</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Canales de rigo, Piletas u otro lugar donde haya  agua que traiga problemas</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Calles muy transitadas  u Autopistas</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Calles de tierra</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>	
+
+
+
+						<hr>
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Nivel de vivienda</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >AB</option>
+								<option >C1</option>		
+								<option >C2</option>
+								<option >C3</option>	
+								<option >D1</option>
+								<option >D2</option>	
+								<option >E</option>	
+
+
+								</select>
+							</div>
+
+						</div>			
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Accesibilidad</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >Simple</option>
+								<option >Compleja</option>							
+								</select>
+							</div>
+
+						</div>	
+
+
+
+						<div class="form-group">
+							<label class="control-label col-xs-6" for="ZipCode">Observaciones generales</label>
+							<div class="col-xs-6">
+								<input type="text" class="form-control" id="ZipCode" placeholder="Observaciones">
+							</div>
+						</div>
+
+
+
+
+
+
+			
+					</div>	
+
+		</div>
+		
+	 
+</div>	 <!-- Cierre row -->
+
+
+
+
+<div class="row form-horizontal" id="bloque_9">      <!-- Bloque 9 Final para todas las familias -->
+			<div class="panel panel-default">
+			
+				<div class="panel-heading">Bloque 9 Final para todas las familias</div>
+					<div class="panel-body">
+
+						<blockquote>
+						<p>Datos Ocupacionales.</p>
+						</blockquote>
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Contribuyes con la economia de la familia</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >SI</option>
+								<option >NO</option>							
+								</select>
+							</div>
+
+						</div>	
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Cuantas horas trabaja por semana</label>
+							<div class="col-xs-6">
+								<input type="text" class="form-control" id="ZipCode" placeholder=" hs">
+							</div>
+
+						</div>	
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">En que lugar trabaja</label>
+							<div class="col-xs-6">
+								<input type="text" class="form-control" id="ZipCode" placeholder="Lugar">
+							</div>
+
+						</div>	
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">A que se dedica concretamente</label>
+							<div class="col-xs-6">
+								<input type="text" class="form-control" id="ZipCode" placeholder=" Ocupacion">
+							</div>
+
+						</div>						
+
+						<hr>
+
+
+
+
+
+
+			
+					</div>	
+
+		</div>
+		
+	 
+</div>	 <!-- Cierre row -->
+
+
+
+</form>
+
+
+  
+  
+</div>
+ 
+ <!--</div>   Cierre contenedor principal -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</div><!-- /.page-content -->
+	</div><!-- /.main-content-inner -->
+</div><!-- /.main-content -->
+
+
+
+<!--Para que se vean los botones de la tabla responsive-->
