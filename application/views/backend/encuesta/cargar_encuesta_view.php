@@ -71,7 +71,7 @@
 					 </div>
 				
 
-					 <div class="form-group">
+					 <div class="form-group" id= "b1_div_afiliado">
 						 <label for="inputPassword" class="control-label col-xs-6">Numero Afiliado:</label>
 							<div class="col-xs-6">
 								<input type="text" name="b1_afiliado"  class="form-control" placeholder="Edad" id="b1_afiliado">

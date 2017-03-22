@@ -39,15 +39,32 @@ var bloque1= {
         genero: "m",
         osep: '0',
         embarazo: '1',
-        discapacidad: '1'
+        discapacidad: '1',
+        update: function(){
+
+	        bloque1.accion_bloques();
+        }
 
     },
 
 
     update_data: function(){
 
-        $( "#b1_osep" ).val(bloque1.conf.osep);
+        // verifico si tiene osep
 
+        if(bloque1.conf.osep == '0'){
+
+            $( "#b1_div_afiliado" ).show();
+
+        }else{
+
+            $( "#b1_div_afiliado" ).hide();
+        }
+
+        $( "#b1_osep" ).val(bloque1.conf.osep);
+        
+
+        // verifico genero
         if(bloque1.conf.genero == 'm'){
 
             $( "#b1_div_embarazo" ).hide();
@@ -57,6 +74,10 @@ var bloque1= {
         }
 
         $( "#b1_embarazo" ).val(bloque1.conf.embarazo);
+
+
+
+
         $( "#b1_disc" ).val(bloque1.conf.discapacidad);
     },
 
@@ -68,6 +89,7 @@ var bloque1= {
                     'change, click', function(){
 
                         bloque1.conf.genero= $(this).val();
+                        bloque1.conf.update();
 
                     });
 
@@ -75,6 +97,7 @@ var bloque1= {
                     'focusout', function(){
 
                         bloque1.conf.nombre= $(this).val();
+                        bloque1.conf.update();
 
                     });
 
@@ -82,6 +105,7 @@ var bloque1= {
                     'focusout', function(){
 
                         bloque1.conf.edad= $(this).val();
+                        bloque1.conf.update();
 
                     });
 
@@ -90,6 +114,7 @@ var bloque1= {
                     'change, click', function(){
 
                         bloque1.conf.osep= $(this).val();
+                        bloque1.conf.update();
 
                     });
 
@@ -97,6 +122,7 @@ var bloque1= {
                     'change, click', function(){
 
                         bloque1.conf.embarazo= $(this).val();
+                        bloque1.conf.update();
 
                     });
 
@@ -104,14 +130,10 @@ var bloque1= {
                     'change, click', function(){
 
                         bloque1.conf.discapacidad= $(this).val();
+                        bloque1.conf.update();
 
                     });
 
-
-
-
-
-                bloque1.accion_bloques();
 
     },
 
