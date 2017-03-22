@@ -8,7 +8,8 @@
 	</script>
 	<script src="../../../assets/js/bootstrap.js"></script>
 
-	<script src="<?php echo base_url('/assets/js/app/app.js');?>"></script>
+
+	<script src="<?php echo base_url('/assets/js/app/'. $javascript);?>"></script>
 
 
 

@@ -3,105 +3,10 @@
 		<div class="page-content">
 			
 
-
+<?php var_dump($this->input->post());  ?>
 
 <!--<div class="container">   contenedor principal -->
- 
- 
-
-  <div class="row form-horizontal">     <!-- bloque 0 -->
-		<div class="panel panel-default">
-		
-			<div class="panel-heading">Bloque 0 Identificacion de territorio , facilitador</div>
-				<div class="panel-body">
-				
-					 <div class="form-group">
-						 <label for="inputName" class="control-label col-xs-6">Numero relevamiento:</label>
-						 <div class="col-xs-6">
-							 <input type="name" class="form-control" placeholder="Numero">
-						 </div>
-					 </div>				
-				
-					 <div class="form-group">
-						 <label for="inputName" class="control-label col-xs-6">Nombre y apellido:</label>
-						 <div class="col-xs-6">
-							 <input type="name" class="form-control" placeholder="Nombre y appellido">
-						 </div>
-					 </div>
-					 <div class="form-group">
-						 <label for="inputEmail" class="control-label col-xs-6">fecha:</label>
-						 <div class="col-xs-6">
-							 <input type="text" class="form-control" placeholder="dd/mm/aa">
-						 </div>
-					 </div>
-					 
-					<div class="form-group">
-						<label class="control-label col-xs-6">Departamento</label>
-						<div class="col-xs-6">
-							<select class="form-control" id="departamento">
-							<option>Date</option>
-							</select>
-						</div>
-
-					</div>
-					
-					<div class="form-group">
-						<label class="control-label col-xs-6">Distrito:</label>
-						<div class="col-xs-6">
-							<select class="form-control" id="distrito">
-							<option>Date</option>
-							</select>
-						</div>
-
-					</div>	
-					 <div class="form-group">
-						 <label for="inputPassword" class="control-label col-xs-6">Barrio:</label>
-						 <div class="col-xs-6">
-							 <input type="text" class="form-control" placeholder="Barrio">
-						 </div>
-					 </div>
-					 
-					 <hr>
-					 
-					 <div class="form-group">
-						 <label for="inputPassword" class="control-label col-xs-6">Calle:</label>
-						 <div class="col-xs-6">
-							 <input type="text" class="form-control" placeholder="Asunto">
-						 </div>
-					 </div>				 
-					 
-					 <div class="form-group">
-						 <label for="inputPassword" class="control-label col-xs-6">Numero:</label>
-						 <div class="col-xs-6">
-							 <input type="text" class="form-control" placeholder="Asunto">
-						 </div>
-					 </div>					 
-					 
-					 
-					 <div class="form-group">
-						 <label for="inputPassword" class="control-label col-xs-6">entre que calles?:</label>
-						 <div class="col-xs-6">
-							 <input type="text" class="form-control" placeholder="Asunto">
-						 </div>
-					 </div>		
-					 
-					 <div class="form-group">
-						 <label for="inputPassword" class="control-label col-xs-6">Observaciones:</label>
-						 <div class="col-xs-6">
-							 <input type="text" class="form-control" placeholder="Asunto">
-						 </div>
-					 </div>						 
-
-
-				</div>
-
-		</div>		
-		
-		
-</div>	
- 
- 
- 
+ <form id="add_funds" action="" method="post">
 
  <div class="row form-horizontal" id="bloque_1">   <!-- bloque 1 -->
 		<div class="panel panel-default">
@@ -112,7 +17,7 @@
 			<div class="form-group">
 				 <label for="inputName" class="control-label col-xs-6">Nombre:</label>
 				 <div class="col-xs-6">
-					 <input type="name" class="form-control" placeholder="Nombre">
+					 <input type="text" class="form-control" placeholder="Nombre" name ="b1_nombre"  id ="b1_nombre"  >
 				 </div>
 			 </div>
 			 <div class="form-group">
@@ -125,12 +30,12 @@
 				 <label for="inputPassword" class="control-label col-xs-6">Sexo:</label>
 					<div class="col-xs-2">
 						<label class="radio-inline">
-							<input type="radio" name="genderRadios" value="m"> Masculino
+							<input type="radio" name="b1_genero" value="m" checked = "true"> Masculino
 						</label>
 					</div>
 					<div class="col-xs-2">
 						<label class="radio-inline">
-							<input type="radio" name="genderRadios" value="f"> Femenino
+							<input type="radio" name="b1_genero" value="f"> Femenino
 						</label>
 					</div>
 			 </div>
@@ -158,7 +63,7 @@
 					 <div class="form-group">
 						 <label for="inputPassword" class="control-label col-xs-6">Tiene Osep:</label>
 						<div class="col-xs-6">
-							<select class="form-control">
+							<select class="form-control" name= "b1_osep" id= "b1_osep">
 							<option value="0">SI</option>
 							<option value="1">NO</option>
 							</select>
@@ -167,18 +72,26 @@
 				
 
 					 <div class="form-group">
+						 <label for="inputPassword" class="control-label col-xs-6">Numero Afiliado:</label>
+							<div class="col-xs-6">
+								<input type="text" name="b1_afiliado"  class="form-control" placeholder="Edad" id="b1_afiliado">
+							</div>
+					 </div>
+
+
+					 <div class="form-group">
 						 <label for="inputEmail" class="control-label col-xs-6">Tiene otra cobertura:</label>
 						<div class="col-xs-6">
-							<select class="form-control">
+							<select class="form-control" name= "b1_otra" id= "b1_otra">
 							<option>Date</option>
 							</select>
 						</div>
 					 </div>
 
-					 <div class="form-group">
+					 <div class="form-group" id= "b1_div_embarazo">
 						 <label for="inputPassword" class="control-label col-xs-6">Esta embarazada:</label>
 						<div class="col-xs-6">
-							<select class="form-control">
+							<select class="form-control" name= "b1_embarazo" id= "b1_embarazo">
 							<option value="0">SI</option>
 							<option value="1">NO</option>
 							</select>
@@ -188,7 +101,7 @@
 					 <div class="form-group">
 						 <label for="inputPassword" class="control-label col-xs-6">Padece enfermedad Cronica:</label>
 						<div class="col-xs-6">
-							<select class="form-control">
+							<select class="form-control" name= "b1_cronica" id= "b1_cronica">
 							<option value="0">SI</option>
 							<option value="1">NO</option>
 							</select>
@@ -198,7 +111,7 @@
 					 <div class="form-group">
 						 <label for="inputPassword" class="control-label col-xs-6">Tiene alguna Discapacidad:</label>
 						<div class="col-xs-6">
-							<select class="form-control">
+							<select class="form-control" name= "b1_disc" id= "b1_disc">
 							<option value="0">SI</option>
 							<option value="1">NO</option>
 							</select>
@@ -303,7 +216,7 @@
 					<div class="panel-body">
 				
 						<blockquote>
-						<p>Osep esta muy interesada en fortalecer sus servicios en la etapa  de la infacia</p>
+						<p>Osep esta muy interesada en fortalecer sus servicios en la etapa  de la infancia</p>
 						</blockquote>
 						<div class="form-group">
 							
