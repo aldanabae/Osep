@@ -18,8 +18,14 @@ class Probando_model extends CI_Model {
 		//$this->db->join('respuesta','respuesta.idRespuesta=respuesta_pregunta.idRespuesta','left');
 		$query = $this->db->get();	
 
-		if ($query->num_rows() > 0) return $query;
-			else return false;	
+		if ($query->num_rows() > 0) {
+			foreach ($query->result() as $fila){
+				$data[] = $fila;
+			}	
+			return $data;
+		}else{
+			return false;
+		}	
 	}
 
 	public function obtenerPreguntas(){
