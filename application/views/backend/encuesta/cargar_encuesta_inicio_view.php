@@ -28,12 +28,15 @@
                                     <input type="name" class="form-control" placeholder="Nombre y apellido" name= "nom_facilitador">
                                 </div>
                             </div>
+
+                            
                             <div class="form-group">
-                                <label for="inputEmail" class="control-label col-xs-6">fecha:</label>
+                                <label for="fecha_relevamiento" class="control-label col-xs-6">fecha:</label>
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control" placeholder="dd/mm/aa" name= "fecha_relevamiento">
+                                    <input class="form-control date-picker" id="id-date-picker-1" data-date-format="dd-mm-yyyy" type="text" name= "fecha_relevamiento">
                                 </div>
                             </div>
+
                             
                             <div class="form-group">
                                 <label class="control-label col-xs-6">Departamento</label>

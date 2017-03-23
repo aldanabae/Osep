@@ -9,16 +9,19 @@ var bloque5= $("#bloque_5");
 var bloque6= $("#bloque_6");
 var bloque7= $("#bloque_7");
 var bloque8= $("#bloque_8");
+var bloque_btn= $("#btn_encuesta");
 //var bloque9= $("#bloque_9");
 
 // inicializo los bloques
-
+bloque2.hide();   // uso
 bloque3a.hide();   // bebes
 bloque3b.hide();   // niños
 bloque4.hide();     // mujeres
 bloque5.hide();     // adultos
 bloque6.hide();     // discapacidad
 bloque7.hide();     // embarazo
+bloque_btn.hide();     // botonera abajo 
+
 
 
 // logica bloque1
@@ -69,9 +72,8 @@ var bloque1= {
             $( "#b1_div_embarazo" ).show();
         }
 
-        $( "#b1_embarazo" ).val(bloque1.conf.embarazo);
 
-        $( "#b1_disc" ).val(bloque1.conf.discapacidad);
+
     },
 
     bindComponent: function(){
@@ -102,6 +104,13 @@ var bloque1= {
 
                     });
 
+                $( "#b1_estudio" ).on(
+                    'change, click', function(){
+
+                        bloque1.conf.estudio= $(this).val();
+                        bloque1.conf.update();
+
+                    });
 
                 $( "#b1_osep" ).on(
                     'change, click', function(){
@@ -125,97 +134,79 @@ var bloque1= {
                         bloque1.conf.discapacidad= $(this).val();
                         bloque1.conf.update();
 
-                    });
+                });
+
+               $( "#b1_disc" ).on(
+                    'change, click', function(){
+
+                        bloque1.conf.discapacidad= $(this).val();
+                        bloque1.conf.update();
+
+                });
+
+                $( "#btn_bloques" ).on(
+                    'click', function(){
+
+                        bloque1.accion_bloques();
+                        
+
+                });               
+
+
 
 
     },
 
-    accion_bloques : function(){
+    action_block : function(){
 
-        //var edad = parseInt(bloque1.conf.edad);
-        var edad = bloque1.conf.edad;
+        if(bloque1.validate()){
 
-                if(bloque1.conf.genero == 'f' &&  edad ){
-
-                // bloque3_a.mostrar(false);
-                // bloque3b.mostrar(false);
-                // bloque7.mostrar(false);
+            
 
 
 
 
 
+        }else{
 
 
-
-
-
-
-                }else{
-
-                //bloque3b.mostrar(true);
-
-                }
-
-            bloque1.update_data();
-    },
-
-
-
-    desplegar_ninio: function(){
-
-        if(bloque1.conf.edad != null){
-
-
-            if(parseInt(bloque1.conf.edad) > 2 && parseInt(bloque1.conf.edad)< 15 ){
-
-                bloque3b.show();   // desplegar formulario niños
-                bloque3a.hide();   // bebes  no
-
-            }else{
-
-                bloque3b.hide();   // desplegar formulario niños
-                bloque3a.show();   // bebes  no
-
-            }
-
+           alert('Los datos son incorrectos o faltan');
         }
 
+        //var edad = (bloque1.conf.edad);
+        // var edad = bloque1.conf.edad;
+
+        //         if(bloque1.conf.osep == '0'  ){
+
+        //             bloque1.conf.update();
+
+
+        //         }else{
+
+        //             bloque3a.hide();   // bebes
+        //             bloque3b.hide();   // niños
+        //             bloque4.hide();     // mujeres
+        //             bloque5.hide();     // adultos
+        //             bloque6.hide();     // discapacidad
+        //             bloque7.hide();     // embarazo
+
+        //         }
+
+            
     },
 
-    desplegar_mujer: function(){
 
 
-        if(bloque1.conf.edad != null){
+    validate: function(){
 
+     var validacion = false;
 
-            if(parseInt(bloque1.conf.edad) > 16 ){
-
-                bloque4.show();   // desplegar formulario niños
-                bloque3a.hide();   // bebes  no
-
-            }else{
-
-                bloque1.desplegar_ninio();
-
-            }
-
-        }
+     
+     
 
 
 
 
-
-
-        
-    },
-
-    desplegar_disc: function(){
-
-        
-    },
-
-    desplegar_ancianidad: function(){
 
         
     }
@@ -233,5 +224,12 @@ $(function() {
 
 
   bloque1.bindComponent();
+
+
+
+    $('.date-picker').datepicker({
+        autoclose: true,
+        todayHighlight: true
+    })
 
 });
