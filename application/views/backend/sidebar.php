@@ -125,7 +125,7 @@
 							<ul class="submenu">
 
 								<li class="">
-									<a href="<?php echo base_url()?>abms/abmMedicamentosC/">
+									<a href="<?php echo base_url()?>encuesta/cargarEncuesta/">
 										<i class="menu-icon fa fa-caret-right"></i>
 										Cargar Relevamiento Realizado
 									</a>
@@ -140,11 +140,21 @@
 									<b class="arrow"></b>
 								</li>
 
+							
+
+								<li class="">
+									<a href="<?php echo base_url()?>abms/abmHabitacionesC/">
+										<i class="menu-icon fa fa-caret-right"></i>
+										Registrar Cita
+									</a>
+
+
 								<li class="">
 									<a href="<?php echo base_url()?>abms/abmVisitasC/">
 										<i class="menu-icon fa fa-caret-right"></i>
 										Pactar Visita 
 									</a>
+
 									<b class="arrow"></b>
 								</li>
 

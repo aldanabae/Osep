@@ -129,7 +129,29 @@ if($data['preguntas'] != 0){
 
 
 
+<?php
+print '======================================================';
+$this->db->select('*');
+$this->db->from('respuesta_pregunta');
+$this->db->join('pregunta','pregunta.idPregunta=respuesta_pregunta.idPregunta','left');
+$this->db->join('bloque','bloque.idBloque=pregunta.idBloque','left');
+$this->db->join('encuesta','encuesta.idEncuesta=bloque.idEncuesta','left');
+$this->db->join('tipo_pregunta','tipo_pregunta.idTipoPregunta=pregunta.idTipoPregunta','left');
+$this->db->join('etiqueta','etiqueta.idEtiqueta=pregunta.idEtiqueta','left');
 
+$this->db->join('respuesta','respuesta.idRespuesta=respuesta_pregunta.idRespuesta','left');
+$query = $this->db->get();	
+
+$respuesta=null;
+if ($query->num_rows() > 0) 
+{
+    $respuesta= $query;
+}else{
+ $respuesta=  false;	
+}
+
+var_dump($respuesta);
+?>
 
 
 
