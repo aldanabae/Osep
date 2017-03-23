@@ -12,10 +12,6 @@ class My_Controller extends Ci_Controller {
       $this->load->model('seguridad/abmNiveles_model');
       $this->load->model('seguridad/abmUsuarios_model');
       $this->load->model('abms/abmVisitas_model');
-
-   
-
-
    
   	}
 
