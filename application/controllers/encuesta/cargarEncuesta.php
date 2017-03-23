@@ -22,37 +22,89 @@ class CargarEncuesta extends CI_Controller{
 
 
 
-  	function index(){  
+        function index(){  
 
-            // bloque 0 carga inicial de datos de relevamiento
-            if($this->session->userdata('logged_in')){
-                    $session_data = $this->session->userdata('logged_in');
-                    $data['username'] = $session_data['username'];
-                    $data['nombreE'] = $session_data['nombreE'];
-                    $data['nivel'] = $session_data['nivel'];
-                    $this->session->set_flashdata('username', $data);
-                    $this->session->set_flashdata('nombreE', $data);
-                    $this->session->set_flashdata('nivel', $data);
-                    //mantener sidebar dinamica
-                    $session_data = $this->session->userdata('logged_in');
-                    $data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
-                    $this->load->view('backend/header');
-                    $this->load->view('backend/sidebar',$data);
-                    $js['javascript']= "app.js";
+                // bloque 0 carga inicial de datos de relevamiento
+                if($this->session->userdata('logged_in')){
+                        $session_data = $this->session->userdata('logged_in');
+                        $data['username'] = $session_data['username'];
+                        $data['nombreE'] = $session_data['nombreE'];
+                        $data['nivel'] = $session_data['nivel'];
+                        $this->session->set_flashdata('username', $data);
+                        $this->session->set_flashdata('nombreE', $data);
+                        $this->session->set_flashdata('nivel', $data);
+                        //mantener sidebar dinamica
+                        $session_data = $this->session->userdata('logged_in');
+                        $data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
+                        $this->load->view('backend/header');
+                        $this->load->view('backend/sidebar',$data);
+                        $js['javascript']= "app.js";
 
-                    $this->load->view("backend/encuesta/cargar_encuesta_inicio_view", $js);
-                    $this->load->view('backend/footer');
-                    $this->load->view('backend/encuesta/script_js');
+                        $this->load->view("backend/encuesta/cargar_encuesta_inicio_view", $js);
+                        $this->load->view('backend/footer');
+                        $this->load->view('backend/encuesta/script_js');
 
 
-            }else{
-                    $this->load->helper(array('form'));
-                    $this->load->view('login_view');
-            }
+                }else{
+                        $this->load->helper(array('form'));
+                        $this->load->view('login_view');
+                }
 
-	}
+        }
 
-    function cargabloques()
+        function cargabloques()
+        {
+
+                if($this->session->userdata('logged_in')){
+                        $session_data = $this->session->userdata('logged_in');
+                        $data['username'] = $session_data['username'];
+                        $data['nombreE'] = $session_data['nombreE'];
+                        $data['nivel'] = $session_data['nivel'];
+                        $this->session->set_flashdata('username', $data);
+                        $this->session->set_flashdata('nombreE', $data);
+                        $this->session->set_flashdata('nivel', $data);
+                        //mantener sidebar dinamica
+                        $session_data = $this->session->userdata('logged_in');
+                        $data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
+
+                        //var_dump($this->input->post());
+
+                        if($this->input->post('Continuar') && $this->input->post('Continuar') != '' && $this->input->post('nom_facilitador') != '')
+                        {
+
+                        $this->load->view('backend/header');
+                        $this->load->view('backend/sidebar',$data);
+                        $this->load->view("backend/encuesta/cargar_encuesta_view");
+                        $this->load->view('backend/footer');
+                        $js['javascript']= "bloques.js";
+                        $this->load->view('backend/encuesta/script_js', $js);
+                        
+                        }
+
+                        else
+                        {
+
+                        redirect('encuesta/cargarEncuesta');
+
+                        }
+
+
+
+
+                }else{
+                        $this->load->helper(array('form'));
+                        $this->load->view('login_view');
+                }
+
+
+
+        }
+
+
+
+
+
+function cargabloques_final()
     {
 
             if($this->session->userdata('logged_in')){
@@ -69,12 +121,12 @@ class CargarEncuesta extends CI_Controller{
 
                     //var_dump($this->input->post());
 
-                    if($this->input->post('Continuar'))
+                    if(true)
                     {
 
                         $this->load->view('backend/header');
                         $this->load->view('backend/sidebar',$data);
-                        $this->load->view("backend/encuesta/cargar_encuesta_view");
+                        $this->load->view("backend/encuesta/cargar_encuesta_final_view");
                         $this->load->view('backend/footer');
                         $js['javascript']= "bloques.js";
                         $this->load->view('backend/encuesta/script_js', $js);
@@ -99,6 +151,7 @@ class CargarEncuesta extends CI_Controller{
 
 
     }
+
 
 
 

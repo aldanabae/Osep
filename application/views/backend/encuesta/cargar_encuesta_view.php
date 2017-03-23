@@ -45,7 +45,7 @@
 					<div class="form-group">
 						<label class="control-label col-xs-6">Parentezco con el titular:</label>
 						<div class="col-xs-6">
-							<select class="form-control">
+							<select class="form-control" name= "b1_parent" id= "b1_parent">
 							<option>Date</option>
 							</select>
 						</div>
@@ -54,7 +54,7 @@
 					 <div class="form-group">
 						 <label for="inputEmail" class="control-label col-xs-6">cobertura de salud:</label>
 						<div class="col-xs-6">
-							<select class="form-control">
+							<select class="form-control" name= "b1_cober" id= "b1_cober">
 							<option>Date</option>
 							</select>
 						</div>
@@ -122,7 +122,7 @@
 					 <div class="form-group">
 						 <label for="inputPassword" class="control-label col-xs-6">Dependencia:</label>
 						<div class="col-xs-6">
-							<select class="form-control">
+							<select class="form-control" name= "b1_dep" id= "b1_dep" >
 							<option value="0">SI</option>
 							<option value="1">NO</option>
 							</select>
@@ -132,7 +132,7 @@
 					 <div class="form-group">
 						 <label for="inputPassword" class="control-label col-xs-6">Tiene algun pariente con OSEP a su cargo que no viva en la casa?:</label>
 						<div class="col-xs-6">
-							<select class="form-control">
+							<select class="form-control" name= "b1_pariente" id= "b1_pariente" >
 							<option value="0">SI</option>
 							<option value="1">NO</option>
 							</select>
@@ -969,370 +969,11 @@
 
 
 
-<div class="row form-horizontal" id="bloque_8">      <!-- Bloque 8 Vivienda y habitat -->
-			<div class="panel panel-default">
-			
-				<div class="panel-heading">Bloque 8 Vivienda y Habitat</div>
-					<div class="panel-body">
 
-						<blockquote>
-						<p>Voy a preguntar sobre caracteristicas muy generales de la vivienda.</p>
-						</blockquote>
 
 
-						<div class="form-group text-center">
-							
-							<label class="control-label col-xs-6 ">Respecto de los servicios basicos, ¿esta casa tiene conexion a?</label>
 
-						</div>
 
-
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">Red de energia Electrica</label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option >SI</option>
-								<option >NO</option>							
-								</select>
-							</div>
-
-						</div>	
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">Red de gas natural</label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option >SI</option>
-								<option >NO</option>							
-								</select>
-							</div>
-
-						</div>	
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">Red de Agua potable</label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option >SI</option>
-								<option >NO</option>							
-								</select>
-							</div>
-
-						</div>	
-
-
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">Cloacas</label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option >SI</option>
-								<option >NO</option>							
-								</select>
-							</div>
-
-						</div>							
-
-
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">Telefono Fijo</label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option >SI</option>
-								<option >NO</option>							
-								</select>
-							</div>
-
-						</div>	
-
-
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">Internet</label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option >SI</option>
-								<option >NO</option>							
-								</select>
-							</div>
-
-						</div>	
-						<hr>
-
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">La vivienda es propia?</label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option >SI</option>
-								<option >NO</option>							
-								</select>
-							</div>
-
-						</div>	
-
-						<hr>
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">En su barrio / Zona donde vive. Hay presencia de ?</label>
-
-						</div>	
-
-
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">Basurales a cielo abierto</label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option >SI</option>
-								<option >NO</option>							
-								</select>
-							</div>
-
-						</div>
-
-
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">Fabricas contaminantes</label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option >SI</option>
-								<option >NO</option>							
-								</select>
-							</div>
-
-						</div>
-
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">Animales Abandonados</label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option >SI</option>
-								<option >NO</option>							
-								</select>
-							</div>
-
-						</div>
-
-
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">Lugares de Cria de Animales </label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option >SI</option>
-								<option >NO</option>							
-								</select>
-							</div>
-
-						</div>
-
-
-
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">Desague de Cloacas, Abuas Servidas</label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option >SI</option>
-								<option >NO</option>							
-								</select>
-							</div>
-
-						</div>
-
-
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">Insectos y roedores</label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option >SI</option>
-								<option >NO</option>							
-								</select>
-							</div>
-
-						</div>
-
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">Agroquimicos</label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option >SI</option>
-								<option >NO</option>							
-								</select>
-							</div>
-
-						</div>
-
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">Canales de rigo, Piletas u otro lugar donde haya  agua que traiga problemas</label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option >SI</option>
-								<option >NO</option>							
-								</select>
-							</div>
-
-						</div>
-
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">Calles muy transitadas  u Autopistas</label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option >SI</option>
-								<option >NO</option>							
-								</select>
-							</div>
-
-						</div>
-
-
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">Calles de tierra</label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option >SI</option>
-								<option >NO</option>							
-								</select>
-							</div>
-
-						</div>	
-
-
-
-						<hr>
-
-
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">Nivel de vivienda</label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option >AB</option>
-								<option >C1</option>		
-								<option >C2</option>
-								<option >C3</option>	
-								<option >D1</option>
-								<option >D2</option>	
-								<option >E</option>	
-
-
-								</select>
-							</div>
-
-						</div>			
-
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">Accesibilidad</label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option >Simple</option>
-								<option >Compleja</option>							
-								</select>
-							</div>
-
-						</div>	
-
-
-
-						<div class="form-group">
-							<label class="control-label col-xs-6" for="ZipCode">Observaciones generales</label>
-							<div class="col-xs-6">
-								<input type="text" class="form-control" id="ZipCode" placeholder="Observaciones">
-							</div>
-						</div>
-
-
-
-
-
-
-			
-					</div>	
-
-		</div>
-		
-	 
-</div>	 <!-- Cierre row -->
-
-
-
-
-<div class="row form-horizontal" id="bloque_9">      <!-- Bloque 9 Final para todas las familias -->
-			<div class="panel panel-default">
-			
-				<div class="panel-heading">Bloque 9 Final para todas las familias</div>
-					<div class="panel-body">
-
-						<blockquote>
-						<p>Datos Ocupacionales.</p>
-						</blockquote>
-
-
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">Contribuyes con la economia de la familia</label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option >SI</option>
-								<option >NO</option>							
-								</select>
-							</div>
-
-						</div>	
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">Cuantas horas trabaja por semana</label>
-							<div class="col-xs-6">
-								<input type="text" class="form-control" id="ZipCode" placeholder=" hs">
-							</div>
-
-						</div>	
-
-
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">En que lugar trabaja</label>
-							<div class="col-xs-6">
-								<input type="text" class="form-control" id="ZipCode" placeholder="Lugar">
-							</div>
-
-						</div>	
-
-
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">A que se dedica concretamente</label>
-							<div class="col-xs-6">
-								<input type="text" class="form-control" id="ZipCode" placeholder=" Ocupacion">
-							</div>
-
-						</div>						
-
-						<hr>
-
-
-
-
-
-
-			
-					</div>	
-
-		</div>
-		
-	 
-</div>	 <!-- Cierre row -->
 
 
 
