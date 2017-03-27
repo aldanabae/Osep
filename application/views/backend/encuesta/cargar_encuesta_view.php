@@ -3,7 +3,7 @@
 		<div class="page-content">
 			
 
-<?php var_dump($this->input->post());  ?>
+<?php //var_dump($this->input->post());  ?>
 
 <!--<div class="container">   contenedor principal -->
  <form id="add_funds" action="" method="post">
@@ -23,9 +23,11 @@
 			 <div class="form-group">
 				 <label for="inputEmail" class="control-label col-xs-6">Edad:</label>
 				 <div class="col-xs-6">
-					 <input type="text" name="b1_edad"  class="form-control" placeholder="Edad" id="b1_edad">
+					 <input type="number" name="b1_edad"  class="form-control" placeholder="Edad" id="b1_edad">
 				 </div>
 			 </div>
+
+
 			 <div class="form-group">
 				 <label for="inputPassword" class="control-label col-xs-6">Sexo:</label>
 					<div class="col-xs-2">
@@ -46,16 +48,82 @@
 						<label class="control-label col-xs-6">Parentezco con el titular:</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_parent" id= "b1_parent">
-							<option>Date</option>
+							<option value="1">Titular</option>
+							<option value="2">Conyuge o Pareja Conviviente</option>
+							<option value="3">Hijo /a</option>
+							<option value="4">Padre Madre</option>
+							<option value="5">Suegro /a</option>
+							<option value="6">Yerno / Nuera</option>
+							<option value="7">Nieto /a</option>
+							<option value="8">Otro Familiar</option>
+							<option value="9">Otro no Familiar</option>
 							</select>
 						</div>
 
 					</div>	
+
+
+					<div class="form-group">
+						<label class="control-label col-xs-6">Estudia?:</label>
+						<div class="col-xs-6">
+							<select class="form-control" name= "b1_estudio" id= "b1_estudio">
+							<option value="0">SI</option>
+							<option value="1" >NO</option>
+							</select>
+						</div>
+
+					</div>	
+
+
+					 <div class="form-group" id ="b1_div_nivel">
+						 <label for="inputEmail" class="control-label col-xs-6">Nivel de Estudios:</label>
+						<div class="col-xs-6">
+							<select class="form-control" name= "b1_nivel" id= "b1_nivel">
+							<option value="0">Ninguno</option>
+							<option value="1">Primario Incompleto</option>
+							<option value="2">Primario Completo</option>
+							<option value="3">Secundario Incompleto</option>
+							<option value="4">Secundario Completo</option>
+							<option value="5">Terciario Incompleto</option>
+							<option value="6">Terciario Completo</option>
+							<option value="7">Universitario Incompleto</option>
+							<option value="8">Universitario Completo</option>
+
+
+							</select>
+						</div>
+					 </div>
+
+
+					 <div class="form-group">
+						 <label for="inputEmail" class="control-label col-xs-6">Ocupacion:</label>
+						<div class="col-xs-6">
+							<select class="form-control" name= "b1_ocupacion" id= "b1_ocupacion">
+							<option value="1">Trabajo Remunerado</option>
+							<option value="2">Jubilado o pencionado</option>
+							<option value="3">Buscando Trabajo</option>
+							<option value="4">Estudiante Exclusivamente</option>
+							<option value="5">Ama de casa Exclusivamente</option>
+							<option value="6">Estudia y Trabaja</option>
+							<option value="7">No trabaja</option>
+							</select>
+						</div>
+					 </div>
+
+
+
 					 <div class="form-group">
 						 <label for="inputEmail" class="control-label col-xs-6">cobertura de salud:</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_cober" id= "b1_cober">
-							<option>Date</option>
+							<option value="0">Salud Publica</option>
+							<option value="1">Solo OSEP</option>
+							<option value="2">Obra Social</option>
+							<option value="3">Pre Paga</option>
+							<option value="4">OSEPy otra</option>
+							<option value="5">Servicio de emergencia</option>
+							<option value="6">Mutual con servicios Medicos</option>
+							<option value="7">Otra</option>
 							</select>
 						</div>
 					 </div>
@@ -74,7 +142,7 @@
 					 <div class="form-group" id= "b1_div_afiliado">
 						 <label for="inputPassword" class="control-label col-xs-6">Numero Afiliado:</label>
 							<div class="col-xs-6">
-								<input type="text" name="b1_afiliado"  class="form-control" placeholder="Edad" id="b1_afiliado">
+								<input type="number" name="b1_afiliado"  class="form-control" placeholder="Edad" id="b1_afiliado">
 							</div>
 					 </div>
 
@@ -83,7 +151,9 @@
 						 <label for="inputEmail" class="control-label col-xs-6">Tiene otra cobertura:</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_otra" id= "b1_otra">
-							<option>Date</option>
+							<option value="0" >SI</option>
+							<option value="1" selected =" true" >NO</option>
+
 							</select>
 						</div>
 					 </div>
@@ -93,7 +163,7 @@
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_embarazo" id= "b1_embarazo">
 							<option value="0">SI</option>
-							<option value="1">NO</option>
+							<option value="1" selected>NO</option>
 							</select>
 						</div>
 					 </div>
@@ -103,7 +173,7 @@
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_cronica" id= "b1_cronica">
 							<option value="0">SI</option>
-							<option value="1">NO</option>
+							<option value="1" selected =" true">NO</option>
 							</select>
 						</div>
 					 </div>
@@ -124,7 +194,7 @@
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_dep" id= "b1_dep" >
 							<option value="0">SI</option>
-							<option value="1">NO</option>
+							<option value="1" selected =" true">NO</option>
 							</select>
 						</div>
 					 </div>
@@ -134,14 +204,29 @@
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_pariente" id= "b1_pariente" >
 							<option value="0">SI</option>
-							<option value="1">NO</option>
+							<option value="1" selected =" true">NO</option>
 							</select>
 						</div>
 					 </div>
 
+
+
+					<hr>
+					<div class="form-group">
+						<div class="col-xs-offset-3 col-xs-9 text-right">
+							<input type="button" class="btn btn-primary" value="Generar Bloques" id= "btn_bloques">
+						</div>
+					</div>
+
 				</div>
 
-		</div>		
+
+
+
+		</div>	
+
+
+
 </div>			
 			
 			
@@ -172,7 +257,7 @@
 						<div class="form-group">
 							<label class="control-label col-xs-6" for="postalAddress">Para que lo utilizo?:</label>
 							<div class="col-xs-6">
-								<textarea rows="3" class="form-control" id="postalAddress" placeholder="Postal Address"></textarea>
+								<textarea rows="3" class="form-control" id="postalAddress" placeholder="Postal Address" ></textarea>
 							</div>
 						</div>
 
@@ -981,7 +1066,7 @@
 
 
         <br>
-        <div class="form-group">
+        <div class="form-group" id="btn_encuesta">
             <div class="col-xs-offset-3 col-xs-9">
                 <input type="submit" class="btn btn-primary" value="Finalizar Encuesta">
                 <input type="reset" class="btn btn-default" value="Nuevo integrante">

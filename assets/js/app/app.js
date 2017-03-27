@@ -390,90 +390,11 @@
 
 
 
-var bloque8= {
-
-    conf: {
-        nombre: '#bloque_8',
-        visible: true
-
-    },
-
-    template: $('#bloque_8'),
-
-        mostrar : function(valor)
-        {
-
-            if (valor)
-            {
-                this.template.show();
-            }else
-            {
-                this.template.hide();
-            }
-        },
-
-        init: function()
-        {
-            if(this.conf.visible){
-
-                console.log('esta visible');
-            }else{
-
-                this.mostrar(false);
-            }
-
-            console.log('Bloque 8 Vivienda y habitat ');
-
-        }
-
-} ;
-
-
-
-var bloque9= {
-
-    conf: {
-        nombre: '#bloque_9',
-        visible: true
-
-    },
-
-    template: $('#bloque_9'),
-
-        mostrar : function(valor)
-        {
-            if (valor){this.template.show();}else{this.template.hide();}
-        },
-
-        init: function()
-        {
-            if(this.conf.visible){
-
-                console.log('esta visible');
-            }else{
-
-                this.mostrar(false);
-            }
-
-            console.log('Bloque 9 Final para todas las familias');
-
-        }
-
-} ;
-
 $(function() {
-  // Handler for .ready() called.
 
-
-  bloque1.init();
-  bloque2.init();
-  bloque3_a.init();
-  bloque3_b.init(); 
-  bloque4.init();
-  bloque5.init();
-  bloque6.init();
-  bloque7.init();
-  bloque8.init();
-  bloque9.init();
+    $('.date-picker').datepicker({
+        autoclose: true,
+        todayHighlight: true
+    })
 
 });
