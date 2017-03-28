@@ -74,6 +74,7 @@ class Probando_model extends CI_Model {
 	public function obtenerBloques(){
 		$this->db->select('*');
 		$this->db->from('bloque');
+		$this->db->join('tipo_bloque','tipo_bloque.idTipoBloque=bloque.idTipoBloque','left');
 		$query = $this->db->get();	
 
 		if ($query->num_rows() > 0) {

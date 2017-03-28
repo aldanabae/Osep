@@ -21,6 +21,8 @@ class ProbandoC extends My_Controller{
 		$armoEncuesta = array('idBloque' =>"",
 								'nombreBloque' =>"",
 								'nroBloque' =>"",
+								'idTipoBloque' =>"",
+								'nombreTipoB' =>"",
 								"preguntas" => array('idPregunta' => "", 
 														'pregunta' =>"",
 														'idSubPregunta' =>"",
@@ -38,6 +40,8 @@ class ProbandoC extends My_Controller{
 			$idBloq = $bloq->idBloque;
 			$nombreBloq = $bloq->nombreBloque;
 			$nroBloq = $bloq->nroBloque;
+			$idTpoB = $bloq->idTipoBloque;
+			$nomTpoB = $bloq->nombreTipoB;
 			
 			//Luego hago variar cada Pregunta de cada Bloque
 			foreach ($data['preguntas'] as $preg){
@@ -46,11 +50,13 @@ class ProbandoC extends My_Controller{
 					$pgta = $preg->pregunta;
 					$idSubPreg = $preg->idSubPregunta;
 					$idTpoPreg = $preg->idTipoPregunta;
-					$idEtq = $preg->idEtiqueta;		
-					
+					$idEtq = $preg->idEtiqueta;	
+
+					//Inicio contador de cantidad de Respuesta_Pregunta por cada pregunta y cargo cada idRespuesta en $arrayResp
 					$contador = 0;
 					$arrayResp = array();
 
+					//Solo entran las preguntas de tipo que traen opciones o SI/No
 					if($idTpoPreg==1 || $idTpoPreg==2 || $idTpoPreg==4){
 
 						foreach ($data['resp_preg'] as $respPreg){	
@@ -74,6 +80,8 @@ class ProbandoC extends My_Controller{
 							 		$armoEncuesta[$cuentaResp]['idBloque'] = $idBloq;
 									$armoEncuesta[$cuentaResp]['nombreBloque'] = $nombreBloq;
 									$armoEncuesta[$cuentaResp]['nroBloque'] = $nroBloq;
+									$armoEncuesta[$cuentaResp]['idTipoBloque'] = $idTpoB;
+									$armoEncuesta[$cuentaResp]['nombreTipoB'] = $nomTpoB;
 
 									$armoEncuesta[$cuentaResp]['preguntas']['idPregunta']= $idPreg;
 									$armoEncuesta[$cuentaResp]['preguntas']['pregunta'] = $pgta;
@@ -88,10 +96,13 @@ class ProbandoC extends My_Controller{
 								}
 							}
 						}
+					//Si es de otro tipo de pregunta entra aca
 					}else{
 						$armoEncuesta[$cuentaResp]['idBloque'] = $idBloq;
 						$armoEncuesta[$cuentaResp]['nombreBloque'] = $nombreBloq;
 						$armoEncuesta[$cuentaResp]['nroBloque'] = $nroBloq;
+						$armoEncuesta[$cuentaResp]['idTipoBloque'] = $idTpoB;
+						$armoEncuesta[$cuentaResp]['nombreTipoB'] = $nomTpoB;
 
 						$armoEncuesta[$cuentaResp]['preguntas']['idPregunta']= $idPreg;
 						$armoEncuesta[$cuentaResp]['preguntas']['pregunta'] = $pgta;
@@ -110,19 +121,28 @@ class ProbandoC extends My_Controller{
 
 		echo $cuentaResp;
 		echo "</br>";
-		echo "idBloque".$armoEncuesta[241]['idBloque'];
+		echo "idBloque".$armoEncuesta[0]['idBloque'];
 		echo "</br>";
 		echo "</br>";
-		echo "idPregunta".$armoEncuesta[241]['preguntas']['idPregunta'];
+		echo "nombre tipo bloque".$armoEncuesta[0]['nombreTipoB'];
 		echo "</br>";
 		echo "</br>";
-		echo "pregunta".$armoEncuesta[241]['preguntas']['pregunta'];
+		echo "idPregunta".$armoEncuesta[0]['preguntas']['idPregunta'];
 		echo "</br>";
 		echo "</br>";
-		echo "idRespuesta".$armoEncuesta[241]['preguntas']['respuestas']['idRespuesta'];
+		echo "idEtiqueta".$armoEncuesta[0]['preguntas']['idEtiqueta'];
 		echo "</br>";
 		echo "</br>";
-		echo "respuesta".$armoEncuesta[241]['preguntas']['respuestas']['respuesta'];
+		echo "idSubpregunta".$armoEncuesta[0]['preguntas']['idSubPregunta'];
+		echo "</br>";
+		echo "</br>";
+		echo "idBloque".$armoEncuesta[0]['preguntas']['pregunta'];
+		echo "</br>";
+		echo "</br>";
+		echo "idRespuesta".$armoEncuesta[0]['preguntas']['respuestas']['idRespuesta'];
+		echo "</br>";
+		echo "</br>";
+		echo "respuesta".$armoEncuesta[0]['preguntas']['respuestas']['respuesta'];
 		echo "</br>";
 		echo "</br>";
 		die();
