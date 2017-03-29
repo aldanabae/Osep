@@ -86,6 +86,16 @@ class Probando_model extends CI_Model {
 			return false;
 		}	
 	}
+
+	public function crearRespuestaElegida(){
+		$this->db->insert('respuesta_elegida', 
+			array('respBreve'=>$data['respB'], 
+					'respParrafo'=>$data['respP'],
+					'idRelevamiento'=>$data['relevamiento'], 
+					'idRespPreg'=>$data['idRespPreg'],
+					'idEncuestado'=>$data['encuestado']));
+		$idRespuestaElegida = $this->db->insert_id();
+	}
 }
 
 ?>
