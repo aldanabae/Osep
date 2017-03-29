@@ -1050,11 +1050,11 @@
 						</div>	
 
 
-						<div class="form-group">
+						<div class="form-group" >
 							
 							<label class="control-label col-xs-6">Concurrio al control el mes pasado?</label>
 							<div class="col-xs-6">
-								<select class="form-control">
+								<select class="form-control" id="b7_uso", name="b7_uso">
 								<option value="1">SI</option>
 								<option value="2">NO</option>							
 								</select>
@@ -1064,11 +1064,11 @@
 
 
 						
-						<div class="form-group">
-							<label class="control-label col-xs-6" for="ZipCode">Que tan complicado le resulto en esa oportunidad todo el proceso que implicó hacerse el control , 
+						<div class="form-group" id="b7_div_complejo">
+							<label class="control-label col-xs-6" for="b7_complejo">Que tan complicado le resulto en esa oportunidad todo el proceso que implicó hacerse el control , 
 								teniendo en cuenta los pasos desde conseguir tueno hasta que la atiendan?</label>
 							<div class="col-xs-6">
-								<select class="form-control">
+								<select class="form-control" id="b7_complejo" name ="b7_complejo">
 								<option value="1">Simple</option>
 								<option value="2">Complicado</option>							
 								</select>
@@ -1077,13 +1077,10 @@
 						</div>
 
 
-						<div class="form-group">
-							<label class="control-label col-xs-6" for="ZipCode">Por que no concurrio?</label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option >Simple</option>
-								<option >Complicado</option>							
-								</select>
+						<div class="form-group" id="b7_div_porque_no">
+							<label class="control-label col-xs-6" for="b7_porque_no">Por que no concurrio?</label>
+							<div class="col-xs-3">
+								<input type="text" class="form-control" id="b7_porque_no" name ="b7_porque_no"  placeholder=" problema">
 							</div>
 						
 						</div>
@@ -1094,7 +1091,7 @@
 						<div class="form-group">
 							<label class="control-label col-xs-6" for="ZipCode">El embarazo lo esta llevando un profesional en especial  o se atiende con distintos profesionales? </label>
 							<div class="col-xs-6">
-								<select class="form-control">
+								<select class="form-control" name ="b7_profesional">
 								<option >Un profesional</option>
 								<option >Distintos profesionales en un mismo lugar de atencion</option>							
 								<option >Distintos lugares de atencion</option>							
@@ -1106,9 +1103,17 @@
 
 						<div class="form-group">
 							<label class="control-label col-xs-6" for="ZipCode">El o los profesionales que la atienden, han detectado algun problema en el embarazo?</label>
-							<div class="col-xs-6">
-								<input type="text" class="form-control" id="ZipCode" placeholder=" Cual?">
+							
+							<div class="col-xs-3">
+								<select class="form-control" name ="b7_problem" id ="b7_problem">
+								<option value="1">Si</option>
+								<option value="2" selected>NO</option>							
+								</select>
 							</div>
+							<div class="col-xs-3">
+								<input type="text" class="form-control" id="b7_cual" placeholder=" Cual?">
+							</div>
+
 						</div>
 
 
@@ -1117,8 +1122,8 @@
 							<label class="control-label col-xs-6" for="ZipCode">Cuenta con apoyo familiar, de su pareja o de alguna otra persona que la acompañe  y la auyde mientras transcurre el embarazo?</label>
 							<div class="col-xs-6">
 								<select class="form-control">
-								<option >Si</option>
-								<option >NO</option>							
+								<option value="1">Si</option>
+								<option value="2">NO</option>							
 								</select>
 							</div>
 						
@@ -1150,10 +1155,15 @@
 
         <br>
         <div class="form-group" id="btn_encuesta">
-            <div class="col-xs-offset-3 col-xs-9">
-                <input type="submit" class="btn btn-primary" value="Finalizar Encuesta">
+            <div class="col-xs-6">
+
                 <input type="reset" class="btn btn-default" value="Nuevo integrante">
             </div>
+
+            <div class="col-xs-6 text-right">
+                <input type="submit" class="btn btn-primary" value="Finalizar Encuesta">
+
+            </div>		
         </div>
 
 
