@@ -318,7 +318,7 @@
 
 
 
-<div class="row form-horizontal" id="div_btn_bloques">      <!-- Bloque 3 bebes -->
+<div class="row form-horizontal" id="div_btn_bloques">     
 	<div class="panel panel-default">
 <br>
 		<div class="form-group">
@@ -450,14 +450,23 @@
 						<div class="form-group">
 							
 							<label class="control-label col-xs-6">Esta recibiendo la Leche de Osep?</label>
-							<div class="col-xs-6" name ="">
-								<select class="form-control">
+							<div class="col-xs-6" >
+								<select class="form-control" name ="b3_a_leche" id ="b3_a_leche">
 								<option value="1">SI</option>
 								<option value="2">NO</option>							
 								</select>
 							</div>
 
 						</div>
+						
+						<div class="form-group" id="b3a_div_porque_no">
+							<label class="control-label col-xs-6" for="b3a_peso">Por que no la recibe?</label>
+							<div class="col-xs-6">
+								<input type="text" class="form-control" name= "b3a_porque_no" id="b3a_porque_no" placeholder="">
+							</div>
+						</div>
+						
+						
 
 
 			
