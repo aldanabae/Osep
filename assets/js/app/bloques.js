@@ -99,7 +99,7 @@ var bloque1= {
             }
 
             // independiente si es afiliado o no
-            if(bloque1.conf.ocupacion == '1' || bloque1.conf.ocupacion == '6')
+            if(bloque1.conf.ocupacion == '1' || bloque1.conf.ocupacion == '2'  || bloque1.conf.ocupacion == '3' || bloque1.conf.ocupacion == '7' )
             {
 
                 bloque9.show_me();
@@ -210,7 +210,7 @@ var bloque1= {
 
                     var edad = parseInt(bloque1.conf.edad);
 
-                            if (edad > 65){  //si es mayor a 56  despliego ancianidad
+                            if (edad >= 65){  //si es mayor a 56  despliego ancianidad
 
                                     bloque5.show_me();     // adultos
                             }else{
@@ -221,9 +221,11 @@ var bloque1= {
                                     {
 
                                         bloque3a.show_me();   // bebes
+                                        bloque3b.hide_me();   // niños 
                                     }else{
 
                                         bloque3b.show_me();   // niños
+                                        bloque3a.hide_me();   // bebes
                                     }
 
                                 }
@@ -682,7 +684,9 @@ var bloque5 ={       // Adultos mayores
 
 
 
-var bloque6 ={       // Adultos mayores
+var bloque6 ={       // Discapacidad
+
+        tratamiento: '',
 
         template: {
                     // asigno el nombre del selector de bloque

@@ -260,12 +260,55 @@
 								<option >D1</option>
 								<option >D2</option>	
 								<option >E</option>	
-
-
 								</select>
 							</div>
 
-						</div>			
+						</div>	
+
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Materiales Predominantes de Paredes</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option >Material de construccion</option>
+								<option >Madera</option>		
+								<option >Adobe</option>
+								<option >Capa de Metal , Carton</option>	
+								</select>
+							</div>
+
+						</div>					
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Materiales Predominantes de Techos</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+									<option >Membrana, teja, losa, baldosa</option>
+									<option >Madera, caña , paja</option>		
+									<option >Chapa  de metal, carton</option>
+								</select>
+							</div>
+						</div>							
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Ventilacion</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+									<option >Suficiente</option>
+									<option >Escaso</option>		
+									<option >Sin ventilacion</option>
+								</select>
+							</div>
+
+						</div>	
+
+
 
 						<div class="form-group">
 							
@@ -311,7 +354,7 @@
         <br>
         <div class="form-group">
             <div class="col-xs-offset-3 col-xs-9">
-                <input type="submit" class="btn btn-primary" value="Continuar" name= "Continuar">
+                <input type="submit" class="btn btn-primary" value="Guardar" name= "Guardar">
                 <input type="reset" class="btn btn-default" value="Cerrar" name="Cerrar">
             </div>
         </div>

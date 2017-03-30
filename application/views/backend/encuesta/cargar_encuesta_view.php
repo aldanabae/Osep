@@ -6,7 +6,7 @@
 <?php //var_dump($this->input->post());  ?>
 
 <!--<div class="container">   contenedor principal -->
- <form id="add_encuesta" action="" method="post">
+ <form id="add_encuesta" action="<?php echo(site_url('encuesta/cargarEncuesta/cargabloques_final'));  ?>" method="post">
 
  <div class="row form-horizontal" id="bloque_1">   <!-- bloque 1 -->
 		<div class="panel panel-default">
@@ -15,7 +15,7 @@
 				<div class="panel-body">
 				
 			<div class="form-group">
-				 <label for="inputName" class="control-label col-xs-6">Nombre y Apellido:</label>
+				 <label for="inputName" class="control-label col-xs-6">Apellido y Nombre:</label>
 				 <div class="col-xs-6">
 					 <input type="text" class="form-control" placeholder="Nombre" name ="b1_nombre"  id ="b1_nombre"  >
 				 </div>
@@ -26,6 +26,14 @@
 					 <input type="number" name="b1_edad"  class="form-control" placeholder="Edad" id="b1_edad">
 				 </div>
 			 </div>
+
+			 <div class="form-group">
+				 <label for="inputEmail" class="control-label col-xs-6">Dni:</label>
+				 <div class="col-xs-6">
+					 <input type="number" name="b1_dni"  class="form-control" placeholder="Dni" id="b1_dni">
+				 </div>
+			 </div>
+
 
 
 			 <div class="form-group">
@@ -99,13 +107,14 @@
 						 <label for="inputEmail" class="control-label col-xs-6">Ocupacion:</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_ocupacion" id= "b1_ocupacion">
-							<option value="1">Trabajo Remunerado</option>
-							<option value="2">Jubilado o pencionado</option>
-							<option value="3">Buscando Trabajo</option>
-							<option value="4">Estudiante Exclusivamente</option>
-							<option value="5">Ama de casa Exclusivamente</option>
-							<option value="6">Estudia y Trabaja</option>
-							<option value="7">No trabaja</option>
+							<option value="1">Estable</option>
+							<option value="2">Informal</option>
+							<option value="3">Jubilado o pensionado</option>
+							<option value="4">Buscando Trabajo</option>
+							<option value="5">Estudiante Exclusivamente</option>
+							<option value="6">Ama de casa Exclusivamente</option>
+							<option value="7">Estudia y Trabaja</option>
+							<option value="8">No trabaja</option>
 							</select>
 						</div>
 					 </div>
@@ -161,7 +170,17 @@
 								<input type="text" class="form-control" id="b9_ocupacion"  name="b9_ocupacion"  placeholder=" Ocupacion">
 							</div>
 
-						</div>						
+						</div>	
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Observaciones</label>
+							<div class="col-xs-6">
+								<input type="text" class="form-control" id="b9_obs"  name="b9_obs"  placeholder=" Observaciones">
+							</div>
+
+						</div>							
+
 <hr>
 </div>
 
@@ -555,7 +574,7 @@
 						</blockquote>
 						<div class="form-group">
 							
-							<label class="control-label col-xs-6">En el ultimo año , ¿Ha realizado un control con un  oculista?</label>
+							<label class="control-label col-xs-6">En los ultimos Dos años , ¿Ha realizado un control con un  oculista?</label>
 							<div class="col-xs-6">
 								<select class="form-control">
 								<option value="1">SI</option>
@@ -598,23 +617,6 @@
 							<div class="col-xs-6" >
 								<input type="text" class="form-control" name = "b3b_problem" id="b3b_problem" placeholder="Cual fue el Problema?">
 							</div>
-						</div>
-
-
-
-
-
-
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">Camino cerca o alrededor de cumplir el Año?</label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option value="1">SI</option>
-								<option value="2">NO</option>							
-								</select>
-							</div>
-
 						</div>
 
 
@@ -1075,7 +1077,7 @@
 	
 						<hr>
 
-						<div class="form-group">
+						<div class="form-group" id = "b6_div_profesional">
 							
 							<label class="control-label col-xs-6">De los profesionales de la salud que mencionó, ¿Alguno es profesional de cabecera?</label>
 							<div class="col-xs-6">
@@ -1092,7 +1094,9 @@
 								<div class="checkbox ">
 								<label><input type="checkbox" value="4" >Otro profecional de la salud</label>
 								</div>
-
+								<div class="checkbox ">
+								<label><input type="checkbox" value="5" >Ninguno</label>
+								</div>
 							</div>
 
 						</div>	
@@ -1241,11 +1245,11 @@
         <div class="form-group" id="btn_encuesta">
             <div class="col-xs-6">
 
-                <input type="reset" class="btn btn-default" value="Nuevo integrante">
+                <input type="reset" class="btn btn-default" value="Nuevo integrante" id="">
             </div>
 
             <div class="col-xs-6 text-right">
-                <input type="submit" class="btn btn-primary" value="Finalizar Encuesta">
+                <input type="submit" class="btn btn-primary" value="Continuar" id="">
 
             </div>		
         </div>
