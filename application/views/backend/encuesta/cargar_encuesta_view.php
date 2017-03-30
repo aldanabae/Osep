@@ -6,7 +6,7 @@
 <?php //var_dump($this->input->post());  ?>
 
 <!--<div class="container">   contenedor principal -->
- <form id="add_funds" action="" method="post">
+ <form id="add_encuesta" action="" method="post">
 
  <div class="row form-horizontal" id="bloque_1">   <!-- bloque 1 -->
 		<div class="panel panel-default">
@@ -15,7 +15,7 @@
 				<div class="panel-body">
 				
 			<div class="form-group">
-				 <label for="inputName" class="control-label col-xs-6">Nombre:</label>
+				 <label for="inputName" class="control-label col-xs-6">Nombre y Apellido:</label>
 				 <div class="col-xs-6">
 					 <input type="text" class="form-control" placeholder="Nombre" name ="b1_nombre"  id ="b1_nombre"  >
 				 </div>
@@ -109,6 +109,79 @@
 							</select>
 						</div>
 					 </div>
+
+
+
+
+
+
+<div class="row form-horizontal" id="bloque_9">      <!-- Bloque 9 ocupacional Adaptado -->
+
+
+						<blockquote>
+						<p>Datos Ocupacionales.</p>
+						</blockquote>
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Contribuyes con la economia de la familia</label>
+							<div class="col-xs-6">
+								<select class="form-control" id="b9_contribulle" name="b9_contribulle" >
+								<option value="1" >SI</option>
+								<option value="2">NO</option>							
+								</select>
+							</div>
+
+						</div>	
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">Cuantas horas trabaja por semana</label>
+							<div class="col-xs-6">
+								<input type="number" class="form-control" id="b9_horas"  name="b9_horas" placeholder=" hs">
+							</div>
+
+						</div>	
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">En que lugar trabaja</label>
+							<div class="col-xs-6">
+								<input type="text" class="form-control" id="b9_lugar"  name="b9_lugar"  placeholder="Lugar">
+							</div>
+
+						</div>	
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">A que se dedica concretamente</label>
+							<div class="col-xs-6">
+								<input type="text" class="form-control" id="b9_ocupacion"  name="b9_ocupacion"  placeholder=" Ocupacion">
+							</div>
+
+						</div>						
+<hr>
+</div>
+
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -222,10 +295,6 @@
 
 </div>			
 			
-			
-	
-	
-	
 	
 	
  <div class="row form-horizontal" id="bloque_2">    <!-- bloque 2 servicios de Salud -->
@@ -317,10 +386,9 @@
 
 
 
-
 <div class="row form-horizontal" id="div_btn_bloques">     
 	<div class="panel panel-default">
-<br>
+		<br>
 		<div class="form-group">
 			<div class="col-xs-12 text-center">
 				<input type="button" class="btn btn-primary" value="Generar Bloques" id= "btn_bloques">
@@ -330,8 +398,6 @@
 	</div>
 		 
 </div>	 <!-- Cierre row -->
-
-
 
 
 
@@ -478,8 +544,6 @@
 </div>	 <!-- Cierre row -->
 
 
-
-
 <div class="row form-horizontal" id="bloque_3_b">      <!-- Bloque 3 niños -->
 			<div class="panel panel-default">
 			
@@ -517,19 +581,27 @@
 
 						
 						<div class="form-group">
-							<label class="control-label col-xs-6" for="ZipCode">Durante el año pasado / Este año. ¿Ha tenido algun tipo de dificultad en la escuela?</label>
+							<label class="control-label col-xs-6" for="b3b_escuela">Durante el año pasado / Este año. ¿Ha tenido algun tipo de dificultad en la escuela?</label>
 							<div class="col-xs-4">
-								<select class="form-control">
+								<select class="form-control" id ="b3b_escuela" name ="b3b_escuela">
 								<option value="1">SI</option>
-								<option value="2">NO</option>
+								<option value="2" selected>NO</option>
 								<option value="3">NO asiste Todavia</option>							
 								</select>
 							</div>
 
-							<div class="col-xs-5">
-								<input type="text" class="form-control" id="ZipCode" placeholder="Cual fue el Problema?">
+						</div>
+						
+						<div class="form-group" id="b3b_div_problem">
+							<label class="control-label col-xs-6" for="b3b_problem"> Cual fue el problema?</label>
+
+							<div class="col-xs-6" >
+								<input type="text" class="form-control" name = "b3b_problem" id="b3b_problem" placeholder="Cual fue el Problema?">
 							</div>
 						</div>
+
+
+
 
 
 
@@ -549,15 +621,22 @@
 						<div class="form-group">
 							
 							<label class="control-label col-xs-6"> ¿Realiza en forma regular alguna actividad (extraescolar). Es decir Hace deportes, alguna actividad artistica u otra semanalmente?</label>
-							<div class="col-xs-4">
-								<select class="form-control">
-								<option value="1">SI</option>
-								<option value="2">NO</option>							
+							<div class="col-xs-6">
+								<select class="form-control" id= "b3b_extra">
+									<option value="1">SI</option>
+									<option value="2">NO</option>							
 								</select>
 							</div>
 
-							<div class="col-xs-5">
-								<select class="form-control">
+						</div>
+
+
+						<div class="form-group" id= "b3b_div_activity">
+							
+							<label class="control-label col-xs-6"> Actividad</label>
+
+							<div class="col-xs-6">
+								<select class="form-control" id= "b3b_activity" >
 								<option value="1">Deportiva</option>
 								<option value="2">Artistica</option>
 								<option value="3">Educativa</option>
@@ -570,9 +649,17 @@
 
 						</div>
 
-						<div class="form-group">
+
+
+
+
+
+
+
+
+						<div class="form-group" id= "b3b_div_donde">
 							
-							<label class="control-label col-xs-6">Donde</label>
+							<label class="control-label col-xs-6">Donde ?</label>
 							<div class="col-xs-6">
 								<select class="form-control">
 								<option value="1">Club</option>
@@ -593,10 +680,6 @@
 		
 	 
 </div>	 <!-- Cierre row -->
-
-
-
-
 
 
 <div class="row form-horizontal" id="bloque_4">      <!-- Bloque 4 mujeres -->
@@ -707,11 +790,6 @@
 		
 	 
 </div>	 <!-- Cierre row -->
-
-
-
-
-
 
 
 <div class="row form-horizontal" id="bloque_5">      <!-- Bloque 5 Adultos mayores -->
@@ -826,48 +904,59 @@
 							
 							<label class="control-label col-xs-6">¿ Concurre habitualmente a un centro de jubilados, Iglesia, Club u otro ambito de tipo social?</label>
 							<div class="col-xs-6">
-								<select class="form-control">
+								<select class="form-control" id="b5_activity" name="b5_activity">
 								<option value="1">SI</option>
-								<option value="2">NO</option>							
+								<option value="2" selected>NO</option>							
 								</select>
-							</div>
-							<div class="col-xs-6">
-								<input type="text" class="form-control" id="ZipCode" placeholder="Que actividad realiza?">
 							</div>
 
 						</div>	
+
+						<div class="form-group" id="b5_div_cual">
+							<label class="control-label col-xs-6" for="b5_cual"> Cual?</label>
+
+							<div class="col-xs-6" >
+								<input type="text" class="form-control" name = "b5_cual" id="b5_cual" placeholder="Cual fue el Problema?">
+							</div>
+						</div>
+
+						<!--  aqui va el cual-->
+
 
 
 						<div class="form-group">
 							
 							<label class="control-label col-xs-6">Tiene alguna actividad o Hobbie que haga frecuentemente para ocupar el tiempo libre ?</label>
 							<div class="col-xs-6">
-								<select class="form-control">
+								<select class="form-control" id="b5_hobby" name="b5_hobby">
 								<option value="1">SI</option>
 								<option value="2">NO</option>							
 								</select>
 							</div>
 
 						</div>	
+
+
+
 
 
 						<div class="form-group">
 							
 							<label class="control-label col-xs-6">Respecto a la atencion Medica. ¿Tiene un medico de cabecera, es decir un profesional que lo conozca y que lo atienda habitualmente?</label>
 							<div class="col-xs-6">
-								<select class="form-control">
-								<option value="1">SI</option>
+								<select class="form-control" id="b5_medico" name="b5_medico">
+								<option value="1" selected>SI</option>
 								<option value="2">NO</option>							
 								</select>
 							</div>
 
 						</div>	
 
-						<div class="form-group">
+						<div class="form-group" id="b5_div_esde_osep">
 							
-							<label class="control-label col-xs-6">El medico es de OSEP o recibe OSEP ?</label>
+							<label class="control-label col-xs-6">Ese medico es de OSEP o recibe OSEP ?</label>
 							<div class="col-xs-6">
-								<select class="form-control">
+								<select class="form-control" id="b5_esde_osep" name="b5_esde_osep">
 								<option value="1">SI</option>
 								<option value="2">NO</option>							
 								</select>
@@ -875,11 +964,11 @@
 
 						</div>	
 
-						<div class="form-group">
+						<div class="form-group" id="b5_div_complejo">
 							
 							<label class="control-label col-xs-6">Que tan complicado le resulta ver a un profesional cuando tiene que atenderse por algun motivo?</label>
 							<div class="col-xs-6">
-								<select class="form-control">
+								<select class="form-control" id="b5_complejo" name="b5_complejo">
 								<option >Simple</option>
 								<option >Complicado</option>
 								<option >Muy Complicado</option>
@@ -896,9 +985,6 @@
 		
 	 
 </div>	 <!-- Cierre row -->
-
-
-
 
 
 <div class="row form-horizontal" id="bloque_6">      <!-- Bloque 6 discapacidad -->
@@ -1146,17 +1232,6 @@
 		
 	 
 </div>	 <!-- Cierre row -->
-
-
-
-
-
-
-
-
-
-
-
 
 
 

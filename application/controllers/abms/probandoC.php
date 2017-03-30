@@ -192,7 +192,12 @@ class ProbandoC extends My_Controller{
 		$this->cargarVista($nombreVista, $data);
 	}
 
+
+
 	function recibirDatos($encuestados, $relevamiento){
+
+
+		
 	// 	$encuestados = array('nombreE' =>"",
 	// 							'apellidoE' =>"",
 	// 							'edad' =>"",
@@ -286,6 +291,8 @@ class ProbandoC extends My_Controller{
 	
 			redirect('/abms/abmEmpleadosC','refresh');
         }	
+	   }
 	}
  }
-?>
+
+}   //   final de la class

@@ -3,22 +3,39 @@
 //var bloque1= $("#bloque_1");
 
 
-var bloque3b= $("#bloque_3_b");
-var bloque4= $("#bloque_4");
-var bloque5= $("#bloque_5");
-var bloque6= $("#bloque_6");
+// var bloque3b= $("#bloque_3_b");
+// var bloque4= $("#bloque_4");
+//var bloque5= $("#bloque_5");
+//var bloque6= $("#bloque_6");
 //var bloque7= $("#bloque_7");
-var bloque8= $("#bloque_8");
+//var bloque8= $("#bloque_8");
 var bloque_btn= $("#btn_encuesta");
 //var bloque9= $("#bloque_9");
 
 
 
+$(function() {
+  // Handler for .ready() called.
 
 
-// logica bloque1
+  bloque1.bindComponent();
+  bloque2.init();
+  bloque3a.init();
+  bloque3b.init();
+  bloque4.init();
+  bloque5.init();
+  bloque6.init();
+  bloque7.init();
+  bloque9.init();
+    // $('.date-picker').datepicker({
+    //     autoclose: true,
+    //     todayHighlight: true
+    // })
 
-//$("#bloque_1 input[name$='b1_genero']").on('change, click' ,function(){alert('es macho')})
+});
+
+
+
 
 var bloque1= {
 
@@ -30,6 +47,7 @@ var bloque1= {
             osep: '0',
             embarazo: '1',
             discapacidad: '1',
+            ocupacion:    '1',
             update: function(){
 
                 bloque1.update_data();
@@ -39,17 +57,8 @@ var bloque1= {
 
         init: function(){
 
-            // inicializo los bloques
-            
-            bloque3a.hide_me();   // bebes
-            bloque3b.hide();   // niños
-
-            bloque5.hide();     // adultos
-            bloque6.hide();     // discapacidad
-            bloque7.hide_me();     // embarazo
             bloque_btn.hide();     // botonera abajo 
-
-
+            bloque1.conf.update();
         },
 
         update_data: function(){
@@ -89,6 +98,16 @@ var bloque1= {
 
             }
 
+            // independiente si es afiliado o no
+            if(bloque1.conf.ocupacion == '1' || bloque1.conf.ocupacion == '6')
+            {
+
+                bloque9.show_me();
+
+            }else{
+
+                bloque9.hide_me();
+            }
 
 
         },
@@ -161,6 +180,13 @@ var bloque1= {
                             bloque1.conf.update();
 
                     });
+                    $( "#b1_ocupacion" ).on(
+                        'change, click', function(){
+                            bloque1.conf.ocupacion= $(this).val();
+                            bloque1.conf.update();
+                            
+
+                    });                     
 
                     $( "#btn_bloques" ).on(
                         'click', function(){
@@ -168,10 +194,9 @@ var bloque1= {
                             bloque1.action_block();
                             
 
-                    });               
+                    });    
 
-
-
+           
 
         },
 
@@ -187,7 +212,7 @@ var bloque1= {
 
                             if (edad > 65){  //si es mayor a 56  despliego ancianidad
 
-                                    bloque5.show();     // adultos
+                                    bloque5.show_me();     // adultos
                             }else{
 
                                 if (edad < 14)  // si esta entre 2 y 14  niños
@@ -198,14 +223,14 @@ var bloque1= {
                                         bloque3a.show_me();   // bebes
                                     }else{
 
-                                        bloque3b.show();   // niños
+                                        bloque3b.show_me();   // niños
                                     }
 
                                 }
 
                             if (bloque1.conf.discapacidad == '0'){
 
-                                bloque6.show();     // discapacidad
+                                bloque6.show_me();     // discapacidad
 
                             }
 
@@ -231,23 +256,16 @@ var bloque1= {
 
                             }
 
-
-
-
                 }
-                            
 
-
-
+                bloque_btn.show();     // botonera abajo             
             
             }else{
 
 
             alert('Los datos son incorrectos o faltan');
             }
-
-
-                
+     
         },
 
         validate: function(){
@@ -272,36 +290,11 @@ var bloque1= {
                     validacion = false;
                 }
 
-
-
             return  validacion;
 
-            
         }
 
 }
-
-
-
-
-$(function() {
-  // Handler for .ready() called.
-
-
-  bloque1.bindComponent();
-  bloque2.init();
-  bloque3a.init();
-  bloque3b.init();
-  bloque4.init();
-
-  bloque7.init();
-    $('.date-picker').datepicker({
-        autoclose: true,
-        todayHighlight: true
-    })
-
-});
-
 
 
 var bloque2 ={
@@ -376,28 +369,176 @@ var bloque2 ={
 
 
 
+var bloque3a ={
+
+        leche:     '1',
+
+        template: {
+                    // asigno el nombre del selector de bloque
+                    html: '#bloque_3_a'
+        },
+        update: function(){
+                // actualizo ante los cambios
+
+                if(bloque3a.leche == '1'){
+                    // si tien control hecho muestra complejidad
+                    $( "#b3a_div_porque_no" ).hide();
+
+                }else{
+                    // si no se lo hizo muestra por que no..
+                    $( "#b3a_div_porque_no" ).show();
+                }
+
+        },
+
+        init:  function(){
+            // funcion de inicializacion
+            bloque3a.hide_me();
+            bloque3a.bindComponent();
+            bloque3a.update();
+
+        },
+
+        bindComponent: function(){
+
+                    $( "#b3_a_leche" ).on(
+                        'change, click', function(){
+
+                            bloque3a.leche= $(this).val();
+                            bloque3a.update();
+                    });
+        },
+
+        show_me: function(){
+
+            // Mostrar el bloque
+            $( bloque3a.template.html ).show();
+        },
+
+        hide_me: function(){
+            // ocultar el bloque
+            $( bloque3a.template.html ).hide();
+        },  
+}
+
+
+
+var bloque3b ={
+
+        escuela:     '2',
+        extra:       '1',
+        activity:    '1', 
+
+        template: {
+                    // asigno el nombre del selector de bloque
+                    html: '#bloque_3_b'
+        },
+        update: function(){
+                // actualizo ante los cambios
+
+                if(bloque3b.escuela == '1'){
+                    // si tien control hecho muestra complejidad
+                    $( "#b3b_div_problem" ).show();
+
+                }else{
+                    // si no se lo hizo muestra por que no..
+                    $( "#b3b_div_problem" ).hide();
+                }
+
+                if(bloque3b.extra == '1'){
+                    // si tien control hecho muestra complejidad
+                    $( "#b3b_div_activity" ).show();
+                    $( "#b3b_div_donde" ).hide();
+
+                }else{
+                   
+                    $( "#b3b_div_activity" ).hide();
+                    $( "#b3b_div_donde" ).hide();
+                    bloque3b.activity='1';
+                    $( "#b3b_activity" ).val(bloque3b.activity);
+                    $("#b3b_activity[value=1]").attr("selected",true);
+                    
+                }
+
+
+                if(bloque3b.activity == '3' ||  bloque3b.activity == '2' ||  bloque3b.activity == '5'){
+                    // si tien control hecho muestra complejidad
+                    $( "#b3b_div_donde" ).show();
+
+                }else{
+                    // si no se lo hizo muestra por que no..
+                    $( "#b3b_div_donde" ).hide();
+                }
+
+
+
+        },
+
+        init:  function(){
+            // funcion de inicializacion
+            bloque3b.hide_me();
+            bloque3b.bindComponent();
+            bloque3b.update();
+
+        },
+
+        bindComponent: function(){
+
+                    $( "#b3b_escuela" ).on(
+                        'change, click', function(){
+
+                            bloque3b.escuela= $(this).val();
+                            bloque3b.update();
+                    });
+
+                    $( "#b3b_extra" ).on(
+                        'change, click', function(){
+
+                            bloque3b.extra= $(this).val();
+                            bloque3b.update();
+                    });
+
+
+
+
+                    $( "#b3b_activity" ).on(
+                        'change, click', function(){
+
+                            bloque3b.activity= $(this).val();
+                            bloque3b.update();
+                    });
+
+        },
+
+        show_me: function(){
+
+            // Mostrar el bloque
+            $( bloque3b.template.html ).show();
+        },
+
+        hide_me: function(){
+            // ocultar el bloque
+            $( bloque3b.template.html ).hide();
+        },  
+}
 
 
 
 var bloque4 ={
 
         pap: {
-
             uso:     '0'
         },
 
         mamo: {
 
             uso:     '0'
-
         },
-
 
         template: {
                     // asigno el nombre del selector de bloque
                     html: '#bloque_4'
         },
-
 
         update: function(){
                 // actualizo ante los cambios
@@ -424,9 +565,6 @@ var bloque4 ={
                     $( "#b4_div_mamo_si" ).hide();
                     $( "#b4_div_mamo_no" ).show();
                 }
-
-
-
         },
 
         init:  function(){
@@ -436,8 +574,6 @@ var bloque4 ={
             bloque4.update();
 
         },
-
-
         bindComponent: function(){
 
                     $( "#b4_pap" ).on(
@@ -455,29 +591,135 @@ var bloque4 ={
                             bloque4.update();
 
                     });
-
-
         },
-
-
-
-
 
         show_me: function(){
 
             // Mostrar el bloque
             $( bloque4.template.html ).show();
-
         },
 
         hide_me: function(){
             // ocultar el bloque
             $( bloque4.template.html ).hide();
-
         },  
-
-
 }
+
+
+
+
+var bloque5 ={       // Adultos mayores
+
+        activity: '2',
+        medico: '1',
+        template: {
+                    // asigno el nombre del selector de bloque
+                    html: '#bloque_5'
+        },
+
+        update: function(){
+                // actualizo ante los cambios
+
+                if(bloque5.activity == '1'){
+
+                    $( "#b5_div_cual" ).show();
+                 
+                }else{
+
+                    $( "#b5_div_cual" ).hide();
+                }
+
+                if(bloque5.medico == '1'){
+                    $( "#b5_div_esde_osep" ).show();
+
+                }else{
+
+                    $( "#b5_div_esde_osep" ).hide();
+                }
+
+        },
+
+        init:  function(){
+            // funcion de inicializacion
+            bloque5.hide_me();
+            bloque5.bindComponent();
+            bloque5.update();
+
+        },
+        bindComponent: function(){
+
+                    $( "#b5_activity" ).on(
+                        'change, click', function(){
+
+                            bloque5.activity= $(this).val();
+                            bloque5.update();
+
+                    });
+
+                    $( "#b5_medico" ).on(
+                        'change, click', function(){
+
+                            bloque5.medico= $(this).val();
+                            bloque5.update();
+
+                    });
+        },
+
+        show_me: function(){
+
+            // Mostrar el bloque
+            $( bloque5.template.html ).show();
+        },
+
+        hide_me: function(){
+            // ocultar el bloque
+            $( bloque5.template.html ).hide();
+        },  
+}
+
+
+
+
+
+
+var bloque6 ={       // Adultos mayores
+
+        template: {
+                    // asigno el nombre del selector de bloque
+                    html: '#bloque_6'
+        },
+
+        update: function(){
+                // actualizo ante los cambios
+
+
+
+        },
+
+        init:  function(){
+            // funcion de inicializacion
+            bloque6.hide_me();
+            bloque6.bindComponent();
+            bloque6.update();
+
+        },
+        bindComponent: function(){
+
+
+        },
+
+        show_me: function(){
+
+            // Mostrar el bloque
+            $( bloque6.template.html ).show();
+        },
+
+        hide_me: function(){
+            // ocultar el bloque
+            $( bloque6.template.html ).hide();
+        },  
+}
+
 
 
 var bloque7 ={
@@ -489,7 +731,6 @@ var bloque7 ={
                     // asigno el nombre del selector de bloque
                     html: '#bloque_7'
         },
-
 
         update: function(){
                 // actualizo ante los cambios
@@ -505,8 +746,6 @@ var bloque7 ={
                     $( "#b7_div_complejo" ).hide();
 
                 }
-
-
                 if(bloque7.problem == '1'){
                     
                     $( "#b7_cual" ).show();
@@ -516,9 +755,6 @@ var bloque7 ={
 
                     $( "#b7_cual" ).hide();
                 }
-
-
-
         },
 
         init:  function(){
@@ -529,7 +765,6 @@ var bloque7 ={
 
         },
 
-
         bindComponent: function(){
 
                     $( "#b7_uso" ).on(
@@ -537,7 +772,6 @@ var bloque7 ={
 
                             bloque7.uso= $(this).val();
                             bloque7.update();
-
                     });
                     $( "#b7_problem" ).on(
                         'change, click', function(){
@@ -546,99 +780,52 @@ var bloque7 ={
                             bloque7.update();
 
                     });
-
-
         },
-
-
-
-
 
         show_me: function(){
 
             // Mostrar el bloque
             $( bloque7.template.html ).show();
-
         },
 
         hide_me: function(){
             // ocultar el bloque
             $( bloque7.template.html ).hide();
-
-        },  
-
-
+        }, 
 }
 
 
 
-var bloque3a ={
 
-        leche:     '1',
+var bloque9 ={
+
 
         template: {
                     // asigno el nombre del selector de bloque
-                    html: '#bloque_3_a'
+                    html: '#bloque_9'
         },
 
-
-        update: function(){
-                // actualizo ante los cambios
-
-                if(bloque3a.leche == '1'){
-                    // si tien control hecho muestra complejidad
-                    $( "#b3a_div_porque_no" ).hide();
-
-
-                }else{
-                    // si no se lo hizo muestra por que no..
-                    $( "#b3a_div_porque_no" ).show();
-
-                }
-
-
-
-        },
 
         init:  function(){
             // funcion de inicializacion
-            bloque3a.hide_me();
-            bloque3a.bindComponent();
-            bloque3a.update();
+            bloque9.show_me();
 
         },
-
-
-        bindComponent: function(){
-
-                    $( "#b3_a_leche" ).on(
-                        'change, click', function(){
-
-                            bloque3a.leche= $(this).val();
-                            bloque3a.update();
-
-                    });
-
-
-
-        },
-
-
-
-
 
         show_me: function(){
 
             // Mostrar el bloque
-            $( bloque3a.template.html ).show();
-
+            $( bloque9.template.html ).show();
         },
 
         hide_me: function(){
             // ocultar el bloque
-            $( bloque3a.template.html ).hide();
+            $( bloque9.template.html ).hide();
+        }, 
 
-        },  
+        reset: function(){
 
 
+        } 
 }
+

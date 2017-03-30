@@ -2,6 +2,8 @@
 	<div class="main-content-inner">
 		<div class="page-content">
 			
+<form id="add_funds" action="<?php echo(site_url('encuesta/cargarEncuesta/cargabloques'));  ?>" method="post">
+
 
 <div class="row form-horizontal" id="bloque_8">      <!-- Bloque 8 Vivienda y habitat -->
 			<div class="panel panel-default">
@@ -302,68 +304,8 @@
 
 <!--<div class="container">   contenedor principal -->
  
-        <form id="add_funds" action="<?php echo(site_url('encuesta/cargarEncuesta/cargabloques'));  ?>" method="post">
-
-<div class="row form-horizontal" id="bloque_9">      <!-- Bloque 9 Final para todas las familias -->
-			<div class="panel panel-default">
-			
-				<div class="panel-heading">Bloque 9 Final para todas las familias</div>
-					<div class="panel-body">
-
-						<blockquote>
-						<p>Datos Ocupacionales.</p>
-						</blockquote>
 
 
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">Contribuyes con la economia de la familia</label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option >SI</option>
-								<option >NO</option>							
-								</select>
-							</div>
-
-						</div>	
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">Cuantas horas trabaja por semana</label>
-							<div class="col-xs-6">
-								<input type="text" class="form-control" id="ZipCode" placeholder=" hs">
-							</div>
-
-						</div>	
-
-
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">En que lugar trabaja</label>
-							<div class="col-xs-6">
-								<input type="text" class="form-control" id="ZipCode" placeholder="Lugar">
-							</div>
-
-						</div>	
-
-
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">A que se dedica concretamente</label>
-							<div class="col-xs-6">
-								<input type="text" class="form-control" id="ZipCode" placeholder=" Ocupacion">
-							</div>
-
-						</div>						
-
-						<hr>
-
-			
-					</div>	
-
-		</div>
-		
-	 
-</div>	 <!-- Cierre row -->
         
 
         <br>
