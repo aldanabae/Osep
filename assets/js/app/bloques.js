@@ -234,12 +234,18 @@ var bloque1= {
 
                                 bloque6.show_me();     // discapacidad
 
+                            }else{
+
+                                bloque6.hide_me();     // discapacidad
                             }
 
                             if ( bloque1.conf.embarazo == '0' ){
 
                                 bloque7.show_me();     // embarazo
 
+                            }else{
+                                
+                                bloque7.hide_me();     // apago embarazo
                             }                      
 
 
@@ -696,7 +702,16 @@ var bloque6 ={       // Discapacidad
         update: function(){
                 // actualizo ante los cambios
 
+                var medico = parseInt(bloque6.tratamiento);
 
+                if(medico > 0 &&  medico <= 5){
+
+                    $('#b6_div_profesional').show()
+                }else{
+
+                    $('#b6_div_profesional').hide()
+
+                }
 
         },
 
@@ -709,6 +724,12 @@ var bloque6 ={       // Discapacidad
         },
         bindComponent: function(){
 
+            $( "#bloque_6 input[type='checkbox']" ).on(
+                'change, click', function(){
+
+                    bloque6.tratamiento= $(this).val();
+                    bloque6.update();
+            });
 
         },
 
