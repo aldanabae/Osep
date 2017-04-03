@@ -692,7 +692,7 @@ var bloque5 ={       // Adultos mayores
 
 var bloque6 ={       // Discapacidad
 
-        tratamiento: '',
+        medico: [],
 
         template: {
                     // asigno el nombre del selector de bloque
@@ -702,16 +702,30 @@ var bloque6 ={       // Discapacidad
         update: function(){
                 // actualizo ante los cambios
 
-                var medico = parseInt(bloque6.tratamiento);
+                var items= ['1','2','3','4','5']
+                var vista = false;
+                $.each( items, function( index, el){
 
-                if(medico > 0 &&  medico <= 5){
+                        if($.inArray( el , bloque6.medico) != -1){
 
-                    $('#b6_div_profesional').show()
-                }else{
+                            // Mostrar el bloque
+                            vista = true;
+                            return false;
 
-                    $('#b6_div_profesional').hide()
+                        }else{
+                            vista = false;
+                            
+                        }
+                });
 
-                }
+            if( vista){
+
+                $('#b6_div_profesional').show();
+            }else{
+
+                $('#b6_div_profesional').hide();
+            }
+
 
         },
 
@@ -724,12 +738,21 @@ var bloque6 ={       // Discapacidad
         },
         bindComponent: function(){
 
-            $( "#bloque_6 input[type='checkbox']" ).on(
-                'change, click', function(){
+            $( "#b6_div_medicos input[type='checkbox']" ).on(
+                'click', function(){
+                    bloque6.medico= [];
+                $("#b6_div_medicos  input[type='checkbox']").each(function(){
 
-                    bloque6.tratamiento= $(this).val();
-                    bloque6.update();
+                    if ($(this).prop('checked')){
+                        
+                         bloque6.medico.push($(this).val());
+
+                    }
+                })
+
+               bloque6.update();
             });
+            $('#b6_div_profesional').hide()
 
         },
 

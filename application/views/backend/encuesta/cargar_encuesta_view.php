@@ -1035,40 +1035,40 @@
 
 						</div>	
 						<hr>
-						<div class="form-group">
+						<div class="form-group"  id = "b6_div_medicos">
 							
 							<label class="control-label col-xs-6">¿Quien o quienes lo orienta sobre los tratamientos que necesita? Es decir, ¿Quien o quienes que ustedes Valores le indica que tratamientos seria bueno realizar por su discapacidad?</label>
 							<div class="col-xs-6">
 
 								<div class="checkbox">
-								<label><input type="checkbox" value="1">Medico general o Pediatra</label>
+								<label><input type="checkbox" name="medico[]" value="1">Medico general o Pediatra</label>
 								</div>
 								<div class="checkbox">
-								<label><input type="checkbox" value="2">Medico Especialista</label>
+								<label><input type="checkbox" name="medico[]" value="2">Medico Especialista</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" value="3" >Psicologo - Psiquiatra</label>
+								<label><input type="checkbox" name="medico[]" value="3" >Psicologo - Psiquiatra</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" value="4" >Medico Fisiátra</label>
+								<label><input type="checkbox" name="medico[]" value="4" >Medico Fisiátra</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" value="5" >Otro profecional de la salud</label>
+								<label><input type="checkbox" name="medico[]" value="5" >Otro profecional de la salud</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" value="6" >Docente</label>
+								<label><input type="checkbox" name="medico[]" value="6" >Docente</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" value="7" >Integrante de la red de Madres</label>
+								<label><input type="checkbox" name="medico[]" value="7" >Integrante de la red de Madres</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" value="8" >Integrante de otra organizacion sivil o de ayuda</label>
+								<label><input type="checkbox"  name="medico[]" value="8" >Integrante de otra organizacion sivil o de ayuda</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" value="9" >Otra persona que tiene una discapacidad, o un familiar con una dicapacidad que no esta en ninguna organizacion</label>
+								<label><input type="checkbox" name="medico[]" value="9" >Otra persona que tiene una discapacidad, o un familiar con una dicapacidad que no esta en ninguna organizacion</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" value="10" >Otro</label>
+								<label><input type="checkbox" name="medico[]" value="10" >Otro</label>
 								</div>
 
 							</div>
