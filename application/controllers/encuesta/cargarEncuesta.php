@@ -40,9 +40,9 @@ class CargarEncuesta extends CI_Controller{
                         $this->load->view('backend/sidebar',$data);
                         $js['javascript']= "app.js";
 
-                        $this->load->view("backend/encuesta/cargar_encuesta_inicio_view", $js);
+                        $this->load->view("backend/encuesta/cargar_encuesta_inicio_view");
                         $this->load->view('backend/footer');
-                        $this->load->view('backend/encuesta/script_js');
+                        $this->load->view('backend/encuesta/script_js', $js);
 
 
                 }else{

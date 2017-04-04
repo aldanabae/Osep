@@ -41,25 +41,25 @@
                             <div class="form-group">
                                 <label class="control-label col-xs-6">Departamento</label>
                                 <div class="col-xs-6">
-                                    <select class="form-control" id="departamento" name ="select_dep">
+                                    <select class="form-control" id="departamento" name ="select_dep" onchange="cargarLocalidades()">
                                     		<option value="1">Capital	</option>
-                                            <option value="2">General Alvear</option>
-                                            <option value="3">Godoy Cruz</option>
-                                            <option value="4">Guaymallén	 </option>
-                                            <option value="5">Junín</option>
-                                            <option value="6">La Paz</option>
-                                            <option value="7">Las Heras</option>
-                                            <option value="8">Lavalle </option>
-                                            <option value="9">Lujan de Cuyo</option>
-                                            <option value="10">Maipú</option>
-                                            <option value="11">Malargue</option>
-                                            <option value="12">Rivadavia</option>
-                                            <option value="13">San Carlos</option>
-                                            <option value="14">San Martín</option>
-                                            <option value="15">San Rafael</option>
-                                            <option value="16">Santa Rosa</option>
-                                            <option value="17">Tunuyán</option>
-                                            <option value="18">Tupungato</option>
+                                            <option value="17">General Alvear</option>
+                                            <option value="4">Godoy Cruz</option>
+                                            <option value="3">Guaymallén	 </option>
+                                            <option value="8">Junín</option>
+                                            <option value="11">La Paz</option>
+                                            <option value="2">Las Heras</option>
+                                            <option value="12">Lavalle </option>
+                                            <option value="5">Lujan de Cuyo</option>
+                                            <option value="6">Maipú</option>
+                                            <option value="18">Malargue</option>
+                                            <option value="9">Rivadavia</option>
+                                            <option value="15">San Carlos</option>
+                                            <option value="7">San Martín</option>
+                                            <option value="16">San Rafael</option>
+                                            <option value="10">Santa Rosa</option>
+                                            <option value="14">Tunuyán</option>
+                                            <option value="13">Tupungato</option>
                                     </select>
                                 </div>
 
@@ -68,7 +68,7 @@
                             <div class="form-group">
                                 <label class="control-label col-xs-6">Distrito:</label>
                                 <div class="col-xs-6">
-                                    <select class="form-control" id="distrito" name "select_dep"name "select_distrito">
+                                    <select class="form-control" id="localidad" name "select_dep"name "select_distrito">
                                     <option value="1">1ª Sección Parque Central </option>
                                     <option value="1">2ª Sección Barrio Cívico</option>
                                     <option value="1">3ª Sección Parque O'Higgins</option>

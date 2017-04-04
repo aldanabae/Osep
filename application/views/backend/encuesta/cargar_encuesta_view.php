@@ -191,19 +191,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 					 <div class="form-group">
 						 <label for="inputEmail" class="control-label col-xs-6">cobertura de salud:</label>
 						<div class="col-xs-6">
@@ -234,7 +221,7 @@
 					 <div class="form-group" id= "b1_div_afiliado">
 						 <label for="inputPassword" class="control-label col-xs-6">Numero Afiliado:</label>
 							<div class="col-xs-6">
-								<input type="number" name="b1_afiliado"  class="form-control" placeholder="Edad" id="b1_afiliado">
+								<input type="number" name="b1_afiliado"  class="form-control" placeholder="Numero" id="b1_afiliado">
 							</div>
 					 </div>
 
@@ -316,8 +303,8 @@
 			
 	
 	
- <div class="row form-horizontal" id="bloque_2">    <!-- bloque 2 servicios de Salud -->
-			<div class="panel panel-default">
+ <div class="row form-horizontal " id="bloque_2">    <!-- bloque 2 servicios de Salud -->
+			<div class="panel  panel-default">
 			
 				<div class="panel-heading">Bloque 2 Utilizacion de servicios de Salud</div>
 					<div class="panel-body">
@@ -341,7 +328,7 @@
 						<div class="form-group" id="b2_area">
 							<label class="control-label col-xs-6" for="postalAddress">Para que lo utilizo?:</label>
 							<div class="col-xs-6">
-								<textarea rows="3" class="form-control" id="postalAddress" placeholder="Postal Address" ></textarea>
+								<textarea rows="3" class="form-control" id="b2_uso" placeholder="Motivo" ></textarea>
 							</div>
 						</div>
 
@@ -367,7 +354,7 @@
 								<select class="form-control">
 								<option value="1">Ningun miembro de la familia se enfermo o tuvo accidente</option>
 								<option value="2">No lo consideró necesario asi que no hizo nada</option>							
-								<option value="3">No lo considero necesario y tomo remedio caseros</option>							
+								<option value="3">No lo consideró necesario y tomo remedio caseros</option>							
 								<option value="4">Decidio tomar sus medicamentos habituales</option>							
 								<option value="5">Prefirio consultar en la farmacia y comprar los medicamentos</option>							
 								<option value="6">Quiso consultar pero no tuvo tiempo</option>							
@@ -387,9 +374,9 @@
 
 
 						<div class="form-group">
-							<label class="control-label col-xs-6" for="ZipCode">Otro otivo:</label>
+							<label class="control-label col-xs-6" for="b2_otro">Otro otivo:</label>
 							<div class="col-xs-6">
-								<input type="text" class="form-control" id="ZipCode" placeholder="Otro motivo">
+								<input type="text" class="form-control" id="b2_otro" name="b2_otro" placeholder="Otro motivo">
 							</div>
 						</div>
 			
@@ -996,25 +983,25 @@
 					<div class="panel-body">
 
 
-						<div class="form-group">
+						<div class="form-group" id = "b6_div_tipo">
 							
 							<label class="control-label col-xs-6">Cual es su Discapacidad?</label>
 							<div class="col-xs-6">
 
 								<div class="checkbox">
-								<label><input type="checkbox" value="1">Motora</label>
+								<label><input type="checkbox" name="b6_tpo[]" value="1">Motora</label>
 								</div>
 								<div class="checkbox">
-								<label><input type="checkbox" value="2">Sensorial - Visual</label>
+								<label><input type="checkbox"  name="b6_tpo[]" value="2">Sensorial - Visual</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" value="3" >Sensorial - Auditiva</label>
+								<label><input type="checkbox"  name="b6_tpo[]" value="3" >Sensorial - Auditiva</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" value="4" >Viceral</label>
+								<label><input type="checkbox"  name="b6_tpo[]" value="4" >Viceral</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" value="5" >Mental o Cognitiva</label>
+								<label><input type="checkbox"  name="b6_tpo[]" value="5" >Mental o Cognitiva</label>
 								</div>
 
 							</div>
@@ -1028,7 +1015,7 @@
 							<div class="col-xs-6">
 								<select class="form-control">
 								<option value="1">SI</option>
-								<option value="2" >NO</option>							
+								<option value="2">NO</option>							
 								<option value="3">NO sabia que habia que hacerlo</option>							
 								</select>
 							</div>

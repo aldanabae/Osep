@@ -1,14 +1,5 @@
 
 // inicializo bloques
-//var bloque1= $("#bloque_1");
-
-
-// var bloque3b= $("#bloque_3_b");
-// var bloque4= $("#bloque_4");
-//var bloque5= $("#bloque_5");
-//var bloque6= $("#bloque_6");
-//var bloque7= $("#bloque_7");
-//var bloque8= $("#bloque_8");
 var bloque_btn= $("#btn_encuesta");
 //var bloque9= $("#bloque_9");
 
@@ -19,18 +10,7 @@ $(function() {
 
 
   bloque1.bindComponent();
-  bloque2.init();
-  bloque3a.init();
-  bloque3b.init();
-  bloque4.init();
-  bloque5.init();
-  bloque6.init();
-  bloque7.init();
-  bloque9.init();
-    // $('.date-picker').datepicker({
-    //     autoclose: true,
-    //     todayHighlight: true
-    // })
+
 
 });
 
@@ -57,8 +37,16 @@ var bloque1= {
 
         init: function(){
 
-            bloque_btn.hide();     // botonera abajo 
+            bloque_btn.hide("slow");     // botonera abajo 
             bloque1.conf.update();
+            bloque2.init();
+            bloque3a.init();
+            bloque3b.init();
+            bloque4.init();
+            bloque5.init();
+            bloque6.init();
+            bloque7.init();
+            bloque9.init();
         },
 
         update_data: function(){
@@ -67,12 +55,12 @@ var bloque1= {
 
             if(bloque1.conf.osep == '0'){
 
-                $( "#b1_div_afiliado" ).show();
+                $( "#b1_div_afiliado" ).show("slow");
                 bloque2.show_me();
 
             }else{
 
-                $( "#b1_div_afiliado" ).hide();
+                $( "#b1_div_afiliado" ).hide("slow");
                 bloque2.hide_me();
             }
 
@@ -82,11 +70,11 @@ var bloque1= {
             // verifico genero
             if(bloque1.conf.genero == 'm'){
 
-                $( "#b1_div_embarazo" ).hide();
+                $( "#b1_div_embarazo" ).hide("slow");
                 bloque1.conf.embarazo= '1';
             }else{
 
-                $( "#b1_div_embarazo" ).show();
+                $( "#b1_div_embarazo" ).show("slow");
             }
 
             if(bloque1.conf.discapacidad == '0'){
@@ -173,13 +161,6 @@ var bloque1= {
 
                     });
 
-                $( "#b1_disc" ).on(
-                        'change, click', function(){
-
-                            bloque1.conf.discapacidad= $(this).val();
-                            bloque1.conf.update();
-
-                    });
                     $( "#b1_ocupacion" ).on(
                         'change, click', function(){
                             bloque1.conf.ocupacion= $(this).val();
@@ -193,7 +174,6 @@ var bloque1= {
                             bloque1.init();
                             bloque1.action_block();
                             
-
                     });    
 
            
@@ -266,7 +246,7 @@ var bloque1= {
 
                 }
 
-                bloque_btn.show();     // botonera abajo             
+                bloque_btn.show("slow");     // botonera abajo             
             
             }else{
 
@@ -298,6 +278,27 @@ var bloque1= {
                     validacion = false;
                 }
 
+                if($('#b1_dni').val() != ""){
+
+                    validacion = true;
+
+                }else{
+                    validacion = false;
+                }
+
+
+
+                if($("#b1_afiliado").is(':visible')){
+
+                    if($('#b1_afiliado').val() != ""){
+
+                        validacion = true;
+
+                    }else{
+                        validacion = false;
+                    }
+                }                
+
             return  validacion;
 
         }
@@ -306,9 +307,8 @@ var bloque1= {
 
 
 var bloque2 ={
-
+    estado: true,
     uso:     '0',
-
     template: {
                 // asigno el nombre del selector de bloque
                 html: '#bloque_2'
@@ -319,16 +319,16 @@ var bloque2 ={
             // actualizo ante los cambios
 
             if(bloque2.uso == '0'){
-                $( "#b2_si" ).show();
-                $( "#b2_area" ).show();
-                $( "#b2_no" ).hide();
+                $( "#b2_si" ).show("slow");
+                $( "#b2_area" ).show("slow");
+                $( "#b2_no" ).hide("slow");
 
 
             }else{
 
-                $( "#b2_si" ).hide();
-                $( "#b2_area" ).hide();
-                $( "#b2_no" ).show();
+                $( "#b2_si" ).hide("slow");
+                $( "#b2_area" ).hide("slow");
+                $( "#b2_no" ).show("slow");
             }
 
 
@@ -355,32 +355,45 @@ var bloque2 ={
 
     },
 
-
-
-
-
     show_me: function(){
 
         // Mostrar el bloque
-        $( bloque2.template.html ).show();
-
+        $( bloque2.template.html ).show("slow");
+        bloque2.estado= true;
     },
 
     hide_me: function(){
         // ocultar el bloque
-        $( bloque2.template.html ).hide();
+        $( bloque2.template.html ).hide("slow");
+        bloque2.estado= false;
 
     },  
 
+    validate:function(){
 
+        var validacion = false;
+
+            if($("#b2_uso").is(':visible')){
+
+                if($('#b2_uso').val() != ""){
+
+                    validacion = true;
+
+                }else{
+                    validacion = false;
+                }
+            }   
+
+        return  validacion;
+
+    }
 }
 
 
 
 var bloque3a ={
-
+        estado: false,
         leche:     '1',
-
         template: {
                     // asigno el nombre del selector de bloque
                     html: '#bloque_3_a'
@@ -390,11 +403,11 @@ var bloque3a ={
 
                 if(bloque3a.leche == '1'){
                     // si tien control hecho muestra complejidad
-                    $( "#b3a_div_porque_no" ).hide();
+                    $( "#b3a_div_porque_no" ).hide("slow");
 
                 }else{
                     // si no se lo hizo muestra por que no..
-                    $( "#b3a_div_porque_no" ).show();
+                    $( "#b3a_div_porque_no" ).show("slow");
                 }
 
         },
@@ -420,19 +433,49 @@ var bloque3a ={
         show_me: function(){
 
             // Mostrar el bloque
-            $( bloque3a.template.html ).show();
+            $( bloque3a.template.html ).show("slow");
+            bloque3a.estado= true;
         },
 
         hide_me: function(){
             // ocultar el bloque
-            $( bloque3a.template.html ).hide();
+            $( bloque3a.template.html ).hide("slow");
+            bloque3a.estado= false;
         },  
+
+        validate:function(){
+
+         var validacion = false;
+
+            if($("#b2_uso").is(':visible')){
+
+                if($('#b2_uso').val() != ""){
+
+                    validacion = true;
+
+                }else{
+                    validacion = false;
+                }
+            }   
+
+
+            if($('#b2_otro').val() != ""){
+
+                validacion = true;
+
+            }else{
+                validacion = false;
+            }
+
+            return  validacion;
+            
+        }    
 }
 
 
 
 var bloque3b ={
-
+        estado: false,
         escuela:     '2',
         extra:       '1',
         activity:    '1', 
@@ -446,22 +489,22 @@ var bloque3b ={
 
                 if(bloque3b.escuela == '1'){
                     // si tien control hecho muestra complejidad
-                    $( "#b3b_div_problem" ).show();
+                    $( "#b3b_div_problem" ).show("slow");
 
                 }else{
                     // si no se lo hizo muestra por que no..
-                    $( "#b3b_div_problem" ).hide();
+                    $( "#b3b_div_problem" ).hide("slow");
                 }
 
                 if(bloque3b.extra == '1'){
                     // si tien control hecho muestra complejidad
-                    $( "#b3b_div_activity" ).show();
-                    $( "#b3b_div_donde" ).hide();
+                    $( "#b3b_div_activity" ).show("slow");
+                    $( "#b3b_div_donde" ).hide("slow");
 
                 }else{
                    
-                    $( "#b3b_div_activity" ).hide();
-                    $( "#b3b_div_donde" ).hide();
+                    $( "#b3b_div_activity" ).hide("slow");
+                    $( "#b3b_div_donde" ).hide("slow");
                     bloque3b.activity='1';
                     $( "#b3b_activity" ).val(bloque3b.activity);
                     $("#b3b_activity[value=1]").attr("selected",true);
@@ -471,11 +514,11 @@ var bloque3b ={
 
                 if(bloque3b.activity == '3' ||  bloque3b.activity == '2' ||  bloque3b.activity == '5'){
                     // si tien control hecho muestra complejidad
-                    $( "#b3b_div_donde" ).show();
+                    $( "#b3b_div_donde" ).show("slow");
 
                 }else{
                     // si no se lo hizo muestra por que no..
-                    $( "#b3b_div_donde" ).hide();
+                    $( "#b3b_div_donde" ).hide("slow");
                 }
 
 
@@ -507,8 +550,6 @@ var bloque3b ={
                     });
 
 
-
-
                     $( "#b3b_activity" ).on(
                         'change, click', function(){
 
@@ -521,19 +562,25 @@ var bloque3b ={
         show_me: function(){
 
             // Mostrar el bloque
-            $( bloque3b.template.html ).show();
+            $( bloque3b.template.html ).show("slow");
+            bloque3b.estado= true;
         },
 
         hide_me: function(){
             // ocultar el bloque
-            $( bloque3b.template.html ).hide();
-        },  
+            $( bloque3b.template.html ).hide("slow");
+            bloque3b.estado= false;
+        }, 
+
+        validate:function(){
+
+        } 
 }
 
 
 
 var bloque4 ={
-
+        estado: false,
         pap: {
             uso:     '0'
         },
@@ -553,25 +600,25 @@ var bloque4 ={
 
                 if(bloque4.pap.uso == '0'){
 
-                    $( "#b4_div_pap_si" ).show();
-                    $( "#b4_div_pap_no" ).hide();
+                    $( "#b4_div_pap_si" ).show("slow");
+                    $( "#b4_div_pap_no" ).hide("slow");
 
                 }else{
 
-                    $( "#b4_div_pap_si" ).hide();
-                    $( "#b4_div_pap_no" ).show();
+                    $( "#b4_div_pap_si" ).hide("slow");
+                    $( "#b4_div_pap_no" ).show("slow");
 
                 }
 
                 if(bloque4.mamo.uso == '0'){
-                    $( "#b4_div_mamo_si" ).show();
-                    $( "#b4_div_mamo_no" ).hide();
+                    $( "#b4_div_mamo_si" ).show("slow");
+                    $( "#b4_div_mamo_no" ).hide("slow");
 
 
                 }else{
 
-                    $( "#b4_div_mamo_si" ).hide();
-                    $( "#b4_div_mamo_no" ).show();
+                    $( "#b4_div_mamo_si" ).hide("slow");
+                    $( "#b4_div_mamo_no" ).show("slow");
                 }
         },
 
@@ -604,20 +651,27 @@ var bloque4 ={
         show_me: function(){
 
             // Mostrar el bloque
-            $( bloque4.template.html ).show();
+            $( bloque4.template.html ).show("slow");
+            bloque4.estado= true;
         },
 
         hide_me: function(){
             // ocultar el bloque
-            $( bloque4.template.html ).hide();
+            $( bloque4.template.html ).hide("slow");
+            bloque4.estado= false;
         },  
+
+        validate:function(){
+            
+        }       
+
 }
 
 
 
 
 var bloque5 ={       // Adultos mayores
-
+        estado: false,
         activity: '2',
         medico: '1',
         template: {
@@ -630,19 +684,19 @@ var bloque5 ={       // Adultos mayores
 
                 if(bloque5.activity == '1'){
 
-                    $( "#b5_div_cual" ).show();
+                    $( "#b5_div_cual" ).show("slow");
                  
                 }else{
 
-                    $( "#b5_div_cual" ).hide();
+                    $( "#b5_div_cual" ).hide("slow");
                 }
 
                 if(bloque5.medico == '1'){
-                    $( "#b5_div_esde_osep" ).show();
+                    $( "#b5_div_esde_osep" ).show("slow");
 
                 }else{
 
-                    $( "#b5_div_esde_osep" ).hide();
+                    $( "#b5_div_esde_osep" ).hide("slow");
                 }
 
         },
@@ -676,21 +730,31 @@ var bloque5 ={       // Adultos mayores
         show_me: function(){
 
             // Mostrar el bloque
-            $( bloque5.template.html ).show();
+            $( bloque5.template.html ).show("slow");
+            bloque5.estado= true;
         },
 
         hide_me: function(){
             // ocultar el bloque
-            $( bloque5.template.html ).hide();
+            $( bloque5.template.html ).hide("slow");
+            bloque5.estado= false;
         },  
+
+
+        validate:function(){
+
+
+
+
+            
+        }        
 }
 
 
 
-
-
-
 var bloque6 ={       // Discapacidad
+
+        estado: false,
 
         medico: [],
 
@@ -720,10 +784,10 @@ var bloque6 ={       // Discapacidad
 
             if( vista){
 
-                $('#b6_div_profesional').show();
+                $('#b6_div_profesional').show("slow");
             }else{
 
-                $('#b6_div_profesional').hide();
+                $('#b6_div_profesional').hide("slow");
             }
 
 
@@ -752,26 +816,86 @@ var bloque6 ={       // Discapacidad
 
                bloque6.update();
             });
-            $('#b6_div_profesional').hide()
+            $('#b6_div_profesional').hide("slow")
 
         },
 
         show_me: function(){
 
             // Mostrar el bloque
-            $( bloque6.template.html ).show();
+            $( bloque6.template.html ).show("slow");
+            bloque6.estado= true;
         },
 
         hide_me: function(){
             // ocultar el bloque
-            $( bloque6.template.html ).hide();
-        },  
+            $( bloque6.template.html ).hide("slow");
+            bloque6.estado= false;
+        }, 
+
+
+        validate:function(){
+
+            if(bloque6.estado){
+
+                var validacion = false;
+                var cantidad   = 0;
+                var contar = function(numero){
+                                    if (numero >0){
+                                            return true;
+                                    }else{
+                                            return false;
+                                    }
+                                };
+               
+                if($("#b7_cual").is(':visible')){
+
+                    if($('#b7_cual').val() != ""){
+
+                        validacion = true;
+
+                    }else{
+                        validacion = false;
+                    }
+                }
+
+               $("#b6_div_tipo  input[type='checkbox']").each(function(){
+
+                    if ($(this).prop('checked')){
+                        
+                         cantidad++;
+
+                    }
+
+                })  
+
+                validacion = contar(cantidad)
+
+                cantidad= 0;
+               $("#b6_div_medicos  input[type='checkbox']").each(function(){
+
+                    if ($(this).prop('checked')){
+                        
+                         cantidad++;
+
+                    }
+
+                })  
+
+                validacion = contar(cantidad);
+
+                return  validacion;
+
+            }
+            
+        }
+
 }
 
 
 
 var bloque7 ={
-
+        estado: false,
         uso:     '1',
         problem: '2',
 
@@ -785,23 +909,23 @@ var bloque7 ={
 
                 if(bloque7.uso == '1'){
                     // si tien control hecho muestra complejidad
-                    $( "#b7_div_complejo" ).show();
-                    $( "#b7_div_porque_no" ).hide();
+                    $( "#b7_div_complejo" ).show("slow");
+                    $( "#b7_div_porque_no" ).hide("slow");
 
                 }else{
                     // si no se lo hizo muestra por que no..
-                    $( "#b7_div_porque_no" ).show();
-                    $( "#b7_div_complejo" ).hide();
+                    $( "#b7_div_porque_no" ).show("slow");
+                    $( "#b7_div_complejo" ).hide("slow");
 
                 }
                 if(bloque7.problem == '1'){
                     
-                    $( "#b7_cual" ).show();
+                    $( "#b7_cual" ).show("slow");
 
 
                 }else{
 
-                    $( "#b7_cual" ).hide();
+                    $( "#b7_cual" ).hide("slow");
                 }
         },
 
@@ -833,13 +957,43 @@ var bloque7 ={
         show_me: function(){
 
             // Mostrar el bloque
-            $( bloque7.template.html ).show();
+            $( bloque7.template.html ).show("slow");
+            bloque7.estado= true;
         },
 
         hide_me: function(){
             // ocultar el bloque
-            $( bloque7.template.html ).hide();
+            $( bloque7.template.html ).hide("slow");
+            bloque7.estado= false;
         }, 
+
+        validate:function(){    // valido los campos requeridos del bloque de a cuerdo si esta activo o no
+
+            if(bloque7.estado){
+
+                var validacion = false;
+
+               
+                if($("#b7_cual").is(':visible')){
+
+                    if($('#b7_cual').val() != ""){
+
+                        validacion = true;
+
+                    }else{
+                        validacion = false;
+                    }
+                }   
+
+                return  validacion;
+            }
+
+            
+        },
+
+
+
+
 }
 
 
@@ -847,7 +1001,7 @@ var bloque7 ={
 
 var bloque9 ={
 
-
+        estado: false,
         template: {
                     // asigno el nombre del selector de bloque
                     html: '#bloque_9'
@@ -863,13 +1017,52 @@ var bloque9 ={
         show_me: function(){
 
             // Mostrar el bloque
-            $( bloque9.template.html ).show();
+            $( bloque9.template.html ).show("slow");
+            bloque9.estado= true;
         },
 
         hide_me: function(){
             // ocultar el bloque
-            $( bloque9.template.html ).hide();
+            $( bloque9.template.html ).hide("slow");
+            bloque9.estado= false;
         }, 
+
+
+        validate:function(){
+
+            if(bloque9.estado){
+                var validacion = false;
+
+                if($('#b9_horas').val() != ""){
+
+                    validacion = true;
+
+                }else{
+                    validacion = false;
+                }
+
+
+                if($('#b9_lugar').val() != ""){
+
+                    validacion = true;
+
+                }else{
+                    validacion = false;
+                }
+
+                if($('#b9_ocupacion').val() != ""){
+
+                    validacion = true;
+
+                }else{
+                    validacion = false;
+                }                
+
+
+            }
+            
+        },
+
 
         reset: function(){
 

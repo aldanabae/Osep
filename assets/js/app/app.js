@@ -1,14 +1,4 @@
 
-
-
-
-
-
-
-
-
-
-
 $(function() {
 
     $('.date-picker').datepicker({
@@ -17,34 +7,64 @@ $(function() {
     })
 
 
- $("#encuesta_ini").submit(function () { 
+    $("#encuesta_ini").submit(function () { 
 
-var retorno = false;   // variable de retorno para el submit
-// debo comprobar la existencia de la variable local
-if ( localStorage.getItem('general')){
+        var retorno = false;   // variable de retorno para el submit
+    // debo comprobar la existencia de la variable local
+        if ( localStorage.getItem('general')){
 
-    localStorage.removeItem("general");
+            localStorage.removeItem("general");
 
-}
-
-
-
-var general = $("#bloque_0").find("select, textarea, input").serializeArray();
-
-localStorage.setItem('general' , JSON.stringify(general));
-
-retorno= true;
-
-return retorno;
+        }
 
 
 
+        var general = $("#bloque_0").find("select, textarea, input").serializeArray();
+
+        localStorage.setItem('general' , JSON.stringify(general));
+
+        retorno= true;
+
+        return retorno;
+
+    })
 
 
-})
+		function cargarLocalidades(){
+			var idDpto = $('#departamento').val();
+
+			var parametros = {
+			"id_dpto" : idDpto,
+			};
+			$.ajax({
+				type: 'POST',
+				url: '<?php echo base_url(); ?>index.php/abms/abmVisitasC/getLocalidades', 
+				data: parametros, 
+			       	dataType: 'json',
+				success: function(resp) { 
+					if(resp){
+						cargarCombo(resp);
+					}
+					else{
+						//document.getElementById("localidad").disabled=true;
+					}},
+				 error: function(xhr,status) { 
+					console.log(xhr+"    "+status);
+				},
+			});
+		}
 
 
 
+		function cargarCombo(listaLoc){
+			document.getElementById("localidad").options.length=0;
+			document.getElementById("localidad").options[0]=new Option("Selecciona una opcion", "0");
+
+			var combo=$("#localidad");
+	        for (var i in listaLoc){
+	            combo.append('<option value="'+listaLoc[i].id_tlocalidad +'">'+ listaLoc[i].descloc +'</option>');
+	        }
+		}
 
 
 
