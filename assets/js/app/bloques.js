@@ -17,7 +17,7 @@ $(function() {
 
 
 
-var bloque1= {
+var bloque1= {    // Bloque General
 
     // 0 es si  1  es el no
         conf: {
@@ -306,7 +306,7 @@ var bloque1= {
 }
 
 
-var bloque2 ={
+var bloque2 ={   // bloque uso de Obra social
     estado: true,
     uso:     '0',
     template: {
@@ -391,7 +391,7 @@ var bloque2 ={
 
 
 
-var bloque3a ={
+var bloque3a ={   // bloque 3  bebes
         estado: false,
         leche:     '1',
         template: {
@@ -474,7 +474,7 @@ var bloque3a ={
 
 
 
-var bloque3b ={
+var bloque3b ={     //Bloque Niños
         estado: false,
         escuela:     '2',
         extra:       '1',
@@ -579,7 +579,7 @@ var bloque3b ={
 
 
 
-var bloque4 ={
+var bloque4 ={       // mUjer
         estado: false,
         pap: {
             uso:     '0'
@@ -666,7 +666,6 @@ var bloque4 ={
         }       
 
 }
-
 
 
 
@@ -894,7 +893,7 @@ var bloque6 ={       // Discapacidad
 
 
 
-var bloque7 ={
+var bloque7 ={       // embarazo
         estado: false,
         uso:     '1',
         problem: '2',
@@ -999,7 +998,7 @@ var bloque7 ={
 
 
 
-var bloque9 ={
+var bloque9 ={       // laboral
 
         estado: false,
         template: {
