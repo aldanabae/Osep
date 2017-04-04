@@ -19,19 +19,19 @@ class ProbandoC extends My_Controller{
 		// $data['bloques'] = $this->probando_model->obtenerBloques();	
 		// //Variable que recibira la VISTA con todos los datos de la encuesta
 		// $armoEncuesta = array('idBloque' =>"",
-		// 						'nombreBloque' =>"",
-		// 						'nroBloque' =>"",
-		// 						'idTipoBloque' =>"",
-		// 						'nombreTipoB' =>"",
-		// 						"preguntas" => array('idPregunta' => "", 
-		// 												'pregunta' =>"",
-		// 												'idSubPregunta' =>"",
-		// 												'idTipoPregunta' =>"",
-		// 												'idEtiqueta' =>"",
-		// 												"respuestas"=> array('idRespuesta' =>"", 
-		// 																		'respuesta' =>"")
+		// 							'nombreBloque' =>"",
+		// 							'nroBloque' =>"",
+		// 							'idTipoBloque' =>"",
+		// 							'nombreTipoB' =>"",
+		// 							"preguntas" => array('idPregunta' => "", 
+		// 													'pregunta' =>"",
+		// 													'idSubPregunta' =>"",
+		// 													'idTipoPregunta' =>"",
+		// 													'idEtiqueta' =>"",
+		// 													"respuestas"=> array('idRespuesta' =>"", 
+		// 																			'respuesta' =>"")
 		// 												)
-		// 					);
+		// 						);
 		// //Contador de respuestas para armar cada $armoEncuesta
 		// $cuentaResp = 0;
 
@@ -42,6 +42,7 @@ class ProbandoC extends My_Controller{
 		// 	$nroBloq = $bloq->nroBloque;
 		// 	$idTpoB = $bloq->idTipoBloque;
 		// 	$nomTpoB = $bloq->nombreTipoB;
+		//  $idEncuesta = $bloq->idEncuesta;
 			
 		// 	//Luego hago variar cada Pregunta de cada Bloque
 		// 	foreach ($data['preguntas'] as $preg){
@@ -123,6 +124,11 @@ class ProbandoC extends My_Controller{
 		// 	} 
 		// } 
 
+		// $data['encuesta'] = $idEncuesta;
+
+		// //Enviar a la vista $armoEncuesta y el idEncuesta
+		// //$this->cargarVista('vistaCorrespondiente', $armoEncuesta, $data);
+
 		// echo $cuentaResp;
 		// echo "</br>";
 		// echo "idBloque".$armoEncuesta[0]['idBloque'];
@@ -150,142 +156,287 @@ class ProbandoC extends My_Controller{
 		// echo "</br>";
 		// echo "</br>";
 		// die();
-	
-		$respElegidas[0] = ["12", "45"];
-		$respElegidas[1] = ["14", "90"];
-		$respElegidas[2] = ["16", "Titular"];
-		$respElegidas[3] = ["18", "Conyugue"];
+		// $encuestados[0] = array('nombreE' =>"Carlos",
+		// 						'apellidoE' =>"Menem",
+		// 						'edad' =>"50",
+		// 						'sexo' =>"M",
+		// 						'nroAfiliado' => "234356782/23",
+		// 						'dniE' =>"45623123",
+		// 						"pregResp" => array('idPregunta' => "11", 
+		// 											'idRespuesta' =>"25")
+		// 					);
+		// $encuestados[1] = array('nombreE' =>"Susana",
+		// 						'apellidoE' =>"Garipeti",
+		// 						'edad' =>"50",
+		// 						'sexo' =>"M",
+		// 						'nroAfiliado' => "222222222/23",
+		// 						'dniE' =>"32085237",
+		// 						"pregResp" => array('idPregunta' => "6", 
+		// 											'idRespuesta' =>"8")
+		// 					);
 
-		// $prob = 5;
-		// $resp = "5143342";
-		// if (is_numeric($resp)){
-		// 	echo "es aca".is_numeric($resp);
-		// echo "</br>";
-		// }
-		//echo "es aqui".is_numeric($prob);
-		//$contador = 1;
-		$contador = count($respElegidas);
-		$indice = 0;
+		// $encuestados[2] = array('nombreE' =>"Roberto",
+		// 						'apellidoE' =>"Carlos",
+		// 						'edad' =>"50",
+		// 						'sexo' =>"M",
+		// 						'nroAfiliado' => NULL,
+		// 						'dniE' =>"32564345",
+		// 						"pregResp" => array('idPregunta' => "5", 
+		// 											'idRespuesta' =>"Barrio Solares")
+		// 					);
+		// $encuestados[3] = array('nombreE' =>"Cecilia",
+		// 						'apellidoE' =>"Paez",
+		// 						'edad' =>"34",
+		// 						'sexo' =>"F",
+		// 						'nroAfiliado' => NULL,
+		// 						'dniE' =>"33333333",
+		// 						"pregResp" => array('idPregunta' => "7", 
+		// 											'idRespuesta' =>"45:number")
+		// 					);
+
+// $relevamiento = array('nroRelev' =>"45",
+// 								'fechaR' =>"2017/05/25",
+// 								'observCriticidad' =>"Grave",
+// 								'idCriticidad' =>"3",
+// 						 		"pregResp" => array('idPregunta' => "6", 
+// 														'idRespuesta' =>"4")
+// 								);
 
 
-		for ($i=0; $i < $contador; $i++) { 
-			if(is_numeric($respElegidas[$indice][1])){
-				echo "entro aca";
-			echo "</br>";
-			$idPreg = $respElegidas[$indice][0];
-			echo $idPreg;
-			echo "</br>";
-			$idResp = $respElegidas[$indice][1];
-			echo $idResp;
-			echo "</br>";
-			echo "</br>";
-			echo "</br>";
-			}
-			
-			$indice++;
-		}
-		
+	die();
 
-		die();
 		
 		$nombreVista="backend/abms/probando";
 		$this->cargarVista($nombreVista, $data);
 	}
 
-	function recibirDatos($encuestados, $relevamiento){
-	// 	$encuestados = array('nombreE' =>"",
-	// 							'apellidoE' =>"",
-	// 							'edad' =>"",
-	// 							'sexo' =>"",
-	// 							"pregResp" => array('idPregunta' => "", 
-	// 													'idRespuesta' =>"")
-	// 						);
 
-	// 	$relevamiento = array('nroRelev' =>"",
+
+
+
+
+	function recibirDatos($encuestados, $relevamiento, $encuesta){
+	// Si viene con :number no es un ID de Respuesta sino una respuestaBreve numerica, ejemplo Edad
+
+	// Variable a recibir de la vista con los datos de cada Respuesta_Elegida del Relevamiento
+	// $relevamiento = array('nroRelev' =>"",
 	// 							'fechaR' =>"",
 	// 							'observCriticidad' =>"",
 	// 							'idCriticidad' =>"",
-	// 							"pregResp" => array('idPregunta' => "", 
+	// 					 		"pregResp" => array('idPregunta' => "", 
 	// 													'idRespuesta' =>"")
-	// 						);
+	// 							);
 
+	//Variable utilizada en toda la funcion
+	$data['resp_preg'] = $this->probando_model->obtenerRespPreg();
 
-	// 	$data['resp_preg'] = $this->probando_model->obtenerRespPreg();
-	// 	$contadorE = count($encuestados);
-	// 	//$contadorR = count($relevamiento);
-	// 	for ($i=0; $i < $contadorR; $i++) {
-	// 		$idPreg = $respElegidas[$indice][0];
+	//Creo relevamiento
+	$data['relevamiento'] = array('nroRelev' => $relevamiento[0]['nroRelev'],
+									'fechaR' => $relevamiento[0]['fechaR'],
+									'observC' => $relevamiento[0]['observCriticidad'],
+									'idCriti'=> $relevamiento[0]['idCriticidad'],
+									'idEnc'=> $encuesta);
+	$idRelevamiento = $this->probando_model->crearRelevamiento($data['relevamiento']);
 
-	// 		if(is_numeric($respElegidas[$indice][1])){
-	// 			$idResp = $respElegidas[$indice][1]; 
-	// 			foreach ($data['resp_preg'] as $respPreg){
-	// 				if($respPreg->idRespuesta == $idResp){
-	// 					if($respPreg->idPregunta == $idPreg){
-	// 						$data['encuestado'] = $encuestado;
-	// 						$data['relevamiento'] = $relev;
-	// 						$data['idRespPreg'] = $respPreg->idRespPreg;
-	// 						$data['respB'] = NULL;
-	// 						$data['respP'] = NULL;
-	// 						$this->probando_model->crearRespuestaElegida($data);
-	// 	$indice = 0;
+	//Guardar todas las Respuestas_Elegidas asociadas solo al relevamiento
+	$contadorR = count($relevamiento);
+	$indiceR = 0;
 
+	//Loop de todas los Relevamientos recibidos
+	for ($i=0; $i < $contadorR; $i++){
+		$idPregR = $relevamiento[$indiceR]['pregResp']['idPregunta'];
 
-		$data['resp_preg'] = $this->probando_model->obtenerRespPreg();
-		$contador = count($respElegidas);
-		$indice = 0;
-		for ($i=0; $i < $contador; $i++) {
-			$idPreg = $respElegidas[$indice][0];
+			//Si la respuesta en un nro, osea un ID
+			if(is_numeric($relevamiento[$indiceR]['pregResp']['idRespuesta'])){
+				$idRespR = $relevamiento[$indiceR]['pregResp']['idRespuesta'];
 
-			if(is_numeric($respElegidas[$indice][1])){
-				$idResp = $respElegidas[$indice][1]; 
+				//Traigo cada valor de Respuesta_Pregunta guardado y comparo si es el mismo idRespuesta e idPregunta
 				foreach ($data['resp_preg'] as $respPreg){
-					if($respPreg->idRespuesta == $idResp){
-						if($respPreg->idPregunta == $idPreg){
+					if($respPreg->idRespuesta == $idRespR){
+						if($respPreg->idPregunta == $idPregR){
+							$data = array('idEnc' => NULL,
+											'relevamiento' => $idRelevamiento,
+											'idRespPreg' => $respPreg->idRespPreg,
+											'respB' => NULL);
 
+							//Creo un objeto Respuesta_Elegida
+							$this->probando_model->crearRespuestaElegida($data);
+						}
+					}
+				}
+			//Si la respuesta es un String, osea una respuestaBreve
+			}else{
+				$cadenaResp = $relevamiento[$indiceR]['pregResp']['idRespuesta'];
+				if(strpos($cadenaResp, ":number")){
+					$largo = strlen($cadenaResp);
+					$respFinal = substr($cadenaResp,-($largo), ($largo-7));
+
+					$data = array('idEnc' => NULL,
+								'relevamiento' => $idRelevamiento,
+								'idRespPreg' => NULL,
+								'respB' => $respFinal);
+
+					//Creo un objeto Respuesta_Elegida
+					$this->probando_model->crearRespuestaElegida($data);
+
+				}else{
+					//Si la respuesta es un String directamente lo guardo en respBreve en una nueva Respuesta_Elegida
+					$resp = $relevamiento[$indiceR]['pregResp']['idRespuesta'];
+					$data = array('idEnc' => NULL,
+									'relevamiento' => $idRelevamiento,
+									'idRespPreg' => NULL,
+									'respB' => $resp);
+
+					//Creo un objeto Respuesta_Elegida
+					$this->probando_model->crearRespuestaElegida($data);
 				}
 
-			}else{
-				$resp = $respElegidas[$indice][1];
 			}
+			
+		$indiceR++;
+	}//Fin carga de Respuestas del Relevamiento
 
-			$indice++;
+	// Variable a recibir de la vista con los datos de cada Respuesta_Elegida por cada Encuestado
+	// $encuestados = array('nombreE' =>"",
+	// 						'apellidoE' =>"",
+	//						'dniE' =>"",
+	// 						'edad' =>"",
+	// 						'sexo' =>"",
+	//						'nroAfiliado' =>"",
+	// 						"pregResp" => array('idPregunta' => "", 
+	// 											'idRespuesta' =>"")
+	// 						);
+
+	//Variables necesarias inicializadas para crear arreglo de DNIs
+	$contadorE = count($encuestados);
+	$indiceE = 0;
+	$contadorDNI = 0;
+	$listaDNI = array();
+
+	//Loop para crear arreglo de DNIs y los encuestados
+	for ($i=0; $i < $contadorE; $i++){
+		$dniE = $encuestados[$indiceE]['dniE'];
+
+		//Si la lista esta vacia, le cargo el primer dni encontrado
+		if(count($listaDNI)==0){
+			$listaDNI[0] = $dniE;
+			$contadorDNI++;
+
+			//Creo encuestado
+			$data['encuestado'] = array('nombreE' => $encuestados[$indiceE]['nombreE'],
+										'apellidoE' => $encuestados[$indiceE]['apellidoE'],
+										'dniE' => $dniE,
+										'edad'=> $encuestados[$indiceE]['edad'],
+										'sexo'=> $encuestados[$indiceE]['sexo'],
+										'nroAfiliado' => $encuestados[$indiceE]['nroAfiliado'],
+										'idRelev'=> $idRelevamiento);
+			$this->probando_model->crearEncuestado($data['encuestado']);
+		}else{
+			//Si el dni no esta cargado en el array previamente lo ingreso
+			if(!in_array($dniE, $listaDNI)){
+				$listaDNI[$contadorDNI] = $dniE;
+				$contadorDNI++;
+
+				//Creo encuestado
+				$data['encuestado'] = array('nombreE' => $encuestados[$indiceE]['nombreE'],
+												'apellidoE' => $encuestados[$indiceE]['apellidoE'],
+												'dniE' => $dniE,
+												'edad'=> $encuestados[$indiceE]['edad'],
+												'sexo'=> $encuestados[$indiceE]['sexo'],
+												'nroAfiliado' => $encuestados[$indiceE]['nroAfiliado'],
+												'idRelev'=> $idRelevamiento);
+				$this->probando_model->crearEncuestado($data['encuestado']);
+			}		
+		}
+		$indiceE++;	
+	}
+
+
+	//Guardar todas las Respuestas_Elegidas asociadas solo a cada encuestado
+	$indiceRE = 0;
+
+	for ($i=0; $i < $contadorE; $i++){
+		$idPregE = $encuestados[$indiceRE]['pregResp']['idPregunta'];
+
+		//Si la respuesta en un nro, osea un ID
+		if(is_numeric($encuestados[$indiceRE]['pregResp']['idRespuesta'])){
+			$idRespE = $encuestados[$indiceRE]['pregResp']['idRespuesta']; 
+
+			//Traigo cada valor de Respuesta_Pregunta guardado y comparo si es el mismo idRespuesta e idPregunta
+			$data['resp_preg'] = $this->probando_model->obtenerRespPreg();
+			foreach($data['resp_preg'] as $respPreg){
+				if($respPreg->idRespuesta == $idRespE){
+					if($respPreg->idPregunta == $idPregE){
+
+						$dniEnc = $encuestados[$indiceRE]['dniE'];
+						//Busco el idEncuestado para poder cargarlo en la clase Respuesta_Elegida
+						$encuestado = $this->probando_model->obtenerEncuestado($dniEnc);
+						foreach ($encuestado->result() as $enc){
+							$idEncuestado = $enc->idEncuestado;
+						}
+
+						$data = array(
+							'idEnc' => $idEncuestado,
+							'relevamiento' => $idRelevamiento,
+							'idRespPreg' => $respPreg->idRespPreg,
+							'respB' => NULL);
+
+						//Creo un objeto Respuesta_Elegida
+						$this->probando_model->crearRespuestaElegida($data);
+					}
+				}
+			}
+		}else{
+			$cadenaResp = $encuestados[$indiceRE]['pregResp']['idRespuesta'];
+			if(strpos($cadenaResp, ":number")){
+ 				$largo = strlen($cadenaResp);
+ 				$respFinal = substr($cadenaResp,-($largo), ($largo-7));
+
+	 			$dniEnc = $encuestados[$indiceRE]['dniE'];
+				//Busco el idEncuestado para poder cargarlo en la clase Respuesta_Elegida
+				$encuestado = $this->probando_model->obtenerEncuestado($dniEnc);
+				foreach ($encuestado->result() as $enc){
+					$idEncuestado = $enc->idEncuestado;
+				}							
+
+				$data = array(
+					'idEnc' => $idEncuestado,
+					'relevamiento' => $idRelevamiento,
+					'idRespPreg' => NULL,
+					'respB' => $respFinal);
+
+				//Creo un objeto Respuesta_Elegida
+				$this->probando_model->crearRespuestaElegida($data);
+			}else{
+				//Si la respuesta es un String directamente lo guardo en respBreve en una nueva Respuesta_Elegida
+ 				$resp = $encuestados[$indiceRE]['pregResp']['idRespuesta'];
+	 			$dniEnc = $encuestados[$indiceRE]['dniE'];
+				//Busco el idEncuestado para poder cargarlo en la clase Respuesta_Elegida
+				$encuestado = $this->probando_model->obtenerEncuestado($dniEnc);
+				foreach ($encuestado->result() as $enc){
+					$idEncuestado = $enc->idEncuestado;
+				}							
+
+				$data = array(
+					'idEnc' => $idEncuestado,
+					'relevamiento' => $idRelevamiento,
+					'idRespPreg' => NULL,
+					'respB' => $resp);
+
+				//Creo un objeto Respuesta_Elegida
+				$this->probando_model->crearRespuestaElegida($data);
+			}	
 		}
 
+		$indiceRE++;
+	}//Fin carga de Respuestas del Encuestado
 
-		$data = array(
-			'nombreE' => $this->input->post('nombreE'),
-			'apellidoE' => $this->input->post('apellidoE'),
-			'telefono' => $this->input->post('telefono'),
-			'direccion' => $this->input->post('direccion'),
-			'dni' => $this->input->post('dni'),
-			'tipoEmpleado' => $this->input->post('tipoEmpleado'),
-			'nroLegajo' => $this->input->post('nroLegajo'),
-			'email' => $this->input->post('email'),
-			'convenio' => $this->input->post('convenio'));
- 
-        $this->form_validation->set_rules('nombreE','Nombre Empleado','trim|required');
-        $this->form_validation->set_rules('apellidoE','Apellido Empleado','trim|required');
-        $this->form_validation->set_rules('telefono','Telefono','trim|required');
-        $this->form_validation->set_rules('direccion','Direccion','trim|required');
-        $this->form_validation->set_rules('dni','Nº Documento','trim|required');
-        $this->form_validation->set_rules('tipoEmpleado','Tipo Responsable','trim|required');
-        $this->form_validation->set_rules('nroLegajo','Nº Legajo','trim|required');
-        $this->form_validation->set_rules('email','E-Mail','trim|required');
-        $this->form_validation->set_rules('convenio','Convenio','trim|required');
 
-       	$this->form_validation->set_message('required','Debe completar este campo');  
- 
-        if ($this->form_validation->run() == FALSE) {
-       		 echo '<script >alert("Debe completar todos los campos con *");</script>';
-       		 redirect('/abms/abmEmpleadosC/cargarNuevoEmpleado','refresh');
+	//Revisar el redireccionamiento al final la recepcion y garda de datos
+	redirect('/abms/abmEmpleadosC','refresh');
 
-        } else {
-            if (isset($_POST['GuardarEnDB'])){
-				$this->abmEmpleados_model->crearEmpleado($data);
-			}
+
 	
-			redirect('/abms/abmEmpleadosC','refresh');
-        }	
 	}
  }
 ?>

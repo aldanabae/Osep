@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Probando_model extends CI_Model {
+class Relevamiento_model extends CI_Model {
 	function __construct(){
 		parent:: __construct();
 		$this->load->database();
@@ -107,7 +107,6 @@ class Probando_model extends CI_Model {
 					'dniEncuestado'=> $data['dniE'], 
 					'edad'=> $data['edad'],
 					'sexo'=> $data['sexo'],
-					'idAfiliado'=> $data['nroAfiliado'],
 					'idRelevamiento'=> $data['idRelev']));
 		$idEncuestado= $this->db->insert_id();
 	}
