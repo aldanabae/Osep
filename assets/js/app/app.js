@@ -30,11 +30,15 @@ $(function() {
     })
 
 
+
+});
+
+
 		function cargarLocalidades(){
 			var idDpto = $('#departamento').val();
 
 			var parametros = {
-			"id_dpto" : idDpto,
+			"id_dpto" : '5'
 			};
 			$.ajax({
 				type: 'POST',
@@ -65,7 +69,3 @@ $(function() {
 	            combo.append('<option value="'+listaLoc[i].id_tlocalidad +'">'+ listaLoc[i].descloc +'</option>');
 	        }
 		}
-
-
-
-});

@@ -82,7 +82,8 @@ class AbmVisitasC extends My_Controller{
 	}
 
 	function getLocalidades(){
-		$id_Dpto = $this->input->post('id_dpto');
+		//$id_Dpto = $this->input->post('id_dpto');
+		$id_Dpto = $_POST['id_dpto'];
 		$data['localidades'] = $this->abmVisitas_model->obtenerLocalidades($id_Dpto);
 	
 		echo json_encode($data['localidades']);		
