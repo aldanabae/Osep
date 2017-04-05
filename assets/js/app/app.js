@@ -36,13 +36,13 @@ $(function() {
 
 		function cargarLocalidades(){
 			var idDpto = $('#departamento').val();
-
+			var path   = $("#localPath").val();
 			var parametros = {
-			"id_dpto" : '5'
+			"id_dpto" : idDpto
 			};
 			$.ajax({
 				type: 'POST',
-				url: '<?php echo base_url(); ?>index.php/abms/abmVisitasC/getLocalidades', 
+				url: path+'index.php/abms/abmVisitasC/getLocalidades', 
 				data: parametros, 
 			       	dataType: 'json',
 				success: function(resp) { 

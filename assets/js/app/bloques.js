@@ -38,7 +38,6 @@ var bloque1= {    // Bloque General
         init: function(){
 
             bloque_btn.hide("slow");     // botonera abajo 
-            bloque1.conf.update();
             bloque2.init();
             bloque3a.init();
             bloque3b.init();
@@ -47,6 +46,7 @@ var bloque1= {    // Bloque General
             bloque6.init();
             bloque7.init();
             bloque9.init();
+            bloque1.conf.update();
         },
 
         update_data: function(){
@@ -170,6 +170,13 @@ var bloque1= {    // Bloque General
                     });                     
 
                     $( "#btn_bloques" ).on(
+                        'click', function(){
+                            bloque1.init();
+                            bloque1.action_block();
+                            
+                    });   
+
+                    $( "#btn_nuevo" ).on(
                         'click', function(){
                             bloque1.init();
                             bloque1.action_block();
@@ -499,12 +506,12 @@ var bloque3b ={     //Bloque Niños
                 if(bloque3b.extra == '1'){
                     // si tien control hecho muestra complejidad
                     $( "#b3b_div_activity" ).show("slow");
-                    $( "#b3b_div_donde" ).hide("slow");
+                    $( "#b3b_div_donde" ).hide();
 
                 }else{
                    
                     $( "#b3b_div_activity" ).hide("slow");
-                    $( "#b3b_div_donde" ).hide("slow");
+                    $( "#b3b_div_donde" ).hide();
                     bloque3b.activity='1';
                     $( "#b3b_activity" ).val(bloque3b.activity);
                     $("#b3b_activity[value=1]").attr("selected",true);
@@ -518,7 +525,7 @@ var bloque3b ={     //Bloque Niños
 
                 }else{
                     // si no se lo hizo muestra por que no..
-                    $( "#b3b_div_donde" ).hide("slow");
+                    $( "#b3b_div_donde" ).hide();
                 }
 
 
@@ -551,7 +558,7 @@ var bloque3b ={     //Bloque Niños
 
 
                     $( "#b3b_activity" ).on(
-                        'change, click', function(){
+                        'change', function(){
 
                             bloque3b.activity= $(this).val();
                             bloque3b.update();
@@ -574,7 +581,14 @@ var bloque3b ={     //Bloque Niños
 
         validate:function(){
 
+
+
+
+
         } 
+
+
+
 }
 
 

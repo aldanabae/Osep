@@ -1232,11 +1232,11 @@
         <div class="form-group" id="btn_encuesta">
             <div class="col-xs-6">
 
-                <input type="reset" class="btn btn-default" value="Nuevo integrante" id="">
+                <input type="reset" class="btn btn-default" value="Nuevo integrante" id="btn_nuevo">
             </div>
 
             <div class="col-xs-6 text-right">
-                <input type="submit" class="btn btn-primary" value="Continuar" id="">
+                <input type="submit" class="btn btn-primary" value="Continuar" id="btn_continuar">
 
             </div>		
         </div>

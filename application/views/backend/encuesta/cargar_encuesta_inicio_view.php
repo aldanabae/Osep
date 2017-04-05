@@ -6,7 +6,7 @@
 
 
 <!--<div class="container">   contenedor principal -->
- 
+ <input type="hidden" name="localPath"  id="localPath" value="<?php echo base_url(); ?>">
         <form id="encuesta_ini" action="<?php echo(site_url('encuesta/cargarEncuesta/cargabloques'));  ?>" method="post">
 
         <div class="row form-horizontal" id= "bloque_0">     <!-- bloque 0 -->
@@ -42,7 +42,8 @@
                                 <label class="control-label col-xs-6">Departamento</label>
                                 <div class="col-xs-6">
                                     <select class="form-control" id="departamento" name ="select_dep" onchange="cargarLocalidades()">
-                                    		<option value="1">Capital	</option>
+                                    		<option value="0">Seleccionar</option>
+                                            <option value="1">Capital	</option>
                                             <option value="17">General Alvear</option>
                                             <option value="4">Godoy Cruz</option>
                                             <option value="3">Guaymallén	 </option>
@@ -70,13 +71,6 @@
                                 <div class="col-xs-6">
                                     <select class="form-control" id="localidad" name "select_dep"name "select_distrito">
                                     
-
-
-                                            <option value="4">Godoy Cruz</option>
-                                            <option value="3">Guaymallén	 </option>
-
-
-
 
                                     </select>
                                 </div>
