@@ -1,7 +1,7 @@
 
 $(function() {
 
-    $('.date-picker').datepicker({
+    $('.date-picker').datepicker({   // dispara Datepicker
         autoclose: true,
         todayHighlight: true
     })
@@ -14,18 +14,18 @@ $(function() {
         if ( localStorage.getItem('general')){
 
             localStorage.removeItem("general");
-
         }
 
+        var general = $("#bloque_0").find("select, textarea, input, radio, input:checkbox").serializeArray();
 
-
-        var general = $("#bloque_0").find("select, textarea, input").serializeArray();
 
         localStorage.setItem('general' , JSON.stringify(general));
 
         retorno= true;
 
         return retorno;
+
+
 
     })
 
@@ -68,4 +68,20 @@ $(function() {
 	        for (var i in listaLoc){
 	            combo.append('<option value="'+listaLoc[i].id_tlocalidad +'">'+ listaLoc[i].descloc +'</option>');
 	        }
+		}
+
+
+		function parseData(arreglo){
+			var parse= {};
+
+			arreglo.forEach(function(element) {
+
+				parse[element.name]= element.value
+				
+			});
+
+
+			return parse;
+
+
 		}

@@ -313,9 +313,9 @@
 							
 							<label class="control-label col-xs-6">En los ultimos 6 meses, Utilizaron el servicio de la obra Social?</label>
 							<div class="col-xs-6">
-								<select class="form-control" id= "b2_uso">
-								<option value="0" checked>SI</option>
-								<option value="1">NO</option>							
+								<select class="form-control" id= "b2_uso" name= "b2_uso">
+									<option value="0" checked>SI</option>
+									<option value="1">NO</option>							
 								</select>
 							</div>
 
@@ -328,7 +328,7 @@
 						<div class="form-group" id="b2_area">
 							<label class="control-label col-xs-6" for="postalAddress">Para que lo utilizo?:</label>
 							<div class="col-xs-6">
-								<textarea rows="3" class="form-control" id="b2_uso" placeholder="Motivo" ></textarea>
+								<textarea rows="3" class="form-control" id="b2_motivo" name = "b2_area" placeholder="Motivo" ></textarea>
 							</div>
 						</div>
 
@@ -337,7 +337,7 @@
 							
 							<label class="control-label col-xs-6"></label>
 							<div class="col-xs-6">
-								<select class="form-control">
+								<select class="form-control" name="b2_si">
 								<option value="1">Fue a un efector de OSEP</option>
 								<option value="2">Fue a un prestador Privado</option>							
 								<option value="3">Fue a un Hospital o centro de Salud Publico</option>							
@@ -351,7 +351,7 @@
 							
 							<label class="control-label col-xs-6"></label>
 							<div class="col-xs-6">
-								<select class="form-control">
+								<select class="form-control" name="b2_no">
 								<option value="1">Ningun miembro de la familia se enfermo o tuvo accidente</option>
 								<option value="2">No lo consideró necesario asi que no hizo nada</option>							
 								<option value="3">No lo consideró necesario y tomo remedio caseros</option>							
@@ -1028,34 +1028,34 @@
 							<div class="col-xs-6">
 
 								<div class="checkbox">
-								<label><input type="checkbox" name="medico[]" value="1">Medico general o Pediatra</label>
+								<label><input type="checkbox" name="104" value="1">Medico general o Pediatra</label>
 								</div>
 								<div class="checkbox">
-								<label><input type="checkbox" name="medico[]" value="2">Medico Especialista</label>
+								<label><input type="checkbox" name="105" value="2">Medico Especialista</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" name="medico[]" value="3" >Psicologo - Psiquiatra</label>
+								<label><input type="checkbox" name="106" value="3" >Psicologo - Psiquiatra</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" name="medico[]" value="4" >Medico Fisiátra</label>
+								<label><input type="checkbox" name="107" value="4" >Medico Fisiátra</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" name="medico[]" value="5" >Otro profecional de la salud</label>
+								<label><input type="checkbox" name="108" value="5" >Otro profecional de la salud</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" name="medico[]" value="6" >Docente</label>
+								<label><input type="checkbox" name="109" value="6" >Docente</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" name="medico[]" value="7" >Integrante de la red de Madres</label>
+								<label><input type="checkbox" name="110" value="7" >Integrante de la red de Madres</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox"  name="medico[]" value="8" >Integrante de otra organizacion sivil o de ayuda</label>
+								<label><input type="checkbox"  name="111" value="8" >Integrante de otra organizacion sivil o de ayuda</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" name="medico[]" value="9" >Otra persona que tiene una discapacidad, o un familiar con una dicapacidad que no esta en ninguna organizacion</label>
+								<label><input type="checkbox" name="112" value="9" >Otra persona que tiene una discapacidad, o un familiar con una dicapacidad que no esta en ninguna organizacion</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" name="medico[]" value="10" >Otro</label>
+								<label><input type="checkbox" name="9999" value="10" >Otro</label>
 								</div>
 
 							</div>

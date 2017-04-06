@@ -35,6 +35,11 @@ var bloque1= {    // Bloque General
 
         },
 
+        template: {
+            // asigno el nombre del selector de bloque
+            html: '#bloque_1'
+        },
+
         init: function(){
 
             bloque_btn.hide("slow");     // botonera abajo 
@@ -308,6 +313,14 @@ var bloque1= {    // Bloque General
 
             return  validacion;
 
+        },
+
+        parse: function(){
+
+            var tmp = $(bloque1.template.html).find("select, textarea, input, radio, input:checkbox").serializeArray();
+
+            return parseData(tmp);
+
         }
 
 }
@@ -393,6 +406,14 @@ var bloque2 ={   // bloque uso de Obra social
 
         return  validacion;
 
+    },
+
+    parse: function(){
+
+        var tmp = $(bloque2.template.html).find("select, textarea, input, radio, input:checkbox").serializeArray();
+
+        return parseData(tmp);
+
     }
 }
 
@@ -476,7 +497,14 @@ var bloque3a ={   // bloque 3  bebes
 
             return  validacion;
             
-        }    
+        } ,
+        parse: function(){
+
+            var tmp = $(bloque3a.template.html).find("select, textarea, input, radio, input:checkbox").serializeArray();
+
+            return parseData(tmp);
+
+        }   
 }
 
 
@@ -585,7 +613,14 @@ var bloque3b ={     //Bloque Niños
 
 
 
-        } 
+        } ,
+        parse: function(){
+
+            var tmp = $(bloque3b.template.html).find("select, textarea, input, radio, input:checkbox").serializeArray();
+
+            return parseData(tmp);
+
+        }  
 
 
 
@@ -677,6 +712,13 @@ var bloque4 ={       // mUjer
 
         validate:function(){
             
+        } ,
+        parse: function(){
+
+            var tmp = $(bloque4.template.html).find("select, textarea, input, radio, input:checkbox").serializeArray();
+
+            return parseData(tmp);
+
         }       
 
 }
@@ -760,6 +802,13 @@ var bloque5 ={       // Adultos mayores
 
 
             
+        } ,
+        parse: function(){
+
+            var tmp = $(bloque5.template.html).find("select, textarea, input, radio, input:checkbox").serializeArray();
+
+            return parseData(tmp);
+
         }        
 }
 
@@ -861,23 +910,12 @@ var bloque6 ={       // Discapacidad
                                     }
                                 };
                
-                if($("#b7_cual").is(':visible')){
-
-                    if($('#b7_cual').val() != ""){
-
-                        validacion = true;
-
-                    }else{
-                        validacion = false;
-                    }
-                }
 
                $("#b6_div_tipo  input[type='checkbox']").each(function(){
 
                     if ($(this).prop('checked')){
                         
                          cantidad++;
-
                     }
 
                 })  
@@ -901,7 +939,14 @@ var bloque6 ={       // Discapacidad
 
             }
             
-        }
+        } ,
+        parse: function(){
+
+            var tmp = $(bloque6.template.html).find("select, textarea, input, radio, input:checkbox").serializeArray();
+
+            return parseData(tmp);
+
+        }  
 
 }
 
@@ -1002,7 +1047,15 @@ var bloque7 ={       // embarazo
             }
 
             
-        },
+        } ,
+
+        parse: function(){
+
+            var tmp = $(bloque7.template.html).find("select, textarea, input, radio, input:checkbox").serializeArray();
+
+            return parseData(tmp);
+
+        }  
 
 
 
@@ -1074,6 +1127,13 @@ var bloque9 ={       // laboral
 
             }
             
+        } ,
+        parse: function(){
+
+            var tmp = $(bloque6.template.html).find("select, textarea, input, radio, input:checkbox").serializeArray();
+
+            return parseData(tmp);
+
         },
 
 
@@ -1083,3 +1143,23 @@ var bloque9 ={       // laboral
         } 
 }
 
+
+
+
+
+
+    function parseData(arreglo, data){
+        //var parse= {};
+        var parse = (typeof data == 'undefined') ? {} : data;
+
+        arreglo.forEach(function(element) {
+
+            parse[element.name]= element.value
+            
+        });
+
+
+        return parse;
+
+
+    }

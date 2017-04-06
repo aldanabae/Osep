@@ -3,7 +3,81 @@
 		<div class="page-content">
 			
 
+<?php
 
+
+// $encuestados = array(
+    
+// array(
+// 'nombreE' =>"",
+// 'apellidoE' =>"asas",
+// 'dniE' =>"2222",
+// 'edad' =>"11",
+// 'sexo' =>"m",
+// 'nroAfiliado' =>"wewewewewe",
+// "pregResp" => array(
+    
+//     ['idPregunta' => "5",
+//     'idRespuesta' =>"tu vieja"],
+
+//     ['idPregunta' => "5",
+//     'idRespuesta' =>"6"],
+
+
+//     ['idPregunta' => "5",
+//     'idRespuesta' =>"6"],
+
+//     ['idPregunta' => "7",
+//     'idRespuesta' =>"7"],
+    
+//     ['idPregunta' => "88",
+//     'idRespuesta' =>"33"],
+
+// )
+
+// ) ,// cierre princ
+
+
+
+
+// array(
+// 'nombreE' =>"carlos",
+// 'apellidoE' =>"asas",
+// 'dniE' =>"2222",
+// 'edad' =>"11",
+// 'sexo' =>"m",
+// 'nroAfiliado' =>"wewewewewe",
+// "pregResp" => array(
+    
+//     ['idPregunta' => "5",
+//     'idRespuesta' =>"tu vieja"],
+
+//     ['idPregunta' => "5",
+//     'idRespuesta' =>"6"],
+
+
+//     ['idPregunta' => "5",
+//     'idRespuesta' =>"6"],
+
+//     ['idPregunta' => "7",
+//     'idRespuesta' =>"7"],
+    
+//     ['idPregunta' => "88",
+//     'idRespuesta' =>"33"],
+
+// )
+
+// ) // cierre princ
+
+// );
+
+
+
+// var_dump($encuestados[0]['pregResp'][1]['idPregunta']);
+// var_dump($encuestados[1]['nombreE']);
+
+
+?>
 
 <!--<div class="container">   contenedor principal -->
  <input type="hidden" name="localPath"  id="localPath" value="<?php echo base_url(); ?>">
@@ -18,7 +92,7 @@
                             <div class="form-group">
                                 <label for="inputName" class="control-label col-xs-6">Numero relevamiento:</label>
                                 <div class="col-xs-6">
-                                    <input type="name" class="form-control" placeholder="Numero" name= "num_relevamiento" id="num_relevamiento"  required>
+                                    <input type="name" class="form-control" placeholder="Numero" name= "nroRelev" id="nroRelev"  required>
                                 </div>
                             </div>				
                         
@@ -33,7 +107,7 @@
                             <div class="form-group">
                                 <label for="fecha_relevamiento" class="control-label col-xs-6">fecha:</label>
                                 <div class="col-xs-6">
-                                    <input class="form-control date-picker" id="id-date-picker-1" data-date-format="dd-mm-yyyy" type="text" name= "fecha_relevamiento" id= "fecha_relevamiento" required>
+                                    <input class="form-control date-picker" id="id-date-picker-1" data-date-format="dd-mm-yyyy" type="text" name= "fechaR" id= "fecha_relevamiento" required>
                                 </div>
                             </div>
 
@@ -69,7 +143,7 @@
                             <div class="form-group">
                                 <label class="control-label col-xs-6">Distrito:</label>
                                 <div class="col-xs-6">
-                                    <select class="form-control" id="localidad" name "select_dep"name "select_distrito">
+                                    <select class="form-control" id="localidad" name ="localidad" >
                                     
 
                                     </select>
@@ -88,7 +162,7 @@
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Calle:</label>
                                 <div class="col-xs-6">
-                                    <input type="text" name = "ini_calle" class="form-control" placeholder="calle" name ="calle" id= "calle" required>
+                                    <input type="text" name = "ini_calle" class="form-control" placeholder="calle" id= "calle" required>
                                 </div>
                             </div>				 
                             
@@ -118,10 +192,10 @@
                         </div>
 
                 </div>		
-                
+
+     
                 
         </div>	
-        
 
         <br>
         <div class="form-group">
