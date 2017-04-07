@@ -1,9 +1,48 @@
 <div class="main-content">
 	<div class="main-content-inner">
 		<div class="page-content">
-			
 
-<?php //var_dump($this->input->post());  ?>
+
+
+
+
+
+<?php 
+
+
+array('nombreE' =>"",
+'apellidoE' =>"",
+'dniE' =>"",
+'edad' =>"",
+'sexo' =>"",
+'nroAfiliado' =>"",
+"pregResp" => array('idPregunta' => "",
+'idRespuesta' =>"")
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//var_dump($this->input->post());  ?>
 
 <!--<div class="container">   contenedor principal -->
  <form id="add_encuesta" action="<?php echo(site_url('encuesta/cargarEncuesta/cargabloques_final'));  ?>" method="post">

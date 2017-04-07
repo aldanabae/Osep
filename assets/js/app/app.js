@@ -16,10 +16,11 @@ $(function() {
             localStorage.removeItem("general");
         }
 
-        var general = $("#bloque_0").find("select, textarea, input, radio, input:checkbox").serializeArray();
+        var general = $("#bloque_0").find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
+		
+		var tmp = parseData(general);
 
-
-        localStorage.setItem('general' , JSON.stringify(general));
+        localStorage.setItem('general' , JSON.stringify(tmp));
 
         retorno= true;
 
@@ -72,6 +73,25 @@ $(function() {
 
 
 		function parseData(arreglo){
+			var parse= [];
+
+			arreglo.forEach(function(element) {
+
+				//parse = { 'idRespuesta': element.name  , 'idRespuesta': element.value }
+
+				parse.push({'idPregunta': element.name ,
+					 'idRespuesta' : element.value})
+				
+			});
+
+
+			return parse;
+
+
+		}
+
+
+				function parseDato(arreglo){
 			var parse= {};
 
 			arreglo.forEach(function(element) {
