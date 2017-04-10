@@ -1,7 +1,7 @@
 
 $(function() {
 
-    $('.date-picker').datepicker({
+    $('.date-picker').datepicker({   // dispara Datepicker
         autoclose: true,
         todayHighlight: true
     })
@@ -14,18 +14,19 @@ $(function() {
         if ( localStorage.getItem('general')){
 
             localStorage.removeItem("general");
-
         }
 
+        var general = $("#bloque_0").find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
+		
+		var tmp = parseData(general);
 
-
-        var general = $("#bloque_0").find("select, textarea, input").serializeArray();
-
-        localStorage.setItem('general' , JSON.stringify(general));
+        localStorage.setItem('general' , JSON.stringify(tmp));
 
         retorno= true;
 
         return retorno;
+
+
 
     })
 
@@ -36,13 +37,13 @@ $(function() {
 
 		function cargarLocalidades(){
 			var idDpto = $('#departamento').val();
-
+			var path   = $("#localPath").val();
 			var parametros = {
-			"id_dpto" : '5'
+			"id_dpto" : idDpto
 			};
 			$.ajax({
 				type: 'POST',
-				url: '<?php echo base_url(); ?>index.php/abms/abmVisitasC/getLocalidades', 
+				url: path+'index.php/abms/abmVisitasC/getLocalidades', 
 				data: parametros, 
 			       	dataType: 'json',
 				success: function(resp) { 
@@ -68,4 +69,39 @@ $(function() {
 	        for (var i in listaLoc){
 	            combo.append('<option value="'+listaLoc[i].id_tlocalidad +'">'+ listaLoc[i].descloc +'</option>');
 	        }
+		}
+
+
+		function parseData(arreglo){
+			var parse= [];
+
+			arreglo.forEach(function(element) {
+
+				//parse = { 'idRespuesta': element.name  , 'idRespuesta': element.value }
+
+				parse.push({'idPregunta': element.name ,
+					 'idRespuesta' : element.value})
+				
+			});
+
+
+			return parse;
+
+
+		}
+
+
+				function parseDato(arreglo){
+			var parse= {};
+
+			arreglo.forEach(function(element) {
+
+				parse[element.name]= element.value
+				
+			});
+
+
+			return parse;
+
+
 		}

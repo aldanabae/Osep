@@ -20,6 +20,7 @@ $(function() {
 var bloque1= {    // Bloque General
 
     // 0 es si  1  es el no
+        estado: true,
         conf: {
             nombre: null,
             edad: null,
@@ -35,10 +36,14 @@ var bloque1= {    // Bloque General
 
         },
 
+        template: {
+            // asigno el nombre del selector de bloque
+            html: '#bloque_1'
+        },
+
         init: function(){
 
             bloque_btn.hide("slow");     // botonera abajo 
-            bloque1.conf.update();
             bloque2.init();
             bloque3a.init();
             bloque3b.init();
@@ -47,6 +52,7 @@ var bloque1= {    // Bloque General
             bloque6.init();
             bloque7.init();
             bloque9.init();
+            bloque1.conf.update();
         },
 
         update_data: function(){
@@ -170,6 +176,13 @@ var bloque1= {    // Bloque General
                     });                     
 
                     $( "#btn_bloques" ).on(
+                        'click', function(){
+                            bloque1.init();
+                            bloque1.action_block();
+                            
+                    });   
+
+                    $( "#btn_nuevo" ).on(
                         'click', function(){
                             bloque1.init();
                             bloque1.action_block();
@@ -301,6 +314,14 @@ var bloque1= {    // Bloque General
 
             return  validacion;
 
+        },
+
+        parse: function(){
+
+            var tmp = $(bloque1.template.html).find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
+
+            return parseData(tmp);
+
         }
 
 }
@@ -386,6 +407,14 @@ var bloque2 ={   // bloque uso de Obra social
 
         return  validacion;
 
+    },
+
+    parse: function(){
+
+        var tmp = $(bloque2.template.html).find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
+
+        return parseData(tmp);
+
     }
 }
 
@@ -469,7 +498,14 @@ var bloque3a ={   // bloque 3  bebes
 
             return  validacion;
             
-        }    
+        } ,
+        parse: function(){
+
+            var tmp = $(bloque3a.template.html).find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
+
+            return parseData(tmp);
+
+        }   
 }
 
 
@@ -499,12 +535,12 @@ var bloque3b ={     //Bloque Niños
                 if(bloque3b.extra == '1'){
                     // si tien control hecho muestra complejidad
                     $( "#b3b_div_activity" ).show("slow");
-                    $( "#b3b_div_donde" ).hide("slow");
+                    $( "#b3b_div_donde" ).hide();
 
                 }else{
                    
                     $( "#b3b_div_activity" ).hide("slow");
-                    $( "#b3b_div_donde" ).hide("slow");
+                    $( "#b3b_div_donde" ).hide();
                     bloque3b.activity='1';
                     $( "#b3b_activity" ).val(bloque3b.activity);
                     $("#b3b_activity[value=1]").attr("selected",true);
@@ -518,7 +554,7 @@ var bloque3b ={     //Bloque Niños
 
                 }else{
                     // si no se lo hizo muestra por que no..
-                    $( "#b3b_div_donde" ).hide("slow");
+                    $( "#b3b_div_donde" ).hide();
                 }
 
 
@@ -551,7 +587,7 @@ var bloque3b ={     //Bloque Niños
 
 
                     $( "#b3b_activity" ).on(
-                        'change, click', function(){
+                        'change', function(){
 
                             bloque3b.activity= $(this).val();
                             bloque3b.update();
@@ -574,7 +610,21 @@ var bloque3b ={     //Bloque Niños
 
         validate:function(){
 
-        } 
+
+
+
+
+        } ,
+        parse: function(){
+
+            var tmp = $(bloque3b.template.html).find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
+
+            return parseData(tmp);
+
+        }  
+
+
+
 }
 
 
@@ -663,6 +713,13 @@ var bloque4 ={       // mUjer
 
         validate:function(){
             
+        } ,
+        parse: function(){
+
+            var tmp = $(bloque4.template.html).find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
+
+            return parseData(tmp);
+
         }       
 
 }
@@ -746,6 +803,13 @@ var bloque5 ={       // Adultos mayores
 
 
             
+        } ,
+        parse: function(){
+
+            var tmp = $(bloque5.template.html).find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
+
+            return parseData(tmp);
+
         }        
 }
 
@@ -847,23 +911,12 @@ var bloque6 ={       // Discapacidad
                                     }
                                 };
                
-                if($("#b7_cual").is(':visible')){
-
-                    if($('#b7_cual').val() != ""){
-
-                        validacion = true;
-
-                    }else{
-                        validacion = false;
-                    }
-                }
 
                $("#b6_div_tipo  input[type='checkbox']").each(function(){
 
                     if ($(this).prop('checked')){
                         
                          cantidad++;
-
                     }
 
                 })  
@@ -887,7 +940,14 @@ var bloque6 ={       // Discapacidad
 
             }
             
-        }
+        } ,
+        parse: function(){
+
+            var tmp = $(bloque6.template.html).find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
+
+            return parseData(tmp);
+
+        }  
 
 }
 
@@ -988,7 +1048,15 @@ var bloque7 ={       // embarazo
             }
 
             
-        },
+        } ,
+
+        parse: function(){
+
+            var tmp = $(bloque7.template.html).find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
+
+            return parseData(tmp);
+
+        }  
 
 
 
@@ -1000,7 +1068,7 @@ var bloque7 ={       // embarazo
 
 var bloque9 ={       // laboral
 
-        estado: false,
+        estado: true,
         template: {
                     // asigno el nombre del selector de bloque
                     html: '#bloque_9'
@@ -1009,7 +1077,14 @@ var bloque9 ={       // laboral
 
         init:  function(){
             // funcion de inicializacion
-            bloque9.show_me();
+            if (bloque9.estado){
+
+                bloque9.show_me();
+            }else{
+
+                bloque9.hide_me();
+            }
+            
 
         },
 
@@ -1060,6 +1135,13 @@ var bloque9 ={       // laboral
 
             }
             
+        } ,
+        parse: function(){
+
+            var tmp = $(bloque6.template.html).find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
+
+            return parseData(tmp);
+
         },
 
 
@@ -1069,3 +1151,66 @@ var bloque9 ={       // laboral
         } 
 }
 
+
+
+
+
+
+    function parseData(arreglo, data){
+        //var parse= {};
+        var parse = (typeof data == 'undefined') ? [] : data;
+
+        arreglo.forEach(function(element) {
+
+                parse.push({'idPregunta': element.name ,
+                'idRespuesta' : element.value})
+            
+        });
+
+
+        return parse;
+    }
+
+
+
+    function enabledBlock(){
+
+        /*cargo los bloques en un array
+            recorro los estados, y si esta activo lo pongo en un segundo arregloo para validarlo
+
+            valido cada array, y si esta ok  saco los datos del bloque y los voy concatenando
+
+            cuando llego al final, guardo en local Storage como encuestados 
+
+            el bloque 2 se guarda en general..
+        */ 
+        var bloques = [bloque1, bloque2, bloque3a, bloque3b, bloque4, bloque5, bloque6, bloque7, bloque9];
+        var arr = [];
+        $.each( bloques , function (index, valor){
+
+                if (valor.estado){
+
+                    arr.push(valor) ;
+                }
+        })
+
+        return arr;
+
+
+    }
+
+
+    function validateBlock( lista){
+
+        /**
+         * Aqui hay que recorrrer cada bloque y accionar el metodo validacion
+         * recorda añadir un parametro de Title para identificar el modulo donde salta la validacion
+         * 
+         * 
+         * 
+         * 
+         * 
+         */
+
+
+    }
