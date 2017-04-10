@@ -60,5 +60,35 @@ class AbmVisitas_model extends CI_Model {
 			return false;
 		}
 	}
+
+
+
+
+
+
+
+	function get_last_id($id_user){
+
+
+	$this->db->select_max('nroRelevamiento');	
+	$this->db->where('idEmpleado', $id_user);
+	$this->db->from('relevamiento');
+	$query = $this->db->get();
+	
+	
+		if ($query->num_rows() > 0) {
+			foreach ($query->result() as $fila){
+				$data['nroRelevamiento'] = (int) $fila->nroRelevamiento;
+				
+			}	
+			
+			return $data;
+		}else{
+			return false;
+		}
+
+
+
+	}
 }
 ?>

@@ -3,7 +3,17 @@
 		<div class="page-content">
 			
 
+
+            
+
+
+
 <?php
+
+
+ var_dump($lib);
+var_dump($_SESSION);
+
 
 
 // $encuestados = array(
@@ -92,7 +102,7 @@
                             <div class="form-group">
                                 <label for="inputName" class="control-label col-xs-6">Numero relevamiento:</label>
                                 <div class="col-xs-6">
-                                    <input type="name" class="form-control" placeholder="Numero" name= "nroRelev" id="nroRelev"  required>
+                                    <input type="name" class="form-control" placeholder="Numero" name= "nroRelev" id="nroRelev" value= "<?php echo($lib['nroRelevamiento']); ?>" required>
                                 </div>
                             </div>				
                         
