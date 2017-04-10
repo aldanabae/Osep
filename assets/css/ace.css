@@ -10487,8 +10487,8 @@ input.ace + .lbl.padding-0::before {
 }
 .accordion-style1.panel-group .panel {
   border-radius: 0;
-  border-color: #cdd8e3;
-  background-color: #FFF;
+  border-color: #612761 ; /* #cdd8e3*/
+  background-color: #ff892a; /* #FFF */
   box-shadow: none;
 }
 .accordion-style1.panel-group .panel:last-child {
@@ -10501,14 +10501,14 @@ input.ace + .lbl.padding-0::before {
   margin-top: 2px;
 }
 .accordion-style1.panel-group .panel-heading + .panel-collapse .panel-body {
-  border-top-color: #cdd8e3 !important;
+  border-top-color: #612761 !important; /* #cdd8e3*/
 }
 .accordion-style1.panel-group .panel-heading {
   padding: 0;
 }
 .accordion-style1.panel-group .panel-heading .accordion-toggle {
-  color: #4c8fbd;
-  background-color: #eef4f9;
+  color: #612761 ; /* #4c8fbd*/
+  background-color: rgba(97, 39, 97, 0.15);/*#eef4f9 */
   position: relative;
   font-weight: bold;
   font-size: 13px;
@@ -10517,13 +10517,13 @@ input.ace + .lbl.padding-0::before {
   display: block;
 }
 .accordion-style1.panel-group .panel-heading .accordion-toggle.collapsed {
-  color: #478fca;
+  color: #612761; /* #478fca */
   font-weight: normal;
   background-color: #F9F9F9;
 }
 .accordion-style1.panel-group .panel-heading .accordion-toggle:hover {
-  color: #6ea6cc;
-  background-color: #f1f8fd;
+  color: #612761; /* #6ea6cc*/
+  background-color: #ae4ebb; /*#f1f8fd */
   text-decoration: none;
 }
 .accordion-style1.panel-group .panel-heading .accordion-toggle:focus,
@@ -13206,15 +13206,15 @@ li.item-default {
   border-top: none;
 }
 .profile-user-info-striped {
-  border: 1px solid #DCEBF7;
+  border: 1px solid #ae4ebb; /* #DCEBF7*/
 }
 .profile-user-info-striped .profile-info-name {
-  color: #336199;
-  background-color: #EDF3F4;
-  border-top: 1px solid #F7FBFF;
+  color: #612761; /* #336199*/
+  background-color: rgba(97, 39, 97, 0.15); /*#EDF3F4*/
+  border-top: 1px solid #ae4ebb; /*#F7FBFF */
 }
 .profile-user-info-striped .profile-info-value {
-  border-top: 1px dotted #DCEBF7;
+  border-top: 1px dotted #ae4ebb; /* #DCEBF7*/
   padding-left: 12px;
 }
 .profile-picture {

@@ -9,6 +9,7 @@ class My_Controller extends Ci_Controller {
       //Cargar todos los model del sistema
     	$this->load->model('bienvenida_model');
     	$this->load->model('abms/abmEmpleados_model');
+      $this->load->model('relevamiento/relevamiento_model');
       $this->load->model('seguridad/abmNiveles_model');
       $this->load->model('seguridad/abmUsuarios_model');
       $this->load->model('abms/abmVisitas_model');

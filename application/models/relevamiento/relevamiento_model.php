@@ -75,7 +75,7 @@ class Relevamiento_model extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('bloque');
 		$this->db->join('tipo_bloque','tipo_bloque.idTipoBloque=bloque.idTipoBloque','left');
-		$this->db->join('encuesta','encusta.idEncuesta=bloque.idEncuesta','left');
+		$this->db->join('encuesta','encuesta.idEncuesta=bloque.idEncuesta','left');
 		$query = $this->db->get();	
 
 		if ($query->num_rows() > 0) {
@@ -129,6 +129,28 @@ class Relevamiento_model extends CI_Model {
 					'idEncuestado'=>$data['idEnc']));
 		$idRespuestaElegida = $this->db->insert_id();
 		return $idRespuestaElegida;
+	}
+
+	public function obtenerRelevamientos(){
+		$this->db->select('*');
+		$this->db->from('relevamiento');
+		$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+		$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+		$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+		$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+		$query = $this->db->get();	
+
+		if ($query->num_rows() > 0) return $query;
+		else return false;
+	}
+
+	public function getRelevamiento($nroRelev){
+		$this->db->where('idRelevamiento', $nroRelev);
+		$this->db->from('relevamiento');
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0) return $query;
+		else return false;
 	}
 }
 
