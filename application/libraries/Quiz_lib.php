@@ -15,31 +15,6 @@ class  Quiz_lib
     } 
     
 
-
-
-    public function ajaxSimple($name,$segment,$div)
-    {
-    if($name != FALSE)
-    {
-        @$this->CI->load->view('ajax/ajaxSimple_view',
-        array(
-        'name' => $name,
-        'segment' => $segment,
-        'div' => $div
-        ));
-        }
-    else
-        {
-        @$this->CI->load->view('ajax/ajaxSimple_view',
-        array(
-        'name' => $name,
-        'segment' => $segment,
-        'div' => $div
-        ));
-        }
-    }
-
-
     /*
         Obtengo el ultimo id de relevamiento para el usuario que lo esta ingresando
         le debo subar uno al numero para enviarlo a la vista
@@ -50,12 +25,9 @@ class  Quiz_lib
             $id_usuario = @$_SESSION['logged_in']['id'];
 
             if($id_usuario != null ){
-
+                // pido el ultimo id del usuario asignado
                 $prueba = @$this->CI->abmVisitas_model->get_last_id($id_usuario);
                 $prueba['nroRelevamiento']= $prueba['nroRelevamiento'] +1;
-
-                @$this->CI->session->set_userdata('hola', $pregResp);
-               
 
             }else{
 
@@ -64,44 +36,51 @@ class  Quiz_lib
             }
 
             return $prueba;
-
-
     }
 
 
     public function create_session_quiz()
     {
 
-
-                $pregResp = array(
-    
-    ['idPregunta' => "5",
-    'idRespuesta' =>"tu vieja"],
-
-    ['idPregunta' => "5",
-    'idRespuesta' =>"6"],
+    /*
+        Esta funcion va a guardar los datos en sesion como un array, 
+        como son datos generales estos se guardan una sola vez
+        El resto de los datos se guardan en memoria LocalStorage
 
 
-    ['idPregunta' => "5",
-    'idRespuesta' =>"6"],
+    */
 
-    ['idPregunta' => "7",
-    'idRespuesta' =>"7"],
-    
-    ['idPregunta' => "88",
-    'idRespuesta' =>"33"],
+            @$this->CI->session->set_userdata('hola', $pregResp);
 
-);
+            $pregResp = array(
+
+            ['idPregunta' => "5",
+            'idRespuesta' =>"tu vieja"],
+
+            ['idPregunta' => "5",
+            'idRespuesta' =>"6"],
 
 
+            ['idPregunta' => "5",
+            'idRespuesta' =>"6"],
 
+            ['idPregunta' => "7",
+            'idRespuesta' =>"7"],
+
+            ['idPregunta' => "88",
+            'idRespuesta' =>"33"]);
     }
 
 
     public function update_session_quiz()
     {
 
+        /*
+        Esta funcion  es para actualizar el arreglo en la sesion, 
+        hay datos que se añaden en forma general a lo largo de toda la encuesta
+        esta funcion debe encargarse de actualizar estos datos 
 
+        */
 
 
 
