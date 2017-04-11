@@ -17,6 +17,8 @@ class RelevamientoC extends My_Controller{
 		$data['respuestas'] = $this->relevamiento_model->obtenerRespuestas();
 		$data['encuesta'] = $this->relevamiento_model->obtenerEncuesta();
 		$data['bloques'] = $this->relevamiento_model->obtenerBloques();	
+
+//$data['bloques'] = 4;	
 		//Variable que recibira la VISTA con todos los datos de la encuesta
 		$armoEncuesta = array('idBloque' =>"",
 									'nombreBloque' =>"",
@@ -126,11 +128,14 @@ class RelevamientoC extends My_Controller{
 
 		$data['encuesta'] = $idEncuesta;
 
-		// //Enviar a la vista $armoEncuesta y el idEncuesta
-		// //$this->cargarVista('vistaCorrespondiente', $armoEncuesta, $data);
-		
+		//Enviar a la vista $armoEncuesta y el idEncuesta
+		//$this->cargarVista('vistaCorrespondiente', $armoEncuesta, $data);
 		// $nombreVista="backend/abms/probando";
 		// $this->cargarVista($nombreVista, $data);
+		// var_dump($data['encuesta']);
+		// var_dump($armoEncuesta);
+
+
 	}
 
 

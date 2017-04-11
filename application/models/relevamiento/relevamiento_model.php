@@ -75,13 +75,16 @@ class Relevamiento_model extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('bloque');
 		$this->db->join('tipo_bloque','tipo_bloque.idTipoBloque=bloque.idTipoBloque','left');
-		$this->db->join('encuesta','encusta.idEncuesta=bloque.idEncuesta','left');
+		$this->db->join('encuesta','encuesta.idEncuesta=bloque.idEncuesta','left');
+		//$this->db->where('nroBloque',8);
 		$query = $this->db->get();	
 
 		if ($query->num_rows() > 0) {
 			foreach ($query->result() as $fila){
 				$data[] = $fila;
 			}	
+
+
 			return $data;
 		}else{
 			return false;

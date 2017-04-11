@@ -31,15 +31,14 @@ class  Quiz_lib
 
             }else{
 
-                $prueba = 'sin datos ';
-
+                $prueba ['nroRelevamiento'] = 1;
             }
 
             return $prueba;
     }
 
 
-    public function create_session_quiz()
+    public function create_session_quiz($add_arr)
     {
 
     /*
@@ -47,10 +46,9 @@ class  Quiz_lib
         como son datos generales estos se guardan una sola vez
         El resto de los datos se guardan en memoria LocalStorage
 
-
     */
 
-            @$this->CI->session->set_userdata('hola', $pregResp);
+            
 
             $pregResp = array(
 
@@ -69,18 +67,30 @@ class  Quiz_lib
 
             ['idPregunta' => "88",
             'idRespuesta' =>"33"]);
+
+        @$this->CI->session->set_userdata('qz_general', $pregResp);
+
     }
 
 
-    public function update_session_quiz()
+    public function update_session_quiz($add_arr)
     {
 
         /*
+        supuestamente tengo en la sesion qz_general los datos principales
         Esta funcion  es para actualizar el arreglo en la sesion, 
         hay datos que se añaden en forma general a lo largo de toda la encuesta
         esta funcion debe encargarse de actualizar estos datos 
 
         */
+        if(isset($_SESSION['qz_general'])){
+
+           $arr_tmp= $_SESSION['qz_general'];
+
+            $_SESSION['qz_general']= array_merge($arr_tmp, $add_arr);
+
+        }
+
 
 
 
