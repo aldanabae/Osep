@@ -10,6 +10,7 @@ class RelevamientoC extends My_Controller{
 	}
 
 	function index(){
+
 		if (!isset($_POST['CargarTabla'])){
 			//$data['nombresNiveles'] = '';
 			$data['limiteTabla'] = 10000;
@@ -18,6 +19,129 @@ class RelevamientoC extends My_Controller{
 			
 		$nombreVista="backend/relevamiento/buscarRelevamiento";
 		$this->cargarVista($nombreVista, $data);
+
+		$data['resp_preg'] = $this->relevamiento_model->obtenerRespPreg();
+		$data['preguntas'] = $this->relevamiento_model->obtenerPreguntas();
+		$data['respuestas'] = $this->relevamiento_model->obtenerRespuestas();
+		$data['encuesta'] = $this->relevamiento_model->obtenerEncuesta();
+		$data['bloques'] = $this->relevamiento_model->obtenerBloques();	
+
+
+		//Variable que recibira la VISTA con todos los datos de la encuesta
+		$armoEncuesta = array('idBloque' =>"",
+									'nombreBloque' =>"",
+									'nroBloque' =>"",
+									'idTipoBloque' =>"",
+									'nombreTipoB' =>"",
+									"preguntas" => array('idPregunta' => "", 
+															'pregunta' =>"",
+															'idSubPregunta' =>"",
+															'idTipoPregunta' =>"",
+															'idEtiqueta' =>"",
+															"respuestas"=> array('idRespuesta' =>"", 
+																					'respuesta' =>"")
+														)
+								);
+		//Contador de respuestas para armar cada $armoEncuesta
+		$cuentaResp = 0;
+
+		//Primero hago variar cada Bloque
+		foreach ($data['bloques'] as $bloq){
+			$idBloq = $bloq->idBloque;
+			$nombreBloq = $bloq->nombreBloque;
+			$nroBloq = $bloq->nroBloque;
+			$idTpoB = $bloq->idTipoBloque;
+			$nomTpoB = $bloq->nombreTipoB;
+		 	$idEncuesta = $bloq->idEncuesta;
+			
+			//Luego hago variar cada Pregunta de cada Bloque
+			foreach ($data['preguntas'] as $preg){
+			 	if($preg->idBloque == $idBloq){
+					$idPreg = $preg->idPregunta;
+					$pgta = $preg->pregunta;
+					$idSubPreg = $preg->idSubPregunta;
+					$idTpoPreg = $preg->idTipoPregunta;
+					$idEtq = $preg->idEtiqueta;	
+
+					//Inicio contador de cantidad de Respuesta_Pregunta por cada pregunta y cargo cada idRespuesta en $arrayResp
+					$contador = 0;
+					$arrayResp = array();
+
+					//Solo entran las preguntas de tipo que traen opciones o SI/No
+					if($idTpoPreg==1 || $idTpoPreg==2 || $idTpoPreg==4){
+
+						foreach ($data['resp_preg'] as $respPreg){	
+							if($respPreg->idPregunta == $idPreg){
+								$idResp = $respPreg->idRespuesta;
+								/*Armar un array con todas las Resp-Preg que tienen esa pregunta para poder contarlos y hacer  
+								variar un loop solo de la cantidad de respuestas que hay y ahi dentro crear cada $armoEncuesta*/
+								$arrayResp[$contador] = $idResp;
+								$contador++;
+							}	
+						}
+
+						//Hago variar el array de todas las Respuesta_Pregunta creado
+						foreach ($arrayResp as $rta){
+							$idRta = $rta;
+
+							//Comparo los id para buscar las respuestas en la tabla Respuesta
+							foreach ($data['respuestas'] as $rtas){
+								if($rtas->idRespuesta == $idRta){
+									$idRpta = $rtas->idRespuesta;
+							 		$rpta = $rtas->respuesta;
+
+							 		//Creo un registro con dicha respuesta y todos los datos relacionados
+							 		$armoEncuesta[$cuentaResp]['idBloque'] = $idBloq;
+									$armoEncuesta[$cuentaResp]['nombreBloque'] = $nombreBloq;
+									$armoEncuesta[$cuentaResp]['nroBloque'] = $nroBloq;
+									$armoEncuesta[$cuentaResp]['idTipoBloque'] = $idTpoB;
+									$armoEncuesta[$cuentaResp]['nombreTipoB'] = $nomTpoB;
+
+									$armoEncuesta[$cuentaResp]['preguntas']['idPregunta']= $idPreg;
+									$armoEncuesta[$cuentaResp]['preguntas']['pregunta'] = $pgta;
+									$armoEncuesta[$cuentaResp]['preguntas']['idSubPregunta'] = $idSubPreg;
+									$armoEncuesta[$cuentaResp]['preguntas']['idTipoPregunta'] = $idTpoPreg;
+									$armoEncuesta[$cuentaResp]['preguntas']['idEtiqueta'] = $idEtq;
+
+									$armoEncuesta[$cuentaResp]['preguntas']['respuestas']['idRespuesta'] = $idRpta;
+									$armoEncuesta[$cuentaResp]['preguntas']['respuestas']['respuesta'] = $rpta;
+
+									$cuentaResp++;
+								}
+							}
+						}
+					//Si es de otro tipo de pregunta entra aca
+					}else{
+						//Creo un registro para las preguntas sin respuestas precargadas, que se van a cargar directamente en la vista
+						$armoEncuesta[$cuentaResp]['idBloque'] = $idBloq;
+						$armoEncuesta[$cuentaResp]['nombreBloque'] = $nombreBloq;
+						$armoEncuesta[$cuentaResp]['nroBloque'] = $nroBloq;
+						$armoEncuesta[$cuentaResp]['idTipoBloque'] = $idTpoB;
+						$armoEncuesta[$cuentaResp]['nombreTipoB'] = $nomTpoB;
+
+						$armoEncuesta[$cuentaResp]['preguntas']['idPregunta']= $idPreg;
+						$armoEncuesta[$cuentaResp]['preguntas']['pregunta'] = $pgta;
+						$armoEncuesta[$cuentaResp]['preguntas']['idSubPregunta'] = $idSubPreg;
+						$armoEncuesta[$cuentaResp]['preguntas']['idTipoPregunta'] = $idTpoPreg;
+						$armoEncuesta[$cuentaResp]['preguntas']['idEtiqueta'] = $idEtq;
+
+						$armoEncuesta[$cuentaResp]['preguntas']['respuestas']['idRespuesta'] = NULL;
+						$armoEncuesta[$cuentaResp]['preguntas']['respuestas']['respuesta'] = NULL;
+
+						$cuentaResp++;
+					}	
+				}
+			} 
+		} 
+
+		$data['encuesta'] = $idEncuesta;
+
+		//Enviar a la vista $armoEncuesta y el idEncuesta
+		//$this->cargarVista('vistaCorrespondiente', $armoEncuesta, $data);
+		// $nombreVista="backend/abms/probando";
+		// $this->cargarVista($nombreVista, $data);
+		// var_dump($data['encuesta']);
+		// var_dump($armoEncuesta);
 
 	}
 

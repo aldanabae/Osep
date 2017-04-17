@@ -16,6 +16,7 @@ class CargarEncuesta extends CI_Controller{
             $this->load->model('seguridad/abmUsuarios_model');
             $this->load->model('abms/abmVisitas_model');
             $this->load->library('form_validation'); 
+            $this->load->library('Quiz_lib');
 
     }
 
@@ -39,8 +40,8 @@ class CargarEncuesta extends CI_Controller{
                         $this->load->view('backend/header');
                         $this->load->view('backend/sidebar',$data);
                         $js['javascript']= "app.js";
-
-                        $this->load->view("backend/encuesta/cargar_encuesta_inicio_view");
+                        $valor['lib']= $this->quiz_lib->get_last_id_quiz();// prueba de libreria
+                        $this->load->view("backend/encuesta/cargar_encuesta_inicio_view",$valor);
                         $this->load->view('backend/footer');
                         $this->load->view('backend/encuesta/script_js', $js);
 
