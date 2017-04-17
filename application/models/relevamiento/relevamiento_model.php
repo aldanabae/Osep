@@ -147,6 +147,51 @@ class Relevamiento_model extends CI_Model {
 	public function getRelevamiento($nroRelev){
 		$this->db->where('idRelevamiento', $nroRelev);
 		$this->db->from('relevamiento');
+		$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+		$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+		$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+		$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0) return $query;
+		else return false;
+	}
+
+	public function getDireccion($idD){
+		$this->db->where('idDireccion', $idD);
+		$this->db->from('direccion');
+		$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0) return $query;
+		else return false;
+	}
+
+	public function getDepartamento($idDpto){
+		$this->db->where('id_tdeparta', $idDpto);
+		$this->db->from('departamento');
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0) return $query;
+		else return false;
+	}
+
+	//Buscar todas las respuestas elegidas de un relevamiento y de los encuestados de ese relevamiento
+
+	public function getRespElegidas($nroRelev){
+		$this->db->where('idRelevamiento', $nroRelev);
+		$this->db->from('respuesta_elegida');
+		$this->db->join('pregunta','pregunta.idPregunta=respuesta_elegida.idPregunta','left');
+		$this->db->join('respuesta','respuesta.idRespuesta=respuesta_elegida.idRespuesta','left');
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0) return $query;
+		else return false;
+	}
+
+	public function getEncuestados($nroRelev){
+		$this->db->where('idRelevamiento', $nroRelev);
+		$this->db->from('encuestado');
 		$query = $this->db->get();
 
 		if ($query->num_rows() > 0) return $query;

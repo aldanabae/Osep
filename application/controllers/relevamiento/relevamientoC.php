@@ -25,6 +25,25 @@ class RelevamientoC extends My_Controller{
 		$data['nroRelev'] = $this->uri->segment(4);
 		//Obtenber todo lo necesario para mostrar un relevamiento completo
 		$data['relevamiento'] = $this->relevamiento_model->getRelevamiento($data['nroRelev']);
+		$data['respElegidas'] = $this->relevamiento_model->getRespElegidas($data['nroRelev']);
+		$data['encuestados'] = $this->relevamiento_model->getEncuestados($data['nroRelev']);
+
+		//CRear un arreglo de resp de cada Encuestado y enviarlo a la vista
+		// $cont = count($data['encuestados']);
+		// var_dump($data['encuestados']);
+		// die();
+		// $contador = 0;
+		// $data['idEnc'] = array();
+		// foreach ($data['respElegidas']->result() as $respE){
+		// 	if($respE->idEncuestado!=""){
+		// 		$idE = $respE->idEncuestado;
+		// 		if (!in_array($idE, $data['idEnc'])){
+		// 			$data['idEnc'][$contador] = $respE->idEncuestado;
+		// 			$contador++;
+		// 		}
+		// 	}
+		// }
+
 
 
       	$nombreVista="backend/relevamiento/verRelevamiento";
@@ -167,6 +186,17 @@ class RelevamientoC extends My_Controller{
 	// }
 
 
+
+
+
+//AGREGAR QUE CUANDO GUARDO UNA RESPUESTA BREVE TAMBIEN GUARDE A QUE PREGUNTA PERTENECE ESA RESPUESTA!!!
+//AGREGAR QUE CUANDO GUARDO UNA RESPUESTA BREVE TAMBIEN GUARDE A QUE PREGUNTA PERTENECE ESA RESPUESTA!!!
+//AGREGAR QUE CUANDO GUARDO UNA RESPUESTA BREVE TAMBIEN GUARDE A QUE PREGUNTA PERTENECE ESA RESPUESTA!!!
+//AGREGAR QUE CUANDO GUARDO UNA RESPUESTA BREVE TAMBIEN GUARDE A QUE PREGUNTA PERTENECE ESA RESPUESTA!!!
+//AGREGAR QUE CUANDO GUARDO UNA RESPUESTA BREVE TAMBIEN GUARDE A QUE PREGUNTA PERTENECE ESA RESPUESTA!!!
+//AGREGAR QUE CUANDO GUARDO UNA RESPUESTA BREVE TAMBIEN GUARDE A QUE PREGUNTA PERTENECE ESA RESPUESTA!!!
+//AGREGAR QUE CUANDO GUARDO UNA RESPUESTA BREVE TAMBIEN GUARDE A QUE PREGUNTA PERTENECE ESA RESPUESTA!!!
+//AGREGAR QUE CUANDO GUARDO UNA RESPUESTA BREVE TAMBIEN GUARDE A QUE PREGUNTA PERTENECE ESA RESPUESTA!!!
 
 	// function recibirDatos($encuestados, $relevamiento, $encuesta){
 	// // Si viene con :number no es un ID de Respuesta sino una respuestaBreve numerica, ejemplo Edad

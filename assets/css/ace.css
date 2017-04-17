@@ -13172,14 +13172,14 @@ li.item-default {
   display: table-row;
 }
 .profile-info-name {
-  text-align: right;
+  text-align: left; /*right*/
   padding: 6px 10px 6px 4px;
   font-weight: normal;
   color: #667E99;
   background-color: transparent;
   border-top: 1px dotted #D5E4F1;
   display: table-cell;
-  width: 110px;
+  width: 40%; /*110px*/
   vertical-align: middle;
 }
 .profile-info-value {
