@@ -163,7 +163,7 @@ var_export ($lib);
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Barrio:</label>
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control" placeholder="Barrio" name="5" id="barrio" required>
+                                    <input type="text" class="form-control" placeholder="Barrio" name="5" id="barrio">
                                 </div>
                             </div>
                             
@@ -187,16 +187,42 @@ var_export ($lib);
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">entre que calles?:</label>
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control" placeholder="calles" name ="entre_calle" id= "entre_calle" required>
+                                    <input type="text" class="form-control" placeholder="calles" name ="entre_calle" id= "entre_calle" >
                                 </div>
                             </div>		
                             
+
+
+                            	 <!-- bloque de cantidad-->
+
+
                             <div class="form-group">
-                                <label for="inputPassword" class="control-label col-xs-6">Observaciones:</label>
+                                <label for="inputPassword" class="control-label col-xs-6">Cantidad de personas que viven en esta casa:</label>
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control" placeholder="observaciones" name= "observaciones">
+                                    <input type="number" class="form-control" placeholder="cantidad" name= "observaciones">
                                 </div>
-                            </div>						 
+                            </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-xs-6">En los integrantes que viven en esta casa hay alguna mujer embarazada?:</label>
+                            <div class="col-xs-6">
+                                <select class="form-control" name= "embarazo" id= "embarazo">
+                                <option value="0">SI</option>
+                                <option value="1" >NO</option>
+                                </select>
+                            </div>
+
+					    </div>	
+
+
+                            <!-- bloque de observaciones-->
+
+                        <div class="form-group">
+                            <label for="inputPassword" class="control-label col-xs-6">Observaciones:</label>
+                            <div class="col-xs-6">
+                                <input type="text" class="form-control" placeholder="observaciones" name= "observaciones">
+                            </div>
+                        </div>	
 
 
                         </div>
