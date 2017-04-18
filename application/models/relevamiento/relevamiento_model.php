@@ -202,6 +202,18 @@ class Relevamiento_model extends CI_Model {
 		if ($query->num_rows() > 0) return $query;
 		else return false;
 	}
+
+	public function getRespEnc($idEnc){
+		$this->db->where('idEncuestado', $idEnc);
+		$this->db->from('respuesta_elegida');
+		$this->db->join('pregunta','pregunta.idPregunta=respuesta_elegida.idPregunta','left');
+		$this->db->join('respuesta','respuesta.idRespuesta=respuesta_elegida.idRespuesta','left');
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0) return $query;
+		else return false;
+
+	}
 }
 
 ?>

@@ -10449,7 +10449,7 @@ input.ace + .lbl.padding-0::before {
 }
 .nav-tabs.tab-color-blue > li > a,
 .nav-tabs.tab-color-blue > li > a:focus {
-  background-color: #7db4d8;
+  background-color: #882c84; /*#7db4d8*/
 }
 .nav-tabs[class*="tab-color-"] > li.active > a,
 .nav-tabs[class*="tab-color-"] > li.active > a:focus,
@@ -10462,8 +10462,8 @@ input.ace + .lbl.padding-0::before {
 .nav-tabs.tab-color-blue > li.active > a,
 .nav-tabs.tab-color-blue > li.active > a:focus,
 .nav-tabs.tab-color-blue > li.active > a:hover {
-  color: #4c718a;
-  border-color: #7db4d8 #7db4d8 transparent;
+  color: #612761; /*#4c718a*/
+  border-color: #ff892a #ff892a transparent; /*#7db4d8 #7db4d8*/
 }
 .tabs-below .nav-tabs.tab-color-blue > li.active > a {
   border-color: transparent #7db4d8 #7db4d8;
@@ -10474,8 +10474,8 @@ input.ace + .lbl.padding-0::before {
 /* background for tab links */
 .nav-tabs.background-blue {
   padding-top: 6px;
-  background-color: #EFF3F8;
-  border: 1px solid #C5D0DC;
+  background-color: rgba(97, 39, 97, 0.15);/*#EFF3F8*/
+  border: 1px solid #ae4ebb;/*#C5D0DC*/
 }
 .tabs-below .nav-tabs.background-blue {
   padding-top: 0;
@@ -10488,7 +10488,7 @@ input.ace + .lbl.padding-0::before {
 .accordion-style1.panel-group .panel {
   border-radius: 0;
   border-color: #612761 ; /* #cdd8e3*/
-  background-color: #ff892a; /* #FFF */
+  background-color: #ffa963; /* #FFF Naranja mas claro que el usado en toda la plantilla*/
   box-shadow: none;
 }
 .accordion-style1.panel-group .panel:last-child {
@@ -10522,7 +10522,7 @@ input.ace + .lbl.padding-0::before {
   background-color: #F9F9F9;
 }
 .accordion-style1.panel-group .panel-heading .accordion-toggle:hover {
-  color: #612761; /* #6ea6cc*/
+  color: #FFF; /* #6ea6cc*/
   background-color: #ae4ebb; /*#f1f8fd */
   text-decoration: none;
 }
