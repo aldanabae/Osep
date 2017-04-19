@@ -49,6 +49,7 @@ class AbmVisitas_model extends CI_Model {
 	function obtenerLocalidades($idDpto){
 	$this->db->where('id_tdeparta', $idDpto);
 	$this->db->from('localidad');
+	$this->db->order_by("descloc", "asc");
 	$query = $this->db->get();
 	
 		if ($query->num_rows() > 0) {

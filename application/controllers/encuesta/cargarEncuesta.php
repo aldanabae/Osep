@@ -68,14 +68,16 @@ class CargarEncuesta extends CI_Controller{
                         $session_data = $this->session->userdata('logged_in');
                         $data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
 
-                        //var_dump($this->input->post());
+                
 
-                        if($this->input->post('Continuar') && $this->input->post('Continuar') != '' && $this->input->post('nom_facilitador') != '')
+                        if($this->input->post('Continuar') && $this->input->post('Continuar') != '' && $this->input->post('1') != '')
                         {
 
                         $this->load->view('backend/header');
                         $this->load->view('backend/sidebar',$data);
-                        $this->load->view("backend/encuesta/cargar_encuesta_view");
+                        $data['cantidad']= $_POST['cantidad'];
+                        $data['embarazo']=$_POST['embarazo'];
+                        $this->load->view("backend/encuesta/cargar_encuesta_view", $data);
                         $this->load->view('backend/footer');
                         $js['javascript']= "bloques.js";
                         $this->load->view('backend/encuesta/script_js', $js);

@@ -12,8 +12,8 @@
 
 
  //var_dump($lib);
-var_dump($_SESSION);
-var_export ($lib);
+// var_dump($_SESSION);
+// var_export ($lib);
 
 
 // $encuestados = array(
@@ -87,16 +87,22 @@ var_export ($lib);
 // var_dump($encuestados[1]['nombreE']);
 
 
+
+
 ?>
+
+
 
 <!--<div class="container">   contenedor principal -->
  <input type="hidden" name="localPath"  id="localPath" value="<?php echo base_url(); ?>">
+
+ 
         <form id="encuesta_ini" action="<?php echo(site_url('encuesta/cargarEncuesta/cargabloques'));  ?>" method="post">
 
         <div class="row form-horizontal" id= "bloque_0">     <!-- bloque 0 -->
                 <div class="panel panel-default">
                 
-                    <div class="panel-heading">Bloque 0 Identificacion de territorio , facilitador</div>
+                    <div class="panel-heading">Bloque de identificación del territorio/facilitador/familia relevada</div>
                         <div class="panel-body">
                         
                             <div class="form-group">
@@ -107,15 +113,15 @@ var_export ($lib);
                             </div>				
                         
                             <div class="form-group">
-                                <label for="inputName" class="control-label col-xs-6">Nombre y apellido:</label>
+                                <label for="inputName" class="control-label col-xs-6">Facilitador:</label>
                                 <div class="col-xs-6">
-                                    <input type="name" class="form-control" placeholder="Nombre y apellido" name= "1" id="nom_facilitador"  required>
+                                    <input type="name" class="form-control" placeholder="Nombre Facilitador" name= "1" id="nom_facilitador"  required>
                                 </div>
                             </div>
 
                             
                             <div class="form-group">
-                                <label for="fecha_relevamiento" class="control-label col-xs-6">fecha:</label>
+                                <label for="fecha_relevamiento" class="control-label col-xs-6">Fecha del relevamiento:</label>
                                 <div class="col-xs-6">
                                     <input class="form-control date-picker" id="id-date-picker-1" data-date-format="dd-mm-yyyy" type="text" name= "2" id= "fecha_relevamiento" required>
                                 </div>
@@ -159,13 +165,33 @@ var_export ($lib);
                                     </select>
                                 </div>
 
-                            </div>	
+                            </div>
+
+
+
+
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Barrio:</label>
                                 <div class="col-xs-6">
                                     <input type="text" class="form-control" placeholder="Barrio" name="5" id="barrio">
                                 </div>
                             </div>
+
+
+
+
+                            <div class="form-group">
+                                <label for="inputPassword" class="control-label col-xs-6">Manzana:</label>
+                                <div class="col-xs-2">
+                                    <input type="text" class="form-control" placeholder="numero" name="5" id="barrio">
+                                </div>
+                                <label for="inputPassword" class="control-label col-xs-2">Casa:</label>
+                                <div class="col-xs-2">
+                                    <input type="text" class="form-control" placeholder="letra o numero" name="5" id="barrio">
+                                </div>
+
+                            </div>
+
                             
                             <hr>
                             
@@ -185,7 +211,7 @@ var_export ($lib);
                             
                             
                             <div class="form-group">
-                                <label for="inputPassword" class="control-label col-xs-6">entre que calles?:</label>
+                                <label for="inputPassword" class="control-label col-xs-6">Entre calles:</label>
                                 <div class="col-xs-6">
                                     <input type="text" class="form-control" placeholder="calles" name ="entre_calle" id= "entre_calle" >
                                 </div>
@@ -193,18 +219,32 @@ var_export ($lib);
                             
 
 
-                            	 <!-- bloque de cantidad-->
+                            	 
+                            <div class="form-group">
+                                <label for="inputPassword" class="control-label col-xs-6">Teléfono del titular:</label>
+                                <div class="col-xs-6">
+                                    <input type="text" class="form-control" placeholder="calles" name ="tel_titular" id= "tel_titular" >
+                                </div>
+                            </div>	
+
+                            <div class="form-group">
+                                <label for="inputPassword" class="control-label col-xs-6">Teléfono para supervisión:</label>
+                                <div class="col-xs-6">
+                                    <input type="text" class="form-control" placeholder="calles" name ="tel_super" id= "tel_super" >
+                                </div>
+                            </div>	
 
 
+<!-- bloque de cantidad-->
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Cantidad de personas que viven en esta casa:</label>
                                 <div class="col-xs-6">
-                                    <input type="number" class="form-control" placeholder="cantidad" name= "observaciones">
+                                    <input type="number" class="form-control" placeholder="cantidad" name= "cantidad">
                                 </div>
                             </div>
 
                         <div class="form-group">
-                            <label class="control-label col-xs-6">En los integrantes que viven en esta casa hay alguna mujer embarazada?:</label>
+                            <label class="control-label col-xs-6">¿Hay alguna mujer embarazada?:</label>
                             <div class="col-xs-6">
                                 <select class="form-control" name= "embarazo" id= "embarazo">
                                 <option value="0">SI</option>
@@ -213,6 +253,10 @@ var_export ($lib);
                             </div>
 
 					    </div>	
+
+
+
+                        
 
 
                             <!-- bloque de observaciones-->

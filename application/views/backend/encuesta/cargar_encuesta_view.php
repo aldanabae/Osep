@@ -9,16 +9,15 @@
 
 <?php 
 
-
-array('nombreE' =>"",
-'apellidoE' =>"",
-'dniE' =>"",
-'edad' =>"",
-'sexo' =>"",
-'nroAfiliado' =>"",
-"pregResp" => array('idPregunta' => "",
-'idRespuesta' =>"")
-);
+// array('nombreE' =>"",
+// 'apellidoE' =>"",
+// 'dniE' =>"",
+// 'edad' =>"",
+// 'sexo' =>"",
+// 'nroAfiliado' =>"",
+// "pregResp" => array('idPregunta' => "",
+// 'idRespuesta' =>"")
+// );
 
 
 
@@ -45,7 +44,11 @@ array('nombreE' =>"",
 //var_dump($this->input->post());  ?>
 
 <!--<div class="container">   contenedor principal -->
+<input type="hidden" name="embarazo"  id="embarazo" value="<?php echo @$embarazo; ?>">
+<input type="hidden" name="integrantes"  id="integrantes" value="<?php echo @$cantidad; ?>">
  <form id="add_encuesta" action="<?php echo(site_url('encuesta/cargarEncuesta/cargabloques_final'));  ?>" method="post">
+
+
 
  <div class="row form-horizontal" id="bloque_1">   <!-- bloque 1 -->
 		<div class="panel panel-default">
@@ -66,14 +69,6 @@ array('nombreE' =>"",
 				 </div>
 			 </div>
 
-			 <div class="form-group">
-				 <label for="inputEmail" class="control-label col-xs-6">Dni:</label>
-				 <div class="col-xs-6">
-					 <input type="number" name="b1_dni"  class="form-control" placeholder="Dni" id="b1_dni">
-				 </div>
-			 </div>
-
-
 
 			 <div class="form-group">
 				 <label for="inputPassword" class="control-label col-xs-6">Sexo:</label>
@@ -88,11 +83,10 @@ array('nombreE' =>"",
 						</label>
 					</div>
 			 </div>
-			 
-			 
+		 
 		
 					<div class="form-group">
-						<label class="control-label col-xs-6">Parentezco con el titular:</label>
+						<label class="control-label col-xs-6">Vinculo con el titular:</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_parent" id= "b1_parent">
 							<option value="1">Titular</option>
@@ -108,6 +102,14 @@ array('nombreE' =>"",
 						</div>
 
 					</div>	
+
+
+					<div class="form-group">
+						<label for="inputEmail" class="control-label col-xs-6">Dni:</label>
+						<div class="col-xs-6">
+							<input type="number" name="b1_dni"  class="form-control" placeholder="Dni" id="b1_dni">
+						</div>
+					</div>
 
 
 					<div class="form-group">
@@ -307,7 +309,7 @@ array('nombreE' =>"",
 					 </div>
 
 
-					 <div class="form-group">
+					 <!--<div class="form-group">
 						 <label for="inputPassword" class="control-label col-xs-6">Dependencia:</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_dep" id= "b1_dep" >
@@ -315,7 +317,7 @@ array('nombreE' =>"",
 							<option value="1" selected =" true">NO</option>
 							</select>
 						</div>
-					 </div>
+					 </div>-->
 
 					 <div class="form-group">
 						 <label for="inputPassword" class="control-label col-xs-6">Tiene algun pariente con OSEP a su cargo que no viva en la casa?:</label>
