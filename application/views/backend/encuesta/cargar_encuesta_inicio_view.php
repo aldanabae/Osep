@@ -248,15 +248,46 @@
                             <div class="col-xs-6">
                                 <select class="form-control" name= "embarazo" id= "embarazo">
                                 <option value="0">SI</option>
-                                <option value="1" >NO</option>
+                                <option value="1" selected >NO</option>
                                 </select>
                             </div>
 
-					    </div>	
+					    </div>
 
 
 
-                        
+
+                        <div class="form-group" id= "filter_embarazo">
+                            <label class="control-label col-xs-6"></label>
+                            <div class="col-xs-6">
+
+
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-4">¿De qué edad/es? </label>
+                                        <div class="col-xs-8" id = "list_edades">
+
+                                            <ul>
+                                            <li>24 años <a href="#" data-index = "1"><span class="glyphicon glyphicon-remove"></span></a></li> 
+                                            <input type="hidden" name="localPath[]"  id="" value="33">
+                                            </ul>
+<input type="hidden" name="localPath[]"  id="" value="33">
+<input type="hidden" name="localPath[]"  id="" value="33">
+<input type="hidden" name="localPath[]"  id="" value="33">
+<input type="hidden" name="localPath[]"  id="" value="33">
+<input type="hidden" name="localPath[]"  id="" value="33">
+<input type="hidden" name="localPath[]"  id="" value="33">
+                                            <input type="number" class="form-control" placeholder="ingresar edad" name ="tel_super" id= "tel_super" >
+                                            <br>
+                                            <button type="button" class="btn btn-success" id="btn_nueva_edad">nueva edad</button>
+                                        </div>
+
+                                    </div>
+                            </div>
+
+					    </div>
+
+
+
 
 
                             <!-- bloque de observaciones-->

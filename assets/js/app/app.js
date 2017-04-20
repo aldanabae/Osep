@@ -91,7 +91,7 @@ $(function() {
 		}
 
 
-				function parseDato(arreglo){
+		function parseDato(arreglo){
 			var parse= {};
 
 			arreglo.forEach(function(element) {
@@ -102,6 +102,99 @@ $(function() {
 
 
 			return parse;
+
+
+		}
+
+		var filtro ={
+		
+		data:{			// todos los datos que se mueven en el control
+			valor: '1', // no se ve
+			edades:[],		// guardo un array de edades
+			estado: false,
+			limit: ""       // fija un limite de integrantes si viven 5  no pueden haber mas de 5 embarazadas
+
+		},
+		
+		template: '#filter_embarazo', // marco el id del filtro que debo desplegar
+		update: function(){
+
+			// aqui va a eliminar  o agregar las edades en una lista  y  los hidden 
+			
+			if(this.data.estado == true && this.data.valor == '0'){
+
+				this.show_me(); // si esta en verdadero 
+				// recorro el arreglo colocando los numeros de edades
+				// creo el campo hidden
+				var listHtml = ""    // pongo el String de html en blanco
+				listHtml= '<ul>';														// abro el Ul
+					$.each( this.data.edades , function (index, valor){
+
+						
+						listHtml+= '<li>'+ valor +' años <a href="#" data-index = "1"><span class="glyphicon glyphicon-remove"></span></a></li>';
+						listHtml+= '<input type="hidden" name="localPath[]"  id="" value="33">'; // el hidden 
+
+				
+
+					
+					})
+				listHtml+= '</ul>';														// cierro el Ul
+				$('#list_edades').html(listHtml);
+
+			}else{
+
+				this.hide_me();
+				this.data.edades.length=0;
+
+			}
+
+
+
+		},
+
+		bindComponent: function(){
+
+                    $( "#embarazo" ).on(
+                        'change, click', function(){
+
+							var datoSelect = $(this).val();
+                           
+								if(datoSelect == '0'){ // es un si
+
+									filtro.data.estado= true;
+
+								}else{  // es un no
+
+									filtro.data.estado= false;
+								}
+
+							filtro.data.valor= datoSelect;
+                            filtro.update();
+                    });
+                    $( "#btn_nueva_edad" ).on(
+                        'click', function(){
+							
+                            filtro.data.edades.push($(this).val()) ;
+                            filtro.update();
+
+                    });
+        },
+
+
+
+        show_me: function(){
+
+            // Mostrar el bloque
+            $( filtro.template ).show("slow");
+            filtro.data.estado= true;
+        },
+
+        hide_me: function(){
+            // ocultar el bloque
+            $( filtro.template ).hide("slow");
+            filtro.data.estado= false;
+        }, 
+
 
 
 		}
