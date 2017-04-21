@@ -5,20 +5,28 @@ class RelevamientoC extends My_Controller{
 		parent::__construct();
 
 		$this->load->helper('form');
-		$this->load->helper('url');
-		$this->load->model('relevamiento/relevamiento_model'); 
-		$this->load->model('bienvenida_model'); 
+		$this->load->helper('url');  
 		$this->load->library('form_validation'); 
 	}
 
 	function index(){
+
+		if (!isset($_POST['CargarTabla'])){
+			//$data['nombresNiveles'] = '';
+			$data['limiteTabla'] = 10000;
+			$data['tablaRelevamientos'] = $this->relevamiento_model->obtenerRelevamientos();;	
+		}
+			
+		$nombreVista="backend/relevamiento/buscarRelevamiento";
+		$this->cargarVista($nombreVista, $data);
+
 		$data['resp_preg'] = $this->relevamiento_model->obtenerRespPreg();
 		$data['preguntas'] = $this->relevamiento_model->obtenerPreguntas();
 		$data['respuestas'] = $this->relevamiento_model->obtenerRespuestas();
 		$data['encuesta'] = $this->relevamiento_model->obtenerEncuesta();
 		$data['bloques'] = $this->relevamiento_model->obtenerBloques();	
 
-//$data['bloques'] = 4;	
+
 		//Variable que recibira la VISTA con todos los datos de la encuesta
 		$armoEncuesta = array('idBloque' =>"",
 									'nombreBloque' =>"",
@@ -44,7 +52,7 @@ class RelevamientoC extends My_Controller{
 			$nroBloq = $bloq->nroBloque;
 			$idTpoB = $bloq->idTipoBloque;
 			$nomTpoB = $bloq->nombreTipoB;
-		 $idEncuesta = $bloq->idEncuesta;
+		 	$idEncuesta = $bloq->idEncuesta;
 			
 			//Luego hago variar cada Pregunta de cada Bloque
 			foreach ($data['preguntas'] as $preg){
@@ -135,231 +143,411 @@ class RelevamientoC extends My_Controller{
 		// var_dump($data['encuesta']);
 		// var_dump($armoEncuesta);
 
+	}
 
+	function verRelevamiento(){
+		$data['nroRelev'] = $this->uri->segment(4);
+		//Obtenber todo lo necesario para mostrar un relevamiento completo
+		$data['relevamiento'] = $this->relevamiento_model->getRelevamiento($data['nroRelev']);
+		$data['respElegidas'] = $this->relevamiento_model->getRespElegidas($data['nroRelev']);
+		$data['encuestados'] = $this->relevamiento_model->getEncuestados($data['nroRelev']);
+
+		//CRear un arreglo de resp de cada Encuestado y enviarlo a la vista
+		// $cont = count($data['encuestados']);
+		// var_dump($data['encuestados']);
+		// die();
+		// $contador = 0;
+		// $data['idEnc'] = array();
+		// foreach ($data['respElegidas']->result() as $respE){
+		// 	if($respE->idEncuestado!=""){
+		// 		$idE = $respE->idEncuestado;
+		// 		if (!in_array($idE, $data['idEnc'])){
+		// 			$data['idEnc'][$contador] = $respE->idEncuestado;
+		// 			$contador++;
+		// 		}
+		// 	}
+		// }
+
+
+
+      	$nombreVista="backend/relevamiento/verRelevamiento";
+		$this->cargarVista($nombreVista,$data);
 	}
 
 
 
-	function recibirDatos($encuestados, $relevamiento, $encuesta){
-	// Si viene con :number no es un ID de Respuesta sino una respuestaBreve numerica, ejemplo Edad
 
-	// Variable a recibir de la vista con los datos de cada Respuesta_Elegida del Relevamiento
-	// $relevamiento = array('nroRelev' =>"",
-	// 							'fechaR' =>"",
-	// 							'observCriticidad' =>"",
-	// 							'idCriticidad' =>"",
-	// 					 		"pregResp" => array('idPregunta' => "", 
-	// 													'idRespuesta' =>"")
+
+
+
+
+
+
+
+
+
+	// function index(){
+	// 	//Falta cargar validaciones para que controle el login solo en este controlador sin heredar del controlador generico
+	// 	$data['resp_preg'] = $this->relevamiento_model->obtenerRespPreg();
+	// 	$data['preguntas'] = $this->relevamiento_model->obtenerPreguntas();
+	// 	$data['respuestas'] = $this->relevamiento_model->obtenerRespuestas();
+	// 	$data['encuesta'] = $this->relevamiento_model->obtenerEncuesta();
+	// 	$data['bloques'] = $this->relevamiento_model->obtenerBloques();	
+	// 	//Variable que recibira la VISTA con todos los datos de la encuesta
+	// 	$armoEncuesta = array('idBloque' =>"",
+	// 								'nombreBloque' =>"",
+	// 								'nroBloque' =>"",
+	// 								'idTipoBloque' =>"",
+	// 								'nombreTipoB' =>"",
+	// 								"preguntas" => array('idPregunta' => "", 
+	// 														'pregunta' =>"",
+	// 														'idSubPregunta' =>"",
+	// 														'idTipoPregunta' =>"",
+	// 														'idEtiqueta' =>"",
+	// 														"respuestas"=> array('idRespuesta' =>"", 
+	// 																				'respuesta' =>"")
+	// 													)
 	// 							);
+	// 	//Contador de respuestas para armar cada $armoEncuesta
+	// 	$cuentaResp = 0;
 
-	//Variable utilizada en toda la funcion
-	$data['resp_preg'] = $this->relevamiento_model->obtenerRespPreg();
-
-	//Creo relevamiento
-	$data['relevamiento'] = array('nroRelev' => $relevamiento[0]['nroRelev'],
-									'fechaR' => $relevamiento[0]['fechaR'],
-									'observC' => $relevamiento[0]['observCriticidad'],
-									'idCriti'=> $relevamiento[0]['idCriticidad'],
-									'idEnc'=> $encuesta);
-	$idRelevamiento = $this->relevamiento_model->crearRelevamiento($data['relevamiento']);
-
-	//Guardar todas las Respuestas_Elegidas asociadas solo al relevamiento
-	$contadorR = count($relevamiento);
-	$indiceR = 0;
-
-	//Loop de todas los Relevamientos recibidos
-	for ($i=0; $i < $contadorR; $i++){
-		$idPregR = $relevamiento[$indiceR]['pregResp']['idPregunta'];
-
-			//Si la respuesta en un nro, osea un ID
-			if(is_numeric($relevamiento[$indiceR]['pregResp']['idRespuesta'])){
-				$idRespR = $relevamiento[$indiceR]['pregResp']['idRespuesta'];
-
-				//Traigo cada valor de Respuesta_Pregunta guardado y comparo si es el mismo idRespuesta e idPregunta
-				foreach ($data['resp_preg'] as $respPreg){
-					if($respPreg->idRespuesta == $idRespR){
-						if($respPreg->idPregunta == $idPregR){
-							$data = array('idEnc' => NULL,
-											'relevamiento' => $idRelevamiento,
-											'idRespPreg' => $respPreg->idRespPreg,
-											'respB' => NULL);
-
-							//Creo un objeto Respuesta_Elegida
-							$this->relevamiento_model->crearRespuestaElegida($data);
-						}
-					}
-				}
-			//Si la respuesta es un String, osea una respuestaBreve
-			}else{
-				$cadenaResp = $relevamiento[$indiceR]['pregResp']['idRespuesta'];
-				if(strpos($cadenaResp, ":number")){
-					$largo = strlen($cadenaResp);
-					$respFinal = substr($cadenaResp,-($largo), ($largo-7));
-
-					$data = array('idEnc' => NULL,
-								'relevamiento' => $idRelevamiento,
-								'idRespPreg' => NULL,
-								'respB' => $respFinal);
-
-					//Creo un objeto Respuesta_Elegida
-					$this->relevamiento_model->crearRespuestaElegida($data);
-
-				}else{
-					//Si la respuesta es un String directamente lo guardo en respBreve en una nueva Respuesta_Elegida
-					$resp = $relevamiento[$indiceR]['pregResp']['idRespuesta'];
-					$data = array('idEnc' => NULL,
-									'relevamiento' => $idRelevamiento,
-									'idRespPreg' => NULL,
-									'respB' => $resp);
-
-					//Creo un objeto Respuesta_Elegida
-					$this->relevamiento_model->crearRespuestaElegida($data);
-				}
-
-			}
+	// 	//Primero hago variar cada Bloque
+	// 	foreach ($data['bloques'] as $bloq){
+	// 		$idBloq = $bloq->idBloque;
+	// 		$nombreBloq = $bloq->nombreBloque;
+	// 		$nroBloq = $bloq->nroBloque;
+	// 		$idTpoB = $bloq->idTipoBloque;
+	// 		$nomTpoB = $bloq->nombreTipoB;
+	// 	 $idEncuesta = $bloq->idEncuesta;
 			
-		$indiceR++;
-	}//Fin carga de Respuestas del Relevamiento
+	// 		//Luego hago variar cada Pregunta de cada Bloque
+	// 		foreach ($data['preguntas'] as $preg){
+	// 		 	if($preg->idBloque == $idBloq){
+	// 				$idPreg = $preg->idPregunta;
+	// 				$pgta = $preg->pregunta;
+	// 				$idSubPreg = $preg->idSubPregunta;
+	// 				$idTpoPreg = $preg->idTipoPregunta;
+	// 				$idEtq = $preg->idEtiqueta;	
+
+	// 				//Inicio contador de cantidad de Respuesta_Pregunta por cada pregunta y cargo cada idRespuesta en $arrayResp
+	// 				$contador = 0;
+	// 				$arrayResp = array();
+
+	// 				//Solo entran las preguntas de tipo que traen opciones o SI/No
+	// 				if($idTpoPreg==1 || $idTpoPreg==2 || $idTpoPreg==4){
+
+	// 					foreach ($data['resp_preg'] as $respPreg){	
+	// 						if($respPreg->idPregunta == $idPreg){
+	// 							$idResp = $respPreg->idRespuesta;
+	// 							/*Armar un array con todas las Resp-Preg que tienen esa pregunta para poder contarlos y hacer  
+	// 							variar un loop solo de la cantidad de respuestas que hay y ahi dentro crear cada $armoEncuesta*/
+	// 							$arrayResp[$contador] = $idResp;
+	// 							$contador++;
+	// 						}	
+	// 					}
+
+	// 					//Hago variar el array de todas las Respuesta_Pregunta creado
+	// 					foreach ($arrayResp as $rta){
+	// 						$idRta = $rta;
+
+	// 						//Comparo los id para buscar las respuestas en la tabla Respuesta
+	// 						foreach ($data['respuestas'] as $rtas){
+	// 							if($rtas->idRespuesta == $idRta){
+	// 								$idRpta = $rtas->idRespuesta;
+	// 						 		$rpta = $rtas->respuesta;
+
+	// 						 		//Creo un registro con dicha respuesta y todos los datos relacionados
+	// 						 		$armoEncuesta[$cuentaResp]['idBloque'] = $idBloq;
+	// 								$armoEncuesta[$cuentaResp]['nombreBloque'] = $nombreBloq;
+	// 								$armoEncuesta[$cuentaResp]['nroBloque'] = $nroBloq;
+	// 								$armoEncuesta[$cuentaResp]['idTipoBloque'] = $idTpoB;
+	// 								$armoEncuesta[$cuentaResp]['nombreTipoB'] = $nomTpoB;
+
+	// 								$armoEncuesta[$cuentaResp]['preguntas']['idPregunta']= $idPreg;
+	// 								$armoEncuesta[$cuentaResp]['preguntas']['pregunta'] = $pgta;
+	// 								$armoEncuesta[$cuentaResp]['preguntas']['idSubPregunta'] = $idSubPreg;
+	// 								$armoEncuesta[$cuentaResp]['preguntas']['idTipoPregunta'] = $idTpoPreg;
+	// 								$armoEncuesta[$cuentaResp]['preguntas']['idEtiqueta'] = $idEtq;
+
+	// 								$armoEncuesta[$cuentaResp]['preguntas']['respuestas']['idRespuesta'] = $idRpta;
+	// 								$armoEncuesta[$cuentaResp]['preguntas']['respuestas']['respuesta'] = $rpta;
+
+	// 								$cuentaResp++;
+	// 							}
+	// 						}
+	// 					}
+	// 				//Si es de otro tipo de pregunta entra aca
+	// 				}else{
+	// 					//Creo un registro para las preguntas sin respuestas precargadas, que se van a cargar directamente en la vista
+	// 					$armoEncuesta[$cuentaResp]['idBloque'] = $idBloq;
+	// 					$armoEncuesta[$cuentaResp]['nombreBloque'] = $nombreBloq;
+	// 					$armoEncuesta[$cuentaResp]['nroBloque'] = $nroBloq;
+	// 					$armoEncuesta[$cuentaResp]['idTipoBloque'] = $idTpoB;
+	// 					$armoEncuesta[$cuentaResp]['nombreTipoB'] = $nomTpoB;
+
+	// 					$armoEncuesta[$cuentaResp]['preguntas']['idPregunta']= $idPreg;
+	// 					$armoEncuesta[$cuentaResp]['preguntas']['pregunta'] = $pgta;
+	// 					$armoEncuesta[$cuentaResp]['preguntas']['idSubPregunta'] = $idSubPreg;
+	// 					$armoEncuesta[$cuentaResp]['preguntas']['idTipoPregunta'] = $idTpoPreg;
+	// 					$armoEncuesta[$cuentaResp]['preguntas']['idEtiqueta'] = $idEtq;
+
+	// 					$armoEncuesta[$cuentaResp]['preguntas']['respuestas']['idRespuesta'] = NULL;
+	// 					$armoEncuesta[$cuentaResp]['preguntas']['respuestas']['respuesta'] = NULL;
+
+	// 					$cuentaResp++;
+	// 				}	
+	// 			}
+	// 		} 
+	// 	} 
+
+	// 	$data['encuesta'] = $idEncuesta;
+
+	// 	// //Enviar a la vista $armoEncuesta y el idEncuesta
+	// 	// //$this->cargarVista('vistaCorrespondiente', $armoEncuesta, $data);
+		
+	// 	// $nombreVista="backend/abms/probando";
+	// 	// $this->cargarVista($nombreVista, $data);
+	// }
 
 
-	// Variable a recibir de la vista con los datos de cada Respuesta_Elegida por cada Encuestado
-	// $encuestados = array('nombreE' =>"",
-	// 						'apellidoE' =>"",
-	//						'dniE' =>"",
-	// 						'edad' =>"",
-	// 						'sexo' =>"",
-	//						'nroAfiliado' =>"",
-	// 						"pregResp" => array('idPregunta' => "", 
-	// 											'idRespuesta' =>"")
-	// 						);
-
-	//Variables necesarias inicializadas para crear arreglo de DNIs
-	$contadorE = count($encuestados);
-	$indiceE = 0;
-	$contadorDNI = 0;
-	$listaDNI = array();
-
-	//Loop para crear arreglo de DNIs y los encuestados
-	for ($i=0; $i < $contadorE; $i++){
-		$dniE = $encuestados[$indiceE]['dniE'];
-
-		//Si la lista esta vacia, le cargo el primer dni encontrado
-		if(count($listaDNI)==0){
-			$listaDNI[0] = $dniE;
-			$contadorDNI++;
-
-			//Creo encuestado
-			$data['encuestado'] = array('nombreE' => $encuestados[$indiceE]['nombreE'],
-										'apellidoE' => $encuestados[$indiceE]['apellidoE'],
-										'dniE' => $dniE,
-										'edad'=> $encuestados[$indiceE]['edad'],
-										'sexo'=> $encuestados[$indiceE]['sexo'],
-										'nroAfiliado' => $encuestados[$indiceE]['nroAfiliado'],
-										'idRelev'=> $idRelevamiento);
-			$this->relevamiento_model->crearEncuestado($data['encuestado']);
-		}else{
-			//Si el dni no esta cargado en el array previamente lo ingreso
-			if(!in_array($dniE, $listaDNI)){
-				$listaDNI[$contadorDNI] = $dniE;
-				$contadorDNI++;
-
-				//Creo encuestado
-				$data['encuestado'] = array('nombreE' => $encuestados[$indiceE]['nombreE'],
-												'apellidoE' => $encuestados[$indiceE]['apellidoE'],
-												'dniE' => $dniE,
-												'edad'=> $encuestados[$indiceE]['edad'],
-												'sexo'=> $encuestados[$indiceE]['sexo'],
-												'nroAfiliado' => $encuestados[$indiceE]['nroAfiliado'],
-												'idRelev'=> $idRelevamiento);
-				$this->relevamiento_model->crearEncuestado($data['encuestado']);
-			}		
-		}
-		$indiceE++;	
-	}
 
 
-	//Guardar todas las Respuestas_Elegidas asociadas solo a cada encuestado
-	$indiceRE = 0;
 
-	for ($i=0; $i < $contadorE; $i++){
-		$idPregE = $encuestados[$indiceRE]['pregResp']['idPregunta'];
+//AGREGAR QUE CUANDO GUARDO UNA RESPUESTA BREVE TAMBIEN GUARDE A QUE PREGUNTA PERTENECE ESA RESPUESTA!!!
+//AGREGAR QUE CUANDO GUARDO UNA RESPUESTA BREVE TAMBIEN GUARDE A QUE PREGUNTA PERTENECE ESA RESPUESTA!!!
+//AGREGAR QUE CUANDO GUARDO UNA RESPUESTA BREVE TAMBIEN GUARDE A QUE PREGUNTA PERTENECE ESA RESPUESTA!!!
+//AGREGAR QUE CUANDO GUARDO UNA RESPUESTA BREVE TAMBIEN GUARDE A QUE PREGUNTA PERTENECE ESA RESPUESTA!!!
+//AGREGAR QUE CUANDO GUARDO UNA RESPUESTA BREVE TAMBIEN GUARDE A QUE PREGUNTA PERTENECE ESA RESPUESTA!!!
+//AGREGAR QUE CUANDO GUARDO UNA RESPUESTA BREVE TAMBIEN GUARDE A QUE PREGUNTA PERTENECE ESA RESPUESTA!!!
+//AGREGAR QUE CUANDO GUARDO UNA RESPUESTA BREVE TAMBIEN GUARDE A QUE PREGUNTA PERTENECE ESA RESPUESTA!!!
+//AGREGAR QUE CUANDO GUARDO UNA RESPUESTA BREVE TAMBIEN GUARDE A QUE PREGUNTA PERTENECE ESA RESPUESTA!!!
 
-		//Si la respuesta en un nro, osea un ID
-		if(is_numeric($encuestados[$indiceRE]['pregResp']['idRespuesta'])){
-			$idRespE = $encuestados[$indiceRE]['pregResp']['idRespuesta']; 
+	// function recibirDatos($encuestados, $relevamiento, $encuesta){
+	// // Si viene con :number no es un ID de Respuesta sino una respuestaBreve numerica, ejemplo Edad
 
-			//Traigo cada valor de Respuesta_Pregunta guardado y comparo si es el mismo idRespuesta e idPregunta
-			$data['resp_preg'] = $this->relevamiento_model->obtenerRespPreg();
-			foreach($data['resp_preg'] as $respPreg){
-				if($respPreg->idRespuesta == $idRespE){
-					if($respPreg->idPregunta == $idPregE){
+	// // Variable a recibir de la vista con los datos de cada Respuesta_Elegida del Relevamiento
+	// // $relevamiento = array('nroRelev' =>"",
+	// // 							'fechaR' =>"",
+	// // 							'observCriticidad' =>"",
+	// // 							'idCriticidad' =>"",
+	// // 					 		"pregResp" => array('idPregunta' => "", 
+	// // 													'idRespuesta' =>"")
+	// // 							);
 
-						$dniEnc = $encuestados[$indiceRE]['dniE'];
-						//Busco el idEncuestado para poder cargarlo en la clase Respuesta_Elegida
-						$encuestado = $this->relevamiento_model->obtenerEncuestado($dniEnc);
-						foreach ($encuestado->result() as $enc){
-							$idEncuestado = $enc->idEncuestado;
-						}
+	// //Variable utilizada en toda la funcion
+	// $data['resp_preg'] = $this->relevamiento_model->obtenerRespPreg();
 
-						$data = array(
-							'idEnc' => $idEncuestado,
-							'relevamiento' => $idRelevamiento,
-							'idRespPreg' => $respPreg->idRespPreg,
-							'respB' => NULL);
+	// //Creo relevamiento
+	// $data['relevamiento'] = array('nroRelev' => $relevamiento[0]['nroRelev'],
+	// 								'fechaR' => $relevamiento[0]['fechaR'],
+	// 								'observC' => $relevamiento[0]['observCriticidad'],
+	// 								'idCriti'=> $relevamiento[0]['idCriticidad'],
+	// 								'idEnc'=> $encuesta);
+	// $idRelevamiento = $this->relevamiento_model->crearRelevamiento($data['relevamiento']);
 
-						//Creo un objeto Respuesta_Elegida
-						$this->relevamiento_model->crearRespuestaElegida($data);
-					}
-				}
-			}
-		}else{
-			$cadenaResp = $encuestados[$indiceRE]['pregResp']['idRespuesta'];
-			if(strpos($cadenaResp, ":number")){
- 				$largo = strlen($cadenaResp);
- 				$respFinal = substr($cadenaResp,-($largo), ($largo-7));
+	// //Guardar todas las Respuestas_Elegidas asociadas solo al relevamiento
+	// $contadorR = count($relevamiento);
+	// $indiceR = 0;
 
-	 			$dniEnc = $encuestados[$indiceRE]['dniE'];
-				//Busco el idEncuestado para poder cargarlo en la clase Respuesta_Elegida
-				$encuestado = $this->relevamiento_model->obtenerEncuestado($dniEnc);
-				foreach ($encuestado->result() as $enc){
-					$idEncuestado = $enc->idEncuestado;
-				}							
+	// //Loop de todas los Relevamientos recibidos
+	// for ($i=0; $i < $contadorR; $i++){
+	// 	$idPregR = $relevamiento[$indiceR]['pregResp']['idPregunta'];
 
-				$data = array(
-					'idEnc' => $idEncuestado,
-					'relevamiento' => $idRelevamiento,
-					'idRespPreg' => NULL,
-					'respB' => $respFinal);
+	// 		//Si la respuesta en un nro, osea un ID
+	// 		if(is_numeric($relevamiento[$indiceR]['pregResp']['idRespuesta'])){
+	// 			$idRespR = $relevamiento[$indiceR]['pregResp']['idRespuesta'];
 
-				//Creo un objeto Respuesta_Elegida
-				$this->relevamiento_model->crearRespuestaElegida($data);
-			}else{
-				//Si la respuesta es un String directamente lo guardo en respBreve en una nueva Respuesta_Elegida
- 				$resp = $encuestados[$indiceRE]['pregResp']['idRespuesta'];
-	 			$dniEnc = $encuestados[$indiceRE]['dniE'];
-				//Busco el idEncuestado para poder cargarlo en la clase Respuesta_Elegida
-				$encuestado = $this->relevamiento_model->obtenerEncuestado($dniEnc);
-				foreach ($encuestado->result() as $enc){
-					$idEncuestado = $enc->idEncuestado;
-				}							
+	// 			//Traigo cada valor de Respuesta_Pregunta guardado y comparo si es el mismo idRespuesta e idPregunta
+	// 			foreach ($data['resp_preg'] as $respPreg){
+	// 				if($respPreg->idRespuesta == $idRespR){
+	// 					if($respPreg->idPregunta == $idPregR){
+	// 						$data = array('idEnc' => NULL,
+	// 										'relevamiento' => $idRelevamiento,
+	// 										'idRespPreg' => $respPreg->idRespPreg,
+	// 										'respB' => NULL);
 
-				$data = array(
-					'idEnc' => $idEncuestado,
-					'relevamiento' => $idRelevamiento,
-					'idRespPreg' => NULL,
-					'respB' => $resp);
+	// 						//Creo un objeto Respuesta_Elegida
+	// 						$this->relevamiento_model->crearRespuestaElegida($data);
+	// 					}
+	// 				}
+	// 			}
+	// 		//Si la respuesta es un String, osea una respuestaBreve
+	// 		}else{
+	// 			//Reviso si tiene la palabra ":number" en la cadena String, si la tiene se la quito y lo guardo como un int
+	// 			$cadenaResp = $relevamiento[$indiceR]['pregResp']['idRespuesta'];
+	// 			if(strpos($cadenaResp, ":number")){
+	// 				$largo = strlen($cadenaResp);
+	// 				$respFinal = substr($cadenaResp,-($largo), ($largo-7));
 
-				//Creo un objeto Respuesta_Elegida
-				$this->relevamiento_model->crearRespuestaElegida($data);
-			}	
-		}
-		$indiceRE++;
-	}//Fin carga de Respuestas del Encuestado
+	// 				$data = array('idEnc' => NULL,
+	// 								'relevamiento' => $idRelevamiento,
+	// 								'idRespPreg' => NULL,
+	// 								'respB' => $respFinal);
+
+	// 				//Creo un objeto Respuesta_Elegida
+	// 				$this->relevamiento_model->crearRespuestaElegida($data);
+
+	// 			}else{
+	// 				//Si la respuesta es un String directamente lo guardo en respBreve en una nueva Respuesta_Elegida
+	// 				$resp = $relevamiento[$indiceR]['pregResp']['idRespuesta'];
+	// 				$data = array('idEnc' => NULL,
+	// 								'relevamiento' => $idRelevamiento,
+	// 								'idRespPreg' => NULL,
+	// 								'respB' => $resp);
+
+	// 				//Creo un objeto Respuesta_Elegida
+	// 				$this->relevamiento_model->crearRespuestaElegida($data);
+	// 			}
+
+	// 		}
+			
+	// 	$indiceR++;
+	// }//Fin carga de Respuestas del Relevamiento
 
 
-	//Revisar el redireccionamiento al final la recepcion y garda de datos
-	redirect('/abms/abmEmpleadosC','refresh');
+	// // Variable a recibir de la vista con los datos de cada Respuesta_Elegida por cada Encuestado
+	// // $encuestados = array('nombreE' =>"",
+	// // 						'apellidoE' =>"",
+	// //						'dniE' =>"",
+	// // 						'edad' =>"",
+	// // 						'sexo' =>"",
+	// //						'nroAfiliado' =>"",
+	// // 						"pregResp" => array('idPregunta' => "", 
+	// // 											'idRespuesta' =>"")
+	// // 						);
 
-	}
+	// //Variables necesarias inicializadas para crear arreglo de DNIs
+	// $contadorE = count($encuestados);
+	// $indiceE = 0;
+	// $contadorDNI = 0;
+	// $listaDNI = array();
+
+	// //Loop para crear arreglo de DNIs y los encuestados
+	// for ($i=0; $i < $contadorE; $i++){
+	// 	$dniE = $encuestados[$indiceE]['dniE'];
+
+	// 	//Si la lista esta vacia, le cargo el primer dni encontrado
+	// 	if(count($listaDNI)==0){
+	// 		$listaDNI[0] = $dniE;
+	// 		$contadorDNI++;
+
+	// 		//Creo encuestado
+	// 		$data['encuestado'] = array('nombreE' => $encuestados[$indiceE]['nombreE'],
+	// 									'apellidoE' => $encuestados[$indiceE]['apellidoE'],
+	// 									'dniE' => $dniE,
+	// 									'edad'=> $encuestados[$indiceE]['edad'],
+	// 									'sexo'=> $encuestados[$indiceE]['sexo'],
+	// 									'nroAfiliado' => $encuestados[$indiceE]['nroAfiliado'],
+	// 									'idRelev'=> $idRelevamiento);
+	// 		$this->relevamiento_model->crearEncuestado($data['encuestado']);
+	// 	}else{
+	// 		//Si el dni no esta cargado en el array previamente lo ingreso
+	// 		if(!in_array($dniE, $listaDNI)){
+	// 			$listaDNI[$contadorDNI] = $dniE;
+	// 			$contadorDNI++;
+
+	// 			//Creo encuestado
+	// 			$data['encuestado'] = array('nombreE' => $encuestados[$indiceE]['nombreE'],
+	// 											'apellidoE' => $encuestados[$indiceE]['apellidoE'],
+	// 											'dniE' => $dniE,
+	// 											'edad'=> $encuestados[$indiceE]['edad'],
+	// 											'sexo'=> $encuestados[$indiceE]['sexo'],
+	// 											'nroAfiliado' => $encuestados[$indiceE]['nroAfiliado'],
+	// 											'idRelev'=> $idRelevamiento);
+	// 			$this->relevamiento_model->crearEncuestado($data['encuestado']);
+	// 		}		
+	// 	}
+	// 	$indiceE++;	
+	// }
+
+
+	// //Guardar todas las Respuestas_Elegidas asociadas solo a cada encuestado
+	// $indiceRE = 0;
+
+	// for ($i=0; $i < $contadorE; $i++){
+	// 	$idPregE = $encuestados[$indiceRE]['pregResp']['idPregunta'];
+
+	// 	//Si la respuesta en un nro, osea un ID
+	// 	if(is_numeric($encuestados[$indiceRE]['pregResp']['idRespuesta'])){
+	// 		$idRespE = $encuestados[$indiceRE]['pregResp']['idRespuesta']; 
+
+	// 		//Traigo cada valor de Respuesta_Pregunta guardado y comparo si es el mismo idRespuesta e idPregunta
+	// 		$data['resp_preg'] = $this->relevamiento_model->obtenerRespPreg();
+	// 		foreach($data['resp_preg'] as $respPreg){
+	// 			if($respPreg->idRespuesta == $idRespE){
+	// 				if($respPreg->idPregunta == $idPregE){
+
+	// 					$dniEnc = $encuestados[$indiceRE]['dniE'];
+	// 					//Busco el idEncuestado para poder cargarlo en la clase Respuesta_Elegida
+	// 					$encuestado = $this->relevamiento_model->obtenerEncuestado($dniEnc);
+	// 					foreach ($encuestado->result() as $enc){
+	// 						$idEncuestado = $enc->idEncuestado;
+	// 					}
+
+	// 					$data = array(
+	// 						'idEnc' => $idEncuestado,
+	// 						'relevamiento' => $idRelevamiento,
+	// 						'idRespPreg' => $respPreg->idRespPreg,
+	// 						'respB' => NULL);
+
+	// 					//Creo un objeto Respuesta_Elegida
+	// 					$this->relevamiento_model->crearRespuestaElegida($data);
+	// 				}
+	// 			}
+	// 		}
+	// 	}else{
+	// 		/*Si respuesta es un String controlo si tiene la cadena ":number" en su interior, 
+	// 		si lo tiene se la quito y guardo la respuesta como un int*/
+	// 		$cadenaResp = $encuestados[$indiceRE]['pregResp']['idRespuesta'];
+	// 		if(strpos($cadenaResp, ":number")){
+ // 				$largo = strlen($cadenaResp);
+ // 				$respFinal = substr($cadenaResp,-($largo), ($largo-7));
+
+	//  			$dniEnc = $encuestados[$indiceRE]['dniE'];
+	// 			//Busco el idEncuestado para poder cargarlo en la clase Respuesta_Elegida
+	// 			$encuestado = $this->relevamiento_model->obtenerEncuestado($dniEnc);
+	// 			foreach ($encuestado->result() as $enc){
+	// 				$idEncuestado = $enc->idEncuestado;
+	// 			}							
+
+	// 			$data = array(
+	// 				'idEnc' => $idEncuestado,
+	// 				'relevamiento' => $idRelevamiento,
+	// 				'idRespPreg' => NULL,
+	// 				'respB' => $respFinal);
+
+	// 			//Creo un objeto Respuesta_Elegida
+	// 			$this->relevamiento_model->crearRespuestaElegida($data);
+	// 		}else{
+	// 			//Si la respuesta es un String directamente lo guardo en respBreve en una nueva Respuesta_Elegida
+ // 				$resp = $encuestados[$indiceRE]['pregResp']['idRespuesta'];
+	//  			$dniEnc = $encuestados[$indiceRE]['dniE'];
+	// 			//Busco el idEncuestado para poder cargarlo en la clase Respuesta_Elegida
+	// 			$encuestado = $this->relevamiento_model->obtenerEncuestado($dniEnc);
+	// 			foreach ($encuestado->result() as $enc){
+	// 				$idEncuestado = $enc->idEncuestado;
+	// 			}							
+
+	// 			$data = array(
+	// 				'idEnc' => $idEncuestado,
+	// 				'relevamiento' => $idRelevamiento,
+	// 				'idRespPreg' => NULL,
+	// 				'respB' => $resp);
+
+	// 			//Creo un objeto Respuesta_Elegida
+	// 			$this->relevamiento_model->crearRespuestaElegida($data);
+	// 		}	
+	// 	}
+	// 	$indiceRE++;
+	// }//Fin carga de Respuestas del Encuestado
+
+
+	// //Revisar el redireccionamiento al final la recepcion y garda de datos
+	// redirect('/abms/abmEmpleadosC','refresh');
+
+	// }
  }
 ?>
+
+
+

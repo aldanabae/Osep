@@ -156,7 +156,15 @@
 										Ver Encuestas
 									</a>
 									<b class="arrow"></b>
-								</li>										
+								</li>	
+
+								<li class="">
+									<a href="<?php echo base_url()?>relevamiento/relevamientoC">
+										<i class="menu-icon fa fa-caret-right"></i>
+										Ver Relevamientos
+									</a>
+									<b class="arrow"></b>
+								</li>									
 							</ul>
 				</li>
 
