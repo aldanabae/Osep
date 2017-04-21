@@ -46,6 +46,8 @@
 <!--<div class="container">   contenedor principal -->
 <input type="hidden" name="embarazo"  id="embarazo" value="<?php echo @$embarazo; ?>">
 <input type="hidden" name="integrantes"  id="integrantes" value="<?php echo @$cantidad; ?>">
+
+
  <form id="add_encuesta" action="<?php echo(site_url('encuesta/cargarEncuesta/cargabloques_final'));  ?>" method="post">
 
 
@@ -53,9 +55,27 @@
  <div class="row form-horizontal" id="bloque_1">   <!-- bloque 1 -->
 		<div class="panel panel-default">
 		
-			<div class="panel-heading">Bloque 1 Composicion y salud Familiar</div>
+			<div class="panel-heading">Bloque 1 Familia conviviente</div>
 				<div class="panel-body">
+
+				<blockquote>
+					<p>Datos personales.</p>
+				</blockquote>
 				
+
+
+			<div class="form-group">
+				 <label for="inputName" class="control-label col-xs-6"></label>
+				 <div class="col-xs-6">
+						
+								<label class="block">
+										<input name="form-field-checkbox" class="ace input-lg" type="checkbox">
+										<span class="lbl bigger-120"> Responsable de responder la Encuesta</span>
+								</label>
+										 
+				</div>
+			</div>
+
 			<div class="form-group">
 				 <label for="inputName" class="control-label col-xs-6">Apellido y Nombre:</label>
 				 <div class="col-xs-6">
@@ -68,6 +88,13 @@
 					 <input type="number" name="b1_edad"  class="form-control" placeholder="Edad" id="b1_edad">
 				 </div>
 			 </div>
+
+			<div class="form-group">
+				<label for="inputEmail" class="control-label col-xs-6">Dni:</label>
+				<div class="col-xs-6">
+					<input type="number" name="b1_dni"  class="form-control" placeholder="Dni" id="b1_dni">
+				</div>
+			</div>
 
 
 			 <div class="form-group">
@@ -103,17 +130,118 @@
 
 					</div>	
 
+<hr>
 
-					<div class="form-group">
-						<label for="inputEmail" class="control-label col-xs-6">Dni:</label>
+				<blockquote>
+					<p>Cobertura de salud.</p>    <!-- Subtitulo Cobertura de Salud -->
+				</blockquote>
+
+					 <div class="form-group">
+						 <label for="inputPassword" class="control-label col-xs-6">Tiene Osep:</label>
 						<div class="col-xs-6">
-							<input type="number" name="b1_dni"  class="form-control" placeholder="Dni" id="b1_dni">
+							<select class="form-control" name= "b1_osep" id= "b1_osep">
+							<option value="0" checked>SI</option>
+							<option value="1">NO</option>
+							</select>
 						</div>
-					</div>
+					 </div>
+				
+
+					 <div class="form-group" id= "b1_div_afiliado">
+						 <label for="inputPassword" class="control-label col-xs-6">Numero Afiliado:</label>
+							<div class="col-xs-6">
+								<input type="number" name="b1_afiliado"  class="form-control" placeholder="Numero" id="b1_afiliado">
+							</div>
+					 </div>
+
+
+
+
+					 <div class="form-group">
+						 <label for="inputEmail" class="control-label col-xs-6">cobertura de salud:</label>
+						<div class="col-xs-6">
+							<select class="form-control" name= "b1_cober" id= "b1_cober">
+							<option value="0">Salud Publica</option>
+							<option value="1">Solo OSEP</option>
+							<option value="2">Obra Social</option>
+							<option value="3">Pre Paga</option>
+							<option value="4">OSEPy otra</option>
+							<option value="5">Servicio de emergencia</option>
+							<option value="6">Mutual con servicios Medicos</option>
+							<option value="7">Otra</option>
+							</select>
+						</div>
+					 </div>
+
+
+
+
+
+
+
+
+					 <div class="form-group">
+						 <label for="inputEmail" class="control-label col-xs-6">Tiene otra cobertura:</label>
+						<div class="col-xs-6">
+							<select class="form-control" name= "b1_otra" id= "b1_otra">
+							<option value="0" >SI</option>
+							<option value="1" selected =" true" >NO</option>
+
+							</select>
+						</div>
+					 </div>
+
+					 <!--<div class="form-group" id= "b1_div_embarazo">
+						 <label for="inputPassword" class="control-label col-xs-6">Esta embarazada:</label>
+						<div class="col-xs-6">
+							<select class="form-control" name= "b1_embarazo" id= "b1_embarazo">
+							<option value="0">SI</option>
+							<option value="1" selected>NO</option>
+							</select>
+						</div>
+					 </div>-->
+
+					 <div class="form-group">
+						 <label for="inputPassword" class="control-label col-xs-6">Padece enfermedad Cronica:</label>
+						<div class="col-xs-6">
+							<select class="form-control" name= "b1_cronica" id= "b1_cronica">
+							<option value="0">SI</option>
+							<option value="1" selected =" true">NO</option>
+							</select>
+						</div>
+					 </div>
+
+					 <div class="form-group">
+						 <label for="inputPassword" class="control-label col-xs-6">Tiene alguna Discapacidad:</label>
+						<div class="col-xs-6">
+							<select class="form-control" name= "b1_disc" id= "b1_disc">
+							<option value="0">SI</option>
+							<option value="1">NO</option>
+							</select>
+						</div>
+					 </div>
+
+
+					 <div class="form-group">
+						 <label for="inputPassword" class="control-label col-xs-6">Tiene algun pariente con OSEP a su cargo que no viva en la casa?:</label>
+						<div class="col-xs-6">
+							<select class="form-control" name= "b1_pariente" id= "b1_pariente" >
+							<option value="0">SI</option>
+							<option value="1" selected =" true">NO</option>
+							</select>
+						</div>
+					 </div>
+
+
+<hr>
+
+				<blockquote>
+					<p>Nivel Educativo.</p>    <!-- Subtitulo Cobertura de Salud -->
+				</blockquote>
 
 
 					<div class="form-group">
-						<label class="control-label col-xs-6">Estudia?:</label>
+						<label class="control-label col-xs-6">¿Estudia? :</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_estudio" id= "b1_estudio">
 							<option value="0">SI</option>
@@ -125,7 +253,7 @@
 
 
 					 <div class="form-group" id ="b1_div_nivel">
-						 <label for="inputEmail" class="control-label col-xs-6">Nivel de Estudios:</label>
+						 <label for="inputEmail" class="control-label col-xs-6">¿Cuál es su nivel educativo?:</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_nivel" id= "b1_nivel">
 							<option value="0">Ninguno</option>
@@ -165,171 +293,67 @@
 
 
 
-<div class="row form-horizontal" id="bloque_9">      <!-- Bloque 9 ocupacional Adaptado -->
+				<div class="row form-horizontal" id="bloque_9">      <!-- Bloque 9 ocupacional Adaptado -->
 
 
-						<blockquote>
-						<p>Datos Ocupacionales.</p>
-						</blockquote>
+							<blockquote>
+							<p>Datos Ocupacionales.</p>
+							</blockquote>
 
 
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">Contribuyes con la economia de la familia</label>
-							<div class="col-xs-6">
-								<select class="form-control" id="b9_contribulle" name="b9_contribulle" >
-								<option value="1" >SI</option>
-								<option value="2">NO</option>							
-								</select>
-							</div>
+							<div class="form-group">
+								
+								<label class="control-label col-xs-6">Contribuyes con la economia de la familia</label>
+								<div class="col-xs-6">
+									<select class="form-control" id="b9_contribulle" name="b9_contribulle" >
+									<option value="1" >SI</option>
+									<option value="2">NO</option>							
+									</select>
+								</div>
 
-						</div>	
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">Cuantas horas trabaja por semana</label>
-							<div class="col-xs-6">
-								<input type="number" class="form-control" id="b9_horas"  name="b9_horas" placeholder=" hs">
-							</div>
+							</div>	
+							<div class="form-group">
+								
+								<label class="control-label col-xs-6">Cuantas horas trabaja por semana</label>
+								<div class="col-xs-6">
+									<input type="number" class="form-control" id="b9_horas"  name="b9_horas" placeholder=" hs">
+								</div>
 
-						</div>	
-
-
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">En que lugar trabaja</label>
-							<div class="col-xs-6">
-								<input type="text" class="form-control" id="b9_lugar"  name="b9_lugar"  placeholder="Lugar">
-							</div>
-
-						</div>	
+							</div>	
 
 
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">A que se dedica concretamente</label>
-							<div class="col-xs-6">
-								<input type="text" class="form-control" id="b9_ocupacion"  name="b9_ocupacion"  placeholder=" Ocupacion">
-							</div>
+							<div class="form-group">
+								
+								<label class="control-label col-xs-6">En que lugar trabaja</label>
+								<div class="col-xs-6">
+									<input type="text" class="form-control" id="b9_lugar"  name="b9_lugar"  placeholder="Lugar">
+								</div>
 
-						</div>	
+							</div>	
 
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">Observaciones</label>
-							<div class="col-xs-6">
-								<input type="text" class="form-control" id="b9_obs"  name="b9_obs"  placeholder=" Observaciones">
-							</div>
 
-						</div>							
+							<div class="form-group">
+								
+								<label class="control-label col-xs-6">A que se dedica concretamente</label>
+								<div class="col-xs-6">
+									<input type="text" class="form-control" id="b9_ocupacion"  name="b9_ocupacion"  placeholder=" Ocupacion">
+								</div>
 
-<hr>
-</div>
+							</div>	
+
+							<div class="form-group">
+								
+								<label class="control-label col-xs-6">Observaciones</label>
+								<div class="col-xs-6">
+									<input type="text" class="form-control" id="b9_obs"  name="b9_obs"  placeholder=" Observaciones">
+								</div>
+
+							</div>							
+
+				<hr>
+				</div>
 
 			
-
-
-
-
-
-
-					 <div class="form-group">
-						 <label for="inputEmail" class="control-label col-xs-6">cobertura de salud:</label>
-						<div class="col-xs-6">
-							<select class="form-control" name= "b1_cober" id= "b1_cober">
-							<option value="0">Salud Publica</option>
-							<option value="1">Solo OSEP</option>
-							<option value="2">Obra Social</option>
-							<option value="3">Pre Paga</option>
-							<option value="4">OSEPy otra</option>
-							<option value="5">Servicio de emergencia</option>
-							<option value="6">Mutual con servicios Medicos</option>
-							<option value="7">Otra</option>
-							</select>
-						</div>
-					 </div>
-
-					 <div class="form-group">
-						 <label for="inputPassword" class="control-label col-xs-6">Tiene Osep:</label>
-						<div class="col-xs-6">
-							<select class="form-control" name= "b1_osep" id= "b1_osep">
-							<option value="0" checked>SI</option>
-							<option value="1">NO</option>
-							</select>
-						</div>
-					 </div>
-				
-
-					 <div class="form-group" id= "b1_div_afiliado">
-						 <label for="inputPassword" class="control-label col-xs-6">Numero Afiliado:</label>
-							<div class="col-xs-6">
-								<input type="number" name="b1_afiliado"  class="form-control" placeholder="Numero" id="b1_afiliado">
-							</div>
-					 </div>
-
-
-					 <div class="form-group">
-						 <label for="inputEmail" class="control-label col-xs-6">Tiene otra cobertura:</label>
-						<div class="col-xs-6">
-							<select class="form-control" name= "b1_otra" id= "b1_otra">
-							<option value="0" >SI</option>
-							<option value="1" selected =" true" >NO</option>
-
-							</select>
-						</div>
-					 </div>
-
-					 <div class="form-group" id= "b1_div_embarazo">
-						 <label for="inputPassword" class="control-label col-xs-6">Esta embarazada:</label>
-						<div class="col-xs-6">
-							<select class="form-control" name= "b1_embarazo" id= "b1_embarazo">
-							<option value="0">SI</option>
-							<option value="1" selected>NO</option>
-							</select>
-						</div>
-					 </div>
-
-					 <div class="form-group">
-						 <label for="inputPassword" class="control-label col-xs-6">Padece enfermedad Cronica:</label>
-						<div class="col-xs-6">
-							<select class="form-control" name= "b1_cronica" id= "b1_cronica">
-							<option value="0">SI</option>
-							<option value="1" selected =" true">NO</option>
-							</select>
-						</div>
-					 </div>
-
-					 <div class="form-group">
-						 <label for="inputPassword" class="control-label col-xs-6">Tiene alguna Discapacidad:</label>
-						<div class="col-xs-6">
-							<select class="form-control" name= "b1_disc" id= "b1_disc">
-							<option value="0">SI</option>
-							<option value="1">NO</option>
-							</select>
-						</div>
-					 </div>
-
-
-					 <!--<div class="form-group">
-						 <label for="inputPassword" class="control-label col-xs-6">Dependencia:</label>
-						<div class="col-xs-6">
-							<select class="form-control" name= "b1_dep" id= "b1_dep" >
-							<option value="0">SI</option>
-							<option value="1" selected =" true">NO</option>
-							</select>
-						</div>
-					 </div>-->
-
-					 <div class="form-group">
-						 <label for="inputPassword" class="control-label col-xs-6">Tiene algun pariente con OSEP a su cargo que no viva en la casa?:</label>
-						<div class="col-xs-6">
-							<select class="form-control" name= "b1_pariente" id= "b1_pariente" >
-							<option value="0">SI</option>
-							<option value="1" selected =" true">NO</option>
-							</select>
-						</div>
-					 </div>
-
-
 
 				</div>
 

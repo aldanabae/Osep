@@ -128,13 +128,14 @@ $(function() {
 				this.show_me(); // si esta en verdadero 
 				// recorro el arreglo colocando los numeros de edades
 				// creo el campo hidden
+				$('#list_edades').unbind("click");
 				var listHtml = ""    // pongo el String de html en blanco
 				
 					$.each( this.data.edades , function (index, valor){
 
 						
 						listHtml+= '<li>'+ valor +' años <a href="#" data-index = "'+ index +'"><span class="glyphicon glyphicon-remove"></span></a></li>';
-						listHtml+= '<input type="hidden" name="localPath[]"  value="'+ valor +'">'; // el hidden 
+						listHtml+= '<input type="hidden" name="edades_emb[]"  value="'+ valor +'">'; // el hidden 
 
 				
 
@@ -145,10 +146,11 @@ $(function() {
 				$('#edad_embarazo').val("");
 				$('#list_edades a').on('click', function(event){ 
 
-					var datos = $(this).data("index");
-					alert('click en el enlace'+ datos);
+					var datos = $(this).data("index"); // tomo el atributo data de la lista
+					//alert('click en el enlace'+ datos);
 					event.preventDefault();
-				
+					filtro.data.edades.splice(datos,1)
+					filtro.update();
 				});
 
 
@@ -156,6 +158,7 @@ $(function() {
 			}else{
 
 				this.hide_me();
+				$('#edad_embarazo').val("");
 				this.data.edades.length=0;
 
 			}

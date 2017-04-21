@@ -77,8 +77,7 @@ class CargarEncuesta extends CI_Controller{
                         $this->load->view('backend/sidebar',$data);
                         $data['cantidad']= $_POST['cantidad'];
                         $data['embarazo']=$_POST['embarazo'];
-                                var_dump($_POST);
-                        exit;
+
                         $this->load->view("backend/encuesta/cargar_encuesta_view", $data);
                         $this->load->view('backend/footer');
                         $js['javascript']= "bloques.js";
