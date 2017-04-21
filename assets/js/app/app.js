@@ -30,6 +30,8 @@ $(function() {
 
     })
 
+	filtro.bindComponent();
+	filtro.update();
 
 
 });
@@ -127,19 +129,29 @@ $(function() {
 				// recorro el arreglo colocando los numeros de edades
 				// creo el campo hidden
 				var listHtml = ""    // pongo el String de html en blanco
-				listHtml= '<ul>';														// abro el Ul
+				
 					$.each( this.data.edades , function (index, valor){
 
 						
-						listHtml+= '<li>'+ valor +' años <a href="#" data-index = "1"><span class="glyphicon glyphicon-remove"></span></a></li>';
-						listHtml+= '<input type="hidden" name="localPath[]"  id="" value="33">'; // el hidden 
+						listHtml+= '<li>'+ valor +' años <a href="#" data-index = "'+ index +'"><span class="glyphicon glyphicon-remove"></span></a></li>';
+						listHtml+= '<input type="hidden" name="localPath[]"  value="'+ valor +'">'; // el hidden 
 
 				
 
 					
-					})
-				listHtml+= '</ul>';														// cierro el Ul
+					})                            
+                                            
 				$('#list_edades').html(listHtml);
+				$('#edad_embarazo').val("");
+				$('#list_edades a').on('click', function(event){ 
+
+					var datos = $(this).data("index");
+					alert('click en el enlace'+ datos);
+					event.preventDefault();
+				
+				});
+
+
 
 			}else{
 
@@ -173,9 +185,14 @@ $(function() {
                     });
                     $( "#btn_nueva_edad" ).on(
                         'click', function(){
-							
-                            filtro.data.edades.push($(this).val()) ;
-                            filtro.update();
+							var edad = $('#edad_embarazo').val();
+
+							if (edad != "" && edad >= 11){     // filtra edad a partir de 11 años
+
+								filtro.data.edades.push(edad) ;
+								filtro.update();	
+
+							}
 
                     });
         },
@@ -185,13 +202,13 @@ $(function() {
         show_me: function(){
 
             // Mostrar el bloque
-            $( filtro.template ).show("slow");
+            $( filtro.template ).show();
             filtro.data.estado= true;
         },
 
         hide_me: function(){
             // ocultar el bloque
-            $( filtro.template ).hide("slow");
+            $( filtro.template ).hide();
             filtro.data.estado= false;
         }, 
 

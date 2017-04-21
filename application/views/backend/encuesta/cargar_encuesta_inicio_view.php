@@ -223,14 +223,14 @@
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Teléfono del titular:</label>
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control" placeholder="calles" name ="tel_titular" id= "tel_titular" >
+                                    <input type="text" class="form-control" placeholder="Teléfono supervisor" name ="tel_titular" id= "tel_titular" >
                                 </div>
                             </div>	
 
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Teléfono para supervisión:</label>
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control" placeholder="calles" name ="tel_super" id= "tel_super" >
+                                    <input type="text" class="form-control" placeholder="Teléfono supervisor" name ="tel_super" id= "tel_super" >
                                 </div>
                             </div>	
 
@@ -264,21 +264,14 @@
 
                                     <div class="form-group">
                                         <label class="control-label col-xs-4">¿De qué edad/es? </label>
-                                        <div class="col-xs-8" id = "list_edades">
+                                        <div class="col-xs-8" >
 
-                                            <ul>
-                                            <li>24 años <a href="#" data-index = "1"><span class="glyphicon glyphicon-remove"></span></a></li> 
-                                            <input type="hidden" name="localPath[]"  id="" value="33">
+                                            <ul id = "list_edades"class="text-uppercase">
+
                                             </ul>
-<input type="hidden" name="localPath[]"  id="" value="33">
-<input type="hidden" name="localPath[]"  id="" value="33">
-<input type="hidden" name="localPath[]"  id="" value="33">
-<input type="hidden" name="localPath[]"  id="" value="33">
-<input type="hidden" name="localPath[]"  id="" value="33">
-<input type="hidden" name="localPath[]"  id="" value="33">
-                                            <input type="number" class="form-control" placeholder="ingresar edad" name ="tel_super" id= "tel_super" >
+                                            <input type="number" class="form-control" placeholder="ingresar edad" name ="edad_embarazo" id= "edad_embarazo" >
                                             <br>
-                                            <button type="button" class="btn btn-success" id="btn_nueva_edad">nueva edad</button>
+                                            <button type="button" class="btn btn-success" id="btn_nueva_edad">Ingresar edad</button>
                                         </div>
 
                                     </div>
