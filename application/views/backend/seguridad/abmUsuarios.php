@@ -12,27 +12,20 @@
 		<!-- Tabla para asignar Usuarios a cada Empleado-->	
 
 		<form class="form-horizontal" role="form" action="<?php echo base_url() ?>abms/abmEmpleadosC/mostrarTablaEmpleados" method="post"><!-- Comienza formulario -->
-			
+			<h4 class="row header smaller lighter blue">
+                <span class="col-xs-12"> Tabla Empleados </span><!-- /.col -->
+            </h4>
 			
 		<div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
 				<div class="row">
 
 					<div class="col-xs-6">
 						<div class="dataTables_length" id="longitudTabla">
-							<label>Mostrar 
-							<select aria-controls="dynamic-table" class="form-control input-sm" name="longitudTabla">
-								<option value="1000">Todos</option>
-								<option value="10">10</option>
-								<option value="20">20</option>
-								<option value="40">40</option>
-								<option value="60">60</option>
-								<option value="80">80</option>
-								<option value="100">100</option>
-							</select> lineas
-							</label>
+							<button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
+								<i class="fa fa-sign-in bigger-110 icon-only"></i> Gestionar Empleados
+							</button>
 						</div>
 					</div>
-
 
 					<div class="col-xs-6">
 							<div id="dynamic-table_filter" class="dataTables_filter">
@@ -131,13 +124,15 @@
 		</form>
 
 
-				<br>
-				<br>
+		<br>
 
 
 	<!-- Tabla para asignar Editar Datos de Usuario a cada Empleado con Usuario ya asignado-->	
 		<form class="form-horizontal" role="form" action="<?php echo base_url() ?>seguridad/abmUsuariosC/mostrarTablaUsuarios" method="post"><!-- Comienza formulario -->
-					
+			<h4 class="row header smaller lighter blue">
+                <span class="col-xs-12"> Tabla Usuarios </span><!-- /.col -->
+            </h4>	
+
 			<div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
 				<div class="row">
 
@@ -145,7 +140,7 @@
 						<div class="dataTables_length" id="longitudTabla">
 							<label>Mostrar 
 							<select aria-controls="dynamic-table" class="form-control input-sm" name="longitudTabla" id="longitudTabla" OnChange="longitudOnChange(this)">
-								<option value="1000">Todos</option>
+								<option value="2000">Todos</option>
 								<option value="10">10</option>
 								<option value="20">20</option>
 								<option value="40">40</option>
@@ -154,6 +149,10 @@
 								<option value="100">100</option>
 							</select> lineas
 							</label>
+
+							<button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
+								<i class="fa fa-check bigger-110 icon-only"></i> Filtrar
+							</button>
 						</div>
 					</div>
 

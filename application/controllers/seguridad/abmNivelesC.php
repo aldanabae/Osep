@@ -23,6 +23,8 @@ class AbmNivelesC extends My_Controller{
 	}
 
 	function mostrarTablaNiveles(){
+		$data['nombresNiveles'] = $this->input->post('nombresNiveles');
+		$data['limiteTabla'] = $this->input->post('longitudTabla');
 		$data['tablaNiveles'] = $this->abmNiveles_model->obtenerNiveles($data['nombresNiveles']);
 
 		$nombreVista="backend/seguridad/abmNiveles";
