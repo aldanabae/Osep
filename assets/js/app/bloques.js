@@ -17,11 +17,52 @@ $(function() {
 
 
 
+var encuesta ={
+
+            titular: true,
+            numero: '444444444',
+            integrantes: 0,
+            embarazo: {
+                estado: false,
+                edad  : [],
+
+
+            },
+            count: 3,
+
+            init: function(){
+
+                    var emb= $('#embarazo').val();
+
+                    if(emb == '0' && emb != ''){
+
+                        encuesta.embarazo.estado= true;
+                        encuesta.embarazo.edad = $('#edades').val().split(',')
+
+                    }else{
+
+                        encuesta.embarazo.estado = false;
+                        encuesta.embarazo.edad = 0;
+
+                    }
+
+                    encuesta.integrantes = $('#integrantes').val();
+
+                    
+
+
+                  }
+            
+
+
+}
+
 var bloque1= {    // Bloque General
 
     // 0 es si  1  es el no
         estado: true,
         conf: {
+            
             nombre: null,
             edad: null,
             genero: "m",
@@ -41,9 +82,35 @@ var bloque1= {    // Bloque General
             html: '#bloque_1'
         },
 
+
+        data:{
+
+                vinculo:['Titular','Conyuge o Pareja Conviviente','Hijo /a','Padre Madre',
+                        'Suegro /a', 'Yerno / Nuera','Nieto /a',
+                        'Otro Familiar','Otro no Familiar'],
+                
+                tOsep:{
+                        si:['No, sólo OSEP',
+                            'Otra obra social',
+                            'Prepaga','Otra cobertura'],
+
+                        no:['No (Salud Pública)',
+                            'Obra social',
+                            'Prepaga','Otra cobertura']
+                },
+                educativo:[
+                        'inicial','Primario Incompleto',
+                        'Primario Completo','Secundario Incompleto',
+                        'Secundario Completo','Terciario Incompleto','Terciario Completo',
+                        'Universitario Incompleto','Universitario Completo',
+                        ]
+
+        },
+
         init: function(){
 
             bloque_btn.hide("slow");     // botonera abajo 
+            encuesta.init();
             bloque2.init();
             bloque3a.init();
             bloque3b.init();
@@ -51,24 +118,93 @@ var bloque1= {    // Bloque General
             bloque5.init();
             bloque6.init();
             bloque7.init();
-            bloque9.init();
+            //bloque9.init();
             bloque1.conf.update();
         },
 
         update_data: function(){
 
+
+
+            // por omicion el primero es el titular
+            if(encuesta.count == 0){
+                // cargo el combo solo con el titular
+                
+                $("#lblTitular").text('Apellido y nombre del Titular:')
+                $("#b1_parent").html( '<option value="1">Titular</option>');
+                $("#tOsep").hide();
+
+
+            }else{
+                // cargo el combo normal
+                $("#tOsep").show(); // muestro opciones de cobertura
+                
+
+                $("#lblTitular").text('Apellido y Nombre:')
+                $("#b1_parent").html( '');
+                var indice= 0;
+                $.each(bloque1.data.vinculo, function(key, value){
+                    indice = key;
+
+                    $("#b1_parent").append( '<option value="'+ (indice +1) +'">'+ value +'</option>');
+                });
+                
+            }
+            
+            $("#b1_afiliado").val(encuesta.numero);  // muestro el numero del titular
+
+
+
             // verifico si tiene osep
+
 
             if(bloque1.conf.osep == '0'){
 
-                $( "#b1_div_afiliado" ).show("slow");
+                $( "#b1_div_afiliado" ).show("slow"); // muestra el txt de numero de afiliado
+                $("#b1_cober").html( '');               // blanquea el select
+                $.each(bloque1.data.tOsep.si, function(key, value){  // carga el select con el Si
+
+                    $("#b1_cober").append( '<option value="'+ key +'">'+ value +'</option>');
+
+                });
                 bloque2.show_me();
 
             }else{
+                
+                $( "#b1_div_afiliado" ).hide("slow"); // oculta el txt de numero de afiliado
+                $("#b1_cober").html( '');              // blanquea el select
+                $.each(bloque1.data.tOsep.no, function(key, value){   // carga el select
 
-                $( "#b1_div_afiliado" ).hide("slow");
+                    $("#b1_cober").append( '<option value="'+ key +'">'+ value +'</option>');
+
+                });                
                 bloque2.hide_me();
+
             }
+
+            // verifico nivel educativo
+
+                if(bloque1.conf.edad >= 4 ){
+
+                    $( "#educativo" ).show();
+
+                }else{
+
+                    $( "#educativo" ).hide();
+
+                }
+
+
+ 
+
+
+
+
+
+
+
+
+
 
             $( "#b1_osep" ).val(bloque1.conf.osep);
             $("#b1_osep[value=0]").attr("selected",true);
@@ -78,9 +214,17 @@ var bloque1= {    // Bloque General
 
                 $( "#b1_div_embarazo" ).hide("slow");
                 bloque1.conf.embarazo= '1';
+
             }else{
 
                 $( "#b1_div_embarazo" ).show("slow");
+
+
+
+
+
+
+
             }
 
             if(bloque1.conf.discapacidad == '0'){
@@ -93,15 +237,45 @@ var bloque1= {    // Bloque General
             }
 
             // independiente si es afiliado o no
-            if(bloque1.conf.ocupacion == '1' || bloque1.conf.ocupacion == '2'  || bloque1.conf.ocupacion == '3' || bloque1.conf.ocupacion == '7' )
-            {
 
-                bloque9.show_me();
 
-            }else{
+            // verifico D ocupacionales
+                if(bloque1.conf.edad != null){
 
-                bloque9.hide_me();
-            }
+                    if(bloque1.conf.edad > 14){
+
+                             bloque9.show_me();
+                        
+                            if(bloque1.conf.ocupacion == '1' || bloque1.conf.ocupacion == '2'  || bloque1.conf.ocupacion == '3' )
+                            {
+
+                            $( "#bloque_9_int" ).show();
+
+                            }else{
+
+                            $( "#bloque_9_int" ).hide();
+                            }
+                        
+                    }else{
+
+                        
+                        bloque9.hide_me();
+
+                    }
+                }
+
+     
+
+             // fin filtro datos ocupacionales  
+
+
+
+
+
+
+
+
+
 
 
         },
@@ -1068,7 +1242,7 @@ var bloque7 ={       // embarazo
 
 var bloque9 ={       // laboral
 
-        estado: true,
+        estado: false,
         template: {
                     // asigno el nombre del selector de bloque
                     html: '#bloque_9'
