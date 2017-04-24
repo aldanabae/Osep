@@ -203,7 +203,7 @@ class Relevamiento_model extends CI_Model {
 		else return false;
 	}
 
-	public function getRespEnc($idEnc){
+	public function getRespEncuestado($idEnc){
 		$this->db->where('idEncuestado', $idEnc);
 		$this->db->from('respuesta_elegida');
 		$this->db->join('pregunta','pregunta.idPregunta=respuesta_elegida.idPregunta','left');
@@ -212,8 +212,31 @@ class Relevamiento_model extends CI_Model {
 
 		if ($query->num_rows() > 0) return $query;
 		else return false;
-
 	}
+
+	public function getRelevNro($nroRelev){
+		if ($nroRelev == ''){
+			$this->db->from('relevamiento');
+			$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+			$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+			$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+			$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+			$query = $this->db->get();
+
+		}else{
+			$this->db->where('nroRelevamiento', $nroRelev);
+			$this->db->from('relevamiento');
+			$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+			$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+			$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+			$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+			$query = $this->db->get();
+		}
+
+		if ($query->num_rows() > 0) return $query;
+		else return false;
+	}
+
 }
 
 ?>

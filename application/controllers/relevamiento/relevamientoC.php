@@ -152,29 +152,18 @@ class RelevamientoC extends My_Controller{
 		$data['respElegidas'] = $this->relevamiento_model->getRespElegidas($data['nroRelev']);
 		$data['encuestados'] = $this->relevamiento_model->getEncuestados($data['nroRelev']);
 
-		//CRear un arreglo de resp de cada Encuestado y enviarlo a la vista
-		// $cont = count($data['encuestados']);
-		// var_dump($data['encuestados']);
-		// die();
-		// $contador = 0;
-		// $data['idEnc'] = array();
-		// foreach ($data['respElegidas']->result() as $respE){
-		// 	if($respE->idEncuestado!=""){
-		// 		$idE = $respE->idEncuestado;
-		// 		if (!in_array($idE, $data['idEnc'])){
-		// 			$data['idEnc'][$contador] = $respE->idEncuestado;
-		// 			$contador++;
-		// 		}
-		// 	}
-		// }
-
-
-
       	$nombreVista="backend/relevamiento/verRelevamiento";
 		$this->cargarVista($nombreVista,$data);
 	}
 
+	function mostrarRelevamiento(){
+		$data['nroRelev'] = $this->input->post('nroRelev');	
+		$data['limiteTabla'] = $this->input->post('longitudTabla');
+		$data['tablaRelevamientos'] = $this->relevamiento_model->getRelevNro($data['nroRelev']);
 
+      	$nombreVista="backend/relevamiento/buscarRelevamiento";
+		$this->cargarVista($nombreVista, $data);
+	}
 
 
 

@@ -190,9 +190,7 @@
                       </div>
                     </div>
 
-
                     <div class="hr hr-16 hr-dotted"></div><!Linea Punteada Divisoria>
-
 
                     <h4 class="row header smaller lighter blue">
                       <span class="col-xs-6"> Bloque 8 - Vivienda y Habitat </span><!-- /.col -->
@@ -233,9 +231,7 @@
                       </div>
                     </div>
 
-
                     <div class="hr hr-16 hr-dotted"></div><!Linea Punteada Divisoria>
-
 
                     <h4 class="row header smaller lighter blue">
                       <span class="col-xs-6"> Bloque 9 - Final para todas las Familias </span><!-- /.col -->
@@ -281,7 +277,7 @@
             </div> 
 
 
-<!Segunda Caja de Datos/ Encuestados>
+            <!Segunda Caja de Datos/ Encuestados>
  
             <div class="widget-box"> <!-- Empieza el recuadro con su titulo -->
                 <div class="widget-header">
@@ -356,39 +352,77 @@
                                     
                                                 </div>
 
-
                                                 <h4>Bloques Relevados</h4>
-
 
                                                 <div class="tabbable">
                                                     <ul class="nav nav-tabs padding-12 tab-color-blue background-blue" id="myTab4">
                                                       <li class="active">
-                                                        <a data-toggle="tab" href="#bloque3" aria-expanded="true">Bloque 3: Salud de los Niños</a>
-                                                      </li>
-                                                      <li>
-                                                        <a data-toggle="tab" href="#bloque4" aria-expanded="false">Bloque 4: Salud de las Mujeres</a>
+                                                        <a data-toggle="tab" href="#bloque2<?php echo $idE;?>" aria-expanded="true">B2: Utilizacion Servicios</a>
                                                       </li>
 
                                                       <li>
-                                                        <a data-toggle="tab" href="#bloque5" aria-expanded="false">Bloque 5: Adultos Mayores</a>
+                                                        <a data-toggle="tab" href="#bloque3<?php echo $idE;?>" aria-expanded="false">B3: Niños</a>
                                                       </li>
 
                                                       <li>
-                                                        <a data-toggle="tab" href="#bloque6" aria-expanded="false">Bloque 6: Miembros con Discapacidad</a>
+                                                        <a data-toggle="tab" href="#bloque4<?php echo $idE;?>" aria-expanded="false">B4: Mujeres</a>
                                                       </li>
 
                                                       <li>
-                                                        <a data-toggle="tab" href="#bloque7" aria-expanded="false">Bloque 7: Embarazadas</a>
+                                                        <a data-toggle="tab" href="#bloque5<?php echo $idE;?>" aria-expanded="false">B5: Adultos Mayores</a>
+                                                      </li>
+
+                                                      <li>
+                                                        <a data-toggle="tab" href="#bloque6<?php echo $idE;?>" aria-expanded="false">B6: Discapacidad</a>
+                                                      </li>
+
+                                                      <li>
+                                                        <a data-toggle="tab" href="#bloque7<?php echo $idE;?>" aria-expanded="false">B7: Embarazadas</a>
                                                       </li>
                                                     </ul>
 
                                                     <div class="tab-content">
-                                                        <div id="bloque3" class="tab-pane in active">                                                            
+                                                        <div id="bloque2<?php echo $idE;?>" class="tab-pane in active">                                                            
                                                             <div class="profile-user-info profile-user-info-striped">
 
-                                                            <?php if($respElegidas){
-                                                                      foreach ($respElegidas->result() as $respE){
-                                                                          if($respE->idEncuestado == $idE){
+                                                            <?php $respEnc = $this->relevamiento_model->getRespEncuestado($idE);
+                                                                      if($respEnc){
+                                                                          foreach ($respEnc->result() as $respE){
+                                                                              if($respE->idBloque == 3){
+                                                                                  if($respE->respuesta!=""){
+                                                                                      echo '<div class="profile-info-row">
+                                                                                              <div class="profile-info-name">'.$respE->pregunta.'</div>
+                                                                                                <div class="profile-info-value">
+                                                                                                  <span class="editable" id="country">
+                                                                                                    '.$respE->respuesta.'
+                                                                                                  </span>
+                                                                                                </div>
+                                                                                              </div>';
+                                                                                  }else{
+                                                                                      echo '<div class="profile-info-row">
+                                                                                              <div class="profile-info-name">'.$respE->pregunta.'</div>
+                                                                                                <div class="profile-info-value">
+                                                                                                  <span class="editable" id="country">
+                                                                                                    '.$respE->respBreve.'
+                                                                                                  </span>
+                                                                                                </div>
+                                                                                              </div>';
+                                                                                  }
+                                                                              }
+                                                                          }
+                                                                      }else{
+                                                                          echo "Bloques no relevados. NO es AFILIADO a OSEP";
+                                                                      }
+                                                            ?> 
+                                                          </div>    
+                                                        </div>
+
+                                                        <div id="bloque3<?php echo $idE;?>" class="tab-pane">                                                           
+                                                            <div class="profile-user-info profile-user-info-striped">
+
+                                                            <?php $respEnc = $this->relevamiento_model->getRespEncuestado($idE);
+                                                                      if($respEnc){
+                                                                          foreach ($respEnc->result() as $respE){
                                                                               if($respE->idBloque == 4 || $respE->idBloque == 5){
                                                                                   if($respE->respuesta!=""){
                                                                                       echo '<div class="profile-info-row">
@@ -411,18 +445,19 @@
                                                                                   }
                                                                               }
                                                                           }                      
+                                                                      }else{
+                                                                          echo "Bloques no relevados. NO es AFILIADO a OSEP";
                                                                       }
-                                                                  }
-                                                              ?> 
-                                                          </div>    
+                                                            ?> 
+                                                          </div>                                                           
                                                         </div>
 
-                                                        <div id="bloque4" class="tab-pane">                                                           
+                                                        <div id="bloque4<?php echo $idE;?>" class="tab-pane">                                                           
                                                             <div class="profile-user-info profile-user-info-striped">
 
-                                                            <?php if($respElegidas){
-                                                                      foreach ($respElegidas->result() as $respE){
-                                                                          if($respE->idEncuestado == $idE){
+                                                            <?php $respEnc = $this->relevamiento_model->getRespEncuestado($idE);
+                                                                      if($respEnc){
+                                                                          foreach ($respEnc->result() as $respE){
                                                                               if($respE->idBloque == 6){
                                                                                   if($respE->respuesta!=""){
                                                                                       echo '<div class="profile-info-row">
@@ -445,18 +480,19 @@
                                                                                   }
                                                                               }
                                                                           }                      
+                                                                      }else{
+                                                                          echo "Bloques no relevados. NO es AFILIADO a OSEP";
                                                                       }
-                                                                  }
-                                                              ?> 
+                                                            ?> 
                                                           </div>                                                           
                                                         </div>
 
-                                                        <div id="bloque5" class="tab-pane">
+                                                        <div id="bloque5<?php echo $idE;?>" class="tab-pane">
                                                             <div class="profile-user-info profile-user-info-striped">
 
-                                                            <?php if($respElegidas){
-                                                                      foreach ($respElegidas->result() as $respE){
-                                                                          if($respE->idEncuestado == $idE){
+                                                            <?php $respEnc = $this->relevamiento_model->getRespEncuestado($idE);
+                                                                      if($respEnc){
+                                                                          foreach ($respEnc->result() as $respE){
                                                                               if($respE->idBloque == 7){
                                                                                   if($respE->respuesta!=""){
                                                                                       echo '<div class="profile-info-row">
@@ -480,17 +516,19 @@
                                                                               }
                                                                           }                      
                                                                       }
-                                                                  }
-                                                              ?> 
+                                                                      else{
+                                                                          echo "Bloques no relevados. NO es AFILIADO a OSEP";
+                                                                      }
+                                                            ?> 
                                                           </div>
                                                         </div>
 
-                                                        <div id="bloqu6" class="tab-pane">
+                                                        <div id="bloque6<?php echo $idE;?>" class="tab-pane">
                                                             <div class="profile-user-info profile-user-info-striped">
 
-                                                            <?php if($respElegidas){
-                                                                      foreach ($respElegidas->result() as $respE){
-                                                                          if($respE->idEncuestado == $idE){
+                                                            <?php $respEnc = $this->relevamiento_model->getRespEncuestado($idE);
+                                                                      if($respEnc){
+                                                                          foreach ($respEnc->result() as $respE){
                                                                               if($respE->idBloque == 8){
                                                                                   if($respE->respuesta!=""){
                                                                                       echo '<div class="profile-info-row">
@@ -513,18 +551,19 @@
                                                                                   }
                                                                               }
                                                                           }                      
+                                                                      }else{
+                                                                          echo "Bloques no relevados. NO es AFILIADO a OSEP";
                                                                       }
-                                                                  }
-                                                              ?> 
+                                                            ?> 
                                                           </div>                                                           
                                                         </div>
 
-                                                        <div id="bloque7" class="tab-pane">    
+                                                        <div id="bloque7<?php echo $idE;?>" class="tab-pane">    
                                                             <div class="profile-user-info profile-user-info-striped">
 
-                                                            <?php if($respElegidas){
-                                                                      foreach ($respElegidas->result() as $respE){
-                                                                          if($respE->idEncuestado == $idE){
+                                                            <?php $respEnc = $this->relevamiento_model->getRespEncuestado($idE);
+                                                                      if($respEnc){
+                                                                          foreach ($respEnc->result() as $respE){
                                                                               if($respE->idBloque == 9){
                                                                                   if($respE->respuesta!=""){
                                                                                       echo '<div class="profile-info-row">
@@ -547,23 +586,14 @@
                                                                                   }
                                                                               }
                                                                           }                      
-                                                                      }
-                                                                  }
-                                                              ?> 
+                                                                      }else{
+                                                                          echo "Bloques no relevados. NO es AFILIADO a OSEP.";
+                                                                      }    
+                                                            ?> 
                                                           </div>                                                          
                                                         </div>
-
-
-
-
                                                     </div>
                                                 </div>
-
-
-
-
-
-
 
                                               </div>
                                             </div>
@@ -577,11 +607,10 @@
                          <!---... Fin Accordion Dinamico ... -->
                             </div>
                         </div>
-                      
                     </div>
                 </div>
-
             </div>
+
         </div><!-- /.page-content -->
     </div><!-- /.main-content-inner -->
 </div><!-- /.main-content -->
@@ -589,3 +618,14 @@
 
 
 
+<!--Para que se vean los botones de la tabla responsive-->
+
+    <script type="text/javascript">
+      window.jQuery || document.write("<script src='../../../assets/js/jquery.js'>"+"<"+"/script>");
+    </script>
+
+
+    <script type="text/javascript">
+      if('ontouchstart' in document.documentElement) document.write("<script src='../../../assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
+    </script>
+    <script src="../../../assets/js/bootstrap.js"></script> 
