@@ -239,7 +239,7 @@
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Cantidad de personas que viven en esta casa:</label>
                                 <div class="col-xs-6">
-                                    <input type="number" class="form-control" placeholder="cantidad" name= "cantidad">
+                                    <input type="number" class="form-control" placeholder="cantidad" name= "cantidad" required>
                                 </div>
                             </div>
 

@@ -20,7 +20,7 @@ $(function() {
 var encuesta ={
 
             titular: true,
-            numero: '444444444',
+            afiliado: '',
             integrantes: 0,
             embarazo: {
                 estado: false,
@@ -28,7 +28,7 @@ var encuesta ={
 
 
             },
-            count: 3,
+            count: 0,
 
             init: function(){
 
@@ -37,7 +37,8 @@ var encuesta ={
                     if(emb == '0' && emb != ''){
 
                         encuesta.embarazo.estado= true;
-                        encuesta.embarazo.edad = $('#edades').val().split(',')
+                        var edad_emb = $('#edades').val().split(',');  // genero el arreglo de edad o edades
+                        encuesta.embarazo.edad =  cleanArray(edad_emb); //  lo limpio de elementos vacios
 
                     }else{
 
@@ -109,7 +110,7 @@ var bloque1= {    // Bloque General
 
         init: function(){
 
-            bloque_btn.hide("slow");     // botonera abajo 
+            bloque_btn.hide();     // botonera abajo 
             encuesta.init();
             bloque2.init();
             bloque3a.init();
@@ -117,6 +118,7 @@ var bloque1= {    // Bloque General
             bloque4.init();
             bloque5.init();
             bloque6.init();
+            bloque9.init();
             bloque7.init();
             //bloque9.init();
             bloque1.conf.update();
@@ -162,11 +164,11 @@ var bloque1= {    // Bloque General
 
                 $( "#b1_div_afiliado" ).show("slow"); // muestra el txt de numero de afiliado
                 $("#b1_cober").html( '');               // blanquea el select
-                $.each(bloque1.data.tOsep.si, function(key, value){  // carga el select con el Si
+                    $.each(bloque1.data.tOsep.si, function(key, value){  // carga el select con el Si
 
-                    $("#b1_cober").append( '<option value="'+ key +'">'+ value +'</option>');
+                        $("#b1_cober").append( '<option value="'+ key +'">'+ value +'</option>');
 
-                });
+                    });
                 bloque2.show_me();
 
             }else{
@@ -186,23 +188,13 @@ var bloque1= {    // Bloque General
 
                 if(bloque1.conf.edad >= 4 ){
 
-                    $( "#educativo" ).show();
+                    $("#educativo").show();
 
                 }else{
 
-                    $( "#educativo" ).hide();
+                    $("#educativo").hide();
 
                 }
-
-
- 
-
-
-
-
-
-
-
 
 
 
@@ -210,14 +202,48 @@ var bloque1= {    // Bloque General
             $("#b1_osep[value=0]").attr("selected",true);
 
             // verifico genero
-            if(bloque1.conf.genero == 'm'){
+            if(bloque1.conf.genero == 'm'){  // si es hombre oculto todo
 
-                $( "#b1_div_embarazo" ).hide("slow");
+                $( "#b1_div_embarazo" ).hide();
                 bloque1.conf.embarazo= '1';
 
-            }else{
 
-                $( "#b1_div_embarazo" ).show("slow");
+
+            }else{                  // si es mujer evaluo la situacion
+
+
+                if(encuesta.embarazo.estado){       // Si marco como que hay embarazon en la casa
+
+                    var edad_match = false;
+                    $.each(encuesta.embarazo.edad, function(index, valor){
+
+                        if (valor == bloque1.conf.edad){
+
+                            edad_match= true;
+                        }
+                    });
+
+                    if (edad_match){  // si una de las edades coincide muestro el combo de embarazo
+
+                        $( "#b1_div_embarazo" ).show();
+
+                    }
+
+
+
+                }
+                else{                                   // si no hay embarazon en la casa oculto todo
+
+                    $( "#b1_div_embarazo" ).hide();
+                    bloque1.conf.embarazo= '1';
+
+
+                }
+
+                
+
+
+                
 
 
 
@@ -246,15 +272,43 @@ var bloque1= {    // Bloque General
 
                              bloque9.show_me();
                         
-                            if(bloque1.conf.ocupacion == '1' || bloque1.conf.ocupacion == '2'  || bloque1.conf.ocupacion == '3' )
-                            {
+                            // if(bloque1.conf.ocupacion == '1' || bloque1.conf.ocupacion == '2'  || bloque1.conf.ocupacion == '3' )
+                            // {
 
-                            $( "#bloque_9_int" ).show();
+                            // $( "#bloque_9_int" ).show();
 
-                            }else{
+                            // }else{
 
-                            $( "#bloque_9_int" ).hide();
+                            // $( "#bloque_9_int" ).hide();
+                            // }
+                            switch (bloque1.conf.ocupacion) {
+                            case '1':
+                                
+                                $( "#bloque_9_int" ).show();
+                                $( "#bloque_9_int_juv" ).hide();
+                                break;
+                            case '2':
+                                $( "#bloque_9_int_juv" ).show();
+                                $( "#bloque_9_int" ).hide();
+                                break;
+
+                            case '3':
+                                $( "#bloque_9_int" ).show();
+                                $( "#bloque_9_int_juv" ).hide();
+
+                                break;
+                            default:
+                                //Sentencias_def ejecutadas cuando no ocurre una coincidencia con los anteriores casos
+                                $( "#bloque_9_int" ).hide();
+                                $( "#bloque_9_int_juv" ).hide();
+                                break;
                             }
+
+
+
+
+
+
                         
                     }else{
 
@@ -289,6 +343,8 @@ var bloque1= {    // Bloque General
 
                             bloque1.conf.genero= $(this).val();
                             bloque1.conf.embarazo= '1';
+
+
                             bloque1.conf.update();
 
                         });
@@ -1388,3 +1444,15 @@ var bloque9 ={       // laboral
 
 
     }
+
+
+
+function cleanArray( actual ){   // limpiar arreglos de elementos vacios
+  var newArray = new Array();
+  for( var i = 0, j = actual.length; i < j; i++ ){
+      if ( actual[ i ] ){
+        newArray.push( actual[ i ] );
+    }
+  }
+  return newArray;
+}

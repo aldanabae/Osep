@@ -75,8 +75,17 @@ class CargarEncuesta extends CI_Controller{
 
                         $this->load->view('backend/header');
                         $this->load->view('backend/sidebar',$data);
+                        $op_embarazo = $_POST['embarazo'];
                         $data['cantidad']= $_POST['cantidad'];
-                        $data['embarazo']=$_POST['embarazo'];
+                        $data['embarazo']= $op_embarazo;
+
+                        if ($op_embarazo == 0){
+
+                             $data['edades'] = $_POST['edades_emb'];
+                        }else{
+
+                             $data['edades'] = 0;
+                        }
 
                         $this->load->view("backend/encuesta/cargar_encuesta_view", $data);
                         $this->load->view('backend/footer');

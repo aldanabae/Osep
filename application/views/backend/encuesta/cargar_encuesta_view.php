@@ -16,14 +16,38 @@
 // );
 
 
-//var_dump($this->input->post());  ?>
+
+//var_dump($edades);  ?>
 
 <!--<div class="container">   contenedor principal -->
 <input type="hidden" name="embarazo"  id="embarazo" value="<?php echo @$embarazo; ?>">
 <input type="hidden" name="integrantes"  id="integrantes" value="<?php echo @$cantidad; ?>">
 
 <!-- Aqui va un bucle que pone als edades en String  separados por un caracter-->
-<input type="hidden" name="edades"  id="edades" value="16,29,44">
+
+<?php 
+
+$string_edad= "";
+
+if($edades != 0){
+
+		foreach($edades as $edad){
+
+			$string_edad.= $edad ."," ;
+		}
+}else{
+
+		$string_edad= "0";
+
+}
+		
+
+
+
+
+?>
+
+<input type="hidden" name="edades"  id="edades" value="<?php echo @$string_edad; ?>">
 
  <form id="add_encuesta" action="<?php echo(site_url('encuesta/cargarEncuesta/cargabloques_final'));  ?>" method="post">
 
@@ -142,7 +166,7 @@
 
 
 
-					 <div class="form-group">
+					 <!--<div class="form-group">
 						 <label for="inputEmail" class="control-label col-xs-6">Tiene otra cobertura:</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_otra" id= "b1_otra">
@@ -151,17 +175,17 @@
 
 							</select>
 						</div>
-					 </div>
+					 </div>-->
 
-					 <!--<div class="form-group" id= "b1_div_embarazo">
+					 <div class="form-group" id= "b1_div_embarazo">
 						 <label for="inputPassword" class="control-label col-xs-6">Esta embarazada:</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_embarazo" id= "b1_embarazo">
-							<option value="0">SI</option>
-							<option value="1" selected>NO</option>
+							<option value="0"selected>SI</option>
+							<option value="1" >NO</option>
 							</select>
 						</div>
-					 </div>-->
+					 </div>
 
 					 <div class="form-group">
 						 <label for="inputPassword" class="control-label col-xs-6">Padece enfermedad Cronica:</label>
@@ -195,9 +219,10 @@
 					 </div>
 
 
-<hr>
+
 
 	<div id= "educativo">			<!-- Datos ocupacionales inicio -->
+	<hr>
 				<blockquote>
 					<p>Nivel Educativo.</p>    <!-- Nivel educativo-->
 				</blockquote>
@@ -241,10 +266,9 @@
 
 
 
-
 				<div class="row form-horizontal" id="bloque_9">      <!-- Bloque 9 ocupacional Adaptado -->
 
-
+<hr>
 
 
 					 <div class="form-group">
@@ -319,7 +343,73 @@
 
 							</div>	
 
-						</div>		<!--cierre bloque interno de bloque 9-->				
+						</div>		<!--cierre bloque interno de bloque 9-->	
+
+
+
+						<div id="bloque_9_int_juv">
+
+
+
+							<div class="form-group">
+								
+								<label class="control-label col-xs-6">Contribuyes con la economia de la familia</label>
+								<div class="col-xs-6">
+									<select class="form-control" id="b9_contribulle" name="b9_contribulle" >
+									<option value="1" >principal sostén</option>
+									<option value="2">aportante</option>							
+									<option value="3">no contribuye</option>							
+									</select>
+								</div>
+
+							</div>	
+
+							<div class="form-group">
+								
+								<label class="control-label col-xs-6">Concretamente, ¿cuál es la actividad que realizaba usted antes de 
+									jubilarse o la persona que originó la pensión?</label>
+								<div class="col-xs-6">
+									<input type="text" class="form-control" id="b9_ocupacion"  name="b9_ocupacion"  placeholder=" Ocupacion">
+								</div>
+
+							</div>	
+
+							<div class="form-group">
+								
+								<label class="control-label col-xs-6">Observaciones</label>
+								<div class="col-xs-6">
+									<input type="text" class="form-control" id="b9_obs"  name="b9_obs"  placeholder=" Observaciones">
+								</div>
+
+							</div>	
+
+
+
+
+
+
+
+
+
+
+						</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 				<hr>
 				</div>
