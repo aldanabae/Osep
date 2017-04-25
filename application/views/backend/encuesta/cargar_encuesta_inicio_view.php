@@ -105,19 +105,21 @@
                     <div class="panel-heading">Bloque de identificación del territorio/facilitador/familia relevada</div>
                         <div class="panel-body">
                         
-                            <div class="form-group">
-                                <label for="inputName" class="control-label col-xs-6">Numero relevamiento:</label>
-                                <div class="col-xs-6">
-                                    <input type="name" class="form-control" placeholder="Numero" name= "nroRelev" id="nroRelev" value= "<?php echo($lib['nroRelevamiento']); ?>" required>
-                                </div>
-                            </div>				
+			
                         
                             <div class="form-group">
                                 <label for="inputName" class="control-label col-xs-6">Facilitador:</label>
                                 <div class="col-xs-6">
-                                    <input type="name" class="form-control" placeholder="Nombre Facilitador" name= "1" id="nom_facilitador"  required>
+                                    <input type="name" class="form-control"  name= "1" id="nom_facilitador"  required>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label for="inputName" class="control-label col-xs-6">Numero relevamiento:</label>
+                                <div class="col-xs-6">
+                                    <input type="name" class="form-control"  name= "nroRelev" id="nroRelev" value= "<?php echo($lib['nroRelevamiento']); ?>" required>
+                                </div>
+                            </div>	                            
 
                             
                             <div class="form-group">
@@ -173,7 +175,7 @@
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Barrio:</label>
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control" placeholder="Barrio" name="5" id="barrio">
+                                    <input type="text" class="form-control"  name="5" id="barrio">
                                 </div>
                             </div>
 
@@ -183,11 +185,11 @@
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Manzana:</label>
                                 <div class="col-xs-2">
-                                    <input type="text" class="form-control" placeholder="numero" name="5" id="barrio">
+                                    <input type="text" class="form-control"  name="5" id="barrio">
                                 </div>
                                 <label for="inputPassword" class="control-label col-xs-2">Casa:</label>
                                 <div class="col-xs-2">
-                                    <input type="text" class="form-control" placeholder="letra o numero" name="5" id="barrio">
+                                    <input type="text" class="form-control"  name="5" id="barrio">
                                 </div>
 
                             </div>
@@ -198,14 +200,14 @@
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Calle:</label>
                                 <div class="col-xs-6">
-                                    <input type="text" name = "ini_calle" class="form-control" placeholder="calle" id= "calle" required>
+                                    <input type="text" name = "ini_calle" class="form-control"  id= "calle" required>
                                 </div>
                             </div>				 
                             
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Numero:</label>
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control" placeholder="numero" name ="numero" id= "numero" required>
+                                    <input type="text" class="form-control"  name ="numero" id= "numero" required>
                                 </div>
                             </div>					 
                             
@@ -213,7 +215,7 @@
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Entre calles:</label>
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control" placeholder="calles" name ="entre_calle" id= "entre_calle" >
+                                    <input type="text" class="form-control"  name ="entre_calle" id= "entre_calle" >
                                 </div>
                             </div>		
                             
@@ -221,25 +223,25 @@
 
                             	 
                             <div class="form-group">
-                                <label for="inputPassword" class="control-label col-xs-6">Teléfono del titular:</label>
+                                <label for="inputPassword" class="control-label col-xs-6">Teléfono del encuestado:</label>
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control" placeholder="Teléfono supervisor" name ="tel_titular" id= "tel_titular" >
+                                    <input type="text" class="form-control"  name ="tel_titular" id= "tel_titular" >
                                 </div>
                             </div>	
 
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Teléfono para supervisión:</label>
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control" placeholder="Teléfono supervisor" name ="tel_super" id= "tel_super" >
+                                    <input type="text" class="form-control"  name ="tel_super" id= "tel_super" >
                                 </div>
                             </div>	
 
 
 <!-- bloque de cantidad-->
                             <div class="form-group">
-                                <label for="inputPassword" class="control-label col-xs-6">Cantidad de personas que viven en esta casa:</label>
+                                <label for="inputPassword" class="control-label col-xs-6">¿Cuántas personas viven habitualmente en este domicilio?:</label>
                                 <div class="col-xs-6">
-                                    <input type="number" class="form-control" placeholder="cantidad" name= "cantidad" required>
+                                    <input type="number" class="form-control"  name= "cantidad" required>
                                 </div>
                             </div>
 
@@ -269,7 +271,7 @@
                                             <ul id = "list_edades"class="text-uppercase">
 
                                             </ul>
-                                            <input type="number" class="form-control" placeholder="ingresar edad" name ="edad_embarazo" id= "edad_embarazo" >
+                                            <input type="number" class="form-control"  name ="edad_embarazo" id= "edad_embarazo" >
                                             <br>
                                             <button type="button" class="btn btn-success" id="btn_nueva_edad">Ingresar edad</button>
                                         </div>
@@ -288,7 +290,7 @@
                         <div class="form-group">
                             <label for="inputPassword" class="control-label col-xs-6">Observaciones:</label>
                             <div class="col-xs-6">
-                                <input type="text" class="form-control" placeholder="observaciones" name= "observaciones">
+                                <input type="text" class="form-control"  name= "observaciones">
                             </div>
                         </div>	
 

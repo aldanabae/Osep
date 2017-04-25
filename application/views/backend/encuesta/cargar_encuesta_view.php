@@ -209,7 +209,7 @@ if($edades != 0){
 
 
 					 <div class="form-group">
-						 <label for="inputPassword" class="control-label col-xs-6">Tiene algun pariente con OSEP a su cargo que no viva en la casa?:</label>
+						 <label for="inputPassword" class="control-label col-xs-6">¿Tiene algún afiliado a cargo que no viva en este domicilio? :</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_pariente" id= "b1_pariente" >
 							<option value="0">SI</option>
@@ -217,6 +217,13 @@ if($edades != 0){
 							</select>
 						</div>
 					 </div>
+
+
+
+
+
+
+
 
 
 
@@ -384,42 +391,11 @@ if($edades != 0){
 							</div>	
 
 
-
-
-
-
-
-
-
-
 						</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 				<hr>
 				</div>
 
-			
-
 				</div>
-
-
-
 
 		</div>	
 

@@ -64,8 +64,8 @@ $(function() {
 
 
 		function cargarCombo(listaLoc){
-			document.getElementById("localidad").options.length=0;
-			document.getElementById("localidad").options[0]=new Option("Selecciona una opcion", "0");
+			// document.getElementById("localidad").options.length=0;
+			// document.getElementById("localidad").options[0]=new Option();
 
 			var combo=$("#localidad");
 	        for (var i in listaLoc){
@@ -198,6 +198,29 @@ $(function() {
 							}
 
                     });
+
+
+                    $( "#tel_titular" ).on(
+                        'lost', function(){
+							var edad = $('#edad_embarazo').val();
+
+							if (edad != "" && edad >= 11){     // filtra edad a partir de 11 años
+
+								filtro.data.edades.push(edad) ;
+								filtro.update();	
+
+							}
+
+                    });
+
+
+
+
+
+
+
+
+
         },
 
 
