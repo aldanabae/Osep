@@ -56,11 +56,11 @@ if($edades != 0){
  <div class="row form-horizontal" id="bloque_1">   <!-- bloque 1 -->
 		<div class="panel panel-default">
 		
-			<div class="panel-heading">Bloque 1 Familia conviviente</div>
+			<div class="panel-heading orange">Bloque Familia Conviviente</div>
 				<div class="panel-body">
 
 				<blockquote>
-					<p>Datos personales.</p>
+					<p>Datos Personales</p>
 				</blockquote>
 				
 
@@ -71,7 +71,7 @@ if($edades != 0){
 						
 								<label class="block">
 										<input name="form-field-checkbox" class="ace input-lg" type="checkbox">
-										<span class="lbl bigger-120"> Responsable de responder la Encuesta</span>
+										<span class="lbl bigger-120">Responde la encuesta</span>
 								</label>
 										 
 				</div>
@@ -80,20 +80,20 @@ if($edades != 0){
 			<div class="form-group">
 				 <label for="inputName" id ="lblTitular" class="control-label col-xs-6">      </label>
 				 <div class="col-xs-6">
-					 <input type="text" class="form-control" placeholder="Nombre" name ="b1_nombre"  id ="b1_nombre"  >
+					 <input type="text" class="form-control"  name ="b1_nombre"  id ="b1_nombre"  >
 				 </div>
 			 </div>
 			 <div class="form-group">
 				 <label for="inputEmail" class="control-label col-xs-6">Edad:</label>
 				 <div class="col-xs-6">
-					 <input type="number" name="b1_edad"  class="form-control" placeholder="Edad" id="b1_edad">
+					 <input type="number" name="b1_edad"  class="form-control"  id="b1_edad">
 				 </div>
 			 </div>
 
 			<div class="form-group">
 				<label for="inputEmail" class="control-label col-xs-6">Dni:</label>
 				<div class="col-xs-6">
-					<input type="number" name="b1_dni"  class="form-control" placeholder="Dni" id="b1_dni">
+					<input type="number" name="b1_dni"  class="form-control"  id="b1_dni">
 				</div>
 			</div>
 
@@ -114,7 +114,7 @@ if($edades != 0){
 		 
 		
 					<div class="form-group">
-						<label class="control-label col-xs-6">Vinculo con el titular:</label>
+						<label class="control-label col-xs-6">Vínculo con el Titular:</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_parent" id= "b1_parent">
 
@@ -126,7 +126,7 @@ if($edades != 0){
 <hr>
 
 				<blockquote>
-					<p>Cobertura de salud.</p>    <!-- Subtitulo Cobertura de Salud -->
+					<p>Cobertura de Salud</p>    <!-- Subtitulo Cobertura de Salud -->
 				</blockquote>
 
 					 <div class="form-group" id="tOsep">
@@ -141,17 +141,15 @@ if($edades != 0){
 				
 
 					 <div class="form-group" id= "b1_div_afiliado">
-						 <label for="inputPassword" class="control-label col-xs-6">Numero Afiliado:</label>
+						 <label for="inputPassword" class="control-label col-xs-6">Número Afiliado:</label>
 							<div class="col-xs-6">
-								<input type="number" name="b1_afiliado"  class="form-control" placeholder="Numero" id="b1_afiliado">
+								<input type="number" name="b1_afiliado"  class="form-control" id="b1_afiliado">
 							</div>
 					 </div>
 
 
-
-
 					 <div class="form-group">
-						 <label for="inputEmail" class="control-label col-xs-6">cobertura de salud:</label>
+						 <label for="inputEmail" class="control-label col-xs-6">¿Tiene alguna otra cobertura de salud?</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_cober" id= "b1_cober">
 
@@ -178,7 +176,7 @@ if($edades != 0){
 					 </div>-->
 
 					 <div class="form-group" id= "b1_div_embarazo">
-						 <label for="inputPassword" class="control-label col-xs-6">Esta embarazada:</label>
+						 <label for="inputPassword" class="control-label col-xs-6">¿Esta embarazada¿</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_embarazo" id= "b1_embarazo">
 							<option value="0"selected>SI</option>
@@ -188,7 +186,7 @@ if($edades != 0){
 					 </div>
 
 					 <div class="form-group">
-						 <label for="inputPassword" class="control-label col-xs-6">Padece enfermedad Cronica:</label>
+						 <label for="inputPassword" class="control-label col-xs-6">Padece Enfermedad Crónica:</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_cronica" id= "b1_cronica">
 							<option value="0">SI</option>
@@ -209,7 +207,7 @@ if($edades != 0){
 
 
 					 <div class="form-group">
-						 <label for="inputPassword" class="control-label col-xs-6">Tiene algun pariente con OSEP a su cargo que no viva en la casa?:</label>
+						 <label for="inputPassword" class="control-label col-xs-6">¿Tiene algun familiar con OSEP a su cargo que no viva en la casa?:</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_pariente" id= "b1_pariente" >
 							<option value="0">SI</option>
@@ -224,12 +222,12 @@ if($edades != 0){
 	<div id= "educativo">			<!-- Datos ocupacionales inicio -->
 	<hr>
 				<blockquote>
-					<p>Nivel Educativo.</p>    <!-- Nivel educativo-->
+					<p>Nivel Educativo</p>    <!-- Nivel educativo-->
 				</blockquote>
 
 
 					<div class="form-group">
-						<label class="control-label col-xs-6">¿Estudia? :</label>
+						<label class="control-label col-xs-6">¿Estudia?</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_estudio" id= "b1_estudio">
 							<option value="0">SI</option>
@@ -244,7 +242,7 @@ if($edades != 0){
 						 <label for="inputEmail" class="control-label col-xs-6">¿Cuál es su nivel educativo?:</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_nivel" id= "b1_nivel">
-							<option value="0">inicial</option>
+							<option value="0">Inicial</option>
 							<option value="1">Primario Incompleto</option>
 							<option value="2">Primario Completo</option>
 							<option value="3">Secundario Incompleto</option>
@@ -253,11 +251,9 @@ if($edades != 0){
 							<option value="6">Terciario Completo</option>
 							<option value="7">Universitario Incompleto</option>
 							<option value="8">Universitario Completo</option>
-
-
 							</select>
 						</div>
-					 </div>
+					</div>
 
 	</div>			<!-- Datos ocupacionales cierre -->
 
@@ -275,11 +271,11 @@ if($edades != 0){
 						 <label for="inputEmail" class="control-label col-xs-6">¿A qué se dedica actualmente?</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_ocupacion" id= "b1_ocupacion">
-							<option value="1">Trabajador remunerado</option>
-							<option value="2">Jubilado o pensionado</option>
-							<option value="3">Trabaja con remuneración y estudia</option>
+							<option value="1">Trabajador Remunerado</option>
+							<option value="2">Jubilado o Pensionado</option>
+							<option value="3">Trabaja con Remuneración y Rstudia</option>
 							<option value="4">Estudia exclusivamente</option>
-							<option value="5">Trabajo doméstico no remunerado exclusivamente</option>
+							<option value="5">Trabajo Doméstico No Remunerado exclusivamente</option>
 							<option value="6">Busca trabajo</option>
 							<option value="7">No trabaja</option>
 							<option value="8">Otra</option>
@@ -291,16 +287,16 @@ if($edades != 0){
 					<div id="bloque_9_int">
 						
 							<blockquote>
-							<p>Datos Ocupacionales.</p>
+							<p>Datos Ocupacionales</p>
 							</blockquote>
 							<div class="form-group">
 								
 								<label class="control-label col-xs-6">Contribuyes con la economia de la familia</label>
 								<div class="col-xs-6">
 									<select class="form-control" id="b9_contribulle" name="b9_contribulle" >
-									<option value="1" >principal sostén</option>
-									<option value="2">aportante</option>							
-									<option value="3">no contribuye</option>							
+									<option value="1" >Principal Sostén</option>
+									<option value="2">Aportante</option>							
+									<option value="3">No Contribuye</option>							
 									</select>
 								</div>
 
@@ -319,7 +315,7 @@ if($edades != 0){
 								
 								<label class="control-label col-xs-6">¿En qué lugar trabaja?</label>
 								<div class="col-xs-6">
-									<input type="text" class="form-control" id="b9_lugar"  name="b9_lugar"  placeholder="Lugar">
+									<input type="text" class="form-control" id="b9_lugar"  name="b9_lugar"  >
 								</div>
 
 							</div>	
@@ -327,9 +323,9 @@ if($edades != 0){
 
 							<div class="form-group">
 								
-								<label class="control-label col-xs-6">Concretamente, ¿cuál es la actividad que realiza en su lugar de trabajo?</label>
+								<label class="control-label col-xs-6">Detalle la tarea realizada</label>
 								<div class="col-xs-6">
-									<input type="text" class="form-control" id="b9_ocupacion"  name="b9_ocupacion"  placeholder=" Ocupacion">
+									<input type="text" class="form-control" id="b9_ocupacion"  name="b9_ocupacion"  >
 								</div>
 
 							</div>	
@@ -338,7 +334,7 @@ if($edades != 0){
 								
 								<label class="control-label col-xs-6">Observaciones</label>
 								<div class="col-xs-6">
-									<input type="text" class="form-control" id="b9_obs"  name="b9_obs"  placeholder=" Observaciones">
+									<input type="text" class="form-control" id="b9_obs"  name="b9_obs"  >
 								</div>
 
 							</div>	
@@ -353,12 +349,12 @@ if($edades != 0){
 
 							<div class="form-group">
 								
-								<label class="control-label col-xs-6">Contribuyes con la economia de la familia</label>
+								<label class="control-label col-xs-6">Contribuyes con la economía de la familia</label>
 								<div class="col-xs-6">
 									<select class="form-control" id="b9_contribulle" name="b9_contribulle" >
-									<option value="1" >principal sostén</option>
-									<option value="2">aportante</option>							
-									<option value="3">no contribuye</option>							
+									<option value="1" >Principal Sostén</option>
+									<option value="2">Aportante</option>							
+									<option value="3">No Contribuye</option>							
 									</select>
 								</div>
 
@@ -378,7 +374,7 @@ if($edades != 0){
 								
 								<label class="control-label col-xs-6">Observaciones</label>
 								<div class="col-xs-6">
-									<input type="text" class="form-control" id="b9_obs"  name="b9_obs"  placeholder=" Observaciones">
+									<input type="text" class="form-control" id="b9_obs" name="b9_obs">
 								</div>
 
 							</div>	
@@ -387,23 +383,7 @@ if($edades != 0){
 
 
 
-
-
-
-
-
 						</div>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -432,12 +412,12 @@ if($edades != 0){
  <div class="row form-horizontal " id="bloque_2">    <!-- bloque 2 servicios de Salud -->
 			<div class="panel  panel-default">
 			
-				<div class="panel-heading">Bloque 2 Utilizacion de servicios de Salud</div>
+				<div class="panel-heading orange">Bloque 2 Utilizacion de Servicios de Salud</div>
 					<div class="panel-body">
 				
 						<div class="form-group">
 							
-							<label class="control-label col-xs-6">En los ultimos 6 meses, Utilizaron el servicio de la obra Social?</label>
+							<label class="control-label col-xs-6">En los ultimos 6 meses, ¿Utilizaron el servicio de la obra Social?</label>
 							<div class="col-xs-6">
 								<select class="form-control" id= "b2_uso" name= "b2_uso">
 									<option value="0" checked>SI</option>
@@ -452,7 +432,7 @@ if($edades != 0){
 
 						
 						<div class="form-group" id="b2_area">
-							<label class="control-label col-xs-6" for="postalAddress">Para que lo utilizo?:</label>
+							<label class="control-label col-xs-6" for="postalAddress">¿Para qué lo utilizó?:</label>
 							<div class="col-xs-6">
 								<textarea rows="3" class="form-control" id="b2_motivo" name = "b2_area" placeholder="Motivo" ></textarea>
 							</div>
@@ -502,7 +482,7 @@ if($edades != 0){
 						<div class="form-group">
 							<label class="control-label col-xs-6" for="b2_otro">Otro otivo:</label>
 							<div class="col-xs-6">
-								<input type="text" class="form-control" id="b2_otro" name="b2_otro" placeholder="Otro motivo">
+								<input type="text" class="form-control" id="b2_otro" name="b2_otro">
 							</div>
 						</div>
 			
@@ -1373,18 +1353,9 @@ if($edades != 0){
 
 
   
-  
-</div>
+ 
  
  <!--</div>   Cierre contenedor principal -->
-
-
-
-
-
-
-
-
 
 
 

@@ -268,7 +268,7 @@ li.divider:before {
 blockquote,
 blockquote.pull-right,
 .blockquote-reverse {
-  border-color: #e5eaf1;
+  border-color: #ff892a; /*#e5eaf1*/
 }
 pre.prettyprint {
   white-space: pre-wrap;

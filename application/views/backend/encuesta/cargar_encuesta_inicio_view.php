@@ -102,20 +102,20 @@
         <div class="row form-horizontal" id= "bloque_0">     <!-- bloque 0 -->
                 <div class="panel panel-default">
                 
-                    <div class="panel-heading">Bloque de identificación del territorio/facilitador/familia relevada</div>
-                        <div class="panel-body">
-                        
-                            <div class="form-group">
-                                <label for="inputName" class="control-label col-xs-6">Numero relevamiento:</label>
-                                <div class="col-xs-6">
-                                    <input type="name" class="form-control" placeholder="Numero" name= "nroRelev" id="nroRelev" value= "<?php echo($lib['nroRelevamiento']); ?>" required>
-                                </div>
-                            </div>				
+                    <div class="panel-heading orange">Bloque de Identificación del Territorio/Facilitador/Familia relevada</div>
+                        <div class="panel-body">				
                         
                             <div class="form-group">
                                 <label for="inputName" class="control-label col-xs-6">Facilitador:</label>
                                 <div class="col-xs-6">
-                                    <input type="name" class="form-control" placeholder="Nombre Facilitador" name= "1" id="nom_facilitador"  required>
+                                    <input type="name" class="form-control" placeholder="Combo Desplegable" name= "1" id="nom_facilitador"  required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputName" class="control-label col-xs-6">Número relevamiento:</label>
+                                <div class="col-xs-6">
+                                    <input type="name" class="form-control" placeholder="Numero" name="nroRelev" id="nroRelev" value= "<?php echo($lib['nroRelevamiento']); ?>" readOnly required>
                                 </div>
                             </div>
 
@@ -141,7 +141,7 @@
                                             <option value="11">La Paz</option>
                                             <option value="2">Las Heras</option>
                                             <option value="12">Lavalle </option>
-                                            <option value="5">Lujan de Cuyo</option>
+                                            <option value="5">Luján de Cuyo</option>
                                             <option value="6">Maipú</option>
                                             <option value="18">Malargue</option>
                                             <option value="9">Rivadavia</option>
@@ -155,7 +155,8 @@
                                 </div>
 
                             </div>
-                            
+ 
+
                             <div class="form-group">
                                 <label class="control-label col-xs-6">Distrito:</label>
                                 <div class="col-xs-6">
@@ -168,78 +169,68 @@
                             </div>
 
 
-
-
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Barrio:</label>
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control" placeholder="Barrio" name="5" id="barrio">
+                                    <input type="text" class="form-control" placeholder="" name="5" id="barrio">
                                 </div>
                             </div>
-
-
 
 
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Manzana:</label>
                                 <div class="col-xs-2">
-                                    <input type="text" class="form-control" placeholder="numero" name="5" id="barrio">
+                                    <input type="text" class="form-control"  name="5" id="barrio">
                                 </div>
                                 <label for="inputPassword" class="control-label col-xs-2">Casa:</label>
                                 <div class="col-xs-2">
-                                    <input type="text" class="form-control" placeholder="letra o numero" name="5" id="barrio">
+                                    <input type="text" class="form-control"  name="5" id="barrio">
                                 </div>
 
                             </div>
-
                             
                             <hr>
                             
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Calle:</label>
                                 <div class="col-xs-6">
-                                    <input type="text" name = "ini_calle" class="form-control" placeholder="calle" id= "calle" required>
+                                    <input type="text" name = "ini_calle" class="form-control" placeholder="" id= "calle" required>
                                 </div>
                             </div>				 
                             
                             <div class="form-group">
-                                <label for="inputPassword" class="control-label col-xs-6">Numero:</label>
+                                <label for="inputPassword" class="control-label col-xs-6">Número:</label>
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control" placeholder="numero" name ="numero" id= "numero" required>
+                                    <input class="form-control" name="numero" id= "numero" type="number" required>
                                 </div>
                             </div>					 
-                            
-                            
+                                                      
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Entre calles:</label>
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control" placeholder="calles" name ="entre_calle" id= "entre_calle" >
+                                    <input type="text" class="form-control"  name ="entre_calle" id= "entre_calle" >
                                 </div>
                             </div>		
-                            
-
-
                             	 
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Teléfono del titular:</label>
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control" placeholder="Teléfono supervisor" name ="tel_titular" id= "tel_titular" >
+                                    <input type="tel" class="form-control" name ="tel_titular" id="tel_titular" >
                                 </div>
                             </div>	
 
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Teléfono para supervisión:</label>
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control" placeholder="Teléfono supervisor" name ="tel_super" id= "tel_super" >
+                                    <input type="tel" class="form-control" placeholder="Teléfono del encuestado" name ="tel_super" id= "tel_super" >
                                 </div>
                             </div>	
 
-
 <!-- bloque de cantidad-->
                             <div class="form-group">
-                                <label for="inputPassword" class="control-label col-xs-6">Cantidad de personas que viven en esta casa:</label>
+                                <label for="inputPassword" class="control-label col-xs-6">¿Cuántas personas viven habitualmente en este domicilio?</label>
                                 <div class="col-xs-6">
-                                    <input type="number" class="form-control" placeholder="cantidad" name= "cantidad" required>
+                                    <input type="number" class="form-control" placeholder="" name= "cantidad" required>
                                 </div>
                             </div>
 
@@ -256,31 +247,25 @@
 
 
 
-
                         <div class="form-group" id= "filter_embarazo">
                             <label class="control-label col-xs-6"></label>
                             <div class="col-xs-6">
 
+                                <div class="form-group">
+                                    <label class="control-label col-xs-4">¿De qué edad/es? </label>
+                                    <div class="col-xs-8" >
 
-                                    <div class="form-group">
-                                        <label class="control-label col-xs-4">¿De qué edad/es? </label>
-                                        <div class="col-xs-8" >
+                                        <ul id = "list_edades"class="text-uppercase">
 
-                                            <ul id = "list_edades"class="text-uppercase">
-
-                                            </ul>
-                                            <input type="number" class="form-control" placeholder="ingresar edad" name ="edad_embarazo" id= "edad_embarazo" >
-                                            <br>
-                                            <button type="button" class="btn btn-success" id="btn_nueva_edad">Ingresar edad</button>
-                                        </div>
-
+                                        </ul>
+                                        <input type="number" class="form-control" name ="edad_embarazo" id= "edad_embarazo" >
+                                        <br>
+                                        <button type="button" class="btn btn-success" id="btn_nueva_edad">Ingresar Edad</button>
                                     </div>
+
+                                </div>
                             </div>
-
 					    </div>
-
-
-
 
 
                             <!-- bloque de observaciones-->
@@ -288,20 +273,18 @@
                         <div class="form-group">
                             <label for="inputPassword" class="control-label col-xs-6">Observaciones:</label>
                             <div class="col-xs-6">
-                                <input type="text" class="form-control" placeholder="observaciones" name= "observaciones">
+                                <input type="text" class="form-control" placeholder="" name= "observaciones">
                             </div>
                         </div>	
 
 
-                        </div>
+                    </div>
 
-                </div>		
-
-     
-                
+                </div>		          
         </div>	
 
         <br>
+
         <div class="form-group">
             <div class="col-xs-offset-3 col-xs-9">
                 <input type="submit" class="btn btn-primary" value="Continuar" name= "Continuar">
@@ -310,12 +293,8 @@
         </div>
 
 
-
     </form>
 
-
-</div>
- 
 
 
 		</div><!-- /.page-content -->
