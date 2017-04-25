@@ -8,11 +8,11 @@
 <div class="row form-horizontal" id="bloque_8">      <!-- Bloque 8 Vivienda y habitat -->
 			<div class="panel panel-default">
 			
-				<div class="panel-heading">Bloque 8 Vivienda y Habitat</div>
+				<div class="panel-heading orange">Bloque 8 Vivienda y Habitat</div>
 					<div class="panel-body">
 
 						<blockquote>
-						<p>Voy a preguntar sobre caracteristicas muy generales de la vivienda.</p>
+						<p>Voy a preguntar sobre caracteristicas muy generales de la vivienda</p>
 						</blockquote>
 
 
@@ -112,7 +112,7 @@
 						<hr>
 						<div class="form-group">
 							
-							<label class="control-label col-xs-6">En su barrio / Zona donde vive. Hay presencia de ?</label>
+							<label class="control-label col-xs-6">En el Barrio/Zona donde vive. Hay presencia de ?</label>
 
 						</div>	
 
