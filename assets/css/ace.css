@@ -5669,8 +5669,8 @@ fieldset[disabled] .btn-success.active {
 .btn-warning:hover,
 .btn-warning:active,
 .open > .btn-warning.dropdown-toggle {
-  background-color: #e59729 !important;
-  border-color: #ffb752;
+  background-color: #FF892a !important; /*#e59729*/
+  border-color: #FF892a; /*#ffb752*/
 }
 .btn-warning.no-border:hover,
 .btn-warning.no-border:active {
