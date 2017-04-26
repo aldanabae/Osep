@@ -102,25 +102,23 @@
         <div class="row form-horizontal" id= "bloque_0">     <!-- bloque 0 -->
                 <div class="panel panel-default">
                 
-                    <div class="panel-heading">Bloque de identificación del territorio/facilitador/familia relevada</div>
+                    <div class="panel-heading orange">Bloque de Identificación del Territorio/Facilitador/Familia relevada</div>
                         <div class="panel-body">
                         
 			
-                        
                             <div class="form-group">
                                 <label for="inputName" class="control-label col-xs-6">Facilitador:</label>
                                 <div class="col-xs-6">
-                                    <input type="name" class="form-control"  name= "1" id="nom_facilitador"  required>
+                                    <input type="name" class="form-control" placeholder="Combo Facilitadores" name= "1" id="nom_facilitador"  required>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="inputName" class="control-label col-xs-6">Numero relevamiento:</label>
+                                <label for="inputName" class="control-label col-xs-6">Número relevamiento:</label>
                                 <div class="col-xs-6">
                                     <input type="number" class="form-control"  name= "nroRelev" id="nroRelev" value= "<?php echo($lib['nroRelevamiento']); ?>" required>
                                 </div>
                             </div>	                            
-
                             
                             <div class="form-group">
                                 <label for="fecha_relevamiento" class="control-label col-xs-6">Fecha del relevamiento:</label>
@@ -128,14 +126,13 @@
                                     <input class="form-control date-picker" id="id-date-picker-1" data-date-format="dd-mm-yyyy" type="text" name= "2" id= "fecha_relevamiento" required>
                                 </div>
                             </div>
-
                             
                             <div class="form-group">
                                 <label class="control-label col-xs-6">Departamento</label>
                                 <div class="col-xs-6">
                                     <select class="form-control" id="departamento" name ="3" id ="select_dep" onchange="cargarLocalidades()">
                                     		<option value="" disabled selected hidden>Seleccionar</option>
-                                            <option value="1">Capital	</option>
+                                            <option value="1">Capital</option>
                                             <option value="17">General Alvear</option>
                                             <option value="4">Godoy Cruz</option>
                                             <option value="3">Guaymallén	 </option>
@@ -169,18 +166,12 @@
 
                             </div>
 
-
-
-
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Barrio:</label>
                                 <div class="col-xs-6">
                                     <input type="text" class="form-control"  name="5" id="barrio">
                                 </div>
                             </div>
-
-
-
 
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Manzana:</label>
@@ -197,6 +188,7 @@
                             
                             <hr>
                             
+
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Calle:</label>
                                 <div class="col-xs-6">
@@ -205,22 +197,18 @@
                             </div>				 
                             
                             <div class="form-group">
-                                <label for="inputPassword" class="control-label col-xs-6">Numero:</label>
+                                <label for="inputPassword" class="control-label col-xs-6">Número:</label>
                                 <div class="col-xs-6">
                                     <input type="number" class="form-control"  name ="numero" id= "numero" required>
                                 </div>
-                            </div>					 
-                            
+                            </div>					      
                             
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Entre calles:</label>
                                 <div class="col-xs-6">
                                     <input type="text" class="form-control"  name ="entre_calle" id= "entre_calle" >
                                 </div>
-                            </div>		
-                            
-
-
+                            </div>		                           
                             	 
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Teléfono del encuestado:</label>
@@ -232,12 +220,12 @@
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Teléfono para supervisión:</label>
                                 <div class="col-xs-6">
-                                    <input type="number" class="form-control"  name ="tel_super" id= "tel_super" >
+                                    <input type="number" class="form-control" placeholder="Teléfono del encuestado" name ="tel_super" id= "tel_super" >
                                 </div>
                             </div>	
 
-
 <!-- bloque de cantidad-->
+
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">¿Cuántas personas viven habitualmente en este domicilio?:</label>
                                 <div class="col-xs-6">
@@ -245,65 +233,55 @@
                                 </div>
                             </div>
 
-                        <div class="form-group">
-                            <label class="control-label col-xs-6">¿Hay alguna mujer embarazada?:</label>
-                            <div class="col-xs-6">
-                                <select class="form-control" name= "embarazo" id= "embarazo" placeholder= "seleccionar">
-                                <option value="0">SI</option>
-                                <option value="1" selected >NO</option>
-                                </select>
-                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-xs-6">¿Hay alguna mujer embarazada?:</label>
+                                <div class="col-xs-6">
+                                    <select class="form-control" name= "embarazo" id= "embarazo" placeholder= "seleccionar">
+                                    <option value="0">SI</option>
+                                    <option value="1" selected >NO</option>
+                                    </select>
+                                </div>
 
-					    </div>
-
-
+    					    </div>
 
 
-                        <div class="form-group" id= "filter_embarazo">
-                            <label class="control-label col-xs-6"></label>
-                            <div class="col-xs-6">
+                                <div class="form-group" id= "filter_embarazo">
+                                    <label class="control-label col-xs-6"></label>
+                                    <div class="col-xs-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-4">¿De qué edad/es? </label>
+                                            <div class="col-xs-8" >
 
+                                                <ul id = "list_edades"class="text-uppercase">
 
-                                    <div class="form-group">
-                                        <label class="control-label col-xs-4">¿De qué edad/es? </label>
-                                        <div class="col-xs-8" >
-
-                                            <ul id = "list_edades"class="text-uppercase">
-
-                                            </ul>
-                                            <input type="number" class="form-control"  name ="edad_embarazo" id= "edad_embarazo" >
-                                            <br>
-                                            <button type="button" class="btn btn-success" id="btn_nueva_edad">Ingresar edad</button>
+                                                </ul>
+                                                <input type="number" class="form-control"  name ="edad_embarazo" id= "edad_embarazo" >
+                                                <br>
+                                                
+                                                <button type="button" class="btn btn-info" id="btn_nueva_edad">Ingresar Edad</button>
+                                               
+                                                
+                                            </div>  
                                         </div>
-
                                     </div>
-                            </div>
-
-					    </div>
+					            </div>
 
 
+<!-- bloque de observaciones-->
 
+                            <div class="form-group">
+                                <label for="inputPassword" class="control-label col-xs-6">Observaciones:</label>
+                                <div class="col-xs-6">
+                                    <input type="text" class="form-control"  name= "observaciones">
+                                </div>
+                            </div>	
 
-
-                            <!-- bloque de observaciones-->
-
-                        <div class="form-group">
-                            <label for="inputPassword" class="control-label col-xs-6">Observaciones:</label>
-                            <div class="col-xs-6">
-                                <input type="text" class="form-control"  name= "observaciones">
-                            </div>
-                        </div>	
-
-
-                        </div>
-
+                        </div> 
                 </div>		
-
-     
-                
         </div>	
 
         <br>
+
         <div class="form-group">
             <div class="col-xs-offset-3 col-xs-9">
                 <input type="submit" class="btn btn-primary" value="Continuar" name= "Continuar">
@@ -311,15 +289,9 @@
             </div>
         </div>
 
+        </form>
 
-
-    </form>
-
-
-</div>
  
-
-
 		</div><!-- /.page-content -->
 	</div><!-- /.main-content-inner -->
 </div><!-- /.main-content -->

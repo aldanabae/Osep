@@ -49,14 +49,14 @@
 
 
 
- <div class="row form-horizontal" id="bloque_1">   <!-- bloque 1 -->
+<div class="row form-horizontal" id="bloque_1">   <!-- bloque 1 -->
 		<div class="panel panel-default">
 		
-			<div class="panel-heading">Familia conviviente</div>
+			<div class="panel-heading orange">Familia conviviente</div>
 				<div class="panel-body">
 
 				<blockquote>
-					<p>Datos personales</p>
+					<p>Datos Personales</p>
 				</blockquote>
 				
 
@@ -78,13 +78,14 @@
 				 <div class="col-xs-6">
 					 <input type="text" class="form-control" placeholder="Nombre" name ="b1_nombre"  id ="b1_nombre"  >
 				 </div>
-			 </div>
-			 <div class="form-group">
+			</div>
+
+			<div class="form-group">
 				 <label for="inputEmail" class="control-label col-xs-6">Edad:</label>
 				 <div class="col-xs-6">
 					 <input type="number" name="b1_edad"  class="form-control" placeholder="Edad" id="b1_edad">
 				 </div>
-			 </div>
+			</div>
 
 			<div class="form-group">
 				<label for="inputEmail" class="control-label col-xs-6">Dni:</label>
@@ -93,8 +94,7 @@
 				</div>
 			</div>
 
-
-			 <div class="form-group">
+			<div class="form-group">
 				 <label for="inputPassword" class="control-label col-xs-6">Sexo:</label>
 					<div class="col-xs-2">
 						<label class="radio-inline">
@@ -106,27 +106,26 @@
 							<input type="radio" name="b1_genero" value="f"> Femenino
 						</label>
 					</div>
-			 </div>
+			</div>
 		 
-		
-					<div class="form-group">
-						<label class="control-label col-xs-6">Vinculo con el titular:</label>
-						<div class="col-xs-6">
-							<select class="form-control" name= "b1_parent" id= "b1_parent">
+			<div class="form-group">
+				<label class="control-label col-xs-6">Vínculo con el titular:</label>
+				<div class="col-xs-6">
+					<select class="form-control" name= "b1_parent" id= "b1_parent">
 
-							</select>
-						</div>
+					</select>
+				</div>
 
-					</div>	
+			</div>	
 
 <hr>
 
 				<blockquote>
-					<p>Cobertura de salud</p>    <!-- Subtitulo Cobertura de Salud -->
+					<p>Cobertura de Salud</p>    <!-- Subtitulo Cobertura de Salud -->
 				</blockquote>
 
 					 <div class="form-group" id="tOsep">
-						 <label for="inputPassword" class="control-label col-xs-6">Tiene Osep:</label>
+						 <label for="inputPassword" class="control-label col-xs-6">¿Tiene Osep?</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_osep" id= "b1_osep">
 							<option value="0" checked>SI</option>
@@ -144,19 +143,14 @@
 					 </div>
 
 
-
-
 					 <div class="form-group">
-						 <label for="inputEmail" class="control-label col-xs-6">Cobertura de salud:</label>
+						 <label for="inputEmail" class="control-label col-xs-6">Cobertura de Salud:</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_cober" id= "b1_cober">
 
 							</select>
 						</div>
 					 </div>
-
-
-
 
 
 
@@ -174,7 +168,7 @@
 					 </div>-->
 
 					 <div class="form-group" id= "b1_div_embarazo">
-						 <label for="inputPassword" class="control-label col-xs-6">Esta embarazada:</label>
+						 <label for="inputPassword" class="control-label col-xs-6">¿Esta embarazada?</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_embarazo" id= "b1_embarazo">
 							<option value="0"selected>SI</option>
@@ -184,7 +178,7 @@
 					 </div>
 
 					 <div class="form-group">
-						 <label for="inputPassword" class="control-label col-xs-6">Padece enfermedad Cronica:</label>
+						 <label for="inputPassword" class="control-label col-xs-6">Padece Enfermedad Cronica:</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_cronica" id= "b1_cronica">
 							<option value="0">SI</option>
@@ -203,7 +197,6 @@
 						</div>
 					 </div>
 
-
 					 <div class="form-group">
 						 <label for="inputPassword" class="control-label col-xs-6">¿Tiene algún afiliado a cargo que no viva en este domicilio? :</label>
 						<div class="col-xs-6">
@@ -221,18 +214,14 @@
 
 
 
-
-
-
-	<div id= "educativo">			<!-- Datos ocupacionales inicio -->
-	<hr>
+			<div id= "educativo">			<!-- Datos ocupacionales inicio -->
+<hr>
 				<blockquote>
 					<p>Nivel Educativo</p>    <!-- Nivel educativo-->
 				</blockquote>
 
-
 					<div class="form-group">
-						<label class="control-label col-xs-6">¿Estudia? :</label>
+						<label class="control-label col-xs-6">¿Estudia? </label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_estudio" id= "b1_estudio">
 							<option value="0">SI</option>
@@ -242,9 +231,8 @@
 
 					</div>	
 
-
-					 <div class="form-group" id ="b1_div_nivel">
-						 <label for="inputEmail" class="control-label col-xs-6">¿Cuál es su nivel educativo?:</label>
+					<div class="form-group" id ="b1_div_nivel">
+						 <label for="inputEmail" class="control-label col-xs-6">¿Cuál es su nivel educativo?</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_nivel" id= "b1_nivel">
 							<option value="" disabled selected hidden>Seleccionar</option>
@@ -263,7 +251,7 @@
 						</div>
 					 </div>
 
-	</div>			<!-- Datos ocupacionales cierre -->
+			</div>			<!-- Datos ocupacionales cierre -->
 
 
 
@@ -274,17 +262,16 @@
 
 <hr>
 
-
 					 <div class="form-group">
 						 <label for="inputEmail" class="control-label col-xs-6">¿A qué se dedica actualmente?</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_ocupacion" id= "b1_ocupacion">
 							<option value="" disabled selected hidden>Seleccionar</option>
-							<option value="1">Trabajador remunerado</option>
-							<option value="2">Jubilado o pensionado</option>
-							<option value="3">Trabaja con remuneración y estudia</option>
+							<option value="1">Trabajador Remunerado</option>
+							<option value="2">Jubilado o Pensionado</option>
+							<option value="3">Trabaja con Remuneración y Estudia</option>
 							<option value="4">Estudia exclusivamente</option>
-							<option value="5">Trabajo doméstico no remunerado exclusivamente</option>
+							<option value="5">Trabajo Doméstico no Remunerado exclusivamente</option>
 							<option value="6">Busca trabajo</option>
 							<option value="7">No trabaja</option>
 							<option value="8">Otra</option>
@@ -298,9 +285,9 @@
 							<blockquote>
 							<p>Datos Ocupacionales</p>
 							</blockquote>
+
 							<div class="form-group">
-								
-								<label class="control-label col-xs-6">Contribuyes con la economia de la familia</label>
+								<label class="control-label col-xs-6">¿Contribuye con la economia de la familia?</label>
 								<div class="col-xs-6">
 									<select class="form-control" id="b9_contribulle" name="b9_contribulle" >
 									<option value="" disabled selected hidden>Seleccionar</option>
@@ -309,98 +296,75 @@
 									<option value="3">No contribuye</option>							
 									</select>
 								</div>
+							</div>
 
-							</div>	
-							<div class="form-group">
-								
-								<label class="control-label col-xs-6">¿Cuántas horas trabajó la semana  pasada?</label>
+							<div class="form-group">	
+								<label class="control-label col-xs-6">¿Cuántas horas trabajó la semana pasada?</label>
 								<div class="col-xs-6">
 									<input type="number" class="form-control" id="b9_horas"  name="b9_horas" placeholder=" hs">
 								</div>
-
 							</div>	
 
-
-							<div class="form-group">
-								
+							<div class="form-group">		
 								<label class="control-label col-xs-6">¿En qué lugar trabaja?</label>
 								<div class="col-xs-6">
 									<input type="text" class="form-control" id="b9_lugar"  name="b9_lugar"  placeholder="Lugar">
 								</div>
-
 							</div>	
 
-
-							<div class="form-group">
-								
-								<label class="control-label col-xs-6">Concretamente, ¿cuál es la actividad que realiza en su lugar de trabajo?</label>
+							<div class="form-group">	
+								<label class="control-label col-xs-6">Detalle la tarea realizada</label>
 								<div class="col-xs-6">
 									<input type="text" class="form-control" id="b9_ocupacion"  name="b9_ocupacion"  placeholder=" Ocupacion">
 								</div>
-
 							</div>	
 
-							<div class="form-group">
-								
+							<div class="form-group">	
 								<label class="control-label col-xs-6">Observaciones</label>
 								<div class="col-xs-6">
 									<input type="text" class="form-control" id="b9_obs"  name="b9_obs"  placeholder=" Observaciones">
 								</div>
-
 							</div>	
-
-						</div>		<!--cierre bloque interno de bloque 9-->	
-
+					</div>		<!--cierre bloque interno de bloque 9-->	
 
 
-						<div id="bloque_9_int_juv">
+					<div id="bloque_9_int_juv">
 
+						<div class="form-group">							
+							<label class="control-label col-xs-6">¿Contribuyes con la economia de la familia?</label>
+							<div class="col-xs-6">
+								<select class="form-control" id="b9_contribulle" name="b9_contribulle" >
+								<option value="" disabled selected hidden>Seleccionar</option>
+								<option value="1">Principal sostén</option>
+								<option value="2">Aportante</option>							
+								<option value="3">No contribuye</option>							
+								</select>
+							</div>
+						</div>	
 
+						<div class="form-group">
+							<label class="control-label col-xs-6">Concretamente, ¿cuál es la actividad que realizaba usted antes de 
+								jubilarse o la persona que originó la pensión?</label>
+							<div class="col-xs-6">
+								<input type="text" class="form-control" id="b9_ocupacion"  name="b9_ocupacion"  placeholder=" Ocupacion">
+							</div>
+						</div>	
 
-							<div class="form-group">
-								
-								<label class="control-label col-xs-6">Contribuyes con la economia de la familia</label>
-								<div class="col-xs-6">
-									<select class="form-control" id="b9_contribulle" name="b9_contribulle" >
-									<option value="" disabled selected hidden>Seleccionar</option>
-									<option value="1" >Principal sostén</option>
-									<option value="2">Aportante</option>							
-									<option value="3">No contribuye</option>							
-									</select>
-								</div>
+						<div class="form-group">					
+							<label class="control-label col-xs-6">Observaciones</label>
+							<div class="col-xs-6">
+								<input type="text" class="form-control" id="b9_obs"  name="b9_obs"  placeholder=" Observaciones">
+							</div>
+						</div>	
 
-							</div>	
-
-							<div class="form-group">
-								
-								<label class="control-label col-xs-6">Concretamente, ¿cuál es la actividad que realizaba usted antes de 
-									jubilarse o la persona que originó la pensión?</label>
-								<div class="col-xs-6">
-									<input type="text" class="form-control" id="b9_ocupacion"  name="b9_ocupacion"  placeholder=" Ocupacion">
-								</div>
-
-							</div>	
-
-							<div class="form-group">
-								
-								<label class="control-label col-xs-6">Observaciones</label>
-								<div class="col-xs-6">
-									<input type="text" class="form-control" id="b9_obs"  name="b9_obs"  placeholder=" Observaciones">
-								</div>
-
-							</div>	
-
-
-						</div>
+					</div>
 				<hr>
-				</div>
 
 				</div>
+
+			</div>
 
 		</div>	
-
-
-
 </div>			
 			
 	
@@ -408,35 +372,29 @@
  <div class="row form-horizontal " id="bloque_2">    <!-- bloque 2 servicios de Salud -->
 			<div class="panel  panel-default">
 			
-				<div class="panel-heading">Utilizacion de servicios de Salud</div>
+				<div class="panel-heading orange">Utilización de servicios de Salud</div>
 					<div class="panel-body">
 				
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">En los ultimos 6 meses, Utilizaron el servicio de la obra Social?</label>
+						<div class="form-group">							
+							<label class="control-label col-xs-6">En los últimos 6 meses, utilizaron el servicio de la Obra Social?</label>
 							<div class="col-xs-6">
 								<select class="form-control" id= "b2_uso" name= "b2_uso">
 									<option value="0" checked>SI</option>
 									<option value="1">NO</option>							
 								</select>
 							</div>
-
 						</div>	
-
-
-
 
 						
 						<div class="form-group" id="b2_area">
-							<label class="control-label col-xs-6" for="postalAddress">Para que lo utilizo?:</label>
+							<label class="control-label col-xs-6" for="postalAddress">¿Para que lo utilizó?</label>
 							<div class="col-xs-6">
 								<textarea rows="3" class="form-control" id="b2_motivo" name = "b2_area" placeholder="Motivo" ></textarea>
 							</div>
 						</div>
 
 
-						<div class="form-group" id="b2_si">
-							
+						<div class="form-group" id="b2_si">							
 							<label class="control-label col-xs-6"></label>
 							<div class="col-xs-6">
 								<select class="form-control" name="b2_si">
@@ -450,8 +408,7 @@
 						</div>
 
 
-						<div class="form-group" id="b2_no">
-							
+						<div class="form-group" id="b2_no">							
 							<label class="control-label col-xs-6"></label>
 							<div class="col-xs-6">
 								<select class="form-control" name="b2_no">
@@ -469,12 +426,7 @@
 								<option value="11">Consiguio turno pero todavia no le toca</option>													
 								</select>
 							</div>
-
 						</div>
-
-
-
-
 
 
 						<div class="form-group">
@@ -483,11 +435,9 @@
 								<input type="text" class="form-control" id="b2_otro" name="b2_otro" placeholder="Otro motivo">
 							</div>
 						</div>
-			
-					</div>	
 
-		</div>
-		
+					</div>	
+		</div>	
 	 
 </div>	 <!-- Cierre row -->
 
@@ -504,18 +454,15 @@
 				<input type="button" class="btn btn-primary" value="Generar Bloques" id= "btn_bloques">
 			</div>
 		</div>
-
-	</div>
-		 
+	</div>		 
 </div>	 <!-- Cierre row -->
-
 
 
 
 <div class="row form-horizontal" id="bloque_3_a">      <!-- Bloque 3 bebes -->
 			<div class="panel panel-default">
 			
-				<div class="panel-heading">Bloque 3 Salud de los Niños</div>
+				<div class="panel-heading orange">Bloque Salud de los Niños</div>
 					<div class="panel-body">
 				
 						<blockquote>
@@ -661,7 +608,7 @@
 <div class="row form-horizontal" id="bloque_3_b">      <!-- Bloque 3 niños -->
 			<div class="panel panel-default">
 			
-				<div class="panel-heading">Bloque 3 Salud de los Niños</div>
+				<div class="panel-heading orange">Bloque Salud de los Niños</div>
 					<div class="panel-body">
 				
 						<blockquote>
@@ -784,7 +731,7 @@
 <div class="row form-horizontal" id="bloque_4">      <!-- Bloque 4 mujeres -->
 			<div class="panel panel-default">
 			
-				<div class="panel-heading">Bloque 4 Salud  de las mujeres</div>
+				<div class="panel-heading orange">Bloque Salud  de las mujeres</div>
 					<div class="panel-body">
 				
 						<div class="form-group">
@@ -899,7 +846,7 @@
 <div class="row form-horizontal" id="bloque_5">      <!-- Bloque 5 Adultos mayores -->
 			<div class="panel panel-default">
 			
-				<div class="panel-heading">Bloque 5 Adultos mayores</div>
+				<div class="panel-heading orange">Bloque Adultos mayores</div>
 					<div class="panel-body">
 
 
@@ -1363,8 +1310,7 @@
 
 
   
-  
-</div>
+
  
  <!--</div>   Cierre contenedor principal -->
 
