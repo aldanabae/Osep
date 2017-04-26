@@ -68,7 +68,7 @@ var bloque1= {    // Bloque General
             edad: null,
             genero: "m",
             osep: '0',
-            embarazo: '1',
+            embarazo: '0',
             discapacidad: '1',
             ocupacion:    '1',
             update: function(){
@@ -197,7 +197,6 @@ var bloque1= {    // Bloque General
                 }
 
 
-
             $( "#b1_osep" ).val(bloque1.conf.osep);
             $("#b1_osep[value=0]").attr("selected",true);
 
@@ -229,15 +228,11 @@ var bloque1= {    // Bloque General
 
                     }
 
-
-
                 }
                 else{                                   // si no hay embarazon en la casa oculto todo
 
                     $( "#b1_div_embarazo" ).hide();
                     bloque1.conf.embarazo= '1';
-
-
                 }
 
                 
@@ -338,17 +333,17 @@ var bloque1= {    // Bloque General
                 bloque1.init();
                 bloque1.update_data();
 
+                    // genero
                     $( "#bloque_1 input[name$='b1_genero']" ).on(
                         'change, click', function(){
 
                             bloque1.conf.genero= $(this).val();
                             bloque1.conf.embarazo= '1';
-
-
                             bloque1.conf.update();
 
                         });
 
+                        // nombre encuestado
                     $( "#b1_nombre" ).on(
                         'focusout', function(){
 
@@ -356,7 +351,7 @@ var bloque1= {    // Bloque General
                             bloque1.conf.update();
 
                         });
-
+                        // edad encuestado
                     $( "#b1_edad" ).on(
                         'focusout', function(){
 
@@ -371,7 +366,7 @@ var bloque1= {    // Bloque General
                             bloque1.conf.estudio= $(this).val();
                             bloque1.conf.update();
 
-                        });
+                    });
 
                     $( "#b1_osep" ).on(
                         'change, click', function(){

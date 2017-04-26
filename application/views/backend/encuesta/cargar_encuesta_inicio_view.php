@@ -117,7 +117,7 @@
                             <div class="form-group">
                                 <label for="inputName" class="control-label col-xs-6">Numero relevamiento:</label>
                                 <div class="col-xs-6">
-                                    <input type="name" class="form-control"  name= "nroRelev" id="nroRelev" value= "<?php echo($lib['nroRelevamiento']); ?>" required>
+                                    <input type="number" class="form-control"  name= "nroRelev" id="nroRelev" value= "<?php echo($lib['nroRelevamiento']); ?>" required>
                                 </div>
                             </div>	                            
 
@@ -134,7 +134,7 @@
                                 <label class="control-label col-xs-6">Departamento</label>
                                 <div class="col-xs-6">
                                     <select class="form-control" id="departamento" name ="3" id ="select_dep" onchange="cargarLocalidades()">
-                                    		<option value="0">Seleccionar</option>
+                                    		<option value="" disabled selected hidden>Seleccionar</option>
                                             <option value="1">Capital	</option>
                                             <option value="17">General Alvear</option>
                                             <option value="4">Godoy Cruz</option>
@@ -189,7 +189,7 @@
                                 </div>
                                 <label for="inputPassword" class="control-label col-xs-2">Casa:</label>
                                 <div class="col-xs-2">
-                                    <input type="text" class="form-control"  name="5" id="barrio">
+                                    <input type="number" class="form-control"  name="5" id="barrio">
                                 </div>
 
                             </div>
@@ -207,7 +207,7 @@
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Numero:</label>
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control"  name ="numero" id= "numero" required>
+                                    <input type="number" class="form-control"  name ="numero" id= "numero" required>
                                 </div>
                             </div>					 
                             
@@ -225,14 +225,14 @@
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Teléfono del encuestado:</label>
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control"  name ="tel_titular" id= "tel_titular" >
+                                    <input type="number" class="form-control"  name ="tel_titular" id= "tel_titular" >
                                 </div>
                             </div>	
 
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Teléfono para supervisión:</label>
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control"  name ="tel_super" id= "tel_super" >
+                                    <input type="number" class="form-control"  name ="tel_super" id= "tel_super" >
                                 </div>
                             </div>	
 
@@ -248,7 +248,7 @@
                         <div class="form-group">
                             <label class="control-label col-xs-6">¿Hay alguna mujer embarazada?:</label>
                             <div class="col-xs-6">
-                                <select class="form-control" name= "embarazo" id= "embarazo">
+                                <select class="form-control" name= "embarazo" id= "embarazo" placeholder= "seleccionar">
                                 <option value="0">SI</option>
                                 <option value="1" selected >NO</option>
                                 </select>

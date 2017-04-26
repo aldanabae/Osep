@@ -27,24 +27,20 @@
 
 <?php 
 
-$string_edad= "";
+	$string_edad= "";
 
-if($edades != 0){
+	if($edades != 0){
 
-		foreach($edades as $edad){
+			foreach($edades as $edad){
 
-			$string_edad.= $edad ."," ;
-		}
-}else{
+				$string_edad.= $edad ."," ;
+			}
+	}else{
 
-		$string_edad= "0";
+			$string_edad= "0";
 
-}
+	}
 		
-
-
-
-
 ?>
 
 <input type="hidden" name="edades"  id="edades" value="<?php echo @$string_edad; ?>">
@@ -56,7 +52,7 @@ if($edades != 0){
  <div class="row form-horizontal" id="bloque_1">   <!-- bloque 1 -->
 		<div class="panel panel-default">
 		
-			<div class="panel-heading">Bloque 1 Familia conviviente</div>
+			<div class="panel-heading">Familia conviviente</div>
 				<div class="panel-body">
 
 				<blockquote>
@@ -71,7 +67,7 @@ if($edades != 0){
 						
 								<label class="block">
 										<input name="form-field-checkbox" class="ace input-lg" type="checkbox">
-										<span class="lbl bigger-120"> Responsable de responder la Encuesta</span>
+										<span class="lbl bigger-120">Responde la encuesta</span>
 								</label>
 										 
 				</div>
@@ -251,7 +247,8 @@ if($edades != 0){
 						 <label for="inputEmail" class="control-label col-xs-6">¿Cuál es su nivel educativo?:</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_nivel" id= "b1_nivel">
-							<option value="0">inicial</option>
+							<option value="" disabled selected hidden>Seleccionar</option>
+							<option value="0">Inicial</option>
 							<option value="1">Primario Incompleto</option>
 							<option value="2">Primario Completo</option>
 							<option value="3">Secundario Incompleto</option>
@@ -282,6 +279,7 @@ if($edades != 0){
 						 <label for="inputEmail" class="control-label col-xs-6">¿A qué se dedica actualmente?</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_ocupacion" id= "b1_ocupacion">
+							<option value="" disabled selected hidden>Seleccionar</option>
 							<option value="1">Trabajador remunerado</option>
 							<option value="2">Jubilado o pensionado</option>
 							<option value="3">Trabaja con remuneración y estudia</option>
@@ -305,9 +303,10 @@ if($edades != 0){
 								<label class="control-label col-xs-6">Contribuyes con la economia de la familia</label>
 								<div class="col-xs-6">
 									<select class="form-control" id="b9_contribulle" name="b9_contribulle" >
-									<option value="1" >principal sostén</option>
-									<option value="2">aportante</option>							
-									<option value="3">no contribuye</option>							
+									<option value="" disabled selected hidden>Seleccionar</option>
+									<option value="1" >Principal sostén</option>
+									<option value="2">Aportante</option>							
+									<option value="3">No contribuye</option>							
 									</select>
 								</div>
 
@@ -363,9 +362,10 @@ if($edades != 0){
 								<label class="control-label col-xs-6">Contribuyes con la economia de la familia</label>
 								<div class="col-xs-6">
 									<select class="form-control" id="b9_contribulle" name="b9_contribulle" >
-									<option value="1" >principal sostén</option>
-									<option value="2">aportante</option>							
-									<option value="3">no contribuye</option>							
+									<option value="" disabled selected hidden>Seleccionar</option>
+									<option value="1" >Principal sostén</option>
+									<option value="2">Aportante</option>							
+									<option value="3">No contribuye</option>							
 									</select>
 								</div>
 
@@ -440,6 +440,7 @@ if($edades != 0){
 							<label class="control-label col-xs-6"></label>
 							<div class="col-xs-6">
 								<select class="form-control" name="b2_si">
+								<option value="" disabled selected hidden>Seleccionar</option>
 								<option value="1">Fue a un efector de OSEP</option>
 								<option value="2">Fue a un prestador Privado</option>							
 								<option value="3">Fue a un Hospital o centro de Salud Publico</option>							
@@ -454,6 +455,7 @@ if($edades != 0){
 							<label class="control-label col-xs-6"></label>
 							<div class="col-xs-6">
 								<select class="form-control" name="b2_no">
+								<option value="" disabled selected hidden>Seleccionar</option>
 								<option value="1">Ningun miembro de la familia se enfermo o tuvo accidente</option>
 								<option value="2">No lo consideró necesario asi que no hizo nada</option>							
 								<option value="3">No lo consideró necesario y tomo remedio caseros</option>							
@@ -524,6 +526,7 @@ if($edades != 0){
 							<label class="control-label col-xs-6">El embarazo fue normal?</label>
 							<div class="col-xs-6">
 								<select class="form-control" name ="">
+								<option value="" disabled selected hidden>Seleccionar</option>
 								<option value="1">Normal</option>
 								<option value="2">De riesgo</option>							
 								</select>
@@ -535,8 +538,10 @@ if($edades != 0){
 						<div class="form-group">
 							
 							<label class="control-label col-xs-6">Nacio en termino</label>
+						
 							<div class="col-xs-6">
 								<select class="form-control" name ="">
+								<option value="" disabled selected hidden>Seleccionar</option>
 								<option value="1">A termino</option>
 								<option value="2">Prematuro</option>							
 								</select>
@@ -601,6 +606,7 @@ if($edades != 0){
 							<label class="control-label col-xs-6">En el ultimo control de Salud, el profecional anotó que es Normal?</label>
 							<div class="col-xs-6" name ="">
 								<select class="form-control">
+								<option value="" disabled selected hidden>Seleccionar</option>
 								<option value="1">Normal</option>
 								<option value="2">Bajo</option>							
 								<option value="3">Sobrepeso</option>							
@@ -728,6 +734,7 @@ if($edades != 0){
 
 							<div class="col-xs-6">
 								<select class="form-control" id= "b3b_activity" >
+								<option value="" disabled selected hidden>Seleccionar</option>
 								<option value="1">Deportiva</option>
 								<option value="2">Artistica</option>
 								<option value="3">Educativa</option>
@@ -753,6 +760,7 @@ if($edades != 0){
 							<label class="control-label col-xs-6">Donde ?</label>
 							<div class="col-xs-6">
 								<select class="form-control">
+								<option value="" disabled selected hidden>Seleccionar</option>
 								<option value="1">Club</option>
 								<option value="2">Instituto</option>							
 								<option value="3">CIC</option>							
@@ -784,6 +792,7 @@ if($edades != 0){
 							<label class="control-label col-xs-6">Como diria que es su estado general de salud en este momento?</label>
 							<div class="col-xs-6">
 								<select class="form-control">
+								<option value="" disabled selected hidden>Seleccionar</option>
 								<option >Muy bueno</option>
 								<option >Bueno</option>							
 								<option >Regular</option>							
@@ -805,6 +814,7 @@ if($edades != 0){
 							</div>
 							<div class="col-xs-3" id="b4_div_pap_si" >
 								<select class="form-control" id="b4_pap_si" name="b4_pap_si">
+									<option value="" disabled selected hidden>Seleccionar</option>
 									<option value= "1">En hospital o centro propio de OSEP</option>
 									<option value= "2">En Consultorio, Clinica o Sanatorio donde reciben OSEP</option>
 									<option value= "3">En hospital publico, dentro de salud , sala</option>
@@ -814,6 +824,7 @@ if($edades != 0){
 							</div>
 							<div class="col-xs-3" id="b4_div_pap_no" >
 								<select class="form-control" id ="b4_pap_no" name ="b4_pap_no">
+									<option value="" disabled selected hidden>Seleccionar</option>
 									<option value= "1">No tuvo tiempo</option>							
 									<option value= "2">No tuvo dinero</option>							
 									<option value= "3">No consiguio turno o lugar donde la atiendan</option>							
@@ -846,6 +857,7 @@ if($edades != 0){
 							</div>
 							<div class="col-xs-3" id="b4_div_mamo_si">
 								<select class="form-control" id="b4_mamo_si" name="b4_mamo_si">
+									<option value="" disabled selected hidden>Seleccionar</option>
 									<option value= "1">En el mamografo de Osep</option>
 									<option value= "2">En Consultorio, Clinica o Sanatorio donde reciben OSEP</option>
 									<option value= "3">En hospital publico, dentro de salud , sala</option>
@@ -856,6 +868,7 @@ if($edades != 0){
 							</div>
 							<div class="col-xs-3" id="b4_div_mamo_no" >
 								<select class="form-control" id="b4_mamo_no" name="b4_mamo_no">
+									<option value="" disabled selected hidden>Seleccionar</option>
 									<option value= "1">No tuvo tiempo</option>							
 									<option value= "2">No tuvo dinero</option>							
 									<option value= "3">No consiguio turno o lugar donde la atiendan</option>							
@@ -1060,10 +1073,11 @@ if($edades != 0){
 							<label class="control-label col-xs-6">Que tan complicado le resulta ver a un profesional cuando tiene que atenderse por algun motivo?</label>
 							<div class="col-xs-6">
 								<select class="form-control" id="b5_complejo" name="b5_complejo">
-								<option >Simple</option>
-								<option >Complicado</option>
-								<option >Muy Complicado</option>
-								<option >Viene a domicilio</option>
+									<option value="" disabled selected hidden>Seleccionar</option>
+									<option >Simple</option>
+									<option >Complicado</option>
+									<option >Muy Complicado</option>
+									<option >Viene a domicilio</option>
 
 								</select>
 							</div>
