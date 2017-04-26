@@ -56,7 +56,7 @@
 				<div class="panel-body">
 
 				<blockquote>
-					<p>Datos personales.</p>
+					<p>Datos personales</p>
 				</blockquote>
 				
 
@@ -67,7 +67,7 @@
 						
 								<label class="block">
 										<input name="form-field-checkbox" class="ace input-lg" type="checkbox">
-										<span class="lbl bigger-120">Responde la encuesta</span>
+										<span class="lbl bigger-120">  Responde la encuesta</span>
 								</label>
 										 
 				</div>
@@ -122,7 +122,7 @@
 <hr>
 
 				<blockquote>
-					<p>Cobertura de salud.</p>    <!-- Subtitulo Cobertura de Salud -->
+					<p>Cobertura de salud</p>    <!-- Subtitulo Cobertura de Salud -->
 				</blockquote>
 
 					 <div class="form-group" id="tOsep">
@@ -137,9 +137,9 @@
 				
 
 					 <div class="form-group" id= "b1_div_afiliado">
-						 <label for="inputPassword" class="control-label col-xs-6">Numero Afiliado:</label>
+						 <label for="inputPassword" class="control-label col-xs-6">Número Afiliado:</label>
 							<div class="col-xs-6">
-								<input type="number" name="b1_afiliado"  class="form-control" placeholder="Numero" id="b1_afiliado">
+								<input type="text" name="b1_afiliado"  class="form-control" placeholder="Numero" id="b1_afiliado">
 							</div>
 					 </div>
 
@@ -147,7 +147,7 @@
 
 
 					 <div class="form-group">
-						 <label for="inputEmail" class="control-label col-xs-6">cobertura de salud:</label>
+						 <label for="inputEmail" class="control-label col-xs-6">Cobertura de salud:</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_cober" id= "b1_cober">
 
@@ -227,7 +227,7 @@
 	<div id= "educativo">			<!-- Datos ocupacionales inicio -->
 	<hr>
 				<blockquote>
-					<p>Nivel Educativo.</p>    <!-- Nivel educativo-->
+					<p>Nivel Educativo</p>    <!-- Nivel educativo-->
 				</blockquote>
 
 
@@ -296,7 +296,7 @@
 					<div id="bloque_9_int">
 						
 							<blockquote>
-							<p>Datos Ocupacionales.</p>
+							<p>Datos Ocupacionales</p>
 							</blockquote>
 							<div class="form-group">
 								
@@ -408,7 +408,7 @@
  <div class="row form-horizontal " id="bloque_2">    <!-- bloque 2 servicios de Salud -->
 			<div class="panel  panel-default">
 			
-				<div class="panel-heading">Bloque 2 Utilizacion de servicios de Salud</div>
+				<div class="panel-heading">Utilizacion de servicios de Salud</div>
 					<div class="panel-body">
 				
 						<div class="form-group">
@@ -478,7 +478,7 @@
 
 
 						<div class="form-group">
-							<label class="control-label col-xs-6" for="b2_otro">Otro otivo:</label>
+							<label class="control-label col-xs-6" for="b2_otro">Otro motivo:</label>
 							<div class="col-xs-6">
 								<input type="text" class="form-control" id="b2_otro" name="b2_otro" placeholder="Otro motivo">
 							</div>

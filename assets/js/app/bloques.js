@@ -153,7 +153,7 @@ var bloque1= {    // Bloque General
                 
             }
             
-            $("#b1_afiliado").val(encuesta.numero);  // muestro el numero del titular
+            $("#b1_afiliado").val(encuesta.afiliado);  // muestro el numero del titular
 
 
 
@@ -360,6 +360,7 @@ var bloque1= {    // Bloque General
 
                         });
 
+                        // nivel de estudios
                     $( "#b1_estudio" ).on(
                         'change, click', function(){
 
@@ -368,6 +369,7 @@ var bloque1= {    // Bloque General
 
                     });
 
+                        // tiene osep
                     $( "#b1_osep" ).on(
                         'change, click', function(){
 
@@ -376,6 +378,7 @@ var bloque1= {    // Bloque General
 
                         });
 
+                        // embarazada  si o no
                     $( "#b1_embarazo" ).on(
                         'change, click', function(){
 
@@ -412,7 +415,24 @@ var bloque1= {    // Bloque General
                             bloque1.init();
                             bloque1.action_block();
                             
-                    });    
+                    });  
+
+                        // DNI  encuestado
+                    $( "#b1_dni" ).on(
+                        'focusout', function(){
+
+                            if(encuesta.titular)   
+                            {
+
+                                encuesta.afiliado= $(this).val() + "/00";
+
+                            }
+                        
+                            bloque1.conf.update();
+
+                        });
+
+
 
            
 
