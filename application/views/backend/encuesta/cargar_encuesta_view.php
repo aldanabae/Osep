@@ -52,7 +52,7 @@
 <div class="row form-horizontal" id="bloque_1">   <!-- bloque 1 -->
 		<div class="panel panel-default">
 		
-			<div class="panel-heading orange">Familia conviviente</div>
+			<div class="panel-heading orange">Familia Conviviente</div>
 				<div class="panel-body">
 
 				<blockquote>
