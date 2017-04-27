@@ -10,7 +10,7 @@
           
 
     <!-- Empieza el cuadro con Medicamentos de la bd -->  
-    <form class="form-horizontal" role="form" action="<?php echo base_url() ?>abms/abmMedicamentosC/mostrarTablaMedicamentos" method="post"><!-- Comienza formulario -->
+    <form class="form-horizontal" role="form" action="<?php echo base_url() ?>relevamiento/relevamientoC/mostrarRelevamiento" method="post"><!-- Comienza formulario -->
             
       <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
         <div class="row">
@@ -19,8 +19,8 @@
             <div class="dataTables_length" id="longitudTabla">
               <label>Mostrar 
               <select aria-controls="dynamic-table" class="form-control input-sm" name="longitudTabla">
-                <option value="1000">Todos</option>
-                <option value="10">10</option>
+                <option value="10000">Todos</option>
+                <option value="1">1</option>
                 <option value="20">20</option>
                 <option value="40">40</option>
                 <option value="60">60</option>
@@ -28,6 +28,10 @@
                 <option value="100">100</option>
               </select> lineas
               </label>
+
+              <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
+                <i class="fa fa-check bigger-110 icon-only"></i> Filtrar
+              </button>
             </div>
           </div>
 
@@ -35,7 +39,7 @@
               <div id="dynamic-table_filter" class="dataTables_filter">
 
                 <label>Número Relevamiento:
-                  <input type="search" class="form-control input-sm" placeholder="" name="nombresMedicamentos" aria-controls="dynamic-table">
+                  <input type="search" class="form-control input-sm" placeholder="" name="nroRelev" aria-controls="dynamic-table">
                 </label>
 
                 <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
@@ -70,7 +74,6 @@
               $contador = 0;
                   
                 foreach($tablaRelevamientos->result() as $tabla){
-
                   if($contador == $limiteTabla)   break;
             ?>
 
@@ -82,7 +85,7 @@
               </td>
               <td><?= $tabla->fechaRelevamiento;?></td>
               <td><?= $tabla->nombreCriticidad;?></td>
-              <td><?= $tabla->apellidoE; ?> <?php echo $tabla->nombreE;?></td><!-- Nombre via de administracion no codigo -->
+              <td><?= $tabla->apellidoE;?> <?php echo $tabla->nombreE;?></td><!-- Nombre via de administracion no codigo -->
               
               <td>
                 <div class="hidden-sm hidden-xs action-buttons">
@@ -114,8 +117,8 @@
               </td>
             </tr>
 
-            <?php  $contador++;}
-
+            <?php  $contador++;
+                }
               } 
             ?>
 
