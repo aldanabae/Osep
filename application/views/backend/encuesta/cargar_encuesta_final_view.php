@@ -228,10 +228,10 @@
 										<label class="control-label col-xs-6">Materiales Predominantes de Paredes</label>
 										<div class="col-xs-6">
 											<select class="form-control">
-											<option >Material de construccion</option>
+											<option >Material de Construcción</option>
 											<option >Madera</option>		
 											<option >Adobe</option>
-											<option >Capa de Metal , Carton</option>	
+											<option >Chapa de Metal, Cartón</option>	
 											</select>
 										</div>
 									</div>					
@@ -240,9 +240,9 @@
 										<label class="control-label col-xs-6">Materiales Predominantes de Techos</label>
 										<div class="col-xs-6">
 											<select class="form-control">
-												<option >Membrana, teja, losa, baldosa</option>
-												<option >Madera, caña , paja</option>		
-												<option >Chapa  de metal, carton</option>
+												<option >Membrana, Teja, Losa, Baldosa</option>
+												<option >Madera, Caña , Paja</option>		
+												<option >Chapa  de Metal, Cartón</option>
 											</select>
 										</div>
 									</div>							
@@ -253,7 +253,7 @@
 											<select class="form-control">
 												<option >Suficiente</option>
 												<option >Escaso</option>		
-												<option >Sin ventilacion</option>
+												<option >Sin ventilación</option>
 											</select>
 										</div>
 									</div>	
@@ -269,9 +269,9 @@
 									</div>	
 
 									<div class="form-group">
-										<label class="control-label col-xs-6" for="ZipCode">Observaciones generales</label>
+										<label class="control-label col-xs-6" for="ZipCode">Observaciones Generales</label>
 										<div class="col-xs-6">
-											<input type="text" class="form-control" id="ZipCode" placeholder="Observaciones">
+											<input type="text" class="form-control" id="ZipCode">
 										</div>
 									</div>
 						
