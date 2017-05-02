@@ -220,7 +220,7 @@
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Teléfono para supervisión:</label>
                                 <div class="col-xs-6">
-                                    <input type="number" class="form-control" placeholder="Teléfono del encuestado" name ="tel_super" id= "tel_super" >
+                                    <input type="number" class="form-control" name ="tel_super" id= "tel_super" >
                                 </div>
                             </div>	
 

@@ -1,3 +1,8 @@
+
+
+
+
+
 <div class="main-content">
 	<div class="main-content-inner">
 		<div class="page-content">
@@ -76,21 +81,21 @@
 			<div class="form-group">
 				 <label for="inputName" id ="lblTitular" class="control-label col-xs-6">      </label>
 				 <div class="col-xs-6">
-					 <input type="text" class="form-control" placeholder="Nombre" name ="b1_nombre"  id ="b1_nombre"  >
+					 <input type="text" class="form-control"  name ="b1_nombre"  id ="b1_nombre"  >
 				 </div>
 			</div>
 
 			<div class="form-group">
 				 <label for="inputEmail" class="control-label col-xs-6">Edad:</label>
 				 <div class="col-xs-6">
-					 <input type="number" name="b1_edad"  class="form-control" placeholder="Edad" id="b1_edad">
+					 <input type="number" name="b1_edad"  class="form-control" id="b1_edad">
 				 </div>
 			</div>
 
 			<div class="form-group">
 				<label for="inputEmail" class="control-label col-xs-6">Dni:</label>
 				<div class="col-xs-6">
-					<input type="number" name="b1_dni"  class="form-control" placeholder="Dni" id="b1_dni">
+					<input type="number" name="b1_dni"  class="form-control"id="b1_dni">
 				</div>
 			</div>
 
@@ -138,7 +143,7 @@
 					 <div class="form-group" id= "b1_div_afiliado">
 						 <label for="inputPassword" class="control-label col-xs-6">Número Afiliado:</label>
 							<div class="col-xs-6">
-								<input type="text" name="b1_afiliado"  class="form-control" placeholder="Numero" id="b1_afiliado">
+								<input type="text" name="b1_afiliado"  class="form-control" id="b1_afiliado">
 							</div>
 					 </div>
 
@@ -151,66 +156,6 @@
 							</select>
 						</div>
 					 </div>
-
-
-
-
-
-					 <!--<div class="form-group">
-						 <label for="inputEmail" class="control-label col-xs-6">Tiene otra cobertura:</label>
-						<div class="col-xs-6">
-							<select class="form-control" name= "b1_otra" id= "b1_otra">
-							<option value="0" >SI</option>
-							<option value="1" selected =" true" >NO</option>
-
-							</select>
-						</div>
-					 </div>-->
-
-					 <div class="form-group" id= "b1_div_embarazo">
-						 <label for="inputPassword" class="control-label col-xs-6">¿Esta embarazada?</label>
-						<div class="col-xs-6">
-							<select class="form-control" name= "b1_embarazo" id= "b1_embarazo">
-							<option value="0"selected>SI</option>
-							<option value="1" >NO</option>
-							</select>
-						</div>
-					 </div>
-
-					 <div class="form-group">
-						 <label for="inputPassword" class="control-label col-xs-6">Padece Enfermedad Cronica:</label>
-						<div class="col-xs-6">
-							<select class="form-control" name= "b1_cronica" id= "b1_cronica">
-							<option value="0">SI</option>
-							<option value="1" selected =" true">NO</option>
-							</select>
-						</div>
-					 </div>
-
-					 <div class="form-group">
-						 <label for="inputPassword" class="control-label col-xs-6">Tiene alguna Discapacidad:</label>
-						<div class="col-xs-6">
-							<select class="form-control" name= "b1_disc" id= "b1_disc">
-							<option value="0">SI</option>
-							<option value="1">NO</option>
-							</select>
-						</div>
-					 </div>
-
-					 <div class="form-group">
-						 <label for="inputPassword" class="control-label col-xs-6">¿Tiene algún afiliado a cargo que no viva en este domicilio? :</label>
-						<div class="col-xs-6">
-							<select class="form-control" name= "b1_pariente" id= "b1_pariente" >
-							<option value="0">SI</option>
-							<option value="1" selected =" true">NO</option>
-							</select>
-						</div>
-					 </div>
-
-
-
-
-
 
 
 
@@ -301,28 +246,28 @@
 							<div class="form-group">	
 								<label class="control-label col-xs-6">¿Cuántas horas trabajó la semana pasada?</label>
 								<div class="col-xs-6">
-									<input type="number" class="form-control" id="b9_horas"  name="b9_horas" placeholder=" hs">
+									<input type="number" class="form-control" id="b9_horas"  name="b9_horas" >
 								</div>
 							</div>	
 
 							<div class="form-group">		
 								<label class="control-label col-xs-6">¿En qué lugar trabaja?</label>
 								<div class="col-xs-6">
-									<input type="text" class="form-control" id="b9_lugar"  name="b9_lugar"  placeholder="Lugar">
+									<input type="text" class="form-control" id="b9_lugar"  name="b9_lugar">
 								</div>
 							</div>	
 
 							<div class="form-group">	
 								<label class="control-label col-xs-6">Detalle la tarea realizada</label>
 								<div class="col-xs-6">
-									<input type="text" class="form-control" id="b9_ocupacion"  name="b9_ocupacion"  placeholder=" Ocupacion">
+									<input type="text" class="form-control" id="b9_ocupacion"  name="b9_ocupacion">
 								</div>
 							</div>	
 
 							<div class="form-group">	
 								<label class="control-label col-xs-6">Observaciones</label>
 								<div class="col-xs-6">
-									<input type="text" class="form-control" id="b9_obs"  name="b9_obs"  placeholder=" Observaciones">
+									<input type="text" class="form-control" id="b9_obs"  name="b9_obs">
 								</div>
 							</div>	
 					</div>		<!--cierre bloque interno de bloque 9-->	
@@ -346,19 +291,147 @@
 							<label class="control-label col-xs-6">Concretamente, ¿cuál es la actividad que realizaba usted antes de 
 								jubilarse o la persona que originó la pensión?</label>
 							<div class="col-xs-6">
-								<input type="text" class="form-control" id="b9_ocupacion"  name="b9_ocupacion"  placeholder=" Ocupacion">
+								<input type="text" class="form-control" id="b9_ocupacion"  name="b9_ocupacion">
 							</div>
 						</div>	
 
 						<div class="form-group">					
 							<label class="control-label col-xs-6">Observaciones</label>
 							<div class="col-xs-6">
-								<input type="text" class="form-control" id="b9_obs"  name="b9_obs"  placeholder=" Observaciones">
+								<input type="text" class="form-control" id="b9_obs"  name="b9_obs">
 							</div>
 						</div>	
 
 					</div>
 				<hr>
+
+
+
+
+
+				<blockquote>
+					<p>Condiciones especiales de salud</p>    <!-- apartado Condiciones especiales de salud-->
+				</blockquote>
+
+
+					 <!--<div class="form-group">
+						 <label for="inputEmail" class="control-label col-xs-6">Tiene otra cobertura:</label>
+						<div class="col-xs-6">
+							<select class="form-control" name= "b1_otra" id= "b1_otra">
+							<option value="0" >SI</option>
+							<option value="1" selected =" true" >NO</option>
+
+							</select>
+						</div>
+					 </div>-->
+
+					 <div class="form-group" id= "b1_div_embarazo">
+						 <label for="inputPassword" class="control-label col-xs-6">¿Esta embarazada?</label>
+						<div class="col-xs-6">
+							<select class="form-control" name= "b1_embarazo" id= "b1_embarazo">
+							<option value="0"selected>SI</option>
+							<option value="1" >NO</option>
+							</select>
+						</div>
+					 </div>
+
+					 <div class="form-group">
+						 <label for="inputPassword" class="control-label col-xs-6">Padece Enfermedad Cronica:</label>
+						<div class="col-xs-6">
+							<select class="form-control" name= "b1_cronica" id= "b1_cronica">
+							<option value="0">SI</option>
+							<option value="1" selected =" true">NO</option>
+							</select>
+						</div>
+					 </div>
+
+					 <div class="form-group">
+						 <label for="inputPassword" class="control-label col-xs-6">Tiene alguna Discapacidad:</label>
+						<div class="col-xs-6">
+							<select class="form-control" name= "b1_disc" id= "b1_disc">
+							<option value="0">SI</option>
+							<option value="1">NO</option>
+							</select>
+						</div>
+					 </div>
+
+					 <div class="form-group">
+						 <label for="inputPassword" class="control-label col-xs-6">¿Tiene algún afiliado a cargo que no viva en este domicilio? :</label>
+						<div class="col-xs-6">
+							<select class="form-control" name= "b1_pariente" id= "b1_pariente" >
+							<option value="0">SI</option>
+							<option value="1" selected =" true">NO</option>
+							</select>
+						</div>
+
+					 </div>
+
+
+
+
+					 <div class="form-group" id= "b1_adicional">
+
+
+
+
+<div class="col-xs-6 col-xs-offset-6">	
+
+
+
+<ul class="list-group" id= "b1_acargo">
+  <li class="list-group-item">Cras justo odio<span class="badge">142</span></li>
+  <li class="list-group-item">Dapibus ac facilisis in<span class="badge">13</span></li>
+  <li class="list-group-item">Morbi leo risus<span class="badge">14</span></li>
+  <li class="list-group-item">Porta ac consectetur ac<span class="badge">142</span></li>
+  <li class="list-group-item">Vestibulum at eros<span class="badge">13</span></li>
+</ul>
+
+
+
+</div>
+
+
+
+
+
+						 
+						<div class="col-xs-6 col-xs-offset-6">
+						<br>
+
+						<div class="form-group">					
+							<label class="control-label col-xs-3">Nombre</label>
+							<div class="col-xs-9">
+								<input type="text" class="form-control" id="b1_adicional_nombre"  name="b1_adicional_nombre">
+							</div>
+						</div>
+
+						<div class="form-group">					
+							<label class="control-label col-xs-3">Telefono</label>
+							<div class="col-xs-9">
+								<input type="text" class="form-control" id="b1_adicional_tel"  name="b1_adicional_tel">
+							</div>
+						</div>
+						<hr>
+
+
+
+
+										<!-- Button trigger modal -->
+										<button type="button" class="btn btn-primary text-left"  id="btn_add_afiliado">
+										Añadir afiliado a cargo
+										</button>
+							
+						</div>
+
+
+
+
+					 </div>
+
+
+
+
+
 
 				</div>
 
@@ -389,7 +462,7 @@
 						<div class="form-group" id="b2_area">
 							<label class="control-label col-xs-6" for="postalAddress">¿Para que lo utilizó?</label>
 							<div class="col-xs-6">
-								<textarea rows="3" class="form-control" id="b2_motivo" name = "b2_area" placeholder="Motivo" ></textarea>
+								<textarea rows="3" class="form-control" id="b2_motivo" name = "b2_area" ></textarea>
 							</div>
 						</div>
 
@@ -432,7 +505,7 @@
 						<div class="form-group">
 							<label class="control-label col-xs-6" for="b2_otro">Otro motivo:</label>
 							<div class="col-xs-6">
-								<input type="text" class="form-control" id="b2_otro" name="b2_otro" placeholder="Otro motivo">
+								<input type="text" class="form-control" id="b2_otro" name="b2_otro" >
 							</div>
 						</div>
 
@@ -1316,20 +1389,9 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 		</div><!-- /.page-content -->
 	</div><!-- /.main-content-inner -->
 </div><!-- /.main-content -->
-
 
 
 
@@ -1344,3 +1406,4 @@
 			if('ontouchstart' in document.documentElement) document.write("<script src='../assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
 		</script>
 		<script src="../assets/js/bootstrap.js"></script>
+

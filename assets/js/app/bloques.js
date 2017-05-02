@@ -71,6 +71,8 @@ var bloque1= {    // Bloque General
             embarazo: '0',
             discapacidad: '1',
             ocupacion:    '1',
+            pariente: '',
+            acargo:[],
             update: function(){
 
                 bloque1.update_data();
@@ -235,16 +237,6 @@ var bloque1= {    // Bloque General
                     bloque1.conf.embarazo= '1';
                 }
 
-                
-
-
-                
-
-
-
-
-
-
 
             }
 
@@ -300,11 +292,6 @@ var bloque1= {    // Bloque General
                             }
 
 
-
-
-
-
-                        
                     }else{
 
                         
@@ -318,7 +305,14 @@ var bloque1= {    // Bloque General
              // fin filtro datos ocupacionales  
 
 
+             if(bloque1.conf.pariente == "1" || bloque1.conf.pariente == ""){
 
+                $( "#b1_adicional").hide();
+
+             }else{
+
+                 $( "#b1_adicional").show();
+             }
 
 
 
@@ -368,7 +362,6 @@ var bloque1= {    // Bloque General
                             bloque1.conf.update();
 
                     });
-
                         // tiene osep
                     $( "#b1_osep" ).on(
                         'change, click', function(){
@@ -387,7 +380,7 @@ var bloque1= {    // Bloque General
 
                         });
 
-                $( "#b1_disc" ).on(
+                    $( "#b1_disc" ).on(
                         'change, click', function(){
 
                             bloque1.conf.discapacidad= $(this).val();
@@ -396,7 +389,7 @@ var bloque1= {    // Bloque General
                     });
 
                     $( "#b1_ocupacion" ).on(
-                        'change, click', function(){
+                        'change', function(){
                             bloque1.conf.ocupacion= $(this).val();
                             bloque1.conf.update();
                             
@@ -431,6 +424,34 @@ var bloque1= {    // Bloque General
                             bloque1.conf.update();
 
                         });
+
+                    $( "#b1_pariente" ).on(
+                        'change, click', function(){
+
+                            bloque1.conf.pariente= $(this).val();
+                            bloque1.conf.update();
+
+                    });
+
+
+                    $( "#btn_add_afiliado" ).on(
+                        'click', function(){
+                           
+							var nombre = $('#b1_adicional_nombre').val();
+							var tel = $('#b1_adicional_tel').val();
+                            var limit = bloque1.conf.acargo.length;
+							if ( limit <= 5){     // filtra edad a partir de 11 años
+
+								bloque1.conf.acargo.push({nombre: nombre, telefono: tel}) ;
+								filtro.update();	
+
+							}
+
+                            bloque1.conf.update();
+
+                            
+                    });  
+                        
 
 
 
