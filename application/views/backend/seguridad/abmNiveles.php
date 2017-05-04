@@ -18,7 +18,7 @@
 						<div class="dataTables_length" id="longitudTabla">
 							<label>Mostrar 
 							<select aria-controls="dynamic-table" class="form-control input-sm" name="longitudTabla">
-								<option value="1000">Todos</option>
+								<option value="100">Todos</option>
 								<option value="10">10</option>
 								<option value="20">20</option>
 								<option value="40">40</option>
@@ -27,6 +27,10 @@
 								<option value="100">100</option>
 							</select> lineas
 							</label>
+
+							<button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
+								<i class="fa fa-check bigger-110 icon-only"></i> Filtrar
+							</button>
 						</div>
 					</div>
 
@@ -66,7 +70,6 @@
 							$contador = 0;
 									
 								foreach($tablaNiveles->result() as $tabla){
-
 									if( $contador == $limiteTabla )    break;
 						?>
 
@@ -121,7 +124,6 @@
 						</tr>
 
 						<?php	 $contador++;}
-
 							}	
 						?>
 

@@ -70,7 +70,7 @@ var bloque1= {    // Bloque General
             osep: '0',
             embarazo: '0',
             discapacidad: '1',
-            ocupacion:    '1',
+            ocupacion:  null,
             pariente: '',
             acargo:[],
             update: function(){
@@ -106,7 +106,9 @@ var bloque1= {    // Bloque General
                         'Primario Completo','Secundario Incompleto',
                         'Secundario Completo','Terciario Incompleto','Terciario Completo',
                         'Universitario Incompleto','Universitario Completo',
-                        ]
+                        ],
+
+                
 
         },
 
@@ -122,15 +124,8 @@ var bloque1= {    // Bloque General
             bloque6.init();
             bloque9.init();
             bloque7.init();
-            //bloque9.init();
-            bloque1.conf.update();
-        },
-
-        update_data: function(){
-
-
-
-            // por omicion el primero es el titular
+            //cargar el listado de vinculos
+                        // por omicion el primero es el titular
             if(encuesta.count == 0){
                 // cargo el combo solo con el titular
                 
@@ -154,10 +149,13 @@ var bloque1= {    // Bloque General
                 });
                 
             }
-            
+            bloque1.conf.update();
+
+        },
+
+        update_data: function(){
+
             $("#b1_afiliado").val(encuesta.afiliado);  // muestro el numero del titular
-
-
 
             // verifico si tiene osep
 
@@ -208,8 +206,6 @@ var bloque1= {    // Bloque General
                 $( "#b1_div_embarazo" ).hide();
                 bloque1.conf.embarazo= '1';
 
-
-
             }else{                  // si es mujer evaluo la situacion
 
 
@@ -230,8 +226,7 @@ var bloque1= {    // Bloque General
 
                     }
 
-                }
-                else{                                   // si no hay embarazon en la casa oculto todo
+                }else{                                   // si no hay embarazon en la casa oculto todo
 
                     $( "#b1_div_embarazo" ).hide();
                     bloque1.conf.embarazo= '1';
@@ -259,15 +254,8 @@ var bloque1= {    // Bloque General
 
                              bloque9.show_me();
                         
-                            // if(bloque1.conf.ocupacion == '1' || bloque1.conf.ocupacion == '2'  || bloque1.conf.ocupacion == '3' )
-                            // {
 
-                            // $( "#bloque_9_int" ).show();
 
-                            // }else{
-
-                            // $( "#bloque_9_int" ).hide();
-                            // }
                             switch (bloque1.conf.ocupacion) {
                             case '1':
                                 
@@ -309,8 +297,24 @@ var bloque1= {    // Bloque General
 
                 $( "#b1_adicional").hide();
 
-             }else{
+                // borrar el arreglo
 
+             }else{
+                // aqui hacer el bucle y cargar los que hay
+                // despues mostrarlo
+					var listHtml = ""    // pongo el String de html en blanco
+				
+					$.each( bloque1.conf.acargo , function (index, valor){
+
+						
+						listHtml+= '<li class="list-group-item"> Nombre: '+ valor.nombre +'<span class="badge"> TEL: '+ valor.telefono +'</span></li>';
+						listHtml+= '<input type="hidden" name="afiliado_extra[]"  value="'+ valor.nombre +'_'+ valor.telefono  +'">'; // el hidden 
+
+
+					})     
+
+                 $( "#b1_acargo").html(listHtml);
+                 
                  $( "#b1_adicional").show();
              }
 
@@ -425,11 +429,16 @@ var bloque1= {    // Bloque General
 
                         });
 
-                    $( "#b1_pariente" ).on(
+                    $( "#b1_extra" ).on(
                         'change, click', function(){
 
                             bloque1.conf.pariente= $(this).val();
+
+
+
+
                             bloque1.conf.update();
+                            
 
                     });
 
@@ -443,7 +452,7 @@ var bloque1= {    // Bloque General
 							if ( limit <= 5){     // filtra edad a partir de 11 años
 
 								bloque1.conf.acargo.push({nombre: nombre, telefono: tel}) ;
-								filtro.update();	
+									
 
 							}
 
@@ -1340,6 +1349,20 @@ var bloque9 ={       // laboral
                     html: '#bloque_9'
         },
 
+        data:{
+
+                optitular:   [
+							"Trabajador Remunerado",
+							"Jubilado o Pensionado",
+							"Trabaja con Remuneración y Estudia",
+							"Estudia exclusivamente",
+							"Trabajo Doméstico no Remunerado exclusivamente",
+							"Busca Trabajo",
+							"No Trabaja",
+							"Otra",]
+
+        },
+
 
         init:  function(){
             // funcion de inicializacion
@@ -1349,8 +1372,31 @@ var bloque9 ={       // laboral
             }else{
 
                 bloque9.hide_me();
+            }     
+            bloque9.update();
+        },
+
+
+        update: function(){
+
+            $("#b1_ocupacion").html( '');              // blanquea el select
+            $("#b1_ocupacion").append('<option value="" disabled selected hidden>Seleccionar</option>');
+
+            if(encuesta.titular)
+            {
+                    for(var i = 0 ; i<=2; i++){
+                        indice = i;
+                        $("#b1_ocupacion").append( '<option value="'+ (indice +1) +'">'+ bloque9.data.optitular[i] +'</option>');
+                    }
+
+            }else{
+
+                $.each(bloque9.data.optitular, function(key, value){   // carga el select
+                    indice = key;
+                    $("#b1_ocupacion").append( '<option value="'+ (indice +1)  +'">'+ value +'</option>');
+
+                }); 
             }
-            
 
         },
 

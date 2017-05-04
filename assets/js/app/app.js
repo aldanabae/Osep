@@ -68,6 +68,7 @@ $(function() {
 			// document.getElementById("localidad").options[0]=new Option();
 
 			var combo=$("#localidad");
+			combo.append('<option value="" disabled selected hidden>Seleccionar</option>');
 	        for (var i in listaLoc){
 	            combo.append('<option value="'+listaLoc[i].id_tlocalidad +'">'+ listaLoc[i].descloc +'</option>');
 	        }
@@ -114,7 +115,9 @@ $(function() {
 			valor: '1', // no se ve
 			edades:[],		// guardo un array de edades
 			estado: false,
-			limit: ""       // fija un limite de integrantes si viven 5  no pueden haber mas de 5 embarazadas
+			limit: "",       // fija un limite de integrantes si viven 5  no pueden haber mas de 5 embarazadas
+			barrio: false,	// si completa barrio  o no debe condicionar 
+			tel_enc: ""
 
 		},
 		
@@ -129,7 +132,7 @@ $(function() {
 				// recorro el arreglo colocando los numeros de edades
 				// creo el campo hidden
 				$('#list_edades').unbind("click");
-				var listHtml = ""    // pongo el String de html en blanco
+					var listHtml = ""    // pongo el String de html en blanco
 				
 					$.each( this.data.edades , function (index, valor){
 
@@ -137,21 +140,18 @@ $(function() {
 						listHtml+= '<li>'+ valor +' años <a href="#" data-index = "'+ index +'"><span class="glyphicon glyphicon-remove"></span></a></li>';
 						listHtml+= '<input type="hidden" name="edades_emb[]"  value="'+ valor +'">'; // el hidden 
 
-				
-
-					
 					})                            
                                             
-				$('#list_edades').html(listHtml);
-				$('#edad_embarazo').val("");
-				$('#list_edades a').on('click', function(event){ 
+					$('#list_edades').html(listHtml);
+					$('#edad_embarazo').val("");
+					$('#list_edades a').on('click', function(event){ 
 
-					var datos = $(this).data("index"); // tomo el atributo data de la lista
-					//alert('click en el enlace'+ datos);
-					event.preventDefault();
-					filtro.data.edades.splice(datos,1)
-					filtro.update();
-				});
+						var datos = $(this).data("index"); // tomo el atributo data de la lista
+						//alert('click en el enlace'+ datos);
+						event.preventDefault();
+						filtro.data.edades.splice(datos,1)
+						filtro.update();
+					});
 
 
 
@@ -163,6 +163,28 @@ $(function() {
 
 			}
 
+			// actualizo los campos de manzana y casa  
+			if(filtro.data.barrio){
+
+				$('#manzana').show()
+				$("#barrio , #barrio_c , #barrio_m ").attr('required', true);
+				//  deshabilito el require de calle y nomero
+				$("#calle , #numero ").attr('required', false);
+
+			}else{
+
+				$('#manzana').hide()
+				$("#manzana :input").val("")
+				$("#barrio , #barrio_c , #barrio_m ").attr('required', false);
+				//  deshabilito el require de calle y nomero
+				$("#calle , #numero ").attr('required', true);
+
+			}
+
+			if (filtro.data.tel_enc != ""){
+
+				$('#tel_super').val(filtro.data.tel_enc)
+			}
 
 
 		},
@@ -200,13 +222,13 @@ $(function() {
                     });
 
 
-                    $( "#tel_titular" ).on(
-                        'lost', function(){
-							var edad = $('#edad_embarazo').val();
+                    $( "#tel_titular").on(
+                        'focusout', function(){
+							var telefono = $('#tel_titular').val();
 
-							if (edad != "" && edad >= 11){     // filtra edad a partir de 11 años
+							if (telefono != "" ){     // filtra edad a partir de 11 años
 
-								filtro.data.edades.push(edad) ;
+								filtro.data.tel_enc = telefono ;
 								filtro.update();	
 
 							}
@@ -214,11 +236,26 @@ $(function() {
                     });
 
 
+                    $( "#barrio" ).on(
+                        'keyup', function(){
+
+							var barrio = $('#barrio').val();
+
+								if (barrio != ""){     // filtra edad a partir de 11 años
+
+									filtro.data.barrio = true ;
+										
+								}else{
+
+									filtro.data.barrio = false ;
 
 
 
+								}
 
+							filtro.update();
 
+                    });
 
 
         },
