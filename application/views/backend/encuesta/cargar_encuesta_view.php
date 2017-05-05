@@ -56,7 +56,19 @@
 	<div class="row form-horizontal" id="bloque_1">   <!-- bloque 1 -->
 		<div class="panel panel-default">
 		
-			<div class="panel-heading orange">Familia Conviviente</div>
+			<div class="panel-heading orange"> 
+				
+				<div class="col-xs-10">
+
+					<p>Familia Conviviente</p>				
+				</div>
+				
+				
+				<p class="text-right btn-sm"><a href="javascript:window.history.back();" ><i class="1 ace-icon fa fa-arrow-left"></i> Atras</a></p>
+
+			</div>
+
+
 				<div class="panel-body">
 
 				<blockquote>
@@ -361,26 +373,22 @@
 					 <div class="form-group" id= "b1_adicional">
 
 
-
-
 							<div class="col-xs-6 col-xs-offset-6">	
 
 								<ul class="list-group" id= "b1_acargo">
 
 								</ul>
 
-
-
 							</div>
 
 
-						<div class="col-xs-6 col-xs-offset-6">
+						<div class="col-xs-6 col-xs-offset-6 ">
 						<br>
 
 						<div class="form-group">					
 							<label class="control-label col-xs-3">Nombre</label>
 							<div class="col-xs-9">
-								<input type="text" class="form-control" id="b1_adicional_nombre"  name="b1_adicional_nombre">
+								<input type="text" class="form-control " id="b1_adicional_nombre"  name="b1_adicional_nombre">
 							</div>
 						</div>
 

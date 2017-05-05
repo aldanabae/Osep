@@ -307,14 +307,22 @@ var bloque1= {    // Bloque General
 					$.each( bloque1.conf.acargo , function (index, valor){
 
 						
-						listHtml+= '<li class="list-group-item"> Nombre: '+ valor.nombre +'<span class="badge"> TEL: '+ valor.telefono +'</span></li>';
+						listHtml+= '<li class="list-group-item"> Nombre: '+ valor.nombre +'  -  Telefono: '+ valor.telefono +' <a href="#" class="text-right btn-sm" data-index = "'+ index +'"> Quitar </a></li>';
 						listHtml+= '<input type="hidden" name="afiliado_extra[]"  value="'+ valor.nombre +'_'+ valor.telefono  +'">'; // el hidden 
 
 
 					})     
 
-                 $( "#b1_acargo").html(listHtml);
-                 
+                    $( "#b1_acargo").html(listHtml);
+                 	$('#b1_adicional_nombre ,#b1_adicional_tel').val("");
+					$('#b1_acargo a').on('click', function(event){ 
+
+						var datos = $(this).data("index"); // tomo el atributo data de la lista
+						//alert('click en el enlace'+ datos);
+						event.preventDefault();
+						bloque1.conf.acargo.splice(datos,1)
+						bloque1.update_data();
+					});
                  $( "#b1_adicional").show();
              }
 
@@ -448,13 +456,16 @@ var bloque1= {    // Bloque General
                            
 							var nombre = $('#b1_adicional_nombre').val();
 							var tel = $('#b1_adicional_tel').val();
-                            var limit = bloque1.conf.acargo.length;
-							if ( limit <= 5){     // filtra edad a partir de 11 años
 
-								bloque1.conf.acargo.push({nombre: nombre, telefono: tel}) ;
-									
+                            if(nombre != "" && tel != ""){
 
-							}
+                                    var limit = bloque1.conf.acargo.length;
+                                    if ( limit < 5){     // filtra edad a partir de 11 años
+
+                                        bloque1.conf.acargo.push({nombre: nombre, telefono: tel}) ;
+                                            
+                                    }
+                            }
 
                             bloque1.conf.update();
 
