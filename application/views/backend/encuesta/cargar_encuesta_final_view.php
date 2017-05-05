@@ -213,13 +213,14 @@
 										<label class="control-label col-xs-6">Nivel de Vivienda</label>
 										<div class="col-xs-6">
 											<select class="form-control">
-											<option >AB</option>
-											<option >C1</option>		
-											<option >C2</option>
-											<option >C3</option>	
-											<option >D1</option>
-											<option >D2</option>	
-											<option >E</option>	
+												<option value="" disabled selected hidden>Seleccionar</option>
+												<option >AB</option>
+												<option >C1</option>		
+												<option >C2</option>
+												<option >C3</option>	
+												<option >D1</option>
+												<option >D2</option>	
+												<option >E</option>	
 											</select>
 										</div>
 									</div>	
@@ -228,10 +229,11 @@
 										<label class="control-label col-xs-6">Materiales Predominantes de Paredes</label>
 										<div class="col-xs-6">
 											<select class="form-control">
-											<option >Material de Construcción</option>
-											<option >Madera</option>		
-											<option >Adobe</option>
-											<option >Chapa de Metal, Cartón</option>	
+												<option value="" disabled selected hidden>Seleccionar</option>
+												<option >Material de Construcción</option>
+												<option >Madera</option>		
+												<option >Adobe</option>
+												<option >Chapa de Metal, Cartón</option>	
 											</select>
 										</div>
 									</div>					
@@ -240,6 +242,7 @@
 										<label class="control-label col-xs-6">Materiales Predominantes de Techos</label>
 										<div class="col-xs-6">
 											<select class="form-control">
+												<option value="" disabled selected hidden>Seleccionar</option>
 												<option >Membrana, Teja, Losa, Baldosa</option>
 												<option >Madera, Caña , Paja</option>		
 												<option >Chapa  de Metal, Cartón</option>
@@ -251,6 +254,7 @@
 										<label class="control-label col-xs-6">Ventilación</label>
 										<div class="col-xs-6">
 											<select class="form-control">
+												<option value="" disabled selected hidden>Seleccionar</option>
 												<option >Suficiente</option>
 												<option >Escaso</option>		
 												<option >Sin ventilación</option>
@@ -262,8 +266,9 @@
 										<label class="control-label col-xs-6">Accesibilidad</label>
 										<div class="col-xs-6">
 											<select class="form-control">
-											<option >Simple</option>
-											<option >Compleja</option>							
+												<option value="" disabled selected hidden>Seleccionar</option>
+												<option >Simple</option>
+												<option >Compleja</option>							
 											</select>
 										</div>
 									</div>	

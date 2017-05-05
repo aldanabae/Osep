@@ -80,6 +80,30 @@ var bloque1= {    // Bloque General
 
         },
 
+        reset_conf:function(){
+
+            bloque1.conf.nombre= null,
+            bloque1.conf.edad=null,
+            bloque1.conf.genero= "m",
+            bloque1.conf.osep= '0',
+            bloque1.conf.embarazo= '0',
+            bloque1.conf.discapacidad= '1',
+            bloque1.conf.ocupacion=  null,
+            bloque1.conf.pariente= '',
+            bloque1.conf.acargo=[],
+                    encuesta.titular=false,
+                    encuesta.afiliado=''
+            //===============
+            bloque9.estado=false,
+            bloque7.estado= false,
+            bloque6.estado= false,
+            bloque5.estado= false,
+            bloque4.estado= false,
+            bloque3a.estado= false, // unificar
+            bloque2.estado= false // unificar
+    
+        },
+
         template: {
             // asigno el nombre del selector de bloque
             html: '#bloque_1'
@@ -418,7 +442,9 @@ var bloque1= {    // Bloque General
                     $( "#btn_nuevo" ).on(
                         'click', function(){
                             bloque1.init();
-                            bloque1.action_block();
+                            encuesta.count ++;
+                            bloque1.reset_conf();
+                            bloque1.init();
                             
                     });  
 
@@ -430,6 +456,10 @@ var bloque1= {    // Bloque General
                             {
 
                                 encuesta.afiliado= $(this).val() + "/00";
+
+                            }else{
+
+                                encuesta.afiliado= $(this).val() + "/"+ encuesta.count;
 
                             }
                         
@@ -474,9 +504,6 @@ var bloque1= {    // Bloque General
                         
 
 
-
-           
-
         },
 
         action_block : function(){
@@ -507,7 +534,7 @@ var bloque1= {    // Bloque General
                                         bloque3a.hide_me();   // bebes
                                     }
 
-                                }
+                            }
 
                             if (bloque1.conf.discapacidad == '0'){
 
@@ -545,7 +572,7 @@ var bloque1= {    // Bloque General
 
                 }
 
-                bloque_btn.show("slow");     // botonera abajo             
+                bloque_btn.show();     // botonera abajo             
             
             }else{
 
