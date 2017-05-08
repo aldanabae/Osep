@@ -80,7 +80,7 @@
 					 <div class="col-xs-6">
 							
 									<label class="block">
-											<input name="form-field-checkbox" class="ace input-lg" type="checkbox">
+											<input name="form-field-checkbox" class="ace input-lg" type="checkbox" id="responde">
 											<span class="lbl bigger-120">  Responde la encuesta</span>
 									</label>
 											 
@@ -322,8 +322,8 @@
 					<label for="inputPassword" class="control-label col-xs-6">¿Esta embarazada?(*)</label>
 					<div class="col-xs-6">
 						<select class="form-control" name= "b1_embarazo" id= "b1_embarazo">
-						<option value="0"selected>SI</option>
-						<option value="1" >NO</option>
+						<option value="0">SI</option>
+						<option value="1" selected>NO</option>
 						</select>
 					</div>
 				</div>
@@ -754,6 +754,73 @@
 			
 				<div class="panel-heading orange">Bloque Salud  de las mujeres</div>
 					<div class="panel-body">
+
+
+						<div id="b4_div_consulta">
+							<div class="form-group" >
+														
+									<label class="control-label col-xs-6"> ¿Recuerda si realizó al menos una consulta médica por OSEP en el último año? </label>
+
+									<div class="col-xs-6">
+										<select class="form-control" id= "b4_consulta" >
+											<option value="" disabled selected hidden>Seleccionar</option>
+											<option value="0" >SI</option>
+											<option value="1">NO</option>						
+										</select>
+									</div>
+
+							</div>	
+
+
+							<div id="b4_div_consulta_si" >
+									<div class="form-group">					
+										<label class="control-label col-xs-6"> ¿Dónde concurrió a atenderse la última vez? </label>
+
+										<div class="col-xs-6">
+											<select class="form-control" id="b4_consulta_si" name="b4_consulta_si">
+												<option value="" disabled selected hidden>Seleccionar</option>
+												<option value= "1">Fue a un efector de OSEP</option>
+												<option value= "2">Fue a un prestador privado</option>
+												<option value= "3">Fue a un hospital o centro de salud público</option>						
+											</select>
+										</div>
+									</div>
+
+								<hr>
+							</div>	
+
+
+							<div  id="b4_div_consulta_no" >
+									<div class="form-group">					
+										<label class="control-label col-xs-6"> ¿Por qué? </label>
+
+										<div class="col-xs-6">
+											<select class="form-control" id="b4_consulta_no" name="b4_consulta_no">
+												<option value="" disabled selected hidden>Seleccionar</option>
+												<option value= "1">No se enfermó ni tuvo un accidente</option>
+												<option value= "2">Quiso consultar pero no tuvo dinero</option>
+												<option value= "3">Quiso consultar pero le cuesta llegar al lugar de atención</option>
+												<option value= "4">Pidió turno pero no lo obtuvo</option>
+												<option value= "5">Consultó pero NO por OSEP</option>							
+												<option value= "6">Otro motivo</option>							
+											</select>
+										</div>
+									</div>
+
+									<div class="form-group" id="b4_div_otro">
+
+										<div class="col-xs-6 col-xs-offset-6" >
+											<input type="text" class="form-control" name = "b4_otro" id="b4_otro" >
+										</div>
+
+									</div>
+								<hr>
+							</div>
+
+
+
+						</div> <!--cierro div consulta-->
+					
 				
 						<div class="form-group">
 							
@@ -771,7 +838,7 @@
 						</div>	
 
 
-						<div class="form-group">
+						<div class="form-group" div="b4_div_pap">
 							
 							<label class="control-label col-xs-6">¿ En los últimos  2 años concurrió a realizarse el Papanicolaou?</label>
 							<div class="col-xs-3">
@@ -815,7 +882,7 @@
 
 
 						
-						<div class="form-group">
+						<div class="form-group" div="b4_div_mamo">
 							<label class="control-label col-xs-6" for="b4_mamo">¿ En los últimos 2 años se ha realizado una mamografía ?</label>
 							<div class="col-xs-3">
 								<select class="form-control" id="b4_mamo" name="b4_mamo" >

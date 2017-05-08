@@ -559,7 +559,7 @@ var bloque1= {    // Bloque General
                             {
                                 // si es mujer y esta embarazada  despliego  
                                 
-                                if(edad > 16 ){
+                                if(edad > 15 && edad < 64  &&  bloque1.conf.embarazo == "1" ){
 
                                     bloque4.show_me();     // mujeres
 
@@ -944,13 +944,21 @@ var bloque3b ={     //Bloque Niños
 
 var bloque4 ={       // mUjer
         estado: false,
-        pap: {
-            uso:     '0'
-        },
 
-        mamo: {
+        data:{
 
-            uso:     '0'
+            consulta: "",
+
+            pap: {
+                uso:     '0'
+            },
+
+            mamo: {
+
+                uso:     '0'
+            },
+
+
         },
 
         template: {
@@ -961,19 +969,29 @@ var bloque4 ={       // mUjer
         update: function(){
                 // actualizo ante los cambios
 
-                if(bloque4.pap.uso == '0'){
 
-                    $( "#b4_div_pap_si" ).show("slow");
-                    $( "#b4_div_pap_no" ).hide("slow");
+                if(){
 
-                }else{
 
-                    $( "#b4_div_pap_si" ).hide("slow");
-                    $( "#b4_div_pap_no" ).show("slow");
 
+
+
+
+                    
                 }
 
-                if(bloque4.mamo.uso == '0'){
+                if(bloque4.data.pap.uso == '0'){
+
+                        $( "#b4_div_pap_si" ).show("slow");
+                        $( "#b4_div_pap_no" ).hide("slow");
+
+                  }else{
+
+                        $( "#b4_div_pap_si" ).hide("slow");
+                        $( "#b4_div_pap_no" ).show("slow");
+                }
+
+                if(bloque4.data.mamo.uso == '0'){
                     $( "#b4_div_mamo_si" ).show("slow");
                     $( "#b4_div_mamo_no" ).hide("slow");
 
@@ -983,6 +1001,47 @@ var bloque4 ={       // mUjer
                     $( "#b4_div_mamo_si" ).hide("slow");
                     $( "#b4_div_mamo_no" ).show("slow");
                 }
+
+
+
+                // compruebo si tiene discapacidad
+                if(bloque1.conf.discapacidad == "1" && bloque1.conf.genero == "f"){
+                    // muestro esto si no tiene discapacidad y es mujer
+                    $('#b4_div_consulta').show();
+
+                    if(bloque4.data.consulta== "0"){
+                        // si seleccionno Si
+                        $( "#b4_div_consulta_si" ).show("slow");
+                        $( "#b4_div_consulta_no" ).hide("slow");
+
+                    }else{
+                        // si selecciona no verifica si esta vacio no muestra ninguno
+                        if(bloque4.data.consulta ==""){
+
+                            $( "#b4_div_consulta_no" ).hide();
+                            $( "#b4_div_consulta_si" ).hide();
+
+                        }else{
+                            // de otro modo muestra los corrrespondientes
+                            $( "#b4_div_consulta_no" ).show("slow");
+                            $( "#b4_div_consulta_si" ).hide("slow");
+
+                        }
+
+                    }
+
+                }else{
+
+                    // si la mujer es disc ( disc= 0 ) no muestro esta pregunta
+                    $('#b4_div_consulta').hide();
+                }
+
+
+
+
+
+
+
         },
 
         init:  function(){
@@ -990,14 +1049,15 @@ var bloque4 ={       // mUjer
             bloque4.hide_me();
             bloque4.bindComponent();
             bloque4.update();
+            $('#b4_div_otro').hide(); // oculto la opcion otro para cuando coloque no
 
         },
         bindComponent: function(){
-
+                    // vinculo eventos de cada select 
                     $( "#b4_pap" ).on(
                         'change, click', function(){
 
-                            bloque4.pap.uso= $(this).val();
+                            bloque4.data.pap.uso= $(this).val();
                             bloque4.update();
 
                     });
@@ -1005,10 +1065,40 @@ var bloque4 ={       // mUjer
                     $( "#b4_mamo" ).on(
                         'change, click', function(){
 
-                            bloque4.mamo.uso= $(this).val();
+                            bloque4.data.mamo.uso= $(this).val();
                             bloque4.update();
 
                     });
+
+                    $( "#b4_consulta" ).on(
+                        'change', function(){
+
+                            bloque4.data.consulta= $(this).val();
+                            bloque4.update();
+
+                    });
+
+                    $( "#b4_consulta_no" ).on(
+                        'change', function(){
+                            var seleccion = $(this).val();
+                            if(seleccion == "6") {
+
+                                $('#b4_div_otro').show();
+
+                            }else{
+
+                                $('#b4_div_otro').hide();
+                                $('#b4_div_otro').val('');
+                            }
+                            bloque4.update();
+
+                    });
+
+
+
+
+
+
         },
 
         show_me: function(){
