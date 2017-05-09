@@ -969,40 +969,50 @@ var bloque4 ={       // mUjer
         update: function(){
                 // actualizo ante los cambios
 
+                var edad = parseInt(bloque1.conf.edad);
+                if(edad > 18){
+                    // si es mayor a 18 debo mostrar pap
+                    $('#b4_div_pap').show()
 
-                if(){
+                        if(bloque4.data.pap.uso == '0'){
 
+                                $( "#b4_div_pap_si" ).show("slow");
+                                $( "#b4_div_pap_no" ).hide("slow");
 
+                        }else{
 
-
-
-
-                    
-                }
-
-                if(bloque4.data.pap.uso == '0'){
-
-                        $( "#b4_div_pap_si" ).show("slow");
-                        $( "#b4_div_pap_no" ).hide("slow");
-
-                  }else{
-
-                        $( "#b4_div_pap_si" ).hide("slow");
-                        $( "#b4_div_pap_no" ).show("slow");
-                }
-
-                if(bloque4.data.mamo.uso == '0'){
-                    $( "#b4_div_mamo_si" ).show("slow");
-                    $( "#b4_div_mamo_no" ).hide("slow");
+                                $( "#b4_div_pap_si" ).hide("slow");
+                                $( "#b4_div_pap_no" ).show("slow");
+                        }
 
 
                 }else{
 
-                    $( "#b4_div_mamo_si" ).hide("slow");
-                    $( "#b4_div_mamo_no" ).show("slow");
+                    $('#b4_div_pap').hide()
+
                 }
 
 
+                if(edad > 40){
+                    // si es mayor a 40 debo mostrar 
+                    $('#b4_div_mamo').show()
+
+                        if(bloque4.data.mamo.uso == '0'){
+                            $( "#b4_div_mamo_si" ).show("slow");
+                            $( "#b4_div_mamo_no" ).hide("slow");
+
+
+                        }else{
+
+                            $( "#b4_div_mamo_si" ).hide("slow");
+                            $( "#b4_div_mamo_no" ).show("slow");
+                        }
+
+                }else{
+
+                    $('#b4_div_mamo').hide()
+
+                }
 
                 // compruebo si tiene discapacidad
                 if(bloque1.conf.discapacidad == "1" && bloque1.conf.genero == "f"){
@@ -1035,10 +1045,6 @@ var bloque4 ={       // mUjer
                     // si la mujer es disc ( disc= 0 ) no muestro esta pregunta
                     $('#b4_div_consulta').hide();
                 }
-
-
-
-
 
 
 

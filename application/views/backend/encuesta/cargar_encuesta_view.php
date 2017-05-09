@@ -838,7 +838,7 @@
 						</div>	
 
 
-						<div class="form-group" div="b4_div_pap">
+						<div class="form-group" id="b4_div_pap">
 							
 							<label class="control-label col-xs-6">¿ En los últimos  2 años concurrió a realizarse el Papanicolaou?</label>
 							<div class="col-xs-3">
@@ -882,12 +882,13 @@
 
 
 						
-						<div class="form-group" div="b4_div_mamo">
+						<div class="form-group" id="b4_div_mamo">
 							<label class="control-label col-xs-6" for="b4_mamo">¿ En los últimos 2 años se ha realizado una mamografía ?</label>
 							<div class="col-xs-3">
 								<select class="form-control" id="b4_mamo" name="b4_mamo" >
-								<option value="0">SI</option>
-								<option value="1">NO</option>							
+									<option value="" disabled selected hidden>Seleccionar</option>
+									<option value="0">SI</option>
+									<option value="1">NO</option>							
 								</select>
 							</div>
 							<div class="col-xs-3" id="b4_div_mamo_si">
