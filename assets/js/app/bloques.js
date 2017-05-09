@@ -941,7 +941,7 @@ var bloque3b ={     //Bloque Niños
 }
 
 
-
+// TODO bloque de mujer
 var bloque4 ={       // mUjer
         estado: false,
 
@@ -1014,18 +1014,18 @@ var bloque4 ={       // mUjer
                 }
 
                 // compruebo si tiene discapacidad
-                if(bloque1.conf.discapacidad == "1" && bloque1.conf.genero == "f"){
+                if(bloque1.conf.discapacidad === "1" && bloque1.conf.genero ==="f"){
                     // muestro esto si no tiene discapacidad y es mujer
                     $('#b4_div_consulta').show();
 
-                    if(bloque4.data.consulta== "0"){
+                    if(bloque4.data.consulta=== "0"){
                         // si seleccionno Si
                         $( "#b4_div_consulta_si" ).show("slow");
                         $( "#b4_div_consulta_no" ).hide("slow");
 
                     }else{
                         // si selecciona no verifica si esta vacio no muestra ninguno
-                        if(bloque4.data.consulta ==""){
+                        if(bloque4.data.consulta ===""){
 
                             $( "#b4_div_consulta_no" ).hide();
                             $( "#b4_div_consulta_si" ).hide();
@@ -1269,7 +1269,10 @@ var bloque6 ={       // Discapacidad
 
         estado: false,
 
-        medico: [],
+        data:{
+            consulta:"",
+            medico: []
+        },
 
         template: {
                     // asigno el nombre del selector de bloque
@@ -1283,7 +1286,7 @@ var bloque6 ={       // Discapacidad
                 var vista = false;
                 $.each( items, function( index, el){
 
-                        if($.inArray( el , bloque6.medico) != -1){
+                        if($.inArray( el , bloque6.data.medico) != -1){
 
                             // Mostrar el bloque
                             vista = true;
@@ -1303,6 +1306,20 @@ var bloque6 ={       // Discapacidad
                 $('#b6_div_profesional').hide("slow");
             }
 
+            var edad = parseInt(bloque1.conf.edad);
+
+            // compruebo
+            if(edad > 2  && bloque1.conf.embarazo ==="1"){
+
+                $('#b6_uso').show();
+
+            }else{
+
+                $('#b6_uso').hide();
+
+            }
+
+
 
         },
 
@@ -1317,19 +1334,45 @@ var bloque6 ={       // Discapacidad
 
             $( "#b6_div_medicos input[type='checkbox']" ).on(
                 'click', function(){
-                    bloque6.medico= [];
+                    bloque6.data.medico= [];
                 $("#b6_div_medicos  input[type='checkbox']").each(function(){
 
                     if ($(this).prop('checked')){
                         
-                         bloque6.medico.push($(this).val());
+                         bloque6.data.medico.push($(this).val());
 
                     }
                 })
 
                bloque6.update();
             });
-            $('#b6_div_profesional').hide("slow")
+            $('#b6_div_profesional').hide("slow");
+
+                $( "#b6_consulta" ).on(
+                    'change', function(){
+
+                        bloque4.data.consulta= $(this).val();
+                        bloque4.update();
+
+                });
+
+                $( "#b6_consulta_no" ).on(
+                    'change', function(){
+                        var seleccion = $(this).val();
+                        if(seleccion == "6") {
+
+                            $('#b6_div_otro').show();
+
+                        }else{
+
+                            $('#b6_div_otro').hide();
+                            $('#b6_div_otro').val('');
+                        }
+                        bloque6.update();
+
+                });
+
+
 
         },
 
@@ -1342,7 +1385,7 @@ var bloque6 ={       // Discapacidad
 
         hide_me: function(){
             // ocultar el bloque
-            $( bloque6.template.html ).hide("slow");
+            $( bloque6.template.html ).hide();
             bloque6.estado= false;
         }, 
 

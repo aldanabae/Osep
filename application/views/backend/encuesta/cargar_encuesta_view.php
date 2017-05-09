@@ -490,9 +490,6 @@
 	</div>	 <!-- Cierre row -->
 
 
-
-
-
 <!--BLOQUE ESPECIAL BOTON GENERADOR-->
 
 
@@ -1163,7 +1160,7 @@
 <div class="row form-horizontal" id="bloque_6">      <!-- Bloque 6 discapacidad -->
 			<div class="panel panel-default">
 			
-				<div class="panel-heading">Bloque Afiliados con discapacidad</div>
+				<div class="panel-heading">Afiliados con discapacidad</div>
 					<div class="panel-body">
 
 
@@ -1187,7 +1184,6 @@
 								<div class="checkbox ">
 								<label><input type="checkbox"  name="b6_tpo[]" value="5" >Visceral</label>
 								</div>
-
 
 							</div>
 
@@ -1283,6 +1279,92 @@
 							</div>
 
 						</div>	
+						
+						
+						
+						
+						<div id="b6_uso">	
+
+							<div class="form-group">
+								
+								<label class="control-label col-xs-6">¿Recuerda si realizó al menos una consulta médica por OSEP en los últimos 6 meses? </label>
+								<div class="col-xs-6">
+									<select class="form-control" id="b6_consulta" name="b6_consulta">
+										<option value="" disabled selected hidden>Seleccionar</option>
+										<option value="1">SI</option>
+										<option value="2">NO</option>							
+									</select>
+								</div>
+
+							</div>	
+							
+							<div class="form-group" id="b6_div_consulta_si">
+								
+								<label class="control-label col-xs-6">¿Dónde concurrió a atenderse la última vez? </label>
+								<div class="col-xs-6">
+									<select class="form-control" id="b6_atencion_si" name="b6_atencion_si">
+									<option value="" disabled selected hidden>Seleccionar</option>
+									<option value="0">Fue a un efector de OSEP</option>
+									<option value="1">Fue a un prestador privado</option>
+									<option value="2">Fue a un hospital o centro de salud público</option>							
+									</select>
+								</div>
+
+							</div>	
+
+							
+							<div id="b5_div_consulta_no">
+							
+								<div class="form-group" >
+									
+									<label class="control-label col-xs-6">¿Por qué? </label>
+									<div class="col-xs-6">
+										<select class="form-control" id="b6_atencion_no" name="b6_atencion_no">
+											<option value="" disabled selected hidden>Seleccionar</option>
+											<option value= "1">No se enfermó ni tuvo un accidente</option>
+											<option value= "2">Quiso consultar pero no tuvo dinero</option>
+											<option value= "3">Quiso consultar pero le cuesta llegar al lugar de atención</option>
+											<option value= "4">Pidió turno pero no lo obtuvo</option>
+											<option value= "5">Consultó pero NO por OSEP</option>							
+											<option value= "6">Otro motivo</option>						
+										</select>
+									</div>
+
+								</div>	
+
+								<div class="form-group" id="b6_div_cual">
+									<label class="control-label col-xs-6" for="b6_cual"> Cual?</label>
+
+									<div class="col-xs-6" >
+										<input type="text" class="form-control" name = "b6_cual" id="b6_cual" >
+									</div>
+								</div>
+
+
+
+								
+							
+							</div>
+							
+							
+							
+						</div>	
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
 
 			
 					</div>	
