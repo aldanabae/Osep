@@ -732,7 +732,7 @@ var bloque2 ={   // bloque uso de Obra social
 }
 
 
-
+// TODO  se deben unificar los dos bloques 3  3a  y 3b  segun especificaciones
 var bloque3a ={   // bloque 3  bebes
         estado: false,
         leche:     '1',
@@ -941,7 +941,6 @@ var bloque3b ={     //Bloque Niños
 }
 
 
-// TODO bloque de mujer
 var bloque4 ={       // mUjer
         estado: false,
 
@@ -1319,6 +1318,30 @@ var bloque6 ={       // Discapacidad
 
             }
 
+            if(bloque6.data.consulta == '1'){
+
+                $( "#b6_div_consulta_si" ).show("slow");
+                $( "#b6_div_consulta_no" ).hide("slow");
+                
+            }else{
+
+
+                if(bloque6.data.consulta ==""){
+
+                    $( "#b6_div_consulta_si" ).hide();
+                    $( "#b6_div_consulta_no" ).hide();
+
+                }else{
+
+                    $( "#b6_div_consulta_si" ).hide("slow");
+                    $( "#b6_div_consulta_no" ).show("slow");
+                }
+
+                
+            }
+
+
+
 
 
         },
@@ -1327,6 +1350,7 @@ var bloque6 ={       // Discapacidad
             // funcion de inicializacion
             bloque6.hide_me();
             bloque6.bindComponent();
+            $('#b6_div_otro').hide(); // oculto el campo que pregunta cual
             bloque6.update();
 
         },
@@ -1348,29 +1372,29 @@ var bloque6 ={       // Discapacidad
             });
             $('#b6_div_profesional').hide("slow");
 
-                $( "#b6_consulta" ).on(
+             $( "#b6_consulta" ).on(
                     'change', function(){
 
-                        bloque4.data.consulta= $(this).val();
-                        bloque4.update();
-
-                });
-
-                $( "#b6_consulta_no" ).on(
-                    'change', function(){
-                        var seleccion = $(this).val();
-                        if(seleccion == "6") {
-
-                            $('#b6_div_otro').show();
-
-                        }else{
-
-                            $('#b6_div_otro').hide();
-                            $('#b6_div_otro').val('');
-                        }
+                        bloque6.data.consulta= $(this).val();
                         bloque6.update();
 
-                });
+             });
+
+            $( "#b6_atencion_no" ).on(
+                'change', function(){
+                    var seleccion = $(this).val();
+                    if(seleccion == "6") {
+
+                        $('#b6_div_otro').show();
+
+                    }else{
+
+                        $('#b6_div_otro').hide();
+                        $('#b6_cual').val('');
+                    }
+                    bloque6.update();
+
+            });
 
 
 

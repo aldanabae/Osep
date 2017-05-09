@@ -1313,7 +1313,7 @@
 							</div>	
 
 							
-							<div id="b5_div_consulta_no">
+							<div id="b6_div_consulta_no">
 							
 								<div class="form-group" >
 									
@@ -1332,7 +1332,7 @@
 
 								</div>	
 
-								<div class="form-group" id="b6_div_cual">
+								<div class="form-group" id="b6_div_otro">
 									<label class="control-label col-xs-6" for="b6_cual"> Cual?</label>
 
 									<div class="col-xs-6" >
