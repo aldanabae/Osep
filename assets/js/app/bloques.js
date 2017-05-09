@@ -559,7 +559,7 @@ var bloque1= {    // Bloque General
                             {
                                 // si es mujer y esta embarazada  despliego  
                                 
-                                if(edad > 15 && edad < 64  &&  bloque1.conf.embarazo == "1" ){
+                                if(edad > 15 && edad <= 64  &&  bloque1.conf.embarazo == "1" ){
 
                                     bloque4.show_me();     // mujeres
 
@@ -954,10 +954,8 @@ var bloque4 ={       // mUjer
             },
 
             mamo: {
-
                 uso:     '0'
             },
-
 
         },
 
@@ -970,7 +968,8 @@ var bloque4 ={       // mUjer
                 // actualizo ante los cambios
 
                 var edad = parseInt(bloque1.conf.edad);
-                if(edad > 18){
+                var responde = $('#responde').prop('checked') ;
+                if(edad > 18 && responde){
                     // si es mayor a 18 debo mostrar pap
                     $('#b4_div_pap').show()
 
@@ -993,7 +992,7 @@ var bloque4 ={       // mUjer
                 }
 
 
-                if(edad > 40){
+                if(edad > 40 && responde){
                     // si es mayor a 40 debo mostrar 
                     $('#b4_div_mamo').show()
 
@@ -1061,7 +1060,7 @@ var bloque4 ={       // mUjer
         bindComponent: function(){
                     // vinculo eventos de cada select 
                     $( "#b4_pap" ).on(
-                        'change, click', function(){
+                        'change', function(){
 
                             bloque4.data.pap.uso= $(this).val();
                             bloque4.update();
@@ -1069,7 +1068,7 @@ var bloque4 ={       // mUjer
                     });
 
                     $( "#b4_mamo" ).on(
-                        'change, click', function(){
+                        'change', function(){
 
                             bloque4.data.mamo.uso= $(this).val();
                             bloque4.update();
@@ -1137,8 +1136,14 @@ var bloque4 ={       // mUjer
 
 var bloque5 ={       // Adultos mayores
         estado: false,
-        activity: '2',
-        medico: '1',
+        data: {
+
+            consulta:"",
+            medico: "",
+        },
+
+
+
         template: {
                     // asigno el nombre del selector de bloque
                     html: '#bloque_5'
@@ -1147,16 +1152,29 @@ var bloque5 ={       // Adultos mayores
         update: function(){
                 // actualizo ante los cambios
 
-                if(bloque5.activity == '1'){
+                if(bloque5.data.consulta == '1'){
 
-                    $( "#b5_div_cual" ).show("slow");
+                    $( "#b5_div_consulta_si" ).show("slow");
+                    $( "#b5_div_consulta_no" ).hide("slow");
                  
                 }else{
 
-                    $( "#b5_div_cual" ).hide("slow");
+
+                    if(bloque5.data.consulta ==""){
+
+                        $( "#b5_div_consulta_si" ).hide();
+                        $( "#b5_div_consulta_no" ).hide();
+
+                    }else{
+
+                        $( "#b5_div_consulta_si" ).hide("slow");
+                        $( "#b5_div_consulta_no" ).show("slow");
+                    }
+
+                    
                 }
 
-                if(bloque5.medico == '1'){
+                if(bloque5.data.medico == '1'){
                     $( "#b5_div_esde_osep" ).show("slow");
 
                 }else{
@@ -1170,15 +1188,16 @@ var bloque5 ={       // Adultos mayores
             // funcion de inicializacion
             bloque5.hide_me();
             bloque5.bindComponent();
+            $('#b5_div_cual').hide(); // oculto el campo que pregunta cual
             bloque5.update();
 
         },
         bindComponent: function(){
 
-                    $( "#b5_activity" ).on(
-                        'change, click', function(){
+                    $( "#b5_consulta" ).on(
+                        'change', function(){
 
-                            bloque5.activity= $(this).val();
+                            bloque5.data.consulta= $(this).val();
                             bloque5.update();
 
                     });
@@ -1186,10 +1205,32 @@ var bloque5 ={       // Adultos mayores
                     $( "#b5_medico" ).on(
                         'change, click', function(){
 
-                            bloque5.medico= $(this).val();
+                            bloque5.data.medico= $(this).val();
                             bloque5.update();
 
                     });
+
+                    $( "#b5_atencion_no" ).on(
+                        'change', function(){
+
+                            var seleccion = $(this).val();
+                            if(seleccion == "6") {
+
+                                $('#b5_div_cual').show("slow");
+
+                            }else{
+
+                                $('#b5_div_cual').hide("slow");
+                                $('#b5_div_cual').val('');
+                            }
+                            bloque5.update();
+
+                     });
+
+
+
+
+                    
         },
 
         show_me: function(){

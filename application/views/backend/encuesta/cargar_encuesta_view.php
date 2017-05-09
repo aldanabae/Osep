@@ -849,7 +849,7 @@
 							</div>
 							<div class="col-xs-3" id="b4_div_pap_si" >
 								<select class="form-control" id="b4_pap_si" name="b4_pap_si">
-									<option value="" disabled selected hidden>Seleccionar</option>
+									<option value="" disabled selected hidden>¿Por qué?</option>
 									<option value= "1">En hospital o centro propio de OSEP</option>
 									<option value= "2">En Consultorio, Clínica o Sanatorio donde reciben OSEP</option>
 									<option value= "3">En hospital publico, dentro de salud , sala</option>
@@ -859,7 +859,7 @@
 							</div>
 							<div class="col-xs-3" id="b4_div_pap_no" >
 								<select class="form-control" id ="b4_pap_no" name ="b4_pap_no">
-									<option value="" disabled selected hidden>Seleccionar</option>
+									<option value="" disabled selected hidden>¿Por qué?</option>
 									<option value= "1">No tuvo tiempo</option>							
 									<option value= "2">No tuvo dinero</option>							
 									<option value= "3">No consiguió turno o lugar donde la atiendan</option>							
@@ -886,14 +886,14 @@
 							<label class="control-label col-xs-6" for="b4_mamo">¿ En los últimos 2 años se ha realizado una mamografía ?</label>
 							<div class="col-xs-3">
 								<select class="form-control" id="b4_mamo" name="b4_mamo" >
-									<option value="" disabled selected hidden>Seleccionar</option>
+									
 									<option value="0">SI</option>
 									<option value="1">NO</option>							
 								</select>
 							</div>
 							<div class="col-xs-3" id="b4_div_mamo_si">
 								<select class="form-control" id="b4_mamo_si" name="b4_mamo_si">
-									<option value="" disabled selected hidden>Seleccionar</option>
+									<option value="" disabled selected hidden>¿Por qué?</option>
 									<option value= "1">En el mamografo de Osep</option>
 									<option value= "2">En Consultorio, Clínica o Sanatorio donde reciben OSEP</option>
 									<option value= "3">En hospital publico, dentro de salud , sala</option>
@@ -904,7 +904,7 @@
 							</div>
 							<div class="col-xs-3" id="b4_div_mamo_no" >
 								<select class="form-control" id="b4_mamo_no" name="b4_mamo_no">
-									<option value="" disabled selected hidden>Seleccionar</option>
+									<option value="" disabled selected hidden>¿Por qué?</option>
 									<option value= "1">No tuvo tiempo</option>							
 									<option value= "2">No tuvo dinero</option>							
 									<option value= "3">No consiguió turno o lugar donde la atiendan</option>							
@@ -934,18 +934,28 @@
 <div class="row form-horizontal" id="bloque_5">      <!-- Bloque 5 Adultos mayores -->
 			<div class="panel panel-default">
 			
-				<div class="panel-heading orange">Bloque Adultos mayores</div>
+				<div class="panel-heading orange">Salud de los adultos</div>
 					<div class="panel-body">
 
-
-						<div class="form-group">
+						
+						<div class="form-group" id = "">
 							
-							<label class="control-label col-xs-6">¿ Necesita usar en forma permanente silla de ruedas , bastón , andador, o algún otro instrumento para caminar ?</label>
+							<label class="control-label col-xs-6">¿Necesita usar en forma permanente uno o más de estos elementos? </label>
 							<div class="col-xs-6">
-								<select class="form-control">
-								<option value="1">SI</option>
-								<option value="2">NO</option>							
-								</select>
+
+								<div class="checkbox">
+								<label><input type="checkbox" name="b5_disc[]" value="1">silla de ruedas </label>
+								</div>
+								<div class="checkbox">
+								<label><input type="checkbox"  name="b5_disc[]" value="2">bastón</label>
+								</div>
+								<div class="checkbox ">
+								<label><input type="checkbox"  name="b5_disc[]" value="3" >andador</label>
+								</div>
+								<div class="checkbox ">
+								<label><input type="checkbox"  name="b5_disc[]" value="4" >audífono</label>
+								</div>								
+
 							</div>
 
 						</div>	
@@ -953,33 +963,25 @@
 
 						<div class="form-group">
 							
-							<label class="control-label col-xs-6">¿ Usa audífonos o tiene dificultad para escuchar conversaciones o la televisión a un volumen normal ?</label>
+							<label class="control-label col-xs-6">¿Ha experimentado en el último mes...? </label>
 							<div class="col-xs-6">
-								<select class="form-control">
-								<option value="1" >SI</option>
-								<option value="2">NO</option>							
-								</select>
+								<div class="checkbox">
+								<label><input type="checkbox" name="b5_exp[]" value="1">caídas</label>
+								</div>
+								<div class="checkbox">
+								<label><input type="checkbox"  name="b5_exp[]" value="2">olvidos o confusiones recurrentes</label>
+								</div>	
 							</div>
 
 						</div>	
 
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">¿ Ha sufrido alguna caída en el ultimo mes ?</label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option value="1">SI</option>
-								<option value="2">NO</option>							
-								</select>
-							</div>
-
-						</div>	
 
 						<div class="form-group">
 							
 							<label class="control-label col-xs-6">¿ Necesita o ha tenido que realizar modificaciones e su casa para no caerse o realizar sus tareas cotidianas ?</label>
 							<div class="col-xs-6">
 								<select class="form-control">
+								<option value="" disabled selected hidden>Seleccionar</option>
 								<option value="1">SI</option>
 								<option value="2">NO</option>							
 								</select>
@@ -987,18 +989,6 @@
 
 						</div>	
 
-
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">¿ Experimenta en forma cotidiana problemas de olvidos o confusiones ?</label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option value="1">SI</option>
-								<option value="2">NO</option>							
-								</select>
-							</div>
-
-						</div>	
 	
 
 						<div class="form-group">
@@ -1006,6 +996,7 @@
 							<label class="control-label col-xs-6">Normalmente, ¿ Necesita ayuda para realizar tramites, como cobrar la jubilación, pedir turno al medico por ejemplo?</label>
 							<div class="col-xs-6">
 								<select class="form-control">
+								<option value="" disabled selected hidden>Seleccionar</option>
 								<option value="1">SI</option>
 								<option value="2">NO</option>							
 								</select>
@@ -1019,6 +1010,7 @@
 							<label class="control-label col-xs-6">Si tiene una  dificultad de salud  o una urgencia, ¿Cuenta con alguien que lo pueda ayudar a resolverla?</label>
 							<div class="col-xs-6">
 								<select class="form-control">
+								<option value="" disabled selected hidden>Seleccionar</option>
 								<option value="1">SI</option>
 								<option value="2">NO</option>							
 								</select>
@@ -1029,9 +1021,11 @@
 
 						<div class="form-group">
 							
-							<label class="control-label col-xs-6">¿ Concurre habitualmente a un centro de jubilados, Iglesia, Club u otro ámbito de tipo social?</label>
+							<label class="control-label col-xs-6">¿Realiza habitualmente algún hobbie o actividad social, 
+							por ejemplo leer, hacer cursos o gimnasia, ir a un centro de jubilados o a la iglesia? </label>
 							<div class="col-xs-6">
 								<select class="form-control" id="b5_activity" name="b5_activity">
+								<option value="" disabled selected hidden>Seleccionar</option>
 								<option value="1">SI</option>
 								<option value="2" selected>NO</option>							
 								</select>
@@ -1039,7 +1033,7 @@
 
 						</div>	
 
-						<div class="form-group" id="b5_div_cual">
+						<!--<div class="form-group" id="b5_div_cual">
 							<label class="control-label col-xs-6" for="b5_cual"> Cual?</label>
 
 							<div class="col-xs-6" >
@@ -1056,6 +1050,7 @@
 							<label class="control-label col-xs-6">Tiene alguna actividad o Hobbie que haga frecuentemente para ocupar el tiempo libre ?</label>
 							<div class="col-xs-6">
 								<select class="form-control" id="b5_hobby" name="b5_hobby">
+								<option value="" disabled selected hidden>Seleccionar</option>
 								<option value="1">SI</option>
 								<option value="2">NO</option>							
 								</select>
@@ -1072,7 +1067,8 @@
 							<label class="control-label col-xs-6">Respecto a la atención Médica. ¿Tiene un médico de cabecera, es decir un profesional que lo conozca y que lo atienda habitualmente?</label>
 							<div class="col-xs-6">
 								<select class="form-control" id="b5_medico" name="b5_medico">
-								<option value="1" selected>SI</option>
+								<option value="" disabled selected hidden>Seleccionar</option>
+								<option value="1" >SI</option>
 								<option value="2">NO</option>							
 								</select>
 							</div>
@@ -1084,28 +1080,77 @@
 							<label class="control-label col-xs-6">¿Ese médico es de OSEP o recibe OSEP ?</label>
 							<div class="col-xs-6">
 								<select class="form-control" id="b5_esde_osep" name="b5_esde_osep">
+								<option value="" disabled selected hidden>Seleccionar</option>
 								<option value="1">SI</option>
 								<option value="2">NO</option>							
 								</select>
 							</div>
 
 						</div>	
-
-						<div class="form-group" id="b5_div_complejo">
+						
+						
+						
+						<div class="form-group">
 							
-							<label class="control-label col-xs-6">¿Qué tan complicado le resulta ver a un profesional cuando tiene que atenderse por algún motivo?</label>
+							<label class="control-label col-xs-6">¿Recuerda si realizó al menos una consulta médica por OSEP en los últimos 6 meses? </label>
 							<div class="col-xs-6">
-								<select class="form-control" id="b5_complejo" name="b5_complejo">
+								<select class="form-control" id="b5_consulta" name="b5_consulta">
 									<option value="" disabled selected hidden>Seleccionar</option>
-									<option >Simple</option>
-									<option >Complicado</option>
-									<option >Muy Complicado</option>
-									<option >Viene a domicilio</option>
-
+									<option value="1">SI</option>
+									<option value="2">NO</option>							
 								</select>
 							</div>
 
 						</div>	
+						
+						<div class="form-group" id="b5_div_consulta_si">
+							
+							<label class="control-label col-xs-6">¿Dónde concurrió a atenderse la última vez? </label>
+							<div class="col-xs-6">
+								<select class="form-control" id="b5_atencion_si" name="b5_atencion_si">
+								<option value="" disabled selected hidden>Seleccionar</option>
+								<option value="0">Fue a un efector de OSEP</option>
+								<option value="1">Fue a un prestador privado</option>
+								<option value="2">Fue a un hospital o centro de salud público</option>							
+								</select>
+							</div>
+
+						</div>	
+
+						
+						<div id="b5_div_consulta_no">
+						
+							<div class="form-group" >
+								
+								<label class="control-label col-xs-6">¿Por qué? </label>
+								<div class="col-xs-6">
+									<select class="form-control" id="b5_atencion_no" name="b5_atencion_no">
+										<option value="" disabled selected hidden>Seleccionar</option>
+										<option value= "1">No se enfermó ni tuvo un accidente</option>
+										<option value= "2">Quiso consultar pero no tuvo dinero</option>
+										<option value= "3">Quiso consultar pero le cuesta llegar al lugar de atención</option>
+										<option value= "4">Pidió turno pero no lo obtuvo</option>
+										<option value= "5">Consultó pero NO por OSEP</option>							
+										<option value= "6">Otro motivo</option>						
+									</select>
+								</div>
+
+							</div>	
+
+							<div class="form-group" id="b5_div_cual">
+								<label class="control-label col-xs-6" for="b5_cual"> Cual?</label>
+
+								<div class="col-xs-6" >
+									<input type="text" class="form-control" name = "b5_cual" id="b5_cual" >
+								</div>
+							</div>
+
+
+
+							
+						
+						</div>
+
 			
 					</div>	
 
