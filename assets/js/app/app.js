@@ -68,6 +68,7 @@ $(function() {
 			// document.getElementById("localidad").options[0]=new Option();
 
 			var combo=$("#localidad");
+			
 			combo.append('<option value="" disabled selected hidden>Seleccionar</option>');
 	        for (var i in listaLoc){
 	            combo.append('<option value="'+listaLoc[i].id_tlocalidad +'">'+ listaLoc[i].descloc +'</option>');

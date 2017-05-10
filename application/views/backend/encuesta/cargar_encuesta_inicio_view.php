@@ -244,7 +244,7 @@
         <div class="form-group">
             <div class="col-xs-offset-3 col-xs-9">
                 <input type="submit" class="btn btn-primary" value="Continuar" name= "Continuar">
-                <input type="reset" class="btn btn-default" value="Cerrar" name="Cerrar">
+                <input type="button" class="btn btn-default" value="limpiar" name="Cerrar"  onclick="javascript:location.reload()">
             </div>
         </div>
 

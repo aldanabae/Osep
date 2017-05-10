@@ -312,7 +312,7 @@
 					</div> <hr>
 
 
-
+		</div>
 				<blockquote>
 					<p>Condiciones especiales de salud</p>    <!-- apartado Condiciones especiales de salud-->
 				</blockquote>
@@ -412,7 +412,7 @@
 
 
 
-				</div>
+				
 			</div>
 	</div>	
 </div>			
@@ -505,18 +505,18 @@
 	</div>	 <!-- Cierre row -->
 
 
-	<div class="row form-horizontal" id="bloque_3_a">      <!-- Bloque 3 bebes -->
+	<div class="row form-horizontal" id="bloque_3">      <!-- Bloque 3 niños de 0 a 14 -->
 			<div class="panel panel-default">
 			
 				<div class="panel-heading orange">Bloque Salud de los Niños</div>
 					<div class="panel-body">
 				
 						<blockquote>
-							<p>Osep esta muy interesada en fortalecer sus servicios en la etapa  de la infancia</p>
+							<p>Embarazo y parto</p>
 						</blockquote>
 
 						<div class="form-group">							
-							<label class="control-label col-xs-6">El embarazo fue normal?</label>
+							<label class="control-label col-xs-6">¿El embarazo fue normal o el profesional lo consideró de riesgo?</label>
 							<div class="col-xs-6">
 								<select class="form-control" name ="">
 								<option value="" disabled selected hidden>Seleccionar</option>
@@ -527,7 +527,7 @@
 						</div>	
 
 						<div class="form-group">							
-							<label class="control-label col-xs-6">Nació en termino</label>						
+							<label class="control-label col-xs-6">¿ Nació a término o fue prematuro?</label>						
 							<div class="col-xs-6">
 								<select class="form-control" name ="">
 								<option value="" disabled selected hidden>Seleccionar</option>
@@ -538,18 +538,19 @@
 						</div>	
 						
 						<div class="form-group">
-							<label class="control-label col-xs-6" for="b3a_peso">Recuerda cuanto peso al nacer?</label>
+							<label class="control-label col-xs-6" for="b3_peso">¿Recuerda cuánto peso al nacer? peso al nacer en gramos</label>
 							<div class="col-xs-6">
-								<input type="text" class="form-control" name= "b3a_peso" id="b3a_peso" placeholder="peso en gramos">
+								<input type="text" class="form-control" name= "b3_peso" id="b3_peso" >
 							</div>
 						</div>
 
-						<div class="form-group">							
+						<div class="form-group" id="b3_camino">							
 							<label class="control-label col-xs-6">Camino cerca o alrededor de cumplir el Año?</label>
 							<div class="col-xs-6" name ="">
 								<select class="form-control">
-								<option value="1">SI</option>
-								<option value="2">NO</option>							
+									<option value="" disabled selected hidden>Seleccionar</option>
+									<option value="1">SI</option>
+									<option value="2">NO</option>							
 								</select>
 							</div>
 						</div>
@@ -559,191 +560,261 @@
 						</blockquote>
 
 						<div class="form-group">							
-							<label class="control-label col-xs-6">Controles auditivos de recien nacido</label>
+							<label class="control-label col-xs-6">¿Lo llevaron al control auditivo que se realiza para detectar problemas de oído en los recién nacidos?</label>
 							<div class="col-xs-6" name ="">
 								<select class="form-control">
-								<option value="1">SI</option>
-								<option value="2">NO</option>							
+									<option value="" disabled selected hidden>Seleccionar</option>
+									<option value="1">SI</option>
+									<option value="2">NO</option>							
 								</select>
 							</div>
 						</div>
 
-						<div class="form-group">							
-							<label class="control-label col-xs-6">Realizo algun control de salud en los ultimos 3 Meses?</label>
+						<!-- <div class="form-group">							
+							<label class="control-label col-xs-6">¿ Realizó algún control de salud en los últimos 3 Meses?</label>
 							<div class="col-xs-6" name ="">
-								<select class="form-control">
-								<option value="1">SI</option>
-								<option value="2">NO</option>							
-								</select>
-							</div>
-						</div>
-
-						<div class="form-group">							
-							<label class="control-label col-xs-6">En el ultimo control de Salud, el profecional anotó que es Normal?</label>
-							<div class="col-xs-6" name ="">
-								<select class="form-control">
 								<option value="" disabled selected hidden>Seleccionar</option>
-								<option value="1">Normal</option>
-								<option value="2">Bajo</option>							
-								<option value="3">Sobrepeso</option>							
+								<select class="form-control">
+									<option value="" disabled selected hidden>Seleccionar</option>
+									<option value="1">SI</option>
+									<option value="2">NO</option>							
 								</select>
 							</div>
-						</div>
+						</div> -->
 
 						<div class="form-group">							
-							<label class="control-label col-xs-6">Tiene vacunas al Dia?</label>
+							<label class="control-label col-xs-6">En el ultimo control de Salud, ¿ El profesional anotó que su peso es Normal?</label>
 							<div class="col-xs-6" name ="">
 								<select class="form-control">
-								<option value="1">SI</option>
-								<option value="2">NO</option>							
+									<option value="" disabled selected hidden>Seleccionar</option>
+									<option value="1">Bajo peso</option>
+									<option value="2">Normal</option>							
+									<option value="3">Sobrepeso</option>							
 								</select>
 							</div>
 						</div>
 
 						<div class="form-group">							
-							<label class="control-label col-xs-6">Esta recibiendo la Leche de Osep?</label>
-							<div class="col-xs-6" >
-								<select class="form-control" name ="b3_a_leche" id ="b3_a_leche">
-								<option value="1">SI</option>
-								<option value="2">NO</option>							
-								</select>
-							</div>
-						</div>
-						
-						<div class="form-group" id="b3a_div_porque_no">
-							<label class="control-label col-xs-6" for="b3a_peso">¡Por que no la recibe?</label>
-							<div class="col-xs-6">
-								<input type="text" class="form-control" name= "b3a_porque_no" id="b3a_porque_no" placeholder="">
-							</div>
-						</div>	
-			
-					</div>	
-		</div>
-</div>	 <!-- Cierre row -->
-
-
-<div class="row form-horizontal" id="bloque_3_b">      <!-- Bloque 3 niños -->
-			<div class="panel panel-default">
-			
-				<div class="panel-heading orange">Bloque Salud de los Niños</div>
-					<div class="panel-body">
-				
-						<blockquote>
-							<p>Ahora vamos a hablar sobre los chicos de 2 o mas años, Haciendo referencia a aspectos de salud y Actividades.</p>
-						</blockquote>
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">En los ultimos Dos años , ¿Ha realizado un control con un  oculista?</label>
-							<div class="col-xs-6">
+							<label class="control-label col-xs-6">¿Tiene vacunas al Día?</label>
+							<div class="col-xs-6" name ="">
 								<select class="form-control">
-								<option value="1">SI</option>
-								<option value="2">NO</option>							
+									<option value="" disabled selected hidden>Seleccionar</option>
+									<option value="1">SI</option>
+									<option value="2">NO</option>							
 								</select>
 							</div>
-
-						</div>	
-
-
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">¿ Con un odontólogo ?</label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option value="1">SI</option>
-								<option value="2">NO</option>							
-								</select>
-							</div>
-
-						</div>	
-
-
-						
-						<div class="form-group">
-							<label class="control-label col-xs-6" for="b3b_escuela">¿Durante el año pasado / Este año. ¿Ha tenido algún tipo de dificultad en la escuela?</label>
-							<div class="col-xs-4">
-								<select class="form-control" id ="b3b_escuela" name ="b3b_escuela">
-								<option value="1">SI</option>
-								<option value="2" selected>NO</option>
-								<option value="3">NO asiste Todavía</option>							
-								</select>
-							</div>
-
 						</div>
-						
-						<div class="form-group" id="b3b_div_problem">
-							<label class="control-label col-xs-6" for="b3b_problem">¿ Cual fue el problema ?</label>
 
+						<div class="form-group">							
+							<label class="control-label col-xs-6">¿Está recibiendo la Leche de OSEP?</label>
 							<div class="col-xs-6" >
-								<input type="text" class="form-control" name = "b3b_problem" id="b3b_problem" >
+								<select class="form-control" name ="b3_leche" id ="b3_leche">
+									<option value="" disabled selected hidden>Seleccionar</option>
+									<option value="1">SI</option>
+									<option value="2">NO</option>							
+								</select>
 							</div>
 						</div>
+						
+						<div class="form-group" id="b3_div_porque_no">
+							<label class="control-label col-xs-6" for="b3_peso">¡Por que no la recibe?</label>
+							<div class="col-xs-6">
+								<input type="text" class="form-control" name= "b3_porque_no" id="b3_porque_no" placeholder="">
+							</div>
+						</div>	
+						
+						
+						<!-- ============================================================== -->
+						
+						
+						
+						<div id="b3_controles">	
+					
+							<blockquote>
+								<p>Controles de salud y actividades</p>
+							</blockquote>
+							
+							
+							<div class="form-group">
+								
+								<label class="control-label col-xs-6">En el último año, ¿realizó al menos un control con un odontólogo? </label>
+								<div class="col-xs-6">
+									<select class="form-control">
+										<option value="" disabled selected hidden>Seleccionar</option>
+										<option value="1">SI</option>
+										<option value="2">NO</option>							
+									</select>
+								</div>
+
+							</div>							
+							
+							
+							<div class="form-group" id="b3_oculista">
+								
+								<label class="control-label col-xs-6">¿Realizó algún control con un oculista para verificar su salud visual?</label>
+								<div class="col-xs-6">
+									<select class="form-control">
+										<option value="" disabled selected hidden>Seleccionar</option>
+										<option value="1">SI</option>
+										<option value="2">NO</option>							
+									</select>
+								</div>
+
+							</div>		
+
+							<div class="form-group">
+								<label class="control-label col-xs-6" for="b3_escuela">Durante el año pasado / Este año. ¿Ha tenido algún tipo de dificultad en la escuela?</label>
+								<div class="col-xs-4">
+									<select class="form-control" id ="b3_escuela" name ="b3_escuela">
+										<option value="" disabled selected hidden>Seleccionar</option>
+										<option value="1">SI</option>
+										<option value="2" >NO</option>
+										<option value="3">NO asiste Todavía</option>							
+									</select>
+								</div>
+
+							</div>
+							
+							
+							<div class="form-group" id="b3_div_problem">
+								<label class="control-label col-xs-6" for="b3_problem">¿ Cual fue el problema ?</label>
+
+								<div class="col-xs-6" >
+									<input type="text" class="form-control" name = "b3_problem" id="b3_problem" >
+								</div>
+							</div>
 
 
+							<div class="form-group">
+								
+								<label class="control-label col-xs-6">¿Realiza en forma regular alguna actividad (extraescolar). 
+																		Es decir Hace deportes, alguna actividad artística u otra actividad todas las semanas ?</label>
+								<div class="col-xs-6">
+									<select class="form-control" id= "b3_extra">
+										<option value="" disabled selected hidden>Seleccionar</option>
+										<option value="1">Deportiva</option>
+										<option value="2">Artistica</option>
+										<option value="3">Educativa</option>
+										<option value="4">Comunitaria</option>
+										<option value="5">Religiosa</option>
+										<option value="6">Otra</option>							
+										<option value="7">No realiza</option>							
+									</select>
+								</div>
+
+							</div>
+
+
+
+
+
+							<div class="form-group" id= "b3_div_donde">
+								
+								<label class="control-label col-xs-6">Donde ?</label>
+								<div class="col-xs-6">
+									<select class="form-control">
+									<option value="" disabled selected hidden>Seleccionar</option>
+									<option value="1">Club</option>
+									<option value="2">Instituto</option>							
+									<option value="3">CIC</option>							
+									<option value="4">Biblioteca</option>							
+									<option value="5">Unión Vecinal</option>							
+									<option value="6">otro</option>							
+									</select>
+								</div>
+
+							</div>
+						
+						</div> <!-- fin de bloque controles de 2 a 14 -->
+						
+						
 						<div class="form-group">
 							
-							<label class="control-label col-xs-6">¿Realiza en forma regular alguna actividad (extraescolar). 
-																	Es decir Hace deportes, alguna actividad artística u otra semanalmente?</label>
+							<label class="control-label col-xs-6">¿Recuerda si realizó al menos una consulta médica por OSEP en los últimos 6 meses? </label>
 							<div class="col-xs-6">
-								<select class="form-control" id= "b3b_extra">
+								<select class="form-control" id="b3_consulta" name="b3_consulta">
+									<option value="" disabled selected hidden>Seleccionar</option>
 									<option value="1">SI</option>
 									<option value="2">NO</option>							
 								</select>
 							</div>
 
-						</div>
-
-
-						<div class="form-group" id= "b3b_div_activity">
+						</div>	
+						
+						<div class="form-group" id="b5_div_consulta_si">
 							
-							<label class="control-label col-xs-6"> Actividad</label>
-
+							<label class="control-label col-xs-6">¿Dónde concurrió a atenderse la última vez? </label>
 							<div class="col-xs-6">
-								<select class="form-control" id= "b3b_activity" >
+								<select class="form-control" id="b3_atencion_si" name="b3_atencion_si">
 								<option value="" disabled selected hidden>Seleccionar</option>
-								<option value="1">Deportiva</option>
-								<option value="2">Artistica</option>
-								<option value="3">Educativa</option>
-								<option value="4">Comunitaria</option>
-								<option value="5">Religiosa</option>
-								<option value="6">Otra</option>							
-								<option value="7">No realiza</option>							
+								<option value="0">Fue a un efector de OSEP</option>
+								<option value="1">Fue a un prestador privado</option>
+								<option value="2">Fue a un hospital o centro de salud público</option>							
 								</select>
 							</div>
 
-						</div>
+						</div>	
 
+						
+						<div id="b5_div_consulta_no">
+						
+							<div class="form-group" >
+								
+								<label class="control-label col-xs-6">¿Por qué? </label>
+								<div class="col-xs-6">
+									<select class="form-control" id="b3_atencion_no" name="b3_atencion_no">
+										<option value="" disabled selected hidden>Seleccionar</option>
+										<option value= "1">No se enfermó ni tuvo un accidente</option>
+										<option value= "2">Quiso consultar pero no tuvo dinero</option>
+										<option value= "3">Quiso consultar pero le cuesta llegar al lugar de atención</option>
+										<option value= "4">Pidió turno pero no lo obtuvo</option>
+										<option value= "5">Consultó pero NO por OSEP</option>							
+										<option value= "6">Otro motivo</option>						
+									</select>
+								</div>
 
+							</div>	
 
+							<div class="form-group" id="b5_div_cual">
+								<label class="control-label col-xs-6" for="b3_cual"> Cual?</label>
 
-
-
-
-
-
-						<div class="form-group" id= "b3b_div_donde">
-							
-							<label class="control-label col-xs-6">Donde ?</label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option value="" disabled selected hidden>Seleccionar</option>
-								<option value="1">Club</option>
-								<option value="2">Instituto</option>							
-								<option value="3">CIC</option>							
-								<option value="4">Biblioteca</option>							
-								<option value="5">Unión Vecinal</option>							
-								<option value="6">otro</option>							
-								</select>
+								<div class="col-xs-6" >
+									<input type="text" class="form-control" name = "b3_cual" id="b3_cual" >
+								</div>
 							</div>
 
-						</div>
 
+
+							
+						
+						</div>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
 			
 					</div>	
-
 		</div>
-		
-	 
 </div>	 <!-- Cierre row -->
+
 
 
 <div class="row form-horizontal" id="bloque_4">      <!-- Bloque 4 mujeres -->
@@ -1492,9 +1563,6 @@
 		
 	 
 </div>	 <!-- Cierre row -->
-
-
-
 
 
         <br>

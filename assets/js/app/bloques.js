@@ -99,7 +99,7 @@ var bloque1= {    // Bloque General
             bloque6.estado= false,
             bloque5.estado= false,
             bloque4.estado= false,
-            bloque3a.estado= false, // unificar
+            bloque3.estado= false, // unificar
             bloque2.estado= false // unificar
     
         },
@@ -141,8 +141,7 @@ var bloque1= {    // Bloque General
             bloque_btn.hide();     // botonera abajo 
             encuesta.init();
             bloque2.init();
-            bloque3a.init();
-            bloque3b.init();
+            bloque3.init();
             bloque4.init();
             bloque5.init();
             bloque6.init();
@@ -194,6 +193,8 @@ var bloque1= {    // Bloque General
 
                     });
                 bloque2.show_me();
+                $("#afiliado_externo").show();
+
 
             }else{
                 
@@ -205,6 +206,7 @@ var bloque1= {    // Bloque General
 
                 });                
                 bloque2.hide_me();
+                $("#afiliado_externo").hide(); 
 
             }
 
@@ -312,8 +314,6 @@ var bloque1= {    // Bloque General
                     }
                 }
 
-     
-
              // fin filtro datos ocupacionales  
 
 
@@ -349,13 +349,6 @@ var bloque1= {    // Bloque General
 					});
                  $( "#b1_adicional").show();
              }
-
-
-
-
-
-
-
 
         },
 
@@ -521,18 +514,15 @@ var bloque1= {    // Bloque General
                                     bloque5.show_me();     // adultos
                             }else{
 
-                                if (edad < 14)  // si esta entre 2 y 14  niños
+                                if (edad < 14) {   // si esta entre 2 y 14  niños
 
-                                    if( edad < 2)
-                                    {
+                                    bloque3.show_me();
 
-                                        bloque3a.show_me();   // bebes
-                                        bloque3b.hide_me();   // niños 
-                                    }else{
 
-                                        bloque3b.show_me();   // niños
-                                        bloque3a.hide_me();   // bebes
-                                    }
+                                }else{
+
+                                   bloque3.hide_me();   // bebes
+                                }
 
                             }
 
@@ -733,56 +723,165 @@ var bloque2 ={   // bloque uso de Obra social
 
 
 // TODO  se deben unificar los dos bloques 3  3a  y 3b  segun especificaciones
-var bloque3a ={   // bloque 3  bebes
+var bloque3 ={   // bloque 3  bebes
         estado: false,
-        leche:     '1',
+        data:{
+
+            leche:   "",
+            escuela: "",
+            extra:   "",
+            activity:"", 
+            edad :  ""
+
+        },
+        
         template: {
                     // asigno el nombre del selector de bloque
-                    html: '#bloque_3_a'
-        },
-        update: function(){
-                // actualizo ante los cambios
-
-                if(bloque3a.leche == '1'){
-                    // si tien control hecho muestra complejidad
-                    $( "#b3a_div_porque_no" ).hide("slow");
-
-                }else{
-                    // si no se lo hizo muestra por que no..
-                    $( "#b3a_div_porque_no" ).show("slow");
-                }
-
+                    html: '#bloque_3'
         },
 
         init:  function(){
             // funcion de inicializacion
-            bloque3a.hide_me();
-            bloque3a.bindComponent();
-            bloque3a.update();
+            bloque3.hide_me();
+            bloque3.bindComponent();
+            bloque3.update();
+
+        },
+        update: function(){
+                // actualizo ante los cambios
+
+                if(bloque3.data.leche == '1'){
+                    // si tien control hecho muestra complejidad
+                    $( "#b3_div_porque_no" ).hide();
+
+                }else{
+
+                    if(bloque3.data.leche === ""){
+
+                        $( "#b3_div_porque_no" ).hide();
+
+                    }else{
+
+                        // si no se lo hizo muestra por que no..
+                        $( "#b3_div_porque_no" ).show("slow");
+
+                    }
+
+                }
+
+                var edad= parseInt(bloque1.conf.edad)
+                if(edad <=1 ){               // verifico si es menor a un año no pregunto si camino
+
+                    $( "#b3_camino").hide();
+
+                }else{
+
+                    $( "#b3_camino").show();
+                }
+
+
+                if(edad >= 3  && edad <= 6 ){               // verifico si esta entre 3 y 6 pregunto oculista
+
+                    $( "#b3_oculista").show();
+
+                }else{
+
+                    $( "#b3_oculista").hide();
+                }
+
+                if((edad >= 2  && edad <= 14) && bloque1.conf.discapacidad == "1" ){               // verifico si esta entre 2 y 14 debo mostrar salud y actividades
+
+                    $( "#b3_controles").show();
+
+                }else{
+
+                    $( "#b3_controles").hide();
+                }
+
+
+
+
+
+                if(bloque3.data.escuela == '1'){
+                    // si tien control hecho muestra complejidad
+                    $( "#b3_div_problem" ).show("slow");
+
+                }else{
+                    // si no se lo hizo muestra por que no..
+                    $( "#b3_div_problem" ).hide("slow");
+                }
+
+                if(bloque3.data.extra == '1'){
+                    // si tien control hecho muestra complejidad
+                    $( "#b3_div_activity" ).show("slow");
+                    $( "#b3_div_donde" ).hide();
+
+                }else{
+                   
+                    $( "#b3_div_activity" ).hide("slow");
+                    $( "#b3_div_donde" ).hide();
+                    bloque3.data.activity='1';
+                    $( "#b3_activity" ).val(bloque3.data.activity);
+                    $("#b3_activity[value=1]").attr("selected",true);
+                    
+                }
+
+
+                if(bloque3.data.activity == '3' ||  bloque3.data.activity == '2' ||  bloque3.data.activity == '5'){
+                    // si tien control hecho muestra complejidad
+                    $( "#b3_div_donde" ).show("slow");
+
+                }else{
+                    // si no se lo hizo muestra por que no..
+                    $( "#b3_div_donde" ).hide();
+                }                
 
         },
 
         bindComponent: function(){
 
-                    $( "#b3_a_leche" ).on(
-                        'change, click', function(){
+                    $( "#b3_leche" ).on(
+                        'change', function(){
 
-                            bloque3a.leche= $(this).val();
-                            bloque3a.update();
+                            bloque3.data.leche= $(this).val();
+                            bloque3.update();
                     });
+
+                    $( "#b3_escuela" ).on(
+                        'change', function(){
+
+                            bloque3.data.escuela= $(this).val();
+                            bloque3.update();
+                    });
+
+                    $( "#b3_extra" ).on(
+                        'change', function(){
+
+                            bloque3.data.extra= $(this).val();
+                            bloque3.update();
+                    });
+
+
+                    $( "#b3_activity" ).on(
+                        'change', function(){
+
+                            bloque3.data.activity= $(this).val();
+                            bloque3.update();
+                    });                    
         },
 
         show_me: function(){
 
             // Mostrar el bloque
-            $( bloque3a.template.html ).show("slow");
-            bloque3a.estado= true;
+            $( bloque3.template.html ).show("slow");
+            bloque3.estado= true;
+            bloque3.data.edad=parseInt(bloque1.conf.edad)
         },
 
         hide_me: function(){
             // ocultar el bloque
-            $( bloque3a.template.html ).hide("slow");
-            bloque3a.estado= false;
+            $( bloque3.template.html ).hide("slow");
+            bloque3.estado= false;
         },  
 
         validate:function(){
@@ -814,130 +913,11 @@ var bloque3a ={   // bloque 3  bebes
         } ,
         parse: function(){
 
-            var tmp = $(bloque3a.template.html).find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
+            var tmp = $(bloque3.template.html).find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
 
             return parseData(tmp);
 
         }   
-}
-
-
-
-var bloque3b ={     //Bloque Niños
-        estado: false,
-        escuela:     '2',
-        extra:       '1',
-        activity:    '1', 
-
-        template: {
-                    // asigno el nombre del selector de bloque
-                    html: '#bloque_3_b'
-        },
-        update: function(){
-                // actualizo ante los cambios
-
-                if(bloque3b.escuela == '1'){
-                    // si tien control hecho muestra complejidad
-                    $( "#b3b_div_problem" ).show("slow");
-
-                }else{
-                    // si no se lo hizo muestra por que no..
-                    $( "#b3b_div_problem" ).hide("slow");
-                }
-
-                if(bloque3b.extra == '1'){
-                    // si tien control hecho muestra complejidad
-                    $( "#b3b_div_activity" ).show("slow");
-                    $( "#b3b_div_donde" ).hide();
-
-                }else{
-                   
-                    $( "#b3b_div_activity" ).hide("slow");
-                    $( "#b3b_div_donde" ).hide();
-                    bloque3b.activity='1';
-                    $( "#b3b_activity" ).val(bloque3b.activity);
-                    $("#b3b_activity[value=1]").attr("selected",true);
-                    
-                }
-
-
-                if(bloque3b.activity == '3' ||  bloque3b.activity == '2' ||  bloque3b.activity == '5'){
-                    // si tien control hecho muestra complejidad
-                    $( "#b3b_div_donde" ).show("slow");
-
-                }else{
-                    // si no se lo hizo muestra por que no..
-                    $( "#b3b_div_donde" ).hide();
-                }
-
-
-
-        },
-
-        init:  function(){
-            // funcion de inicializacion
-            bloque3b.hide_me();
-            bloque3b.bindComponent();
-            bloque3b.update();
-
-        },
-
-        bindComponent: function(){
-
-                    $( "#b3b_escuela" ).on(
-                        'change, click', function(){
-
-                            bloque3b.escuela= $(this).val();
-                            bloque3b.update();
-                    });
-
-                    $( "#b3b_extra" ).on(
-                        'change, click', function(){
-
-                            bloque3b.extra= $(this).val();
-                            bloque3b.update();
-                    });
-
-
-                    $( "#b3b_activity" ).on(
-                        'change', function(){
-
-                            bloque3b.activity= $(this).val();
-                            bloque3b.update();
-                    });
-
-        },
-
-        show_me: function(){
-
-            // Mostrar el bloque
-            $( bloque3b.template.html ).show("slow");
-            bloque3b.estado= true;
-        },
-
-        hide_me: function(){
-            // ocultar el bloque
-            $( bloque3b.template.html ).hide("slow");
-            bloque3b.estado= false;
-        }, 
-
-        validate:function(){
-
-
-
-
-
-        } ,
-        parse: function(){
-
-            var tmp = $(bloque3b.template.html).find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
-
-            return parseData(tmp);
-
-        }  
-
-
-
 }
 
 
@@ -991,7 +971,7 @@ var bloque4 ={       // mUjer
                 }
 
 
-                if(edad > 40 && responde){
+                if(edad >= 40 && responde){
                     // si es mayor a 40 debo mostrar 
                     $('#b4_div_mamo').show()
 
@@ -1738,7 +1718,7 @@ var bloque9 ={       // laboral
 
             el bloque 2 se guarda en general..
         */ 
-        var bloques = [bloque1, bloque2, bloque3a, bloque3b, bloque4, bloque5, bloque6, bloque7, bloque9];
+        var bloques = [bloque1, bloque2, bloque3, bloque3, bloque4, bloque5, bloque6, bloque7, bloque9];
         var arr = [];
         $.each( bloques , function (index, valor){
 
