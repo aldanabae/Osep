@@ -9,7 +9,7 @@
 						<div class="panel panel-default">
 						
 							<div class="panel-heading orange">Bloque Vivienda y Entorno</div>
-								<div class="panel-body">
+								<div class="panel-body" id="b8_spinner">
 
 									<blockquote>
 									<p>Datos Generales de la Vivienda</p>

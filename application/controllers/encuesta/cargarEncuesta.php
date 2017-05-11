@@ -141,7 +141,10 @@ function cargabloques_final()
                         $this->load->view('backend/sidebar',$data);
                         $this->load->view("backend/encuesta/cargar_encuesta_final_view");
                         $this->load->view('backend/footer');
-                        $js['javascript']= "bloques.js";
+                        //$js['javascript']= ["bloque_8.js","bloque3.js","bloqueaa.js"];
+                        $js['javascript']= ["vendor/spin.js","vendor/jquery.gritter.js","bloque_8.js"];
+
+
                         $this->load->view('backend/encuesta/script_js', $js);
                         
                     }
