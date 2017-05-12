@@ -78,7 +78,7 @@
 		_custom_timer: 0,
 		_item_count: 0,
 		_is_setup: 0,
-		_tpl_close: '<div class="gritter-close"></div>',
+		_tpl_close: '',
 		_tpl_title: '<span class="gritter-title">[[title]]</span>',
 		_tpl_item: '<div id="gritter-item-[[number]]" class="gritter-item-wrapper [[item_class]]" style="display:none"><div class="gritter-top"></div><div class="gritter-item">[[close]][[image]]<div class="[[class_name]]">[[title]]<p>[[text]]</p></div><div style="clear:both"></div></div><div class="gritter-bottom"></div></div>',
 		_tpl_wrap: '<div id="gritter-notice-wrapper"></div>',
@@ -181,7 +181,8 @@
 			
 			// Clicking (X) makes the perdy thing close
 			$(item).find('.gritter-close').click(function(){
-				Gritter.removeSpecific(number, {}, null, true);
+				//Gritter.removeSpecific(number, {}, null, true);
+
 			});
 			
 			return number;

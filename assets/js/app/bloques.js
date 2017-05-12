@@ -3,8 +3,6 @@
 var bloque_btn= $("#btn_encuesta");
 //var bloque9= $("#bloque_9");
 
-
-
 $(function() {
   // Handler for .ready() called.
 

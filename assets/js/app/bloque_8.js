@@ -9,7 +9,7 @@
 $(function() {
   // Handler for .ready() called.
 
-    
+  cargar.bind();
     
 });
 
@@ -29,14 +29,14 @@ var cargar = {
     , opacity: 0.25 // Opacity of the lines
     , rotate: 0 // The rotation offset
     , direction: 1 // 1: clockwise, -1: counterclockwise
-    , speed: 1 // Rounds per second
+    , speed: 2 // Rounds per second
     , trail: 60 // Afterglow percentage
     , fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
     , zIndex: 2e9 // The z-index (defaults to 2000000000)
     , className: 'spinner' // The CSS class to assign to the spinner
-    , top: '50%' // Top position relative to parent
+    , top: '60%' // Top position relative to parent
     , left: '50%' // Left position relative to parent
-    , shadow: false // Whether to render a shadow
+    , shadow: true // Whether to render a shadow
     , hwaccel: false // Whether to use hardware acceleration
     , position: 'absolute' // Element positioning
     },
@@ -62,10 +62,14 @@ var cargar = {
 
     notice: function(){
 
+        // seteo las rutas del sistema
+
+        var ruta = $('#url').val();
+
         // mando una alerta
         var unique_id = $.gritter.add({
             title: '<center><h3>Relevamiento almacenado correctamente</h3></center>',
-            text: '<div class="row" ><div class="col-xs-12 center"><a href="index.php/bienvenidaC" class="btn" type="reset"><i class="fa fa-address-card-o" aria-hidden="true"></i>Nuevo Relevamiento</a>&nbsp; &nbsp; &nbsp;<a href="index.php/bienvenidaC" class="btn" type="reset"><i class="fa fa-home" aria-hidden="true"></i>Menu principal</a>&nbsp; &nbsp; &nbsp;</div><br></div>',
+            text: '<div class="row" ><div class="col-xs-12 center"><a href="'+ ruta +'/encuesta/cargarEncuesta/" class="btn"><i class="fa fa-address-card-o" aria-hidden="true"></i> Nuevo Relevamiento</a>&nbsp; &nbsp; &nbsp;<a href="'+ ruta +'/" class="btn" ><i class="fa fa-home" aria-hidden="true"></i> Menu principal</a>&nbsp; &nbsp; &nbsp;</div><br></div>',
             image: '',
             sticky: true,
             time: '',
@@ -74,12 +78,19 @@ var cargar = {
   
     },
 
-
     bind:function(){
 
+        $('#guardar').on('click', function(event){
 
-        $('#gritter-sticky').on('click', cargar.notice());
 
+            event.preventDefault();
+            cargar.init();
+                setTimeout(function () {
+                            cargar.stop();
+                            cargar.notice();
+                }, 2500);
+
+        });
 
 
     }

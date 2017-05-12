@@ -39,7 +39,7 @@ class CargarEncuesta extends CI_Controller{
                         $data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
                         $this->load->view('backend/header');
                         $this->load->view('backend/sidebar',$data);
-                        $js['javascript']= "app.js";
+                        $js['javascript']= ["app.js"];
                         $valor['lib']= $this->quiz_lib->get_last_id_quiz();// prueba de libreria
                         $this->load->view("backend/encuesta/cargar_encuesta_inicio_view",$valor);
                         $this->load->view('backend/footer');
@@ -89,7 +89,7 @@ class CargarEncuesta extends CI_Controller{
 
                         $this->load->view("backend/encuesta/cargar_encuesta_view", $data);
                         $this->load->view('backend/footer');
-                        $js['javascript']= "bloques.js";
+                        $js['javascript']= ["bloques.js"];
                         $this->load->view('backend/encuesta/script_js', $js);
                         
                         }
