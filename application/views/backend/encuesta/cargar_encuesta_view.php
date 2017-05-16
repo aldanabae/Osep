@@ -239,7 +239,7 @@
 
 
 						<div class="form-group">
-							<label class="control-label col-xs-6">¿Contribuye ud con la economía familiar?(*)</label>
+							<label class="control-label col-xs-6">¿Contribuye usted con la economía familiar?(*)</label>
 							<div class="col-xs-6">
 								<select class="form-control" id="b9_contribulle" name="b9_contribulle" >
 								<option value="" disabled selected hidden>Seleccionar</option>
@@ -381,7 +381,6 @@
 
 							</div>
 
-
 						<div class="col-xs-6 col-xs-offset-6 ">
 						<br>
 
@@ -426,7 +425,7 @@
 					<div class="panel-body">
 				
 						<div class="form-group">							
-							<label class="control-label col-xs-6">En los últimos 6 meses, utilizaron el servicio de la Obra Social?</label>
+							<label class="control-label col-xs-6">En los últimos 6 meses, ha utilizado el servicio de la Obra Social?</label>
 							<div class="col-xs-6">
 								<select class="form-control" id= "b2_uso" name= "b2_uso">
 									<option value="0" checked>SI</option>
@@ -788,28 +787,7 @@
 							
 						
 						</div>
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
+
 			
 					</div>	
 		</div>
@@ -1420,20 +1398,6 @@
 							
 							
 						</div>	
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
 						
 						
 

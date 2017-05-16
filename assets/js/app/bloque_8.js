@@ -88,6 +88,7 @@ var cargar = {
                 setTimeout(function () {
                             cargar.stop();
                             cargar.notice();
+                            $("#btn_guardar").hide()
                 }, 2500);
 
         });
