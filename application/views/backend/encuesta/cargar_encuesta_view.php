@@ -798,7 +798,7 @@
 <div class="row form-horizontal" id="bloque_4">      <!-- Bloque 4 mujeres -->
 			<div class="panel panel-default">
 			
-				<div class="panel-heading orange">Bloque Salud  de las mujeres</div>
+				<div class="panel-heading orange">Salud  de las mujeres</div>
 					<div class="panel-body">
 
 
@@ -889,8 +889,9 @@
 							<label class="control-label col-xs-6">¿ En los últimos  2 años concurrió a realizarse el Papanicolaou?</label>
 							<div class="col-xs-3">
 								<select class="form-control" id="b4_pap">
-								<option value="0" >SI</option>
-								<option value="1">NO</option>							
+									<option value="0" >SI</option>
+									<option value="1">NO</option>
+									<option value="2">No sabe/no contesta</option>							
 								</select>
 							</div>
 							<div class="col-xs-3" id="b4_div_pap_si" >
@@ -1053,7 +1054,7 @@
 
 						<div class="form-group">
 							
-							<label class="control-label col-xs-6">Si tiene una  dificultad de salud  o una urgencia, ¿Cuenta con alguien que lo pueda ayudar a resolverla?</label>
+							<label class="control-label col-xs-6">Si tiene una  dificultad de salud  o una urgencia, ¿cuenta con alguien que lo pueda ayudar a resolverla?</label>
 							<div class="col-xs-6">
 								<select class="form-control">
 								<option value="" disabled selected hidden>Seleccionar</option>
@@ -1087,7 +1088,7 @@
 							</div>
 						</div>
 
-						<!--  aqui va el cual-->
+						 aqui va el cual-->
 
 
 
@@ -1209,7 +1210,7 @@
 <div class="row form-horizontal" id="bloque_6">      <!-- Bloque 6 discapacidad -->
 			<div class="panel panel-default">
 			
-				<div class="panel-heading">Afiliados con discapacidad</div>
+				<div class="panel-heading orange">Afiliados con discapacidad</div>
 					<div class="panel-body">
 
 
@@ -1413,12 +1414,10 @@
 <div class="row form-horizontal" id="bloque_7">      <!-- Bloque 7 Embarazadas -->
 			<div class="panel panel-default">
 			
-				<div class="panel-heading">Bloque Salud de la embarazada.</div>
+				<div class="panel-heading orange">Salud de la Embarazada</div>
 					<div class="panel-body">
 				
-						<blockquote>
-							<p>Salud de la embarazada.</p>
-						</blockquote>
+
 						<div class="form-group">
 							
 							<label class="control-label col-xs-6">¿ De cuantos meses esta embarazada ?</label>
@@ -1454,8 +1453,8 @@
 
 						
 						<div class="form-group" id="b7_div_complejo">
-							<label class="control-label col-xs-6" for="b7_complejo">¿ Que tan complicado le resulto en esa oportunidad todo el proceso que implicó hacerse el control , 
-																					teniendo en cuenta los pasos desde conseguir turno hasta que la atiendan ?</label>
+							<label class="control-label col-xs-6" for="b7_complejo">¿ Qué tan complicado le resultó en esa oportunidad todo el proceso que implicó 
+																						hacerse el control, desde que consiguió el turno hasta que la atendieron ?</label>
 							<div class="col-xs-6">
 								<select class="form-control" id="b7_complejo" name ="b7_complejo">
 								<option value="1">Simple</option>

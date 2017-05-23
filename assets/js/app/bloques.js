@@ -956,9 +956,20 @@ var bloque4 ={       // mUjer
                                 $( "#b4_div_pap_no" ).hide("slow");
 
                         }else{
+                                // si puso no sabe no contesta op 2 entonces no pregunta nada
+                                if (bloque4.data.pap.uso == '2' || ""){
 
-                                $( "#b4_div_pap_si" ).hide("slow");
-                                $( "#b4_div_pap_no" ).show("slow");
+                                    $( "#b4_div_pap_si" ).hide("slow");
+                                    $( "#b4_div_pap_no" ).hide("slow");
+
+                                }else{
+
+                                    $( "#b4_div_pap_si" ).hide("slow");
+                                    $( "#b4_div_pap_no" ).show("slow");
+
+                                }
+
+
                         }
 
 

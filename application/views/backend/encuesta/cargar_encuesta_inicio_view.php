@@ -93,7 +93,7 @@
                             <div class="form-group">
                                 <label class="control-label col-xs-6">Departamento(*)</label>
                                 <div class="col-xs-6">
-                                    <select class="form-control" id="departamento" name ="3" id ="select_dep" onchange="cargarLocalidades()">
+                                    <select class="form-control" id="departamento" name ="3" id ="select_dep" onchange="cargarLocalidades()"required>
                                     		<option value="" disabled selected hidden>Seleccionar</option>
                                             <option value="1">Capital</option>
                                             <option value="17">General Alvear</option>
@@ -120,12 +120,27 @@
                             <div class="form-group">
                                 <label class="control-label col-xs-6">Distrito(*)</label>
                                 <div class="col-xs-6">
-                                    <select class="form-control" id="localidad" name ="4" >
+                                    <select class="form-control" id="localidad" name ="4" required>
                                     
 
                                     </select>
                                 </div>
                             </div>
+
+
+                            <div class="form-group">
+                                <label for="inputPassword" class="control-label col-xs-6">Calle(*)</label>
+                                <div class="col-xs-6">
+                                    <input type="text" name = "ini_calle" class="form-control"  id= "calle" >
+                                </div>
+                            </div>				 
+                            
+                            <div class="form-group">
+                                <label for="inputPassword" class="control-label col-xs-6">Número(*)</label>
+                                <div class="col-xs-6">
+                                    <input type="number" class="form-control"  name ="numero" id= "numero" >
+                                </div>
+                            </div><hr>	
 
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Barrio</label>
@@ -146,22 +161,10 @@
                             </div>
 
                             
-                            <hr>
+                            
                             
 
-                            <div class="form-group">
-                                <label for="inputPassword" class="control-label col-xs-6">Calle(*)</label>
-                                <div class="col-xs-6">
-                                    <input type="text" name = "ini_calle" class="form-control"  id= "calle" >
-                                </div>
-                            </div>				 
-                            
-                            <div class="form-group">
-                                <label for="inputPassword" class="control-label col-xs-6">Número(*)</label>
-                                <div class="col-xs-6">
-                                    <input type="number" class="form-control"  name ="numero" id= "numero" >
-                                </div>
-                            </div>					      
+				      
                             
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Entre calles</label>
@@ -171,14 +174,14 @@
                             </div>		                           
                             	 
                             <div class="form-group">
-                                <label for="inputPassword" class="control-label col-xs-6">Teléfono del encuestado(*)</label>
+                                <label for="inputPassword" class="control-label col-xs-6">Teléfono del titular(*)</label>
                                 <div class="col-xs-6">
                                     <input type="number" class="form-control"  name ="tel_titular" id= "tel_titular" required>
                                 </div>
                             </div>	
 
                             <div class="form-group">
-                                <label for="inputPassword" class="control-label col-xs-6">Teléfono para supervisión(*)</label>
+                                <label for="inputPassword" class="control-label col-xs-6">Teléfono para supervisión (encuestado)</label>
                                 <div class="col-xs-6">
                                     <input type="number" class="form-control" name ="tel_super" id= "tel_super" >
                                 </div>
@@ -189,16 +192,17 @@
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">¿Cuántas personas viven habitualmente en este domicilio?(*)</label>
                                 <div class="col-xs-6">
-                                    <input type="number" class="form-control"  name= "cantidad" required>
+                                    <input type="number" class="form-control"  name= "cantidad"  id= "cantidad" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-xs-6">¿Hay alguna mujer embarazada?(*)</label>
                                 <div class="col-xs-6">
-                                    <select class="form-control" name= "embarazo" id= "embarazo" placeholder= "seleccionar">
+                                    <select class="form-control" name= "embarazo" id= "embarazo" required>
+                                    <option value="" disabled selected hidden>Seleccionar</option>
                                     <option value="0">SI</option>
-                                    <option value="1" selected >NO</option>
+                                    <option value="1" >NO</option>
                                     </select>
                                 </div>
     					    </div>
