@@ -20,13 +20,13 @@
               <label>Mostrar 
               <select aria-controls="dynamic-table" class="form-control input-sm" name="longitudTabla">
                 <option value="10000">Todos</option>
-                <option value="1">1</option>
+                <option value="10">10</option>
                 <option value="20">20</option>
                 <option value="40">40</option>
                 <option value="60">60</option>
                 <option value="80">80</option>
                 <option value="100">100</option>
-              </select> lineas
+              </select> lineas 
               </label>
 
               <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
@@ -88,7 +88,7 @@
               <td><?= $tabla->apellidoE;?> <?php echo $tabla->nombreE;?></td><!-- Nombre via de administracion no codigo -->
               
               <td>
-                <div class="hidden-sm hidden-xs action-buttons">
+                <div class="hidden-sm hidden-xs action-buttons text-center">
 
                     <a class="orange" href="<?php echo base_url() ?>relevamiento/relevamientoC/verRelevamiento/<?php echo $tabla->idRelevamiento;?>">
                       <i class="ui-icon ace-icon fa fa-search-plus orange bigger-130"></i>Ver Relevamiento

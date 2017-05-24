@@ -159,7 +159,7 @@
 								</li>	
 
 								<li class="">
-									<a href="<?php echo base_url()?>auditoria/auditoriaC">
+									<a href="<?php echo base_url()?>relevamiento/relevamientoC">
 										<i class="menu-icon fa fa-caret-right"></i>
 										Ver Relevamientos
 									</a>
