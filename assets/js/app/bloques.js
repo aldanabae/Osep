@@ -71,6 +71,7 @@ var bloque1= {    // Bloque General
             ocupacion:  null,
             pariente: '',
             acargo:[],
+            encuestados: 1,
             update: function(){
 
                 bloque1.update_data();
@@ -507,7 +508,7 @@ var bloque1= {    // Bloque General
 
                     var edad = parseInt(bloque1.conf.edad);
 
-                            if (edad >= 65){  //si es mayor a 56  despliego ancianidad
+                            if ((edad >= 65 ) && (bloque1.conf.discapacidad === "1") ){  //si es mayor a 65 y no tiene discapacidad  despliego ancianidad
 
                                     bloque5.show_me();     // adultos
                             }else{
@@ -1191,7 +1192,7 @@ var bloque5 ={       // Adultos mayores
                     });
 
                     $( "#b5_medico" ).on(
-                        'change, click', function(){
+                        'change', function(){
 
                             bloque5.data.medico= $(this).val();
                             bloque5.update();
@@ -1209,7 +1210,7 @@ var bloque5 ={       // Adultos mayores
                             }else{
 
                                 $('#b5_div_cual').hide("slow");
-                                $('#b5_div_cual').val('');
+                                $('#b5_cual').val('');
                             }
                             bloque5.update();
 

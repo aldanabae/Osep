@@ -740,7 +740,7 @@
 
 						</div>	
 						
-						<div class="form-group" id="b5_div_consulta_si">
+						<div class="form-group" id="b3_div_consulta_si">
 							
 							<label class="control-label col-xs-6">¿Dónde concurrió a atenderse la última vez? </label>
 							<div class="col-xs-6">
@@ -755,7 +755,7 @@
 						</div>	
 
 						
-						<div id="b5_div_consulta_no">
+						<div id="b3_div_consulta_no">
 						
 							<div class="form-group" >
 								
@@ -774,7 +774,7 @@
 
 							</div>	
 
-							<div class="form-group" id="b5_div_cual">
+							<div class="form-group" id="b3_div_cual">
 								<label class="control-label col-xs-6" for="b3_cual"> Cual?</label>
 
 								<div class="col-xs-6" >
@@ -886,7 +886,7 @@
 
 						<div class="form-group" id="b4_div_pap">
 							
-							<label class="control-label col-xs-6">¿ En los últimos  2 años concurrió a realizarse el Papanicolaou?</label>
+							<label class="control-label col-xs-6">¿ En los últimos  2 años concurrió a realizarse el Papanicolau?</label>
 							<div class="col-xs-3">
 								<select class="form-control" id="b4_pap">
 									<option value="0" >SI</option>
@@ -1074,7 +1074,7 @@
 								<select class="form-control" id="b5_activity" name="b5_activity">
 								<option value="" disabled selected hidden>Seleccionar</option>
 								<option value="1">SI</option>
-								<option value="2" selected>NO</option>							
+								<option value="2" >NO</option>							
 								</select>
 							</div>
 
@@ -1245,9 +1245,10 @@
 							<label class="control-label col-xs-6">¿Realizó el empadronamiento en OSEP, Es decir hizo el tramite de registro de su situación en la obra social?</label>
 							<div class="col-xs-6">
 								<select class="form-control">
-								<option value="1">SI</option>
-								<option value="2">NO</option>							
-								<option value="3">NO sabia que habia que hacerlo</option>							
+									<option value="" disabled selected hidden>Seleccionar</option>
+									<option value="1">SI</option>
+									<option value="2">NO</option>							
+									<option value="3">NO sabia que habia que hacerlo</option>							
 								</select>
 							</div>
 
@@ -1297,7 +1298,7 @@
 
 						<div class="form-group" id = "b6_div_profesional">
 							
-							<label class="control-label col-xs-6">De los profesionales de la salud que mencionó, ¿ Alguno es profesional de cabecera ?</label>
+							<label class="control-label col-xs-6">De los profesionales de la salud que mencionó, ¿ alguno es profesional de cabecera ?</label>
 							<div class="col-xs-6">
 
 								<div class="checkbox ">
@@ -1310,10 +1311,10 @@
 								<label><input type="checkbox" value="3" >Psicólogo - Psiquiatra</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" value="4" >Otro profesional de la salud</label>
+								<label><input type="checkbox" value="4" >Médico Fisiátra</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" value="5" >Ninguno</label>
+								<label><input type="checkbox" value="5" >Otro profesional de la salud</label>
 								</div>
 							</div>
 
@@ -1390,9 +1391,6 @@
 									</div>
 								</div>
 
-
-
-								
 							
 							</div>
 							
@@ -1518,7 +1516,17 @@
 						
 						</div>
 
-
+						<div class="form-group">
+							<label class="control-label col-xs-6" for="">¿En los últimos dos años, concurrió a realizarse un papanicolau?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+								<option value="1">Si</option>
+								<option value="2">NO</option>							
+								<option value="3">No sabe/no contesta</option>							
+								</select>
+							</div>
+						
+						</div>
 			
 					</div>	
 
