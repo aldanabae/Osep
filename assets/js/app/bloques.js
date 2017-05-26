@@ -20,6 +20,7 @@ var encuesta ={
             titular: true,
             afiliado: '',
             integrantes: 0,
+            responde: false,
             embarazo: {
                 estado: false,
                 edad  : [],
@@ -45,7 +46,7 @@ var encuesta ={
 
                     }
 
-                    encuesta.integrantes = $('#integrantes').val();
+                    encuesta.integrantes = parseInt( $('#integrantes').val());
 
                     
 
@@ -349,6 +350,10 @@ var bloque1= {    // Bloque General
                  $( "#b1_adicional").show();
              }
 
+
+
+
+
         },
 
         bindComponent: function(){
@@ -464,9 +469,6 @@ var bloque1= {    // Bloque General
 
                             bloque1.conf.pariente= $(this).val();
 
-
-
-
                             bloque1.conf.update();
                             
 
@@ -493,6 +495,28 @@ var bloque1= {    // Bloque General
 
                             
                     });  
+
+
+                    $( "#responde" ).on(
+                        'click', function(){
+
+ 
+                        if($("#responde").is(':checked')) {  
+                            encuesta.responde = true;
+                        } else {  
+                            encuesta.responde = false;
+                        }  
+                    
+                        bloque1.conf.update();
+
+                    });  
+
+
+
+
+
+
+
                         
 
 
@@ -561,13 +585,31 @@ var bloque1= {    // Bloque General
 
                 }
 
-                bloque_btn.show();     // botonera abajo             
+                bloque_btn.show();     // botonera abajo   
+
+
+                    // compruebo encuestados y cantidad de personas
+
+                if(encuesta.count === (encuesta.integrantes -1)  ){
+
+                    $('#btn_nuevo').hide();     // muestro continuar   
+                    $('#btn_continuar').show();     // oculto  nuevo integrante  
+                    
+                }else{
+
+                   $('#btn_nuevo').show();     // muestro continuar   
+                   $('#btn_continuar').hide();     // oculto  nuevo integrante  
+
+                }          
             
             }else{
 
-
             alert('Los datos son incorrectos o faltan');
-            }
+        }
+        
+
+
+
      
         },
 
