@@ -48,12 +48,10 @@ var encuesta ={
 
                     encuesta.integrantes = parseInt( $('#integrantes').val());
 
-                    
-
-
-                  }
             
 
+                  }
+        
 
 }
 
@@ -99,8 +97,8 @@ var bloque1= {    // Bloque General
             bloque6.estado= false,
             bloque5.estado= false,
             bloque4.estado= false,
-            bloque3.estado= false, // unificar
-            bloque2.estado= false // unificar
+            bloque3.estado= false // unificar
+            
     
         },
 
@@ -140,7 +138,6 @@ var bloque1= {    // Bloque General
 
             bloque_btn.hide();     // botonera abajo 
             encuesta.init();
-            bloque2.init();
             bloque3.init();
             bloque4.init();
             bloque5.init();
@@ -192,7 +189,7 @@ var bloque1= {    // Bloque General
                         $("#b1_cober").append( '<option value="'+ key +'">'+ value +'</option>');
 
                     });
-                bloque2.show_me();
+                
                 $("#afiliado_externo").show();
 
 
@@ -205,7 +202,7 @@ var bloque1= {    // Bloque General
                     $("#b1_cober").append( '<option value="'+ key +'">'+ value +'</option>');
 
                 });                
-                bloque2.hide_me();
+                
                 $("#afiliado_externo").hide(); 
 
             }
@@ -528,7 +525,7 @@ var bloque1= {    // Bloque General
 
                 if(bloque1.conf.osep == "0"){
 
-                    bloque2.show_me();
+                    
 
                     var edad = parseInt(bloque1.conf.edad);
 
@@ -571,15 +568,30 @@ var bloque1= {    // Bloque General
                             if(bloque1.conf.genero == 'f'  )
                             {
                                 // si es mujer y esta embarazada  despliego  
-                                
-                                if(edad > 15 && edad <= 64  &&  bloque1.conf.embarazo == "1" ){
+
+                                var responde = $('#responde').prop('checked') ;
+
+                                if(edad >= 65 &&  responde){
 
                                     bloque4.show_me();     // mujeres
 
                                 }else{
 
-                                     bloque4.hide_me();     // mujeres
+
+                                    if(edad > 15  &&  bloque1.conf.embarazo == "1" ){
+
+                                        bloque4.show_me();     // mujeres
+
+                                    }else{
+
+                                        bloque4.hide_me();     // mujeres
+                                    }
+
+
                                 }
+
+                                
+
 
                             }
 
@@ -670,97 +682,6 @@ var bloque1= {    // Bloque General
 
 }
 
-
-var bloque2 ={   // bloque uso de Obra social
-    estado: true,
-    uso:     '0',
-    template: {
-                // asigno el nombre del selector de bloque
-                html: '#bloque_2'
-    },
-
-
-    update: function(){
-            // actualizo ante los cambios
-
-            if(bloque2.uso == '0'){
-                $( "#b2_si" ).show("slow");
-                $( "#b2_area" ).show("slow");
-                $( "#b2_no" ).hide("slow");
-
-
-            }else{
-
-                $( "#b2_si" ).hide("slow");
-                $( "#b2_area" ).hide("slow");
-                $( "#b2_no" ).show("slow");
-            }
-
-
-    },
-
-    init:  function(){
-        // funcion de inicializacion
-        //bloque2.hide_me();
-        bloque2.bindComponent();
-        bloque2.update();
-
-    },
-
-
-    bindComponent: function(){
-
-                $( "#b2_uso" ).on(
-                    'change, click', function(){
-
-                        bloque2.uso= $(this).val();
-                        bloque2.update();
-
-                 });
-
-    },
-
-    show_me: function(){
-
-        // Mostrar el bloque
-        $( bloque2.template.html ).show("slow");
-        bloque2.estado= true;
-    },
-
-    hide_me: function(){
-        // ocultar el bloque
-        $( bloque2.template.html ).hide("slow");
-        bloque2.estado= false;
-
-    },  
-
-    validate:function(){
-
-        var validacion = false;
-
-            if($("#b2_uso").is(':visible')){
-
-                if($('#b2_uso').val() != ""){
-
-                    validacion = true;
-
-                }else{
-                    validacion = false;
-                }
-            }   
-
-        return  validacion;
-
-    },
-
-    parse: function(){
-
-        var tmp = $(bloque2.template.html).find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
-
-        return parseData(tmp);
-
-    }
-}
 
 
 // TODO  se deben unificar los dos bloques 3  3a  y 3b  segun especificaciones
@@ -989,6 +910,19 @@ var bloque4 ={       // mUjer
 
                 var edad = parseInt(bloque1.conf.edad);
                 var responde = $('#responde').prop('checked') ;
+
+
+                if(edad >=65 && responde){
+
+                    $('#b4_salud').hide()
+
+                }else{
+
+                    $('#b4_salud').show()
+
+                }
+
+
                 if(edad > 18 && responde){
                     // si es mayor a 18 debo mostrar pap
                     $('#b4_div_pap').show()
@@ -1770,7 +1704,7 @@ var bloque9 ={       // laboral
 
             el bloque 2 se guarda en general..
         */ 
-        var bloques = [bloque1, bloque2, bloque3, bloque3, bloque4, bloque5, bloque6, bloque7, bloque9];
+        var bloques = [bloque1, bloque3, bloque3, bloque4, bloque5, bloque6, bloque7, bloque9];
         var arr = [];
         $.each( bloques , function (index, valor){
 

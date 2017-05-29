@@ -418,75 +418,6 @@
 			
 	
 	
- 	<div class="row form-horizontal " id="bloque_2">    <!-- bloque 2 servicios de Salud -->
-		<div class="panel  panel-default">
-			
-				<div class="panel-heading orange">Utilización de servicios de Salud</div>
-					<div class="panel-body">
-				
-						<div class="form-group">							
-							<label class="control-label col-xs-6">En los últimos 6 meses, ha utilizado el servicio de la Obra Social?</label>
-							<div class="col-xs-6">
-								<select class="form-control" id= "b2_uso" name= "b2_uso">
-									<option value="0" checked>SI</option>
-									<option value="1">NO</option>							
-								</select>
-							</div>
-						</div>	
-
-					
-
-					<div class="form-group" id="b2_area">
-						<label class="control-label col-xs-6" for="postalAddress">¿Para que lo utilizó?(*)</label>
-						<div class="col-xs-6">
-							<textarea rows="3" class="form-control" id="b2_motivo" name = "b2_area" ></textarea>
-						</div>
-					</div>
-
-
-					<div class="form-group" id="b2_si">							
-						<label class="control-label col-xs-6"></label>
-						<div class="col-xs-6">
-							<select class="form-control" name="b2_si">
-							<option value="" disabled selected hidden>Seleccionar</option>
-							<option value="1">Fue a un efector de OSEP</option>
-							<option value="2">Fue a un prestador Privado</option>							
-							<option value="3">Fue a un Hospital o centro de Salud Publico</option>							
-							</select>
-						</div>
-
-					</div>
-
-
-					<div class="form-group" id="b2_no">							
-						<label class="control-label col-xs-6"></label>
-						<div class="col-xs-6">
-							<select class="form-control" name="b2_no">
-							<option value="" disabled selected hidden>Seleccionar Motivo</option>
-							<option value="1">Ningun miembro de la familia se enfermo o tuvo accidente</option>
-							<option value="2">No lo consideró necesario asi que no hizo nada</option>							
-							<option value="3">No lo consideró necesario y tomo remedio caseros</option>							
-							<option value="4">Decidio tomar sus medicamentos habituales</option>							
-							<option value="5">Prefirio consultar en la farmacia y comprar los medicamentos</option>							
-							<option value="6">Quiso consultar pero no tuvo tiempo</option>							
-							<option value="7">Quiso consultar pero no tuvo dinero</option>							
-							<option value="8">Quiso consultar pero le cuesta mucho llegar al lugar de atencion</option>							
-							<option value="9">Quiso consultar pero el horario de atencion no coincidia</option>							
-							<option value="10">Pidio turno pero no lo obtuvo</option>							
-							<option value="11">Consiguio turno pero todavia no le toca</option>													
-							</select>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="control-label col-xs-6" for="b2_otro">Otro motivo:</label>
-						<div class="col-xs-6">
-							<input type="text" class="form-control" id="b2_otro" name="b2_otro">
-						</div>
-					</div>
-				</div>	
-		</div>	
-	</div>	 <!-- Cierre row -->
 
 
 <!--BLOQUE ESPECIAL BOTON GENERADOR-->
@@ -800,8 +731,8 @@
 			
 				<div class="panel-heading orange">Salud  de las mujeres</div>
 					<div class="panel-body">
-
-
+						<!--diferenciar las preguntas por edades-->
+					<div id="b4_salud">
 						<div id="b4_div_consulta">
 							<div class="form-group" >
 														
@@ -853,13 +784,17 @@
 										</div>
 									</div>
 
-									<div class="form-group" id="b4_div_otro">
 
-										<div class="col-xs-6 col-xs-offset-6" >
+
+									<div class="form-group" id="b4_div_otro">					
+										<label class="control-label col-xs-6"> ¿Cual? </label>
+
+										<div class="col-xs-6">
 											<input type="text" class="form-control" name = "b4_otro" id="b4_otro" >
-										</div>
 
+										</div>
 									</div>
+
 								<hr>
 							</div>
 
@@ -868,20 +803,24 @@
 						</div> <!--cierro div consulta-->
 					
 				
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">¿ Como diría que es su estado general de salud en este momento?</label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option value="" disabled selected hidden>Seleccionar</option>
-								<option >Muy bueno</option>
-								<option >Bueno</option>							
-								<option >Regular</option>							
-								<option >Malo</option>							
-								</select>
-							</div>
+							<div class="form-group">
+								
+								<label class="control-label col-xs-6">¿ Como diría que es su estado general de salud en este momento?</label>
+								<div class="col-xs-6">
+									<select class="form-control">
+									<option value="" disabled selected hidden>Seleccionar</option>
+									<option >Muy bueno</option>
+									<option >Bueno</option>							
+									<option >Regular</option>							
+									<option >Malo</option>							
+									</select>
+								</div>
 
-						</div>	
+							</div>	
+
+
+					</div> <!--cierro diferenciar preguntas-->
+
 
 
 						<div class="form-group" id="b4_div_pap">
