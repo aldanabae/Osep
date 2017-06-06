@@ -546,6 +546,9 @@ var bloque1= {    // Bloque General
 
                             }
 
+
+
+
                             if (bloque1.conf.discapacidad == '0'){
 
                                 bloque6.show_me();     // discapacidad
@@ -567,20 +570,21 @@ var bloque1= {    // Bloque General
 
                             if(bloque1.conf.genero == 'f'  )
                             {
-                                // si es mujer y esta embarazada  despliego  
+                                // me fijo si esta respondiendo la encuesta y si es mujer
 
                                 var responde = $('#responde').prop('checked') ;
 
-                                if(edad >= 65 &&  responde){
+                                if((edad == 65 &&  responde) && ( bloque1.conf.embarazo == "1") ){
 
                                     bloque4.show_me();     // mujeres
 
                                 }else{
 
 
-                                    if(edad > 15  &&  bloque1.conf.embarazo == "1" ){
+                                    if(((edad >= 15 && edad < 65) )  && ( bloque1.conf.embarazo == "1") ){
 
-                                        bloque4.show_me();     // mujeres
+                                        bloque4.show_me();     // mujere
+
 
                                     }else{
 
