@@ -7,6 +7,9 @@ $(function() {
     })
 
 
+    $('[data-toggle="popover"]').popover(); 
+
+
     $("#encuesta_ini").submit(function () { 
 
         var retorno = false;   // variable de retorno para el submit
@@ -200,6 +203,7 @@ var filtro ={
 			}
 
 
+			
 
 
 
@@ -313,18 +317,38 @@ var filtro ={
 
 							var numero = $('#numero').val();
 
-								if (numero != ""){  
+							if (numero != ""){  
 
-									filtro.data.numero = true ;
-										
-								}else{
+								filtro.data.numero = true ;
+									
+							}else{
 
-									filtro.data.numero = false ;
+								filtro.data.numero = false ;
 
-								}
+							}
 
 							filtro.update();
                     });
+                    $( "#b0_sin_numero" ).on(
+                        'change', function(){  // evento para colocar calle sin numero
+							
+							$('#numero').val('');
+							if ($('#b0_sin_numero').prop('checked')){  
+
+								filtro.data.numero = true ;
+								$('#numero').attr('disabled', 'true');
+									
+							}else{
+
+								$('#numero').removeAttr("disabled");
+								filtro.data.numero = false ;
+
+							}
+
+							filtro.update();
+                    });
+
+
 
         },
 

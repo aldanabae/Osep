@@ -70,28 +70,28 @@
                         
 			
                             <div class="form-group">
-                                <label for="inputName" class="control-label col-xs-6">Facilitador(*)</label>
+                                <label for="inputName" class="control-label col-xs-6">Facilitador (*)</label>
                                 <div class="col-xs-6">
                                     <input type="name" class="form-control" placeholder="Combo Facilitadores" name= "1" id="nom_facilitador"  required>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="inputName" class="control-label col-xs-6">Número Relevamiento(*)</label>
+                                <label for="inputName" class="control-label col-xs-6">Número Relevamiento (*)</label>
                                 <div class="col-xs-6">
                                     <input type="number" class="form-control"  name= "nroRelev" id="nroRelev" value= "<?php echo($lib['nroRelevamiento']); ?>" required>
                                 </div>
                             </div>	                            
                             
                             <div class="form-group">
-                                <label for="fecha_relevamiento" class="control-label col-xs-6">Fecha Relevamiento(*)</label>
+                                <label for="fecha_relevamiento" class="control-label col-xs-6">Fecha Relevamiento (*)</label>
                                 <div class="col-xs-6">
                                     <input class="form-control date-picker" id="id-date-picker-1" data-date-format="dd-mm-yyyy" type="text" name= "2" id= "fecha_relevamiento" required>
                                 </div>
                             </div>
                             
                             <div class="form-group">
-                                <label class="control-label col-xs-6">Departamento(*)</label>
+                                <label class="control-label col-xs-6">Departamento (*)</label>
                                 <div class="col-xs-6">
                                     <select class="form-control" id="departamento" name ="3" id ="select_dep" onchange="cargarLocalidades()"required>
                                     		<option value="" disabled selected hidden>Seleccionar</option>
@@ -118,7 +118,7 @@
                             </div>
                             
                             <div class="form-group">
-                                <label class="control-label col-xs-6">Distrito(*)</label>
+                                <label class="control-label col-xs-6">Distrito (*)</label>
                                 <div class="col-xs-6">
                                     <select class="form-control" id="localidad" name ="4" required>
                                     
@@ -129,16 +129,19 @@
 
 
                             <div class="form-group">
-                                <label for="inputPassword" class="control-label col-xs-6">Calle(*)</label>
+                                <label for="inputPassword" class="control-label col-xs-6">Calle (*)</label>
                                 <div class="col-xs-6">
                                     <input type="text" name = "ini_calle" class="form-control"  id= "calle" >
                                 </div>
                             </div>				 
                             
                             <div class="form-group">
-                                <label for="inputPassword" class="control-label col-xs-6">Número(*)</label>
-                                <div class="col-xs-6">
+                                <label  class="control-label col-xs-6">Número (*)</label>
+                                <div class="col-xs-4">
                                     <input type="number" class="form-control"  name ="numero" id= "numero" >
+                                </div>
+                                <div class="col-xs-2 checkbox">
+                                    <label><input type="checkbox" value="1" id="b0_sin_numero">Sin número</label>
                                 </div>
                             </div><hr>	
 
@@ -150,11 +153,11 @@
                             </div>
 
                             <div class="form-group" id="manzana">
-                                <label for="inputPassword" class="control-label col-xs-6">Manzana(*)</label>
+                                <label for="inputPassword" class="control-label col-xs-6">Manzana (*)</label>
                                 <div class="col-xs-2">
                                     <input type="text" class="form-control"  name="5" id="barrio_m">
                                 </div>
-                                <label for="inputPassword" class="control-label col-xs-2">Casa(*)</label>
+                                <label for="inputPassword" class="control-label col-xs-2">Casa (*)</label>
                                 <div class="col-xs-2">
                                     <input type="number" class="form-control"  name="5" id="barrio_c">
                                 </div>
@@ -174,7 +177,7 @@
                             </div>		                           
                             	 
                             <div class="form-group">
-                                <label for="inputPassword" class="control-label col-xs-6">Teléfono del titular(*)</label>
+                                <label for="inputPassword" class="control-label col-xs-6">Teléfono del titular (*)</label>
                                 <div class="col-xs-6">
                                     <input type="number" class="form-control"  name ="tel_titular" id= "tel_titular" required>
                                 </div>
@@ -190,14 +193,14 @@
 <!-- bloque de cantidad-->
 
                             <div class="form-group">
-                                <label for="inputPassword" class="control-label col-xs-6">¿Cuántas personas viven habitualmente en este domicilio?(*)</label>
+                                <label for="inputPassword" class="control-label col-xs-6">¿Cuántas personas viven habitualmente en este domicilio? (*)</label>
                                 <div class="col-xs-6">
                                     <input type="number" class="form-control"  name= "cantidad"  id= "cantidad" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-xs-6">¿Hay alguna mujer embarazada?(*)</label>
+                                <label class="control-label col-xs-6">¿Hay alguna mujer embarazada? (*)</label>
                                 <div class="col-xs-6">
                                     <select class="form-control" name= "embarazo" id= "embarazo" required>
                                     <option value="" disabled selected hidden>Seleccionar</option>
@@ -236,7 +239,16 @@
                                 <div class="col-xs-6">
                                     <input type="text" class="form-control"  name= "observaciones">
                                 </div>
-                            </div>	
+                            </div>
+
+
+                            
+                            <div class="form-group">
+                                <label for="warning" class="control-label col-xs-6 text-warning">Rellene los campos obligatorios marcados con un asterisco (*) </label>
+                                <div class="col-xs-6">
+                                    
+                                </div>
+                            </div>		
                         </div> 
                 </div>		
         </div>	

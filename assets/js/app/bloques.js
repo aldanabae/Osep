@@ -118,7 +118,9 @@ var bloque1= {    // Bloque General
             bloque4.estado= false,
             bloque3a.estado= false // unificar
             bloque3b.estado= false // unificar
-            
+            $('body, html').animate({
+            scrollTop: '0px'
+            }, 300);
     
         },
 
@@ -130,9 +132,12 @@ var bloque1= {    // Bloque General
 
         data:{
 
-                vinculo:['Conyuge o Pareja Conviviente','Hijo /a','Padre Madre',
-                        'Suegro /a', 'Yerno / Nuera','Nieto /a',
+                vinculo:['Cónyuge o Pareja Conviviente','Hijo /a','Padre o Madre',
+                        'Suegro /a', 'Yerno o Nuera','Nieto /a',
                         'Otro Familiar','Otro no Familiar'],
+
+
+
                 
                 tOsep:{
                         si:['No, sólo OSEP',
@@ -171,7 +176,7 @@ var bloque1= {    // Bloque General
             if(encuesta.count == 0){
                 // cargo el combo solo con el titular
                 
-                $("#lblTitular").text('Apellido y nombre del Titular:')
+                $("#lblTitular").text('Apellido y nombre del titular ')
                 $("#b1_parent").html( '<option value="1">Titular</option>');
                 $("#tOsep").hide();
 
@@ -181,7 +186,7 @@ var bloque1= {    // Bloque General
                 $("#tOsep").show(); // muestro opciones de cobertura
                 
 
-                $("#lblTitular").text('Apellido y Nombre:')
+                $("#lblTitular").text('Apellido y nombre')
                 $("#b1_parent").html( '');
                 var indice= 0;
                 $.each(bloque1.data.vinculo, function(key, value){
@@ -1674,13 +1679,13 @@ var bloque7 ={       // embarazo
         bindComponent: function(){
 
                     $( "#b7_uso" ).on(
-                        'change, click', function(){
+                        'change', function(){
 
                             bloque7.uso= $(this).val();
                             bloque7.update();
                     });
                     $( "#b7_problem" ).on(
-                        'change, click', function(){
+                        'change', function(){
 
                             bloque7.problem= $(this).val();
                             bloque7.update();
