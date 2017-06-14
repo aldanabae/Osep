@@ -71,6 +71,7 @@ var bloque1= {    // Bloque General
             pariente: '',
             acargo:[],
             encuestados: 1,
+            consulta: "",
             update: function(){
 
                 bloque1.update_data();
@@ -196,6 +197,11 @@ var bloque1= {    // Bloque General
                 });
                 
             }
+
+            $('#b1_div_cual').hide(); // oculto el campo que pregunta cual
+
+            $('#b1_afiliado_varon').hide(); // oculto el formulario de 
+
             bloque1.conf.update();
 
         },
@@ -249,6 +255,16 @@ var bloque1= {    // Bloque General
 
             $( "#b1_osep" ).val(bloque1.conf.osep);
             $("#b1_osep[value=0]").attr("selected",true);
+
+            if(bloque1.conf.osep === "0"){   // si tiene o no tiene osep  cambia la pregunta
+
+                $('#b1_label_cober').text('¿Tiene otra cobertura de salud?')
+
+            }else{
+
+                $('#b1_label_cober').text('¿Tiene alguna cobertura de salud?')
+
+            }
 
             // verifico genero
             if(bloque1.conf.genero == 'm'){  // si es hombre oculto todo
@@ -374,6 +390,29 @@ var bloque1= {    // Bloque General
                  $( "#b1_adicional").show();
              }
 
+             // filtro para afiliados de 15 a 65
+
+               if(bloque1.conf.consulta == '1'){
+
+                    $( "#b1_div_consulta_si" ).show("slow");
+                    $( "#b1_div_consulta_no" ).hide("slow");
+                 
+                }else{
+
+
+                    if(bloque1.conf.consulta =="" || bloque1.conf.consulta =="3" ){
+
+                        $( "#b1_div_consulta_si" ).hide();
+                        $( "#b1_div_consulta_no" ).hide();
+
+                    }else{
+
+                        $( "#b1_div_consulta_si" ).hide("slow");
+                        $( "#b1_div_consulta_no" ).show("slow");
+                    }
+
+                    
+                }                
 
 
 
@@ -535,7 +574,31 @@ var bloque1= {    // Bloque General
 
                     });  
 
+                    // preguntas de utilizacion de servicios
 
+                    $( "#b1_consulta" ).on(
+                        'change', function(){
+
+                            bloque1.conf.consulta= $(this).val();
+                            bloque1.conf.update();
+
+                    });
+
+                    $( "#b1_div_consulta_no" ).on(
+                        'change', function(){
+                            var seleccion = $('#b1_atencion_no').val();
+                            if(seleccion == "6") {
+
+                                $('#b1_div_cual').show();
+
+                            }else{
+
+                                $('#b1_div_cual').hide();
+                                $('#b1_cual').val('');
+                            }
+                            bloque1.conf.update();
+
+                    });                    
 
 
 
@@ -562,7 +625,7 @@ var bloque1= {    // Bloque General
                             }else{
 
 
-                                if (edad < 14) {   // si esta entre 2 y 14  niños
+                                if (edad <= 14) {   // si esta entre 2 y 14  niños
 
                                     if( edad < 2)
                                     {
@@ -602,6 +665,17 @@ var bloque1= {    // Bloque General
                                 bloque7.hide_me();     // apago embarazo
                             }                      
 
+
+
+                            if((edad >= 15 && edad <= 64) && (bloque1.conf.discapacidad == '1' && bloque1.conf.genero == 'm')){
+
+                                $('#b1_afiliado_varon').show(); // oculto el formulario de 
+
+                            }else{
+
+                                $('#b1_afiliado_varon').hide(); // oculto el formulario de 
+
+                            }
 
                             if(bloque1.conf.genero == 'f'  )
                             {
@@ -758,7 +832,7 @@ var bloque3a ={   // bloque 3  bebes
                 }else{
 
 
-                    if(bloque3a.data.consulta ==""){
+                    if(bloque3a.data.consulta =="" || bloque3a.data.consulta =="3"){
 
                         $( "#b3a_div_consulta_si" ).hide();
                         $( "#b3a_div_consulta_no" ).hide();
@@ -920,7 +994,7 @@ var bloque3b ={     //Bloque Niños
                 }else{
 
 
-                    if(bloque3b.data.consulta ==""){
+                    if(bloque3b.data.consulta =="" || bloque3b.data.consulta =="3"){
 
                         $( "#b3b_div_consulta_si" ).hide();
                         $( "#b3b_div_consulta_no" ).hide();
@@ -1036,37 +1110,6 @@ var bloque3b ={     //Bloque Niños
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var bloque4 ={       // mUjer
         estado: false,
 
@@ -1174,7 +1217,7 @@ var bloque4 ={       // mUjer
 
                     }else{
                         // si selecciona no verifica si esta vacio no muestra ninguno
-                        if(bloque4.data.consulta ===""){
+                        if(bloque4.data.consulta ==="" || bloque4.data.consulta =="3"){
 
                             $( "#b4_div_consulta_no" ).hide();
                             $( "#b4_div_consulta_si" ).hide();
@@ -1322,7 +1365,7 @@ var bloque5 ={       // Adultos mayores
                 }else{
 
 
-                    if(bloque5.data.consulta ==""){
+                    if(bloque5.data.consulta =="" || bloque5.data.consulta =="3"){
 
                         $( "#b5_div_consulta_si" ).hide();
                         $( "#b5_div_consulta_no" ).hide();
