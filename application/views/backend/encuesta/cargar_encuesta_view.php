@@ -458,7 +458,7 @@
 							</div>	
 
 							<div class="form-group" id="b1_div_cual">
-								<label class="control-label col-xs-6" for="b0_cual"> Cual?</label>
+								<label class="control-label col-xs-6" for="b0_cual"> ¿Cual?</label>
 
 								<div class="col-xs-6" >
 									<input type="text" class="form-control" name = "b1_cual" id="b1_cual" >
@@ -667,7 +667,7 @@
 							</div>	
 
 							<div class="form-group" id="b3a_div_cual">
-								<label class="control-label col-xs-6" for="b3a_cual"> Cual?</label>
+								<label class="control-label col-xs-6" for="b3a_cual"> ¿Cual?</label>
 
 								<div class="col-xs-6" >
 									<input type="text" class="form-control" name = "b3a_cual" id="b3a_cual" >
@@ -839,7 +839,7 @@
 							</div>	
 
 							<div class="form-group" id="b3b_div_cual">
-								<label class="control-label col-xs-6" for="b3b_cual"> Cual?</label>
+								<label class="control-label col-xs-6" for="b3b_cual"> ¿Cual?</label>
 
 								<div class="col-xs-6" >
 									<input type="text" class="form-control" name = "b3b_cual" id="b3b_cual" >
@@ -866,7 +866,7 @@
 <div class="row form-horizontal" id="bloque_4">      <!-- Bloque 4 mujeres -->
 			<div class="panel panel-default">
 			
-				<div class="panel-heading orange">Salud  de las mujeres</div>
+				<div class="panel-heading orange">Salud de las mujeres</div>
 					<div class="panel-body">
 						<!--diferenciar las preguntas por edades-->
 					<div id="b4_salud">
@@ -878,7 +878,7 @@
 									<div class="col-xs-6">
 										<select class="form-control" id= "b4_consulta" >
 											<option value="" disabled selected hidden>Seleccionar</option>
-											<option value="0" >SI</option>
+											<option value="0">SI</option>
 											<option value="1">NO</option>
 											<option value="3">Sin datos</option>						
 										</select>
@@ -963,11 +963,11 @@
 
 						<div class="form-group" id="b4_div_pap">
 							
-							<label class="control-label col-xs-6">¿En los últimos  2 años concurrió a realizarse el Papanicolau?</label>
+							<label class="control-label col-xs-6">¿En los últimos  2 años concurrió a realizarse el papanicolau?</label>
 							<div class="col-xs-3">
 								<select class="form-control" id="b4_pap">
 									<option value="" disabled selected hidden>Seleccionar</option>
-									<option value="0" >SI</option>
+									<option value="0">SI</option>
 									<option value="1">NO</option>
 									<option value="2">No sabe/no contesta</option>							
 								</select>
@@ -976,9 +976,9 @@
 								<select class="form-control" id="b4_pap_si" name="b4_pap_si">
 									<option value="" disabled selected hidden>Seleccionar</option>
 									<option value= "1">En hospital o centro propio de OSEP</option>
-									<option value= "2">En Consultorio, Clínica o Sanatorio dónde reciben OSEP</option>
+									<option value= "2">En Consultorio, clínica o sanatorio dónde reciben OSEP</option>
 									<option value= "3">En hospital público, centro de salud , sala</option>
-									<option value= "4">En Consultorio, Clínica o Sanatorio dónde no reciben OSEP</option>
+									<option value= "4">En Consultorio, clínica o sanatorio dónde no reciben OSEP</option>
 									<option value= "5">Otro</option>							
 								</select>
 							</div>
@@ -995,7 +995,7 @@
 									<option value= "8">No lo necesita, esta sana (percepción personal)</option>							
 									<option value= "9">No Conoce ese examen o no sabia que tenia que hacérselo</option>							
 									<option value= "10">El médico no se lo indico</option>							
-									<option value= "11">Por edad Avanzada</option>							
+									<option value= "11">Por edad avanzada</option>							
 									<option value= "12">No le corresponde (Histerectomía, o alguna otra contraindicación médica)</option>							
 						
 								</select>
@@ -1008,22 +1008,22 @@
 
 						
 						<div class="form-group" id="b4_div_mamo">
-							<label class="control-label col-xs-6" for="b4_mamo">¿En los últimos 2 años se ha realizado una mamografía ?</label>
+							<label class="control-label col-xs-6" for="b4_mamo">¿En los últimos 2 años se ha realizado una mamografía?</label>
 							<div class="col-xs-3">
 								<select class="form-control" id="b4_mamo" name="b4_mamo" >
 									<option value="" disabled selected hidden>Seleccionar</option>
 									<option value="0">SI</option>
 									<option value="1">NO</option>							
-									<option value="2">Sin datos</option>							
+						
 								</select>
 							</div>
 							<div class="col-xs-3" id="b4_div_mamo_si">
 								<select class="form-control" id="b4_mamo_si" name="b4_mamo_si">
 									<option value="" disabled selected hidden>Seleccionar</option>
 									<option value= "1">En el mamografo de OSEP</option>
-									<option value= "2">En Consultorio, Clínica o Sanatorio dónde reciben OSEP</option>
-									<option value= "3">En hospital público, dentro de salud , sala</option>
-									<option value= "4">En Consultorio, Clínica o Sanatorio dónde no reciben OSEP</option>
+									<option value= "2">En consultorio, clínica o sanatorio dónde reciben OSEP</option>
+									<option value= "3">En hospital público, centro de salud , sala</option>
+									<option value= "4">En consultorio, clínica o sanatorio dónde no reciben OSEP</option>
 									<option value= "5">Otro</option>
 
 								</select>
@@ -1034,14 +1034,14 @@
 									<option value= "1">No tuvo tiempo</option>							
 									<option value= "2">No tuvo dinero</option>							
 									<option value= "3">No consiguió turno o lugar dónde la atiendan</option>							
-									<option value= "4">No sabe dónde  hacérselo</option>							
+									<option value= "4">No sabe dónde hacérselo</option>							
 									<option value= "5">Le da miedo, disgusto o vergüenza</option>							
 									<option value= "6">Se olvido</option>							
 									<option value= "7">Por dejadez</option>							
 									<option value= "8">No lo necesita, esta sana (percepción personal)</option>							
 									<option value= "9">No Conoce ese examen o no sabia que tenia que hacérselo</option>										
 									<option value= "10">El profesional tratante no se lo indico</option>									
-									<option value= "11">Por edad Avanzada</option>							
+									<option value= "11">Por edad avanzada</option>							
 									<option value= "12">No le corresponde (Histerectomía, o alguna otra contraindicación médica)</option>							
 														
 								</select>
@@ -1159,17 +1159,6 @@
 
 						</div>	
 
-						<!--<div class="form-group" id="b5_div_cual">
-							<label class="control-label col-xs-6" for="b5_cual"> Cual?</label>
-
-							<div class="col-xs-6" >
-								<input type="text" class="form-control" name = "b5_cual" id="b5_cual" placeholder="Cual fue el Problema?">
-							</div>
-						</div>
-
-						 aqui va el cual-->
-
-
 
 						<div class="form-group">
 							
@@ -1265,7 +1254,7 @@
 							</div>	
 
 							<div class="form-group" id="b5_div_cual">
-								<label class="control-label col-xs-6" for="b5_cual"> Cual?</label>
+								<label class="control-label col-xs-6" for="b5_cual"> ¿Cual?</label>
 
 								<div class="col-xs-6" >
 									<input type="text" class="form-control" name = "b5_cual" id="b5_cual" >
@@ -1340,16 +1329,16 @@
 							<div class="col-xs-6">
 
 								<div class="checkbox">
-								<label><input type="checkbox" name="104" value="1">Médico general o Pediatra</label>
+								<label><input type="checkbox" name="104" value="1">Médico general o pediatra</label>
 								</div>
 								<div class="checkbox">
-								<label><input type="checkbox" name="105" value="2">Médico Especialista</label>
+								<label><input type="checkbox" name="105" value="2">Médico especialista</label>
 								</div>
 								<div class="checkbox ">
 								<label><input type="checkbox" name="106" value="3" >Psicólogo - Psiquiatra</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" name="107" value="4" >Médico Fisiátra</label>
+								<label><input type="checkbox" name="107" value="4" >Médico fisiátra</label>
 								</div>
 								<div class="checkbox ">
 								<label><input type="checkbox" name="108" value="5" >Otro profesional de la salud</label>
@@ -1382,7 +1371,7 @@
 							<div class="col-xs-6">
 
 								<div class="checkbox ">
-								<label><input type="checkbox" value="1" >Médico general Pediatra</label>
+								<label><input type="checkbox" value="1" >Médico general pediatra</label>
 								</div>
 								<div class="checkbox ">
 								<label><input type="checkbox" value="2" >Médico especialista</label>
@@ -1391,7 +1380,7 @@
 								<label><input type="checkbox" value="3" >Psicólogo - Psiquiatra</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" value="4" >Médico Fisiátra</label>
+								<label><input type="checkbox" value="4" >Médico fisiátra</label>
 								</div>
 								<div class="checkbox ">
 								<label><input type="checkbox" value="5" >Otro profesional de la salud</label>
@@ -1465,7 +1454,7 @@
 								</div>	
 
 								<div class="form-group" id="b6_div_otro">
-									<label class="control-label col-xs-6" for="b6_cual"> Cual?</label>
+									<label class="control-label col-xs-6" for="b6_cual"> ¿Cual?</label>
 
 									<div class="col-xs-6" >
 										<input type="text" class="form-control" name = "b6_cual" id="b6_cual" >
@@ -1563,8 +1552,8 @@
 								<select class="form-control" name ="b7_profesional">
 									<option value="" disabled selected hidden>Seleccionar</option>
 									<option >Un profesional</option>
-									<option >Distintos profesionales en un mismo lugar de atencion</option>							
-									<option >Distintos lugares de atencion</option>							
+									<option >Distintos profesionales en un mismo lugar de atención</option>							
+									<option >Distintos lugares de atención</option>							
 								</select>
 							</div>
 						
@@ -1582,7 +1571,7 @@
 								</select>
 							</div>
 							<div class="col-xs-3">
-								<input type="text" class="form-control" id="b7_cual" placeholder=" Cual?">
+								<input type="text" class="form-control" id="b7_cual" placeholder=" ¿Cual?">
 							</div>
 
 						</div>

@@ -17,17 +17,17 @@ $(function() {
 
 var encuesta ={
 
-            titular: true,
-            afiliado: '',
-            integrantes: 0,
-            responde: false,
+            titular: true,      // si es titular o no
+            afiliado: '',       // numero de afiliado
+            integrantes: 0,     // antidad de encuestados
+            responde: false,    // si responde la encuesta o no    
             embarazo: {
-                estado: false,
+                estado: false,  //aray de embarazo que viene de la primera vista
                 edad  : [],
 
 
             },
-            count: 0,
+            count: 0,          // contador de encuestas
 
             init: function(){
 
@@ -50,7 +50,17 @@ var encuesta ={
 
             
 
-                  }
+                  },
+            reset_conf:function(){
+
+
+            encuesta.titular= false         // si es titular o no
+            encuesta.afiliado=''            // numero de afiliado
+            
+            encuesta.responde= false        // si responde la encuesta o no   
+
+
+            }
         
 
 }
@@ -61,17 +71,18 @@ var bloque1= {    // Bloque General
         estado: true,
         conf: {
             
-            nombre: null,
-            edad: null,
-            genero: "m",
-            osep: '0',
-            embarazo: '0',
-            discapacidad: '1',
-            ocupacion:  null,
-            pariente: '',
-            acargo:[],
-            encuestados: 1,
-            consulta: "",
+            nombre: null,       // nombre del encuestado
+            edad: null,         // edad del encuestado
+            genero: "m",        // masculino femenino
+            osep: '0',          // si tiene osep es 0   si no es 1  
+            embarazo: '0',      // embarazo  0 si  1 no
+            discapacidad: '1',  // discapacidad   1   no  0 s1
+            ocupacion:  null,   // guarda el id de ocupacion
+            pariente: '',       // pariente a cargo
+            acargo:[],          // array de afiliados fuera de este hogar
+            encuestados: 1,     // numero de cantidad de encuestados
+            consulta: "",       // para los varones de 15  a 64
+            titular_referencia:"",  // numero de titular de referencia, el prinmero que entrevista
             update: function(){
 
                 bloque1.update_data();
@@ -109,7 +120,7 @@ var bloque1= {    // Bloque General
                 $('#afiliado_externo').show()
 
             }
-
+            encuesta.reset_conf();
 
             //===============
             bloque9.estado=false,
@@ -133,7 +144,7 @@ var bloque1= {    // Bloque General
 
         data:{
 
-                vinculo:['Cónyuge o Pareja Conviviente','Hijo /a','Padre o Madre',
+                vinculo:['Titular','Cónyuge o Pareja Conviviente','Hijo /a','Padre o Madre',
                         'Suegro /a', 'Yerno o Nuera','Nieto /a',
                         'Otro Familiar','Otro no Familiar'],
 
@@ -150,7 +161,7 @@ var bloque1= {    // Bloque General
                             'Prepaga','Otra cobertura']
                 },
                 educativo:[
-                        'inicial','Primario Incompleto',
+                        'Inicial','Primario Incompleto',
                         'Primario Completo','Secundario Incompleto',
                         'Secundario Completo','Terciario Incompleto','Terciario Completo',
                         'Universitario Incompleto','Universitario Completo',
@@ -166,7 +177,6 @@ var bloque1= {    // Bloque General
             encuesta.init();
             bloque3a.init();
             bloque3b.init();
-
             bloque4.init();
             bloque5.init();
             bloque6.init();
@@ -188,7 +198,7 @@ var bloque1= {    // Bloque General
                 
 
                 $("#lblTitular").text('Apellido y nombre')
-                $("#b1_parent").html( '');
+                $("#b1_parent").html( '<option value="" disabled selected hidden>Seleccionar</option>');
                 var indice= 0;
                 $.each(bloque1.data.vinculo, function(key, value){
                     indice = key;
@@ -208,7 +218,18 @@ var bloque1= {    // Bloque General
 
         update_data: function(){
 
-            $("#b1_afiliado").val(encuesta.afiliado);  // muestro el numero del titular
+
+            if(encuesta.titular){
+
+
+                $("#b1_afiliado").val(encuesta.afiliado +"/00");  // muestro el numero del titular
+
+
+            }else{   // entonces es aderente del titular que se cargo al principio
+
+                $("#b1_afiliado").val(bloque1.conf.titular_referencia +"/");
+
+            }
 
             // verifico si tiene osep
 
@@ -314,45 +335,43 @@ var bloque1= {    // Bloque General
 
 
             // verifico D ocupacionales
-                if(bloque1.conf.edad != null){
+            if(bloque1.conf.edad != null){
 
-                    if(bloque1.conf.edad > 14){
+                if(bloque1.conf.edad > 14){
 
-                             bloque9.show_me();
-                        
+                        bloque9.show_me();
+                    
+                        switch (bloque1.conf.ocupacion) {
+                        case '1':
+                            
+                            $( "#bloque_9_int" ).show();
+                            $( "#bloque_9_int_juv" ).hide();
+                            break;
+                        case '2':
+                            $( "#bloque_9_int_juv" ).show();
+                            $( "#bloque_9_int" ).hide();
+                            break;
 
+                        case '3':
+                            $( "#bloque_9_int" ).show();
+                            $( "#bloque_9_int_juv" ).hide();
 
-                            switch (bloque1.conf.ocupacion) {
-                            case '1':
-                                
-                                $( "#bloque_9_int" ).show();
-                                $( "#bloque_9_int_juv" ).hide();
-                                break;
-                            case '2':
-                                $( "#bloque_9_int_juv" ).show();
-                                $( "#bloque_9_int" ).hide();
-                                break;
-
-                            case '3':
-                                $( "#bloque_9_int" ).show();
-                                $( "#bloque_9_int_juv" ).hide();
-
-                                break;
-                            default:
-                                //Sentencias_def ejecutadas cuando no ocurre una coincidencia con los anteriores casos
-                                $( "#bloque_9_int" ).hide();
-                                $( "#bloque_9_int_juv" ).hide();
-                                break;
-                            }
+                            break;
+                        default:
+                            //Sentencias_def ejecutadas cuando no ocurre una coincidencia con los anteriores casos
+                            $( "#bloque_9_int" ).hide();
+                            $( "#bloque_9_int_juv" ).hide();
+                            break;
+                        }
 
 
-                    }else{
+                }else{
 
-                        
-                        bloque9.hide_me();
+                    
+                    bloque9.hide_me();
 
-                    }
                 }
+            }
 
              // fin filtro datos ocupacionales  
 
@@ -377,7 +396,7 @@ var bloque1= {    // Bloque General
 
 					})     
 
-                    $( "#b1_acargo").html(listHtml);
+                    $("#b1_acargo").html(listHtml);
                  	$('#b1_adicional_nombre ,#b1_adicional_tel').val("");
 					$('#b1_acargo a').on('click', function(event){ 
 
@@ -512,20 +531,39 @@ var bloque1= {    // Bloque General
                     $( "#b1_dni" ).on(
                         'focusout', function(){
 
-                            if(encuesta.titular)   
-                            {
 
-                                encuesta.afiliado= $(this).val() + "/00";
+                            if(encuesta.count == 0){
 
-                            }else{
-
-                                encuesta.afiliado= $(this).val() + "/"+ encuesta.count;
-
+                                bloque1.conf.titular_referencia=$(this).val();
+                                
                             }
-                        
+                            encuesta.afiliado= $(this).val()
+
+
                             bloque1.conf.update();
 
                         });
+
+                    // evento para relenar vinculo con el titular  o Titular
+                    $( "#b1_parent" ).on(
+                        'change, click', function(){
+
+                            var vinculo= $(this).val();
+
+                            if(vinculo == "1"){
+
+                                encuesta.titular= true
+
+
+                            }else{
+
+                                encuesta.titular= false
+
+                            }
+
+                            bloque1.conf.update();
+
+                    });                        
 
                     $( "#b1_extra" ).on(
                         'change, click', function(){
@@ -616,7 +654,6 @@ var bloque1= {    // Bloque General
                 if(bloque1.conf.osep == "0"){
 
                     
-
                     var edad = parseInt(bloque1.conf.edad);
 
                             if ((edad >= 65 ) && (bloque1.conf.discapacidad === "1") ){  //si es mayor a 65 y no tiene discapacidad  despliego ancianidad
@@ -643,8 +680,6 @@ var bloque1= {    // Bloque General
 
 
                             }
-
-
 
 
                             if (bloque1.conf.discapacidad == '0'){
@@ -697,7 +732,15 @@ var bloque1= {    // Bloque General
 
                                     }else{
 
-                                        bloque4.hide_me();     // mujeres
+                                        if(edad > 65 && responde){
+
+                                            bloque4.show_me();     // mujere
+
+                                        }else{
+
+                                            bloque4.hide_me();     // mujeres
+
+                                        }
                                     }
 
 
@@ -731,10 +774,6 @@ var bloque1= {    // Bloque General
 
             alert('Los datos son incorrectos o faltan');
         }
-        
-
-
-
      
         },
 
@@ -1149,6 +1188,16 @@ var bloque4 ={       // mUjer
 
                 }
 
+                if(edad >=66 && responde){
+
+                    $('#b4_div_mamo').show()
+
+                }else{
+
+                    $('#b4_div_mamo').hide()
+
+                }
+
 
                 if(edad > 18 && responde){
                     // si es mayor a 18 debo mostrar pap
@@ -1172,8 +1221,6 @@ var bloque4 ={       // mUjer
                                     $( "#b4_div_pap_no" ).show("slow");
 
                                 }
-
-
                         }
 
 
@@ -1189,6 +1236,7 @@ var bloque4 ={       // mUjer
                     $('#b4_div_mamo').show()
 
                         if(bloque4.data.mamo.uso == '0'){
+
                             $( "#b4_div_mamo_si" ).show("slow");
                             $( "#b4_div_mamo_no" ).hide("slow");
 
