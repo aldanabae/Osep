@@ -722,29 +722,24 @@ var bloque1= {    // Bloque General
 
                                     bloque4.show_me();     // mujeres
 
+                                }
+
+
+                                if(((edad >= 15 && edad <= 70) )  && ( bloque1.conf.embarazo == "1") ){
+
+                                    bloque4.show_me();     // mujere
+
+
                                 }else{
 
 
-                                    if(((edad >= 15 && edad < 65) )  && ( bloque1.conf.embarazo == "1") ){
+                                        bloque4.hide_me();     // mujeres
 
-                                        bloque4.show_me();     // mujere
-
-
-                                    }else{
-
-                                        if(edad > 65 && responde){
-
-                                            bloque4.show_me();     // mujere
-
-                                        }else{
-
-                                            bloque4.hide_me();     // mujeres
-
-                                        }
-                                    }
-
-
+                                    
                                 }
+
+
+                                
 
                                 
 
@@ -1188,7 +1183,7 @@ var bloque4 ={       // mUjer
 
                 }
 
-                if(edad >=66 && responde){
+                if((edad >=66 && edad <= 70 ) && responde){
 
                     $('#b4_div_mamo').show()
 
@@ -1199,7 +1194,7 @@ var bloque4 ={       // mUjer
                 }
 
 
-                if(edad > 18 && responde){
+                if((edad > 18 && edad <=65) && responde ){
                     // si es mayor a 18 debo mostrar pap
                     $('#b4_div_pap').show()
 
@@ -1289,12 +1284,12 @@ var bloque4 ={       // mUjer
 
                 if(encuesta.responde){
 
-                    $('#b4_estado_general').show();
+                    $('#b4_salud').show();
 
 
                 }else{
 
-                    $('#b4_estado_general').hide();
+                    $('#b4_salud').hide();
                     
                 }
 

@@ -792,7 +792,7 @@
 
 					<div class="form-group">
 							
-							<label class="control-label col-xs-6">¿Recuerda si realizó al menos una consulta médica por OSEP en los últimos 6 meses? </label>
+							<label class="control-label col-xs-6">¿Recuerda si realizó al menos una consulta médica por OSEP  en el último año? </label>
 							<div class="col-xs-6">
 								<select class="form-control" id="b3b_consulta" name="b3b_consulta">
 									<option value="" disabled selected hidden>Seleccionar</option>
@@ -869,7 +869,7 @@
 				<div class="panel-heading orange">Salud de las mujeres</div>
 					<div class="panel-body">
 						<!--diferenciar las preguntas por edades-->
-					<div id="b4_salud">
+					
 						<div id="b4_div_consulta">
 							<div class="form-group" >
 														
@@ -940,7 +940,7 @@
 
 
 						</div> <!--cierro div consulta-->
-					
+					<div id="b4_salud">
 							<div class="form-group" id="b4_estado_general">
 								
 								<label class="control-label col-xs-6">¿Como diría que es su estado general de salud en este momento?</label>
