@@ -24,7 +24,7 @@
 										<label class="control-label col-xs-6">Red de energía eléctrica</label>
 										<div class="col-xs-6">
 											<select class="form-control" required>
-											<option >SI</option>
+											<option selected="true">SI</option>
 											<option >NO</option>							
 											</select>
 										</div>
@@ -34,7 +34,7 @@
 										<label class="control-label col-xs-6">Red de gas natural</label>
 										<div class="col-xs-6">
 											<select class="form-control" required>
-											<option >SI</option>
+											<option selected="true">SI</option>
 											<option >NO</option>							
 											</select>
 										</div>
@@ -44,7 +44,7 @@
 										<label class="control-label col-xs-6">Red de agua potable</label>
 										<div class="col-xs-6">
 											<select class="form-control" required>
-											<option >SI</option>
+											<option selected="true">SI</option>
 											<option >NO</option>							
 											</select>
 										</div>
@@ -54,7 +54,7 @@
 										<label class="control-label col-xs-6">Cloacas</label>
 										<div class="col-xs-6">
 											<select class="form-control" required>
-											<option >SI</option>
+											<option selected="true">SI</option>
 											<option >NO</option>							
 											</select>
 										</div>
@@ -64,7 +64,7 @@
 										<label class="control-label col-xs-6">Teléfono fijo</label>
 										<div class="col-xs-6">
 											<select class="form-control" required>
-											<option >SI</option>
+											<option selected="true">SI</option>
 											<option >NO</option>							
 											</select>
 										</div>
@@ -74,7 +74,7 @@
 										<label class="control-label col-xs-6">Internet</label>
 										<div class="col-xs-6">
 											<select class="form-control" required>
-											<option >SI</option>
+											<option selected="true">SI</option>
 											<option >NO</option>							
 											</select>
 										</div>
@@ -108,7 +108,7 @@
 										<div class="col-xs-6">
 											<select class="form-control" required>
 											<option >SI</option>
-											<option >NO</option>							
+											<option selected="true">NO</option>							
 											</select>
 										</div>
 									</div>
@@ -118,7 +118,7 @@
 										<div class="col-xs-6">
 											<select class="form-control" required>
 											<option >SI</option>
-											<option >NO</option>							
+											<option selected="true">NO</option>							
 											</select>
 										</div>
 									</div>
@@ -128,7 +128,7 @@
 										<div class="col-xs-6">
 											<select class="form-control" required>
 											<option >SI</option>
-											<option >NO</option>							
+											<option selected="true">NO</option>							
 											</select>
 										</div>
 									</div>
@@ -138,7 +138,7 @@
 										<div class="col-xs-6">
 											<select class="form-control" required>
 											<option >SI</option>
-											<option >NO</option>							
+											<option selected="true">NO</option>							
 											</select>
 										</div>
 									</div>
@@ -148,7 +148,7 @@
 										<div class="col-xs-6">
 											<select class="form-control" required>
 											<option >SI</option>
-											<option >NO</option>							
+											<option selected="true">NO</option>							
 											</select>
 										</div>
 									</div>
@@ -158,7 +158,7 @@
 										<div class="col-xs-6">
 											<select class="form-control" required>
 											<option >SI</option>
-											<option >NO</option>							
+											<option selected="true">NO</option>							
 											</select>
 										</div>
 									</div>
@@ -168,7 +168,7 @@
 										<div class="col-xs-6">
 											<select class="form-control" required>
 											<option >SI</option>
-											<option >NO</option>							
+											<option selected="true">NO</option>							
 											</select>
 										</div>
 									</div>
@@ -178,7 +178,7 @@
 										<div class="col-xs-6">
 											<select class="form-control" required>
 											<option >SI</option>
-											<option >NO</option>							
+											<option selected="true">NO</option>							
 											</select>
 										</div>
 									</div>
@@ -277,9 +277,17 @@
 									<div class="form-group">
 										<label class="control-label col-xs-6" for="ZipCode">Observaciones generales</label>
 										<div class="col-xs-6">
-											<input type="text" class="form-control" id="ZipCode">
+											
+											<textarea name="b8_observa" rows="10" cols="60" id="b8_observa"></textarea>
 										</div>
 									</div>
+									
+									
+									
+									
+									
+									
+									
 						
 								</div>	
 						</div>	 

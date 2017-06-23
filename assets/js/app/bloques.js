@@ -144,9 +144,9 @@ var bloque1= {    // Bloque General
 
         data:{
 
-                vinculo:['Titular','Cónyuge o Pareja Conviviente','Hijo /a','Padre o Madre',
+                vinculo:['Titular','Cónyuge o pareja conviviente','Hijo /a','Padre o Madre',
                         'Suegro /a', 'Yerno o Nuera','Nieto /a',
-                        'Otro Familiar','Otro no Familiar'],
+                        'Otro familiar','Otro no familiar'],
 
 
 
@@ -161,10 +161,10 @@ var bloque1= {    // Bloque General
                             'Prepaga','Otra cobertura']
                 },
                 educativo:[
-                        'Inicial','Primario Incompleto',
-                        'Primario Completo','Secundario Incompleto',
-                        'Secundario Completo','Terciario Incompleto','Terciario Completo',
-                        'Universitario Incompleto','Universitario Completo',
+                        'Inicial','Primario incompleto',
+                        'Primario completo','Secundario incompleto',
+                        'Secundario completo','Terciario incompleto','Terciario completo',
+                        'Universitario incompleto','Universitario completo',
                         ],
 
                 
@@ -1205,7 +1205,7 @@ var bloque4 ={       // mUjer
 
                         }else{
                                 // si puso no sabe no contesta op 2 entonces no pregunta nada
-                                if (bloque4.data.pap.uso == '2' || ""){
+                                if (bloque4.data.pap.uso == '3' ){
 
                                     $( "#b4_div_pap_si" ).hide("slow");
                                     $( "#b4_div_pap_no" ).hide("slow");
@@ -1303,6 +1303,10 @@ var bloque4 ={       // mUjer
             bloque4.bindComponent();
             bloque4.update();
             $('#b4_div_otro').hide(); // oculto la opcion otro para cuando coloque no
+			$('#b4_div_pap_si').hide(); // oculto la opcion de si pap
+			$('#b4_div_pap_no').hide(); // oculto la opcion de si pap		
+			$('#b4_div_mamo_si').hide(); // oculto la opcion de si mamo
+			$('#b4_div_mamo_no').hide(); // oculto la opcion de si mamo			
 
         },
         bindComponent: function(){
@@ -1575,7 +1579,7 @@ var bloque6 ={       // Discapacidad
             }else{
 
 
-                if(bloque6.data.consulta ==""){
+                if(bloque6.data.consulta =="" || bloque1.conf.consulta =="3"){
 
                     $( "#b6_div_consulta_si" ).hide();
                     $( "#b6_div_consulta_no" ).hide();
@@ -1843,13 +1847,13 @@ var bloque9 ={       // laboral
         data:{
 
                 optitular:   [
-							"Trabajador Remunerado",
-							"Jubilado o Pensionado",
-							"Trabaja con Remuneración y Estudia",
+							"Trabajador remunerado",
+							"Jubilado o pensionado",
+							"Trabaja con remuneración y estudia",
 							"Estudia exclusivamente",
-							"Trabajo Doméstico no Remunerado exclusivamente",
-							"Busca Trabajo",
-							"No Trabaja",
+							"Trabajo doméstico no remunerado exclusivamente",
+							"Busca trabajo",
+							"No trabaja",
 							"Otra",]
 
         },

@@ -191,14 +191,14 @@
 							<select class="form-control" name= "b1_nivel" id= "b1_nivel">
 							<option value="" disabled selected hidden>Seleccionar</option>
 							<option value="0">Inicial</option>
-							<option value="1">Primario Incompleto</option>
-							<option value="2">Primario Completo</option>
-							<option value="3">Secundario Incompleto</option>
-							<option value="4">Secundario Completo</option>
-							<option value="5">Terciario Incompleto</option>
-							<option value="6">Terciario Completo</option>
-							<option value="7">Universitario Incompleto</option>
-							<option value="8">Universitario Completo</option>
+							<option value="1">Primario incompleto</option>
+							<option value="2">Primario completo</option>
+							<option value="3">Secundario incompleto</option>
+							<option value="4">Secundario completo</option>
+							<option value="5">Terciario incompleto</option>
+							<option value="6">Terciario completo</option>
+							<option value="7">Universitario incompleto</option>
+							<option value="8">Universitario completo</option>
 							</select>
 						</div>
 					</div>
@@ -320,7 +320,7 @@
 					<div class="col-xs-6">
 						<select class="form-control" name= "b1_cronica" id= "b1_cronica">
 						<option value="0">SI</option>
-						<option value="1" selected =" true">NO</option>
+						<option value="1" selected ="true">NO</option>
 						</select>
 					</div>
 				</div>
@@ -349,7 +349,7 @@
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_extra" id= "b1_extra" >
 							<option value="0">SI</option>
-							<option value="1" selected =" true">NO</option>
+							<option value="1" selected ="true">NO</option>
 							</select>
 						</div>
 					</div>
@@ -767,9 +767,9 @@
 
 
 
-							<div class="form-group" id= "b3b_div_dónde">
+							<div class="form-group" id= "b3b_div_donde">
 								
-								<label class="control-label col-xs-6">dónde ?</label>
+								<label class="control-label col-xs-6">¿Dónde?</label>
 								<div class="col-xs-6">
 									<select class="form-control">
 									<option value="" disabled selected hidden>Seleccionar</option>
@@ -778,7 +778,7 @@
 									<option value="3">CIC</option>							
 									<option value="4">Biblioteca</option>							
 									<option value="5">Unión Vecinal</option>							
-									<option value="6">otro</option>							
+									<option value="6">Otro</option>							
 									</select>
 								</div>
 
@@ -947,10 +947,11 @@
 								<div class="col-xs-6">
 									<select class="form-control">
 									<option value="" disabled selected hidden>Seleccionar</option>
-									<option >Muy bueno</option>
-									<option >Bueno</option>							
-									<option >Regular</option>							
-									<option >Malo</option>							
+										<option value="0">Muy bueno</option>
+										<option value="1">Bueno</option>							
+										<option value="2">Regular</option>							
+										<option value="3">Malo</option>
+										<option value="4">Sin datos</option>									
 									</select>
 								</div>
 
@@ -964,7 +965,7 @@
 						<div class="form-group" id="b4_div_pap">
 							
 							<label class="control-label col-xs-6">¿En los últimos  2 años concurrió a realizarse el papanicolau?</label>
-							<div class="col-xs-3">
+							<div class="col-xs-2">
 								<select class="form-control" id="b4_pap">
 									<option value="" disabled selected hidden>Seleccionar</option>
 									<option value="0">SI</option>
@@ -972,63 +973,84 @@
 									<option value="2">No sabe/no contesta</option>							
 								</select>
 							</div>
-							<div class="col-xs-3" id="b4_div_pap_si" >
-								<select class="form-control" id="b4_pap_si" name="b4_pap_si">
-									<option value="" disabled selected hidden>Seleccionar</option>
-									<option value= "1">En hospital o centro propio de OSEP</option>
-									<option value= "2">En Consultorio, clínica o sanatorio dónde reciben OSEP</option>
-									<option value= "3">En hospital público, centro de salud , sala</option>
-									<option value= "4">En Consultorio, clínica o sanatorio dónde no reciben OSEP</option>
-									<option value= "5">Otro</option>							
-								</select>
+							<div class="col-xs-4" id="b4_div_pap_si" >
+				
+							
+								<label class="control-label col-xs-5">¿Dónde concurrió?</label>
+								<div class="col-xs-7">
+									<select class="form-control" id="b4_pap_si" name="b4_pap_si">
+										<option value="" disabled selected hidden>Seleccionar</option>
+										<option value= "1">En hospital o centro propio de OSEP</option>
+										<option value= "2">En consultorio, clínica o sanatorio dónde reciben OSEP</option>
+										<option value= "3">En hospital público, centro de salud , sala</option>
+										<option value= "4">En consultorio, clínica o sanatorio dónde no reciben OSEP</option>
+										<option value= "5">Otro</option>							
+									</select>
+								</div>
+							
+
 							</div>
-							<div class="col-xs-3" id="b4_div_pap_no" >
-								<select class="form-control" id ="b4_pap_no" name ="b4_pap_no">
-									<option value="" disabled selected hidden>Seleccionar</option>
-									<option value= "1">No tuvo tiempo</option>							
-									<option value= "2">No tuvo dinero</option>							
-									<option value= "3">No consiguió turno o lugar dónde la atiendan</option>							
-									<option value= "4">No sabe dónde  hacérselo</option>							
-									<option value= "5">Le da miedo, disgusto o vergüenza</option>							
-									<option value= "6">Se olvido</option>							
-									<option value= "7">Por dejadez</option>							
-									<option value= "8">No lo necesita, esta sana (percepción personal)</option>							
-									<option value= "9">No Conoce ese examen o no sabia que tenia que hacérselo</option>							
-									<option value= "10">El médico no se lo indico</option>							
-									<option value= "11">Por edad avanzada</option>							
-									<option value= "12">No le corresponde (Histerectomía, o alguna otra contraindicación médica)</option>							
-						
-								</select>
+							<div class="col-xs-4" id="b4_div_pap_no" >
+
+								<label class="control-label col-xs-5">¿Por qué?</label>
+								<div class="col-xs-7">
+									<select class="form-control" id ="b4_pap_no" name ="b4_pap_no">
+										<option value="" disabled selected hidden>Seleccionar</option>
+										<option value= "1">No tuvo tiempo</option>							
+										<option value= "2">No tuvo dinero</option>							
+										<option value= "3">No consiguió turno o lugar dónde la atiendan</option>							
+										<option value= "4">No sabe dónde  hacérselo</option>							
+										<option value= "5">Le da miedo, disgusto o vergüenza</option>							
+										<option value= "6">Se olvidó</option>							
+										<option value= "7">Por dejadez</option>							
+										<option value= "8">No lo necesita, está sana (percepción personal)</option>							
+										<option value= "9">No conoce el examen o no sabía que tenía que hacérselo</option>							
+										<option value= "10">El médico no se lo indicó</option>							
+										<option value= "11">Por edad avanzada</option>							
+										<option value= "12">No le corresponde (histerectomía, o alguna otra contraindicación médica)</option>
+										<option value= "13">No sabe/no contesta</option>
+							
+									</select>
+								</div>
 							</div>
 
 
 
 						</div>	
 
-
 						
 						<div class="form-group" id="b4_div_mamo">
 							<label class="control-label col-xs-6" for="b4_mamo">¿En los últimos 2 años se ha realizado una mamografía?</label>
-							<div class="col-xs-3">
+							<div class="col-xs-2">
 								<select class="form-control" id="b4_mamo" name="b4_mamo" >
 									<option value="" disabled selected hidden>Seleccionar</option>
 									<option value="0">SI</option>
-									<option value="1">NO</option>							
+									<option value="1">NO</option>
+									<option value="2">No sabe/no contesta</option>										
 						
 								</select>
 							</div>
-							<div class="col-xs-3" id="b4_div_mamo_si">
-								<select class="form-control" id="b4_mamo_si" name="b4_mamo_si">
-									<option value="" disabled selected hidden>Seleccionar</option>
-									<option value= "1">En el mamografo de OSEP</option>
-									<option value= "2">En consultorio, clínica o sanatorio dónde reciben OSEP</option>
-									<option value= "3">En hospital público, centro de salud , sala</option>
-									<option value= "4">En consultorio, clínica o sanatorio dónde no reciben OSEP</option>
-									<option value= "5">Otro</option>
+							<div class="col-xs-4" id="b4_div_mamo_si">
+							
+								<label class="control-label col-xs-5">¿Dónde concurrió?</label>
+								<div class="col-xs-7">
+									<select class="form-control" id="b4_mamo_si" name="b4_mamo_si">
+										<option value="" disabled selected hidden>Seleccionar</option>
+										<option value= "1">En el mamografo de OSEP</option>
+										<option value= "2">En consultorio, clínica o sanatorio dónde reciben OSEP</option>
+										<option value= "3">En hospital público, centro de salud , sala</option>
+										<option value= "4">En consultorio, clínica o sanatorio dónde no reciben OSEP</option>
+										<option value= "5">Otro</option>
+									</select>
+								</div>
+							
+							
 
-								</select>
 							</div>
-							<div class="col-xs-3" id="b4_div_mamo_no" >
+							<div class="col-xs-4" id="b4_div_mamo_no" >
+							
+								<label class="control-label col-xs-5">¿Por qué?</label>
+								<div class="col-xs-7">
 								<select class="form-control" id="b4_mamo_no" name="b4_mamo_no">
 									<option value="" disabled selected hidden>Seleccionar</option>
 									<option value= "1">No tuvo tiempo</option>							
@@ -1036,15 +1058,18 @@
 									<option value= "3">No consiguió turno o lugar dónde la atiendan</option>							
 									<option value= "4">No sabe dónde hacérselo</option>							
 									<option value= "5">Le da miedo, disgusto o vergüenza</option>							
-									<option value= "6">Se olvido</option>							
+									<option value= "6">Se olvidó</option>							
 									<option value= "7">Por dejadez</option>							
-									<option value= "8">No lo necesita, esta sana (percepción personal)</option>							
-									<option value= "9">No Conoce ese examen o no sabia que tenia que hacérselo</option>										
-									<option value= "10">El profesional tratante no se lo indico</option>									
+									<option value= "8">No lo necesita, está sana (percepción personal)</option>							
+									<option value= "9">No conoce el examen o no sabía que tenía que hacérselo</option>										
+									<option value= "10">El médico no se lo indicó</option>									
 									<option value= "11">Por edad avanzada</option>							
-									<option value= "12">No le corresponde (Histerectomía, o alguna otra contraindicación médica)</option>							
-														
+									<option value= "12">No le corresponde (histerectomía, o alguna otra contraindicación médica)</option>							
+									<option value= "13">No sabe/no contesta</option>								
 								</select>
+								</div>				
+							
+
 							</div>							
 						</div>
 
@@ -1317,7 +1342,7 @@
 									<option value="" disabled selected hidden>Seleccionar</option>
 									<option value="1">SI</option>
 									<option value="2">NO</option>							
-									<option value="3">NO sabia que habia que hacerlo</option>							
+									<option value="3">No sabía que había que hacerlo</option>							
 								</select>
 							</div>
 

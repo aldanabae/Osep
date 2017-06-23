@@ -9,6 +9,21 @@ $(function() {
 
     $('[data-toggle="popover"]').popover(); 
 
+	
+	
+	    if ( localStorage.getItem('general')){
+
+		
+            //localStorage.removeItem("general");
+			
+			alert('hay datos debo cargarlos en el form');
+			var local = localStorage.getItem('general')
+			//console.log(local);
+        }else{
+			
+			alert('debo cargar una nueva instancia de general')
+			
+		}
 
     $("#encuesta_ini").submit(function () { 
 
@@ -16,6 +31,7 @@ $(function() {
     // debo comprobar la existencia de la variable local
         if ( localStorage.getItem('general')){
 
+		
             localStorage.removeItem("general");
         }
 
