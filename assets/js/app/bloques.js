@@ -28,6 +28,7 @@ var encuesta ={
 
             },
             count: 0,          // contador de encuestas
+            usar_otronum: false,
 
             init: function(){
 
@@ -52,12 +53,10 @@ var encuesta ={
 
                   },
             reset_conf:function(){
-
-
             encuesta.titular= false         // si es titular o no
             encuesta.afiliado=''            // numero de afiliado
-            
             encuesta.responde= false        // si responde la encuesta o no   
+            
 
 
             }
@@ -210,7 +209,9 @@ var bloque1= {    // Bloque General
 
             $('#b1_div_cual').hide(); // oculto el campo que pregunta cual
 
-            $('#b1_afiliado_varon').hide(); // oculto el formulario de 
+            $('#b1_afiliado_varon').hide(); // oculto el formulario de varon entre 15 y 64
+
+            $('#b1_otro_numero_afiliado').hide(); // oculto el formulario de varon entre 15 y 64
 
             bloque1.conf.update();
 
@@ -227,9 +228,29 @@ var bloque1= {    // Bloque General
 
             }else{   // entonces es aderente del titular que se cargo al principio
 
-                $("#b1_afiliado").val(bloque1.conf.titular_referencia +"/");
+                if(encuesta.usar_otronum){
+
+                    $("#b1_afiliado").val($('#b1_dni').val()+"/");
+
+                }else{
+
+                    $("#b1_afiliado").val(bloque1.conf.titular_referencia +"/");
+
+                }
+
 
             }
+
+            // verifico si es un adherente , como segunda encuenta cargada
+
+            if(encuesta.count >=1){
+
+                $('#b1_otro_numero_afiliado').show(); // muestro el check de
+            }else{
+
+                 $('#b1_otro_numero_afiliado').hide(); // oculto el formulario de varon entre 15 y 64
+            }
+
 
             // verifico si tiene osep
 
@@ -611,6 +632,24 @@ var bloque1= {    // Bloque General
                         bloque1.conf.update();
 
                     });  
+
+
+                    $( "#check_afiliado" ).on(
+                        'click', function(){
+
+ 
+                        if($("#check_afiliado").is(':checked')) {  
+                            encuesta.usar_otronum = true;
+                        } else {  
+                            encuesta.usar_otronum = false;
+                        }  
+                    
+                        bloque1.conf.update();
+
+                    });  
+
+
+                    
 
                     // preguntas de utilizacion de servicios
 

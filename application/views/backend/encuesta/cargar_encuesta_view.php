@@ -79,10 +79,10 @@
 					 <label for="inputName" class="control-label col-xs-6"></label>
 					 <div class="col-xs-6">
 							
-									<label class="block" >
-											<input name="form-field-checkbox" class="ace input-lg" type="checkbox" id="responde">
-											<span class="lbl bigger-120">  Responde la encuesta</span>
-									</label>
+							<label class="block" >
+									<input name="form-field-checkbox" class="ace input-lg" type="checkbox" id="responde">
+									<span class="lbl bigger-120">  Responde la encuesta</span>
+							</label>
 											 
 					</div>
 				</div>
@@ -151,9 +151,17 @@
 
 				<div class="form-group" id= "b1_div_afiliado">
 					<label for="inputPassword" class="control-label col-xs-6">Número de Afiliado</label>
-						<div class="col-xs-6">
+						<div class="col-xs-3">
 							<input type="text" name="b1_afiliado"  class="form-control" placeholder="- -  - - -  - - -/- -" id="b1_afiliado">
 						</div>
+						<div class="col-xs-3" id="b1_otro_numero_afiliado">
+							<!-- Button para anular la logica de numeroi de afiliado -->
+							<label class="block" >
+									<input name="check_afiliado" class="ace input-lg" type="checkbox" id="check_afiliado">
+									<span class="lbl bigger-120"> Usar otro número de afiliado</span>
+							</label>
+						</div>
+
 				</div>
 
 				<div class="form-group">
@@ -1652,12 +1660,12 @@
 
 </form>
   
-                            <div class="form-group">
-                                <label for="warning" class="control-label col-xs-6 text-warning">Rellene los campos obligatorios marcados con un asterisco  (*)  </label>
-                                <div class="col-xs-6">
-                                    
-                                </div>
-                            </div>	
+					<div class="form-group">
+						<label for="warning" class="control-label col-xs-6 text-warning">Rellene los campos obligatorios marcados con un asterisco  (*)  </label>
+						<div class="col-xs-6">
+							
+						</div>
+					</div>	
  
  <!--</div>   Cierre contenedor principal -->
 

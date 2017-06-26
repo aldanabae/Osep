@@ -296,9 +296,9 @@
 	<!--<div class="container">   contenedor principal -->
 	 
 	        <br>
-	        <div class="form-group" id="btn_guardar">
+	        <div class="form-group text-center" id="btn_guardar">
 	            <div class="col-xs-offset-3 col-xs-9">
-	                <input type="submit" class="btn btn-primary" value="Guardar" name= "Guardar" id="guardar">
+	                <input type="submit" class="btn btn-info" value="Guardar" name= "Guardar" id="guardar">
 	                <a href="<?php echo(site_url());  ?>" class="btn" ><i class="fa fa-home" aria-hidden="true"></i> Cerrar </a>
 	            </div>
 	        </div>
