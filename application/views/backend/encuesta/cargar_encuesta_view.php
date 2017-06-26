@@ -102,10 +102,11 @@
 				</div>
 
 				<div class="form-group">
-					<label for="inputEmail" class="control-label col-xs-6">Dni (*) </label>
-					<div class="col-xs-6">
+					<label for="inputEmail" class="control-label col-xs-6" id= "b1_txt_dni">Dni (*) </label>
+					<div class="col-xs-4">
 						<input type="number" name="b1_dni"  class="form-control" id="b1_dni" required>
 					</div>
+					<div class="col-xs-2">	</div>
 				</div>
 
 				<div class="form-group">
@@ -123,7 +124,7 @@
 				</div>
 			 
 				<div class="form-group">
-					<label class="control-label col-xs-6">Vínculo con el titular (*) </label>
+					<label class="control-label col-xs-6">Vínculo con el titular (*)</label>
 					<div class="col-xs-6">
 						<select class="form-control" name= "b1_parent" id= "b1_parent" required>
 

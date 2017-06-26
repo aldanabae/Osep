@@ -121,6 +121,11 @@ var bloque1= {    // Bloque General
             }
             encuesta.reset_conf();
 
+            //dejar opcional el DNI
+            $('#b1_dni').attr('required', false);
+            // le saco el asterisco
+            $('#b1_txt_dni').text("Dni");
+
             //===============
             bloque9.estado=false,
             bloque7.estado= false,
@@ -131,7 +136,12 @@ var bloque1= {    // Bloque General
             bloque3b.estado= false // unificar
             $('body, html').animate({
             scrollTop: '0px'
-            }, 300);
+        }, 300);
+        
+
+
+
+
     
         },
 
@@ -230,7 +240,15 @@ var bloque1= {    // Bloque General
 
                 if(encuesta.usar_otronum){
 
-                    $("#b1_afiliado").val($('#b1_dni').val()+"/");
+                    
+                    var num= $("#b1_afiliado").val();
+                    var num_actual = num.replace('/','');
+
+                    if($('#b1_dni').val() == num_actual){
+
+                        $("#b1_afiliado").val($('#b1_dni').val()+"/");
+                    }
+
 
                 }else{
 
@@ -640,6 +658,7 @@ var bloque1= {    // Bloque General
  
                         if($("#check_afiliado").is(':checked')) {  
                             encuesta.usar_otronum = true;
+                            $("#b1_afiliado").val($('#b1_dni').val()+"/"); // le pongo el dni en el numero de afiliado solo si lo toco
                         } else {  
                             encuesta.usar_otronum = false;
                         }  
@@ -838,7 +857,15 @@ var bloque1= {    // Bloque General
                     validacion = true;
 
                 }else{
-                    validacion = false;
+
+                    if(encuesta.count >=1){
+
+                        validacion = true;
+                    }else{
+
+                        validacion = false;
+                    }
+                    
                 }
 
 

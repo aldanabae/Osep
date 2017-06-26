@@ -16,12 +16,12 @@ $(function() {
 		
             //localStorage.removeItem("general");
 			
-			alert('hay datos debo cargarlos en el form');
+			//alert('hay datos debo cargarlos en el form');
 			var local = localStorage.getItem('general')
 			//console.log(local);
         }else{
 			
-			alert('debo cargar una nueva instancia de general')
+			//alert('debo cargar una nueva instancia de general')
 			
 		}
 
