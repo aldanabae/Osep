@@ -8,21 +8,6 @@
 		<div class="page-content">
 
 
-<?php 
-
-// array('nombreE' =>"",
-// 'apellidoE' =>"",
-// 'dniE' =>"",
-// 'edad' =>"",
-// 'sexo' =>"",
-// 'nroAfiliado' =>"",
-// "pregResp" => array('idPregunta' => "",
-// 'idRespuesta' =>"")
-// );
-
-
-
-//var_dump($edades);  ?>
 
 <!--<div class="container">   contenedor principal -->
 <input type="hidden" name="embarazo"  id="embarazo" value="<?php echo @$embarazo; ?>">

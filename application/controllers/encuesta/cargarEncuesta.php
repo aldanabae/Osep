@@ -30,7 +30,10 @@ class CargarEncuesta extends CI_Controller{
                         $session_data = $this->session->userdata('logged_in');
                         $data['username'] = $session_data['username'];
                         $data['nombreE'] = $session_data['nombreE'];
+                        $data['apellidoE'] = $session_data['apellidoE'];
                         $data['nivel'] = $session_data['nivel'];
+                        $data['tipoEmpleado']=$session_data['tipoEmpleado'];
+
                         $this->session->set_flashdata('username', $data);
                         $this->session->set_flashdata('nombreE', $data);
                         $this->session->set_flashdata('nivel', $data);
@@ -41,10 +44,27 @@ class CargarEncuesta extends CI_Controller{
                         $this->load->view('backend/sidebar',$data);
                         $js['javascript']= ["app.js"];
                         $valor['lib']= $this->quiz_lib->get_last_id_quiz();// prueba de libreria
+
+                        if($data['tipoEmpleado'] == "Facilitador"){    // verifico el tipo de usuario
+                                        //Si el usuario es facilitador loso paso su nombre
+                                        $usuario_merge= $data['nombreE']. " " .$data['apellidoE']; // junto el nombre y apellido
+                                        $valor['listado'][]= [$session_data['id'], $usuario_merge]; // paso el array con los datos
+                                        
+                        }else{
+                                // si es otro tipo de usuario trae la lista de todos los fac
+
+                                $listado = $this->abmEmpleados_model->obtenerEmpleadoByTipo("Facilitador");
+
+                                foreach($listado->result() as $lista){
+
+                                        $valor['listado'][]= [$lista->idEmpleado, $lista->nombreE. " ". $lista->apellidoE];
+
+                                }                         
+                        }
+
                         $this->load->view("backend/encuesta/cargar_encuesta_inicio_view",$valor);
                         $this->load->view('backend/footer');
                         $this->load->view('backend/encuesta/script_js', $js);
-
 
                 }else{
                         $this->load->helper(array('form'));

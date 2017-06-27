@@ -796,14 +796,12 @@ var bloque1= {    // Bloque General
                                     
                                 }
 
-
-                                
-
-                                
-
-
                             }
 
+                            // en el caso de que dejen vacio el campo dni  le pone 00000
+                            if($('#b1_dni').val() == ""){
+                                $('#b1_dni').val('00000000')
+                            }
                 }
 
                 bloque_btn.show();     // botonera abajo   

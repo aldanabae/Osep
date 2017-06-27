@@ -89,4 +89,13 @@ class AbmVisitasC extends My_Controller{
 		echo json_encode($data['localidades']);		
 	}
 
+
+
+
+	function getListFacilitadores($id_userActual){
+
+
+		
+	}
+
 }

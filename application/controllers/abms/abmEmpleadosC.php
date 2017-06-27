@@ -51,13 +51,13 @@ class AbmEmpleadosC extends My_Controller{
  
         $this->form_validation->set_rules('nombreE','Nombre Empleado','trim|required');
         $this->form_validation->set_rules('apellidoE','Apellido Empleado','trim|required');
-        $this->form_validation->set_rules('telefono','Telefono','trim|required');
-        $this->form_validation->set_rules('direccion','Direccion','trim|required');
+        //$this->form_validation->set_rules('telefono','Telefono','trim|required');
+        //$this->form_validation->set_rules('direccion','Direccion','trim|required');
         $this->form_validation->set_rules('dni','Nº Documento','trim|required');
         $this->form_validation->set_rules('tipoEmpleado','Tipo Responsable','trim|required');
         $this->form_validation->set_rules('nroLegajo','Nº Legajo','trim|required');
-        $this->form_validation->set_rules('email','E-Mail','trim|required');
-        $this->form_validation->set_rules('convenio','Convenio','trim|required');
+        //$this->form_validation->set_rules('email','E-Mail','trim|required');
+        //$this->form_validation->set_rules('convenio','Convenio','trim|required');
 
        	$this->form_validation->set_message('required','Debe completar este campo');  
  

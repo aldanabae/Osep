@@ -2,7 +2,6 @@
 	<div class="main-content-inner">
 		<div class="page-content">
 
-
 <?php
 
 
@@ -50,15 +49,12 @@
 // var_dump($encuestados[1]['nombreE']);
 
 
-
-
 ?>
 
 
 
 <!--<div class="container">   contenedor principal -->
  <input type="hidden" name="localPath"  id="localPath" value="<?php echo base_url(); ?>">
-
  
         <form id="encuesta_ini" action="<?php echo(site_url('encuesta/cargarEncuesta/cargabloques'));  ?>" method="post">
 
@@ -72,7 +68,33 @@
                             <div class="form-group">
                                 <label for="inputName" class="control-label col-xs-6">Facilitador (*)</label>
                                 <div class="col-xs-6">
-                                    <input type="name" class="form-control" placeholder="Combo Facilitadores" name= "1" id="nom_facilitador"  required>
+
+                                    <?php
+
+                                        $limite = count($listado);  // me fijo la cantidad de elementos que vienen en el arreglo
+                                                                    // si es uno pongo un text  bloqueado, si no pongo un select
+                                                                    
+                                        if( $limite == 1){
+                                            print '<select class="form-control" id="nom_facilitador" name ="1" disabled>
+                                            <option value="'.$listado[0][0].'" >'. $listado[0][1].'</option></select>';
+
+                                        }else{
+
+                                            echo '<select class="form-control" id="nom_facilitador" name ="1" >';
+                                                echo '<option value="" disabled selected hidden>Seleccionar</option>';
+                                                foreach($listado as $list){
+
+                                                    echo '<option value="'.$list[0].'">'.$list[1].'</option>';
+
+                                                }
+                                            echo'</select>';
+
+                                        }
+
+
+                                    ?>
+
+                                    
                                 </div>
                             </div>
 

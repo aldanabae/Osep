@@ -63,6 +63,29 @@ class AbmEmpleados_model extends CI_Model {
 		else return false;
 	}
 
+
+	function obtenerEmpleadoByTipo($tipo = null){
+		$this->db->select('empleado.idEmpleado,empleado.apellidoE,
+							empleado.nombreE,empleado.direccion,
+							empleado.telefono,empleado.nroLegajo,
+							empleado.convenio,empleado.email,
+							empleado.dni,empleado.tipoEmpleado'
+							);
+		if($tipo != null){
+
+			$this->db->where('empleado.tipoEmpleado', $tipo);
+
+		}
+		$this->db->from('empleado');
+		$this->db->order_by("empleado.nombreE", "asc"); 
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0) return $query;
+		else return false;
+	}
+
+
+
 	function actualizarEmpleado($codE, $data){
 		$datos = array(
 			'nombreE'=>$data['nombreE'], 
