@@ -288,6 +288,18 @@ var filtro ={
 
                     });
 
+                    $( "#cantidad").on(
+                        'keyup', function(){
+							var valor = parseInt($('#cantidad').val());
+							if(valor >20 || valor <= 0 ){
+
+								alert('el numero de integrantes esta fuera del limite estipulado')
+								$('#cantidad').val("");
+								$('#cantidad').focus();
+							}
+
+                    });				
+
                     $( "#barrio" ).on(
                         'keyup', function(){
 
@@ -363,6 +375,8 @@ var filtro ={
 
 							filtro.update();
                     });
+
+
 
 
 

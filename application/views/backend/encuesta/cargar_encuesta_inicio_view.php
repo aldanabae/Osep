@@ -80,7 +80,7 @@
 
                                         }else{
 
-                                            echo '<select class="form-control" id="nom_facilitador" name ="1" >';
+                                            echo '<select class="form-control" id="nom_facilitador" name ="1" required>';
                                                 echo '<option value="" disabled selected hidden>Seleccionar</option>';
                                                 foreach($listado as $list){
 
@@ -101,7 +101,8 @@
                             <div class="form-group">
                                 <label for="inputName" class="control-label col-xs-6">Número Relevamiento (*)</label>
                                 <div class="col-xs-6">
-                                    <input type="number" class="form-control"  name= "nroRelev" id="nroRelev" value= "<?php echo($lib['nroRelevamiento']); ?>" required>
+                                    
+                                    <input type="text" class="form-control"  name= "nroRelev" id="nroRelev" value= "<?php echo($lib['nroRelevamiento']); ?>" required>
                                 </div>
                             </div>	                            
                             
@@ -217,7 +218,7 @@
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">¿Cuántas personas viven habitualmente en este domicilio? (*)</label>
                                 <div class="col-xs-6">
-                                    <input type="number" class="form-control"  name= "cantidad"  id= "cantidad" required>
+                                    <input type="number" class="form-control"  name= "cantidad"  id= "cantidad" maxlength="2" min="1" max="20" required>
                                 </div>
                             </div>
 

@@ -82,7 +82,7 @@
 				<div class="form-group">
 					 <label for="inputEmail" class="control-label col-xs-6">Edad (*) </label>
 					 <div class="col-xs-6">
-						 <input type="number" name="b1_edad"  class="form-control" id="b1_edad" required>
+						 <input type="number" name="b1_edad"  class="form-control" id="b1_edad" maxlength="2" min="0" max="120" required>
 					 </div>
 				</div>
 
@@ -137,9 +137,14 @@
 
 				<div class="form-group" id= "b1_div_afiliado">
 					<label for="inputPassword" class="control-label col-xs-6">Número de Afiliado</label>
-						<div class="col-xs-3">
-							<input type="text" name="b1_afiliado"  class="form-control" placeholder="- -  - - -  - - -/- -" id="b1_afiliado">
+						<div class="col-xs-2">
+							<input type="text" name="b1_afiliado"  class="form-control" placeholder="- -  - - -  - - -" id="b1_afiliado">
 						</div>
+
+						<div class="col-xs-1 text-center">
+							<input type="number" name="b1_barra"  class="form-control" id="b1_barra" maxlength="2" min="0" max="15">
+						</div>
+
 						<div class="col-xs-3" id="b1_otro_numero_afiliado">
 							<!-- Button para anular la logica de numeroi de afiliado -->
 							<label class="block" >
