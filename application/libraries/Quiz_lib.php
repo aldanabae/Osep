@@ -50,23 +50,7 @@ class  Quiz_lib
 
             
 
-            $pregResp = array(
-
-            ['idPregunta' => "5",
-            'idRespuesta' =>"tu vieja"],
-
-            ['idPregunta' => "5",
-            'idRespuesta' =>"6"],
-
-
-            ['idPregunta' => "5",
-            'idRespuesta' =>"6"],
-
-            ['idPregunta' => "7",
-            'idRespuesta' =>"7"],
-
-            ['idPregunta' => "88",
-            'idRespuesta' =>"33"]);
+            $pregResp = $add_arr;
 
         @$this->CI->session->set_userdata('qz_general', $pregResp);
 

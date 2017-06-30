@@ -46,7 +46,7 @@
 
 
 // var_dump($encuestados[0]['pregResp'][1]['idPregunta']);
-// var_dump($encuestados[1]['nombreE']);
+
 
 
 ?>
