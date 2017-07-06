@@ -75,6 +75,8 @@ var cargar = {
             time: '',
             class_name: 'gritter-success gritter-center' + ' gritter-light' 
         });
+
+
   
     },
 
@@ -88,10 +90,11 @@ var cargar = {
                 setTimeout(function () {
                             cargar.stop();
                             cargar.notice();
+                            $("#btn_guardar").hide()
                 }, 2500);
 
         });
-
+        localStorage.removeItem('general'); // elimino la variable general de localStorage
 
     }
 

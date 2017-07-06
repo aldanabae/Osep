@@ -7,12 +7,31 @@ $(function() {
     })
 
 
+    $('[data-toggle="popover"]').popover(); 
+
+	
+	
+	    if ( localStorage.getItem('general')){
+
+		
+            //localStorage.removeItem("general");
+			
+			//alert('hay datos debo cargarlos en el form');
+			var local = localStorage.getItem('general')
+			//console.log(local);
+        }else{
+			
+			//alert('debo cargar una nueva instancia de general')
+			
+		}
+
     $("#encuesta_ini").submit(function () { 
 
         var retorno = false;   // variable de retorno para el submit
     // debo comprobar la existencia de la variable local
         if ( localStorage.getItem('general')){
 
+		
             localStorage.removeItem("general");
         }
 
@@ -110,7 +129,7 @@ $(function() {
 
 		}
 
-		var filtro ={
+var filtro ={
 		
 		data:{			// todos los datos que se mueven en el control
 			valor: '1', // no se ve
@@ -118,11 +137,14 @@ $(function() {
 			estado: false,
 			limit: "",       // fija un limite de integrantes si viven 5  no pueden haber mas de 5 embarazadas
 			barrio: false,	// si completa barrio  o no debe condicionar 
+			calle: false,   //si completa calle 
+			numero: false,  // y si completa numero  barrio  y MC  no es necesario
 			tel_enc: ""
 
 		},
 		
 		template: '#filter_embarazo', // marco el id del filtro que debo desplegar
+
 		update: function(){
 
 			// aqui va a eliminar  o agregar las edades en una lista  y  los hidden 
@@ -164,23 +186,43 @@ $(function() {
 
 			}
 
+
+			if (filtro.data.calle && filtro.data.numero){
+
+				$("#barrio , #barrio_c , #barrio_m ").attr('required', false);
+
+			}else{
+
+
+				$("#barrio , #barrio_c , #barrio_m ").attr('required', true);
+				$("#calle , #numero ").attr('required', false);
+
+			}
+
+
 			// actualizo los campos de manzana y casa  
-			if(filtro.data.barrio){
+			if(filtro.data.barrio ){
 
 				$('#manzana').show()
-				$("#barrio , #barrio_c , #barrio_m ").attr('required', true);
-				//  deshabilito el require de calle y nomero
-				$("#calle , #numero ").attr('required', false);
+				// $("#barrio , #barrio_c , #barrio_m ").attr('required', true);
+				// //  deshabilito el require de calle y nomero
+				// $("#calle , #numero ").attr('required', false);
 
 			}else{
 
 				$('#manzana').hide()
 				$("#manzana :input").val("")
-				$("#barrio , #barrio_c , #barrio_m ").attr('required', false);
-				//  deshabilito el require de calle y nomero
-				$("#calle , #numero ").attr('required', true);
+				// $("#barrio , #barrio_c , #barrio_m ").attr('required', false);
+				// //  deshabilito el require de calle y nomero
+				// $("#calle , #numero ").attr('required', true);
 
 			}
+
+
+			
+
+
+
 
 			if (filtro.data.tel_enc != ""){
 
@@ -209,11 +251,13 @@ $(function() {
 							filtro.data.valor= datoSelect;
                             filtro.update();
                     });
+
                     $( "#btn_nueva_edad" ).on(
                         'click', function(){
 							var edad = $('#edad_embarazo').val();
+							var limite = filtro.data.limit;
 
-							if (edad != "" && edad >= 11){     // filtra edad a partir de 11 años
+							if ((edad != "" && edad >= 11 ) && (filtro.data.edades.length < limite )){     // filtra edad a partir de 11 años
 
 								filtro.data.edades.push(edad) ;
 								filtro.update();	
@@ -221,7 +265,6 @@ $(function() {
 							}
 
                     });
-
 
                     $( "#tel_titular").on(
                         'focusout', function(){
@@ -236,6 +279,26 @@ $(function() {
 
                     });
 
+                    $( "#cantidad").on(
+                        'focusout', function(){
+
+							cantidad = parseInt($('#cantidad').val());
+							filtro.data.limit = cantidad ;
+							filtro.update();	
+
+                    });
+
+                    $( "#cantidad").on(
+                        'keyup', function(){
+							var valor = parseInt($('#cantidad').val());
+							if(valor >20 || valor <= 0 ){
+
+								alert('el numero de integrantes esta fuera del limite estipulado')
+								$('#cantidad').val("");
+								$('#cantidad').focus();
+							}
+
+                    });				
 
                     $( "#barrio" ).on(
                         'keyup', function(){
@@ -258,6 +321,64 @@ $(function() {
 
                     });
 
+                    $( "#calle" ).on(
+                        'keyup', function(){  // evento para actualizar si coloco barrio 
+
+							var calle = $('#calle').val();
+
+								if (calle != ""){  
+
+									filtro.data.calle = true ;
+										
+								}else{
+
+									filtro.data.calle = false ;
+
+								}
+
+							filtro.update();
+
+                    });
+
+                    $( "#numero" ).on(
+                        'keyup', function(){  // evento para actualizar si coloco barrio 
+
+							var numero = $('#numero').val();
+
+							if (numero != ""){  
+
+								filtro.data.numero = true ;
+									
+							}else{
+
+								filtro.data.numero = false ;
+
+							}
+
+							filtro.update();
+                    });
+                    $( "#b0_sin_numero" ).on(
+                        'change', function(){  // evento para colocar calle sin numero
+							
+							$('#numero').val('');
+							if ($('#b0_sin_numero').prop('checked')){  
+
+								filtro.data.numero = true ;
+								$('#numero').attr('disabled', 'true');
+									
+							}else{
+
+								$('#numero').removeAttr("disabled");
+								filtro.data.numero = false ;
+
+							}
+
+							filtro.update();
+                    });
+
+
+
+
 
         },
 
@@ -279,3 +400,4 @@ $(function() {
 
 
 		}
+

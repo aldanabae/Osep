@@ -9,11 +9,11 @@
 			<div class="row form-horizontal" id="bloque_8">      <!-- Bloque 8 Vivienda y habitat -->
 						<div class="panel panel-default">
 						
-							<div class="panel-heading orange">Bloque Vivienda y Entorno</div>
+							<div class="panel-heading orange">Bloque vivienda y entorno</div>
 								<div class="panel-body" id="b8_spinner">
 
 									<blockquote>
-									<p>Datos Generales de la Vivienda</p>
+									<p>Datos generales de la vivienda</p>
 									</blockquote>
 
 									<div class="form-group text-center">										
@@ -21,30 +21,30 @@
 									</div>
 
 									<div class="form-group">							
-										<label class="control-label col-xs-6">Red de Energía Eléctrica</label>
+										<label class="control-label col-xs-6">Red de energía eléctrica</label>
 										<div class="col-xs-6">
 											<select class="form-control" required>
-											<option >SI</option>
+											<option selected="true">SI</option>
 											<option >NO</option>							
 											</select>
 										</div>
 									</div>	
 
 									<div class="form-group">
-										<label class="control-label col-xs-6">Red de Gas Natural</label>
+										<label class="control-label col-xs-6">Red de gas natural</label>
 										<div class="col-xs-6">
 											<select class="form-control" required>
-											<option >SI</option>
+											<option selected="true">SI</option>
 											<option >NO</option>							
 											</select>
 										</div>
 									</div>	
 
 									<div class="form-group">							
-										<label class="control-label col-xs-6">Red de Agua Potable</label>
+										<label class="control-label col-xs-6">Red de agua potable</label>
 										<div class="col-xs-6">
 											<select class="form-control" required>
-											<option >SI</option>
+											<option selected="true">SI</option>
 											<option >NO</option>							
 											</select>
 										</div>
@@ -54,17 +54,17 @@
 										<label class="control-label col-xs-6">Cloacas</label>
 										<div class="col-xs-6">
 											<select class="form-control" required>
-											<option >SI</option>
+											<option selected="true">SI</option>
 											<option >NO</option>							
 											</select>
 										</div>
 									</div>							
 
 									<div class="form-group">							
-										<label class="control-label col-xs-6">Teléfono Fijo</label>
+										<label class="control-label col-xs-6">Teléfono fijo</label>
 										<div class="col-xs-6">
 											<select class="form-control" required>
-											<option >SI</option>
+											<option selected="true">SI</option>
 											<option >NO</option>							
 											</select>
 										</div>
@@ -74,7 +74,7 @@
 										<label class="control-label col-xs-6">Internet</label>
 										<div class="col-xs-6">
 											<select class="form-control" required>
-											<option >SI</option>
+											<option selected="true">SI</option>
 											<option >NO</option>							
 											</select>
 										</div>
@@ -104,61 +104,61 @@
 
 
 									<div class="form-group">							
-										<label class="control-label col-xs-6">Basurales a Cielo Abierto</label>
+										<label class="control-label col-xs-6">Basurales a cielo abierto</label>
 										<div class="col-xs-6">
 											<select class="form-control" required>
 											<option >SI</option>
-											<option >NO</option>							
+											<option selected="true">NO</option>							
 											</select>
 										</div>
 									</div>
 
 									<div class="form-group">							
-										<label class="control-label col-xs-6">Fábricas Contaminantes</label>
+										<label class="control-label col-xs-6">Fábricas contaminantes</label>
 										<div class="col-xs-6">
 											<select class="form-control" required>
 											<option >SI</option>
-											<option >NO</option>							
+											<option selected="true">NO</option>							
 											</select>
 										</div>
 									</div>
 
 									<div class="form-group">							
-										<label class="control-label col-xs-6">Animales Abandonados</label>
+										<label class="control-label col-xs-6">Animales abandonados</label>
 										<div class="col-xs-6">
 											<select class="form-control" required>
 											<option >SI</option>
-											<option >NO</option>							
+											<option selected="true">NO</option>							
 											</select>
 										</div>
 									</div>
 
 									<div class="form-group">							
-										<label class="control-label col-xs-6">Lugares de Cría de Animales </label>
+										<label class="control-label col-xs-6">Lugares de cría de animales </label>
 										<div class="col-xs-6">
 											<select class="form-control" required>
 											<option >SI</option>
-											<option >NO</option>							
+											<option selected="true">NO</option>							
 											</select>
 										</div>
 									</div>
 
 									<div class="form-group">							
-										<label class="control-label col-xs-6">Desagüe de Cloacas, Aguas Servidas</label>
+										<label class="control-label col-xs-6">Desagüe de cloacas, aguas servidas</label>
 										<div class="col-xs-6">
 											<select class="form-control" required>
 											<option >SI</option>
-											<option >NO</option>							
+											<option selected="true">NO</option>							
 											</select>
 										</div>
 									</div>
 
 									<div class="form-group">							
-										<label class="control-label col-xs-6">Insectos y Roedores</label>
+										<label class="control-label col-xs-6">Insectos y roedores</label>
 										<div class="col-xs-6">
 											<select class="form-control" required>
 											<option >SI</option>
-											<option >NO</option>							
+											<option selected="true">NO</option>							
 											</select>
 										</div>
 									</div>
@@ -168,13 +168,23 @@
 										<div class="col-xs-6">
 											<select class="form-control" required>
 											<option >SI</option>
-											<option >NO</option>							
+											<option selected="true">NO</option>							
 											</select>
 										</div>
 									</div>
 
 									<div class="form-group">							
-										<label class="control-label col-xs-6">Canales de Riego, Piletas u otro lugar donde haya agua que traiga problemas</label>
+										<label class="control-label col-xs-6">Canales de riego, piletas u otro lugar donde haya agua que traiga problemas</label>
+										<div class="col-xs-6">
+											<select class="form-control" required>
+											<option >SI</option>
+											<option selected="true">NO</option>							
+											</select>
+										</div>
+									</div>
+
+									<div class="form-group">							
+										<label class="control-label col-xs-6">Calles muy transitadas u autopistas</label>
 										<div class="col-xs-6">
 											<select class="form-control" required>
 											<option >SI</option>
@@ -184,17 +194,7 @@
 									</div>
 
 									<div class="form-group">							
-										<label class="control-label col-xs-6">Calles muy transitadas u Autopistas</label>
-										<div class="col-xs-6">
-											<select class="form-control" required>
-											<option >SI</option>
-											<option >NO</option>							
-											</select>
-										</div>
-									</div>
-
-									<div class="form-group">							
-										<label class="control-label col-xs-6">Calles de Tierra</label>
+										<label class="control-label col-xs-6">Calles de tierra</label>
 										<div class="col-xs-6">
 											<select class="form-control" required>
 											<option >SI</option>
@@ -207,11 +207,11 @@
 									<hr>
 
 									<blockquote>
-										<p>Datos Observacionales de la Vivienda</p>
+										<p>Datos observacionales de la vivienda</p>
 									</blockquote>
 
 									<div class="form-group">							
-										<label class="control-label col-xs-6">Nivel de Vivienda</label>
+										<label class="control-label col-xs-6">Nivel de vivienda</label>
 										<div class="col-xs-6">
 											<select class="form-control" required>
 												<option value="" disabled selected hidden>Seleccionar</option>
@@ -227,26 +227,26 @@
 									</div>	
 
 									<div class="form-group">							
-										<label class="control-label col-xs-6">Materiales Predominantes de Paredes</label>
+										<label class="control-label col-xs-6">Materiales predominantes de paredes</label>
 										<div class="col-xs-6">
 											<select class="form-control" required>
 												<option value="" disabled selected hidden>Seleccionar</option>
-												<option >Material de Construcción</option>
+												<option >Material de construcción</option>
 												<option >Madera</option>		
 												<option >Adobe</option>
-												<option >Chapa de Metal, Cartón</option>	
+												<option >Chapa de metal, cartón</option>	
 											</select>
 										</div>
 									</div>					
 
 									<div class="form-group">							
-										<label class="control-label col-xs-6">Materiales Predominantes de Techos</label>
+										<label class="control-label col-xs-6">Materiales predominantes de techos</label>
 										<div class="col-xs-6">
 											<select class="form-control" required>
 												<option value="" disabled selected hidden>Seleccionar</option>
-												<option >Membrana, Teja, Losa, Baldosa</option>
-												<option >Madera, Caña , Paja</option>		
-												<option >Chapa  de Metal, Cartón</option>
+												<option >Membrana, teja, losa, baldosa</option>
+												<option >Madera, caña , paja</option>		
+												<option >Chapa  de metal, cartón</option>
 											</select>
 										</div>
 									</div>							
@@ -257,7 +257,7 @@
 											<select class="form-control" required>
 												<option value="" disabled selected hidden>Seleccionar</option>
 												<option >Suficiente</option>
-												<option >Escaso</option>		
+												<option >Escasa</option>		
 												<option >Sin ventilación</option>
 											</select>
 										</div>
@@ -275,11 +275,19 @@
 									</div>	
 
 									<div class="form-group">
-										<label class="control-label col-xs-6" for="ZipCode">Observaciones Generales</label>
+										<label class="control-label col-xs-6" for="ZipCode">Observaciones generales</label>
 										<div class="col-xs-6">
-											<input type="text" class="form-control" id="ZipCode">
+											
+											<textarea name="b8_observa" rows="10" cols="60" id="b8_observa"></textarea>
 										</div>
 									</div>
+									
+									
+									
+									
+									
+									
+									
 						
 								</div>	
 						</div>	 
@@ -288,9 +296,9 @@
 	<!--<div class="container">   contenedor principal -->
 	 
 	        <br>
-	        <div class="form-group">
+	        <div class="form-group text-center" id="btn_guardar">
 	            <div class="col-xs-offset-3 col-xs-9">
-	                <input type="submit" class="btn btn-primary" value="Guardar" name= "Guardar" id="guardar">
+	                <input type="submit" class="btn btn-info" value="Guardar" name= "Guardar" id="guardar">
 	                <a href="<?php echo(site_url());  ?>" class="btn" ><i class="fa fa-home" aria-hidden="true"></i> Cerrar </a>
 	            </div>
 	        </div>

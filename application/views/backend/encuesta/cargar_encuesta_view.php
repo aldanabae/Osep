@@ -8,21 +8,6 @@
 		<div class="page-content">
 
 
-<?php 
-
-// array('nombreE' =>"",
-// 'apellidoE' =>"",
-// 'dniE' =>"",
-// 'edad' =>"",
-// 'sexo' =>"",
-// 'nroAfiliado' =>"",
-// "pregResp" => array('idPregunta' => "",
-// 'idRespuesta' =>"")
-// );
-
-
-
-//var_dump($edades);  ?>
 
 <!--<div class="container">   contenedor principal -->
 <input type="hidden" name="embarazo"  id="embarazo" value="<?php echo @$embarazo; ?>">
@@ -45,6 +30,10 @@
 			$string_edad= "0";
 
 	}
+
+
+
+	
 		
 ?>
 
@@ -75,14 +64,14 @@
 					<p>Datos Personales</p>
 				</blockquote>
 				
-				<div class="form-group">
+				<div class="form-group" id="id_responde">
 					 <label for="inputName" class="control-label col-xs-6"></label>
 					 <div class="col-xs-6">
 							
-									<label class="block">
-											<input name="form-field-checkbox" class="ace input-lg" type="checkbox" id="responde">
-											<span class="lbl bigger-120">  Responde la encuesta</span>
-									</label>
+							<label class="block" >
+									<input name="form-field-checkbox" class="ace input-lg" type="checkbox" id="responde">
+									<span class="lbl bigger-120">  Responde la encuesta</span>
+							</label>
 											 
 					</div>
 				</div>
@@ -95,21 +84,22 @@
 			</div>
 
 				<div class="form-group">
-					 <label for="inputEmail" class="control-label col-xs-6">Edad(*)</label>
+					 <label for="inputEmail" class="control-label col-xs-6">Edad (*) </label>
 					 <div class="col-xs-6">
-						 <input type="number" name="b1_edad"  class="form-control" id="b1_edad" required>
+						 <input type="number" name="b1_edad"  class="form-control" id="b1_edad" maxlength="2" min="0" max="120" required>
 					 </div>
 				</div>
 
 				<div class="form-group">
-					<label for="inputEmail" class="control-label col-xs-6">Dni(*)</label>
-					<div class="col-xs-6">
+					<label for="inputEmail" class="control-label col-xs-6" id= "b1_txt_dni">Dni (*) </label>
+					<div class="col-xs-4">
 						<input type="number" name="b1_dni"  class="form-control" id="b1_dni" required>
 					</div>
+					<div class="col-xs-2">	</div>
 				</div>
 
 				<div class="form-group">
-					 <label for="inputPassword" class="control-label col-xs-6">Sexo(*)</label>
+					 <label for="inputPassword" class="control-label col-xs-6">Sexo (*) </label>
 						<div class="col-xs-2">
 							<label class="radio-inline">
 								<input type="radio" name="b1_genero" value="m" checked = "true" required> Masculino
@@ -123,7 +113,7 @@
 				</div>
 			 
 				<div class="form-group">
-					<label class="control-label col-xs-6">Vínculo con el titular(*)</label>
+					<label class="control-label col-xs-6">Vínculo con el titular (*)</label>
 					<div class="col-xs-6">
 						<select class="form-control" name= "b1_parent" id= "b1_parent" required>
 
@@ -140,7 +130,7 @@
 
 
 				<div class="form-group" id="tOsep">
-					<label for="inputPassword" class="control-label col-xs-6">¿Tiene Osep?(*)</label>
+					<label for="inputPassword" class="control-label col-xs-6">¿Tiene OSEP?  (*) </label>
 					<div class="col-xs-6">
 						<select class="form-control" name= "b1_osep" id= "b1_osep">
 						<option value="0" checked>SI</option>
@@ -150,34 +140,33 @@
 				</div>			
 
 				<div class="form-group" id= "b1_div_afiliado">
-					<label for="inputPassword" class="control-label col-xs-6">Número Afiliado</label>
-						<div class="col-xs-6">
-							<input type="text" name="b1_afiliado"  class="form-control" placeholder="- -  - - -  - - -/- -" id="b1_afiliado">
+					<label for="inputPassword" class="control-label col-xs-6">Número de Afiliado</label>
+						<div class="col-xs-2">
+							<input type="text" name="b1_afiliado"  class="form-control" placeholder="- -  - - -  - - -" id="b1_afiliado">
 						</div>
+
+						<div class="col-xs-1 text-center">
+							<input type="number" name="b1_barra"  class="form-control" id="b1_barra" maxlength="2" min="0" max="15">
+						</div>
+
+						<div class="col-xs-3" id="b1_otro_numero_afiliado">
+							<!-- Button para anular la logica de numeroi de afiliado -->
+							<label class="block" >
+									<input name="check_afiliado" class="ace input-lg" type="checkbox" id="check_afiliado">
+									<span class="lbl bigger-120"> Usar otro número de afiliado</span>
+							</label>
+						</div>
+
 				</div>
 
 				<div class="form-group">
-					<label for="inputEmail" class="control-label col-xs-6">¿Tiene alguna otra cobertura de salud?</label>
+					<label for="inputEmail" class="control-label col-xs-6" id= "b1_label_cober" >¿Tiene otra cobertura de salud?</label>
 					<div class="col-xs-6">
 						<select class="form-control" name= "b1_cober" id= "b1_cober">
 
 						</select>
 					</div>
 				</div>
-
-				<!--<div class="form-group">
-					<label for="inputEmail" class="control-label col-xs-6">Tiene otra cobertura:</label>
-					<div class="col-xs-6">
-						<select class="form-control" name= "b1_otra" id= "b1_otra">
-						<option value="0" >SI</option>
-						<option value="1" selected =" true" >NO</option>
-
-						</select>
-					</div>
-				</div>-->
-
-
-
 
 
 				<div id= "educativo"><!-- Datos ocupacionales inicio -->
@@ -189,29 +178,30 @@
 					</blockquote>
 
 					<div class="form-group">
-						<label class="control-label col-xs-6">¿Estudia?(*)</label>
+						<label class="control-label col-xs-6">¿Estudia? (*) </label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_estudio" id= "b1_estudio">
-							<option value="0">SI</option>
-							<option value="1" >NO</option>
+								<option value="" disabled selected hidden>Seleccionar</option>
+								<option value="0">SI</option>
+								<option value="1" >NO</option>
 							</select>
 						</div>
 					</div>	
 
 					<div class="form-group" id ="b1_div_nivel">
-						<label for="inputEmail" class="control-label col-xs-6">¿Cuál es su nivel educativo?(*)</label>
+						<label for="inputEmail" class="control-label col-xs-6">¿Cuál es su nivel educativo? (*) </label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_nivel" id= "b1_nivel">
 							<option value="" disabled selected hidden>Seleccionar</option>
 							<option value="0">Inicial</option>
-							<option value="1">Primario Incompleto</option>
-							<option value="2">Primario Completo</option>
-							<option value="3">Secundario Incompleto</option>
-							<option value="4">Secundario Completo</option>
-							<option value="5">Terciario Incompleto</option>
-							<option value="6">Terciario Completo</option>
-							<option value="7">Universitario Incompleto</option>
-							<option value="8">Universitario Completo</option>
+							<option value="1">Primario incompleto</option>
+							<option value="2">Primario completo</option>
+							<option value="3">Secundario incompleto</option>
+							<option value="4">Secundario completo</option>
+							<option value="5">Terciario incompleto</option>
+							<option value="6">Terciario completo</option>
+							<option value="7">Universitario incompleto</option>
+							<option value="8">Universitario completo</option>
 							</select>
 						</div>
 					</div>
@@ -226,7 +216,7 @@
 					
 
 					<div class="form-group">
-						<label for="inputEmail" class="control-label col-xs-6">¿A qué se dedica actualmente?(*)</label>
+						<label for="inputEmail" class="control-label col-xs-6">¿A qué se dedica actualmente? (*) </label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_ocupacion" id= "b1_ocupacion">
 								<!--completo dinamicamente en base a si es titular-->
@@ -239,7 +229,7 @@
 
 
 						<div class="form-group">
-							<label class="control-label col-xs-6">¿Contribuye ud con la economía familiar?(*)</label>
+							<label class="control-label col-xs-6">¿Contribuye con la economía familiar?  (*) </label>
 							<div class="col-xs-6">
 								<select class="form-control" id="b9_contribulle" name="b9_contribulle" >
 								<option value="" disabled selected hidden>Seleccionar</option>
@@ -252,7 +242,7 @@
 
 
 						<div class="form-group">	
-							<label class="control-label col-xs-6">¿Cuántas horas trabajó la semana pasada?(*)</label>
+							<label class="control-label col-xs-6">¿Cuántas horas trabajó la semana pasada? (*) </label>
 							<div class="col-xs-6">
 								<input type="number" class="form-control" id="b9_horas"  name="b9_horas" placeholder=" hs">
 							</div>
@@ -261,7 +251,7 @@
 						<div class="form-group">		
 							<label class="control-label col-xs-6">¿En qué lugar trabaja?</label>
 							<div class="col-xs-6">
-								<input type="text" class="form-control" id="b9_lugar"  name="b9_lugar"  >
+								<input type="text" class="form-control" id="b9_lugar"  name="b9_lugar" placeholder="Repartición" >
 							</div>
 						</div>	
 
@@ -284,7 +274,7 @@
 					<div id="bloque_9_int_juv">
 
 						<div class="form-group">							
-							<label class="control-label col-xs-6">¿Contribuyes ud con la economia familiar?(*)</label>
+							<label class="control-label col-xs-6">¿Contribuye con la economía familiar?  (*) </label>
 							<div class="col-xs-6">
 								<select class="form-control" id="b9_contribulle" name="b9_contribulle" >
 								<option value="" disabled selected hidden>Seleccionar</option>
@@ -319,7 +309,7 @@
 
 
 				<div class="form-group" id= "b1_div_embarazo">
-					<label for="inputPassword" class="control-label col-xs-6">¿Esta embarazada?(*)</label>
+					<label for="inputPassword" class="control-label col-xs-6">¿Esta embarazada? (*) </label>
 					<div class="col-xs-6">
 						<select class="form-control" name= "b1_embarazo" id= "b1_embarazo">
 						<option value="0">SI</option>
@@ -329,17 +319,17 @@
 				</div>
 
 				<div class="form-group">
-					<label for="inputPassword" class="control-label col-xs-6">¿Padece Enfermedad Crónica?(*)</label>
+					<label for="inputPassword" class="control-label col-xs-6">¿Padece alguna enfermedad crónica? (*) </label>
 					<div class="col-xs-6">
 						<select class="form-control" name= "b1_cronica" id= "b1_cronica">
 						<option value="0">SI</option>
-						<option value="1" selected =" true">NO</option>
+						<option value="1" selected ="true">NO</option>
 						</select>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="inputPassword" class="control-label col-xs-6">¿Tiene alguna Discapacidad(*)?</label>
+					<label for="inputPassword" class="control-label col-xs-6">¿Tiene alguna discapacidad? (*) </label>
 					<div class="col-xs-6">
 						<select class="form-control" name= "b1_disc" id= "b1_disc">
 						<option value="0">SI</option>
@@ -362,7 +352,7 @@
 						<div class="col-xs-6">
 							<select class="form-control" name= "b1_extra" id= "b1_extra" >
 							<option value="0">SI</option>
-							<option value="1" selected =" true">NO</option>
+							<option value="1" selected ="true">NO</option>
 							</select>
 						</div>
 					</div>
@@ -380,7 +370,6 @@
 								</ul>
 
 							</div>
-
 
 						<div class="col-xs-6 col-xs-offset-6 ">
 						<br>
@@ -412,6 +401,79 @@
 
 
 
+					<div id="b1_afiliado_varon">
+
+						<blockquote>
+								<p>Utilización de consultas</p>    <!-- apartado Condiciones especiales de salud-->
+						</blockquote>
+
+
+						<!--  preguntas de uso de servicio-->
+
+
+
+						<div class="form-group">
+							
+							<label class="control-label col-xs-6">¿Recuerda si realizó al menos una consulta médica por OSEP en el último año ? </label>
+							<div class="col-xs-6">
+								<select class="form-control" id="b1_consulta" name="b1_consulta">
+									<option value="" disabled selected hidden>Seleccionar</option>
+									<option value="1">SI</option>
+									<option value="2">NO</option>	
+									<option value="3">Sin datos</option>							
+								</select>
+							</div>
+
+						</div>	
+						
+						<div class="form-group" id="b1_div_consulta_si">
+							
+							<label class="control-label col-xs-6">¿Dónde concurrió a atenderse la última vez? </label>
+							<div class="col-xs-6">
+								<select class="form-control" id="b1_atencion_si" name="b1_atencion_si">
+								<option value="" disabled selected hidden>Seleccionar</option>
+								<option value="0">Fue a un efector de OSEP</option>
+								<option value="1">Fue a un prestador privado</option>
+								<option value="2">Fue a un hospital o centro de salud público</option>							
+								</select>
+							</div>
+
+						</div>	
+
+						
+						<div id="b1_div_consulta_no">
+						
+							<div class="form-group" >
+								
+								<label class="control-label col-xs-6">¿Por qué? </label>
+								<div class="col-xs-6">
+									<select class="form-control" id="b1_atencion_no" name="b1_atencion_no">
+										<option value="" disabled selected hidden>Seleccionar</option>
+										<option value= "1">No se enfermó ni tuvo un accidente</option>
+										<option value= "2">Quiso consultar pero no tuvo dinero</option>
+										<option value= "3">Quiso consultar pero le cuesta llegar al lugar de atención</option>
+										<option value= "4">Pidió turno pero no lo obtuvo</option>
+										<option value= "5">Consultó pero NO por OSEP</option>							
+										<option value= "6">Otro motivo</option>						
+									</select>
+								</div>
+
+							</div>	
+
+							<div class="form-group" id="b1_div_cual">
+								<label class="control-label col-xs-6" for="b0_cual"> ¿Cual?</label>
+
+								<div class="col-xs-6" >
+									<input type="text" class="form-control" name = "b1_cual" id="b1_cual" >
+								</div>
+							</div>
+
+						</div>
+
+
+					</div>
+
+
 				
 			</div>
 	</div>	
@@ -419,75 +481,6 @@
 			
 	
 	
- 	<div class="row form-horizontal " id="bloque_2">    <!-- bloque 2 servicios de Salud -->
-		<div class="panel  panel-default">
-			
-				<div class="panel-heading orange">Utilización de servicios de Salud</div>
-					<div class="panel-body">
-				
-						<div class="form-group">							
-							<label class="control-label col-xs-6">En los últimos 6 meses, utilizaron el servicio de la Obra Social?</label>
-							<div class="col-xs-6">
-								<select class="form-control" id= "b2_uso" name= "b2_uso">
-									<option value="0" checked>SI</option>
-									<option value="1">NO</option>							
-								</select>
-							</div>
-						</div>	
-
-					
-
-					<div class="form-group" id="b2_area">
-						<label class="control-label col-xs-6" for="postalAddress">¿Para que lo utilizó?(*)</label>
-						<div class="col-xs-6">
-							<textarea rows="3" class="form-control" id="b2_motivo" name = "b2_area" ></textarea>
-						</div>
-					</div>
-
-
-					<div class="form-group" id="b2_si">							
-						<label class="control-label col-xs-6"></label>
-						<div class="col-xs-6">
-							<select class="form-control" name="b2_si">
-							<option value="" disabled selected hidden>Seleccionar</option>
-							<option value="1">Fue a un efector de OSEP</option>
-							<option value="2">Fue a un prestador Privado</option>							
-							<option value="3">Fue a un Hospital o centro de Salud Publico</option>							
-							</select>
-						</div>
-
-					</div>
-
-
-					<div class="form-group" id="b2_no">							
-						<label class="control-label col-xs-6"></label>
-						<div class="col-xs-6">
-							<select class="form-control" name="b2_no">
-							<option value="" disabled selected hidden>Seleccionar Motivo</option>
-							<option value="1">Ningun miembro de la familia se enfermo o tuvo accidente</option>
-							<option value="2">No lo consideró necesario asi que no hizo nada</option>							
-							<option value="3">No lo consideró necesario y tomo remedio caseros</option>							
-							<option value="4">Decidio tomar sus medicamentos habituales</option>							
-							<option value="5">Prefirio consultar en la farmacia y comprar los medicamentos</option>							
-							<option value="6">Quiso consultar pero no tuvo tiempo</option>							
-							<option value="7">Quiso consultar pero no tuvo dinero</option>							
-							<option value="8">Quiso consultar pero le cuesta mucho llegar al lugar de atencion</option>							
-							<option value="9">Quiso consultar pero el horario de atencion no coincidia</option>							
-							<option value="10">Pidio turno pero no lo obtuvo</option>							
-							<option value="11">Consiguio turno pero todavia no le toca</option>													
-							</select>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="control-label col-xs-6" for="b2_otro">Otro motivo:</label>
-						<div class="col-xs-6">
-							<input type="text" class="form-control" id="b2_otro" name="b2_otro">
-						</div>
-					</div>
-				</div>	
-		</div>	
-	</div>	 <!-- Cierre row -->
 
 
 <!--BLOQUE ESPECIAL BOTON GENERADOR-->
@@ -498,17 +491,27 @@
 			<br>
 			<div class="form-group">
 				<div class="col-xs-12 text-center">
-					<input type="button" class="btn btn-primary" value="Generar Bloques" id= "btn_bloques">
+					<input type="button" class="btn btn-info" value="Generar Bloques" id= "btn_bloques">
 				</div>
 			</div>
 		</div>		 
 	</div>	 <!-- Cierre row -->
 
 
-	<div class="row form-horizontal" id="bloque_3">      <!-- Bloque 3 niños de 0 a 14 -->
+
+
+
+
+
+
+
+
+
+
+	<div class="row form-horizontal" id="bloque_3_a">      <!-- Bloque 3 bebes -->
 			<div class="panel panel-default">
 			
-				<div class="panel-heading orange">Bloque Salud de los Niños</div>
+				<div class="panel-heading orange">Bloque Salud de los niños</div>
 					<div class="panel-body">
 				
 						<blockquote>
@@ -527,7 +530,7 @@
 						</div>	
 
 						<div class="form-group">							
-							<label class="control-label col-xs-6">¿ Nació a término o fue prematuro?</label>						
+							<label class="control-label col-xs-6">¿Nació a término o fue prematuro?</label>						
 							<div class="col-xs-6">
 								<select class="form-control" name ="">
 								<option value="" disabled selected hidden>Seleccionar</option>
@@ -538,14 +541,14 @@
 						</div>	
 						
 						<div class="form-group">
-							<label class="control-label col-xs-6" for="b3_peso">¿Recuerda cuánto peso al nacer? peso al nacer en gramos</label>
+							<label class="control-label col-xs-6" for="b3a_peso">¿Recuerda cuánto pesó al nacer?</label>
 							<div class="col-xs-6">
-								<input type="text" class="form-control" name= "b3_peso" id="b3_peso" >
+								<input type="text" class="form-control" name= "b3a_peso" id="b3a_peso" placeholder="Peso al nacer en gramos">
 							</div>
 						</div>
 
-						<div class="form-group" id="b3_camino">							
-							<label class="control-label col-xs-6">Camino cerca o alrededor de cumplir el Año?</label>
+						<div class="form-group">							
+							<label class="control-label col-xs-6">¿Caminó cerca o alrededor de cumplir el año?</label>
 							<div class="col-xs-6" name ="">
 								<select class="form-control">
 									<option value="" disabled selected hidden>Seleccionar</option>
@@ -570,20 +573,9 @@
 							</div>
 						</div>
 
-						<!-- <div class="form-group">							
-							<label class="control-label col-xs-6">¿ Realizó algún control de salud en los últimos 3 Meses?</label>
-							<div class="col-xs-6" name ="">
-								<option value="" disabled selected hidden>Seleccionar</option>
-								<select class="form-control">
-									<option value="" disabled selected hidden>Seleccionar</option>
-									<option value="1">SI</option>
-									<option value="2">NO</option>							
-								</select>
-							</div>
-						</div> -->
 
 						<div class="form-group">							
-							<label class="control-label col-xs-6">En el ultimo control de Salud, ¿ El profesional anotó que su peso es Normal?</label>
+							<label class="control-label col-xs-6">En el último control de salud, ¿el profesional anotó que su peso es normal?</label>
 							<div class="col-xs-6" name ="">
 								<select class="form-control">
 									<option value="" disabled selected hidden>Seleccionar</option>
@@ -595,7 +587,7 @@
 						</div>
 
 						<div class="form-group">							
-							<label class="control-label col-xs-6">¿Tiene vacunas al Día?</label>
+							<label class="control-label col-xs-6">¿Tiene las vacunas al día?</label>
 							<div class="col-xs-6" name ="">
 								<select class="form-control">
 									<option value="" disabled selected hidden>Seleccionar</option>
@@ -606,9 +598,9 @@
 						</div>
 
 						<div class="form-group">							
-							<label class="control-label col-xs-6">¿Está recibiendo la Leche de OSEP?</label>
+							<label class="control-label col-xs-6">¿Está recibiendo la leche de OSEP?</label>
 							<div class="col-xs-6" >
-								<select class="form-control" name ="b3_leche" id ="b3_leche">
+								<select class="form-control" name ="b3_a_leche" id ="b3_a_leche">
 									<option value="" disabled selected hidden>Seleccionar</option>
 									<option value="1">SI</option>
 									<option value="2">NO</option>							
@@ -616,136 +608,38 @@
 							</div>
 						</div>
 						
-						<div class="form-group" id="b3_div_porque_no">
-							<label class="control-label col-xs-6" for="b3_peso">¡Por que no la recibe?</label>
+						<div class="form-group" id="b3a_div_porque_no">
+							<label class="control-label col-xs-6" for="b3_a_peso">¿Por que no la recibe?</label>
 							<div class="col-xs-6">
-								<input type="text" class="form-control" name= "b3_porque_no" id="b3_porque_no" placeholder="">
+								<input type="text" class="form-control" name= "b3_a_porque_no" id="b3_a_porque_no" placeholder="">
 							</div>
 						</div>	
-						
-						
-						<!-- ============================================================== -->
-						
-						
-						
-						<div id="b3_controles">	
-					
-							<blockquote>
-								<p>Controles de salud y actividades</p>
-							</blockquote>
-							
-							
-							<div class="form-group">
-								
-								<label class="control-label col-xs-6">En el último año, ¿realizó al menos un control con un odontólogo? </label>
-								<div class="col-xs-6">
-									<select class="form-control">
-										<option value="" disabled selected hidden>Seleccionar</option>
-										<option value="1">SI</option>
-										<option value="2">NO</option>							
-									</select>
-								</div>
-
-							</div>							
-							
-							
-							<div class="form-group" id="b3_oculista">
-								
-								<label class="control-label col-xs-6">¿Realizó algún control con un oculista para verificar su salud visual?</label>
-								<div class="col-xs-6">
-									<select class="form-control">
-										<option value="" disabled selected hidden>Seleccionar</option>
-										<option value="1">SI</option>
-										<option value="2">NO</option>							
-									</select>
-								</div>
-
-							</div>		
-
-							<div class="form-group">
-								<label class="control-label col-xs-6" for="b3_escuela">Durante el año pasado / Este año. ¿Ha tenido algún tipo de dificultad en la escuela?</label>
-								<div class="col-xs-4">
-									<select class="form-control" id ="b3_escuela" name ="b3_escuela">
-										<option value="" disabled selected hidden>Seleccionar</option>
-										<option value="1">SI</option>
-										<option value="2" >NO</option>
-										<option value="3">NO asiste Todavía</option>							
-									</select>
-								</div>
-
-							</div>
-							
-							
-							<div class="form-group" id="b3_div_problem">
-								<label class="control-label col-xs-6" for="b3_problem">¿ Cual fue el problema ?</label>
-
-								<div class="col-xs-6" >
-									<input type="text" class="form-control" name = "b3_problem" id="b3_problem" >
-								</div>
-							</div>
-
-
-							<div class="form-group">
-								
-								<label class="control-label col-xs-6">¿Realiza en forma regular alguna actividad (extraescolar). 
-																		Es decir Hace deportes, alguna actividad artística u otra actividad todas las semanas ?</label>
-								<div class="col-xs-6">
-									<select class="form-control" id= "b3_extra">
-										<option value="" disabled selected hidden>Seleccionar</option>
-										<option value="1">Deportiva</option>
-										<option value="2">Artistica</option>
-										<option value="3">Educativa</option>
-										<option value="4">Comunitaria</option>
-										<option value="5">Religiosa</option>
-										<option value="6">Otra</option>							
-										<option value="7">No realiza</option>							
-									</select>
-								</div>
-
-							</div>
 
 
 
+						<!--  preguntas de uso de servicio-->
 
 
-							<div class="form-group" id= "b3_div_donde">
-								
-								<label class="control-label col-xs-6">Donde ?</label>
-								<div class="col-xs-6">
-									<select class="form-control">
-									<option value="" disabled selected hidden>Seleccionar</option>
-									<option value="1">Club</option>
-									<option value="2">Instituto</option>							
-									<option value="3">CIC</option>							
-									<option value="4">Biblioteca</option>							
-									<option value="5">Unión Vecinal</option>							
-									<option value="6">otro</option>							
-									</select>
-								</div>
 
-							</div>
-						
-						</div> <!-- fin de bloque controles de 2 a 14 -->
-						
-						
 						<div class="form-group">
 							
 							<label class="control-label col-xs-6">¿Recuerda si realizó al menos una consulta médica por OSEP en los últimos 6 meses? </label>
 							<div class="col-xs-6">
-								<select class="form-control" id="b3_consulta" name="b3_consulta">
+								<select class="form-control" id="b3a_consulta" name="b3a_consulta">
 									<option value="" disabled selected hidden>Seleccionar</option>
 									<option value="1">SI</option>
-									<option value="2">NO</option>							
+									<option value="2">NO</option>
+									<option value="3">Sin datos</option>							
 								</select>
 							</div>
 
 						</div>	
 						
-						<div class="form-group" id="b5_div_consulta_si">
+						<div class="form-group" id="b3a_div_consulta_si">
 							
 							<label class="control-label col-xs-6">¿Dónde concurrió a atenderse la última vez? </label>
 							<div class="col-xs-6">
-								<select class="form-control" id="b3_atencion_si" name="b3_atencion_si">
+								<select class="form-control" id="b3a_atencion_si" name="b3a_atencion_si">
 								<option value="" disabled selected hidden>Seleccionar</option>
 								<option value="0">Fue a un efector de OSEP</option>
 								<option value="1">Fue a un prestador privado</option>
@@ -756,13 +650,13 @@
 						</div>	
 
 						
-						<div id="b5_div_consulta_no">
+						<div id="b3a_div_consulta_no">
 						
 							<div class="form-group" >
 								
 								<label class="control-label col-xs-6">¿Por qué? </label>
 								<div class="col-xs-6">
-									<select class="form-control" id="b3_atencion_no" name="b3_atencion_no">
+									<select class="form-control" id="b3a_atencion_no" name="b3a_atencion_no">
 										<option value="" disabled selected hidden>Seleccionar</option>
 										<option value= "1">No se enfermó ni tuvo un accidente</option>
 										<option value= "2">Quiso consultar pero no tuvo dinero</option>
@@ -775,55 +669,210 @@
 
 							</div>	
 
-							<div class="form-group" id="b5_div_cual">
-								<label class="control-label col-xs-6" for="b3_cual"> Cual?</label>
+							<div class="form-group" id="b3a_div_cual">
+								<label class="control-label col-xs-6" for="b3a_cual"> ¿Cual?</label>
 
 								<div class="col-xs-6" >
-									<input type="text" class="form-control" name = "b3_cual" id="b3_cual" >
+									<input type="text" class="form-control" name = "b3a_cual" id="b3a_cual" >
 								</div>
 							</div>
 
-
-
-							
-						
 						</div>
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
+
+
 			
 					</div>	
 		</div>
 </div>	 <!-- Cierre row -->
 
 
+<div class="row form-horizontal" id="bloque_3_b">      <!-- Bloque 3 niños -->
+			<div class="panel panel-default">
+			
+				<div class="panel-heading orange">Salud de los Niños</div>
+					<div class="panel-body">
+				
+							<blockquote>
+								<p>Controles de salud y actividades</p>
+							</blockquote>
+
+
+							<div class="form-group">
+								
+								<label class="control-label col-xs-6">En el último año, ¿realizó al menos un control con un odontólogo? </label>
+								<div class="col-xs-6">
+									<select class="form-control">
+										<option value="" disabled selected hidden>Seleccionar</option>
+										<option value="1">SI</option>
+										<option value="2">NO</option>							
+									</select>
+								</div>
+
+							</div>	
+
+
+							<div class="form-group" id="b3_oculista">
+								
+								<label class="control-label col-xs-6">¿Realizó algún control con un oculista para verificar su salud visual?</label>
+								<div class="col-xs-6">
+									<select class="form-control">
+										<option value="" disabled selected hidden>Seleccionar</option>
+										<option value="1">SI</option>
+										<option value="2">NO</option>							
+									</select>
+								</div>
+
+							</div>	
+
+
+
+						
+							<div class="form-group">
+								<label class="control-label col-xs-6" for="b3b_escuela">Durante el año pasado/este año, ¿ha tenido algún tipo de dificultad en la escuela?</label>
+								<div class="col-xs-4">
+									<select class="form-control" id ="b3b_escuela" name ="b3b_escuela">
+										<option value="" disabled selected hidden>Seleccionar</option>
+										<option value="1">SI</option>
+										<option value="2">NO</option>
+										<option value="3">NO asiste Todavía</option>							
+									</select>
+								</div>
+
+							</div>
+						
+						<div class="form-group" id="b3b_div_problem">
+							<label class="control-label col-xs-6" for="b3b_problem">¿Cual fue el problema?</label>
+
+							<div class="col-xs-6" >
+								<input type="text" class="form-control" name = "b3b_problem" id="b3b_problem" >
+							</div>
+						</div>
+
+
+							<div class="form-group">
+								
+								<label class="control-label col-xs-6">¿Realiza en forma regular alguna actividad extraescolar, 
+																		es decir, hace deportes, alguna actividad artística u otra actividad todas las semanas?</label>
+								<div class="col-xs-6">
+									<select class="form-control" id= "b3b_extra">
+										<option value="" disabled selected hidden>Seleccionar</option>
+										<option value="1">Deportiva</option>
+										<option value="2">Artística</option>
+										<option value="3">Educativa</option>
+										<option value="4">Comunitaria</option>
+										<option value="5">Religiosa</option>
+										<option value="6">Otra</option>							
+										<option value="7">No realiza</option>							
+									</select>
+								</div>
+
+							</div>
+
+
+
+							<div class="form-group" id= "b3b_div_donde">
+								
+								<label class="control-label col-xs-6">¿Dónde?</label>
+								<div class="col-xs-6">
+									<select class="form-control">
+									<option value="" disabled selected hidden>Seleccionar</option>
+									<option value="1">Club</option>
+									<option value="2">Instituto</option>							
+									<option value="3">CIC</option>							
+									<option value="4">Biblioteca</option>							
+									<option value="5">Unión Vecinal</option>							
+									<option value="6">Otro</option>							
+									</select>
+								</div>
+
+							</div>
+
+
+
+<!--   preguntas de uso de servicio-->
+
+
+
+					<div class="form-group">
+							
+							<label class="control-label col-xs-6">¿Recuerda si realizó al menos una consulta médica por OSEP  en el último año? </label>
+							<div class="col-xs-6">
+								<select class="form-control" id="b3b_consulta" name="b3b_consulta">
+									<option value="" disabled selected hidden>Seleccionar</option>
+									<option value="1">SI</option>
+									<option value="2">NO</option>
+									<option value="3">Sin datos</option>							
+								</select>
+							</div>
+
+						</div>	
+						
+						<div class="form-group" id="b3b_div_consulta_si">
+							
+							<label class="control-label col-xs-6">¿Dónde concurrió a atenderse la última vez? </label>
+							<div class="col-xs-6">
+								<select class="form-control" id="b3b_atencion_si" name="b3b_atencion_si">
+								<option value="" disabled selected hidden>Seleccionar</option>
+								<option value="0">Fue a un efector de OSEP</option>
+								<option value="1">Fue a un prestador privado</option>
+								<option value="2">Fue a un hospital o centro de salud público</option>							
+								</select>
+							</div>
+
+						</div>	
+
+						
+						<div id="b3b_div_consulta_no">
+						
+							<div class="form-group" >
+								
+								<label class="control-label col-xs-6">¿Por qué? </label>
+								<div class="col-xs-6">
+									<select class="form-control" id="b3b_atencion_no" name="b3b_atencion_no">
+										<option value="" disabled selected hidden>Seleccionar</option>
+										<option value= "1">No se enfermó ni tuvo un accidente</option>
+										<option value= "2">Quiso consultar pero no tuvo dinero</option>
+										<option value= "3">Quiso consultar pero le cuesta llegar al lugar de atención</option>
+										<option value= "4">Pidió turno pero no lo obtuvo</option>
+										<option value= "5">Consultó pero NO por OSEP</option>							
+										<option value= "6">Otro motivo</option>						
+									</select>
+								</div>
+
+							</div>	
+
+							<div class="form-group" id="b3b_div_cual">
+								<label class="control-label col-xs-6" for="b3b_cual"> ¿Cual?</label>
+
+								<div class="col-xs-6" >
+									<input type="text" class="form-control" name = "b3b_cual" id="b3b_cual" >
+								</div>
+							</div>
+
+						</div>
+
+
+
+
+			
+					</div>	
+
+		</div>
+		
+	 
+</div>	 <!-- Cierre row -->
+
+
+
+
 
 <div class="row form-horizontal" id="bloque_4">      <!-- Bloque 4 mujeres -->
 			<div class="panel panel-default">
 			
-				<div class="panel-heading orange">Bloque Salud  de las mujeres</div>
+				<div class="panel-heading orange">Salud de las mujeres</div>
 					<div class="panel-body">
-
-
+						<!--diferenciar las preguntas por edades-->
+					
 						<div id="b4_div_consulta">
 							<div class="form-group" >
 														
@@ -832,8 +881,9 @@
 									<div class="col-xs-6">
 										<select class="form-control" id= "b4_consulta" >
 											<option value="" disabled selected hidden>Seleccionar</option>
-											<option value="0" >SI</option>
-											<option value="1">NO</option>						
+											<option value="0">SI</option>
+											<option value="1">NO</option>
+											<option value="3">Sin datos</option>						
 										</select>
 									</div>
 
@@ -875,118 +925,154 @@
 										</div>
 									</div>
 
-									<div class="form-group" id="b4_div_otro">
 
-										<div class="col-xs-6 col-xs-offset-6" >
+
+									<div class="form-group" id="b4_div_otro">					
+										<label class="control-label col-xs-6"> ¿Cual? </label>
+
+										<div class="col-xs-6">
 											<input type="text" class="form-control" name = "b4_otro" id="b4_otro" >
-										</div>
 
+										</div>
 									</div>
+
 								<hr>
 							</div>
 
+				
 
 
 						</div> <!--cierro div consulta-->
-					
-				
-						<div class="form-group">
-							
-							<label class="control-label col-xs-6">¿ Como diría que es su estado general de salud en este momento?</label>
-							<div class="col-xs-6">
-								<select class="form-control">
-								<option value="" disabled selected hidden>Seleccionar</option>
-								<option >Muy bueno</option>
-								<option >Bueno</option>							
-								<option >Regular</option>							
-								<option >Malo</option>							
-								</select>
-							</div>
+					<div id="b4_salud">
+							<div class="form-group" id="b4_estado_general">
+								
+								<label class="control-label col-xs-6">¿Como diría que es su estado general de salud en este momento?</label>
+								<div class="col-xs-6">
+									<select class="form-control">
+									<option value="" disabled selected hidden>Seleccionar</option>
+										<option value="0">Muy bueno</option>
+										<option value="1">Bueno</option>							
+										<option value="2">Regular</option>							
+										<option value="3">Malo</option>
+										<option value="4">Sin datos</option>									
+									</select>
+								</div>
 
-						</div>	
+							</div>	
+
+
+					</div> <!--cierro diferenciar preguntas-->
+
 
 
 						<div class="form-group" id="b4_div_pap">
 							
-							<label class="control-label col-xs-6">¿ En los últimos  2 años concurrió a realizarse el Papanicolaou?</label>
-							<div class="col-xs-3">
+							<label class="control-label col-xs-6">¿En los últimos  2 años concurrió a realizarse el papanicolau?</label>
+							<div class="col-xs-2">
 								<select class="form-control" id="b4_pap">
-								<option value="0" >SI</option>
-								<option value="1">NO</option>							
+									<option value="" disabled selected hidden>Seleccionar</option>
+									<option value="0">SI</option>
+									<option value="1">NO</option>
+									<option value="2">No sabe/no contesta</option>							
 								</select>
 							</div>
-							<div class="col-xs-3" id="b4_div_pap_si" >
-								<select class="form-control" id="b4_pap_si" name="b4_pap_si">
-									<option value="" disabled selected hidden>¿Por qué?</option>
-									<option value= "1">En hospital o centro propio de OSEP</option>
-									<option value= "2">En Consultorio, Clínica o Sanatorio donde reciben OSEP</option>
-									<option value= "3">En hospital publico, dentro de salud , sala</option>
-									<option value= "4">En Consultorio, Clínica o Sanatorio donde no reciben OSEP</option>
-									<option value= "5">Otro</option>							
-								</select>
+							<div class="col-xs-4" id="b4_div_pap_si" >
+				
+							
+								<label class="control-label col-xs-5">¿Dónde concurrió?</label>
+								<div class="col-xs-7">
+									<select class="form-control" id="b4_pap_si" name="b4_pap_si">
+										<option value="" disabled selected hidden>Seleccionar</option>
+										<option value= "1">En hospital o centro propio de OSEP</option>
+										<option value= "2">En consultorio, clínica o sanatorio dónde reciben OSEP</option>
+										<option value= "3">En hospital público, centro de salud , sala</option>
+										<option value= "4">En consultorio, clínica o sanatorio dónde no reciben OSEP</option>
+										<option value= "5">Otro</option>							
+									</select>
+								</div>
+							
+
 							</div>
-							<div class="col-xs-3" id="b4_div_pap_no" >
-								<select class="form-control" id ="b4_pap_no" name ="b4_pap_no">
-									<option value="" disabled selected hidden>¿Por qué?</option>
-									<option value= "1">No tuvo tiempo</option>							
-									<option value= "2">No tuvo dinero</option>							
-									<option value= "3">No consiguió turno o lugar donde la atiendan</option>							
-									<option value= "4">No sabe donde hacerselo</option>							
-									<option value= "5">Le da miedo, disgusto o vergüenza</option>							
-									<option value= "6">Se olvido</option>							
-									<option value= "7">Por dejadez</option>							
-									<option value= "8">No lo necesita, esta sana (percepción personal)</option>							
-									<option value= "9">No Conoce ese examen o no sabia que tenia que hacérselo</option>							
-									<option value= "10">El médico no se lo indico</option>							
-									<option value= "11">Por edad Avanzada</option>							
-									<option value= "12">No le corresponde (Histerectomía, o alguna otra contraindicación Médica)</option>							
-						
-								</select>
+							<div class="col-xs-4" id="b4_div_pap_no" >
+
+								<label class="control-label col-xs-5">¿Por qué?</label>
+								<div class="col-xs-7">
+									<select class="form-control" id ="b4_pap_no" name ="b4_pap_no">
+										<option value="" disabled selected hidden>Seleccionar</option>
+										<option value= "1">No tuvo tiempo</option>							
+										<option value= "2">No tuvo dinero</option>							
+										<option value= "3">No consiguió turno o lugar dónde la atiendan</option>							
+										<option value= "4">No sabe dónde  hacérselo</option>							
+										<option value= "5">Le da miedo, disgusto o vergüenza</option>							
+										<option value= "6">Se olvidó</option>							
+										<option value= "7">Por dejadez</option>							
+										<option value= "8">No lo necesita, está sana (percepción personal)</option>							
+										<option value= "9">No conoce el examen o no sabía que tenía que hacérselo</option>							
+										<option value= "10">El médico no se lo indicó</option>							
+										<option value= "11">Por edad avanzada</option>							
+										<option value= "12">No le corresponde (histerectomía, o alguna otra contraindicación médica)</option>
+										<option value= "13">No sabe/no contesta</option>
+							
+									</select>
+								</div>
 							</div>
 
 
 
 						</div>	
 
-
 						
 						<div class="form-group" id="b4_div_mamo">
-							<label class="control-label col-xs-6" for="b4_mamo">¿ En los últimos 2 años se ha realizado una mamografía ?</label>
-							<div class="col-xs-3">
+							<label class="control-label col-xs-6" for="b4_mamo">¿En los últimos 2 años se ha realizado una mamografía?</label>
+							<div class="col-xs-2">
 								<select class="form-control" id="b4_mamo" name="b4_mamo" >
-									
+									<option value="" disabled selected hidden>Seleccionar</option>
 									<option value="0">SI</option>
-									<option value="1">NO</option>							
+									<option value="1">NO</option>
+									<option value="2">No sabe/no contesta</option>										
+						
 								</select>
 							</div>
-							<div class="col-xs-3" id="b4_div_mamo_si">
-								<select class="form-control" id="b4_mamo_si" name="b4_mamo_si">
-									<option value="" disabled selected hidden>¿Por qué?</option>
-									<option value= "1">En el mamografo de Osep</option>
-									<option value= "2">En Consultorio, Clínica o Sanatorio donde reciben OSEP</option>
-									<option value= "3">En hospital publico, dentro de salud , sala</option>
-									<option value= "4">En Consultorio, Clínica o Sanatorio donde no reciben OSEP</option>
-									<option value= "5">Otro</option>
+							<div class="col-xs-4" id="b4_div_mamo_si">
+							
+								<label class="control-label col-xs-5">¿Dónde concurrió?</label>
+								<div class="col-xs-7">
+									<select class="form-control" id="b4_mamo_si" name="b4_mamo_si">
+										<option value="" disabled selected hidden>Seleccionar</option>
+										<option value= "1">En el mamografo de OSEP</option>
+										<option value= "2">En consultorio, clínica o sanatorio dónde reciben OSEP</option>
+										<option value= "3">En hospital público, centro de salud , sala</option>
+										<option value= "4">En consultorio, clínica o sanatorio dónde no reciben OSEP</option>
+										<option value= "5">Otro</option>
+									</select>
+								</div>
+							
+							
 
-								</select>
 							</div>
-							<div class="col-xs-3" id="b4_div_mamo_no" >
+							<div class="col-xs-4" id="b4_div_mamo_no" >
+							
+								<label class="control-label col-xs-5">¿Por qué?</label>
+								<div class="col-xs-7">
 								<select class="form-control" id="b4_mamo_no" name="b4_mamo_no">
-									<option value="" disabled selected hidden>¿Por qué?</option>
+									<option value="" disabled selected hidden>Seleccionar</option>
 									<option value= "1">No tuvo tiempo</option>							
 									<option value= "2">No tuvo dinero</option>							
-									<option value= "3">No consiguió turno o lugar donde la atiendan</option>							
-									<option value= "4">No sabe donde hacerselo</option>							
+									<option value= "3">No consiguió turno o lugar dónde la atiendan</option>							
+									<option value= "4">No sabe dónde hacérselo</option>							
 									<option value= "5">Le da miedo, disgusto o vergüenza</option>							
-									<option value= "6">Se olvido</option>							
+									<option value= "6">Se olvidó</option>							
 									<option value= "7">Por dejadez</option>							
-									<option value= "8">No lo necesita, esta sana (percepción personal)</option>							
-									<option value= "9">No Conoce ese examen o no sabia que tenia que hacérselo</option>										
-									<option value= "10">El profesional tratante no se lo indico</option>									
-									<option value= "11">Por edad Avanzada</option>							
-									<option value= "12">No le corresponde (Histerectomía, o alguna otra contraindicación Médica)</option>							
-														
+									<option value= "8">No lo necesita, está sana (percepción personal)</option>							
+									<option value= "9">No conoce el examen o no sabía que tenía que hacérselo</option>										
+									<option value= "10">El médico no se lo indicó</option>									
+									<option value= "11">Por edad avanzada</option>							
+									<option value= "12">No le corresponde (histerectomía, o alguna otra contraindicación médica)</option>							
+									<option value= "13">No sabe/no contesta</option>								
 								</select>
+								</div>				
+							
+
 							</div>							
 						</div>
 
@@ -1008,7 +1094,7 @@
 						
 						<div class="form-group" id = "">
 							
-							<label class="control-label col-xs-6">¿Necesita usar en forma permanente uno o más de estos elementos? </label>
+							<label class="control-label col-xs-6">¿Necesita usar en forma permanente uno o más de estos elementos ? </label>
 							<div class="col-xs-6">
 
 								<div class="checkbox">
@@ -1046,7 +1132,7 @@
 
 						<div class="form-group">
 							
-							<label class="control-label col-xs-6">¿ Necesita o ha tenido que realizar modificaciones e su casa para no caerse o realizar sus tareas cotidianas ?</label>
+							<label class="control-label col-xs-6">¿Necesita o ha tenido que realizar modificaciones e su casa para no caerse o realizar sus tareas cotidianas ?</label>
 							<div class="col-xs-6">
 								<select class="form-control">
 								<option value="" disabled selected hidden>Seleccionar</option>
@@ -1061,7 +1147,7 @@
 
 						<div class="form-group">
 							
-							<label class="control-label col-xs-6">Normalmente, ¿ Necesita ayuda para realizar tramites, como cobrar la jubilación, pedir turno al medico por ejemplo?</label>
+							<label class="control-label col-xs-6">Normalmente, ¿Necesita ayuda para realizar trámites, como cobrar la jubilación, pedir turno al medico por ejemplo ?</label>
 							<div class="col-xs-6">
 								<select class="form-control">
 								<option value="" disabled selected hidden>Seleccionar</option>
@@ -1075,7 +1161,7 @@
 
 						<div class="form-group">
 							
-							<label class="control-label col-xs-6">Si tiene una  dificultad de salud  o una urgencia, ¿Cuenta con alguien que lo pueda ayudar a resolverla?</label>
+							<label class="control-label col-xs-6">Si tiene una  dificultad de salud  o una urgencia, ¿cuenta con alguien que lo pueda ayudar a resolverla ?</label>
 							<div class="col-xs-6">
 								<select class="form-control">
 								<option value="" disabled selected hidden>Seleccionar</option>
@@ -1095,27 +1181,16 @@
 								<select class="form-control" id="b5_activity" name="b5_activity">
 								<option value="" disabled selected hidden>Seleccionar</option>
 								<option value="1">SI</option>
-								<option value="2" selected>NO</option>							
+								<option value="2" >NO</option>							
 								</select>
 							</div>
 
 						</div>	
 
-						<!--<div class="form-group" id="b5_div_cual">
-							<label class="control-label col-xs-6" for="b5_cual"> Cual?</label>
-
-							<div class="col-xs-6" >
-								<input type="text" class="form-control" name = "b5_cual" id="b5_cual" placeholder="Cual fue el Problema?">
-							</div>
-						</div>
-
-						<!--  aqui va el cual-->
-
-
 
 						<div class="form-group">
 							
-							<label class="control-label col-xs-6">Tiene alguna actividad o Hobbie que haga frecuentemente para ocupar el tiempo libre ?</label>
+							<label class="control-label col-xs-6">Tiene alguna actividad o hobbie que haga frecuentemente para ocupar el tiempo libre ?</label>
 							<div class="col-xs-6">
 								<select class="form-control" id="b5_hobby" name="b5_hobby">
 								<option value="" disabled selected hidden>Seleccionar</option>
@@ -1132,7 +1207,7 @@
 
 						<div class="form-group">
 							
-							<label class="control-label col-xs-6">Respecto a la atención Médica. ¿Tiene un médico de cabecera, es decir un profesional que lo conozca y que lo atienda habitualmente?</label>
+							<label class="control-label col-xs-6">Respecto a la atención médica, ¿tiene un médico de cabecera, es decir un profesional que lo conozca y que lo atienda habitualmente?</label>
 							<div class="col-xs-6">
 								<select class="form-control" id="b5_medico" name="b5_medico">
 								<option value="" disabled selected hidden>Seleccionar</option>
@@ -1165,7 +1240,8 @@
 								<select class="form-control" id="b5_consulta" name="b5_consulta">
 									<option value="" disabled selected hidden>Seleccionar</option>
 									<option value="1">SI</option>
-									<option value="2">NO</option>							
+									<option value="2">NO</option>
+									<option value="3">Sin datos</option>							
 								</select>
 							</div>
 
@@ -1206,7 +1282,7 @@
 							</div>	
 
 							<div class="form-group" id="b5_div_cual">
-								<label class="control-label col-xs-6" for="b5_cual"> Cual?</label>
+								<label class="control-label col-xs-6" for="b5_cual"> ¿Cual?</label>
 
 								<div class="col-xs-6" >
 									<input type="text" class="form-control" name = "b5_cual" id="b5_cual" >
@@ -1231,13 +1307,13 @@
 <div class="row form-horizontal" id="bloque_6">      <!-- Bloque 6 discapacidad -->
 			<div class="panel panel-default">
 			
-				<div class="panel-heading">Afiliados con discapacidad</div>
+				<div class="panel-heading orange">Afiliados con discapacidad</div>
 					<div class="panel-body">
 
 
 						<div class="form-group" id = "b6_div_tipo">
 							
-							<label class="control-label col-xs-6">¿ Cual es su Discapacidad?</label>
+							<label class="control-label col-xs-6">¿Cual es su Discapacidad?</label>
 							<div class="col-xs-6">
 
 								<div class="checkbox">
@@ -1266,9 +1342,10 @@
 							<label class="control-label col-xs-6">¿Realizó el empadronamiento en OSEP, Es decir hizo el tramite de registro de su situación en la obra social?</label>
 							<div class="col-xs-6">
 								<select class="form-control">
-								<option value="1">SI</option>
-								<option value="2">NO</option>							
-								<option value="3">NO sabia que habia que hacerlo</option>							
+									<option value="" disabled selected hidden>Seleccionar</option>
+									<option value="1">SI</option>
+									<option value="2">NO</option>							
+									<option value="3">No sabía que había que hacerlo</option>							
 								</select>
 							</div>
 
@@ -1280,16 +1357,16 @@
 							<div class="col-xs-6">
 
 								<div class="checkbox">
-								<label><input type="checkbox" name="104" value="1">Médico general o Pediatra</label>
+								<label><input type="checkbox" name="104" value="1">Médico general o pediatra</label>
 								</div>
 								<div class="checkbox">
-								<label><input type="checkbox" name="105" value="2">Médico Especialista</label>
+								<label><input type="checkbox" name="105" value="2">Médico especialista</label>
 								</div>
 								<div class="checkbox ">
 								<label><input type="checkbox" name="106" value="3" >Psicólogo - Psiquiatra</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" name="107" value="4" >Médico Fisiátra</label>
+								<label><input type="checkbox" name="107" value="4" >Médico fisiátra</label>
 								</div>
 								<div class="checkbox ">
 								<label><input type="checkbox" name="108" value="5" >Otro profesional de la salud</label>
@@ -1318,11 +1395,11 @@
 
 						<div class="form-group" id = "b6_div_profesional">
 							
-							<label class="control-label col-xs-6">De los profesionales de la salud que mencionó, ¿ Alguno es profesional de cabecera ?</label>
+							<label class="control-label col-xs-6">De los profesionales de la salud que mencionó, ¿alguno es profesional de cabecera ?</label>
 							<div class="col-xs-6">
 
 								<div class="checkbox ">
-								<label><input type="checkbox" value="1" >Médico general Pediatra</label>
+								<label><input type="checkbox" value="1" >Médico general pediatra</label>
 								</div>
 								<div class="checkbox ">
 								<label><input type="checkbox" value="2" >Médico especialista</label>
@@ -1331,14 +1408,15 @@
 								<label><input type="checkbox" value="3" >Psicólogo - Psiquiatra</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" value="4" >Otro profesional de la salud</label>
+								<label><input type="checkbox" value="4" >Médico fisiátra</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" value="5" >Ninguno</label>
+								<label><input type="checkbox" value="5" >Otro profesional de la salud</label>
 								</div>
 							</div>
 
 						</div>	
+
 
 
 						<div class="form-group">
@@ -1351,8 +1429,7 @@
 
 						</div>	
 						
-						
-						
+					
 						
 						<div id="b6_uso">	
 
@@ -1363,7 +1440,8 @@
 									<select class="form-control" id="b6_consulta" name="b6_consulta">
 										<option value="" disabled selected hidden>Seleccionar</option>
 										<option value="1">SI</option>
-										<option value="2">NO</option>							
+										<option value="2">NO</option>
+										<option value="3">Sin datos</option>							
 									</select>
 								</div>
 
@@ -1404,36 +1482,19 @@
 								</div>	
 
 								<div class="form-group" id="b6_div_otro">
-									<label class="control-label col-xs-6" for="b6_cual"> Cual?</label>
+									<label class="control-label col-xs-6" for="b6_cual"> ¿Cual?</label>
 
 									<div class="col-xs-6" >
 										<input type="text" class="form-control" name = "b6_cual" id="b6_cual" >
 									</div>
 								</div>
 
-
-
-								
 							
 							</div>
 							
 							
 							
 						</div>	
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
 						
 						
 
@@ -1449,17 +1510,15 @@
 <div class="row form-horizontal" id="bloque_7">      <!-- Bloque 7 Embarazadas -->
 			<div class="panel panel-default">
 			
-				<div class="panel-heading">Bloque Salud de la embarazada.</div>
+				<div class="panel-heading orange">Salud de la Embarazada</div>
 					<div class="panel-body">
 				
-						<blockquote>
-							<p>Salud de la embarazada.</p>
-						</blockquote>
 						<div class="form-group">
 							
-							<label class="control-label col-xs-6">¿ De cuantos meses esta embarazada ?</label>
+							<label class="control-label col-xs-6">¿De cuantos meses esta embarazada ?</label>
 							<div class="col-xs-6">
 								<select class="form-control">
+								<option value="" disabled selected hidden>Seleccionar</option>
 								<option value="1">1</option>
 								<option value="2">2</option>							
 								<option value="3">3</option>							
@@ -1477,11 +1536,12 @@
 
 						<div class="form-group" >
 							
-							<label class="control-label col-xs-6">¿ Concurrió al control el mes pasado ?</label>
+							<label class="control-label col-xs-6">¿Concurrió al control el mes pasado ?</label>
 							<div class="col-xs-6">
 								<select class="form-control" id="b7_uso", name="b7_uso">
-								<option value="1">SI</option>
-								<option value="2">NO</option>							
+									<option value="" disabled selected hidden>Seleccionar</option>
+									<option value="1">SI</option>
+									<option value="2">NO</option>							
 								</select>
 							</div>
 
@@ -1490,12 +1550,13 @@
 
 						
 						<div class="form-group" id="b7_div_complejo">
-							<label class="control-label col-xs-6" for="b7_complejo">¿ Que tan complicado le resulto en esa oportunidad todo el proceso que implicó hacerse el control , 
-																					teniendo en cuenta los pasos desde conseguir turno hasta que la atiendan ?</label>
+							<label class="control-label col-xs-6" for="b7_complejo">¿Qué tan complicado le resultó en esa oportunidad todo el proceso que implicó 
+																						hacerse el control, desde que consiguió el turno hasta que la atendieron ?</label>
 							<div class="col-xs-6">
 								<select class="form-control" id="b7_complejo" name ="b7_complejo">
-								<option value="1">Simple</option>
-								<option value="2">Complicado</option>							
+									<option value="" disabled selected hidden>Seleccionar</option>
+									<option value="1">Simple</option>
+									<option value="2">Complicado</option>							
 								</select>
 							</div>
 						
@@ -1514,12 +1575,13 @@
 
 
 						<div class="form-group">
-							<label class="control-label col-xs-6" for="">¿ El embarazo lo esta llevando un profesional en especial o se atiende con distintos profesionales ?</label>
+							<label class="control-label col-xs-6" for="">¿El embarazo lo esta llevando un profesional en especial o se atiende con distintos profesionales ?</label>
 							<div class="col-xs-6">
 								<select class="form-control" name ="b7_profesional">
-								<option >Un profesional</option>
-								<option >Distintos profesionales en un mismo lugar de atencion</option>							
-								<option >Distintos lugares de atencion</option>							
+									<option value="" disabled selected hidden>Seleccionar</option>
+									<option >Un profesional</option>
+									<option >Distintos profesionales en un mismo lugar de atención</option>							
+									<option >Distintos lugares de atención</option>							
 								</select>
 							</div>
 						
@@ -1527,35 +1589,46 @@
 
 
 						<div class="form-group">
-							<label class="control-label col-xs-6" for="ZipCode">¿ El o los profesionales que la atienden, han detectado algún problema en el embarazo ?</label>
+							<label class="control-label col-xs-6" for="ZipCode">¿El o los profesionales que la atienden, han detectado algún problema en el embarazo ?</label>
 							
 							<div class="col-xs-3">
 								<select class="form-control" name ="b7_problem" id ="b7_problem">
-								<option value="1">Si</option>
-								<option value="2" selected>NO</option>							
+									<option value="" disabled selected hidden>Seleccionar</option>
+									<option value="1">Si</option>
+									<option value="2" selected>NO</option>							
 								</select>
 							</div>
 							<div class="col-xs-3">
-								<input type="text" class="form-control" id="b7_cual" placeholder=" Cual?">
+								<input type="text" class="form-control" id="b7_cual" placeholder=" ¿Cual?">
 							</div>
 
 						</div>
-
-
-
 						<div class="form-group">
-							<label class="control-label col-xs-6" for="">¿ Cuenta con apoyo familiar, de su pareja o de alguna otra persona que la acompañe 
+							
+							<label class="control-label col-xs-6">¿Cuenta con apoyo familiar, de su pareja o de alguna otra persona que la acompañe 
 																				y la ayude mientras transcurre el embarazo ?</label>
 							<div class="col-xs-6">
 								<select class="form-control">
-								<option value="1">Si</option>
-								<option value="2">NO</option>							
+									<option value="" disabled selected hidden>Seleccionar</option>
+									<option value="1">Si</option>
+									<option value="2">NO</option>							
 								</select>
 							</div>
 						
 						</div>
 
-
+						<div class="form-group">
+							<label class="control-label col-xs-6" for="">¿En los últimos dos años, concurrió a realizarse un papanicolau?</label>
+							<div class="col-xs-6">
+								<select class="form-control">
+									<option value="" disabled selected hidden>Seleccionar</option>
+									<option value="1">Si</option>
+									<option value="2">NO</option>							
+									<option value="3">No sabe/no contesta</option>							
+								</select>
+							</div>
+						
+						</div>
 			
 					</div>	
 
@@ -1569,7 +1642,7 @@
         <div class="form-group" id="btn_encuesta">
             <div class="col-xs-6">
 
-                <input type="reset" class="btn btn-default" value="Nuevo integrante" id="btn_nuevo">
+                <input type="reset" class="btn btn-info" value="Nuevo integrante" id="btn_nuevo">
             </div>
 
             <div class="col-xs-6 text-right">
@@ -1582,7 +1655,12 @@
 
 </form>
   
-
+					<div class="form-group">
+						<label for="warning" class="control-label col-xs-6 text-warning">Rellene los campos obligatorios marcados con un asterisco  (*)  </label>
+						<div class="col-xs-6">
+							
+						</div>
+					</div>	
  
  <!--</div>   Cierre contenedor principal -->
 
