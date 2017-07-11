@@ -15,6 +15,8 @@ class CargarEncuesta extends CI_Controller{
             $this->load->model('seguridad/abmNiveles_model');
             $this->load->model('seguridad/abmUsuarios_model');
             $this->load->model('abms/abmVisitas_model');
+            // modelo de relevamiento
+            $this->load->model('relevamiento/relevamiento_model');
             $this->load->library('form_validation'); 
             $this->load->library('Quiz_lib');
 
@@ -88,34 +90,72 @@ class CargarEncuesta extends CI_Controller{
                         $session_data = $this->session->userdata('logged_in');
                         $data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
 
-                        if($this->input->post('Continuar') && $this->input->post('Continuar') != '' && $this->input->post('1') != '')
+                        if($this->input->post('Continuar') && $this->input->post('Continuar') != '' && $this->input->post('nom_facilitador') != '')
                         {
 
                                 $this->load->view('backend/header');
                                 $this->load->view('backend/sidebar',$data);
+
+                                //paso los datos a variable
+
+                                $this->facilitador = $this->input->post('nom_facilitador');
+                                $this->nroRelevamiento = $this->input->post('nroRelev');
+                                $this->fechaRelevamiento = $this->input->post('fechaRelev');
+                                $this->dptoNumero = $this->input->post('idDep');
+                                $this->id_tlocalidad = $this->input->post('idLocalidad');
+                                $this->calle = $this->input->post('b0_calle');
+                                $this->numero = $this->input->post('numero');
+                                $this->barrio = $this->input->post('barrio');
+                                $this->manzana = $this->input->post('barrio_m');
+                                $this->casa = $this->input->post('barrio_c');
+                                $this->entre_calle = $this->input->post('entre_calle');
+                                $this->tel_titular = $this->input->post('tel_titular');
+                                $this->tel_supe = $this->input->post('tel_super');
+                                
                                 $op_embarazo = $_POST['embarazo'];
-                                $data['cantidad']= $_POST['cantidad'];
-                                $data['embarazo']= $op_embarazo;
+                                $options['cantidad']= $_POST['cantidad'];
+                                $options['embarazo']= $op_embarazo;
 
                                         if ($op_embarazo == 0){
 
-                                        $data['edades'] = $_POST['edades_emb'];
+                                        $options['edades'] = $_POST['edades_emb'];
                                         }else{
 
-                                        $data['edades'] = 0;
+                                        $options['edades'] = 0;
                                         }
 
-                                $this->load->view("backend/encuesta/cargar_encuesta_view", $data);
+
+                                // $datox= $_SESSION['qz_general'];
+
+                                //guardo la direccion 
+                                $direccion['calle']= $this->calle;
+                                $direccion['casa']= $this->casa;
+                                $direccion['numero']= $this->numero;
+                                $direccion['dptoNumero']= $this->dptoNumero;
+                                $direccion['entreCalles1']= $this->entre_calle;
+                                $direccion['barrio']= $this->barrio;
+                                $direccion['manzana']= $this->manzana;
+                                $direccion['id_tlocalidad']= $this->id_tlocalidad;
+                                $id_direccion= $this->relevamiento_model->crearDireccion($direccion); // obtengo el id de la direccion
+
+                                
+                                $relevamiento['nroRelevamiento']= $this->nroRelevamiento;
+                                $relevamiento['fechaRelevamiento']=$this->fechaRelevamiento;
+                                $relevamiento['idDireccion']= $id_direccion;
+                                $relevamiento['idEmpleado']=$this->facilitador;
+                                $relevamiento['cantEncuestados']= serialize($options);
+                                $relevamiento['telTitular']= $this->tel_titular;
+                                $relevamiento['telSup']=$this->tel_supe;
+
+
+                                $this->load->view("backend/encuesta/cargar_encuesta_view", $options);
                                 $this->load->view('backend/footer');
                                 $js['javascript']= ["bloques.js"];
                                 $this->load->view('backend/encuesta/script_js', $js);
 
                                // var_dump($_POST);
                                 $this->quiz_lib->create_session_quiz($_POST);
-                                // $datox= $_SESSION['qz_general'];
-                                // var_dump($datox['2']);
                                 
-                                //exit;
                         }
                         else
                         {

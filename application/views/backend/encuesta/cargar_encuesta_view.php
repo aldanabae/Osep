@@ -30,9 +30,11 @@
 			$string_edad= "0";
 
 	}
-
-
-
+//borrar las variables post
+// var_dump($_POST);
+// unset($_POST);
+// $_POST = array();
+	
 	
 		
 ?>

@@ -45,9 +45,6 @@
 
 
 
-// var_dump($encuestados[0]['pregResp'][1]['idPregunta']);
-
-
 
 ?>
 
@@ -75,12 +72,12 @@
                                                                     // si es uno pongo un text  bloqueado, si no pongo un select
                                                                     
                                         if( $limite == 1){
-                                            print '<select class="form-control" id="nom_facilitador" name ="1" disabled>
+                                            print '<select class="form-control" id="nom_facilitador" name ="nom_facilitador" disabled>
                                             <option value="'.$listado[0][0].'" >'. $listado[0][1].'</option></select>';
 
                                         }else{
 
-                                            echo '<select class="form-control" id="nom_facilitador" name ="1" required>';
+                                            echo '<select class="form-control" id="nom_facilitador" name ="nom_facilitador" required>';
                                                 echo '<option value="" disabled selected hidden>Seleccionar</option>';
                                                 foreach($listado as $list){
 
@@ -109,14 +106,14 @@
                             <div class="form-group">
                                 <label for="fecha_relevamiento" class="control-label col-xs-6">Fecha Relevamiento (*)</label>
                                 <div class="col-xs-6">
-                                    <input class="form-control date-picker" id="id-date-picker-1" data-date-format="dd-mm-yyyy" type="text" name= "2" id= "fecha_relevamiento" required>
+                                    <input class="form-control date-picker" id="id-date-picker-1" data-date-format="dd-mm-yyyy" type="text" name= "fechaRelev" id= "fecha_relevamiento" required>
                                 </div>
                             </div>
                             
                             <div class="form-group">
                                 <label class="control-label col-xs-6">Departamento (*)</label>
                                 <div class="col-xs-6">
-                                    <select class="form-control" id="departamento" name ="3" id ="select_dep" onchange="cargarLocalidades()"required>
+                                    <select class="form-control" id="departamento" name ="idDep" id ="select_dep" onchange="cargarLocalidades()"required>
                                     		<option value="" disabled selected hidden>Seleccionar</option>
                                             <option value="1">Capital</option>
                                             <option value="17">General Alvear</option>
@@ -143,7 +140,7 @@
                             <div class="form-group">
                                 <label class="control-label col-xs-6">Distrito (*)</label>
                                 <div class="col-xs-6">
-                                    <select class="form-control" id="localidad" name ="4" required>
+                                    <select class="form-control" id="localidad" name ="idLocalidad" required>
                                     
 
                                     </select>
@@ -154,7 +151,7 @@
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Calle (*)</label>
                                 <div class="col-xs-6">
-                                    <input type="text" name = "ini_calle" class="form-control"  id= "calle" >
+                                    <input type="text" name = "b0_calle" class="form-control"  id= "calle" >
                                 </div>
                             </div>				 
                             
@@ -171,26 +168,22 @@
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Barrio</label>
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control"  name="5" id="barrio">
+                                    <input type="text" class="form-control"  name="barrio" id="barrio">
                                 </div>
                             </div>
 
                             <div class="form-group" id="manzana">
                                 <label for="inputPassword" class="control-label col-xs-6">Manzana (*)</label>
                                 <div class="col-xs-2">
-                                    <input type="text" class="form-control"  name="5" id="barrio_m">
+                                    <input type="text" class="form-control"  name="barrio_m" id="barrio_m">
                                 </div>
                                 <label for="inputPassword" class="control-label col-xs-2">Casa (*)</label>
                                 <div class="col-xs-2">
-                                    <input type="number" class="form-control"  name="5" id="barrio_c">
+                                    <input type="number" class="form-control"  name="barrio_c" id="barrio_c">
                                 </div>
                             </div>
 
-                            
-                            
-                            
 
-				      
                             
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Entre calles</label>

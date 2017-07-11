@@ -87,6 +87,34 @@ class Relevamiento_model extends CI_Model {
 		$idRelevamiento = $this->db->insert_id();
 		return $idRelevamiento;
 	}
+
+
+
+// metodo para crear una direccion para relevamiento
+	public function crearDireccion($data){
+
+		
+		$this->db->insert('direccion', 
+			array(  'calle'=> $data['calle'], 
+					'casa'=> $data['casa'],
+					'numero'=> $data['dptoNumero'], 
+					'entreCalles1'=> $data['entreCalles1'],
+					'barrio'=> $data['barrio'],
+					'manzana'=> $data['manzana'],
+					'id_tlocalidad'=> $data['id_tlocalidad']));
+
+		$idDireccion = $this->db->insert_id();
+
+		return $idDireccion;
+	}
+
+
+
+
+
+
+
+
 	public function crearEncuestado($data){
 		$this->db->insert('encuestado', 
 			array('nombreEncuestado'=> $data['nombreE'], 
