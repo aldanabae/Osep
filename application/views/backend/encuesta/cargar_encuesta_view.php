@@ -31,10 +31,13 @@
 
 	}
 //borrar las variables post
-// var_dump($_POST);
-// unset($_POST);
-// $_POST = array();
-	
+ var_dump($_POST);
+
+
+echo('ID relevamiento'.$id_relevamiento);
+echo('numero de relevamiento'.$id_numRel);
+
+
 	
 		
 ?>

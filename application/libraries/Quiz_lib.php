@@ -38,6 +38,17 @@ class  Quiz_lib
     }
 
 
+
+    public function get_last_data_user($id_user){
+
+
+
+
+
+
+    }
+
+
     public function create_session_quiz($add_arr)
     {
 

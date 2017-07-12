@@ -77,13 +77,24 @@ class Relevamiento_model extends CI_Model {
 			return false;
 		}	
 	}
+
+
+	// todo dar vuelta la fecha para que se guarde
 	public function crearRelevamiento($data){
 		$this->db->insert('relevamiento', 
-			array('nroRelevamiento'=> $data['nroRelev'], 
-					'fechaRelevamiento'=> $data['fechaR'],
-					'observCriticidad'=> $data['observC'], 
-					'idCriticidad'=> $data['idCriti'],
-					'idEncuesta'=> $data['idEnc']));
+
+			array('nroRelevamiento'=> $data['nroRelevamiento'], 
+					'fechaRelevamiento'=> $data['fechaRelevamiento'],
+					'idEncuesta'=> $data['idEncuesta'], 
+					'idDireccion'=> $data['idDireccion'],
+					'idEmpleado'=> $data['idEmpleado'],
+					'cantEncuestados'=> $data['cantEncuestados'],
+					'observacion'=> $data['observacion'],
+					'telTitular'=> $data['telTitular'],
+					'telSup'=> $data['telSup'],
+					'estado'=> $data['estado']));
+
+
 		$idRelevamiento = $this->db->insert_id();
 		return $idRelevamiento;
 	}
@@ -97,7 +108,8 @@ class Relevamiento_model extends CI_Model {
 		$this->db->insert('direccion', 
 			array(  'calle'=> $data['calle'], 
 					'casa'=> $data['casa'],
-					'numero'=> $data['dptoNumero'], 
+					'numero'=> $data['numero'], 
+					'dptoNumero'=> $data['dptoNumero'], 
 					'entreCalles1'=> $data['entreCalles1'],
 					'barrio'=> $data['barrio'],
 					'manzana'=> $data['manzana'],

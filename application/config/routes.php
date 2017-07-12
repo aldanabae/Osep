@@ -55,4 +55,5 @@ $route['translate_uri_dashes'] = FALSE;
 
 
 $route['apiV1']='auditoria/auditoriaC';
+$route['encuesta/cargarEncuesta/(:num)']='encuesta/cargarEncuesta/init/$1';
 

@@ -45,7 +45,6 @@
 
 
 
-
 ?>
 
 
@@ -99,7 +98,7 @@
                                 <label for="inputName" class="control-label col-xs-6">Número Relevamiento (*)</label>
                                 <div class="col-xs-6">
                                     
-                                    <input type="text" class="form-control"  name= "nroRelev" id="nroRelev" value= "<?php echo($lib['nroRelevamiento']); ?>" required>
+                                    <input type="text" class="form-control"  name= "nroRelev" id="nroRelev" value= "<?php //echo($lib['nroRelevamiento']); ?>" required>
                                 </div>
                             </div>	                            
                             
