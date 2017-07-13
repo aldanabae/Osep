@@ -103,7 +103,6 @@ class Relevamiento_model extends CI_Model {
 
 // metodo para crear una direccion para relevamiento
 	public function crearDireccion($data){
-
 		
 		$this->db->insert('direccion', 
 			array(  'calle'=> $data['calle'], 
@@ -120,7 +119,21 @@ class Relevamiento_model extends CI_Model {
 		return $idDireccion;
 	}
 
+	// este metodo me devuelve el relevamiento parte inicial en base a el id de usuario en busca del  ultimo relevameinto abierto
+	public function getRelevamientoByUser($id_user){
 
+		$state= '1';     // seteo a estado 1  o abierto
+		$this->db->select();
+		$this->db->from('relevamiento');
+		$this->db->join('direccion', 'direccion.idDireccion = relevamiento.idDireccion');
+		$this->db->where('idEmpleado', $id_user);
+		$this->db->limit(1);
+		$this->db->where('estado', $state);
+		$query= $this->db->get();
+		//returns result objects array
+		return $query->result();
+
+	}
 
 
 

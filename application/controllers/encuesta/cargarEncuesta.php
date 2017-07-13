@@ -54,59 +54,54 @@ class CargarEncuesta extends CI_Controller{
 
 
 
-/*
-1_comprobar que este recibiendo un numero
-2_ verificar el nivel de usuario, si es 2 solo debe usar su $session_data['id']
+                        /*
+                        1_comprobar que este recibiendo un numero
+                        2_ verificar el nivel de usuario, si es 2 solo debe usar su $session_data['id']
 
-3_  si es un nivel superior puede usar el $session_data['id'] que se envie por la url
+                        3_  si es un nivel superior puede usar el $session_data['id'] que se envie por la url
 
-=====================================
+                        =====================================
 
-4_debo consultar la libreria quiz_lib  y en base al $session_data['id'] o id usuario enviado, traer el ultimo relevamiento abierto
+                        4_debo consultar la libreria quiz_lib  y en base al $session_data['id'] o id usuario enviado, traer el ultimo relevamiento abierto
 
-5_reconstruir con los datos el primer formulario y editarlo si es necesario
+                        5_reconstruir con los datos el primer formulario y editarlo si es necesario
 
-6_ agregar el campo estado la la tabla relevanimento
-
-
+                        6_ agregar el campo estado la la tabla relevanimento
 
 
 
-
-
-
-
-
-
-*/
-
-
-
+                        */
 
                         $usuario_id = $this->uri->segment(3);// id  que envia desde el form
-                        var_dump($session_data['id']);
-                        var_dump($session_data );
-
-                        //$valor['lib']= $this->quiz_lib->get_last_data_user($session_data['id']);// busca el ultimo relevamiento correspondiente al usuario 
-
-
+                        //var_dump($usuario_id);
+                        // var_dump($this->relevamiento_model->getRelevamientoByUser(16));  
                         
-                                if($data['nivel'] == "2"){    // verifico el tipo de usuario
-                                                //Si el usuario es facilitador loso paso su nombre
-                                                $usuario_merge= $data['nombreE']. " " .$data['apellidoE']; // junto el nombre y apellido
-                                                $valor['listado'][]= [$session_data['id'], $usuario_merge]; // paso el array con los datos
-                                                
-                                }else{
-                                        // si es otro tipo de usuario trae la lista de todos los fac
+                        if($session_data['nivel'] == "2"){    // verifico el tipo de usuario
+                                //Si el usuario es facilitador loso paso su nombre
+                                $usuario_merge= $data['nombreE']. " " .$data['apellidoE']; // junto el nombre y apellido
+                                $valor['listado'][]= [$session_data['id'], $usuario_merge]; // paso el array con los datos
+                                // ene ste caso por als que envie cualquier dato por la url el valor que paso es el mismo del usuario facilitador
+                                $id_usuario= $session_data['id'];
+                                // consulto si hay algun relevameinto abierto para este usuario
+                                // si es asi traigo toda la info primaria
+                                $valor['relevamiento']= $this->quiz_lib->get_last_data_user($id_usuario);
 
-                                        $listado = $this->abmEmpleados_model->obtenerEmpleadoByTipo("Facilitador");
+                                        
+                        }else{
+                                // si es otro tipo de usuario trae la lista de todos los fac
+                                $listado = $this->abmEmpleados_model->obtenerEmpleadoByTipo("Facilitador");
 
-                                        foreach($listado->result() as $lista){
+                                foreach($listado->result() as $lista){
 
-                                                $valor['listado'][]= [$lista->idEmpleado, $lista->nombreE. " ". $lista->apellidoE];
+                                        $valor['listado'][]= [$lista->idEmpleado, $lista->nombreE. " ". $lista->apellidoE];
 
-                                        }                         
-                                }
+                                }  
+                                // devuelvo la info del id que me pasan por la url, si no tiene relevamiento abierto solo devuelve el ultimo id+1
+                                $valor['relevamiento']= $this->quiz_lib->get_last_data_user($usuario_id);
+
+
+                        }
+
 
                         $this->load->view("backend/encuesta/cargar_encuesta_inicio_view",$valor);
                         $this->load->view('backend/footer');
@@ -119,7 +114,7 @@ class CargarEncuesta extends CI_Controller{
 
         }
 
-
+ 
 
 
 
