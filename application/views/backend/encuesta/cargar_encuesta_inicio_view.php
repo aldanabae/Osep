@@ -4,45 +4,20 @@
 
 <?php
 
-
- //var_dump($lib);
-// var_dump($_SESSION);
-// var_export ($lib);
-
-
-// $encuestados = array(
-    
-// array(
-// 'nombreE' =>"",
-// 'apellidoE' =>"asas",
-// 'dniE' =>"2222",
-// 'edad' =>"11",
-// 'sexo' =>"m",
-// 'nroAfiliado' =>"wewewewewe",
-// "pregResp" => array(
-    
-//     ['idPregunta' => "5",
-//     'idRespuesta' =>"tu vieja"],
-
-//     ['idPregunta' => "5",
-//     'idRespuesta' =>"6"],
-
-
-//     ['idPregunta' => "5",
-//     'idRespuesta' =>"6"],
-
-//     ['idPregunta' => "7",
-//     'idRespuesta' =>"7"],
-    
-//     ['idPregunta' => "88",
-//     'idRespuesta' =>"33"],
-
-// )
-
-// ) ,// cierre princ
-
 $dato_rel= $relevamiento;
-var_dump($relevamiento);
+
+    // valido el contenido del relevamiento, si hay un solo elemento 
+    //es por que no hay relevamiento abierto, de otro modo pone el parametro en true
+    // y carga los valores en los campos
+    $completar = false;
+    if(count($relevamiento) > 1){
+
+        $completar = true;
+        $cantidad= unserialize($dato_rel['cantEncuestados']);
+var_dump($cantidad);
+    }
+
+
 
 
 ?>
@@ -51,6 +26,20 @@ var_dump($relevamiento);
 
 <!--<div class="container">   contenedor principal -->
  <input type="hidden" name="localPath"  id="localPath" value="<?php echo base_url(); ?>">
+
+ <?php
+
+// campo oculto de refecencia por si es una edixion o es un guardado basico
+
+if($completar){
+
+   // $edades= 
+
+
+}
+
+
+ ?>
  
         <form id="encuesta_ini" action="<?php echo(site_url('encuesta/cargarEncuesta/cargabloques'));  ?>" method="post">
 
@@ -71,8 +60,8 @@ var_dump($relevamiento);
                                                                     // si es uno pongo un text  bloqueado, si no pongo un select
                                                                     
                                         if( $limite == 1){
-                                            print '<select class="form-control" id="nom_facilitador" name ="nom_facilitador" disabled>
-                                            <option value="'.$listado[0][0].'" >'. $listado[0][1].'</option></select>';
+                                            print '<select class="form-control" id="nom_facilitador" name ="nom_facilitador" >
+                                            <option value="'.$listado[0][0].'" selected>'. $listado[0][1].'</option></select>';
 
                                         }else{
 
@@ -80,14 +69,22 @@ var_dump($relevamiento);
                                                 echo '<option value="" disabled selected hidden>Seleccionar</option>';
                                                 foreach($listado as $list){
 
-                                                    echo '<option value="'.$list[0].'">'.$list[1].'</option>';
+                                                    if($list[0] == $selectedItem){
+
+                                                        echo '<option value="'.$list[0].'" selected>'.$list[1].'</option>';
+
+                                                    }else{
+
+                                                        echo '<option value="'.$list[0].'">'.$list[1].'</option>';
+
+                                                    }
 
                                                 }
-                                            echo'</select>';
+                                            
 
                                         }
 
-
+                                        echo'</select>';
                                     ?>
 
                                     
@@ -105,33 +102,56 @@ var_dump($relevamiento);
                             <div class="form-group">
                                 <label for="fecha_relevamiento" class="control-label col-xs-6">Fecha Relevamiento (*)</label>
                                 <div class="col-xs-6">
-                                    <input class="form-control date-picker" id="id-date-picker-1" data-date-format="dd-mm-yyyy" type="text" name= "fechaRelev" id= "fecha_relevamiento" required>
+                                    <input class="form-control date-picker" id="id-date-picker-1" value= "<?php echo ($completar) ? $dato_rel['fechaRelevamiento'] : ""; ?>" data-date-format="dd-mm-yyyy" type="text" name= "fechaRelev" id= "fecha_relevamiento" required>
                                 </div>
                             </div>
                             
                             <div class="form-group">
                                 <label class="control-label col-xs-6">Departamento (*)</label>
                                 <div class="col-xs-6">
-                                    <select class="form-control" id="departamento" name ="idDep" id ="select_dep" onchange="cargarLocalidades()"required>
-                                    		<option value="" disabled selected hidden>Seleccionar</option>
-                                            <option value="1">Capital</option>
-                                            <option value="17">General Alvear</option>
-                                            <option value="4">Godoy Cruz</option>
-                                            <option value="3">Guaymallén	 </option>
-                                            <option value="8">Junín</option>
-                                            <option value="11">La Paz</option>
-                                            <option value="2">Las Heras</option>
-                                            <option value="12">Lavalle </option>
-                                            <option value="5">Lujan de Cuyo</option>
-                                            <option value="6">Maipú</option>
-                                            <option value="18">Malargue</option>
-                                            <option value="9">Rivadavia</option>
-                                            <option value="15">San Carlos</option>
-                                            <option value="7">San Martín</option>
-                                            <option value="16">San Rafael</option>
-                                            <option value="10">Santa Rosa</option>
-                                            <option value="14">Tunuyán</option>
-                                            <option value="13">Tupungato</option>
+                                    <select class="form-control" id="departamento" name ="idDep" id ="select_dep" required>
+
+
+                                        <?php       
+                                            // condicional para cargar los dep  o cargar y seleccionar uno
+                                        
+                                            if($completar){
+
+                                                foreach($departamento as $dep){ 
+
+                            
+                                                    if($dep->id_tdeparta == $dato_rel['dptoNumero']){ // marcar selected uno que ya estaba cargado
+
+                                                        echo '<option value="'.$dep->id_tdeparta.'" selected>'.$dep->descdep.'</option>';
+
+                                                    }else{
+
+                                                        echo '<option value="'.$dep->id_tdeparta.'" >'.$dep->descdep.'</option>'; // carga el resto normalmente
+                                                    }
+
+                                                }
+
+
+                                            }else{
+                                                
+                                                echo '<option value="" disabled selected hidden>Seleccionar</option>';
+                                                foreach($departamento as $dep){  // este solo carga cuando no tiene  relev pendientes
+
+                                                    echo '<option value="'.$dep->id_tdeparta.'" >'.$dep->descdep.'</option>';
+
+                                                }
+
+
+
+                                            }
+                                        
+                                        
+                                        
+                                        ?>
+
+
+
+
                                     </select>
                                 </div>
                             </div>
@@ -150,14 +170,14 @@ var_dump($relevamiento);
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Calle (*)</label>
                                 <div class="col-xs-6">
-                                    <input type="text" name = "b0_calle" class="form-control"  id= "calle" >
+                                    <input type="text" name = "b0_calle" value= "<?php echo ($completar) ? $dato_rel['calle'] : ""; ?>" class="form-control"  id= "calle" >
                                 </div>
                             </div>				 
                             
                             <div class="form-group">
                                 <label  class="control-label col-xs-6">Número (*)</label>
                                 <div class="col-xs-4">
-                                    <input type="number" class="form-control"  name ="numero" id= "numero" >
+                                    <input type="number" class="form-control"  value= "<?php echo ($completar) ? $dato_rel['numero'] : ""; ?>" name ="numero" id= "numero" >
                                 </div>
                                 <div class="col-xs-2 checkbox">
                                     <label><input type="checkbox" value="1" id="b0_sin_numero">Sin número</label>
@@ -167,18 +187,18 @@ var_dump($relevamiento);
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Barrio</label>
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control"  name="barrio" id="barrio">
+                                    <input type="text" class="form-control"  value= "<?php echo ($completar) ? $dato_rel['barrio'] : ""; ?>" name="barrio" id="barrio">
                                 </div>
                             </div>
 
                             <div class="form-group" id="manzana">
                                 <label for="inputPassword" class="control-label col-xs-6">Manzana (*)</label>
                                 <div class="col-xs-2">
-                                    <input type="text" class="form-control"  name="barrio_m" id="barrio_m">
+                                    <input type="text" class="form-control" value= "<?php echo ($completar) ? $dato_rel['manzana'] : ""; ?>" name="barrio_m" id="barrio_m">
                                 </div>
                                 <label for="inputPassword" class="control-label col-xs-2">Casa (*)</label>
                                 <div class="col-xs-2">
-                                    <input type="number" class="form-control"  name="barrio_c" id="barrio_c">
+                                    <input type="number" class="form-control" value= "<?php echo ($completar) ? $dato_rel['casa'] : ""; ?>" name="barrio_c" id="barrio_c">
                                 </div>
                             </div>
 
@@ -187,21 +207,21 @@ var_dump($relevamiento);
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Entre calles</label>
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control"  name ="entre_calle" id= "entre_calle" >
+                                    <input type="text" class="form-control"  value= "<?php echo ($completar) ? $dato_rel['entreCalles1'] : ""; ?>" name ="entre_calle" id= "entre_calle" >
                                 </div>
                             </div>		                           
                             	 
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Teléfono del titular (*)</label>
                                 <div class="col-xs-6">
-                                    <input type="number" class="form-control"  name ="tel_titular" id= "tel_titular" required>
+                                    <input type="number" class="form-control"  name ="tel_titular" value= "<?php echo ($completar) ? $dato_rel['telTitular'] : ""; ?>" id= "tel_titular" required>
                                 </div>
                             </div>	
 
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Teléfono para supervisión (encuestado)</label>
                                 <div class="col-xs-6">
-                                    <input type="number" class="form-control" name ="tel_super" id= "tel_super" >
+                                    <input type="number" class="form-control" value= "<?php echo ($completar) ? $dato_rel['telSup'] : ""; ?>" name ="tel_super" id= "tel_super" >
                                 </div>
                             </div>	
 
@@ -210,7 +230,7 @@ var_dump($relevamiento);
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">¿Cuántas personas viven habitualmente en este domicilio? (*)</label>
                                 <div class="col-xs-6">
-                                    <input type="number" class="form-control"  name= "cantidad"  id= "cantidad" maxlength="2" min="1" max="20" required>
+                                    <input type="number" class="form-control"   name= "cantidad"  id= "cantidad" maxlength="2" min="1" max="20" required>
                                 </div>
                             </div>
 
@@ -252,7 +272,7 @@ var_dump($relevamiento);
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">Observaciones</label>
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control"  name= "observaciones">
+                                    <input type="text" class="form-control" value= "<?php echo ($completar) ? $dato_rel['observacion'] : ""; ?>"  name= "observaciones">
                                 </div>
                             </div>
 

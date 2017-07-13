@@ -91,11 +91,4 @@ class AbmVisitasC extends My_Controller{
 
 
 
-
-	function getListFacilitadores($id_userActual){
-
-
-		
-	}
-
 }

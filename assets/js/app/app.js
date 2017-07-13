@@ -12,8 +12,6 @@ $(function() {
 	
 	
 	    if ( localStorage.getItem('general')){
-
-		
             //localStorage.removeItem("general");
 			
 			//alert('hay datos debo cargarlos en el form');
@@ -140,7 +138,6 @@ var filtro ={
 			calle: false,   //si completa calle 
 			numero: false,  // y si completa numero  barrio  y MC  no es necesario
 			tel_enc: ""
-
 		},
 		
 		template: '#filter_embarazo', // marco el id del filtro que debo desplegar
@@ -219,17 +216,23 @@ var filtro ={
 			}
 
 
-			
-
-
-
-
 			if (filtro.data.tel_enc != ""){
 
 				$('#tel_super').val(filtro.data.tel_enc)
 			}
 
 
+		},
+
+
+		refresh: function(){
+
+
+
+
+
+
+			
 		},
 
 		bindComponent: function(){
@@ -264,7 +267,18 @@ var filtro ={
 
 							}
 
+					});
+						
+                    $( "#departamento" ).on(
+						'change', function(){  // evento para cargar localidades 
+
+						cargarLocalidades();
+
                     });
+
+
+
+
 
                     $( "#tel_titular").on(
                         'focusout', function(){
@@ -374,6 +388,14 @@ var filtro ={
 							}
 
 							filtro.update();
+                    });
+                    $( "#nom_facilitador" ).on(
+						'change', function(){  // evento para redireccionar la url con el nombre
+							var valor = $(this).val();
+							var segment= 'encuesta/cargarEncuesta/'+ valor;
+							var url = $("#localPath").val();
+							location.href = url + segment;
+
                     });
 
 

@@ -20,6 +20,9 @@ class CargarEncuesta extends CI_Controller{
             $this->load->library('form_validation'); 
             $this->load->library('Quiz_lib');
 
+
+
+
     }
 
 
@@ -44,6 +47,7 @@ class CargarEncuesta extends CI_Controller{
                         $this->session->set_flashdata('username', $data);
                         $this->session->set_flashdata('nombreE', $data);
                         $this->session->set_flashdata('nivel', $data);
+
                         //mantener sidebar dinamica
                         $session_data = $this->session->userdata('logged_in');
                         $data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
@@ -73,11 +77,9 @@ class CargarEncuesta extends CI_Controller{
                         */
 
                         $usuario_id = $this->uri->segment(3);// id  que envia desde el form
-                        //var_dump($usuario_id);
-                        // var_dump($this->relevamiento_model->getRelevamientoByUser(16));  
                         
                         if($session_data['nivel'] == "2"){    // verifico el tipo de usuario
-                                //Si el usuario es facilitador loso paso su nombre
+                                                              //Si el usuario es facilitador loso paso su nombre
                                 $usuario_merge= $data['nombreE']. " " .$data['apellidoE']; // junto el nombre y apellido
                                 $valor['listado'][]= [$session_data['id'], $usuario_merge]; // paso el array con los datos
                                 // ene ste caso por als que envie cualquier dato por la url el valor que paso es el mismo del usuario facilitador
@@ -98,10 +100,11 @@ class CargarEncuesta extends CI_Controller{
                                 }  
                                 // devuelvo la info del id que me pasan por la url, si no tiene relevamiento abierto solo devuelve el ultimo id+1
                                 $valor['relevamiento']= $this->quiz_lib->get_last_data_user($usuario_id);
-
+                                $valor['selectedItem']=$usuario_id;
 
                         }
 
+                        $valor['departamento']= (array) $this->abmVisitas_model->getDepartamentos(); // cargo los departamentos ....todos
 
                         $this->load->view("backend/encuesta/cargar_encuesta_inicio_view",$valor);
                         $this->load->view('backend/footer');
@@ -135,6 +138,8 @@ class CargarEncuesta extends CI_Controller{
                         //mantener sidebar dinamica
                         $session_data = $this->session->userdata('logged_in');
                         $data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
+
+
 
 
                         if($this->input->post('Continuar') && $this->input->post('Continuar') != '' && $this->input->post('nom_facilitador') != '')
@@ -211,8 +216,6 @@ class CargarEncuesta extends CI_Controller{
                                 $js['javascript']= ["bloques.js"];
                                 $this->load->view('backend/encuesta/script_js', $js);
 
-                               
-                                $this->quiz_lib->create_session_quiz($_POST);
                                 
                         }
                         else

@@ -35,10 +35,20 @@ class AbmVisitas_model extends CI_Model {
 	}
 
 	function getDepartamentos(){
-		$query = $this->db->get('departamento');
-		if ($query->num_rows() > 0) return $query;
+
+		$this->db->select();
+		$this->db->from('departamento');
+		$this->db->order_by("descdep", "asc"); 
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0) return $query->result();
 		else return false;
 	}
+
+
+
+
+
 
 	function getLocalidades(){
 		$query = $this->db->get('localidad');
