@@ -4,8 +4,8 @@
 
 <?php
 
-$dato_rel= $relevamiento;
-
+$dato_rel= $relevamiento; // array de relevamiento qeu viene del controlador
+//var_dump($dato_rel);
     // valido el contenido del relevamiento, si hay un solo elemento 
     //es por que no hay relevamiento abierto, de otro modo pone el parametro en true
     // y carga los valores en los campos
@@ -14,34 +14,45 @@ $dato_rel= $relevamiento;
 
         $completar = true;
         $cantidad= unserialize($dato_rel['cantEncuestados']);
-var_dump($cantidad);
+        
     }
 
+    // campo oculto de refecencia por si es una edicion o es un guardado basico
+
+?>
+    
+    <input type="hidden" name="hdnembarazo"  id="hdnembarazo" value="<?php echo ($completar) ? $cantidad['embarazo'] : ""; ?>">
+    
 
 
+<?php
+
+    $result = ""; // variable cadena donde va el value del hidden edades
+    if($completar){
+
+        if(count($cantidad['edades']) > 1){
+
+            $result = implode(',',$cantidad['edades']);
+
+        }elseif (count($cantidad['edades']) == 1){
+
+            $result = $cantidad['edades'];
+
+        }
+    }
 
 ?>
 
+    <input type="hidden" name="hdnedades"  id="hdnedades" value="<?php echo $result; ?>">
+    <input type="hidden" name="hdndep"  id="hdndep" value="<?php echo ($completar) ? $dato_rel['dptoNumero'] : ""; ?>">
+    <input type="hidden" name="hdnloc"  id="hdnloc" value="<?php echo ($completar) ? $dato_rel['id_tlocalidad'] : ""; ?>">
 
 
-<!--<div class="container">   contenedor principal -->
- <input type="hidden" name="localPath"  id="localPath" value="<?php echo base_url(); ?>">
-
- <?php
-
-// campo oculto de refecencia por si es una edixion o es un guardado basico
-
-if($completar){
-
-   // $edades= 
-
-
-}
-
-
- ?>
  
+        <input type="hidden" name="localPath"  id="localPath" value="<?php echo base_url(); ?>">
         <form id="encuesta_ini" action="<?php echo(site_url('encuesta/cargarEncuesta/cargabloques'));  ?>" method="post">
+
+        <input type="hidden" name="accion"  id="accion" value="<?php echo ($completar) ? "edicion" : "guardar"; ?>">
 
         <div class="row form-horizontal" id= "bloque_0">     <!-- bloque 0 -->
                 <div class="panel panel-default">
@@ -102,7 +113,7 @@ if($completar){
                             <div class="form-group">
                                 <label for="fecha_relevamiento" class="control-label col-xs-6">Fecha Relevamiento (*)</label>
                                 <div class="col-xs-6">
-                                    <input class="form-control date-picker" id="id-date-picker-1" value= "<?php echo ($completar) ? $dato_rel['fechaRelevamiento'] : ""; ?>" data-date-format="dd-mm-yyyy" type="text" name= "fechaRelev" id= "fecha_relevamiento" required>
+                                    <input class="form-control date-picker" id="id-date-picker-1" value= "<?php echo ($completar) ? implode('-',array_reverse(explode('-',$dato_rel['fechaRelevamiento']))) : ""; ?>" data-date-format="dd-mm-yyyy" type="text" name= "fechaRelev" id= "fecha_relevamiento" required>
                                 </div>
                             </div>
                             
@@ -119,18 +130,8 @@ if($completar){
 
                                                 foreach($departamento as $dep){ 
 
-                            
-                                                    if($dep->id_tdeparta == $dato_rel['dptoNumero']){ // marcar selected uno que ya estaba cargado
-
-                                                        echo '<option value="'.$dep->id_tdeparta.'" selected>'.$dep->descdep.'</option>';
-
-                                                    }else{
-
                                                         echo '<option value="'.$dep->id_tdeparta.'" >'.$dep->descdep.'</option>'; // carga el resto normalmente
-                                                    }
-
                                                 }
-
 
                                             }else{
                                                 
@@ -230,7 +231,8 @@ if($completar){
                             <div class="form-group">
                                 <label for="inputPassword" class="control-label col-xs-6">¿Cuántas personas viven habitualmente en este domicilio? (*)</label>
                                 <div class="col-xs-6">
-                                    <input type="number" class="form-control"   name= "cantidad"  id= "cantidad" maxlength="2" min="1" max="20" required>
+                                
+                                    <input type="number" class="form-control"   name= "cantidad" value= "<?php echo ($completar) ? $cantidad['cantidad'] : ""; ?>" id= "cantidad" maxlength="2" min="1" max="20" required>
                                 </div>
                             </div>
 

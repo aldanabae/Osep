@@ -30,12 +30,6 @@
 			$string_edad= "0";
 
 	}
-//borrar las variables post
- var_dump($_POST);
-
-
-echo('ID relevamiento'.$id_relevamiento);
-echo('numero de relevamiento'.$id_numRel);
 
 
 	

@@ -47,15 +47,15 @@ $(function() {
 
     })
 
-	filtro.bindComponent();
-	filtro.update();
+	filtro.init();
+
 
 
 });
 
 
-		function cargarLocalidades(){
-			var idDpto = $('#departamento').val();
+		function cargarLocalidades(idDpto, selected= null){
+			//var idDpto = $('#departamento').val();
 			var path   = $("#localPath").val();
 			var parametros = {
 			"id_dpto" : idDpto
@@ -67,7 +67,7 @@ $(function() {
 			       	dataType: 'json',
 				success: function(resp) { 
 					if(resp){
-						cargarCombo(resp);
+						cargarCombo(resp, selected);
 					}
 					else{
 						//document.getElementById("localidad").disabled=true;
@@ -80,16 +80,38 @@ $(function() {
 
 
 
-		function cargarCombo(listaLoc){
+		function cargarCombo(listaLoc, itemSelected= null){
 			// document.getElementById("localidad").options.length=0;
 			// document.getElementById("localidad").options[0]=new Option();
 
 			var combo=$("#localidad");
+				combo.html("")
+
+			if(itemSelected == null){
+
+				combo.append('<option value="" disabled selected hidden>Seleccionar</option>');
+				for (var i in listaLoc){
+					combo.append('<option value="'+listaLoc[i].id_tlocalidad +'">'+ listaLoc[i].descloc +'</option>');
+				}
+
+			}else{
+
+				for (var i in listaLoc){
+
+					if(listaLoc[i].id_tlocalidad == itemSelected){
+
+						combo.append('<option value="'+listaLoc[i].id_tlocalidad +'"selected>'+ listaLoc[i].descloc +'</option>');
+
+					}else{
+
+						combo.append('<option value="'+listaLoc[i].id_tlocalidad +'">'+ listaLoc[i].descloc +'</option>');
+
+					}
+
+				}
+
+			}
 			
-			combo.append('<option value="" disabled selected hidden>Seleccionar</option>');
-	        for (var i in listaLoc){
-	            combo.append('<option value="'+listaLoc[i].id_tlocalidad +'">'+ listaLoc[i].descloc +'</option>');
-	        }
 		}
 
 
@@ -140,6 +162,86 @@ var filtro ={
 			tel_enc: ""
 		},
 		
+		init: function(){
+			// inicio del modulo  condicional a si esta abierto el relev
+			var valor= $('#hdnloc').val();
+
+			if(valor == ""){
+				filtro.bindComponent();
+
+			}else{
+				filtro.bindComponent();
+				filtro.refresh();
+			}
+
+			filtro.update();
+
+		},
+		
+		refresh: function(){     // actualiza los datos en el modelito segun lo que trae de la bd  si tiene abierto el relevameinto
+
+				//cargo edades en el array
+				var edades = $('#hdnedades').val();
+				var embarazo = $('#hdnembarazo').val();
+				var departamento = $('#hdndep').val();
+				var localidad = $('#hdnloc').val();
+				var cantidad = $('#cantidad').val();
+				//=====================================
+				filtro.data.edades= edades.split(",");
+
+				//modifico variable de barrio
+				var barrio = $('#barrio').val();
+				if(barrio != ""){
+					filtro.data.barrio= true;
+				}else{
+					filtro.data.barrio= false;
+				}
+
+				//modifico variable de calle
+				var calle = $('#calle').val();
+
+				if(calle != ""){
+					filtro.data.calle= true;
+				}else{
+					filtro.data.calle= false;
+				}	
+
+				//modifico variable de numero
+				var numero = $('#numero').val();
+
+				if(numero != ""){
+					filtro.data.numero= true;
+				}else{
+					filtro.data.numero= false;
+				}	
+
+
+				// modifico el estado y valor 0 es si   1 es no embarazadas
+
+				filtro.data.valor= embarazo;
+
+				if(embarazo == "0"){
+
+					filtro.data.estado= true;
+
+				}else{
+
+					filtro.data.estado= false;
+				}
+
+				// modifico cantidad de integrantes
+					filtro.data.limit= cantidad;
+				
+				// peticion ajax a localidades
+				$("#departamento option[value=" + departamento +"]").attr("selected", true); // seteo el select departamento
+				cargarLocalidades(departamento , localidad);
+
+				$("#embarazo option[value=" + embarazo +"]").attr("selected", true); // seteo el select de embarazadas
+				
+			
+		},
+
+
 		template: '#filter_embarazo', // marco el id del filtro que debo desplegar
 
 		update: function(){
@@ -208,7 +310,7 @@ var filtro ={
 			}else{
 
 				$('#manzana').hide()
-				$("#manzana :input").val("")
+				//$("#manzana :input").val("")
 				// $("#barrio , #barrio_c , #barrio_m ").attr('required', false);
 				// //  deshabilito el require de calle y nomero
 				// $("#calle , #numero ").attr('required', true);
@@ -224,16 +326,6 @@ var filtro ={
 
 		},
 
-
-		refresh: function(){
-
-
-
-
-
-
-			
-		},
 
 		bindComponent: function(){
 
@@ -269,16 +361,12 @@ var filtro ={
 
 					});
 						
-                    $( "#departamento" ).on(
-						'change', function(){  // evento para cargar localidades 
+                    $( "#departamento" ).on( 'change', function(){  // evento para cargar localidades 
 
-						cargarLocalidades();
+						var idDpto = $('#departamento').val();
+						cargarLocalidades(idDpto);
 
                     });
-
-
-
-
 
                     $( "#tel_titular").on(
                         'focusout', function(){

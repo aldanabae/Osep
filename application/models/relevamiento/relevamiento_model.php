@@ -123,6 +123,7 @@ class Relevamiento_model extends CI_Model {
 	public function getRelevamientoByUser($id_user){
 
 		$state= '1';     // seteo a estado 1  o abierto
+		
 		$this->db->select();
 		$this->db->from('relevamiento');
 		$this->db->join('direccion', 'direccion.idDireccion = relevamiento.idDireccion');
@@ -134,6 +135,38 @@ class Relevamiento_model extends CI_Model {
 		return $query->result();
 
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
