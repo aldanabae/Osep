@@ -392,7 +392,7 @@
 
 							<!-- Button trigger modal -->
 							<button type="button" class="btn btn-primary text-left"  id="btn_add_afiliado">
-							Añadir afiliado a cargo
+							Añadir Afiliado a Cargo
 							</button>
 							
 						</div>

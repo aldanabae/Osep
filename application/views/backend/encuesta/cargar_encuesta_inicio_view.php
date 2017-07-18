@@ -238,7 +238,7 @@
                                 <label class="control-label col-xs-6"></label>
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        <label class="control-label col-xs-4">¿De qué edad/es?</label>
+                                        <label class="control-label col-xs-4">¿Que edad tiene/n?</label>
                                         <div class="col-xs-8" >
 
                                             <ul id = "list_edades"class="text-uppercase">
@@ -283,7 +283,7 @@
         <div class="form-group">
             <div class="col-xs-offset-3 col-xs-9">
                 <input type="submit" class="btn btn-info" value="Continuar" name= "Continuar">
-                <input type="button" class="btn btn-default" value="limpiar" name="Cerrar"  onclick="javascript:location.reload()">
+                <input type="button" class="btn btn-default" value="Limpiar" name="Cerrar"  onclick="javascript:location.reload()">
             </div>
         </div>
 
