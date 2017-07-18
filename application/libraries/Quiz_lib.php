@@ -10,32 +10,56 @@ class  Quiz_lib
     public function __construct()
     {
         $this->CI = get_instance();
-        @$this->CI->load->model('abms/abmVisitas_model');
+        @$this->CI->load->model('abms/abmVisitas_model'); 
+        @$this->CI->load->model('relevamiento/relevamiento_model'); // traigo el modelo de relevamientos
 
     } 
     
 
     /*
         Obtengo el ultimo id de relevamiento para el usuario que lo esta ingresando
-        le debo subar uno al numero para enviarlo a la vista
+        le debo subir uno al numero para enviarlo a la vista
     
     */
-    public function get_last_id_quiz()
+    public function get_last_id_quiz($id_user)
     {
-            $id_usuario = @$_SESSION['logged_in']['id'];
-
-            if($id_usuario != null ){
+        
+            if($id_user != null ){
                 // pido el ultimo id del usuario asignado
-                $prueba = @$this->CI->abmVisitas_model->get_last_id($id_usuario);
-                $prueba['nroRelevamiento']= $prueba['nroRelevamiento'] +1;
+                $prueba = @$this->CI->abmVisitas_model->get_last_id($id_user);
+                $response['nroRelevamiento']= $prueba['nroRelevamiento'] +1;
 
             }else{
 
-                $prueba ['nroRelevamiento'] = 1;
+                $response ['nroRelevamiento'] = 1;
             }
 
-            return $prueba;
+            return (array) $response;
     }
+
+
+
+    public function get_last_data_user($id_user){
+        $response= null;
+        $result = @$this->CI->relevamiento_model->getRelevamientoByUser($id_user);
+
+
+        if( is_array($result) && empty($result) ){ // si el resultado es un arreglo y esta vacio
+                                                    // hay que devolver el ultimo numero de relevamiento +1
+
+           $response= $this->get_last_id_quiz($id_user);
+
+        }else{
+
+            $response = $result[0]; // lo devuelvo asi para que limpie el arreglo y no venga dentro de otro
+            
+        }
+
+        return  (array) $response;
+    }
+
+
+
 
 
     public function create_session_quiz($add_arr)

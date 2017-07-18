@@ -32,7 +32,6 @@
 	}
 
 
-
 	
 		
 ?>
@@ -53,7 +52,7 @@
 				</div>
 				
 				
-				<p class="text-right btn-sm"><a href="javascript:window.history.back();" ><i class="1 ace-icon fa fa-arrow-left"></i> Atras</a></p>
+				<p class="text-right btn-sm"><a href="<?php echo base_url('encuesta/cargarEncuesta/'.$_POST['nom_facilitador']);?>" ><i class="1 ace-icon fa fa-arrow-left"></i> Atras</a></p>
 
 			</div>
 

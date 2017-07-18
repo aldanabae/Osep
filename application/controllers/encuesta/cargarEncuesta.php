@@ -15,15 +15,25 @@ class CargarEncuesta extends CI_Controller{
             $this->load->model('seguridad/abmNiveles_model');
             $this->load->model('seguridad/abmUsuarios_model');
             $this->load->model('abms/abmVisitas_model');
+            // modelo de relevamiento
+            $this->load->model('relevamiento/relevamiento_model');
             $this->load->library('form_validation'); 
             $this->load->library('Quiz_lib');
+
+
+
 
     }
 
 
-
-
         function index(){  
+
+                $session_data = $this->session->userdata('logged_in');
+                redirect('encuesta/cargarEncuesta/'.$session_data['id'],'refresh');
+        }
+
+
+        function init(){  
 
                 // bloque 0 carga inicial de datos de relevamiento
                 if($this->session->userdata('logged_in')){
@@ -37,30 +47,62 @@ class CargarEncuesta extends CI_Controller{
                         $this->session->set_flashdata('username', $data);
                         $this->session->set_flashdata('nombreE', $data);
                         $this->session->set_flashdata('nivel', $data);
+
                         //mantener sidebar dinamica
                         $session_data = $this->session->userdata('logged_in');
                         $data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
+                        //cargo el header y el sidebar con los datos para el nivel de usuarios
                         $this->load->view('backend/header');
                         $this->load->view('backend/sidebar',$data);
                         $js['javascript']= ["app.js"];
-                        $valor['lib']= $this->quiz_lib->get_last_id_quiz();// prueba de libreria
 
-                        if($data['tipoEmpleado'] == "Facilitador"){    // verifico el tipo de usuario
-                                        //Si el usuario es facilitador loso paso su nombre
-                                        $usuario_merge= $data['nombreE']. " " .$data['apellidoE']; // junto el nombre y apellido
-                                        $valor['listado'][]= [$session_data['id'], $usuario_merge]; // paso el array con los datos
+
+
+                        /*
+                                1_comprobar que este recibiendo un numero
+                                2_ verificar el nivel de usuario, si es 2 solo debe usar su $session_data['id']
+
+                                3_  si es un nivel superior puede usar el $session_data['id'] que se envie por la url
+
+                                =====================================
+
+                                4_debo consultar la libreria quiz_lib  y en base al $session_data['id'] o id usuario enviado, traer el ultimo relevamiento abierto
+
+                                5_reconstruir con los datos el primer formulario y editarlo si es necesario
+
+                                6_ agregar el campo estado la la tabla relevanimento
+
+                        */
+
+                        $usuario_id = $this->uri->segment(3);// id  que envia desde el form
+                        
+                        if($session_data['nivel'] == "2"){    // verifico el tipo de usuario
+                                                              //Si el usuario es facilitador loso paso su nombre
+                                $usuario_merge= $data['nombreE']. " " .$data['apellidoE']; // junto el nombre y apellido
+                                $valor['listado'][]= [$session_data['id'], $usuario_merge]; // paso el array con los datos
+                                // ene ste caso por als que envie cualquier dato por la url el valor que paso es el mismo del usuario facilitador
+                                $id_usuario= $session_data['id'];
+                                // consulto si hay algun relevameinto abierto para este usuario
+                                // si es asi traigo toda la info primaria
+                                $valor['relevamiento']= $this->quiz_lib->get_last_data_user($id_usuario);
+
                                         
                         }else{
                                 // si es otro tipo de usuario trae la lista de todos los fac
-
                                 $listado = $this->abmEmpleados_model->obtenerEmpleadoByTipo("Facilitador");
 
                                 foreach($listado->result() as $lista){
 
                                         $valor['listado'][]= [$lista->idEmpleado, $lista->nombreE. " ". $lista->apellidoE];
 
-                                }                         
+                                }  
+                                // devuelvo la info del id que me pasan por la url, si no tiene relevamiento abierto solo devuelve el ultimo id+1
+                                $valor['relevamiento']= $this->quiz_lib->get_last_data_user($usuario_id);
+                                $valor['selectedItem']=$usuario_id;
+
                         }
+
+                        $valor['departamento']= (array) $this->abmVisitas_model->getDepartamentos(); // cargo los departamentos ....todos
 
                         $this->load->view("backend/encuesta/cargar_encuesta_inicio_view",$valor);
                         $this->load->view('backend/footer');
@@ -72,6 +114,13 @@ class CargarEncuesta extends CI_Controller{
                 }
 
         }
+
+ 
+
+
+
+
+
 
         function cargabloques()
         {
@@ -87,42 +136,100 @@ class CargarEncuesta extends CI_Controller{
                         //mantener sidebar dinamica
                         $session_data = $this->session->userdata('logged_in');
                         $data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
+                        $accion= $this->input->post('accion');
 
-                        if($this->input->post('Continuar') && $this->input->post('Continuar') != '' && $this->input->post('1') != '')
-                        {
 
-                                $this->load->view('backend/header');
-                                $this->load->view('backend/sidebar',$data);
-                                $op_embarazo = $_POST['embarazo'];
-                                $data['cantidad']= $_POST['cantidad'];
-                                $data['embarazo']= $op_embarazo;
+                   
 
-                                        if ($op_embarazo == 0){
 
-                                        $data['edades'] = $_POST['edades_emb'];
-                                        }else{
 
-                                        $data['edades'] = 0;
-                                        }
+                                if($this->input->post('Continuar') && $this->input->post('Continuar') != '' && $this->input->post('nom_facilitador') != '')
+                                {
+                                        unset($_POST['Continuar']);      
 
-                                $this->load->view("backend/encuesta/cargar_encuesta_view", $data);
-                                $this->load->view('backend/footer');
-                                $js['javascript']= ["bloques.js"];
-                                $this->load->view('backend/encuesta/script_js', $js);
+                                        $this->load->view('backend/header');
+                                        $this->load->view('backend/sidebar',$data);
 
-                               // var_dump($_POST);
-                                $this->quiz_lib->create_session_quiz($_POST);
-                                // $datox= $_SESSION['qz_general'];
-                                // var_dump($datox['2']);
-                                
-                                //exit;
-                        }
-                        else
-                        {
+                                        //paso los datos a variable
 
-                        redirect('encuesta/cargarEncuesta');
+                                        $facilitador = $this->input->post('nom_facilitador');
+                                        $nroRelevamiento = $this->input->post('nroRelev');
+                                        $fechaRelevamiento = implode('-',array_reverse(explode('-',$this->input->post('fechaRelev'))));
+                                        $dptoNumero = $this->input->post('idDep');
+                                        $id_tlocalidad = $this->input->post('idLocalidad');
+                                        $calle = $this->input->post('b0_calle');
+                                        $numero = $this->input->post('numero');
+                                        $barrio = $this->input->post('barrio');
+                                        $manzana = $this->input->post('barrio_m');
+                                        $casa = $this->input->post('barrio_c');
+                                        $entre_calle = $this->input->post('entre_calle');
+                                        $tel_titular = $this->input->post('tel_titular');
+                                        $tel_supe = $this->input->post('tel_super');
+                                        $observaciones = $this->input->post('observaciones');
+                                        
+                                        $op_embarazo = $_POST['embarazo'];
+                                        $options['cantidad']= $_POST['cantidad'];
+                                        $options['embarazo']= $op_embarazo;
 
-                        }
+                                                if ($op_embarazo == 0){
+
+                                                        $options['edades'] = $_POST['edades_emb'];
+                                                }else{
+
+                                                        $options['edades'] = 0;
+                                                }
+
+
+                                        // $datox= $_SESSION['qz_general'];
+
+                                        //guardo la direccion 
+                                        $direccion['calle']= $calle;
+                                        $direccion['casa']= $casa;
+                                        $direccion['numero']= $numero;
+                                        $direccion['dptoNumero']= $dptoNumero;
+                                        $direccion['entreCalles1']= $entre_calle;
+                                        $direccion['barrio']= $barrio;
+                                        $direccion['manzana']= $manzana;
+                                        $direccion['id_tlocalidad']= $id_tlocalidad;
+
+
+                                        $id_direccion= $this->relevamiento_model->crearDireccion($direccion); // obtengo el id de la direccion
+
+                                        
+                                        $relevamiento['nroRelevamiento']= $nroRelevamiento;
+                                        $relevamiento['fechaRelevamiento']=$fechaRelevamiento;
+                                        $relevamiento['idDireccion']= $id_direccion;
+                                        $relevamiento['idEmpleado']=$facilitador;
+                                        $relevamiento['cantEncuestados']= serialize($options);
+                                        $relevamiento['telTitular']= $tel_titular;
+                                        $relevamiento['telSup']=$tel_supe;
+                                        $relevamiento['observacion']=$observaciones;
+                                        $relevamiento['idEncuesta']=1; // esto hay que modificarlo, por ahora es la 1
+                                        $relevamiento['estado']=1;  // estado inicial como que es
+                                        $id_relevamiento= $this->relevamiento_model->crearRelevamiento($relevamiento);
+
+                                        $options['id_relevamiento']=$id_relevamiento;
+                                        $options['id_numRel']=$nroRelevamiento;
+                                        //borrar las variables post
+                                        //var_dump($_POST=array());
+
+                                        unset($_POST['Continuar']); // elimino la variable post que te deja pasar... continuar
+                                        
+
+                                        $this->load->view("backend/encuesta/cargar_encuesta_view", $options);
+                                        $this->load->view('backend/footer');
+                                        $js['javascript']= ["bloques.js"];
+                                        $this->load->view('backend/encuesta/script_js', $js);
+
+                                        
+                                }
+                                else
+                                {
+
+                                        redirect('encuesta/cargarEncuesta');
+
+                                }
+
 
 
 

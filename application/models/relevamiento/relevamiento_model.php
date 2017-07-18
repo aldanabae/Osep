@@ -77,16 +77,102 @@ class Relevamiento_model extends CI_Model {
 			return false;
 		}	
 	}
+
+
+	// todo dar vuelta la fecha para que se guarde
 	public function crearRelevamiento($data){
 		$this->db->insert('relevamiento', 
-			array('nroRelevamiento'=> $data['nroRelev'], 
-					'fechaRelevamiento'=> $data['fechaR'],
-					'observCriticidad'=> $data['observC'], 
-					'idCriticidad'=> $data['idCriti'],
-					'idEncuesta'=> $data['idEnc']));
+
+			array('nroRelevamiento'=> $data['nroRelevamiento'], 
+					'fechaRelevamiento'=> $data['fechaRelevamiento'],
+					'idEncuesta'=> $data['idEncuesta'], 
+					'idDireccion'=> $data['idDireccion'],
+					'idEmpleado'=> $data['idEmpleado'],
+					'cantEncuestados'=> $data['cantEncuestados'],
+					'observacion'=> $data['observacion'],
+					'telTitular'=> $data['telTitular'],
+					'telSup'=> $data['telSup'],
+					'estado'=> $data['estado']));
+
+
 		$idRelevamiento = $this->db->insert_id();
 		return $idRelevamiento;
 	}
+
+
+
+// metodo para crear una direccion para relevamiento
+	public function crearDireccion($data){
+		
+		$this->db->insert('direccion', 
+			array(  'calle'=> $data['calle'], 
+					'casa'=> $data['casa'],
+					'numero'=> $data['numero'], 
+					'dptoNumero'=> $data['dptoNumero'], 
+					'entreCalles1'=> $data['entreCalles1'],
+					'barrio'=> $data['barrio'],
+					'manzana'=> $data['manzana'],
+					'id_tlocalidad'=> $data['id_tlocalidad']));
+
+		$idDireccion = $this->db->insert_id();
+
+		return $idDireccion;
+	}
+
+	// este metodo me devuelve el relevamiento parte inicial en base a el id de usuario en busca del  ultimo relevameinto abierto
+	public function getRelevamientoByUser($id_user){
+
+		$state= '1';     // seteo a estado 1  o abierto
+		
+		$this->db->select();
+		$this->db->from('relevamiento');
+		$this->db->join('direccion', 'direccion.idDireccion = relevamiento.idDireccion');
+		$this->db->where('idEmpleado', $id_user);
+		$this->db->limit(1);
+		$this->db->where('estado', $state);
+		$query= $this->db->get();
+		//returns result objects array
+		return $query->result();
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public function crearEncuestado($data){
 		$this->db->insert('encuestado', 
 			array('nombreEncuestado'=> $data['nombreE'], 
