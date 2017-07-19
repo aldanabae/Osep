@@ -20,12 +20,14 @@
               <label>Mostrar 
               <select aria-controls="dynamic-table" class="form-control input-sm" name="longitudTabla">
                 <option value="10000">Todos</option>
-                <option value="1">1</option>
+                <option value="10">10</option>
                 <option value="20">20</option>
                 <option value="40">40</option>
                 <option value="60">60</option>
                 <option value="80">80</option>
                 <option value="100">100</option>
+                <option value="250">250</option>
+                <option value="500">500</option>
               </select> lineas
               </label>
 

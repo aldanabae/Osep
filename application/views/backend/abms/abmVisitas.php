@@ -36,12 +36,12 @@
 												
 											<label>
 												<input class="ace" type="radio" name="nroLlamada" value="2">
-												<span class="lbl">Dos Llamadas</span>
+												<span class="lbl"> Dos Llamadas</span>
 											</label>
 									
 											<label>
 												<input class="ace" type="radio" name="nroLlamada" value="3">
-												<span class="lbl">Tres Llamadas</span>
+												<span class="lbl"> Tres Llamadas</span>
 											</label>
 										</div>
 									</div>
@@ -50,8 +50,8 @@
 								<div class="form-group"> <!-- Empieza una linea del formulario -->
 									<label class="col-sm-3 control-label no-padding-right" for="nroAfiliado"> N° Afiliado(*) </label>
 										<div class="col-sm-4">
-											<input class="form-control" id="nroAfiliado" name="nroAfiliado" placeholder="- - / - - - - - - - - - / - -"  type="number" 
-												 title="Se deben introducir 2 digitos para el Tipo de Documento, 8 para el N° de Documento y 2 para el Tipo de Afiliado. Todo junto sin espacios ni guiones o barras">
+											<input class="form-control" id="nroAfiliado" name="nroAfiliado" placeholder=" - - - - - - - - - / - -"  type="number" min="0000000000" max="99999999"
+												 title="Se deben introducir 8 digitos para el N° de Documento y 2 para el Tipo de Afiliado. Todo junto sin espacios ni guiones o barras.">
 						                </div> 
 								</div>
 
@@ -264,7 +264,7 @@
 
 		function cargarCombo(listaLoc){
 			document.getElementById("localidad").options.length=0;
-			document.getElementById("localidad").options[0]=new Option("Selecciona una opcion", "0");
+			document.getElementById("localidad").options[0]=new Option("Selecciona una opción", "0");
 
 			var combo=$("#localidad");
 	        for (var i in listaLoc){

@@ -35,20 +35,14 @@ class AbmVisitas_model extends CI_Model {
 	}
 
 	function getDepartamentos(){
-
 		$this->db->select();
 		$this->db->from('departamento');
 		$this->db->order_by("descdep", "asc"); 
 		$query = $this->db->get();
 
-		if ($query->num_rows() > 0) return $query->result();
+		if ($query->num_rows() > 0) return $query;
 		else return false;
 	}
-
-
-
-
-
 
 	function getLocalidades(){
 		$query = $this->db->get('localidad');
@@ -73,33 +67,20 @@ class AbmVisitas_model extends CI_Model {
 	}
 
 
-
-
-
-
-
 	function get_last_id($id_user){
-
-
-	$this->db->select_max('nroRelevamiento');	
-	$this->db->where('idEmpleado', $id_user);
-	$this->db->from('relevamiento');
-	$query = $this->db->get();
-	
-	
-		if ($query->num_rows() > 0) {
-			foreach ($query->result() as $fila){
-				$data['nroRelevamiento'] = (int) $fila->nroRelevamiento;
-				
-			}	
+		$this->db->select_max('nroRelevamiento');	
+		$this->db->where('idEmpleado', $id_user);
+		$this->db->from('relevamiento');
+		$query = $this->db->get();
 			
-			return $data;
-		}else{
-			return false;
+			if ($query->num_rows() > 0) {
+				foreach ($query->result() as $fila){
+					$data['nroRelevamiento'] = (int) $fila->nroRelevamiento;			
+				}				
+				return $data;
+			}else{
+				return false;
+			}
 		}
-
-
-
-	}
 }
 ?>

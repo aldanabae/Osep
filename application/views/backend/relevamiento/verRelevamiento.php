@@ -143,7 +143,7 @@
                           <div class="profile-info-name"> Teléfono de Contacto </div>
                             <div class="profile-info-value">
                               <span class="editable" id="country">
-                              <?php echo $relev->telefono; ?>
+                              <?php echo $relev->telTitular; ?>
                               </span>
                             </div>
                         </div>
@@ -152,7 +152,17 @@
                           <div class="profile-info-name"> Criticidad </div>
                             <div class="profile-info-value">
                               <span class="editable" id="country">
-                              <?php echo $relev->observCriticidad; ?>
+                              <?php echo $relev->nombreCriticidad; ?>
+                              </span>
+                            </div>
+                        </div>
+
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> Cantidad de Integrantes</div>
+                            <div class="profile-info-value">
+                              <span class="editable" id="country">
+                                <!Resolver como mostrar la cantidad de encuestados-->
+                              <?php echo $relev->cantEncuestados; ?>
                               </span>
                             </div>
                         </div>

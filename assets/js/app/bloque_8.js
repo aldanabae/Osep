@@ -69,7 +69,7 @@ var cargar = {
         // mando una alerta
         var unique_id = $.gritter.add({
             title: '<center><h3>Relevamiento almacenado correctamente</h3></center>',
-            text: '<div class="row" ><div class="col-xs-12 center"><a href="'+ ruta +'/encuesta/cargarEncuesta/" class="btn"><i class="fa fa-address-card-o" aria-hidden="true"></i> Nuevo Relevamiento</a>&nbsp; &nbsp; &nbsp;<a href="'+ ruta +'/" class="btn" ><i class="fa fa-home" aria-hidden="true"></i> Menu principal</a>&nbsp; &nbsp; &nbsp;</div><br></div>',
+            text: '<div class="row" ><div class="col-xs-12 center"><a href="'+ ruta +'/encuesta/cargarEncuesta/" class="btn"><i class="fa fa-address-card-o" aria-hidden="true"></i> Nuevo Relevamiento</a>&nbsp; &nbsp; &nbsp;<a href="'+ ruta +'/" class="btn" ><i class="fa fa-home" aria-hidden="true"></i> Menú Principal</a>&nbsp; &nbsp; &nbsp;</div><br></div>',
             image: '',
             sticky: true,
             time: '',

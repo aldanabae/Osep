@@ -819,7 +819,7 @@ var bloque1= {    // Bloque General
             
             }else{
 
-            alert('Los datos son incorrectos o faltan');
+            alert('Faltan datos o algunos de ellos son incorrectos');
         }
      
         },

@@ -148,31 +148,6 @@ class Relevamiento_model extends CI_Model {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	public function crearEncuestado($data){
 		$this->db->insert('encuestado', 
 			array('nombreEncuestado'=> $data['nombreE'], 

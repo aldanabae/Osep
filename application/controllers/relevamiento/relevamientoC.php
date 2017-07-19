@@ -121,15 +121,17 @@ class RelevamientoC extends My_Controller{
 		// var_dump($data['encuesta']);
 		// var_dump($armoEncuesta);
 	}
+
 	function verRelevamiento(){
 		$data['nroRelev'] = $this->uri->segment(4);
-		//Obtenber todo lo necesario para mostrar un relevamiento completo
+		//Obtener todo lo necesario para mostrar un relevamiento completo
 		$data['relevamiento'] = $this->relevamiento_model->getRelevamiento($data['nroRelev']);
-		$data['respElegidas'] = $this->relevamiento_model->getRespElegidas($data['nroRelev']);
-		$data['encuestados'] = $this->relevamiento_model->getEncuestados($data['nroRelev']);
+		// $data['respElegidas'] = $this->relevamiento_model->getRespElegidas($data['nroRelev']);
+		 $data['encuestados'] = $this->relevamiento_model->getEncuestados($data['nroRelev']);
       	$nombreVista="backend/relevamiento/verRelevamiento";
 		$this->cargarVista($nombreVista,$data);
 	}
+
 	function mostrarRelevamiento(){
 		$data['nroRelev'] = $this->input->post('nroRelev');	
 		$data['limiteTabla'] = $this->input->post('longitudTabla');
