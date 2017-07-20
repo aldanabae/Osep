@@ -6,6 +6,7 @@ class RelevamientoC extends My_Controller{
 		$this->load->helper('url');  
 		$this->load->library('form_validation'); 
 	}
+	
 	function index(){
 		if (!isset($_POST['CargarTabla'])){
 			//$data['nombresNiveles'] = '';
@@ -126,8 +127,8 @@ class RelevamientoC extends My_Controller{
 		$data['nroRelev'] = $this->uri->segment(4);
 		//Obtener todo lo necesario para mostrar un relevamiento completo
 		$data['relevamiento'] = $this->relevamiento_model->getRelevamiento($data['nroRelev']);
-		// $data['respElegidas'] = $this->relevamiento_model->getRespElegidas($data['nroRelev']);
-		 $data['encuestados'] = $this->relevamiento_model->getEncuestados($data['nroRelev']);
+		$data['respElegidas'] = $this->relevamiento_model->getRespElegidas($data['nroRelev']);
+		$data['encuestados'] = $this->relevamiento_model->getEncuestados($data['nroRelev']);
       	$nombreVista="backend/relevamiento/verRelevamiento";
 		$this->cargarVista($nombreVista,$data);
 	}
@@ -139,6 +140,8 @@ class RelevamientoC extends My_Controller{
       	$nombreVista="backend/relevamiento/buscarRelevamiento";
 		$this->cargarVista($nombreVista, $data);
 	}
+
+
 	// function index(){
 	// 	//Falta cargar validaciones para que controle el login solo en este controlador sin heredar del controlador generico
 	// 	$data['resp_preg'] = $this->relevamiento_model->obtenerRespPreg();

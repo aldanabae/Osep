@@ -27,7 +27,7 @@
                   <div class="widget-main">
 
                     <h4 class="row header smaller lighter blue">
-                      <span class="col-xs-12"> Bloque 0 - De Identificacion del Territorio/Facilitador/Familia Relevada y Encuesta </span><!-- /.col -->
+                      <span class="col-xs-12"> Bloque Identificación del Territorio/Facilitador/Familia Relevada</span><!-- /.col -->
                     </h4>
 
                     <div class="widget-main">
@@ -51,11 +51,11 @@
                             </div>
                         </div>
 
-                         <?php $idDirec = $relev->idDireccion;
-                                $direccion = $this->relevamiento_model->getDireccion($idDirec);
-                                if($direccion){
-                                    foreach ($direccion->result() as $direc) {
-                          ?>
+                       <?php $idDirec = $relev->idDireccion;
+                              $direccion = $this->relevamiento_model->getDireccion($idDirec);
+                              if($direccion){
+                                  foreach ($direccion->result() as $direc) {
+                        ?>
                         <div class="profile-info-row">
                           <div class="profile-info-name"> Dirección </div>
                             <div class="profile-info-value">
@@ -143,7 +143,7 @@
                           <div class="profile-info-name"> Teléfono de Contacto </div>
                             <div class="profile-info-value">
                               <span class="editable" id="country">
-                              <?php echo $relev->telTitular; ?>
+                              <?php echo $relev->telSup; ?>
                               </span>
                             </div>
                         </div>
@@ -170,39 +170,39 @@
             <?php     }
                   }
             ?> 
-            <?php if($respElegidas){
-                      foreach ($respElegidas->result() as $respE){
-                          if($respE->idBloque == 1){
-                            if($respE->respuesta!=""){
-                              echo '<div class="profile-info-row">
-                              <div class="profile-info-name">'.$respE->pregunta.'</div>
-                                <div class="profile-info-value">
-                                  <span class="editable" id="country">
-                                  '.$respE->respuesta.'
-                                  </span>
-                                </div>
-                              </div>';
-                            }else{
-                              echo '<div class="profile-info-row">
-                              <div class="profile-info-name">'.$respE->pregunta.'</div>
-                                <div class="profile-info-value">
-                                  <span class="editable" id="country">
-                                  '.$respE->respBreve.'
-                                  </span>
-                                </div>
-                              </div>';
-                            }
-                          }                     
-                      }
-                  }
-            ?> 
+                        <?php if($respElegidas){
+                                  foreach ($respElegidas->result() as $respE){
+                                      if($respE->idBloque == 1){
+                                        if($respE->respuesta!=""){
+                                          echo '<div class="profile-info-row">
+                                          <div class="profile-info-name">'.$respE->pregunta.'</div>
+                                            <div class="profile-info-value">
+                                              <span class="editable" id="country">
+                                              '.$respE->respuesta.'
+                                              </span>
+                                            </div>
+                                          </div>';
+                                        }else{
+                                          echo '<div class="profile-info-row">
+                                          <div class="profile-info-name">'.$respE->pregunta.'</div>
+                                            <div class="profile-info-value">
+                                              <span class="editable" id="country">
+                                              '.$respE->respBreve.'
+                                              </span>
+                                            </div>
+                                          </div>';
+                                        }
+                                      }                     
+                                  }
+                              }
+                        ?> 
                       </div>
                     </div>
 
                     <div class="hr hr-16 hr-dotted"></div><!Linea Punteada Divisoria>
 
                     <h4 class="row header smaller lighter blue">
-                      <span class="col-xs-6"> Bloque 8 - Vivienda y Habitat </span><!-- /.col -->
+                      <span class="col-xs-6"> Bloque Vivienda y Entorno </span><!-- /.col -->
                     </h4>
 
                     <div class="widget-main">
@@ -210,78 +210,39 @@
 
  <!-- Arreglar que si el idTipoPregunta ==1 entonces la respuesta tiene que ser mostrada como una cadena con comas o barras -->
 
-            <?php if($respElegidas){
-                      foreach ($respElegidas->result() as $respE){
-                          if($respE->idBloque == 10){
-                            if($respE->respuesta!=""){
-                              echo '<div class="profile-info-row">
-                              <div class="profile-info-name">'.$respE->pregunta.'</div>
-                                <div class="profile-info-value">
-                                  <span class="editable" id="country">
-                                  '.$respE->respuesta.'
-                                  </span>
-                                </div>
-                              </div>';
-                            }else{
-                              echo '<div class="profile-info-row">
-                              <div class="profile-info-name">'.$respE->pregunta.'</div>
-                                <div class="profile-info-value">
-                                  <span class="editable" id="country">
-                                  '.$respE->respBreve.'
-                                  </span>
-                                </div>
-                              </div>';
-                            }
-                          }                     
-                      }
-                  }
-            ?> 
-                      </div>
-                    </div>
-
-                    <div class="hr hr-16 hr-dotted"></div><!Linea Punteada Divisoria>
-
-                    <h4 class="row header smaller lighter blue">
-                      <span class="col-xs-6"> Bloque 9 - Final para todas las Familias </span><!-- /.col -->
-                    </h4>
-
-                    <div class="widget-main">
-                        <div class="profile-user-info profile-user-info-striped">
-
- <!-- Arreglar que si el idTipoPregunta ==1 entonces la respuesta tiene que ser mostrada como una cadena con comas o barras -->
-
-            <?php if($respElegidas){
-                      foreach ($respElegidas->result() as $respE){
-                          if($respE->idBloque == 11){
-                            if($respE->respuesta!=""){
-                              echo '<div class="profile-info-row">
-                              <div class="profile-info-name">'.$respE->pregunta.'</div>
-                                <div class="profile-info-value">
-                                  <span class="editable" id="country">
-                                  '.$respE->respuesta.'
-                                  </span>
-                                </div>
-                              </div>';
-                            }else{
-                              echo '<div class="profile-info-row">
-                              <div class="profile-info-name">'.$respE->pregunta.'</div>
-                                <div class="profile-info-value">
-                                  <span class="editable" id="country">
-                                  '.$respE->respBreve.'
-                                  </span>
-                                </div>
-                              </div>';
-                            }
-                          }                     
-                      }
-                  }
-            ?> 
-                      </div>
+                        <?php if($respElegidas){
+                                  foreach ($respElegidas->result() as $respE){
+                                      if($respE->idBloque == 10){
+                                        if($respE->respuesta!=""){
+                                          echo '<div class="profile-info-row">
+                                          <div class="profile-info-name">'.$respE->pregunta.'</div>
+                                            <div class="profile-info-value">
+                                              <span class="editable" id="country">
+                                              '.$respE->respuesta.'
+                                              </span>
+                                            </div>
+                                          </div>';
+                                        }else{
+                                          echo '<div class="profile-info-row">
+                                          <div class="profile-info-name">'.$respE->pregunta.'</div>
+                                            <div class="profile-info-value">
+                                              <span class="editable" id="country">
+                                              '.$respE->respBreve.'
+                                              </span>
+                                            </div>
+                                          </div>';
+                                        }
+                                      }                     
+                                  }
+                              }
+                        ?> 
+                        </div>
                     </div>
 
                   </div>  
                 </div>
             </div> 
+
 
 
             <!Segunda Caja de Datos/ Encuestados>
@@ -348,8 +309,8 @@
                                                   <div class="profile-info-row">
                                                     <div class="profile-info-name"> N° Afiliado </div>
                                                       <div class="profile-info-value">
-                                                        <?php if($enc->idAfiliado!=""){
-                                                                  echo $enc->idAfiliado;
+                                                        <?php if($enc->nroAfiliado!=""){
+                                                                  echo $enc->nroAfiliado;
                                                               }else{
                                                                 echo "No es afiliado a OSEP";
                                                               }
@@ -364,7 +325,11 @@
                                                 <div class="tabbable">
                                                     <ul class="nav nav-tabs padding-12 tab-color-blue background-blue" id="myTab4">
                                                       <li class="active">
-                                                        <a data-toggle="tab" href="#bloque2<?php echo $idE;?>" aria-expanded="true">B2: Utilizacion Servicios</a>
+                                                        <a data-toggle="tab" href="#bloque1<?php echo $idE;?>" aria-expanded="true">B1: Datos Generales</a>
+                                                      </li>
+
+                                                      <li>
+                                                        <a data-toggle="tab" href="#bloque2<?php echo $idE;?>" aria-expanded="false">B2: Utilizacion Servicios</a>
                                                       </li>
 
                                                       <li>
@@ -389,7 +354,42 @@
                                                     </ul>
 
                                                     <div class="tab-content">
-                                                        <div id="bloque2<?php echo $idE;?>" class="tab-pane in active">                                                            
+                                                        <div id="bloque1<?php echo $idE;?>" class="tab-pane in active">                                                            
+                                                            <div class="profile-user-info profile-user-info-striped">
+
+                                                            <?php $respEnc = $this->relevamiento_model->getRespEncuestado($idE);
+                                                                      if($respEnc){
+                                                                          foreach ($respEnc->result() as $respE){
+                                                                              if($respE->idBloque == 2){
+                                                                                  if($respE->respuesta!=""){
+                                                                                      echo '<div class="profile-info-row">
+                                                                                              <div class="profile-info-name">'.$respE->pregunta.'</div>
+                                                                                                <div class="profile-info-value">
+                                                                                                  <span class="editable" id="country">
+                                                                                                    '.$respE->respuesta.'
+                                                                                                  </span>
+                                                                                                </div>
+                                                                                              </div>';
+                                                                                  }else{
+                                                                                      echo '<div class="profile-info-row">
+                                                                                              <div class="profile-info-name">'.$respE->pregunta.'</div>
+                                                                                                <div class="profile-info-value">
+                                                                                                  <span class="editable" id="country">
+                                                                                                    '.$respE->respBreve.'
+                                                                                                  </span>
+                                                                                                </div>
+                                                                                              </div>';
+                                                                                  }
+                                                                              }
+                                                                          }
+                                                                      }else{
+                                                                          echo "Bloques no relevados. NO es AFILIADO a OSEP";
+                                                                      }
+                                                            ?> 
+                                                          </div>    
+                                                        </div>
+
+                                                        <div id="bloque2<?php echo $idE;?>" class="tab-pane">                                                            
                                                             <div class="profile-user-info profile-user-info-striped">
 
                                                             <?php $respEnc = $this->relevamiento_model->getRespEncuestado($idE);
