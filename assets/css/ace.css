@@ -13173,7 +13173,7 @@ li.item-default {
 }
 .profile-info-name {
   text-align: left; /*right*/
-  padding: 6px 10px 6px 4px;
+  padding: 6px 25px 6px 4px; /*Cambio padding: 6px 10px 6px 4px;*/
   font-weight: normal;
   color: #667E99;
   background-color: transparent;

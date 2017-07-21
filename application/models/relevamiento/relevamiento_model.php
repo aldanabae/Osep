@@ -142,12 +142,6 @@ class Relevamiento_model extends CI_Model {
 
 
 
-
-
-
-
-
-
 	public function crearEncuestado($data){
 		$this->db->insert('encuestado', 
 			array('nombreEncuestado'=> $data['nombreE'], 
@@ -218,6 +212,7 @@ class Relevamiento_model extends CI_Model {
 		$this->db->from('respuesta_elegida');
 		$this->db->join('pregunta','pregunta.idPregunta=respuesta_elegida.idPregunta','left');
 		$this->db->join('respuesta','respuesta.idRespuesta=respuesta_elegida.idRespuesta','left');
+		$this->db->order_by('idRespuestaElegida', 'ASC');
 		$query = $this->db->get();
 		if ($query->num_rows() > 0) return $query;
 		else return false;
@@ -234,6 +229,7 @@ class Relevamiento_model extends CI_Model {
 		$this->db->from('respuesta_elegida');
 		$this->db->join('pregunta','pregunta.idPregunta=respuesta_elegida.idPregunta','left');
 		$this->db->join('respuesta','respuesta.idRespuesta=respuesta_elegida.idRespuesta','left');
+		$this->db->order_by('idRespuestaElegida', 'ASC');
 		$query = $this->db->get();
 		if ($query->num_rows() > 0) return $query;
 		else return false;

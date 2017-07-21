@@ -8,7 +8,7 @@
                 </h1>
             </div>  
         
-<!Primera Caja de Datos/Relevamiento>
+    <!Primera Caja de Datos/Relevamiento>
 
             <div class="widget-box"> <!-- Empieza el recuadro con su titulo -->
             <?php if($relevamiento){
@@ -245,7 +245,7 @@
 
 
 
-            <!Segunda Caja de Datos/ Encuestados>
+    <!Segunda Caja de Datos/ Encuestados>
  
             <div class="widget-box"> <!-- Empieza el recuadro con su titulo -->
                 <div class="widget-header">
@@ -290,21 +290,21 @@
                                                       <div class="profile-info-value">
                                                         <?php echo $enc->dniEncuestado; ?> 
                                                       </div>
-                                                    </div>
+                                                  </div>
 
                                                   <div class="profile-info-row">
                                                     <div class="profile-info-name"> Edad</div>
                                                       <div class="profile-info-value">
-                                                        <?php echo $enc->edad; ?> 
+                                                        <?php echo $enc->edad." años"; ?> 
                                                       </div>
-                                                    </div>
+                                                  </div>
 
                                                   <div class="profile-info-row">
                                                     <div class="profile-info-name"> Sexo </div>
                                                       <div class="profile-info-value">
                                                         <?php echo $enc->sexo; ?> 
                                                       </div>
-                                                    </div>
+                                                  </div>
 
                                                   <div class="profile-info-row">
                                                     <div class="profile-info-name"> N° Afiliado </div>
@@ -316,11 +316,25 @@
                                                               }
                                                         ?> 
                                                       </div>
-                                                    </div>
+                                                  </div>
+
+                                                  <div class="profile-info-row">
+                                                    <div class="profile-info-name"> Respondió Relevamiento </div>
+                                                      <div class="profile-info-value">
+                                                        <?php if($enc->respondeR==1){
+                                                                  echo "Si";
+                                                              }else{
+                                                                  echo "No";
+                                                              }
+                                                        ?> 
+                                                      </div>
+                                                  </div>
                                     
                                                 </div>
 
-                                                <h4>Bloques Relevados</h4>
+                                                <div align="center" style="color: #FF892A;">
+                                                    <h4><strong>Bloques Relevados</strong></h4>
+                                                </div>
 
                                                 <div class="tabbable">
                                                     <ul class="nav nav-tabs padding-12 tab-color-blue background-blue" id="myTab4">
@@ -358,7 +372,7 @@
                                                             <div class="profile-user-info profile-user-info-striped">
 
                                                             <?php $respEnc = $this->relevamiento_model->getRespEncuestado($idE);
-                                                                      if($respEnc){
+                                                                      if($respEnc){//Revisar si aunque no sea Afiliado este bloque si debe ser relevado siempre
                                                                           foreach ($respEnc->result() as $respE){
                                                                               if($respE->idBloque == 2){
                                                                                   if($respE->respuesta!=""){
@@ -383,7 +397,7 @@
                                                                               }
                                                                           }
                                                                       }else{
-                                                                          echo "Bloques no relevados. NO es AFILIADO a OSEP";
+                                                                          echo "Bloques no relevados. NO es AFILIADO a OSEP";   
                                                                       }
                                                             ?> 
                                                           </div>    
@@ -393,7 +407,7 @@
                                                             <div class="profile-user-info profile-user-info-striped">
 
                                                             <?php $respEnc = $this->relevamiento_model->getRespEncuestado($idE);
-                                                                      if($respEnc){
+                                                                      if($respEnc && $enc->nroAfiliado != "" && $enc->nroAfiliado != NULL){
                                                                           foreach ($respEnc->result() as $respE){
                                                                               if($respE->idBloque == 3){
                                                                                   if($respE->respuesta!=""){
@@ -418,7 +432,7 @@
                                                                               }
                                                                           }
                                                                       }else{
-                                                                          echo "Bloques no relevados. NO es AFILIADO a OSEP";
+                                                                          echo "Bloques no relevados. NO es AFILIADO a OSEP";   
                                                                       }
                                                             ?> 
                                                           </div>    
@@ -428,7 +442,7 @@
                                                             <div class="profile-user-info profile-user-info-striped">
 
                                                             <?php $respEnc = $this->relevamiento_model->getRespEncuestado($idE);
-                                                                      if($respEnc){
+                                                                      if($respEnc && $enc->nroAfiliado != "" && $enc->nroAfiliado != NULL){
                                                                           foreach ($respEnc->result() as $respE){
                                                                               if($respE->idBloque == 4 || $respE->idBloque == 5){
                                                                                   if($respE->respuesta!=""){
@@ -453,7 +467,7 @@
                                                                               }
                                                                           }                      
                                                                       }else{
-                                                                          echo "Bloques no relevados. NO es AFILIADO a OSEP";
+                                                                          echo "Bloques no relevados. NO es AFILIADO a OSEP";   
                                                                       }
                                                             ?> 
                                                           </div>                                                           
@@ -463,7 +477,7 @@
                                                             <div class="profile-user-info profile-user-info-striped">
 
                                                             <?php $respEnc = $this->relevamiento_model->getRespEncuestado($idE);
-                                                                      if($respEnc){
+                                                                      if($respEnc && $enc->nroAfiliado != "" && $enc->nroAfiliado != NULL){
                                                                           foreach ($respEnc->result() as $respE){
                                                                               if($respE->idBloque == 6){
                                                                                   if($respE->respuesta!=""){
@@ -488,7 +502,7 @@
                                                                               }
                                                                           }                      
                                                                       }else{
-                                                                          echo "Bloques no relevados. NO es AFILIADO a OSEP";
+                                                                          echo "Bloques no relevados. NO es AFILIADO a OSEP";   
                                                                       }
                                                             ?> 
                                                           </div>                                                           
@@ -498,7 +512,7 @@
                                                             <div class="profile-user-info profile-user-info-striped">
 
                                                             <?php $respEnc = $this->relevamiento_model->getRespEncuestado($idE);
-                                                                      if($respEnc){
+                                                                      if($respEnc && $enc->nroAfiliado != "" && $enc->nroAfiliado != NULL){
                                                                           foreach ($respEnc->result() as $respE){
                                                                               if($respE->idBloque == 7){
                                                                                   if($respE->respuesta!=""){
@@ -522,9 +536,8 @@
                                                                                   }
                                                                               }
                                                                           }                      
-                                                                      }
-                                                                      else{
-                                                                          echo "Bloques no relevados. NO es AFILIADO a OSEP";
+                                                                      }else{
+                                                                          echo "Bloques no relevados. NO es AFILIADO a OSEP";   
                                                                       }
                                                             ?> 
                                                           </div>
@@ -534,7 +547,7 @@
                                                             <div class="profile-user-info profile-user-info-striped">
 
                                                             <?php $respEnc = $this->relevamiento_model->getRespEncuestado($idE);
-                                                                      if($respEnc){
+                                                                      if($respEnc && $enc->nroAfiliado != "" && $enc->nroAfiliado != NULL){
                                                                           foreach ($respEnc->result() as $respE){
                                                                               if($respE->idBloque == 8){
                                                                                   if($respE->respuesta!=""){
@@ -559,7 +572,7 @@
                                                                               }
                                                                           }                      
                                                                       }else{
-                                                                          echo "Bloques no relevados. NO es AFILIADO a OSEP";
+                                                                          echo "Bloques no relevados. NO es AFILIADO a OSEP";   
                                                                       }
                                                             ?> 
                                                           </div>                                                           
@@ -569,7 +582,7 @@
                                                             <div class="profile-user-info profile-user-info-striped">
 
                                                             <?php $respEnc = $this->relevamiento_model->getRespEncuestado($idE);
-                                                                      if($respEnc){
+                                                                      if($respEnc && $enc->nroAfiliado != "" && $enc->nroAfiliado != NULL){
                                                                           foreach ($respEnc->result() as $respE){
                                                                               if($respE->idBloque == 9){
                                                                                   if($respE->respuesta!=""){
@@ -594,7 +607,7 @@
                                                                               }
                                                                           }                      
                                                                       }else{
-                                                                          echo "Bloques no relevados. NO es AFILIADO a OSEP.";
+                                                                          echo "Bloques no relevados. NO es AFILIADO a OSEP";   
                                                                       }    
                                                             ?> 
                                                           </div>                                                          

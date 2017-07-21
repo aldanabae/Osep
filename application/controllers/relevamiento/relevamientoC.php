@@ -141,7 +141,6 @@ class RelevamientoC extends My_Controller{
 		$this->cargarVista($nombreVista, $data);
 	}
 
-
 	// function index(){
 	// 	//Falta cargar validaciones para que controle el login solo en este controlador sin heredar del controlador generico
 	// 	$data['resp_preg'] = $this->relevamiento_model->obtenerRespPreg();
