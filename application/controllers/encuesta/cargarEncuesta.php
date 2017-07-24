@@ -102,7 +102,10 @@ class CargarEncuesta extends CI_Controller{
 
                         }
 
-                        $valor['departamento']= (array) $this->abmVisitas_model->getDepartamentos(); // cargo los departamentos ....todos
+                        $valor['departamento']= (array) $this->abmVisitas_model->getDepartamentos()->result(); // cargo los departamentos ....todos
+
+
+
 
                         $this->load->view("backend/encuesta/cargar_encuesta_inicio_view",$valor);
                         $this->load->view('backend/footer');
@@ -140,8 +143,6 @@ class CargarEncuesta extends CI_Controller{
 
 
                    
-
-
 
                                 if($this->input->post('Continuar') && $this->input->post('Continuar') != '' && $this->input->post('nom_facilitador') != '')
                                 {
