@@ -5,7 +5,6 @@
 <?php
 
 $dato_rel= $relevamiento; // array de relevamiento qeu viene del controlador
-//var_dump($dato_rel);
     // valido el contenido del relevamiento, si hay un solo elemento 
     //es por que no hay relevamiento abierto, de otro modo pone el parametro en true
     // y carga los valores en los campos
@@ -21,35 +20,41 @@ $dato_rel= $relevamiento; // array de relevamiento qeu viene del controlador
 
 ?>
     
-    <input type="hidden" name="hdnembarazo"  id="hdnembarazo" value="<?php echo ($completar) ? $cantidad['embarazo'] : ""; ?>">
-    
-
 
 <?php
 
     $result = ""; // variable cadena donde va el value del hidden edades
     if($completar){
 
-        if(count($cantidad['edades']) > 1){
 
-            $result = implode(',',$cantidad['edades']);
+        if($cantidad['embarazo']== 0){
 
-        }elseif (count($cantidad['edades']) == 1){
+            if(count($cantidad['edades']) > 1){
 
-            $result = $cantidad['edades'];
+                $result = implode(',',$cantidad['edades']);
 
+            }elseif (count($cantidad['edades']) == 1){
+
+                $result = $cantidad['edades'][0];
+
+            }
         }
     }
 
+
+
+
 ?>
 
+
+
+    <input type="hidden" name="hdnembarazo"  id="hdnembarazo" value="<?php echo ($completar) ? $cantidad['embarazo'] : ""; ?>">
     <input type="hidden" name="hdnedades"  id="hdnedades" value="<?php echo $result; ?>">
     <input type="hidden" name="hdndep"  id="hdndep" value="<?php echo ($completar) ? $dato_rel['dptoNumero'] : ""; ?>">
     <input type="hidden" name="hdnloc"  id="hdnloc" value="<?php echo ($completar) ? $dato_rel['id_tlocalidad'] : ""; ?>">
+    <input type="hidden" name="localPath"  id="localPath" value="<?php echo base_url(); ?>">
 
 
- 
-        <input type="hidden" name="localPath"  id="localPath" value="<?php echo base_url(); ?>">
         <form id="encuesta_ini" action="<?php echo(site_url('encuesta/cargarEncuesta/cargabloques'));  ?>" method="post">
 
         <input type="hidden" name="accion"  id="accion" value="<?php echo ($completar) ? "edicion" : "guardar"; ?>">
@@ -106,7 +111,7 @@ $dato_rel= $relevamiento; // array de relevamiento qeu viene del controlador
                                 <label for="inputName" class="control-label col-xs-6">Número Relevamiento (*)</label>
                                 <div class="col-xs-6">
                                     
-                                    <input type="text" class="form-control"  name= "nroRelev" id="nroRelev" value= "<?php echo($dato_rel['nroRelevamiento']); ?>" required>
+                                    <input type="text" class="form-control"  name= "nroRelev" id="nroRelev" value= "<?php echo($dato_rel['nroRelevamiento']); ?>" readonly>
                                 </div>
                             </div>	                            
                             
@@ -232,6 +237,9 @@ $dato_rel= $relevamiento; // array de relevamiento qeu viene del controlador
                                 <label for="inputPassword" class="control-label col-xs-6">¿Cuántas personas viven habitualmente en este domicilio? (*)</label>
                                 <div class="col-xs-6">
                                 
+
+
+                    
                                     <input type="number" class="form-control"   name= "cantidad" value= "<?php echo ($completar) ? $cantidad['cantidad'] : ""; ?>" id= "cantidad" maxlength="2" min="1" max="20" required>
                                 </div>
                             </div>
@@ -252,7 +260,7 @@ $dato_rel= $relevamiento; // array de relevamiento qeu viene del controlador
                                 <label class="control-label col-xs-6"></label>
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        <label class="control-label col-xs-4">¿Que edad tiene/n?</label>
+                                        <label class="control-label col-xs-4">¿De qué edad/es?</label>
                                         <div class="col-xs-8" >
 
                                             <ul id = "list_edades"class="text-uppercase">
@@ -297,7 +305,7 @@ $dato_rel= $relevamiento; // array de relevamiento qeu viene del controlador
         <div class="form-group">
             <div class="col-xs-offset-3 col-xs-9">
                 <input type="submit" class="btn btn-info" value="Continuar" name= "Continuar">
-                <input type="button" class="btn btn-default" value="Limpiar" name="Cerrar"  onclick="javascript:location.reload()">
+                <input type="button" class="btn btn-default" value="limpiar" name="Cerrar"  onclick="javascript:location.reload()">
             </div>
         </div>
 
