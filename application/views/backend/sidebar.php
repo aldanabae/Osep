@@ -90,7 +90,7 @@
 				<?php 
 					if ($nivel){							
 						foreach($nivel->result() as $niv){
-      						if ($niv->descripNivel == "Administrador Base de Datos" || $niv->descripNivel == "Facilitador" || $niv->descripNivel == "Administrador" || $niv->descripNivel == "Auditor" || $niv->descripNivel == "Directivo" || $niv->descripNivel == "Creador Encuesta"){
+      						if ($niv->descripNivel == "Administrador Base de Datos" || $niv->descripNivel == "Administrador" || $niv->descripNivel == "Auditor" || $niv->descripNivel == "Directivo" || $niv->descripNivel == "Creador Encuesta"){
 				?>
 
 				<li class="">
@@ -124,6 +124,8 @@
 						<b class="arrow"></b>
 							<ul class="submenu">
 
+								<?php 	if ($niv->descripNivel == "Administrador Base de Datos" || $niv->descripNivel == "Facilitador" || $niv->descripNivel == "Administrador" || $niv->descripNivel == "Auditor" || $niv->descripNivel == "Creador Encuesta" || $niv->descripNivel == "Directivo"){
+								?>
 								<li class="">
 									<a href="<?php echo base_url()?>encuesta/cargarEncuesta/">
 										<i class="menu-icon fa fa-caret-right"></i>
@@ -131,6 +133,11 @@
 									</a>
 									<b class="arrow"></b>
 								</li>
+								<?php 	}	
+								?>
+
+								<?php 	if ($niv->descripNivel == "Administrador Base de Datos" || $niv->descripNivel == "Administrador" || $niv->descripNivel == "Auditor" || $niv->descripNivel == "Creador Encuesta" || $niv->descripNivel == "Directivo"){
+								?>
 
 								<li class="">
 									<a href="<?php echo base_url()?>encuesta/abmencuesta/crear">
@@ -139,8 +146,11 @@
 									</a>
 									<b class="arrow"></b>
 								</li>
+								<?php 	}	
+								?>
 
-
+								<?php 	if ($niv->descripNivel == "Administrador Base de Datos" || $niv->descripNivel == "Facilitador" || $niv->descripNivel == "Administrador" || $niv->descripNivel == "Auditor" || $niv->descripNivel == "Creador Encuesta" || $niv->descripNivel == "Directivo"){
+								?>
 								<li class="">
 									<a href="<?php echo base_url()?>abms/abmVisitasC/">
 										<i class="menu-icon fa fa-caret-right"></i>
@@ -149,22 +159,31 @@
 
 									<b class="arrow"></b>
 								</li>
+								<?php 	}	
+								?>
 
+								<?php 	if ($niv->descripNivel == "Administrador Base de Datos" || $niv->descripNivel == "Administrador" || $niv->descripNivel == "Auditor" || $niv->descripNivel == "Creador Encuesta" || $niv->descripNivel == "Directivo"){
+								?>
 								<li class="">
 									<a href="<?php echo base_url()?>encuesta/abmencuesta">
 										<i class="menu-icon fa fa-caret-right"></i>
 										Ver Encuestas
 									</a>
 									<b class="arrow"></b>
-								</li>	
-
+								</li>
+								<?php 	}	
+								?>
+								<?php 	if ($niv->descripNivel == "Administrador Base de Datos" || $niv->descripNivel == "Facilitador" || $niv->descripNivel == "Administrador" || $niv->descripNivel == "Auditor" || $niv->descripNivel == "Creador Encuesta" || $niv->descripNivel == "Directivo"){
+								?>	
 								<li class="">
 									<a href="<?php echo base_url()?>relevamiento/relevamientoC">
 										<i class="menu-icon fa fa-caret-right"></i>
 										Ver Relevamientos
 									</a>
 									<b class="arrow"></b>
-								</li>									
+								</li>
+								<?php 	}	
+								?>									
 							</ul>
 				</li>
 
@@ -176,7 +195,7 @@
 				<?php 
 					if ($nivel){							
 						foreach($nivel->result() as $niv){
-      						if ($niv->descripNivel == "Administrador Base de Datos" || $niv->descripNivel == "Facilitador" || $niv->descripNivel == "Administrador" || $niv->descripNivel == "Auditor" || $niv->descripNivel == "Creador Encuesta"){
+      						if ($niv->descripNivel == "Administrador Base de Datos" || $niv->descripNivel == "Administrador" || $niv->descripNivel == "Auditor" || $niv->descripNivel == "Creador Encuesta"){
 				?>
 
 				<li class="">
@@ -228,7 +247,7 @@
 				<?php 
 					if ($nivel){							
 						foreach($nivel->result() as $niv){
-      						if ($niv->descripNivel == "Administrador Base de Datos" || $niv->descripNivel == "Facilitador" || $niv->descripNivel == "Administrador" || $niv->descripNivel == "Auditor" || $niv->descripNivel == "Directivo" || $niv->descripNivel == "Creador Encuesta"){
+      						if ($niv->descripNivel == "Administrador Base de Datos" || $niv->descripNivel == "Administrador" || $niv->descripNivel == "Auditor" || $niv->descripNivel == "Directivo" || $niv->descripNivel == "Creador Encuesta"){
 				?>
 				<li class="">
 					<a href="#" class="dropdown-toggle">
