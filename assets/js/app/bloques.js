@@ -226,11 +226,8 @@ var bloque1= {    // Bloque General
 
             if(encuesta.titular){
 
-
                 $("#b1_afiliado").val(encuesta.afiliado);  // muestro el numero del titular
                 $("#b1_barra").val("00");  // muestro el numero del titular
-
-
 
             }else{   // entonces es aderente del titular que se cargo al principio
 
@@ -2060,7 +2057,7 @@ var bloque9 ={       // laboral
 
             el bloque 2 se guarda en general..
         */ 
-        var bloques = [bloque1, bloque3, bloque3, bloque4, bloque5, bloque6, bloque7, bloque9];
+        var bloques = [bloque1, bloque3, bloque3a ,bloque3b, bloque4, bloque5, bloque6, bloque7, bloque9];
         var arr = [];
         $.each( bloques , function (index, valor){
 

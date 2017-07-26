@@ -12,6 +12,7 @@
 <!--<div class="container">   contenedor principal -->
 <input type="hidden" name="embarazo"  id="embarazo" value="<?php echo @$embarazo; ?>">
 <input type="hidden" name="integrantes"  id="integrantes" value="<?php echo @$cantidad; ?>">
+<input type="hidden" name="hdnIdrelev"  id="hdnIdrelev" value="<?php echo @$id_relevamiento; ?>">
 
 <!-- Aqui va un bucle que pone als edades en String  separados por un caracter-->
 
@@ -31,9 +32,6 @@
 
 	}
 
-
-	
-		
 ?>
 
 <input type="hidden" name="edades"  id="edades" value="<?php echo @$string_edad; ?>">
@@ -264,7 +262,7 @@
 						<div class="form-group">	
 							<label class="control-label col-xs-6">Observaciones</label>
 							<div class="col-xs-6">
-								<input type="text" class="form-control" id="b9_obs"  name="b9_obs" >
+								<input type="text" class="form-control" id="b9_obs"  name="32" >
 							</div>
 						</div>	
 					</div>		<!--cierre bloque interno de bloque 9-->	
