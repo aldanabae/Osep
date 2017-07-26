@@ -9,7 +9,8 @@ $dato_rel= $relevamiento; // array de relevamiento qeu viene del controlador
     //es por que no hay relevamiento abierto, de otro modo pone el parametro en true
     // y carga los valores en los campos
     $completar = false;
-    if(count($relevamiento) > 1){
+
+    if(count($dato_rel) > 1){
 
         $completar = true;
         $cantidad= unserialize($dato_rel['cantEncuestados']);
@@ -17,7 +18,7 @@ $dato_rel= $relevamiento; // array de relevamiento qeu viene del controlador
     }
 
     // campo oculto de refecencia por si es una edicion o es un guardado basico
-
+var_dump($dato_rel);
 ?>
     
 
@@ -46,18 +47,22 @@ $dato_rel= $relevamiento; // array de relevamiento qeu viene del controlador
 
 ?>
 
-
+<!--campos ocultos de recarga de datos  -->
 
     <input type="hidden" name="hdnembarazo"  id="hdnembarazo" value="<?php echo ($completar) ? $cantidad['embarazo'] : ""; ?>">
     <input type="hidden" name="hdnedades"  id="hdnedades" value="<?php echo $result; ?>">
     <input type="hidden" name="hdndep"  id="hdndep" value="<?php echo ($completar) ? $dato_rel['dptoNumero'] : ""; ?>">
     <input type="hidden" name="hdnloc"  id="hdnloc" value="<?php echo ($completar) ? $dato_rel['id_tlocalidad'] : ""; ?>">
-    <input type="hidden" name="localPath"  id="localPath" value="<?php echo base_url(); ?>">
+
 
 
         <form id="encuesta_ini" action="<?php echo(site_url('encuesta/cargarEncuesta/cargabloques'));  ?>" method="post">
 
+        <!--campos ocultos de pasaje de datos  -->
         <input type="hidden" name="accion"  id="accion" value="<?php echo ($completar) ? "edicion" : "guardar"; ?>">
+        <input type="hidden" name="hdnIdrelev"  id="hdnIdrelev" value="<?php echo ($completar) ? $dato_rel['idRelevamiento'] : ""; ?>">
+        <input type="hidden" name="hdnIdDirec"  id="hdnIdDirec" value="<?php echo ($completar) ? $dato_rel['idDireccion'] : ""; ?>">
+        <input type="hidden" name="localPath"  id="localPath" value="<?php echo base_url(); ?>">
 
         <div class="row form-horizontal" id= "bloque_0">     <!-- bloque 0 -->
                 <div class="panel panel-default">

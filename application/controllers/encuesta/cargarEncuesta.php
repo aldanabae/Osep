@@ -20,10 +20,7 @@ class CargarEncuesta extends CI_Controller{
             $this->load->library('form_validation'); 
             $this->load->library('Quiz_lib');
 
-
-
-
-    }
+        }
 
 
         function index(){  
@@ -142,10 +139,9 @@ class CargarEncuesta extends CI_Controller{
                         $accion= $this->input->post('accion');
 
 
-                   
-
                                 if($this->input->post('Continuar') && $this->input->post('Continuar') != '' && $this->input->post('nom_facilitador') != '')
                                 {
+                                        $_POST['Continuar']="";
                                         unset($_POST['Continuar']);      
 
                                         $this->load->view('backend/header');
@@ -167,7 +163,9 @@ class CargarEncuesta extends CI_Controller{
                                         $tel_titular = $this->input->post('tel_titular');
                                         $tel_supe = $this->input->post('tel_super');
                                         $observaciones = $this->input->post('observaciones');
-                                        
+                                        $idRelev = $this->input->post('hdnIdrelev');  // recibo el id de relevamiento si existe en caso de edicion
+                                        $idDireccion = $this->input->post('hdnIdDirec'); // recibo el id de la direccion si existe
+
                                         $op_embarazo = $_POST['embarazo'];
                                         $options['cantidad']= $_POST['cantidad'];
                                         $options['embarazo']= $op_embarazo;
@@ -179,7 +177,6 @@ class CargarEncuesta extends CI_Controller{
 
                                                         $options['edades'] = 0;
                                                 }
-
 
                                         // $datox= $_SESSION['qz_general'];
 
@@ -193,10 +190,17 @@ class CargarEncuesta extends CI_Controller{
                                         $direccion['manzana']= $manzana;
                                         $direccion['id_tlocalidad']= $id_tlocalidad;
 
+                                        if($accion == 'guardar'){
 
-                                        $id_direccion= $this->relevamiento_model->crearDireccion($direccion); // obtengo el id de la direccion
+                                                $id_direccion= $this->relevamiento_model->crearDireccion($direccion); // obtengo el id de la direccion
 
-                                        
+                                        }else{
+
+                                                // edito los datos que estan
+                                                $id_direccion= $this->relevamiento_model->editDireccion($idDireccion, $direccion ); // obtengo el id de la direccion 
+
+                                        }
+
                                         $relevamiento['nroRelevamiento']= $nroRelevamiento;
                                         $relevamiento['fechaRelevamiento']=$fechaRelevamiento;
                                         $relevamiento['idDireccion']= $id_direccion;
@@ -207,14 +211,23 @@ class CargarEncuesta extends CI_Controller{
                                         $relevamiento['observacion']=$observaciones;
                                         $relevamiento['idEncuesta']=1; // esto hay que modificarlo, por ahora es la 1
                                         $relevamiento['estado']=1;  // estado inicial como que es
-                                        $id_relevamiento= $this->relevamiento_model->crearRelevamiento($relevamiento);
+
+                                        if($accion == 'guardar'){
+                                                
+                                                //guarda los datos de relev
+                                                $id_relevamiento= $this->relevamiento_model->crearRelevamiento($relevamiento);
+
+                                        }else{
+                                                // edita datos de relev  $nroRelevamiento  seria el que ya esta
+                                                $id_relevamiento= $this->relevamiento_model->editRelevamiento($idRelev,$relevamiento);
+
+                                        }
 
                                         $options['id_relevamiento']=$id_relevamiento;
                                         $options['id_numRel']=$nroRelevamiento;
                                         //borrar las variables post
                                         //var_dump($_POST=array());
 
-                                        unset($_POST['Continuar']); // elimino la variable post que te deja pasar... continuar
                                         
 
                                         $this->load->view("backend/encuesta/cargar_encuesta_view", $options);

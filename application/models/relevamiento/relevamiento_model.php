@@ -137,6 +137,61 @@ class Relevamiento_model extends CI_Model {
 	}
 
 
+	public function editDireccion($idDireccion, $updateData){
+
+	$data = array(
+               'calle' => $updateData['calle'],
+               'casa' => $updateData['casa'],
+               'numero' => $updateData['numero'],
+               'dptoNumero' => $updateData['dptoNumero'],
+               'entreCalles1' => $updateData['entreCalles1'],
+               'entreCalles2' => "",
+               'barrio' => $updateData['barrio'],
+               'observaciones' => "",
+               'manzana' => $updateData['manzana'],
+               'id_tlocalidad' => $updateData['id_tlocalidad']
+            );
+
+		$this->db->where('idDireccion', $idDireccion);
+		$this->db->update('direccion', $data); 
+
+		return $idDireccion;
+
+	}
+
+
+	public function editRelevamiento($idRelevamiento, $updateData){
+
+		$data = array(
+				'nroRelevamiento' => $updateData['nroRelevamiento'],
+				'fechaRelevamiento' => $updateData['fechaRelevamiento'],
+				'observCriticidad' => "",
+				'idCriticidad' =>null,
+				'idEncuesta' => $updateData['idEncuesta'],  // todo esto debe cambiar por parametro dinamico
+				'idVisita' => "",
+				'idDireccion' => $updateData['idDireccion'], // parametro que viene de otro update
+				'idEmpleado' => $updateData['idEmpleado'],
+				'cantEncuestados' => $updateData['cantEncuestados'],
+				'observacion' => $updateData['observacion'],
+				'telTitular' => $updateData['telTitular'],
+				'telSup' => $updateData['telSup'],
+				'estado' => $updateData['estado']
+				);
+
+			$this->db->where('idRelevamiento', $idRelevamiento);
+			$this->db->update('relevamiento', $data); 
+			
+			return $idRelevamiento;
+
+
+	}
+
+
+
+
+
+
+
 
 
 
