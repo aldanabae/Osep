@@ -71,7 +71,7 @@
 					<a href="#" class="navbar-brand">	
 							<small>
 							<!--<i class="fa fa-stethoscope"></i>-->
-							<img src="<?php echo base_url() ?>assets/images/osep.jpg" width="60%" heigth="50%">
+							<img src="<?php echo base_url() ?>assets/images/osep.png" width="60%" heigth="50%">
 							<!--S.S.I.-->
 							</small>		
 					</a>

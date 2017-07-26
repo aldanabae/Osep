@@ -48,7 +48,7 @@
 
 								<h1><![LOGO]-->
 								</br><!-- Espacio arriba del logo -->
-									<img src="<?php echo base_url() ?>assets/images/osep.jpg" width="190px" heigth="240px" />
+									<img src="<?php echo base_url() ?>assets/images/osep.png" width="190px" heigth="240px" />
 							</div>
 								</br><!-- Espacio abajo del logo -->
 
