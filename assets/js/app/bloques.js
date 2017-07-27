@@ -882,6 +882,14 @@ var bloque1= {    // Bloque General
 
             return parseData(tmp);
 
+        },
+
+        model:function(){
+
+
+
+
+
         }
 
 }
@@ -2105,15 +2113,16 @@ var bloque9 ={       // laboral
 
 		function setAjax(data){
 			//var idDpto = $('#departamento').val();
-			var path   = $("#localPath").val();
-			var formulario   = serializar(bloque1.parse());
+            var path   = $("#localPath").val();
+            var url= path+'index.php/encuesta/cargarEncuesta/encuestaAjax';
+			var formulario   = "";
 			var parametros = {
-            "id_dpto" : "33",
-            "datos": "prueba"
+                "id_dpto" : "33",
+                "datos": "prueba"
 			};
 			$.ajax({
 				type: 'POST',
-				url: path+'index.php/encuesta/cargarEncuesta/encuestaAjax', 
+				url: url, 
 				data: parametros, 
 			       	dataType: 'json',
 				success: function(resp) { 
@@ -2128,15 +2137,3 @@ var bloque9 ={       // laboral
         }
         
 
-
-function serializar(arr)
-{
-var res = 'a:'+arr.length+':{';
-for(i=0; i<arr.length; i++)
-{
-res += 'i:'+i+';s:'+arr[i].length+':"'+arr[i]+'";';
-}
-res += '}';
-
-return res;
-}

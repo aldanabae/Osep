@@ -12,7 +12,9 @@
 <!--<div class="container">   contenedor principal -->
 <input type="hidden" name="embarazo"  id="embarazo" value="<?php echo @$embarazo; ?>">
 <input type="hidden" name="integrantes"  id="integrantes" value="<?php echo @$cantidad; ?>">
-<input type="hidden" name="hdnIdrelev"  id="hdnIdrelev" value="<?php echo @$id_relevamiento; ?>">
+<input type="hidden" name="hdnid_relevamiento"  id="hdnid_relevamiento" value="<?php echo @$id_relevamiento; ?>">
+<input type="hidden" name="hdnid_numRel"  id="hdnid_numRel" value="<?php echo @$id_numRel; ?>">
+
 <input type="hidden" name="localPath"  id="localPath" value="<?php echo base_url(); ?>">
 <!-- Aqui va un bucle que pone als edades en String  separados por un caracter-->
 
@@ -31,6 +33,8 @@
 			$string_edad= "0";
 
 	}
+
+
 
 ?>
 
@@ -699,7 +703,7 @@
 								
 								<label class="control-label col-xs-6">En el último año, ¿realizó al menos un control con un odontólogo? </label>
 								<div class="col-xs-6">
-									<select class="form-control">
+									<select class="form-control" name="b3_odontologo">
 										<option value="" disabled selected hidden>Seleccionar</option>
 										<option value="1">SI</option>
 										<option value="2">NO</option>							
@@ -713,7 +717,7 @@
 								
 								<label class="control-label col-xs-6">¿Realizó algún control con un oculista para verificar su salud visual?</label>
 								<div class="col-xs-6">
-									<select class="form-control">
+									<select class="form-control" name="b3_oculista">
 										<option value="" disabled selected hidden>Seleccionar</option>
 										<option value="1">SI</option>
 										<option value="2">NO</option>							
@@ -752,7 +756,7 @@
 								<label class="control-label col-xs-6">¿Realiza en forma regular alguna actividad extraescolar, 
 																		es decir, hace deportes, alguna actividad artística u otra actividad todas las semanas?</label>
 								<div class="col-xs-6">
-									<select class="form-control" id= "b3b_extra">
+									<select class="form-control" id= "b3b_extra" name="b3_oculista">
 										<option value="" disabled selected hidden>Seleccionar</option>
 										<option value="1">Deportiva</option>
 										<option value="2">Artística</option>
@@ -772,7 +776,7 @@
 								
 								<label class="control-label col-xs-6">¿Dónde?</label>
 								<div class="col-xs-6">
-									<select class="form-control">
+									<select class="form-control" name= "b3b_donde" >
 									<option value="" disabled selected hidden>Seleccionar</option>
 									<option value="1">Club</option>
 									<option value="2">Instituto</option>							

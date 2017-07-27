@@ -139,10 +139,6 @@ class CargarEncuesta extends CI_Controller{
                         $accion= $this->input->post('accion');
 
 
-
-
-
-
                                 if($this->input->post('Continuar') && $this->input->post('Continuar') != '' && $this->input->post('nom_facilitador') != '')
                                 {
                                         $_POST['Continuar']="";
@@ -227,8 +223,8 @@ class CargarEncuesta extends CI_Controller{
 
                                         }
 
-                                        $options['id_relevamiento']=$id_relevamiento;
-                                        $options['id_numRel']=$nroRelevamiento;
+                                        $options['id_relevamiento']=$id_relevamiento;  // id unico de relevamiento e la tabla
+                                        $options['id_numRel']=$nroRelevamiento; // numero asignado al fac..  se repite
                                         //borrar las variables post
                                         //var_dump($_POST=array());
 
@@ -247,9 +243,6 @@ class CargarEncuesta extends CI_Controller{
                                         redirect('encuesta/cargarEncuesta');
 
                                 }
-
-
-
 
 
                 }else{
@@ -321,28 +314,28 @@ class CargarEncuesta extends CI_Controller{
 
 
 
-function guardarEncuesta()
-{
+        function guardarEncuesta()
+        {
 
 
 
 
-}
+        }
 
 
-function encuestaAjax()
-{
+        function encuestaAjax()
+        {
 
 
 
-// var_dump($_POST['datos']);
 
+                // var_dump($_POST);
+                //json_encode($_POST);
+                $arr = array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5);
 
-// $test = unserialize($_POST['datos']);
+                echo json_encode($_POST);
 
-echo($_POST['id_dpto']);
-
-}
+        }
 
 
 }
