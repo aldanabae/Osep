@@ -13,7 +13,7 @@
 <input type="hidden" name="embarazo"  id="embarazo" value="<?php echo @$embarazo; ?>">
 <input type="hidden" name="integrantes"  id="integrantes" value="<?php echo @$cantidad; ?>">
 <input type="hidden" name="hdnIdrelev"  id="hdnIdrelev" value="<?php echo @$id_relevamiento; ?>">
-
+<input type="hidden" name="localPath"  id="localPath" value="<?php echo base_url(); ?>">
 <!-- Aqui va un bucle que pone als edades en String  separados por un caracter-->
 
 <?php 
@@ -35,6 +35,7 @@
 ?>
 
 <input type="hidden" name="edades"  id="edades" value="<?php echo @$string_edad; ?>">
+
 
 <form id="add_encuesta" action="<?php echo(site_url('encuesta/cargarEncuesta/cargabloques_final'));  ?>" method="post">
 
@@ -876,7 +877,7 @@
 									<label class="control-label col-xs-6"> ¿Recuerda si realizó al menos una consulta médica por OSEP en el último año? </label>
 
 									<div class="col-xs-6">
-										<select class="form-control" id= "b4_consulta" >
+										<select class="form-control" id= "b4_consulta" name="b4_consulta">
 											<option value="" disabled selected hidden>Seleccionar</option>
 											<option value="0">SI</option>
 											<option value="1">NO</option>
@@ -945,7 +946,7 @@
 								
 								<label class="control-label col-xs-6">¿Como diría que es su estado general de salud en este momento?</label>
 								<div class="col-xs-6">
-									<select class="form-control">
+									<select class="form-control" name = "b4_estado">
 									<option value="" disabled selected hidden>Seleccionar</option>
 										<option value="0">Muy bueno</option>
 										<option value="1">Bueno</option>							
@@ -966,7 +967,7 @@
 							
 							<label class="control-label col-xs-6">¿En los últimos  2 años concurrió a realizarse el papanicolau?</label>
 							<div class="col-xs-2">
-								<select class="form-control" id="b4_pap">
+								<select class="form-control" id="b4_pap" name = "b4_pap">
 									<option value="" disabled selected hidden>Seleccionar</option>
 									<option value="0">SI</option>
 									<option value="1">NO</option>
@@ -1131,7 +1132,7 @@
 							
 							<label class="control-label col-xs-6">¿Necesita o ha tenido que realizar modificaciones e su casa para no caerse o realizar sus tareas cotidianas ?</label>
 							<div class="col-xs-6">
-								<select class="form-control">
+								<select class="form-control" name="b5_modif">
 								<option value="" disabled selected hidden>Seleccionar</option>
 								<option value="1">SI</option>
 								<option value="2">NO</option>							
@@ -1146,7 +1147,7 @@
 							
 							<label class="control-label col-xs-6">Normalmente, ¿Necesita ayuda para realizar trámites, como cobrar la jubilación, pedir turno al medico por ejemplo ?</label>
 							<div class="col-xs-6">
-								<select class="form-control">
+								<select class="form-control"name="b5_ayuda">
 								<option value="" disabled selected hidden>Seleccionar</option>
 								<option value="1">SI</option>
 								<option value="2">NO</option>							
@@ -1160,7 +1161,7 @@
 							
 							<label class="control-label col-xs-6">Si tiene una  dificultad de salud  o una urgencia, ¿cuenta con alguien que lo pueda ayudar a resolverla ?</label>
 							<div class="col-xs-6">
-								<select class="form-control">
+								<select class="form-control" name="b5_dificultad">
 								<option value="" disabled selected hidden>Seleccionar</option>
 								<option value="1">SI</option>
 								<option value="2">NO</option>							
@@ -1617,7 +1618,7 @@
 						<div class="form-group">
 							<label class="control-label col-xs-6" for="">¿En los últimos dos años, concurrió a realizarse un papanicolau?</label>
 							<div class="col-xs-6">
-								<select class="form-control">
+								<select class="form-control" name="b777777">
 									<option value="" disabled selected hidden>Seleccionar</option>
 									<option value="1">Si</option>
 									<option value="2">NO</option>							
@@ -1639,7 +1640,8 @@
         <div class="form-group" id="btn_encuesta">
             <div class="col-xs-6">
 
-                <input type="reset" class="btn btn-info" value="Nuevo integrante" id="btn_nuevo">
+                 <input type="reset" class="btn btn-info" value="Nuevo integrante" id="btn_nuevo"> 
+                <!-- <input type="submit" class="btn btn-info" value="Nuevo integrante" id="btn_nuevo__"> -->
             </div>
 
             <div class="col-xs-6 text-right">

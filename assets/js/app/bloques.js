@@ -878,7 +878,7 @@ var bloque1= {    // Bloque General
 
         parse: function(){
 
-            var tmp = $(bloque1.template.html).find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
+            var tmp = $('#add_encuesta').find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
 
             return parseData(tmp);
 
@@ -888,7 +888,6 @@ var bloque1= {    // Bloque General
 
 
 
-// TODO  se deben unificar los dos bloques 3  3a  y 3b  segun especificaciones
 
 var bloque3a ={   // bloque 3  bebes
         estado: false,
@@ -2035,8 +2034,8 @@ var bloque9 ={       // laboral
 
         arreglo.forEach(function(element) {
 
-                parse.push({'idPregunta': element.name ,
-                'idRespuesta' : element.value})
+                parse.push( [element.name ,
+                 element.value])
             
         });
 
@@ -2090,12 +2089,54 @@ var bloque9 ={       // laboral
 
 
 
-function cleanArray( actual ){   // limpiar arreglos de elementos vacios
-  var newArray = new Array();
-  for( var i = 0, j = actual.length; i < j; i++ ){
-      if ( actual[ i ] ){
-        newArray.push( actual[ i ] );
-    }
-  }
-  return newArray;
+        function cleanArray( actual ){   // limpiar arreglos de elementos vacios
+        var newArray = new Array();
+        for( var i = 0, j = actual.length; i < j; i++ ){
+            if ( actual[ i ] ){
+                newArray.push( actual[ i ] );
+            }
+        }
+        return newArray;
+        }
+
+
+
+
+
+		function setAjax(data){
+			//var idDpto = $('#departamento').val();
+			var path   = $("#localPath").val();
+			var formulario   = serializar(bloque1.parse());
+			var parametros = {
+            "id_dpto" : "33",
+            "datos": "prueba"
+			};
+			$.ajax({
+				type: 'POST',
+				url: path+'index.php/encuesta/cargarEncuesta/encuestaAjax', 
+				data: parametros, 
+			       	dataType: 'json',
+				success: function(resp) { 
+					if(resp){
+						console.log(resp);
+					}
+					},
+				 error: function(xhr,status) { 
+					console.log(xhr+"    "+status);
+				},
+			});
+        }
+        
+
+
+function serializar(arr)
+{
+var res = 'a:'+arr.length+':{';
+for(i=0; i<arr.length; i++)
+{
+res += 'i:'+i+';s:'+arr[i].length+':"'+arr[i]+'";';
+}
+res += '}';
+
+return res;
 }

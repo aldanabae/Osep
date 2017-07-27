@@ -43,8 +43,6 @@ $dato_rel= $relevamiento; // array de relevamiento qeu viene del controlador
     }
 
 
-
-
 ?>
 
 <!--campos ocultos de recarga de datos  -->

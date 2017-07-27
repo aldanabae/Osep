@@ -26,7 +26,7 @@ class CargarEncuesta extends CI_Controller{
         function index(){  
 
                 $session_data = $this->session->userdata('logged_in');
-                redirect('encuesta/cargarEncuesta/'.$session_data['id'],'refresh');
+                redirect('encuesta/cargarEncuesta/'.$session_data['idEmpleado'],'refresh');
         }
 
 
@@ -57,13 +57,13 @@ class CargarEncuesta extends CI_Controller{
 
                         /*
                                 1_comprobar que este recibiendo un numero
-                                2_ verificar el nivel de usuario, si es 2 solo debe usar su $session_data['id']
+                                2_ verificar el nivel de usuario, si es 2 solo debe usar su $session_data['idEmpleado']
 
-                                3_  si es un nivel superior puede usar el $session_data['id'] que se envie por la url
+                                3_  si es un nivel superior puede usar el $session_data['idEmpleado'] que se envie por la url
 
                                 =====================================
 
-                                4_debo consultar la libreria quiz_lib  y en base al $session_data['id'] o id usuario enviado, traer el ultimo relevamiento abierto
+                                4_debo consultar la libreria quiz_lib  y en base al $session_data['idEmpleado'] o id usuario enviado, traer el ultimo relevamiento abierto
 
                                 5_reconstruir con los datos el primer formulario y editarlo si es necesario
 
@@ -76,9 +76,9 @@ class CargarEncuesta extends CI_Controller{
                         if($session_data['nivel'] == "2"){    // verifico el tipo de usuario
                                                               //Si el usuario es facilitador loso paso su nombre
                                 $usuario_merge= $data['nombreE']. " " .$data['apellidoE']; // junto el nombre y apellido
-                                $valor['listado'][]= [$session_data['id'], $usuario_merge]; // paso el array con los datos
+                                $valor['listado'][]= [$session_data['idEmpleado'], $usuario_merge]; // paso el array con los datos
                                 // ene ste caso por als que envie cualquier dato por la url el valor que paso es el mismo del usuario facilitador
-                                $id_usuario= $session_data['id'];
+                                $id_usuario= $session_data['idEmpleado'];
                                 // consulto si hay algun relevameinto abierto para este usuario
                                 // si es asi traigo toda la info primaria
                                 $valor['relevamiento']= $this->quiz_lib->get_last_data_user($id_usuario);
@@ -137,6 +137,10 @@ class CargarEncuesta extends CI_Controller{
                         $session_data = $this->session->userdata('logged_in');
                         $data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
                         $accion= $this->input->post('accion');
+
+
+
+
 
 
                                 if($this->input->post('Continuar') && $this->input->post('Continuar') != '' && $this->input->post('nom_facilitador') != '')
@@ -261,7 +265,7 @@ class CargarEncuesta extends CI_Controller{
 
 
 
-function cargabloques_final()
+        function cargabloques_final()
     {
 
             if($this->session->userdata('logged_in')){
@@ -326,11 +330,17 @@ function guardarEncuesta()
 }
 
 
-function ajax_encuestas($metod, $data )
+function encuestaAjax()
 {
 
 
 
+// var_dump($_POST['datos']);
+
+
+// $test = unserialize($_POST['datos']);
+
+echo($_POST['id_dpto']);
 
 }
 
