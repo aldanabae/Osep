@@ -238,7 +238,13 @@
 					</a>
 					<b class="arrow"></b>
 				</li>
-
+				<li class="">
+					<a href="<?php echo base_url('bienvenidaC') ?>">
+						<i class="menu-icon fa fa-reply-all"></i>
+						<span class="menu-text"> Inicio</span>
+					</a>
+					<b class="arrow"></b>
+				</li>
 				<?php 		}
 						}	
 					}

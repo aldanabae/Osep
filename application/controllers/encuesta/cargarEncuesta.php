@@ -232,7 +232,7 @@ class CargarEncuesta extends CI_Controller{
 
                                         $this->load->view("backend/encuesta/cargar_encuesta_view", $options);
                                         $this->load->view('backend/footer');
-                                        $js['javascript']= ["bloques.js"];
+                                        $js['javascript']= ["bloques.js", "helpers.js"];
                                         $this->load->view('backend/encuesta/script_js', $js);
 
                                         
@@ -325,15 +325,22 @@ class CargarEncuesta extends CI_Controller{
 
         function encuestaAjax()
         {
-
-
-
-
                 // var_dump($_POST);
                 //json_encode($_POST);
-                $arr = array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5);
 
-                echo json_encode($_POST);
+
+$test= $_POST['datos'];
+
+//                 $test = '
+// [[{"nombre":"aldana ","Apellido":"baeza","dni":"333333333333333","edad":"31","sexo":"M","id_relev":"9","n_afiliado":"44454545/","respondeR":"0"}],["b1_nombre","baeza aldana"],["b1_edad","31"],["b1_dni","333333333333333"],["b1_genero","M"],["b1_parent","3"],["b1_osep","0"],["b1_afiliado","44454545"],["b1_barra",""],["b1_cober","0"],["b1_cronica","1"],["b1_disc","1"]]                
+                
+//                 ';
+              
+                $result= json_decode($test);
+$prueba= $result;
+
+// var_dump($prueba);
+                echo json_encode($prueba);
 
         }
 

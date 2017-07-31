@@ -71,7 +71,7 @@
 					 <div class="col-xs-6">
 							
 							<label class="block" >
-									<input name="form-field-checkbox" class="ace input-lg" type="checkbox" id="responde">
+									<input name="responde" class="ace input-lg" type="checkbox" id="responde">
 									<span class="lbl bigger-120">  Responde la encuesta</span>
 							</label>
 											 
@@ -104,12 +104,12 @@
 					 <label for="inputPassword" class="control-label col-xs-6">Sexo (*) </label>
 						<div class="col-xs-2">
 							<label class="radio-inline">
-								<input type="radio" name="b1_genero" value="m" checked = "true" required> Masculino
+								<input type="radio" name="b1_genero" value="M" checked = "true" required> Masculino
 							</label>
 						</div>
 						<div class="col-xs-2">
 							<label class="radio-inline">
-								<input type="radio" name="b1_genero" value="f"> Femenino
+								<input type="radio" name="b1_genero" value="F"> Femenino
 							</label>
 						</div>
 				</div>

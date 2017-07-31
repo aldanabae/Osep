@@ -10,6 +10,9 @@ $(function() {
   bloque1.bindComponent();
 
 
+    
+
+
 });
 
 
@@ -72,7 +75,7 @@ var bloque1= {    // Bloque General
             
             nombre: null,       // nombre del encuestado
             edad: null,         // edad del encuestado
-            genero: "m",        // masculino femenino
+            genero: "M",        // masculino femenino
             osep: '0',          // si tiene osep es 0   si no es 1  
             embarazo: '0',      // embarazo  0 si  1 no
             discapacidad: '1',  // discapacidad   1   no  0 s1
@@ -93,7 +96,7 @@ var bloque1= {    // Bloque General
 
             bloque1.conf.nombre= null,
             bloque1.conf.edad=null,
-            bloque1.conf.genero= "m",
+            bloque1.conf.genero= "M",
             bloque1.conf.osep= '0',
             bloque1.conf.embarazo= '0',
             bloque1.conf.discapacidad= '1',
@@ -320,7 +323,7 @@ var bloque1= {    // Bloque General
             }
 
             // verifico genero
-            if(bloque1.conf.genero == 'm'){  // si es hombre oculto todo
+            if(bloque1.conf.genero == 'M'){  // si es hombre oculto todo
 
                 $( "#b1_div_embarazo" ).hide();
                 bloque1.conf.embarazo= '1';
@@ -552,7 +555,11 @@ var bloque1= {    // Bloque General
 
                     $( "#btn_nuevo" ).on(
                         'click', function(){
-                            bloque1.init();
+
+
+                            bloque1.parse();
+
+                            
                             encuesta.count ++;
                             bloque1.reset_conf();
                             bloque1.init();
@@ -753,7 +760,7 @@ var bloque1= {    // Bloque General
 
 
 
-                            if((edad >= 15 && edad <= 64) && (bloque1.conf.discapacidad == '1' && bloque1.conf.genero == 'm')){
+                            if((edad >= 15 && edad <= 64) && (bloque1.conf.discapacidad == '1' && bloque1.conf.genero == 'M')){
 
                                 $('#b1_afiliado_varon').show(); // oculto el formulario de 
 
@@ -880,17 +887,18 @@ var bloque1= {    // Bloque General
 
             var tmp = $('#add_encuesta').find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
 
-            return parseData(tmp);
-
+            var datos = JSON.encode(parseData(tmp));
+            //saco los que no van a necesitar:::
+            delete datos[1];
+            delete datos[2];
+            delete datos[3];
+            delete datos[4];
+            delete datos[5];
+            delete datos[7];
+            delete datos[8];
+            setAjax(datos);
         },
 
-        model:function(){
-
-
-
-
-
-        }
 
 }
 
@@ -1026,6 +1034,8 @@ var bloque3a ={   // bloque 3  bebes
         parse: function(){
 
             var tmp = $(bloque3a.template.html).find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
+
+
 
             return parseData(tmp);
 
@@ -2024,116 +2034,11 @@ var bloque9 ={       // laboral
 
         },
 
-
         reset: function(){
 
 
         } 
+
+
 }
-
-
-
-
-
-
-    function parseData(arreglo, data){
-        //var parse= {};
-        var parse = (typeof data == 'undefined') ? [] : data;
-
-        arreglo.forEach(function(element) {
-
-                parse.push( [element.name ,
-                 element.value])
-            
-        });
-
-
-        return parse;
-    }
-
-
-
-    function enabledBlock(){
-
-        /*cargo los bloques en un array
-            recorro los estados, y si esta activo lo pongo en un segundo arregloo para validarlo
-
-            valido cada array, y si esta ok  saco los datos del bloque y los voy concatenando
-
-            cuando llego al final, guardo en local Storage como encuestados 
-
-            el bloque 2 se guarda en general..
-        */ 
-        var bloques = [bloque1, bloque3, bloque3a ,bloque3b, bloque4, bloque5, bloque6, bloque7, bloque9];
-        var arr = [];
-        $.each( bloques , function (index, valor){
-
-                if (valor.estado){
-
-                    arr.push(valor) ;
-                }
-        })
-
-        return arr;
-
-
-    }
-
-
-    function validateBlock( lista){
-
-        /**
-         * Aqui hay que recorrrer cada bloque y accionar el metodo validacion
-         * recorda añadir un parametro de Title para identificar el modulo donde salta la validacion
-         * 
-         * 
-         * 
-         * 
-         * 
-         */
-
-
-    }
-
-
-
-        function cleanArray( actual ){   // limpiar arreglos de elementos vacios
-        var newArray = new Array();
-        for( var i = 0, j = actual.length; i < j; i++ ){
-            if ( actual[ i ] ){
-                newArray.push( actual[ i ] );
-            }
-        }
-        return newArray;
-        }
-
-
-
-
-
-		function setAjax(data){
-			//var idDpto = $('#departamento').val();
-            var path   = $("#localPath").val();
-            var url= path+'index.php/encuesta/cargarEncuesta/encuestaAjax';
-			var formulario   = "";
-			var parametros = {
-                "id_dpto" : "33",
-                "datos": "prueba"
-			};
-			$.ajax({
-				type: 'POST',
-				url: url, 
-				data: parametros, 
-			       	dataType: 'json',
-				success: function(resp) { 
-					if(resp){
-						console.log(resp);
-					}
-					},
-				 error: function(xhr,status) { 
-					console.log(xhr+"    "+status);
-				},
-			});
-        }
-        
 

@@ -68,7 +68,7 @@
 				<!-- /section:basics/sidebar.mobile.toggle -->
 				<div class="navbar-header pull-left">
 					<!-- #section:basics/navbar.layout.brand -->
-					<a href="#" class="navbar-brand">	
+					<a href="<?php echo base_url('bienvenidaC') ?>" class="navbar-brand">	
 							<small>
 							<!--<i class="fa fa-stethoscope"></i>-->
 							<img src="<?php echo base_url() ?>assets/images/osep.png" width="60%" heigth="50%">
