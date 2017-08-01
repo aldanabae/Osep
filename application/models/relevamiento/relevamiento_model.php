@@ -195,18 +195,26 @@ class Relevamiento_model extends CI_Model {
 
 
 
-
+// modelo de encuestado
 
 	public function crearEncuestado($data){
 		$this->db->insert('encuestado', 
-			array('nombreEncuestado'=> $data['nombreE'], 
-					'apellidoEncuestado'=> $data['apellidoE'],
-					'dniEncuestado'=> $data['dniE'], 
-					'edad'=> $data['edad'],
-					'sexo'=> $data['sexo'],
-					'idRelevamiento'=> $data['idRelev']));
+			array('nombreEncuestado'=> $data->nombre, 
+					'apellidoEncuestado'=> $data->apellido,
+					'dniEncuestado'=> $data->dni, 
+					'edad'=> $data->edad,
+					'sexo'=> $data->sexo,
+					'idRelevamiento'=> $data->id_relev,
+					'nroAfiliado'=> $data->n_afiliado,
+					'respondeR'=> $data->respondeR
+					));
 		$idEncuestado= $this->db->insert_id();
+
+		return $data;
 	}
+
+
+	
 	public function obtenerEncuestado($dni){
 		$this->db->select('encuestado.idEncuestado');
 		$this->db->where('encuestado.dniEncuestado', $dni);
@@ -215,6 +223,9 @@ class Relevamiento_model extends CI_Model {
 		if ($query->num_rows() > 0) return $query;
 		else return false;
 	}
+
+
+
 	public function crearRespuestaElegida($data){
 		$this->db->insert('respuesta_elegida', 
 			array('respBreve'=>$data['respB'], 
@@ -224,6 +235,9 @@ class Relevamiento_model extends CI_Model {
 		$idRespuestaElegida = $this->db->insert_id();
 		return $idRespuestaElegida;
 	}
+
+
+	
 	public function obtenerRelevamientos(){
 		$this->db->select('*');
 		$this->db->from('relevamiento');

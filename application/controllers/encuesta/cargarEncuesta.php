@@ -15,6 +15,8 @@ class CargarEncuesta extends CI_Controller{
             $this->load->model('seguridad/abmNiveles_model');
             $this->load->model('seguridad/abmUsuarios_model');
             $this->load->model('abms/abmVisitas_model');
+            // modelo de 
+
             // modelo de relevamiento
             $this->load->model('relevamiento/relevamiento_model');
             $this->load->library('form_validation'); 
@@ -114,12 +116,6 @@ class CargarEncuesta extends CI_Controller{
                 }
 
         }
-
- 
-
-
-
-
 
 
         function cargabloques()
@@ -325,22 +321,117 @@ class CargarEncuesta extends CI_Controller{
 
         function encuestaAjax()
         {
+
+                // bloque 0 carga inicial de datos de relevamiento
+                if($this->session->userdata('logged_in')){
+                        $session_data = $this->session->userdata('logged_in');
+                        $data['username'] = $session_data['username'];
+                        $data['nombreE'] = $session_data['nombreE'];
+                        $data['apellidoE'] = $session_data['apellidoE'];
+                        $data['nivel'] = $session_data['nivel'];
+                        $data['tipoEmpleado']=$session_data['tipoEmpleado'];
+
+                        $this->session->set_flashdata('username', $data);
+                        $this->session->set_flashdata('nombreE', $data);
+                        $this->session->set_flashdata('nivel', $data);
+
+                        //mantener sidebar dinamica
+                        $session_data = $this->session->userdata('logged_in');
+                        $data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
+                        //cargo el header y el sidebar con los datos para el nivel de usuarios
+
+                        // $datosForm = $this->input->post('datos'); // traigo los datos por post
+
+                        //array test==================
+                                $datosForm = '[{"nombre":"marcelo ","apellido":"contreras","dni":"29343322","edad":"35","sexo":"M","id_relev":"9","n_afiliado":"29343322/00","respondeR":"1"},["b1_parent","1"],["b1_cober","0"],["b1_estudio","0"],["b1_nivel","1"],["b1_cronica","1"],["b1_disc","1"],["b1_extra","1"]]';
+                        //=====================
+
+                        $datosEncuesta= json_decode($datosForm); // convierto el String nuevamente en array
+
+                        // tomo el contenido del indice 0 que estan los datos del envcuestado
+                        $id_encuestado= $this->relevamiento_model->crearEncuestado($datosEncuesta[0]); // guardo al encuestado y traigo el id correspondiente
+                        $limit = count($datosEncuesta); // limite del arreglo
+
+                        // for que recorre el areglo guardando cada dato  comienza desde el 1, por que el 0 tiene los datos del encuestado
+                        for($i =1 ;$i < $limit ; $i++ ){
+
+                                $datos=[
+
+
+                                ];
+
+
+                                //var_dump($datosEncuesta[$i]);
+
+
+                        }
+
+
+                        echo json_encode($datosEncuesta);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                }else{
+                        $retorno= ['mensaje'=> 'la sesion esta expirada, ingrese nuevamente'];
+                        echo json_encode($retorno);
+                }
+
+
+
+//crearEncuestado
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 // var_dump($_POST);
                 //json_encode($_POST);
 
 
-$test= $_POST['datos'];
+                // $test= $_POST['datos'];
 
-//                 $test = '
-// [[{"nombre":"aldana ","Apellido":"baeza","dni":"333333333333333","edad":"31","sexo":"M","id_relev":"9","n_afiliado":"44454545/","respondeR":"0"}],["b1_nombre","baeza aldana"],["b1_edad","31"],["b1_dni","333333333333333"],["b1_genero","M"],["b1_parent","3"],["b1_osep","0"],["b1_afiliado","44454545"],["b1_barra",""],["b1_cober","0"],["b1_cronica","1"],["b1_disc","1"]]                
-                
-//                 ';
-              
-                $result= json_decode($test);
-$prueba= $result;
+                // //                 $test = '
+                // // [[{"nombre":"aldana ","Apellido":"baeza","dni":"333333333333333","edad":"31","sexo":"M","id_relev":"9","n_afiliado":"44454545/","respondeR":"0"}],["b1_nombre","baeza aldana"],["b1_edad","31"],["b1_dni","333333333333333"],["b1_genero","M"],["b1_parent","3"],["b1_osep","0"],["b1_afiliado","44454545"],["b1_barra",""],["b1_cober","0"],["b1_cronica","1"],["b1_disc","1"]]                
 
-// var_dump($prueba);
-                echo json_encode($prueba);
+                // //                 ';
+
+                // $result= json_decode($test);
+                // $prueba= $result;
+
+                // // var_dump($prueba);
+                // echo json_encode($prueba);
 
         }
 

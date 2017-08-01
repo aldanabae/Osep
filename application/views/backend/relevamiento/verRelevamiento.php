@@ -161,8 +161,11 @@
                           <div class="profile-info-name"> Cantidad de Integrantes</div>
                             <div class="profile-info-value">
                               <span class="editable" id="country">
-                                <!Resolver como mostrar la cantidad de encuestados-->
-                              <?php echo $relev->cantEncuestados; ?>
+                      
+                              <?php 
+                                  $arr= unserialize($relev->cantEncuestados);
+                                  echo $arr['cantidad']; 
+                              ?>
                               </span>
                             </div>
                         </div>

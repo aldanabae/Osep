@@ -410,7 +410,6 @@ var bloque1= {    // Bloque General
 
              // fin filtro datos ocupacionales  
 
-
              if(bloque1.conf.pariente == "1" || bloque1.conf.pariente == ""){
 
                 $( "#b1_adicional").hide();
@@ -467,10 +466,6 @@ var bloque1= {    // Bloque General
 
                     
                 }                
-
-
-
-
         },
 
         bindComponent: function(){
@@ -668,8 +663,6 @@ var bloque1= {    // Bloque General
                     });  
 
 
-                    
-
                     // preguntas de utilizacion de servicios
 
                     $( "#b1_consulta" ).on(
@@ -695,13 +688,6 @@ var bloque1= {    // Bloque General
                             bloque1.conf.update();
 
                     });                    
-
-
-
-
-
-                        
-
 
         },
 
@@ -770,7 +756,7 @@ var bloque1= {    // Bloque General
 
                             }
 
-                            if(bloque1.conf.genero == 'f'  )
+                            if(bloque1.conf.genero == 'F'  )
                             {
                                 // me fijo si esta respondiendo la encuesta y si es mujer
 
@@ -886,16 +872,13 @@ var bloque1= {    // Bloque General
         parse: function(){
 
             var tmp = $('#add_encuesta').find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
+            //saco los que no van a necesitar:::
+            delete tmp[0];
+            delete tmp[1];delete tmp[2];
+            delete tmp[3];delete tmp[4];
+            delete tmp[6];delete tmp[7];
 
             var datos = JSON.encode(parseData(tmp));
-            //saco los que no van a necesitar:::
-            delete datos[1];
-            delete datos[2];
-            delete datos[3];
-            delete datos[4];
-            delete datos[5];
-            delete datos[7];
-            delete datos[8];
             setAjax(datos);
         },
 

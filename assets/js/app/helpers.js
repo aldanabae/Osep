@@ -71,7 +71,7 @@
 
             {
                 "nombre":nombres.nombre,
-                "Apellido":nombres.apellido,
+                "apellido":nombres.apellido,
                 "dni":$('#b1_dni').val(),
                 "edad":bloque1.conf.edad,
                 "sexo":bloque1.conf.genero,
@@ -158,7 +158,6 @@
 			//var idDpto = $('#departamento').val();
             var path   = $("#localPath").val();
             var url= path+'index.php/encuesta/cargarEncuesta/encuestaAjax';
-			var formulario   = "";
 			var parametros = "datos=" + datos;
 
 			$.ajax({

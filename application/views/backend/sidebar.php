@@ -140,7 +140,7 @@
 								?>
 
 								<li class="">
-									<a href="<?php echo base_url()?>encuesta/abmencuesta/crear">
+									<a href="#" class="btn disabled">
 										<i class="menu-icon fa fa-caret-right"></i>
 										Crear Encuesta
 									</a>
