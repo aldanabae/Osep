@@ -340,51 +340,76 @@ class CargarEncuesta extends CI_Controller{
                         $data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
                         //cargo el header y el sidebar con los datos para el nivel de usuarios
 
-                        // $datosForm = $this->input->post('datos'); // traigo los datos por post
+                        $datosForm = $this->input->post('datos'); // traigo los datos por post
 
                         //array test==================
-                                $datosForm = '[{"nombre":"marcelo ","apellido":"contreras","dni":"29343322","edad":"35","sexo":"M","id_relev":"9","n_afiliado":"29343322/00","respondeR":"1"},["b1_parent","1"],["b1_cober","0"],["b1_estudio","0"],["b1_nivel","1"],["b1_cronica","1"],["b1_disc","1"],["b1_extra","1"]]';
+                         //       $datosForm = '[{"nombre":"del solar sebastiana ","apellido":"gonzales","dni":"5555555555555","edad":"46","sexo":"F","id_relev":"9","n_afiliado":"5555555555555/00","respondeR":"1"},["b1_parent","1"],["b1_cober","0"],["b1_estudio","0"],["b1_nivel","3"],["b1_cronica","1"],["b1_disc","1"],["b1_extra","1"],["b4_consulta","1"],["b4_consulta_no","6"],["b4_otro","pruebaaaaaaaaaaaaaaaa"]]';
                         //=====================
 
                         $datosEncuesta= json_decode($datosForm); // convierto el String nuevamente en array
 
                         // tomo el contenido del indice 0 que estan los datos del envcuestado
-                        $id_encuestado= $this->relevamiento_model->crearEncuestado($datosEncuesta[0]); // guardo al encuestado y traigo el id correspondiente
-                        $limit = count($datosEncuesta); // limite del arreglo
+                        $id_encuestado= $this->relevamiento_model->crearEncuestado($datosEncuesta[0]);  // guardo al encuestado y traigo el id correspondiente
 
-                        // for que recorre el areglo guardando cada dato  comienza desde el 1, por que el 0 tiene los datos del encuestado
-                        for($i =1 ;$i < $limit ; $i++ ){
+                        $id_relevamiento = $datosEncuesta[0]->id_relev;                                 //numero de id del relevamiento
 
-                                $datos=[
+                        $limit = count($datosEncuesta);                                                 // limite del arreglo
+
+                                $valor= array();
+                                $respuestaBreve= $this->relevamiento_model->getRespuestaBreve(); // creo un arreglo con todas los id de respuesta breve
+                                foreach($respuestaBreve->result() as $dat){
+
+                                        array_push($valor, $dat->idPregunta);
+
+                                }  
+
+                                // for que recorre el areglo guardando cada dato  comienza desde el 1, por que el 0 tiene los datos del encuestado
+                                for($i =1 ;$i < $limit ; $i++ ){
+
+                                        /*
+                                                lo que viene en el indice uno 1 es la respuesta elegida
+                                                generalmente es unnumero asociado 
+                                                creo un array con los id de pregunta que reciben texto o sea respuesta prebe
+                                                - Me fijo si el id de pregunta esta en el arreglo
+                                                -  en caso que este es una respuesta breve  y se envia el arreglo datos con ese formato
+                                                - en caso de que no es una respuesta normal y se envia con el formato base
+                
+                                        */
+
+                                                //var_dump($datosEncuesta[$i][0] );
+                                        
+                                                if(in_array($datosEncuesta[$i][0] ,$valor)){
+                                                        //es respuesta breve
+                                                        $datos=[
+                                                                'respB'=>$datosEncuesta[$i][1],
+                                                                'relevamiento'=>$id_relevamiento,
+                                                                'idEnc'=>$id_encuestado,
+                                                                'idPreg'=>$datosEncuesta[$i][0],
+                                                                'idResp'=>'0'
+
+                                                        ];
+                                                        
+
+                                                }else{
+                                                        // es respuesta comun
+                                                        $datos=[
+                                                                'respB'=>null,
+                                                                'relevamiento'=>$id_relevamiento,
+                                                                'idEnc'=>$id_encuestado,
+                                                                'idPreg'=>$datosEncuesta[$i][0],
+                                                                'idResp'=>$datosEncuesta[$i][1]
+
+                                                        ];
+                                                }
 
 
-                                ];
+                                $result= $this->relevamiento_model->crearRespuestaElegida($datos); // creo un arreglo con todas los id de respuesta breve
 
 
-                                //var_dump($datosEncuesta[$i]);
-
-
-                        }
+                                }
 
 
                         echo json_encode($datosEncuesta);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

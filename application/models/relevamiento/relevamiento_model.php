@@ -210,7 +210,7 @@ class Relevamiento_model extends CI_Model {
 					));
 		$idEncuestado= $this->db->insert_id();
 
-		return $data;
+		return $idEncuestado;
 	}
 
 
@@ -230,14 +230,33 @@ class Relevamiento_model extends CI_Model {
 		$this->db->insert('respuesta_elegida', 
 			array('respBreve'=>$data['respB'], 
 					'idRelevamiento'=>$data['relevamiento'], 
-					'idRespPreg'=>$data['idRespPreg'],
-					'idEncuestado'=>$data['idEnc']));
+					'idEncuestado'=>$data['idEnc'],
+					'idPregunta'=>$data['idPreg'],
+					'idRespuesta'=>$data['idResp']));
 		$idRespuestaElegida = $this->db->insert_id();
 		return $idRespuestaElegida;
 	}
 
 
-	
+		public function getRespuestaBreve(){ //  trae las respuestas que se llenan como breve
+			$this->db->select('idPregunta');
+			$this->db->from('pregunta');
+			$this->db->where('idTipoPregunta', '6' ); // que solo sean respuesta breve
+			$query = $this->db->get();
+
+			if ($query->num_rows() > 0){
+				return $query;
+			} 
+			else 
+			{
+				return false;
+			}
+		
+	}
+
+
+
+
 	public function obtenerRelevamientos(){
 		$this->db->select('*');
 		$this->db->from('relevamiento');

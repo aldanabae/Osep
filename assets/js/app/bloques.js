@@ -1334,7 +1334,7 @@ var bloque4 ={       // mUjer
                 }
 
                 // compruebo si tiene discapacidad
-                if(bloque1.conf.discapacidad === "1" && bloque1.conf.genero ==="f"){
+                if(bloque1.conf.discapacidad === "1" && bloque1.conf.genero ==="F"){
                     // muestro esto si no tiene discapacidad y es si es  mujer
                     $('#b4_div_consulta').show();
 
