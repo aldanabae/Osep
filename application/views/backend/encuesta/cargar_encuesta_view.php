@@ -9,11 +9,6 @@
 
 
 
-<!--<div class="container">   contenedor principal -->
-<input type="hidden" name="embarazo"  id="embarazo" value="<?php echo @$embarazo; ?>">
-<input type="hidden" name="integrantes"  id="integrantes" value="<?php echo @$cantidad; ?>">
-<input type="hidden" name="hdnid_relevamiento"  id="hdnid_relevamiento" value="<?php echo @$id_relevamiento; ?>">
-<input type="hidden" name="hdnid_numRel"  id="hdnid_numRel" value="<?php echo @$id_numRel; ?>">
 
 <input type="hidden" name="localPath"  id="localPath" value="<?php echo base_url(); ?>">
 <!-- Aqui va un bucle que pone als edades en String  separados por un caracter-->
@@ -41,7 +36,15 @@
 <input type="hidden" name="edades"  id="edades" value="<?php echo @$string_edad; ?>">
 
 
-<form id="add_encuesta" action="<?php echo(site_url('encuesta/cargarEncuesta/cargabloques_final'));  ?>" method="post">
+<form id="add_encuesta" action="<?php echo(base_url('encuesta/cargarEncuesta/cargabloques_final'));  ?>" method="post">
+
+
+<!--<div class="container">   contenedor principal -->
+<input type="hidden" name="embarazo"  id="embarazo" value="<?php echo @$embarazo; ?>">
+<input type="hidden" name="integrantes"  id="integrantes" value="<?php echo @$cantidad; ?>">
+<input type="hidden" name="hdnid_relevamiento"  id="hdnid_relevamiento" value="<?php echo @$id_relevamiento; ?>">
+<input type="hidden" name="hdnid_numRel"  id="hdnid_numRel" value="<?php echo @$id_numRel; ?>">
+
 
 
 	<div class="row form-horizontal" id="bloque_1">   <!-- bloque 1 -->
@@ -1649,7 +1652,7 @@
             </div>
 
             <div class="col-xs-6 text-right">
-                <input type="submit" class="btn btn-primary" value="Continuar" id="btn_continuar">
+                <input type="submit" class="btn btn-primary" value="continuar" name="continuar" id="btn_continuar">
 
             </div>		
         </div>

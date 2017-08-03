@@ -269,23 +269,30 @@ class CargarEncuesta extends CI_Controller{
                     $session_data = $this->session->userdata('logged_in');
                     $data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
 
-                    //var_dump($this->input->post());
+                   
+                    
+                    $continuar = $this->input->post('continuar');
+                    $resp['id_numRel']= $this->input->post('hdnid_numRel');
+                    $resp['id_relevamiento']= $this->input->post('hdnid_relevamiento');
 
-                    if(true)
+
+                    if($continuar == 'continuar' && $resp['id_numRel'] != null  && $resp['id_relevamiento'] != null )
                     {
 
+
+
+                
                         $this->load->view('backend/header');
                         $this->load->view('backend/sidebar',$data);
-                        $this->load->view("backend/encuesta/cargar_encuesta_final_view");
+                        $this->load->view("backend/encuesta/cargar_encuesta_final_view",$resp);
                         $this->load->view('backend/footer');
                         //$js['javascript']= ["bloque_8.js","bloque3.js","bloqueaa.js"];
-                        $js['javascript']= ["vendor/spin.js","vendor/jquery.gritter.js","bloque_8.js"];
+                        $js['javascript']= ["vendor/spin.js","vendor/jquery.gritter.js","bloque_8.js", "helpers.js"];
 
 
                         $this->load->view('backend/encuesta/script_js', $js);
                         
                     }
-
                     else
                     {
 
@@ -313,7 +320,114 @@ class CargarEncuesta extends CI_Controller{
         function guardarEncuesta()
         {
 
+        
+                if($this->session->userdata('logged_in')){
+                        $session_data = $this->session->userdata('logged_in');
+                        $data['username'] = $session_data['username'];
+                        $data['nombreE'] = $session_data['nombreE'];
+                        $data['apellidoE'] = $session_data['apellidoE'];
+                        $data['nivel'] = $session_data['nivel'];
+                        $data['tipoEmpleado']=$session_data['tipoEmpleado'];
 
+                        $this->session->set_flashdata('username', $data);
+                        $this->session->set_flashdata('nombreE', $data);
+                        $this->session->set_flashdata('nivel', $data);
+
+                        //mantener sidebar dinamica
+                        $session_data = $this->session->userdata('logged_in');
+                        $data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
+                        //cargo el header y el sidebar con los datos para el nivel de usuarios
+
+                        $datosForm = $this->input->post('datos'); // traigo los datos por post
+
+                        $retorno=['accion'=>'fail'];
+                        //array test==================
+                         $datosForm = '[{"id_relev":"10","numrelevamiento":"2"},["84","1"],["85","1"],["86","1"],["87","1"],["88","1"],["89","1"],["90","1"],["91","2"],["92","2"],["93","2"],["94","2"],["95","2"],["96","2"],["97","2"],["98","2"],["99","1"],["100","1"],["101","116"],["102","123"],["103","127"],["105","129"],["105","111"],["106","cfcccccccccccccccccccccc"]]';
+                        //=====================
+
+                        $datosEncuesta= json_decode($datosForm); // convierto el String nuevamente en array
+
+
+                        // tomo el contenido del indice 0 que estan los datos del envcuestado
+
+                        $id_relevamiento = $datosEncuesta[0]->id_relev;                                 //numero de id del relevamiento
+                        $numrelevamiento = $datosEncuesta[0]->numrelevamiento;
+                        $limit = count($datosEncuesta);                                                 // limite del arreglo
+
+
+                        var_dump($id_relevamiento);
+                        
+                        var_dump($numrelevamiento);
+                                $valor= array();
+                                $respuestaBreve= $this->relevamiento_model->getRespuestaBreve(); // creo un arreglo con todas los id de respuesta breve
+                                foreach($respuestaBreve->result() as $dat){
+
+                                        array_push($valor, $dat->idPregunta);
+
+                                }  
+
+                                // for que recorre el areglo guardando cada dato  comienza desde el 1, por que el 0 tiene los datos del encuestado
+                                for($i =1 ;$i < $limit ; $i++ ){
+
+                                        /*
+                                                lo que viene en el indice uno 1 es la respuesta elegida
+                                                generalmente es unnumero asociado 
+                                                creo un array con los id de pregunta que reciben texto o sea respuesta prebe
+                                                - Me fijo si el id de pregunta esta en el arreglo
+                                                -  en caso que este es una respuesta breve  y se envia el arreglo datos con ese formato
+                                                - en caso de que no es una respuesta normal y se envia con el formato base
+                
+                                        */
+
+                                                //var_dump($datosEncuesta[$i][0] );
+                                        
+                                                if(in_array($datosEncuesta[$i][0] ,$valor)){
+                                                        //es respuesta breve
+                                                        $datos=[
+                                                                'respB'=>$datosEncuesta[$i][1],
+                                                                'relevamiento'=>$id_relevamiento,
+                                                                'idEnc'=>null,
+                                                                'idPreg'=>$datosEncuesta[$i][0],
+                                                                'idResp'=>'0'
+
+                                                        ];
+                                                        
+
+                                                }else{
+                                                        // es respuesta comun
+                                                        $datos=[
+                                                                'respB'=>null,
+                                                                'relevamiento'=>$id_relevamiento,
+                                                                'idEnc'=>null,
+                                                                'idPreg'=>$datosEncuesta[$i][0],
+                                                                'idResp'=>$datosEncuesta[$i][1]
+
+                                                        ];
+                                                }
+
+
+                                        $result= $this->relevamiento_model->crearRespuestaElegida($datos); // creo un arreglo con todas los id de respuesta breve
+
+
+                                }
+
+
+                        echo json_encode($datosEncuesta);
+
+
+
+
+                }else{
+                        $retorno= ['mensaje'=> 'la sesion esta expirada, ingrese nuevamente'];
+                        echo json_encode($retorno);
+                }
+
+
+
+
+
+                
+                echo json_encode($retorno);
 
 
         }
@@ -422,22 +536,6 @@ class CargarEncuesta extends CI_Controller{
 
 
 //crearEncuestado
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

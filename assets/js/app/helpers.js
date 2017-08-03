@@ -61,27 +61,41 @@
 
 
 
-    function parseData(arreglo, data){
+    function parseData(arreglo,option){
         //var parse= {};
-        var parse = (typeof data == 'undefined') ? [] : data;
+        var parse = [];
 
-        var nombres= apellidos(bloque1.conf.nombre);
 
-        parse.push(
+        if(option){
 
-            {
-                "nombre":nombres.nombre,
-                "apellido":nombres.apellido,
-                "dni":$('#b1_dni').val(),
-                "edad":bloque1.conf.edad,
-                "sexo":bloque1.conf.genero,
-                "id_relev":$('#hdnid_relevamiento').val(),
-                "n_afiliado":$('#b1_afiliado').val() + '/'+$('#b1_barra').val() ,
-                "respondeR":encuesta.responde ? '1' : '0'
+            var nombres= apellidos(bloque1.conf.nombre);
+            parse.push(
+                {
+                    "nombre":nombres.nombre,
+                    "apellido":nombres.apellido,
+                    "dni":$('#b1_dni').val(),
+                    "edad":bloque1.conf.edad,
+                    "sexo":bloque1.conf.genero,
+                    "id_relev":$('#hdnid_relevamiento').val(),
+                    "n_afiliado":$('#b1_afiliado').val() + '/'+$('#b1_barra').val() ,
+                    "respondeR":encuesta.responde ? '1' : '0'
 
-            }
+                }
+            )
+        }else{
 
-        )
+            parse.push(
+                {
+                    "id_relev":$('#hdnid_relevamiento').val(), // id unico del relevamiento
+                    "numrelevamiento":$('#hdnid_numRel').val()
+
+                })
+
+
+
+
+
+        }
 
         arreglo.forEach(function(element) {
 
@@ -153,11 +167,10 @@
 
 
 
-
-		function setAjax(datos){
+		function setAjax(datos, endpoint){
 			//var idDpto = $('#departamento').val();
             var path   = $("#localPath").val();
-            var url= path+'index.php/encuesta/cargarEncuesta/encuestaAjax';
+            var url= path+'index.php/encuesta/cargarEncuesta/'+ endpoint;
 			var parametros = "datos=" + datos;
 
 			$.ajax({

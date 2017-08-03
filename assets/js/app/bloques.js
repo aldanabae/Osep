@@ -878,8 +878,8 @@ var bloque1= {    // Bloque General
             delete tmp[3];delete tmp[4];
             delete tmp[6];delete tmp[7];
 
-            var datos = JSON.encode(parseData(tmp));
-            setAjax(datos);
+            var datos = JSON.encode(parseData(tmp, true));
+            setAjax(datos, 'encuestaAjax'); // envio el arreglo de datos mas el endPoint
         },
 
 
