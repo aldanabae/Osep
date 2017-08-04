@@ -354,10 +354,6 @@ class CargarEncuesta extends CI_Controller{
                         $numrelevamiento = $datosEncuesta[0]->numrelevamiento;
                         $limit = count($datosEncuesta);                                                 // limite del arreglo
 
-
-                        var_dump($id_relevamiento);
-                        
-                        var_dump($numrelevamiento);
                                 $valor= array();
                                 $respuestaBreve= $this->relevamiento_model->getRespuestaBreve(); // creo un arreglo con todas los id de respuesta breve
                                 foreach($respuestaBreve->result() as $dat){
@@ -392,7 +388,6 @@ class CargarEncuesta extends CI_Controller{
 
                                                         ];
                                                         
-
                                                 }else{
                                                         // es respuesta comun
                                                         $datos=[
@@ -405,30 +400,20 @@ class CargarEncuesta extends CI_Controller{
                                                         ];
                                                 }
 
-
                                         $result= $this->relevamiento_model->crearRespuestaElegida($datos); // creo un arreglo con todas los id de respuesta breve
-
 
                                 }
 
-
-                        echo json_encode($datosEncuesta);
-
-
-
+                                // cierro la encuesta
+                                
+                                $this->relevamiento_model->finalizaEncuesta($id_relevamiento);
+                                $retorno= ['mensaje'=> 'ok'];
+                                echo json_encode($retorno);
 
                 }else{
                         $retorno= ['mensaje'=> 'la sesion esta expirada, ingrese nuevamente'];
                         echo json_encode($retorno);
                 }
-
-
-
-
-
-                
-                echo json_encode($retorno);
-
 
         }
 
@@ -457,7 +442,7 @@ class CargarEncuesta extends CI_Controller{
                         $datosForm = $this->input->post('datos'); // traigo los datos por post
 
                         //array test==================
-                         //       $datosForm = '[{"nombre":"del solar sebastiana ","apellido":"gonzales","dni":"5555555555555","edad":"46","sexo":"F","id_relev":"9","n_afiliado":"5555555555555/00","respondeR":"1"},["b1_parent","1"],["b1_cober","0"],["b1_estudio","0"],["b1_nivel","3"],["b1_cronica","1"],["b1_disc","1"],["b1_extra","1"],["b4_consulta","1"],["b4_consulta_no","6"],["b4_otro","pruebaaaaaaaaaaaaaaaa"]]';
+                                //$datosForm = '[{"nombre":"","apellido":"prueba","dni":"2332323","edad":"23","sexo":"M","id_relev":"10","n_afiliado":"2332323/00","respondeR":"1"},["22","1"],["24","0"],["33","1"],["34","1"],["35","1"]]';
                         //=====================
 
                         $datosEncuesta= json_decode($datosForm); // convierto el String nuevamente en array
@@ -503,7 +488,6 @@ class CargarEncuesta extends CI_Controller{
 
                                                         ];
                                                         
-
                                                 }else{
                                                         // es respuesta comun
                                                         $datos=[
@@ -523,7 +507,8 @@ class CargarEncuesta extends CI_Controller{
                                 }
 
 
-                        echo json_encode($datosEncuesta);
+                                $retorno= ['mensaje'=> 'ok'];
+                                echo json_encode($retorno);
 
 
 

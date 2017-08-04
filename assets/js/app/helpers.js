@@ -167,26 +167,27 @@
 
 
 
-		function setAjax(datos, endpoint){
+		function setAjax(datos, endpoint, success){
 			//var idDpto = $('#departamento').val();
             var path   = $("#localPath").val();
             var url= path+'index.php/encuesta/cargarEncuesta/'+ endpoint;
 			var parametros = "datos=" + datos;
 
+            var result="";
 			$.ajax({
 				type: 'POST',
 				url: url, 
 				data: parametros, 
 			       	dataType: 'json',
-				success: function(resp) { 
-					if(resp){
-						console.log(resp);
-					}
-					},
+				success: success,
 				 error: function(xhr,status) { 
-					console.log(xhr+"    "+status);
+                    console.log(xhr+"    "+status);
+                    result ='fail';
 				},
-			});
+            });
+
+
+            
         }
         
 

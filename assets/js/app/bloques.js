@@ -548,18 +548,6 @@ var bloque1= {    // Bloque General
                             
                     });   
 
-                    $( "#btn_nuevo" ).on(
-                        'click', function(){
-
-
-                            bloque1.parse();
-
-                            
-                            encuesta.count ++;
-                            bloque1.reset_conf();
-                            bloque1.init();
-                            
-                    });  
 
                         // DNI  encuestado
                     $( "#b1_dni" ).on(
@@ -687,9 +675,48 @@ var bloque1= {    // Bloque General
                             }
                             bloque1.conf.update();
 
-                    });                    
+                    }); 
+                        
+
+                    $( "#btn_nuevo" ).on(
+                        'click', function(){
+                            bloque1.parse();
+                            // encuesta.count ++;
+                            // bloque1.reset_conf();
+                            // bloque1.init();
+                            
+                    });  
+
+                    $( "#add_encuesta" ).on(
+                        'submit', function(e){
+
+                            /** validar los datos de los bloques desplegados
+                             * guardar el encusstado como siempre
+                             * continuar con el submit del formulario
+                             */
+                            // validar 
+                            e.preventDefault();
+                            if(true){
+
+                                
+                                // test
+                                    bloque1.parse()
+                                    return true
+
+                               
+
+                            }else{
+
+                                alert('error error en los datos')
+                            }
+                            
+                    });  
+                        
+                    
 
         },
+
+        
 
         action_block : function(){
 
@@ -879,7 +906,14 @@ var bloque1= {    // Bloque General
             delete tmp[6];delete tmp[7];
 
             var datos = JSON.encode(parseData(tmp, true));
-            setAjax(datos, 'encuestaAjax'); // envio el arreglo de datos mas el endPoint
+            var resp = setAjax(datos, 'encuestaAjax', function(respuesta){
+                            encuesta.count ++;
+                            bloque1.reset_conf();
+                            bloque1.init();
+
+            }) // envio el arreglo de datos mas el endPoint
+            
+
         },
 
 

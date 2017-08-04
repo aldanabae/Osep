@@ -30,13 +30,12 @@
 	}
 
 
-
 ?>
 
 <input type="hidden" name="edades"  id="edades" value="<?php echo @$string_edad; ?>">
 
 
-<form id="add_encuesta" action="<?php echo(base_url('encuesta/cargarEncuesta/cargabloques_final'));  ?>" method="post">
+<form id="add_encuesta" action="<?php echo(base_url('encuesta/cargarEncuesta/cargabloques_final'));  ?>" method="post" onsubmit="getVal()">
 
 
 <!--<div class="container">   contenedor principal -->

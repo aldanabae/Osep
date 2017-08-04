@@ -187,14 +187,6 @@ class Relevamiento_model extends CI_Model {
 	}
 
 
-
-
-
-
-
-
-
-
 // modelo de encuestado
 
 	public function crearEncuestado($data){
@@ -255,6 +247,19 @@ class Relevamiento_model extends CI_Model {
 	}
 
 
+
+
+
+		public function finalizaEncuesta($_idRelevamiento){
+
+			$data = array(
+				'estado' => '0'
+			);
+
+			$this->db->where('idRelevamiento', $idRelevamiento);
+			$this->db->update('relevamiento', $data); 
+
+		}
 
 
 	public function obtenerRelevamientos(){
