@@ -10,15 +10,15 @@ class CargarEncuesta extends CI_Controller{
 
             $this->load->helper('form');
             $this->load->helper('url');
-            $this->load->model('bienvenida_model');
+            $this->load->model('Bienvenida_model');
             $this->load->model('abms/abmEmpleados_model');
-            $this->load->model('seguridad/abmNiveles_model');
-            $this->load->model('seguridad/abmUsuarios_model');
-            $this->load->model('abms/abmVisitas_model');
+            $this->load->model('seguridad/AbmNiveles_model');
+            $this->load->model('seguridad/AbmUsuarios_model');
+            $this->load->model('abms/AbmVisitas_model');
             // modelo de 
 
             // modelo de relevamiento
-            $this->load->model('relevamiento/relevamiento_model');
+            $this->load->model('relevamiento/Relevamiento_model');
             $this->load->library('form_validation'); 
             $this->load->library('Quiz_lib');
 
@@ -49,7 +49,7 @@ class CargarEncuesta extends CI_Controller{
 
                         //mantener sidebar dinamica
                         $session_data = $this->session->userdata('logged_in');
-                        $data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
+                        $data['nivel'] = $this->Bienvenida_model->obtenerNivel($session_data['nivel']);
                         //cargo el header y el sidebar con los datos para el nivel de usuarios
                         $this->load->view('backend/header');
                         $this->load->view('backend/sidebar',$data);
@@ -131,7 +131,7 @@ class CargarEncuesta extends CI_Controller{
                         $this->session->set_flashdata('nivel', $data);
                         //mantener sidebar dinamica
                         $session_data = $this->session->userdata('logged_in');
-                        $data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
+                        $data['nivel'] = $this->Bienvenida_model->obtenerNivel($session_data['nivel']);
                         $accion= $this->input->post('accion');
 
 
@@ -188,12 +188,12 @@ class CargarEncuesta extends CI_Controller{
 
                                         if($accion == 'guardar'){
 
-                                                $id_direccion= $this->relevamiento_model->crearDireccion($direccion); // obtengo el id de la direccion
+                                                $id_direccion= $this->Relevamiento_model->crearDireccion($direccion); // obtengo el id de la direccion
 
                                         }else{
 
                                                 // edito los datos que estan
-                                                $id_direccion= $this->relevamiento_model->editDireccion($idDireccion, $direccion ); // obtengo el id de la direccion 
+                                                $id_direccion= $this->Relevamiento_model->editDireccion($idDireccion, $direccion ); // obtengo el id de la direccion 
 
                                         }
 
@@ -211,11 +211,11 @@ class CargarEncuesta extends CI_Controller{
                                         if($accion == 'guardar'){
                                                 
                                                 //guarda los datos de relev
-                                                $id_relevamiento= $this->relevamiento_model->crearRelevamiento($relevamiento);
+                                                $id_relevamiento= $this->Relevamiento_model->crearRelevamiento($relevamiento);
 
                                         }else{
                                                 // edita datos de relev  $nroRelevamiento  seria el que ya esta
-                                                $id_relevamiento= $this->relevamiento_model->editRelevamiento($idRelev,$relevamiento);
+                                                $id_relevamiento= $this->Relevamiento_model->editRelevamiento($idRelev,$relevamiento);
 
                                         }
 
@@ -228,7 +228,7 @@ class CargarEncuesta extends CI_Controller{
 
                                         $this->load->view("backend/encuesta/cargar_encuesta_view", $options);
                                         $this->load->view('backend/footer');
-                                        $js['javascript']= ["bloques.js", "helpers.js"];
+                                        $js['javascript']= ["vendor/spin.js", "bloques.js", "helpers.js"];
                                         $this->load->view('backend/encuesta/script_js', $js);
 
                                         
@@ -267,7 +267,7 @@ class CargarEncuesta extends CI_Controller{
                     $this->session->set_flashdata('nivel', $data);
                     //mantener sidebar dinamica
                     $session_data = $this->session->userdata('logged_in');
-                    $data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
+                    $data['nivel'] = $this->Bienvenida_model->obtenerNivel($session_data['nivel']);
 
                    
                     
@@ -275,19 +275,15 @@ class CargarEncuesta extends CI_Controller{
                     $resp['id_numRel']= $this->input->post('hdnid_numRel');
                     $resp['id_relevamiento']= $this->input->post('hdnid_relevamiento');
 
-
                     if($continuar == 'continuar' && $resp['id_numRel'] != null  && $resp['id_relevamiento'] != null )
                     {
 
-
-
-                
                         $this->load->view('backend/header');
                         $this->load->view('backend/sidebar',$data);
                         $this->load->view("backend/encuesta/cargar_encuesta_final_view",$resp);
                         $this->load->view('backend/footer');
                         //$js['javascript']= ["bloque_8.js","bloque3.js","bloqueaa.js"];
-                        $js['javascript']= ["vendor/spin.js","vendor/jquery.gritter.js","bloque_8.js", "helpers.js"];
+                        $js['javascript']= ["vendor/spin.js", "helpers.js","vendor/jquery.gritter.js","bloque_8.js"];
 
 
                         $this->load->view('backend/encuesta/script_js', $js);
@@ -299,8 +295,6 @@ class CargarEncuesta extends CI_Controller{
                        redirect('encuesta/cargarEncuesta');
 
                     }
-
-
 
 
             }else{
@@ -335,14 +329,14 @@ class CargarEncuesta extends CI_Controller{
 
                         //mantener sidebar dinamica
                         $session_data = $this->session->userdata('logged_in');
-                        $data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
+                        $data['nivel'] = $this->Bienvenida_model->obtenerNivel($session_data['nivel']);
                         //cargo el header y el sidebar con los datos para el nivel de usuarios
 
                         $datosForm = $this->input->post('datos'); // traigo los datos por post
 
                         $retorno=['accion'=>'fail'];
                         //array test==================
-                         $datosForm = '[{"id_relev":"10","numrelevamiento":"2"},["84","1"],["85","1"],["86","1"],["87","1"],["88","1"],["89","1"],["90","1"],["91","2"],["92","2"],["93","2"],["94","2"],["95","2"],["96","2"],["97","2"],["98","2"],["99","1"],["100","1"],["101","116"],["102","123"],["103","127"],["105","129"],["105","111"],["106","cfcccccccccccccccccccccc"]]';
+                         //$datosForm = '[{"id_relev":"10","numrelevamiento":"2"},["84","1"],["85","1"],["86","1"],["87","1"],["88","1"],["89","1"],["90","1"],["91","2"],["92","2"],["93","2"],["94","2"],["95","2"],["96","2"],["97","2"],["98","2"],["99","1"],["100","1"],["101","116"],["102","123"],["103","127"],["105","129"],["105","111"],["106","cfcccccccccccccccccccccc"]]';
                         //=====================
 
                         $datosEncuesta= json_decode($datosForm); // convierto el String nuevamente en array
@@ -355,7 +349,7 @@ class CargarEncuesta extends CI_Controller{
                         $limit = count($datosEncuesta);                                                 // limite del arreglo
 
                                 $valor= array();
-                                $respuestaBreve= $this->relevamiento_model->getRespuestaBreve(); // creo un arreglo con todas los id de respuesta breve
+                                $respuestaBreve= $this->Relevamiento_model->getRespuestaBreve(); // creo un arreglo con todas los id de respuesta breve
                                 foreach($respuestaBreve->result() as $dat){
 
                                         array_push($valor, $dat->idPregunta);
@@ -400,13 +394,13 @@ class CargarEncuesta extends CI_Controller{
                                                         ];
                                                 }
 
-                                        $result= $this->relevamiento_model->crearRespuestaElegida($datos); // creo un arreglo con todas los id de respuesta breve
+                                        $result= $this->Relevamiento_model->crearRespuestaElegida($datos); // creo un arreglo con todas los id de respuesta breve
 
                                 }
 
                                 // cierro la encuesta
                                 
-                                $this->relevamiento_model->finalizaEncuesta($id_relevamiento);
+                                $this->Relevamiento_model->finalizaEncuesta($id_relevamiento);
                                 $retorno= ['mensaje'=> 'ok'];
                                 echo json_encode($retorno);
 
@@ -436,26 +430,26 @@ class CargarEncuesta extends CI_Controller{
 
                         //mantener sidebar dinamica
                         $session_data = $this->session->userdata('logged_in');
-                        $data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
+                        $data['nivel'] = $this->Bienvenida_model->obtenerNivel($session_data['nivel']);
                         //cargo el header y el sidebar con los datos para el nivel de usuarios
 
                         $datosForm = $this->input->post('datos'); // traigo los datos por post
 
                         //array test==================
-                                //$datosForm = '[{"nombre":"","apellido":"prueba","dni":"2332323","edad":"23","sexo":"M","id_relev":"10","n_afiliado":"2332323/00","respondeR":"1"},["22","1"],["24","0"],["33","1"],["34","1"],["35","1"]]';
+                               // $datosForm = '[{"nombre":"","apellido":"prueba","dni":"2332323","edad":"23","sexo":"M","id_relev":"10","n_afiliado":"2332323/00","respondeR":"1"},["22","1"],["24","0"],["33","1"],["34","1"],["35","1"]]';
                         //=====================
 
                         $datosEncuesta= json_decode($datosForm); // convierto el String nuevamente en array
 
                         // tomo el contenido del indice 0 que estan los datos del envcuestado
-                        $id_encuestado= $this->relevamiento_model->crearEncuestado($datosEncuesta[0]);  // guardo al encuestado y traigo el id correspondiente
+                        $id_encuestado= $this->Relevamiento_model->crearEncuestado($datosEncuesta[0]);  // guardo al encuestado y traigo el id correspondiente
 
                         $id_relevamiento = $datosEncuesta[0]->id_relev;                                 //numero de id del relevamiento
 
                         $limit = count($datosEncuesta);                                                 // limite del arreglo
 
                                 $valor= array();
-                                $respuestaBreve= $this->relevamiento_model->getRespuestaBreve(); // creo un arreglo con todas los id de respuesta breve
+                                $respuestaBreve= $this->Relevamiento_model->getRespuestaBreve(); // creo un arreglo con todas los id de respuesta breve
                                 foreach($respuestaBreve->result() as $dat){
 
                                         array_push($valor, $dat->idPregunta);
@@ -501,7 +495,7 @@ class CargarEncuesta extends CI_Controller{
                                                 }
 
 
-                                $result= $this->relevamiento_model->crearRespuestaElegida($datos); // creo un arreglo con todas los id de respuesta breve
+                                $result= $this->Relevamiento_model->crearRespuestaElegida($datos); // creo un arreglo con todas los id de respuesta breve
 
 
                                 }

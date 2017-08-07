@@ -245,6 +245,14 @@
 					</a>
 					<b class="arrow"></b>
 				</li>
+
+				<li class="">
+					<a href="<?php echo base_url('login/logout') ?>">
+						<i class="menu-icon fa fa-power-off"></i>
+						<span class="menu-text"> Salir</span>
+					</a>
+					<b class="arrow"></b>
+				</li>				
 				<?php 		}
 						}	
 					}

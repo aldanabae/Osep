@@ -9,6 +9,8 @@ $(function() {
 
   bloque1.bindComponent();
 
+  //instancio Spinn
+  //spinner = new Spinner(spnr.opts);
 
     
 
@@ -687,36 +689,36 @@ var bloque1= {    // Bloque General
                             
                     });  
 
-                    $( "#add_encuesta" ).on(
-                        'submit', function(e){
+                    // $( "#add_encuesta" ).on(
+                    //     'submit', function(e){
 
-                            /** validar los datos de los bloques desplegados
-                             * guardar el encusstado como siempre
-                             * continuar con el submit del formulario
-                             */
-                            // validar 
-                            e.preventDefault();
-                            if(true){
+                    //         /** validar los datos de los bloques desplegados
+                    //          * guardar el encusstado como siempre
+                    //          * continuar con el submit del formulario
+                    //          */
+                    //         // validar 
+                    //         e.preventDefault();
+                    //         if(true){
 
                                 
-                                // test
-                                    bloque1.parse()
-                                    return true
+                    //             // test
+                    //                 bloque1.parse()
+                    //                 return true
 
                                
 
-                            }else{
+                    //         }else{
 
-                                alert('error error en los datos')
-                            }
+                    //             alert('error error en los datos')
+                    //         }
                             
-                    });  
+                    // });  
                         
-                    
+
 
         },
 
-        
+
 
         action_block : function(){
 
@@ -906,7 +908,7 @@ var bloque1= {    // Bloque General
             delete tmp[6];delete tmp[7];
 
             var datos = JSON.encode(parseData(tmp, true));
-            var resp = setAjax(datos, 'encuestaAjax', function(respuesta){
+            var resp = setAjax(datos, 'encuestaAjax', function(){
                             encuesta.count ++;
                             bloque1.reset_conf();
                             bloque1.init();
@@ -2059,3 +2061,29 @@ var bloque9 ={       // laboral
 
 }
 
+
+function submitEncuesta(){
+
+            /** validar los datos de los bloques desplegados
+             * guardar el encusstado como siempre
+             * continuar con el submit del formulario
+             */
+            // validar 
+            //e.preventDefault();
+            if(true){
+
+                
+                // test
+                    bloque1.parse()
+                    return true
+
+                
+
+            }else{
+
+                alert('error error en los datos')
+
+                return false
+            }
+            
+    }; 

@@ -250,7 +250,7 @@ class Relevamiento_model extends CI_Model {
 
 
 
-		public function finalizaEncuesta($_idRelevamiento){
+		public function finalizaEncuesta($idRelevamiento){
 
 			$data = array(
 				'estado' => '0'

@@ -55,12 +55,6 @@
 
 
 
-
-
-
-
-
-
     function parseData(arreglo,option){
         //var parse= {};
         var parse = [];
@@ -179,11 +173,23 @@
 				url: url, 
 				data: parametros, 
 			       	dataType: 'json',
-				success: success,
+                success: success,
+                
 				 error: function(xhr,status) { 
                     console.log(xhr+"    "+status);
                     result ='fail';
+                },
+                beforeSend: function(){
+					// Code to display spinner
+						
+						spnr.init();
+
 				},
+
+				complete: function(){
+					// Code to hide spinner.
+                        spnr.stop();
+				}
             });
 
 
@@ -191,44 +197,118 @@
         }
         
 
-function apellidos(nombre){
+    function apellidos(nombre){
 
-    arregloNombre = nombre.split(' ');//Array del nombre con las palabras separadas en cada posición 
-    fullName = [];//Array que contendra el nombre final
-    palabrasReservadas =['da', 'de', 'del', 'la', 'las', 'los', 'mar', 'san','puebla', 'santa', 'montes' ,'cairo','mac', 'mc', 'van', 'von', 'y', 'i',];//Palabras de apellidos y nombres compuetos,  aqui podemos agregar más palabras en caso de ser necesario.
-    auxPalabra = "";//Variable auxiliar para concatenar los apellidos compuestos
-    arregloNombre.forEach(function(name){
-            nameAux = name.toLowerCase();
-        if(palabrasReservadas.indexOf(nameAux)!=-1)
-        {
-        auxPalabra += name+' ' ;
+        arregloNombre = nombre.split(' ');//Array del nombre con las palabras separadas en cada posición 
+        fullName = [];//Array que contendra el nombre final
+        palabrasReservadas =['da', 'de', 'del', 'la', 'las', 'los', 'mar', 'san','puebla', 'santa', 'montes' ,'cairo','mac', 'mc', 'van', 'von', 'y', 'i',];//Palabras de apellidos y nombres compuetos,  aqui podemos agregar más palabras en caso de ser necesario.
+        auxPalabra = "";//Variable auxiliar para concatenar los apellidos compuestos
+        arregloNombre.forEach(function(name){
+                nameAux = name.toLowerCase();
+            if(palabrasReservadas.indexOf(nameAux)!=-1)
+            {
+            auxPalabra += name+' ' ;
+            }
+            else {
+                        fullName.push(auxPalabra+name);
+                auxPalabra = "";
+            }
+        });
+
+        var apellido= fullName[0]
+        delete fullName[0];
+        var nombreCompleto = "";
+
+        fullName.forEach(function(nombre){
+            if(nombre!="")
+            {
+            nombreCompleto +=nombre+" ";
+            }
+        });
+        var retorno= {
+
+            nombre: nombreCompleto,
+            apellido: apellido
+
         }
-        else {
-                    fullName.push(auxPalabra+name);
-            auxPalabra = "";
-        }
-    });
 
-    var apellido= fullName[0]
-    delete fullName[0];
-    var nombreCompleto = "";
-
-    fullName.forEach(function(nombre){
-        if(nombre!="")
-        {
-        nombreCompleto +=nombre+" ";
-        }
-    });
-
-
-
-    var retorno= {
-
-        nombre: nombreCompleto,
-        apellido: apellido
+            return retorno;
 
     }
 
-        return retorno;
+
+    //set Spinjs
+
+    var spnr= {
+
+
+        opts :{
+              lines: 13 // The number of lines to draw
+            , length: 28 // The length of each line
+            , width: 20 // The line thickness
+            , radius: 42 // The radius of the inner circle
+            , scale: 2 // Scales overall size of the spinner
+            , corners: 1 // Corner roundness (0..1)
+            , color: '#000' // #rgb or #rrggbb or array of colors
+            , opacity: 0.25 // Opacity of the lines
+            , rotate: 0 // The rotation offset
+            , direction: 1 // 1: clockwise, -1: counterclockwise
+            , speed: 2 // Rounds per second
+            , trail: 60 // Afterglow percentage
+            , fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
+            , zIndex: 2e9 // The z-index (defaults to 2000000000)
+            , className: 'spinner' // The CSS class to assign to the spinner
+            , top: '60%' // Top position relative to parent
+            , left: '50%' // Left position relative to parent
+            , shadow: true // Whether to render a shadow
+            , hwaccel: false // Whether to use hardware acceleration
+            , position: 'absolute' // Element positioning
+              //=============// opciones propias del comp
+            , target:"btn_guardar"   // donde va a ejecutarse el spiner
+            , content:"btn_guardar"  // contenerod de opacidad
+            , contentOpct: "0.2"
+        },
+
+        
+
+        setContent: function(content){
+
+            spnr.opts.content=content;
+        },
+
+        setTarget: function(tgt){
+
+            spnr.opts.target=document.getElementById(tgt);
+        },
+        
+         
+
+        init: function(){
+            spnr.exOpacity();        
+            target = document.getElementById('btn_encuesta')
+            spinner.spin(target);
+        },
+
+        stop:function(){
+
+            if (spinner){
+                spnr.quitOpacity()
+                spinner.stop();  
+            }
+
+        },
+
+        exOpacity:function(){  // ejecuta opacidad en el contenedor
+
+            $('#add_encuesta').css("opacity", spnr.opts.contentOpct);
+
+        },
+        quitOpacity:function(){ // quita la  opacidad en el contenedor
+
+            $('#add_encuesta').css("opacity", "1");
+        },       
+
 
 }
+
+spinner = new Spinner(spnr.opts);
