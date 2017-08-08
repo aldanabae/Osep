@@ -152,29 +152,12 @@ var bloque1= {    // Bloque General
 
         data:{
 
-                vinculo:['Titular','Cónyuge o pareja conviviente','Hijo /a','Padre o Madre',
-                        'Suegro /a', 'Yerno o Nuera','Nieto /a',
-                        'Otro familiar','Otro no familiar'],
+                vinculo:[{"id_resp":5,"vinculo":"Titular"},{"id_resp":6,"vinculo":"Cónyuge o pareja conviviente"},{"id_resp":7,"vinculo":"Hijo /a"},{"id_resp":8,"vinculo":"Padre o Madre"},{"id_resp":9,"vinculo":"Suegro /a"},{"id_resp":10,"vinculo":"Yerno o Nuera"},{"id_resp":11,"vinculo":"Nieto /a"},{"id_resp":12,"vinculo":"Otro familiar"},{"id_resp":13,"vinculo":"Otro no familiar"},],
 
 
+                tOsep:{si:[{"id_resp":14,"respuesta":"No, sólo OSEP"},{"id_resp":15,"respuesta":"Otra obra social"},{"id_resp":16,"respuesta":"Prepaga"},{"id_resp":17,"respuesta":"Otra cobertura"},],no:[{"id_resp":138,"respuesta":"No (Salud Pública)"},{"id_resp":139,"respuesta":"Obra social"},{"id_resp":16,"respuesta":"Prepaga"},{"id_resp":17,"respuesta":"Otra cobertura"},]},
 
-                
-                tOsep:{
-                        si:['No, sólo OSEP',
-                            'Otra obra social',
-                            'Prepaga','Otra cobertura'],
-
-                        no:['No (Salud Pública)',
-                            'Obra social',
-                            'Prepaga','Otra cobertura']
-                },
-                educativo:[
-                        'Inicial','Primario incompleto',
-                        'Primario completo','Secundario incompleto',
-                        'Secundario completo','Terciario incompleto','Terciario completo',
-                        'Universitario incompleto','Universitario completo',
-                        ],
-
+                educativo:[{"id_resp":18,"respuesta":"Inicial"},{"id_resp":19,"respuesta":"Primario incompleto"},{"id_resp":20,"respuesta":"Primario completo"},{"id_resp":21,"respuesta":"Secundario incompleto"},{"id_resp":22,"respuesta":"Secundario completo"},{"id_resp":23,"respuesta":"Terciario incompleto"},{"id_resp":24,"respuesta":"Terciario completo"},{"id_resp":25,"respuesta":"Universitario incompleto"},{"id_resp":26,"respuesta":"Universitario completo"},]
                 
 
         },
@@ -196,7 +179,7 @@ var bloque1= {    // Bloque General
                 // cargo el combo solo con el titular
                 
                 $("#lblTitular").text('Apellido y nombre del titular ')
-                $("#b1_parent").html( '<option value="1">Titular</option>');
+                $("#b1_parent").html( '<option value="5">Titular</option>');
                 $("#tOsep").hide();
 
 
@@ -207,12 +190,14 @@ var bloque1= {    // Bloque General
 
                 $("#lblTitular").text('Apellido y nombre')
                 $("#b1_parent").html( '<option value="" disabled selected hidden>Seleccionar</option>');
-                var indice= 0;
-                $.each(bloque1.data.vinculo, function(key, value){
-                    indice = key;
+                    var indice= 0;
+                    // aqui cargo los vinculos completos
 
-                    $("#b1_parent").append( '<option value="'+ (indice +1) +'">'+ value +'</option>');
-                });
+                    $.each(bloque1.data.vinculo, function(key, value){
+                    
+                        $("#b1_parent").append( '<option value="'+ value.id_resp +'">'+ value.vinculo +'</option>');
+
+                    });
                 
             }
 
@@ -277,7 +262,7 @@ var bloque1= {    // Bloque General
                 $("#b1_cober").html( '');               // blanquea el select
                     $.each(bloque1.data.tOsep.si, function(key, value){  // carga el select con el Si
 
-                        $("#b1_cober").append( '<option value="'+ key +'">'+ value +'</option>');
+                        $("#b1_cober").append( '<option value="'+ value.id_resp +'">'+ value.respuesta +'</option>');
 
                     });
                 
@@ -286,11 +271,11 @@ var bloque1= {    // Bloque General
 
             }else{
                 
-                $( "#b1_div_afiliado" ).hide("slow"); // oculta el txt de numero de afiliado
+                $("#b1_div_afiliado" ).hide("slow"); // oculta el txt de numero de afiliado
                 $("#b1_cober").html( '');              // blanquea el select
                 $.each(bloque1.data.tOsep.no, function(key, value){   // carga el select
 
-                    $("#b1_cober").append( '<option value="'+ key +'">'+ value +'</option>');
+                    $("#b1_cober").append( '<option value="'+ value.id_resp +'">'+ value.respuesta +'</option>');
 
                 });                
                 
@@ -379,17 +364,17 @@ var bloque1= {    // Bloque General
                         bloque9.show_me();
                     
                         switch (bloque1.conf.ocupacion) {
-                        case '1':
+                        case '27':
                             
                             $( "#bloque_9_int" ).show();
                             $( "#bloque_9_int_juv" ).hide();
                             break;
-                        case '2':
+                        case '28':
                             $( "#bloque_9_int_juv" ).show();
                             $( "#bloque_9_int" ).hide();
                             break;
 
-                        case '3':
+                        case '29':
                             $( "#bloque_9_int" ).show();
                             $( "#bloque_9_int_juv" ).hide();
 
@@ -689,30 +674,6 @@ var bloque1= {    // Bloque General
                             
                     });  
 
-                    // $( "#add_encuesta" ).on(
-                    //     'submit', function(e){
-
-                    //         /** validar los datos de los bloques desplegados
-                    //          * guardar el encusstado como siempre
-                    //          * continuar con el submit del formulario
-                    //          */
-                    //         // validar 
-                    //         e.preventDefault();
-                    //         if(true){
-
-                                
-                    //             // test
-                    //                 bloque1.parse()
-                    //                 return true
-
-                               
-
-                    //         }else{
-
-                    //             alert('error error en los datos')
-                    //         }
-                            
-                    // });  
                         
 
 
@@ -1948,15 +1909,44 @@ var bloque9 ={       // laboral
 
         data:{
 
+                            
                 optitular:   [
-							"Trabajador remunerado",
-							"Jubilado o pensionado",
-							"Trabaja con remuneración y estudia",
-							"Estudia exclusivamente",
-							"Trabajo doméstico no remunerado exclusivamente",
-							"Busca trabajo",
-							"No trabaja",
-							"Otra",]
+
+                                    {
+                                        "id_resp": 27,
+                                        "respuesta": "Trabajador remunerado"
+                                    },
+                                    {
+                                        "id_resp": 28,
+                                        "respuesta": "Jubilado o pensionado"
+                                    },
+                                    {
+                                        "id_resp": 29,
+                                        "respuesta": "Trabaja con remuneración y estudia"
+                                    },
+                                    {
+                                        "id_resp": 133,
+                                        "respuesta": "Estudia exclusivamente"
+                                    },
+                                    {
+                                        "id_resp": 134,
+                                        "respuesta": "Trabajo doméstico no remunerado exclusivamente"
+                                    },
+                                    {
+                                        "id_resp": 135,
+                                        "respuesta": "Busca trabajo"
+                                    },
+                                    {
+                                        "id_resp": 136,
+                                        "respuesta": "No trabaja"
+                                    },
+                                    {
+                                        "id_resp": 137,
+                                        "respuesta": "Otra"
+                                    },
+                            ],
+
+
 
         },
 
@@ -1982,15 +1972,15 @@ var bloque9 ={       // laboral
             if(encuesta.titular)
             {
                     for(var i = 0 ; i<=2; i++){
-                        indice = i;
-                        $("#b1_ocupacion").append( '<option value="'+ (indice +1) +'">'+ bloque9.data.optitular[i] +'</option>');
+                        
+                        $("#b1_ocupacion").append( '<option value="'+ bloque9.data.optitular[i].id_resp +'">'+ bloque9.data.optitular[i].respuesta +'</option>');
                     }
 
             }else{
 
                 $.each(bloque9.data.optitular, function(key, value){   // carga el select
-                    indice = key;
-                    $("#b1_ocupacion").append( '<option value="'+ (indice +1)  +'">'+ value +'</option>');
+                    
+                    $("#b1_ocupacion").append( '<option value="'+ value.id_resp +'">'+ value.respuesta +'</option>');
 
                 }); 
             }
