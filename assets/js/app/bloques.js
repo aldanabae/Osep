@@ -1597,7 +1597,7 @@ var bloque6 ={       // Discapacidad
         update: function(){
                 // actualizo ante los cambios
 
-                var items= ['1','2','3','4','5']
+                var items= ['87','88','89','90','91']
                 var vista = false;
                 $.each( items, function( index, el){
 
@@ -1624,7 +1624,7 @@ var bloque6 ={       // Discapacidad
             var edad = parseInt(bloque1.conf.edad);
 
             // compruebo
-            if(edad > 2  && bloque1.conf.embarazo ==="1"){
+            if(edad > 2  && bloque1.conf.embarazo ==="2"){
 
                 $('#b6_uso').show();
 
@@ -1634,7 +1634,7 @@ var bloque6 ={       // Discapacidad
 
             }
 
-            if(bloque6.data.consulta == '1'){
+            if(bloque6.data.consulta == '87'){
 
                 $( "#b6_div_consulta_si" ).show("slow");
                 $( "#b6_div_consulta_no" ).hide("slow");
@@ -1642,7 +1642,7 @@ var bloque6 ={       // Discapacidad
             }else{
 
 
-                if(bloque6.data.consulta =="" || bloque1.conf.consulta =="3"){
+                if(bloque6.data.consulta =="" || bloque1.conf.consulta =="89"){
 
                     $( "#b6_div_consulta_si" ).hide();
                     $( "#b6_div_consulta_no" ).hide();
@@ -1699,7 +1699,7 @@ var bloque6 ={       // Discapacidad
             $( "#b6_atencion_no" ).on(
                 'change', function(){
                     var seleccion = $(this).val();
-                    if(seleccion == "6") {
+                    if(seleccion == "42") {
 
                         $('#b6_div_otro').show();
 
