@@ -1030,9 +1030,8 @@ var bloque3a ={   // bloque 3  bebes
 var bloque3b ={     //Bloque Niños
         estado: false,
         data:   {
-            escuela:     '2',
-            extra:       '1',
-            activity:    '1', 
+            escuela:     '',
+            activity:    '', 
             consulta:    "",
         },
 
@@ -1043,29 +1042,14 @@ var bloque3b ={     //Bloque Niños
         update: function(){
                 // actualizo ante los cambios
 
-                if(bloque3b.data.escuela == '1'){
-                    // si tien control hecho muestra complejidad
-                    $( "#b3b_div_problem" ).show("slow");
-
-                }else{
-                    // si no se lo hizo muestra por que no..
-                    $( "#b3b_div_problem" ).hide("slow");
-                }
-
-                if(bloque3b.data.extra == '51'){
-                    // si tien control hecho muestra complejidad
-                    $( "#b3b_div_activity" ).show("slow");
-                    $( "#b3b_div_donde" ).hide();
-
-                }else{
-                   
-                    $( "#b3b_div_activity" ).hide("slow");
-                    $( "#b3b_div_donde" ).hide();
-                   // bloque3b.data.activity='51';
-                    $( "#b3b_activity" ).val(bloque3b.data.activity);
-                    $("#b3b_activity[value=1]").attr("selected",true);
+                if(bloque3b.data.escuela == '1'){  // si tien problema en la escuela nuestra 
                     
+                    $( "#b3b_div_problem" ).show(); //muestra cual
+
+                }else{
+                    $( "#b3b_div_problem" ).hide(); //oculta cual
                 }
+
 
                 if(bloque3b.data.activity == '53' ||  bloque3b.data.activity == '52' ||  bloque3b.data.activity == '55'){
                     // si tien control hecho muestra complejidad
@@ -1076,6 +1060,8 @@ var bloque3b ={     //Bloque Niños
                     $( "#b3b_div_donde" ).hide();
                 }
 
+
+                // consulta de uso de servicios
                 if(bloque3b.data.consulta == '1'){
 
                     $( "#b3b_div_consulta_si" ).show("slow");
@@ -1117,13 +1103,6 @@ var bloque3b ={     //Bloque Niños
                         'change', function(){
 
                             bloque3b.data.escuela= $(this).val();
-                            bloque3b.update();
-                    });
-
-                    $( "#b3b_extra" ).on(
-                        'change', function(){
-
-                            bloque3b.data.extra= $(this).val();
                             bloque3b.update();
                     });
 

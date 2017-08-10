@@ -755,7 +755,7 @@
 								<label class="control-label col-xs-6">¿Realiza en forma regular alguna actividad extraescolar, 
 																		es decir, hace deportes, alguna actividad artística u otra actividad todas las semanas?</label>
 								<div class="col-xs-6">
-									<select class="form-control" id= "b3b_extra" name="52">
+									<select class="form-control" id= "b3b_activity" name="52">
 										<option value="" disabled selected hidden>Seleccionar</option>
 										<option value="51">Deportiva</option>
 										<option value="52">Artística</option>
@@ -770,7 +770,7 @@
 							</div>
 
 
-<!--todo falta agregar estas respuestas  -->
+
 							<div class="form-group" id= "b3b_div_donde">
 								
 								<label class="control-label col-xs-6">¿Dónde?</label>
