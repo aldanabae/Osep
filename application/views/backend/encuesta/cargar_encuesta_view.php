@@ -500,15 +500,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
 	<div class="row form-horizontal" id="bloque_3_a">      <!-- Bloque 3 bebes -->
 			<div class="panel panel-default">
 			
@@ -1019,7 +1010,6 @@
 							</div>
 
 
-
 						</div>	
 
 						
@@ -1210,7 +1200,7 @@
 							<div class="col-xs-6">
 								<select class="form-control" id="b5_medico" name="68">
 								<option value="" disabled selected hidden>Seleccionar</option>
-								<option value="1" >SI</option>
+								<option value="1">SI</option>
 								<option value="2">NO</option>							
 								</select>
 							</div>
@@ -1356,34 +1346,34 @@
 							<div class="col-xs-6">
 
 								<div class="checkbox">
-								<label><input type="checkbox" name="93" value="1">Médico general o pediatra</label>
+								<label><input type="checkbox" name="72[]" value="93">Médico general o pediatra</label>
 								</div>
 								<div class="checkbox">
-								<label><input type="checkbox" name="94" value="2">Médico especialista</label>
+								<label><input type="checkbox" name="72[]" value="94">Médico especialista</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" name="95" value="3" >Psicólogo - Psiquiatra</label>
+								<label><input type="checkbox" name="72[]" value="95" >Psicólogo - Psiquiatra</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" name="96" value="4" >Médico fisiátra</label>
+								<label><input type="checkbox" name="72[]" value="96" >Médico fisiátra</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" name="97" value="5" >Otro profesional de la salud</label>
+								<label><input type="checkbox" name="72[]" value="97" >Otro profesional de la salud</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" name="98" value="6" >Docente</label>
+								<label><input type="checkbox" name="72[]" value="98" >Docente</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" name="99" value="7" >Integrante de la red de Madres</label>
+								<label><input type="checkbox" name="72[]" value="99" >Integrante de la red de Madres</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox"  name="100" value="8" >Integrante de otra organización civil o de ayuda</label>
+								<label><input type="checkbox"  name="72[]" value="100" >Integrante de otra organización civil o de ayuda</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" name="101" value="9" >Otra persona que tiene una discapacidad, o un familiar con una discapacidad que no esta en ninguna organización</label>
+								<label><input type="checkbox" name="72[]" value="101" >Otra persona que tiene una discapacidad, o un familiar con una discapacidad que no esta en ninguna organización</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" name="9999" value="10" >Otro</label>
+								<label><input type="checkbox" name="72[]" value="10" >Otro</label>
 								</div>
 
 							</div>
@@ -1398,19 +1388,19 @@
 							<div class="col-xs-6">
 
 								<div class="checkbox ">
-								<label><input type="checkbox" value="93" >Médico general pediatra</label>
+								<label><input type="checkbox" name="73[]" value="93" >Médico general pediatra</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" value="94" >Médico especialista</label>
+								<label><input type="checkbox" name="73[]" value="94" >Médico especialista</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" value="95" >Psicólogo - Psiquiatra</label>
+								<label><input type="checkbox" name="73[]" value="95" >Psicólogo - Psiquiatra</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" value="96" >Médico fisiátra</label>
+								<label><input type="checkbox" name="73[]" value="96" >Médico fisiátra</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" value="97" >Otro profesional de la salud</label>
+								<label><input type="checkbox" name="73[]" value="97" >Otro profesional de la salud</label>
 								</div>
 							</div>
 
@@ -1439,7 +1429,7 @@
 										<option value="" disabled selected hidden>Seleccionar</option>
 										<option value="1">SI</option>
 										<option value="2">NO</option>
-										<option value="3">Sin datos</option>							
+										<option value="33">Sin datos</option>							
 									</select>
 								</div>
 
@@ -1450,10 +1440,10 @@
 								<label class="control-label col-xs-6">¿Dónde concurrió a atenderse la última vez? </label>
 								<div class="col-xs-6">
 									<select class="form-control" id="b6_atencion_si" name="39">
-									<option value="" disabled selected hidden>Seleccionar</option>
-									<option value="0">Fue a un efector de OSEP</option>
-									<option value="1">Fue a un prestador privado</option>
-									<option value="2">Fue a un hospital o centro de salud público</option>							
+										<option value="" disabled selected hidden>Seleccionar</option>
+										<option value="34">Fue a un efector de OSEP</option>
+										<option value="35">Fue a un prestador privado</option>
+										<option value="36">Fue a un hospital o centro de salud público</option>									
 									</select>
 								</div>
 
@@ -1510,17 +1500,17 @@
 							
 							<label class="control-label col-xs-6">¿De cuantos meses esta embarazada ?</label>
 							<div class="col-xs-6">
-								<select class="form-control" name = "75">
+								<select class="form-control" name = "75" id="b7_meses">
 								<option value="" disabled selected hidden>Seleccionar</option>
-								<option value="102">1</option>
-								<option value="103">2</option>							
-								<option value="104">3</option>							
-								<option value="105">4</option>	
-								<option value="106">5</option>
-								<option value="107">6</option>							
-								<option value="108">7</option>							
-								<option value="109">8</option>	
-								<option value="110">9</option>	
+								<option value="102">1 Mes</option>
+								<option value="103">2 Meses</option>							
+								<option value="104">3 Meses</option>							
+								<option value="105">4 Meses</option>	
+								<option value="106">5 Meses</option>
+								<option value="107">6 Meses</option>							
+								<option value="108">7 Meses</option>							
+								<option value="109">8 Meses</option>	
+								<option value="110">9 Meses</option>	
 								</select>
 							</div>
 
@@ -1588,7 +1578,7 @@
 								<select class="form-control" name ="80" id ="b7_problem">
 									<option value="" disabled selected hidden>Seleccionar</option>
 									<option value="1">Si</option>
-									<option value="2"selected>NO</option>							
+									<option value="2">NO</option>							
 								</select>
 							</div>
 							<div class="col-xs-3">

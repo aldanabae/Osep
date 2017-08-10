@@ -866,10 +866,7 @@ var bloque1= {    // Bloque General
 
             var tmp = $('#add_encuesta').find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
             //saco los que no van a necesitar:::
-            delete tmp[0];
-            delete tmp[1];delete tmp[2];
-            delete tmp[3];delete tmp[4];
-            delete tmp[6];delete tmp[7];
+            delete tmp[0];delete tmp[1];delete tmp[2];delete tmp[3];delete tmp[4];delete tmp[6];delete tmp[7];
 
             var datos = JSON.encode(parseData(tmp, true));
             var resp = setAjax(datos, 'encuestaAjax', function(){
@@ -904,11 +901,11 @@ var bloque3a ={   // bloque 3  bebes
                 // actualizo ante los cambios
 
                 if(bloque3a.data.leche == '1'){
-                    // si tien control hecho muestra complejidad
+                    // oculto por que no la recibe
                     $( "#b3a_div_porque_no" ).hide("slow");
 
                 }else{
-                    // si no se lo hizo muestra por que no..
+                    // mjuestro por que no la recibe
                     $( "#b3a_div_porque_no" ).show("slow");
                 }
 
@@ -921,7 +918,7 @@ var bloque3a ={   // bloque 3  bebes
                 }else{
 
 
-                    if(bloque3a.data.consulta =="" || bloque3a.data.consulta =="3"){
+                    if(bloque3a.data.consulta =="" || bloque3a.data.consulta =="33"){
 
                         $( "#b3a_div_consulta_si" ).hide();
                         $( "#b3a_div_consulta_no" ).hide();
@@ -956,7 +953,7 @@ var bloque3a ={   // bloque 3  bebes
                     $( "#b3_a_leche" ).on(
                         'change', function(){
 
-                            bloque3a.leche= $(this).val();
+                            bloque3a.data.leche= $(this).val();
                             bloque3a.update();
                     });
 
@@ -974,7 +971,7 @@ var bloque3a ={   // bloque 3  bebes
                         'change', function(){
 
                             var seleccion = $(this).val();
-                            if(seleccion == "6") {
+                            if(seleccion == "42") {
 
                                 $('#b3a_div_cual').show("slow");
 
@@ -1244,14 +1241,14 @@ var bloque4 ={       // mUjer
                     // si es mayor a 18 debo mostrar pap
                     $('#b4_div_pap').show()
 
-                        if(bloque4.data.pap.uso == '0'){
+                        if(bloque4.data.pap.uso == '1'){  //si pap  es si  muestro pap si
 
                                 $( "#b4_div_pap_si" ).show();
                                 $( "#b4_div_pap_no" ).hide();
 
                         }else{
                                 // si puso no sabe no contesta op 2 entonces no pregunta nada
-                                if (bloque4.data.pap.uso == '2' || bloque4.data.pap.uso == '' ){
+                                if (bloque4.data.pap.uso === '62' || bloque4.data.pap.uso === '' ){
 
                                     $( "#b4_div_pap_si" ).hide();
                                     $( "#b4_div_pap_no" ).hide();
@@ -1276,34 +1273,24 @@ var bloque4 ={       // mUjer
                     // si es mayor a 40 debo mostrar 
                     $('#b4_div_mamo').show()
 
-                        if(bloque4.data.mamo.uso == '0'){
+                        if(bloque4.data.mamo.uso == '1'){
 
                             $( "#b4_div_mamo_si" ).show();
                             $( "#b4_div_mamo_no" ).hide();
 
-
                         }else{
 
-
-
-                                if (bloque4.data.mamo.uso == '2' || bloque4.data.mamo.uso == '' ){
+                                if (bloque4.data.mamo.uso == '62' || bloque4.data.mamo.uso == '' ){
 
                                     $( "#b4_div_mamo_si" ).hide();
                                     $( "#b4_div_mamo_no" ).hide();
 
                                 }else{
 
-
-
-
                                     $( "#b4_div_mamo_si" ).hide();
                                     $( "#b4_div_mamo_no" ).show();
-
                                 }
-
-
                         }
-
 
                 }else{
 
@@ -1312,18 +1299,18 @@ var bloque4 ={       // mUjer
                 }
 
                 // compruebo si tiene discapacidad
-                if(bloque1.conf.discapacidad === "1" && bloque1.conf.genero ==="F"){
+                if(bloque1.conf.discapacidad === "2" && bloque1.conf.genero ==="F"){
                     // muestro esto si no tiene discapacidad y es si es  mujer
                     $('#b4_div_consulta').show();
 
-                    if(bloque4.data.consulta === "0"){
+                    if(bloque4.data.consulta === "1"){
                         // si seleccionno Si
                         $( "#b4_div_consulta_si" ).show();
                         $( "#b4_div_consulta_no" ).hide();
 
                     }else{
                         // si selecciona no verifica si esta vacio no muestra ninguno
-                        if(bloque4.data.consulta ==="" || bloque4.data.consulta =="3"){
+                        if(bloque4.data.consulta ==="" || bloque4.data.consulta =="33"){
 
                             $( "#b4_div_consulta_no" ).hide();
                             $( "#b4_div_consulta_si" ).hide();
@@ -1332,9 +1319,7 @@ var bloque4 ={       // mUjer
                             // de otro modo muestra los corrrespondientes
                             $( "#b4_div_consulta_no" ).show();
                             $( "#b4_div_consulta_si" ).hide();
-
                         }
-
                     }
 
                 }else{
@@ -1387,7 +1372,7 @@ var bloque4 ={       // mUjer
                     $( "#b4_consulta_no" ).on(
                         'change', function(){
                             var seleccion = $(this).val();
-                            if(seleccion == "6") {
+                            if(seleccion == "42") {
 
                                 $('#b4_div_otro').show();
 
@@ -1417,14 +1402,12 @@ var bloque4 ={       // mUjer
 
         validate:function(){
             
-        } ,
-        parse: function(){
 
-            var tmp = $(bloque4.template.html).find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
 
-            return parseData(tmp);
 
-        }       
+
+
+        }
 
 }
 
@@ -1456,7 +1439,7 @@ var bloque5 ={       // Adultos mayores
                 }else{
 
 
-                    if(bloque5.data.consulta =="" || bloque5.data.consulta =="3"){
+                    if(bloque5.data.consulta =="" || bloque5.data.consulta =="33"){
 
                         $( "#b5_div_consulta_si" ).hide();
                         $( "#b5_div_consulta_no" ).hide();
@@ -1510,7 +1493,7 @@ var bloque5 ={       // Adultos mayores
                         'change', function(){
 
                             var seleccion = $(this).val();
-                            if(seleccion == "6") {
+                            if(seleccion == "42") {
 
                                 $('#b5_div_cual').show("slow");
 
@@ -1578,7 +1561,7 @@ var bloque6 ={       // Discapacidad
         update: function(){
                 // actualizo ante los cambios
 
-                var items= ['87','88','89','90','91']
+                var items= ['93','94','95','96','97']
                 var vista = false;
                 $.each( items, function( index, el){
 
@@ -1615,7 +1598,7 @@ var bloque6 ={       // Discapacidad
 
             }
 
-            if(bloque6.data.consulta == '87'){
+            if(bloque6.data.consulta == '1'){
 
                 $( "#b6_div_consulta_si" ).show("slow");
                 $( "#b6_div_consulta_no" ).hide("slow");
@@ -1623,7 +1606,7 @@ var bloque6 ={       // Discapacidad
             }else{
 
 
-                if(bloque6.data.consulta =="" || bloque1.conf.consulta =="89"){
+                if(bloque6.data.consulta =="" || bloque1.conf.consulta =="33"){
 
                     $( "#b6_div_consulta_si" ).hide();
                     $( "#b6_div_consulta_no" ).hide();
@@ -1862,18 +1845,7 @@ var bloque7 ={       // embarazo
             }
 
             
-        } ,
-
-        parse: function(){
-
-            var tmp = $(bloque7.template.html).find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
-
-            return parseData(tmp);
-
-        }  
-
-
-
+        } 
 
 }
 
@@ -1889,45 +1861,8 @@ var bloque9 ={       // laboral
         },
 
         data:{
-
                             
-                optitular:   [
-
-                                    {
-                                        "id_resp": 27,
-                                        "respuesta": "Trabajador remunerado"
-                                    },
-                                    {
-                                        "id_resp": 28,
-                                        "respuesta": "Jubilado o pensionado"
-                                    },
-                                    {
-                                        "id_resp": 29,
-                                        "respuesta": "Trabaja con remuneración y estudia"
-                                    },
-                                    {
-                                        "id_resp": 133,
-                                        "respuesta": "Estudia exclusivamente"
-                                    },
-                                    {
-                                        "id_resp": 134,
-                                        "respuesta": "Trabajo doméstico no remunerado exclusivamente"
-                                    },
-                                    {
-                                        "id_resp": 135,
-                                        "respuesta": "Busca trabajo"
-                                    },
-                                    {
-                                        "id_resp": 136,
-                                        "respuesta": "No trabaja"
-                                    },
-                                    {
-                                        "id_resp": 137,
-                                        "respuesta": "Otra"
-                                    },
-                            ],
-
-
+            optitular:[{"id_resp":27,"respuesta":"Trabajador remunerado"},{"id_resp":28,"respuesta":"Jubilado o pensionado"},{"id_resp":29,"respuesta":"Trabaja con remuneración y estudia"},{"id_resp":133,"respuesta":"Estudia exclusivamente"},{"id_resp":134,"respuesta":"Trabajo doméstico no remunerado exclusivamente"},{"id_resp":135,"respuesta":"Busca trabajo"},{"id_resp":136,"respuesta":"No trabaja"},{"id_resp":137,"respuesta":"Otra"},]
 
         },
 
