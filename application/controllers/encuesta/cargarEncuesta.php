@@ -224,7 +224,16 @@ class CargarEncuesta extends CI_Controller{
                                         //borrar las variables post
                                         //var_dump($_POST=array());
 
+
+
+                                        //aqui debo verificar con el id del relevamiento cuantos integrantes hay relevados   y cuantos integrantes hay en total
+
+
+
+                                        $test= $this->Relevamiento_model->getCantidadEncuestados($id_relevamiento);
                                         
+var_dump($test);
+                                        exit;
 
                                         $this->load->view("backend/encuesta/cargar_encuesta_view", $options);
                                         $this->load->view('backend/footer');

@@ -79,6 +79,8 @@ class Relevamiento_model extends CI_Model {
 	}
 
 
+	//======================================
+
 	// todo dar vuelta la fecha para que se guarde
 	public function crearRelevamiento($data){
 		$this->db->insert('relevamiento', 
@@ -139,18 +141,18 @@ class Relevamiento_model extends CI_Model {
 
 	public function editDireccion($idDireccion, $updateData){
 
-	$data = array(
-               'calle' => $updateData['calle'],
-               'casa' => $updateData['casa'],
-               'numero' => $updateData['numero'],
-               'dptoNumero' => $updateData['dptoNumero'],
-               'entreCalles1' => $updateData['entreCalles1'],
-               'entreCalles2' => "",
-               'barrio' => $updateData['barrio'],
-               'observaciones' => "",
-               'manzana' => $updateData['manzana'],
-               'id_tlocalidad' => $updateData['id_tlocalidad']
-            );
+		$data = array(
+				'calle' => $updateData['calle'],
+				'casa' => $updateData['casa'],
+				'numero' => $updateData['numero'],
+				'dptoNumero' => $updateData['dptoNumero'],
+				'entreCalles1' => $updateData['entreCalles1'],
+				'entreCalles2' => "",
+				'barrio' => $updateData['barrio'],
+				'observaciones' => "",
+				'manzana' => $updateData['manzana'],
+				'id_tlocalidad' => $updateData['id_tlocalidad']
+				);
 
 		$this->db->where('idDireccion', $idDireccion);
 		$this->db->update('direccion', $data); 
@@ -204,6 +206,31 @@ class Relevamiento_model extends CI_Model {
 
 		return $idEncuestado;
 	}
+
+
+	// este metodo devuelve la cantidad de encuestados para un relevamiento recibiendo el id de relevamiento
+	public function getCantidadEncuestados($id_relevamiento){
+
+		$this->db->select();
+		$this->db->from('encuestado');
+		$this->db->where('idRelevamiento', $id_relevamiento);
+
+		$query= $this->db->get();
+		//returns result objects array
+		return $query->result(); // esta devuelve los registros
+		return $query->num_rows(); // esta devuelve el numero de registros
+
+
+
+	}
+
+
+
+
+
+
+
+
 
 
 	
