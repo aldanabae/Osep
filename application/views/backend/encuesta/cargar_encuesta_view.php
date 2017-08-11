@@ -53,13 +53,37 @@
 					<p>Familia Conviviente</p>				
 				</div>
 				
-				
 				<p class="text-right btn-sm"><a href="<?php echo base_url('encuesta/cargarEncuesta/'.$_POST['nom_facilitador']);?>" ><i class="1 ace-icon fa fa-arrow-left"></i> Atras</a></p>
 
 			</div>
 
 
+			<div class="col-md-4 col-md-offset-8">
+
+					
+					<ul class="pagination">
+
+							<li>
+								 <span aria-hidden="true">Integrantes</span>
+	
+							</li>
+							<li><span class="fa fa-user fa-1x personok" aria-hidden="true"></span></li>
+							<li><span class="fa fa-user fa-1x" aria-hidden="true"></span></li>
+							<li><span class="fa fa-user-o fa-1x" aria-hidden="true"></span></li>
+							<li><span class="fa fa-user-o fa-1x" aria-hidden="true"></span></li>
+							<li><span class="fa fa-user-o fa-1x" aria-hidden="true"></span></li>
+							<li><span class="fa fa-user-o fa-1x" aria-hidden="true"></span></li>
+
+					</ul>
+
+			</div>
 				<div class="panel-body">
+
+
+
+
+								
+						
 
 				<blockquote>
 					<p>Datos Personales</p>

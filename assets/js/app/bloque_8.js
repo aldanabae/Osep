@@ -12,15 +12,11 @@ $(function() {
     
 });
 
-
 var cargar = {
 
         notice: function(){
-
             // seteo las rutas del sistema
-
             var ruta = $('#localPath').val();
-
             // mando una alerta
             var unique_id = $.gritter.add({
                 title: '<center><h3>Relevamiento almacenado correctamente</h3></center>',
@@ -60,7 +56,7 @@ var cargar = {
             var datos = JSON.encode(parseData(tmp));
             setAjax(datos, 'guardarEncuesta', function(){
 
-                    alert('acceso ok');
+                    cargar.notice();
 
             });
         },
