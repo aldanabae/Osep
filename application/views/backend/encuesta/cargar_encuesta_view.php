@@ -41,6 +41,9 @@
 <input type="hidden" name="integrantes"  id="integrantes" value="<?php echo @$cantidad; ?>">
 <input type="hidden" name="hdnid_relevamiento"  id="hdnid_relevamiento" value="<?php echo @$id_relevamiento; ?>">
 <input type="hidden" name="hdnid_numRel"  id="hdnid_numRel" value="<?php echo @$id_numRel; ?>">
+<input type="hidden" name="hdnCantidad_encuestados"  id="hdnCantidad_encuestados" value="<?php echo @$cantidad_encuestados; ?>">
+
+
 
 
 	<div class="row form-horizontal" id="bloque_1">   <!-- bloque 1 -->
@@ -61,18 +64,9 @@
 			<div class="col-md-4 col-md-offset-8">
 
 					
-					<ul class="pagination">
+					<ul class="pagination" id="mapEncuestados" >
 
-							<li>
-								 <span aria-hidden="true">Integrantes</span>
-	
-							</li>
-							<li><span class="fa fa-user fa-1x personok" aria-hidden="true"></span></li>
-							<li><span class="fa fa-user fa-1x" aria-hidden="true"></span></li>
-							<li><span class="fa fa-user-o fa-1x" aria-hidden="true"></span></li>
-							<li><span class="fa fa-user-o fa-1x" aria-hidden="true"></span></li>
-							<li><span class="fa fa-user-o fa-1x" aria-hidden="true"></span></li>
-							<li><span class="fa fa-user-o fa-1x" aria-hidden="true"></span></li>
+						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 
 					</ul>
 

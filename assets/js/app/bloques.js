@@ -6,7 +6,6 @@ var bloque_btn= $("#btn_encuesta");
 $(function() {
   // Handler for .ready() called.
 
-
   bloque1.bindComponent();
 
   // 1 SI  Y 2 ES NO
@@ -33,26 +32,36 @@ var encuesta ={
 
             init: function(){
 
-                    var emb= $('#embarazo').val();
+                var emb= $('#embarazo').val();
 
-                    if(emb == '0' && emb != ''){
+                if(emb == '0' && emb != ''){
 
-                        encuesta.embarazo.estado= true;
-                        var edad_emb = $('#edades').val().split(',');  // genero el arreglo de edad o edades
-                        encuesta.embarazo.edad =  cleanArray(edad_emb); //  lo limpio de elementos vacios
+                    encuesta.embarazo.estado= true;
+                    var edad_emb = $('#edades').val().split(',');  // genero el arreglo de edad o edades
+                    encuesta.embarazo.edad =  cleanArray(edad_emb); //  lo limpio de elementos vacios
 
-                    }else{
+                }else{
 
-                        encuesta.embarazo.estado = false;
-                        encuesta.embarazo.edad = 0;
+                    encuesta.embarazo.estado = false;
+                    encuesta.embarazo.edad = 0;
 
-                    }
+                }
 
-                    encuesta.integrantes = parseInt( $('#integrantes').val());
+                encuesta.integrantes = parseInt( $('#integrantes').val());
+                encuesta.count= parseInt($('#hdnCantidad_encuestados').val());
 
-            
+                if (encuesta.count == 0){
 
-                  },
+                    encuesta.responde = false ;
+
+                }else{
+
+                    encuesta.responde = true ;
+
+                }
+                    
+
+            },
             reset_conf:function(){
             encuesta.titular= false         // si es titular o no
             encuesta.afiliado=''            // numero de afiliado
@@ -154,13 +163,14 @@ var bloque1= {    // Bloque General
 
                 educativo:[{"id_resp":18,"respuesta":"Inicial"},{"id_resp":19,"respuesta":"Primario incompleto"},{"id_resp":20,"respuesta":"Primario completo"},{"id_resp":21,"respuesta":"Secundario incompleto"},{"id_resp":22,"respuesta":"Secundario completo"},{"id_resp":23,"respuesta":"Terciario incompleto"},{"id_resp":24,"respuesta":"Terciario completo"},{"id_resp":25,"respuesta":"Universitario incompleto"},{"id_resp":26,"respuesta":"Universitario completo"},]
                 
-
         },
 
         init: function(){
 
             bloque_btn.hide();     // botonera abajo 
-            encuesta.init();
+            encuesta.init();        // inicializo la encuesta
+            var integrantes = parseInt($('#integrantes').val());
+            bloque1.mapeoEncuestados(integrantes)  // analizo y grafico el mapa de encuestados
             bloque3a.init();
             bloque3b.init();
             bloque4.init();
@@ -200,6 +210,12 @@ var bloque1= {    // Bloque General
             $('#b1_afiliado_varon').hide(); // oculto el formulario de varon entre 15 y 64
 
             $('#b1_otro_numero_afiliado').hide(); // oculto el formulario de varon entre 15 y 64
+
+
+            //============= carga del mapa de encuestados
+
+
+            
 
             bloque1.conf.update();
 
@@ -674,8 +690,6 @@ var bloque1= {    // Bloque General
 
         },
 
-
-
         action_block : function(){
 
             var retorno= bloque1.validate();  // devuelve la validacion de campos + id del focus
@@ -871,6 +885,7 @@ var bloque1= {    // Bloque General
             var datos = JSON.encode(parseData(tmp, true));
             var resp = setAjax(datos, 'encuestaAjax', function(){
                             encuesta.count ++;
+                            $('#hdnCantidad_encuestados').val(encuesta.count)
                             bloque1.reset_conf();
                             bloque1.init();
 
@@ -878,6 +893,43 @@ var bloque1= {    // Bloque General
             
 
         },
+
+        mapeoEncuestados: function(integrantes){
+
+            var encuestados= encuesta.count;
+            var html='<li><span aria-hidden="true">Integrantes</span></li>';
+
+            for ( var i = 1 ; i<= integrantes; i++){
+
+                if(i<= encuestados){
+
+                    html+= '<li><span class="fa fa-user fa-1x " aria-hidden="true"></span></li>'
+
+                }else{
+
+                    html+= '<li><span class="fa fa-user-o fa-1x " aria-hidden="true"></span></li>'
+
+                }
+                
+
+            }
+
+            $('#mapEncuestados').html(html)
+    /**
+     * 
+     * 								<li><span class="fa fa-user fa-1x " aria-hidden="true"></span></li>
+								<li><span class="fa fa-user fa-1x" aria-hidden="true"></span></li>
+								<li><span class="fa fa-user-o fa-1x" aria-hidden="true"></span></li>
+								<li><span class="fa fa-user-o fa-1x" aria-hidden="true"></span></li>
+								<li><span class="fa fa-user-o fa-1x" aria-hidden="true"></span></li>
+								<li><span class="fa fa-user-o fa-1x" aria-hidden="true"></span></li>
+     * 
+     * 
+     * 
+     */
+
+
+        }
 
 
 }

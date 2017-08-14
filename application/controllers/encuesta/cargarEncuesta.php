@@ -223,17 +223,11 @@ class CargarEncuesta extends CI_Controller{
                                         $options['id_numRel']=$nroRelevamiento; // numero asignado al fac..  se repite
                                         //borrar las variables post
                                         //var_dump($_POST=array());
-
-
-
                                         //aqui debo verificar con el id del relevamiento cuantos integrantes hay relevados   y cuantos integrantes hay en total
 
-
-
-                                        $test= $this->Relevamiento_model->getCantidadEncuestados($id_relevamiento);
-                                        
-var_dump($test);
-                                        exit;
+                                        $cantidad_encuestados= $this->Relevamiento_model->getCantidadEncuestados($id_relevamiento);
+                                        $options['cantidad_encuestados']= $cantidad_encuestados;
+                        
 
                                         $this->load->view("backend/encuesta/cargar_encuesta_view", $options);
                                         $this->load->view('backend/footer');
@@ -300,6 +294,8 @@ var_dump($test);
                     }
                     else
                     {
+
+                        
 
                        redirect('encuesta/cargarEncuesta');
 

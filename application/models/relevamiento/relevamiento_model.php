@@ -217,10 +217,8 @@ class Relevamiento_model extends CI_Model {
 
 		$query= $this->db->get();
 		//returns result objects array
-		return $query->result(); // esta devuelve los registros
+		//return $query->result(); // esta devuelve los registros
 		return $query->num_rows(); // esta devuelve el numero de registros
-
-
 
 	}
 
