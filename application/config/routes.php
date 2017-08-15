@@ -54,6 +54,6 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 
-$route['apiV1']='auditoria/auditoriaC';
+$route['apiV1']='api/AuditoriaC';
 $route['encuesta/cargarEncuesta/(:num)']='encuesta/cargarEncuesta/init/$1';
 

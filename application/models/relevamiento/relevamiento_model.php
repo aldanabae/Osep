@@ -314,12 +314,15 @@ class Relevamiento_model extends CI_Model {
 
 
 	public function getRelevamiento($nroRelev){
-		$this->db->where('idRelevamiento', $nroRelev);
+		$this->db->select('*');
 		$this->db->from('relevamiento');
 		$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
 		$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
 		$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
-		$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+		//$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+		$this->db->where('idRelevamiento', $nroRelev);
+
+	
 		$query = $this->db->get();
 		if ($query->num_rows() > 0) return $query;
 		else return false;

@@ -5,14 +5,13 @@ class RelevamientoC extends My_Controller{
 		$this->load->helper('form');
 		$this->load->helper('url');  
 		$this->load->library('form_validation'); 
+		$this->load->model('relevamiento/Relevamiento_model');
 	}
 	
 	function index(){
 
 		$nivelUser= $this->session->userdata('logged_in');
 		
-
-
 		if (!isset($_POST['CargarTabla'])){
 			//$data['nombresNiveles'] = '';
 			$data['limiteTabla'] = 10000;  // le doy el limite de la tabla
