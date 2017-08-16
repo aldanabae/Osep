@@ -152,7 +152,7 @@
 								<?php 	if ($niv->descripNivel == "Administrador Base de Datos" || $niv->descripNivel == "Facilitador" || $niv->descripNivel == "Administrador" || $niv->descripNivel == "Auditor" || $niv->descripNivel == "Creador Encuesta" || $niv->descripNivel == "Directivo"){
 								?>
 								<li class="">
-									<a href="<?php echo base_url()?>abms/abmVisitasC/">
+									<a  class="btn disabled" href="<?php echo base_url()?>abms/abmVisitasC/">
 										<i class="menu-icon fa fa-caret-right"></i>
 										Pactar Visita 
 									</a>

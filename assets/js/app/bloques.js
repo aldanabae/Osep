@@ -915,18 +915,35 @@ var bloque1= {    // Bloque General
             }
 
             $('#mapEncuestados').html(html)
-    /**
-     * 
-     * 								<li><span class="fa fa-user fa-1x " aria-hidden="true"></span></li>
-								<li><span class="fa fa-user fa-1x" aria-hidden="true"></span></li>
-								<li><span class="fa fa-user-o fa-1x" aria-hidden="true"></span></li>
-								<li><span class="fa fa-user-o fa-1x" aria-hidden="true"></span></li>
-								<li><span class="fa fa-user-o fa-1x" aria-hidden="true"></span></li>
-								<li><span class="fa fa-user-o fa-1x" aria-hidden="true"></span></li>
-     * 
-     * 
-     * 
-     */
+
+        },
+
+        validate2: function( div){
+
+            var componentes= [];
+            $(div).find('input, select, textarea, radio, input:checkbox').filter(function(index){
+
+                if($(this).is(':visible')){
+
+                    componentes.push($(this));
+
+                }else{
+
+                    console.log('no esta visible')
+
+                }
+
+
+            })
+
+            console.log(componentes)
+            $.each(function() {
+
+
+                    
+
+            });
+
 
 
         }

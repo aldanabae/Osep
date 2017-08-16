@@ -635,7 +635,7 @@
 							
 							<label class="control-label col-xs-6">¿Recuerda si realizó al menos una consulta médica por OSEP en los últimos 6 meses? </label>
 							<div class="col-xs-6">
-								<select class="form-control" id="b3a_consulta" name="b3a_consulta">
+								<select class="form-control" id="b3a_consulta" name="38">
 									<option value="" disabled selected hidden>Seleccionar</option>
 									<option value="1">SI</option>
 									<option value="2">NO</option>
