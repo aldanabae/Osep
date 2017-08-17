@@ -464,7 +464,7 @@ var bloque1= {    // Bloque General
 
                     
                 }                
-        },
+            },
 
         bindComponent: function(){
                 bloque1.init();
@@ -688,7 +688,7 @@ var bloque1= {    // Bloque General
                         
 
 
-        },
+            },
 
         action_block : function(){
 
@@ -806,11 +806,11 @@ var bloque1= {    // Bloque General
             }else{
 
 
-            alert('Faltan datos o algunos de ellos son incorrectos');
-            $(retorno.id_tag).focus();
-        }
-     
-        },
+                alert('[ERROR] Faltan datos o algunos de ellos son incorrectos');
+                $(retorno.id_tag).focus();
+            }
+        
+            },
 
         validate: function(){
 
@@ -874,7 +874,7 @@ var bloque1= {    // Bloque General
  
             return  validacion;
 
-        },
+            },
 
         parse: function(){
 
@@ -892,7 +892,7 @@ var bloque1= {    // Bloque General
             }) // envio el arreglo de datos mas el endPoint
             
 
-        },
+            },
 
         mapeoEncuestados: function(integrantes){
 
@@ -916,33 +916,47 @@ var bloque1= {    // Bloque General
 
             $('#mapEncuestados').html(html)
 
-        },
+            },
 
-        validate2: function( div){
+        validate2: function( div){  // metodo de validacion generico
 
-            var componentes= [];
-            $(div).find('input, select, textarea, radio, input:checkbox').filter(function(index){
+            var componentes= [];    // declaro un arreglo vacio
+            var retorno = false;    // variable de retorno para devolver
 
-                if($(this).is(':visible')){
+            $(div).find('input, select, textarea, input:checkbox').filter(function(index){
 
-                    componentes.push($(this));
+                // filtro todos los elementos que eisten en el div seleccionado
+                if($(this).is(':visible')){ 
 
-                }else{
-
-                    console.log('no esta visible')
-
+                    componentes.push($(this));  // guardo los que estan visibles en un arreglo para analizar despues
                 }
-
-
             })
 
-            console.log(componentes)
-            $.each(function() {
+           
+            $.each(componentes,function (key, el){
 
 
-                    
 
-            });
+                if(el.prop('required')){  // si el campo es requierido  entonces debo validarlo 
+
+
+                        if(el.val() == "" || el.val() == null  ){ // si es requerido  y esta vacio o null  debomarcarlo como que esta en falta
+
+                            console.log(el.prop('type'))
+        
+                            el.parent().parent().addClass('has-error')
+        
+                        }else{    // si no esta vacio ni null devo verificar el tipo de input y su limite
+
+
+        
+                            el.parent().parent().removeClass('has-error')
+        
+                        }
+                        
+                } // de otro modo es opcional
+
+            } );
 
 
 
