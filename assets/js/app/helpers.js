@@ -103,7 +103,6 @@
     }
 
 
-
     function enabledBlock(){
 
         /*cargo los bloques en un array
@@ -159,43 +158,41 @@
     }
 
 
+    function setAjax(datos, endpoint, success){
+        //var idDpto = $('#departamento').val();
+        var path   = $("#localPath").val();
+        var url= path+'index.php/encuesta/cargarEncuesta/'+ endpoint;
+        var parametros = "datos=" + datos;
 
-
-		function setAjax(datos, endpoint, success){
-			//var idDpto = $('#departamento').val();
-            var path   = $("#localPath").val();
-            var url= path+'index.php/encuesta/cargarEncuesta/'+ endpoint;
-			var parametros = "datos=" + datos;
-
-            var result="";
-			$.ajax({
-				type: 'POST',
-				url: url, 
-				data: parametros, 
-			       	dataType: 'json',
-                success: success,
-                
-				 error: function(xhr,status) { 
-                    console.log(xhr+"    "+status);
-                    result ='fail';
-                },
-                beforeSend: function(){
-					// Code to display spinner
-						
-						spnr.init();
-
-				},
-
-				complete: function(){
-					// Code to hide spinner.
-                        spnr.stop();
-				}
-            });
-
-
+        var result="";
+        $.ajax({
+            type: 'POST',
+            url: url, 
+            data: parametros, 
+                dataType: 'json',
+            success: success,
             
-        }
+                error: function(xhr,status) { 
+                console.log(xhr+"    "+status);
+                result ='fail';
+            },
+            beforeSend: function(){
+                // Code to display spinner
+                    
+                    spnr.init();
+
+            },
+
+            complete: function(){
+                // Code to hide spinner.
+                    spnr.stop();
+            }
+        });
+
+
         
+    }
+    
 
     function apellidos(nombre){
 
@@ -235,6 +232,21 @@
             return retorno;
 
     }
+
+
+
+    function cleanString(cadena){// limpia String de comas y puntos ..  para numeros
+
+        // Definimos los caracteres que queremos eliminar
+        var specialChars = "!@#$^&%*()+=-[]\/{}|:<>?,.";
+
+        for (var i = 0; i < specialChars.length; i++) {
+            cadena= cadena.replace(new RegExp("\\" + specialChars[i], 'gi'), '');
+        }  
+
+        return cadena;
+    }
+
 
 
     //set Spinjs

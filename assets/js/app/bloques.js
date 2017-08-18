@@ -692,7 +692,8 @@ var bloque1= {    // Bloque General
 
         action_block : function(){
 
-            var retorno= bloque1.validate();  // devuelve la validacion de campos + id del focus
+            var retorno= bloque1.validate('#add_encuesta');  // devuelve la validacion de campos + id del focus
+
 
             if(retorno.validate){
 
@@ -812,7 +813,7 @@ var bloque1= {    // Bloque General
         
             },
 
-        validate: function(){
+        validate2: function(){
 
             var validacion = {validate: false, id_tag: ""};
 
@@ -918,8 +919,10 @@ var bloque1= {    // Bloque General
 
             },
 
-        validate2: function( div){  // metodo de validacion generico
+        validate: function( div){  // metodo de validacion generico
 
+
+            var validacion = false;
             var componentes= [];    // declaro un arreglo vacio
             var retorno = false;    // variable de retorno para devolver
 
@@ -935,8 +938,6 @@ var bloque1= {    // Bloque General
            
             $.each(componentes,function (key, el){
 
-
-
                 if(el.prop('required')){  // si el campo es requierido  entonces debo validarlo 
 
 
@@ -945,12 +946,32 @@ var bloque1= {    // Bloque General
                             console.log(el.prop('type'))
         
                             el.parent().parent().addClass('has-error')
+                            validacion = false; // validacion incorrecta
         
                         }else{    // si no esta vacio ni null devo verificar el tipo de input y su limite
 
+                            if(el.prop('type') == 'number'){   // si es de tipo number  entonces debo ver el limite 
 
-        
-                            el.parent().parent().removeClass('has-error')
+                                var limite = el.data('limit')          // traigo el limite establecido
+                                var valor = parseInt(cleanString(el.val().trim()));     // limpio la cadena de . ,  y espacios
+                                if(valor >=0  && valor<= limite ){  // ya tengo el limite  si esta fuera del valor lo pongo como en falta.
+
+
+                                    el.parent().parent().removeClass('has-error')
+                                    validacion = true; // validacion correcta
+
+                                }else{ //no cumple con el parametro  lo pongo rojo
+
+                                    el.parent().parent().addClass('has-error')
+                                    validacion = false;  // validadcion incorrecta
+                                }
+
+                            }else{  // si no esta vacio y no es numerico  entonces esta correcto  el valor
+
+
+                                el.parent().parent().removeClass('has-error')
+                                validacion = true; // la validacion es correcta
+                            }
         
                         }
                         
