@@ -185,6 +185,7 @@ var bloque1= {    // Bloque General
                 
                 $("#lblTitular").text('Apellido y nombre del titular ')
                 $("#b1_parent").html( '<option value="5">Titular</option>');
+                $("#b1_parent[value=5]").attr("selected",true);
                 $("#tOsep").hide();
 
 

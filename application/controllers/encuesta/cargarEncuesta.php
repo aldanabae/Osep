@@ -197,6 +197,9 @@ class CargarEncuesta extends CI_Controller{
 
                                         }
 
+
+
+
                                         $relevamiento['nroRelevamiento']= $nroRelevamiento;
                                         $relevamiento['fechaRelevamiento']=$fechaRelevamiento;
                                         $relevamiento['idDireccion']= $id_direccion;
@@ -227,12 +230,38 @@ class CargarEncuesta extends CI_Controller{
 
                                         $cantidad_encuestados= $this->Relevamiento_model->getCantidadEncuestados($id_relevamiento);
                                         $options['cantidad_encuestados']= $cantidad_encuestados;
-                        
+                
 
-                                        $this->load->view("backend/encuesta/cargar_encuesta_view", $options);
-                                        $this->load->view('backend/footer');
-                                        $js['javascript']= ["vendor/spin.js", "bloques.js", "helpers.js"];
-                                        $this->load->view('backend/encuesta/script_js', $js);
+                                        // si la cantidad de encuestados es igual a la cantidad de integrantes relevados 
+                                        // pasa al bloque final
+                                        if(intval($options['cantidad']) == $options['cantidad_encuestados'] ){
+
+                                                // verifica si ya se completo la cantidad de encuestados
+
+                                                $resp['id_numRel']= $nroRelevamiento;
+                                                $resp['id_relevamiento']= $id_relevamiento;
+
+
+                                           
+                                                $this->load->view("backend/encuesta/cargar_encuesta_final_view",$resp);
+                                                $this->load->view('backend/footer');
+                                                //$js['javascript']= ["bloque_8.js","bloque3.js","bloqueaa.js"];
+                                                $js['javascript']= ["vendor/spin.js", "helpers.js","vendor/jquery.gritter.js","bloque_8.js"];
+                        
+                                                $this->load->view('backend/encuesta/script_js', $js);
+
+
+                                        }else{
+
+                                                $this->load->view("backend/encuesta/cargar_encuesta_view", $options);
+                                                $this->load->view('backend/footer');
+                                                $js['javascript']= ["vendor/spin.js", "bloques.js", "helpers.js"];
+                                                $this->load->view('backend/encuesta/script_js', $js);
+
+                                        }
+
+
+                                       
 
                                         
                                 }
@@ -288,16 +317,13 @@ class CargarEncuesta extends CI_Controller{
                         //$js['javascript']= ["bloque_8.js","bloque3.js","bloqueaa.js"];
                         $js['javascript']= ["vendor/spin.js", "helpers.js","vendor/jquery.gritter.js","bloque_8.js"];
 
-
                         $this->load->view('backend/encuesta/script_js', $js);
                         
                     }
                     else
                     {
 
-                        
-
-                       redirect('encuesta/cargarEncuesta');
+                         redirect('encuesta/cargarEncuesta');
 
                     }
 
