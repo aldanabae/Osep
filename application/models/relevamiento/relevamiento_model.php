@@ -79,6 +79,8 @@ class Relevamiento_model extends CI_Model {
 	}
 
 
+	//======================================
+
 	// todo dar vuelta la fecha para que se guarde
 	public function crearRelevamiento($data){
 		$this->db->insert('relevamiento', 
@@ -139,18 +141,18 @@ class Relevamiento_model extends CI_Model {
 
 	public function editDireccion($idDireccion, $updateData){
 
-	$data = array(
-               'calle' => $updateData['calle'],
-               'casa' => $updateData['casa'],
-               'numero' => $updateData['numero'],
-               'dptoNumero' => $updateData['dptoNumero'],
-               'entreCalles1' => $updateData['entreCalles1'],
-               'entreCalles2' => "",
-               'barrio' => $updateData['barrio'],
-               'observaciones' => "",
-               'manzana' => $updateData['manzana'],
-               'id_tlocalidad' => $updateData['id_tlocalidad']
-            );
+		$data = array(
+				'calle' => $updateData['calle'],
+				'casa' => $updateData['casa'],
+				'numero' => $updateData['numero'],
+				'dptoNumero' => $updateData['dptoNumero'],
+				'entreCalles1' => $updateData['entreCalles1'],
+				'entreCalles2' => "",
+				'barrio' => $updateData['barrio'],
+				'observaciones' => "",
+				'manzana' => $updateData['manzana'],
+				'id_tlocalidad' => $updateData['id_tlocalidad']
+				);
 
 		$this->db->where('idDireccion', $idDireccion);
 		$this->db->update('direccion', $data); 
@@ -187,26 +189,49 @@ class Relevamiento_model extends CI_Model {
 	}
 
 
-
-
-
-
-
-
-
-
-
+// modelo de encuestado
 
 	public function crearEncuestado($data){
 		$this->db->insert('encuestado', 
-			array('nombreEncuestado'=> $data['nombreE'], 
-					'apellidoEncuestado'=> $data['apellidoE'],
-					'dniEncuestado'=> $data['dniE'], 
-					'edad'=> $data['edad'],
-					'sexo'=> $data['sexo'],
-					'idRelevamiento'=> $data['idRelev']));
+			array('nombreEncuestado'=> $data->nombre, 
+					'apellidoEncuestado'=> $data->apellido,
+					'dniEncuestado'=> $data->dni, 
+					'edad'=> $data->edad,
+					'sexo'=> $data->sexo,
+					'idRelevamiento'=> $data->id_relev,
+					'nroAfiliado'=> $data->n_afiliado,
+					'respondeR'=> $data->respondeR
+					));
 		$idEncuestado= $this->db->insert_id();
+
+		return $idEncuestado;
 	}
+
+
+	// este metodo devuelve la cantidad de encuestados para un relevamiento recibiendo el id de relevamiento
+	public function getCantidadEncuestados($id_relevamiento){
+
+		$this->db->select();
+		$this->db->from('encuestado');
+		$this->db->where('idRelevamiento', $id_relevamiento);
+
+		$query= $this->db->get();
+		//returns result objects array
+		//return $query->result(); // esta devuelve los registros
+		return $query->num_rows(); // esta devuelve el numero de registros
+
+	}
+
+
+
+
+
+
+
+
+
+
+	
 	public function obtenerEncuestado($dni){
 		$this->db->select('encuestado.idEncuestado');
 		$this->db->where('encuestado.dniEncuestado', $dni);
@@ -215,33 +240,89 @@ class Relevamiento_model extends CI_Model {
 		if ($query->num_rows() > 0) return $query;
 		else return false;
 	}
+
+
+
 	public function crearRespuestaElegida($data){
 		$this->db->insert('respuesta_elegida', 
 			array('respBreve'=>$data['respB'], 
 					'idRelevamiento'=>$data['relevamiento'], 
-					'idRespPreg'=>$data['idRespPreg'],
-					'idEncuestado'=>$data['idEnc']));
+					'idEncuestado'=>$data['idEnc'],
+					'idPregunta'=>$data['idPreg'],
+					'idRespuesta'=>$data['idResp']));
 		$idRespuestaElegida = $this->db->insert_id();
 		return $idRespuestaElegida;
 	}
-	public function obtenerRelevamientos(){
+
+
+		public function getRespuestaBreve(){ //  trae las respuestas que se llenan como breve
+			$this->db->select('idPregunta');
+			$this->db->from('pregunta');
+			$this->db->where('idTipoPregunta', '6' ); // que solo sean respuesta breve
+			$query = $this->db->get();
+
+			if ($query->num_rows() > 0){
+				return $query;
+			} 
+			else 
+			{
+				return false;
+			}
+		
+	}
+
+
+
+
+
+		public function finalizaEncuesta($idRelevamiento){
+
+			$data = array(
+				'estado' => '0'
+			);
+
+			$this->db->where('idRelevamiento', $idRelevamiento);
+			$this->db->update('relevamiento', $data); 
+
+		}
+
+
+	public function obtenerRelevamientos($nivelUser){
+
+
+		if($nivelUser['nivel'] == '2'){
+
+			$this->db->where('relevamiento.idEmpleado', $nivelUser['idEmpleado']);
+
+		}else{
+
+			$this->db->select('*');
+
+		}
+		$this->db->from('relevamiento');
+		$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+		$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+		$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+		$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+		// $this->db->where('relevamiento.idEmpleado', '16');
+		$query = $this->db->get();	
+		//var_dump($query);
+		if ($query->num_rows() > 0) return $query;
+		else return false;
+	}
+
+
+
+	public function getRelevamiento($nroRelev){
 		$this->db->select('*');
 		$this->db->from('relevamiento');
 		$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
 		$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
 		$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
-		$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
-		$query = $this->db->get();	
-		if ($query->num_rows() > 0) return $query;
-		else return false;
-	}
-	public function getRelevamiento($nroRelev){
+		//$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
 		$this->db->where('idRelevamiento', $nroRelev);
-		$this->db->from('relevamiento');
-		$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
-		$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
-		$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
-		$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+
+	
 		$query = $this->db->get();
 		if ($query->num_rows() > 0) return $query;
 		else return false;

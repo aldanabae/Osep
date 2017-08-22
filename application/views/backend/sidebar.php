@@ -140,7 +140,7 @@
 								?>
 
 								<li class="">
-									<a href="<?php echo base_url()?>encuesta/abmencuesta/crear">
+									<a href="#" class="btn disabled">
 										<i class="menu-icon fa fa-caret-right"></i>
 										Crear Encuesta
 									</a>
@@ -152,7 +152,7 @@
 								<?php 	if ($niv->descripNivel == "Administrador Base de Datos" || $niv->descripNivel == "Facilitador" || $niv->descripNivel == "Administrador" || $niv->descripNivel == "Auditor" || $niv->descripNivel == "Creador Encuesta" || $niv->descripNivel == "Directivo"){
 								?>
 								<li class="">
-									<a href="<?php echo base_url()?>abms/abmVisitasC/">
+									<a  class="btn disabled" href="<?php echo base_url()?>abms/abmVisitasC/">
 										<i class="menu-icon fa fa-caret-right"></i>
 										Pactar Visita 
 									</a>
@@ -238,7 +238,21 @@
 					</a>
 					<b class="arrow"></b>
 				</li>
+				<li class="">
+					<a href="<?php echo base_url('bienvenidaC') ?>">
+						<i class="menu-icon fa fa-reply-all"></i>
+						<span class="menu-text"> Inicio</span>
+					</a>
+					<b class="arrow"></b>
+				</li>
 
+				<li class="">
+					<a href="<?php echo base_url('login/logout') ?>">
+						<i class="menu-icon fa fa-power-off"></i>
+						<span class="menu-text"> Salir</span>
+					</a>
+					<b class="arrow"></b>
+				</li>				
 				<?php 		}
 						}	
 					}

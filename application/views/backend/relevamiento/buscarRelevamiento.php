@@ -8,7 +8,6 @@
             </h1>
         </div>        
           
-
     <!-- Empieza el cuadro con Medicamentos de la bd -->  
     <form class="form-horizontal" role="form" action="<?php echo base_url() ?>relevamiento/relevamientoC/mostrarRelevamiento" method="post"><!-- Comienza formulario -->
             

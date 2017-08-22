@@ -5,22 +5,32 @@ class RelevamientoC extends My_Controller{
 		$this->load->helper('form');
 		$this->load->helper('url');  
 		$this->load->library('form_validation'); 
+		$this->load->model('relevamiento/Relevamiento_model');
 	}
 	
 	function index(){
+
+		$nivelUser= $this->session->userdata('logged_in');
+		
 		if (!isset($_POST['CargarTabla'])){
 			//$data['nombresNiveles'] = '';
-			$data['limiteTabla'] = 10000;
-			$data['tablaRelevamientos'] = $this->relevamiento_model->obtenerRelevamientos();;	
+			$data['limiteTabla'] = 10000;  // le doy el limite de la tabla
+
+			$data['tablaRelevamientos'] = $this->Relevamiento_model->obtenerRelevamientos($nivelUser);
 		}
 			
+
+		
+
+
 		$nombreVista="backend/relevamiento/buscarRelevamiento";
 		$this->cargarVista($nombreVista, $data);
-		$data['resp_preg'] = $this->relevamiento_model->obtenerRespPreg();
-		$data['preguntas'] = $this->relevamiento_model->obtenerPreguntas();
-		$data['respuestas'] = $this->relevamiento_model->obtenerRespuestas();
-		$data['encuesta'] = $this->relevamiento_model->obtenerEncuesta();
-		$data['bloques'] = $this->relevamiento_model->obtenerBloques();	
+
+		$data['resp_preg'] = $this->Relevamiento_model->obtenerRespPreg();
+		$data['preguntas'] = $this->Relevamiento_model->obtenerPreguntas();
+		$data['respuestas'] = $this->Relevamiento_model->obtenerRespuestas();
+		$data['encuesta'] = $this->Relevamiento_model->obtenerEncuesta();
+		$data['bloques'] = $this->Relevamiento_model->obtenerBloques();	
 		//Variable que recibira la VISTA con todos los datos de la encuesta
 		$armoEncuesta = array('idBloque' =>"",
 									'nombreBloque' =>"",
@@ -126,9 +136,9 @@ class RelevamientoC extends My_Controller{
 	function verRelevamiento(){
 		$data['nroRelev'] = $this->uri->segment(4);
 		//Obtener todo lo necesario para mostrar un relevamiento completo
-		$data['relevamiento'] = $this->relevamiento_model->getRelevamiento($data['nroRelev']);
-		$data['respElegidas'] = $this->relevamiento_model->getRespElegidas($data['nroRelev']);
-		$data['encuestados'] = $this->relevamiento_model->getEncuestados($data['nroRelev']);
+		$data['relevamiento'] = $this->Relevamiento_model->getRelevamiento($data['nroRelev']);
+		$data['respElegidas'] = $this->Relevamiento_model->getRespElegidas($data['nroRelev']);
+		$data['encuestados'] = $this->Relevamiento_model->getEncuestados($data['nroRelev']);
       	$nombreVista="backend/relevamiento/verRelevamiento";
 		$this->cargarVista($nombreVista,$data);
 	}
@@ -136,18 +146,18 @@ class RelevamientoC extends My_Controller{
 	function mostrarRelevamiento(){
 		$data['nroRelev'] = $this->input->post('nroRelev');	
 		$data['limiteTabla'] = $this->input->post('longitudTabla');
-		$data['tablaRelevamientos'] = $this->relevamiento_model->getRelevNro($data['nroRelev']);
+		$data['tablaRelevamientos'] = $this->Relevamiento_model->getRelevNro($data['nroRelev']);
       	$nombreVista="backend/relevamiento/buscarRelevamiento";
 		$this->cargarVista($nombreVista, $data);
 	}
 
 	// function index(){
 	// 	//Falta cargar validaciones para que controle el login solo en este controlador sin heredar del controlador generico
-	// 	$data['resp_preg'] = $this->relevamiento_model->obtenerRespPreg();
-	// 	$data['preguntas'] = $this->relevamiento_model->obtenerPreguntas();
-	// 	$data['respuestas'] = $this->relevamiento_model->obtenerRespuestas();
-	// 	$data['encuesta'] = $this->relevamiento_model->obtenerEncuesta();
-	// 	$data['bloques'] = $this->relevamiento_model->obtenerBloques();	
+	// 	$data['resp_preg'] = $this->Relevamiento_model->obtenerRespPreg();
+	// 	$data['preguntas'] = $this->Relevamiento_model->obtenerPreguntas();
+	// 	$data['respuestas'] = $this->Relevamiento_model->obtenerRespuestas();
+	// 	$data['encuesta'] = $this->Relevamiento_model->obtenerEncuesta();
+	// 	$data['bloques'] = $this->Relevamiento_model->obtenerBloques();	
 	// 	//Variable que recibira la VISTA con todos los datos de la encuesta
 	// 	$armoEncuesta = array('idBloque' =>"",
 	// 								'nombreBloque' =>"",
@@ -267,14 +277,14 @@ class RelevamientoC extends My_Controller{
 	// // 													'idRespuesta' =>"")
 	// // 							);
 	// //Variable utilizada en toda la funcion
-	// $data['resp_preg'] = $this->relevamiento_model->obtenerRespPreg();
+	// $data['resp_preg'] = $this->Relevamiento_model->obtenerRespPreg();
 	// //Creo relevamiento
 	// $data['relevamiento'] = array('nroRelev' => $relevamiento[0]['nroRelev'],
 	// 								'fechaR' => $relevamiento[0]['fechaR'],
 	// 								'observC' => $relevamiento[0]['observCriticidad'],
 	// 								'idCriti'=> $relevamiento[0]['idCriticidad'],
 	// 								'idEnc'=> $encuesta);
-	// $idRelevamiento = $this->relevamiento_model->crearRelevamiento($data['relevamiento']);
+	// $idRelevamiento = $this->Relevamiento_model->crearRelevamiento($data['relevamiento']);
 	// //Guardar todas las Respuestas_Elegidas asociadas solo al relevamiento
 	// $contadorR = count($relevamiento);
 	// $indiceR = 0;
@@ -293,7 +303,7 @@ class RelevamientoC extends My_Controller{
 	// 										'idRespPreg' => $respPreg->idRespPreg,
 	// 										'respB' => NULL);
 	// 						//Creo un objeto Respuesta_Elegida
-	// 						$this->relevamiento_model->crearRespuestaElegida($data);
+	// 						$this->Relevamiento_model->crearRespuestaElegida($data);
 	// 					}
 	// 				}
 	// 			}
@@ -309,7 +319,7 @@ class RelevamientoC extends My_Controller{
 	// 								'idRespPreg' => NULL,
 	// 								'respB' => $respFinal);
 	// 				//Creo un objeto Respuesta_Elegida
-	// 				$this->relevamiento_model->crearRespuestaElegida($data);
+	// 				$this->Relevamiento_model->crearRespuestaElegida($data);
 	// 			}else{
 	// 				//Si la respuesta es un String directamente lo guardo en respBreve en una nueva Respuesta_Elegida
 	// 				$resp = $relevamiento[$indiceR]['pregResp']['idRespuesta'];
@@ -318,7 +328,7 @@ class RelevamientoC extends My_Controller{
 	// 								'idRespPreg' => NULL,
 	// 								'respB' => $resp);
 	// 				//Creo un objeto Respuesta_Elegida
-	// 				$this->relevamiento_model->crearRespuestaElegida($data);
+	// 				$this->Relevamiento_model->crearRespuestaElegida($data);
 	// 			}
 	// 		}
 			
@@ -354,7 +364,7 @@ class RelevamientoC extends My_Controller{
 	// 									'sexo'=> $encuestados[$indiceE]['sexo'],
 	// 									'nroAfiliado' => $encuestados[$indiceE]['nroAfiliado'],
 	// 									'idRelev'=> $idRelevamiento);
-	// 		$this->relevamiento_model->crearEncuestado($data['encuestado']);
+	// 		$this->Relevamiento_model->crearEncuestado($data['encuestado']);
 	// 	}else{
 	// 		//Si el dni no esta cargado en el array previamente lo ingreso
 	// 		if(!in_array($dniE, $listaDNI)){
@@ -368,7 +378,7 @@ class RelevamientoC extends My_Controller{
 	// 											'sexo'=> $encuestados[$indiceE]['sexo'],
 	// 											'nroAfiliado' => $encuestados[$indiceE]['nroAfiliado'],
 	// 											'idRelev'=> $idRelevamiento);
-	// 			$this->relevamiento_model->crearEncuestado($data['encuestado']);
+	// 			$this->Relevamiento_model->crearEncuestado($data['encuestado']);
 	// 		}		
 	// 	}
 	// 	$indiceE++;	
@@ -381,13 +391,13 @@ class RelevamientoC extends My_Controller{
 	// 	if(is_numeric($encuestados[$indiceRE]['pregResp']['idRespuesta'])){
 	// 		$idRespE = $encuestados[$indiceRE]['pregResp']['idRespuesta']; 
 	// 		//Traigo cada valor de Respuesta_Pregunta guardado y comparo si es el mismo idRespuesta e idPregunta
-	// 		$data['resp_preg'] = $this->relevamiento_model->obtenerRespPreg();
+	// 		$data['resp_preg'] = $this->Relevamiento_model->obtenerRespPreg();
 	// 		foreach($data['resp_preg'] as $respPreg){
 	// 			if($respPreg->idRespuesta == $idRespE){
 	// 				if($respPreg->idPregunta == $idPregE){
 	// 					$dniEnc = $encuestados[$indiceRE]['dniE'];
 	// 					//Busco el idEncuestado para poder cargarlo en la clase Respuesta_Elegida
-	// 					$encuestado = $this->relevamiento_model->obtenerEncuestado($dniEnc);
+	// 					$encuestado = $this->Relevamiento_model->obtenerEncuestado($dniEnc);
 	// 					foreach ($encuestado->result() as $enc){
 	// 						$idEncuestado = $enc->idEncuestado;
 	// 					}
@@ -397,7 +407,7 @@ class RelevamientoC extends My_Controller{
 	// 						'idRespPreg' => $respPreg->idRespPreg,
 	// 						'respB' => NULL);
 	// 					//Creo un objeto Respuesta_Elegida
-	// 					$this->relevamiento_model->crearRespuestaElegida($data);
+	// 					$this->Relevamiento_model->crearRespuestaElegida($data);
 	// 				}
 	// 			}
 	// 		}
@@ -410,7 +420,7 @@ class RelevamientoC extends My_Controller{
  // 				$respFinal = substr($cadenaResp,-($largo), ($largo-7));
 	//  			$dniEnc = $encuestados[$indiceRE]['dniE'];
 	// 			//Busco el idEncuestado para poder cargarlo en la clase Respuesta_Elegida
-	// 			$encuestado = $this->relevamiento_model->obtenerEncuestado($dniEnc);
+	// 			$encuestado = $this->Relevamiento_model->obtenerEncuestado($dniEnc);
 	// 			foreach ($encuestado->result() as $enc){
 	// 				$idEncuestado = $enc->idEncuestado;
 	// 			}							
@@ -420,13 +430,13 @@ class RelevamientoC extends My_Controller{
 	// 				'idRespPreg' => NULL,
 	// 				'respB' => $respFinal);
 	// 			//Creo un objeto Respuesta_Elegida
-	// 			$this->relevamiento_model->crearRespuestaElegida($data);
+	// 			$this->Relevamiento_model->crearRespuestaElegida($data);
 	// 		}else{
 	// 			//Si la respuesta es un String directamente lo guardo en respBreve en una nueva Respuesta_Elegida
  // 				$resp = $encuestados[$indiceRE]['pregResp']['idRespuesta'];
 	//  			$dniEnc = $encuestados[$indiceRE]['dniE'];
 	// 			//Busco el idEncuestado para poder cargarlo en la clase Respuesta_Elegida
-	// 			$encuestado = $this->relevamiento_model->obtenerEncuestado($dniEnc);
+	// 			$encuestado = $this->Relevamiento_model->obtenerEncuestado($dniEnc);
 	// 			foreach ($encuestado->result() as $enc){
 	// 				$idEncuestado = $enc->idEncuestado;
 	// 			}							
@@ -436,7 +446,7 @@ class RelevamientoC extends My_Controller{
 	// 				'idRespPreg' => NULL,
 	// 				'respB' => $resp);
 	// 			//Creo un objeto Respuesta_Elegida
-	// 			$this->relevamiento_model->crearRespuestaElegida($data);
+	// 			$this->Relevamiento_model->crearRespuestaElegida($data);
 	// 		}	
 	// 	}
 	// 	$indiceRE++;

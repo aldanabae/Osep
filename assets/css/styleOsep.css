@@ -3,3 +3,22 @@
  margin-bottom: 15px;
 
 }
+
+.personok{
+
+    color: olivedrab;
+
+}
+
+.person{
+
+    color:crimson;
+}
+
+
+.noValid{
+    
+        border:1px solid red;
+        box-shadow: inset 0 0 15px 0 #3123C3
+}
+    

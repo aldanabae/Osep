@@ -18,7 +18,7 @@ $dato_rel= $relevamiento; // array de relevamiento qeu viene del controlador
     }
 
     // campo oculto de refecencia por si es una edicion o es un guardado basico
-var_dump($dato_rel);
+
 ?>
     
 
@@ -41,8 +41,6 @@ var_dump($dato_rel);
             }
         }
     }
-
-
 
 
 ?>
