@@ -299,11 +299,14 @@ class Relevamiento_model extends CI_Model {
 			$this->db->select('*');
 
 		}
+		$this->db->where('estado','0');	  // deberia solo mostrar relevamientos cerrados
 		$this->db->from('relevamiento');
 		$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
 		$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
 		$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
 		$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+
+
 		// $this->db->where('relevamiento.idEmpleado', '16');
 		$query = $this->db->get();	
 		//var_dump($query);
