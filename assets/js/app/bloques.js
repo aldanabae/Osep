@@ -542,7 +542,7 @@ var bloque1= {    // Bloque General
 
                     $( "#btn_bloques" ).on(
                         'click', function(){
-                            bloque1.init();
+                            //bloque1.init();
                             bloque1.action_block();
                             
                     });   
@@ -696,186 +696,124 @@ var bloque1= {    // Bloque General
             var retorno= bloque1.validate('#add_encuesta');  // devuelve la validacion de campos + id del focus
 
 
-            if(retorno.validate){
+                if(retorno){
 
-                if(bloque1.conf.osep == "1"){
+                    if(bloque1.conf.osep == "1"){
 
-                    
-                    var edad = parseInt(bloque1.conf.edad);
+                        
+                        var edad = parseInt(bloque1.conf.edad);
 
-                            if ((edad >= 65 ) && (bloque1.conf.discapacidad === "2") ){  //si es mayor a 65 y no tiene discapacidad  despliego ancianidad
+                                if ((edad >= 65 ) && (bloque1.conf.discapacidad === "2") ){  //si es mayor a 65 y no tiene discapacidad  despliego ancianidad
 
-                                    bloque5.show_me();     // adultos
-                            }else{
+                                        bloque5.show_me();     // adultos
+                                }else{
 
 
-                                if (edad <= 14) {   // si esta entre 2 y 14  niños
+                                    if (edad <= 14) {   // si esta entre 2 y 14  niños
 
-                                    if( edad < 2)
-                                    {
+                                        if( edad < 2)
+                                        {
 
-                                        bloque3a.show_me();   // bebes
-                                        bloque3b.hide_me();   // niños 
-                                    }else{
+                                            bloque3a.show_me();   // bebes
+                                            bloque3b.hide_me();   // niños 
+                                        }else{
 
-                                        bloque3b.show_me();   // niños
-                                        bloque3a.hide_me();   // bebes
+                                            bloque3b.show_me();   // niños
+                                            bloque3a.hide_me();   // bebes
+                                        }
+
                                     }
-
-                                }
-                            }
-
-
-                            if (bloque1.conf.discapacidad == '1'){
-
-                                bloque6.show_me();     // discapacidad
-
-                            }else{
-
-                                bloque6.hide_me();     // discapacidad
-                            }
-
-                            if ( bloque1.conf.embarazo == '1' ){
-
-                                bloque7.show_me();     // embarazo
-
-                            }else{
-                                
-                                bloque7.hide_me();     // apago embarazo
-                            }                      
-
-
-
-                            if((edad >= 15 && edad <= 64) && (bloque1.conf.discapacidad == '2' && bloque1.conf.genero == 'M')){
-
-                                $('#b1_afiliado_varon').show(); // oculto el formulario de 
-
-                            }else{
-
-                                $('#b1_afiliado_varon').hide(); // oculto el formulario de 
-
-                            }
-
-                            if(bloque1.conf.genero == 'F'  )
-                            {
-                                // me fijo si esta respondiendo la encuesta y si es mujer
-
-                                var responde = $('#responde').prop('checked') ;
-
-                                if((edad == 65 &&  responde) && ( bloque1.conf.embarazo == "2") ){
-
-                                    bloque4.show_me();     // mujeres
-
                                 }
 
 
-                                if(((edad >= 15 && edad <= 70) )  && ( bloque1.conf.embarazo == "2") ){
+                                if (bloque1.conf.discapacidad == '1'){
 
-                                        bloque4.show_me();     // mujere
+                                    bloque6.show_me();     // discapacidad
 
                                 }else{
 
-                                        bloque4.hide_me();     // mujeres
-
-                                    
+                                    bloque6.hide_me();     // discapacidad
                                 }
 
-                            }
+                                if ( bloque1.conf.embarazo == '1' ){
 
-                            // en el caso de que dejen vacio el campo dni  le pone 00000
-                            if($('#b1_dni').val() == ""){
-                                $('#b1_dni').val('00000000')
-                            }
-                }
+                                    bloque7.show_me();     // embarazo
 
-                bloque_btn.show();     // botonera abajo   
+                                }else{
+                                    
+                                    bloque7.hide_me();     // apago embarazo
+                                }                      
 
 
-                    // compruebo encuestados y cantidad de personas
 
-                if(encuesta.count === (encuesta.integrantes -1)  ){
+                                if((edad >= 15 && edad <= 64) && (bloque1.conf.discapacidad == '2' && bloque1.conf.genero == 'M')){
 
-                    $('#btn_nuevo').hide();     // muestro continuar   
-                    $('#btn_continuar').show();     // oculto  nuevo integrante  
-                    
+                                    $('#b1_afiliado_varon').show(); // oculto el formulario de 
+
+                                }else{
+
+                                    $('#b1_afiliado_varon').hide(); // oculto el formulario de 
+
+                                }
+
+                                if(bloque1.conf.genero == 'F'  )
+                                {
+                                    // me fijo si esta respondiendo la encuesta y si es mujer
+
+                                    var responde = $('#responde').prop('checked') ;
+
+                                    if((edad == 65 &&  responde) && ( bloque1.conf.embarazo == "2") ){
+
+                                        bloque4.show_me();     // mujeres
+
+                                    }
+
+
+                                    if(((edad >= 15 && edad <= 70) )  && ( bloque1.conf.embarazo == "2") ){
+
+                                            bloque4.show_me();     // mujere
+
+                                    }else{
+
+                                            bloque4.hide_me();     // mujeres
+
+                                        
+                                    }
+
+                                }
+
+                                // en el caso de que dejen vacio el campo dni  le pone 00000
+                                if($('#b1_dni').val() == ""){
+                                    $('#b1_dni').val('00000000')
+                                }
+                    }
+
+                    bloque_btn.show();     // botonera abajo   
+
+
+                        // compruebo encuestados y cantidad de personas
+
+
+
+
+                        if(encuesta.count < encuesta.integrantes){
+                            
+                            $('#btn_nuevo').show();  // muestro el boton nuevo integrante
+                            $('#btn_continuar').hide();     // oculto  nuevo continuar 
+                            
+                        }else{
+
+                            $('#btn_nuevo').hide();     // oculto  boton nuevo integrante
+                            $('#btn_continuar').show();     // muestro continuar
+                            
+                        }        
+                
                 }else{
 
-                   $('#btn_nuevo').show();     // muestro continuar   
-                   $('#btn_continuar').hide();     // oculto  nuevo integrante  
-
-                }          
-            
-            }else{
-
-
-                alert('[ERROR] Faltan datos o algunos de ellos son incorrectos');
-                $(retorno.id_tag).focus();
-            }
+                    alert('[ERROR] Faltan datos o algunos de ellos son incorrectos');
+                    
+                }
         
-            },
-
-        validate2: function(){
-
-            var validacion = {validate: false, id_tag: ""};
-
-              // aqui va el nombre de id del componente que fallo.. asi le das el focus
-
-                if($('#b1_nombre').val() != ""){
-
-                    validacion.validate = true;
-
-                }else{
-
-                    validacion.validate = false;
-                    validacion.id_tag="#b1_nombre";
-                }
-
-
-                if(($('#b1_edad').val() != "") && (validacion.id_tag == "")){
-
-                    validacion.validate = true;
-
-                }else{
-
-                    validacion.validate = false;
-                    validacion.id_tag="#b1_edad";
-                }
-
-                if(($('#b1_dni').val() != "" && (validacion.id_tag == "" ))){
-
-                    validacion.validate = true;
-
-                }else{
-
-                    if(encuesta.count >=1){
-
-                        validacion.validate = true;
-                    }else{
-
-                        validacion.validate = false;
-                        validacion.id_tag="";
-                    }
-                    
-                }
-
-
-
-                if($("#b1_afiliado").is(':visible')){
-
-                    if($('#b1_afiliado').val() != ""){
-
-                        validacion.validate = true;
-
-                    }else{
-
-                        validacion.validate = false;
-                        validacion.id_tag="#b1_afiliado";
-                        
-                    }
-                }                
- 
-            return  validacion;
-
             },
 
         parse: function(){
@@ -957,7 +895,6 @@ var bloque1= {    // Bloque General
                                 var valor = parseInt(cleanString(el.val().trim()));     // limpio la cadena de . ,  y espacios
                                 if(valor >=0  && valor<= limite ){  // ya tengo el limite  si esta fuera del valor lo pongo como en falta.
 
-
                                     el.parent().parent().removeClass('has-error')
                                     validacion = true; // validacion correcta
 
@@ -978,8 +915,10 @@ var bloque1= {    // Bloque General
                         
                 } // de otro modo es opcional
 
+                
             } );
-
+            
+            return validacion;  // retorno el resultado de todo el analisis
 
 
         }

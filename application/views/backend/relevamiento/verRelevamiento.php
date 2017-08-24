@@ -403,6 +403,8 @@
                                                             <div class="profile-user-info profile-user-info-striped">
 
                                                             <?php $respEnc = $this->Relevamiento_model->getRespEncuestado($idE);
+
+                                                            var_dump($respEnc->result());
                                                                       if($respEnc){//Revisar si aunque no sea Afiliado este bloque si debe ser relevado siempre
                                                                           foreach ($respEnc->result() as $respE){
                                                                               if($respE->idBloque == 2){
