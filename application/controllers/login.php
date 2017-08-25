@@ -53,7 +53,7 @@ class Login extends CI_Controller {
 						'nombreE' => $row->nombreE,
 						'apellidoE' => $row->apellidoE,
 						'nivel' => $row->idNivel,
-						'tipoEmpleado'=>$row->tipoEmpleado
+						'idTipoEmpleado'=>$row->idTipoEmpleado
         		      );
 
         	        $this->session->set_userdata('logged_in', $sess_array);

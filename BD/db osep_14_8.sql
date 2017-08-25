@@ -14,7 +14,7 @@ MySQL - 5.7.14 : Database - osep_db2
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 CREATE DATABASE /*!32312 IF NOT EXISTS*/`osep_db2` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci */;
 
-USE `osep_db2`;
+USE `osep_db3`;
 
 /*Table structure for table `bloque` */
 

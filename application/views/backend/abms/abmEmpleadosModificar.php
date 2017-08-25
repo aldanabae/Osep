@@ -64,7 +64,6 @@
 										</div>
 
 										<div class="form-group"> <!-- Empieza una linea del formulario -->
-
 											<label class="col-sm-3 control-label no-padding-right" for="telefono"> Teléfono </label>
 											<div class="col-sm-4">
 												<input class="form-control" id="telefono" name="telefono" placeholder="" value="<?= $emp->telefono;?>" type="tel">
@@ -72,7 +71,6 @@
 										</div>
 
 										<div class="form-group"> <!-- Empieza una linea del formulario -->
-
 											<label class="col-sm-3 control-label no-padding-right" for="email"> E-Mail </label>
 											<div class="col-sm-4">
 												<input class="form-control" id="email" name="email" placeholder="" value="<?= $emp->email;?>" type="tel">
@@ -81,65 +79,29 @@
 
 										<div class="form-group"> <!-- Empieza una linea del formulario -->
 											<label class="col-sm-3 control-label no-padding-right" for="direccion"> Dirección </label>
-
 											<div class="col-sm-4">
 												<input class="form-control" id="direccion" name="direccion" value="<?= $emp->direccion;?>" placeholder=""  type="text">
 		                					</div> 
 										</div>
 
-										<div class="form-group"> <!-- Empieza una linea del formulario -->
+										<div class="form-group"> <!-- Empieza linea del form con desplegable -->
 											<label class="col-sm-3 control-label no-padding-right" for="tipoEmpleado"> Tipo Empleado(*)</label>
+											<div class="col-sm-4">
+												<div>
+													<select class="form-control" aria-controls="dynamic-table" id="idTipoEmpleado" name="idTipoEmpleado" value="<?= $emp->nombreTipoE;?>">
+														<?php foreach ($tipoEmpleado->result() as $tipoE){
+       														
+    													?>
 
-												<div class="col-sm-4">
-													<div>
-														<select class="form-control" aria-controls="dynamic-table" id="tipoEmpleado" name="tipoEmpleado" value="<?= $emp->tipoEmpleado;?>">
-															<?php if($emp->tipoEmpleado=="Administrador"){		
-															?>
-																	<option value="<?=$emp->tipoEmpleado?>"><?=$emp->tipoEmpleado;?></option>
-																	<option value="Auditor">Auditor</option>
-																	<option value="Administrador Base de Datos">Administrador Base de Datos</option>
-																	<option value="Directivo">Directivo</option>
-																	<option value="Facilitador">Facilitador</option>
+    													<option value="<?=$tipoE->idTipoEmpleado?>" <?php if($tipoE->idTipoEmpleado == $emp->idTipoEmpleado){?> selected <?php }?>><?=$tipoE->nombreTipoE;?></option>
 
-															<?php	}elseif($emp->tipoEmpleado=="Auditor"){
-															?>
-																	<option value="<?=$emp->tipoEmpleado?>"><?=$emp->tipoEmpleado;?></option>
-																	<option value="Auditor">Administrador</option>
-																	<option value="Administrador Base de Datos">Administrador Base de Datos</option>
-																	<option value="Directivo">Directivo</option>
-																	<option value="Facilitador">Facilitador</option>
-
-															<?php	}elseif($emp->tipoEmpleado=="Facilitador"){
-															?>
-																	<option value="<?=$emp->tipoEmpleado?>"><?=$emp->tipoEmpleado;?></option>
-																	<option value="Auditor">Auditor</option>
-																	<option value="Auditor">Administrador</option>
-																	<option value="Administrador Base de Datos">Administrador Base de Datos</option>
-																	<option value="Directivo">Directivo</option>
-
-															<?php	}elseif($emp->tipoEmpleado=="Administrador Base de Datos"){
-															?>
-																	<option value="<?=$emp->tipoEmpleado?>"><?=$emp->tipoEmpleado;?></option>
-																	<option value="Auditor">Auditor</option>
-																	<option value="Auditor">Administrador</option>
-																	<option value="Directivo">Directivo</option>
-																	<option value="Facilitador">Facilitador</option>
-
-															<?php	}elseif($emp->tipoEmpleado=="Directivo"){
-															?>
-																	<option value="<?=$emp->tipoEmpleado?>"><?=$emp->tipoEmpleado;?></option>
-																	<option value="Auditor">Auditor</option>
-																	<option value="Auditor">Administrador</option>
-																	<option value="Administrador Base de Datos">Administrador Base de Datos</option>
-																	<option value="Facilitador">Facilitador</option>
-
-															<?php }		
-															?>
-														</select>
-													</div>
+														<?php
+															}
+														?>
+													</select>
 												</div>
+											</div>
 										</div>
-
 
 										<div class="form-group"> <!-- Empieza una linea del formulario -->
 											<label class="col-sm-3 control-label no-padding-right" for="convenio"> Convenio(*)</label>
@@ -152,7 +114,7 @@
 																	<option value="<?=$emp->convenio?>"><?=$emp->convenio;?></option>
 																	<option value="Contratado">Contratado</option>
 
-															<?php	}elseif($emp->tipoEmpleado=="Contratado"){
+															<?php	}elseif($emp->convenio=="Contratado"){
 															?>
 																	<option value="<?=$emp->convenio?>"><?=$emp->convenio;?></option>
 																	<option value="Planta Permanente">Planta Permanente</option>

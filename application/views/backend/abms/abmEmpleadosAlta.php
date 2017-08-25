@@ -73,11 +73,11 @@
 						                </div> 
 								</div>
 
-								<div class="form-group"> <!-- Empieza linea del form con desplegable -->
+								<!-- <div class="form-group"> 
 									<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tipo Empleado(*) </label>
 									<div class="col-sm-4">
 											<div>
-												<select class="form-control" id="tipoEmpleado" name="tipoEmpleado"><!-- Codigo de Combo con datos de la BD -->
+												<select class="form-control" id="tipoEmpleado" name="tipoEmpleado">
 													<option value="">--- Seleccione Tipo Empleado ---</option>
 													<option value="Auditor">Auditor</option>
 													<option value="Administrador">Administrador</option>
@@ -87,8 +87,30 @@
 												</select>
 											</div>
 									</div>
-								</div>
+								</div> -->
 
+								<div class="form-group"> 
+									<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tipo Empleado(*) </label>
+
+										<div class="col-sm-4">
+											<div>
+												<select class="form-control" id="tipoEmpleado" name="tipoEmpleado" placeholder="--- Seleccione Tipo Empleado ---">
+													<option value="">--- Seleccione Tipo Empleado ---</option>
+													<?php foreach ($tipoEmpleado->result() as $tipoE){
+                           														
+                        							?>
+
+													<option value="<?=$tipoE->idTipoEmpleado?>"><?=$tipoE->nombreTipoE;?></option>
+																					
+													<?php
+														}
+													?>
+
+												</select>
+											</div>									
+										</div>
+								</div>
+														
 								<div class="form-group"> <!-- Empieza linea del form con desplegable -->
 									<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tipo Convenio(*) </label>
 									<div class="col-sm-4">
@@ -97,9 +119,6 @@
 													<option value="">--- Seleccione Tipo Convenio ---</option>
 													<option value="Planta Permanente">Planta Permanente</option>
 													<option value="Contratado">Contratado</option>
-													<option value="3"></option>
-													<option value="4"></option>
-													<option value="5"></option>
 												</select>
 											</div>
 									</div>

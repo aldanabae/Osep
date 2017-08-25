@@ -17,30 +17,20 @@ class AbmEmpleados_model extends CI_Model {
 					'nroLegajo'=>$data['nroLegajo'],
 					'email'=>$data['email'],
 					'convenio'=>$data['convenio'],
-					'tipoEmpleado'=>$data['tipoEmpleado']));
+					'idTipoEmpleado'=>$data['tipoEmpleado']));
 		$codEmp = $this->db->insert_id();
 	}
 
 	function obtenerEmpleados($nroL){
 		if ($nroL == ''){
-			$this->db->select('empleado.idEmpleado,empleado.apellidoE,
-								empleado.nombreE,empleado.direccion,
-								empleado.telefono,empleado.nroLegajo,
-								empleado.convenio,empleado.email,
-								empleado.dni,empleado.tipoEmpleado'
-								);
 			$this->db->from('empleado');
+			$this->db->join('tipo_empleado', 'tipo_empleado.idTipoEmpleado = empleado.idTipoEmpleado', 'left');
 			$query = $this->db->get();
 
 		}else{
-			$this->db->select('empleado.idEmpleado,empleado.apellidoE,
-				empleado.nombreE,empleado.direccion,
-				empleado.telefono,empleado.nroLegajo,
-				empleado.convenio,empleado.email,
-				empleado.dni,empleado.tipoEmpleado'
-				);
 			$this->db->where('empleado.nroLegajo', $nroL);
 			$this->db->from('empleado');
+			$this->db->join('tipo_empleado', 'tipo_empleado.idTipoEmpleado = empleado.idTipoEmpleado', 'left');
 			$query = $this->db->get();
 		}
 		
@@ -53,10 +43,11 @@ class AbmEmpleados_model extends CI_Model {
 							empleado.nombreE,empleado.direccion,
 							empleado.telefono,empleado.nroLegajo,
 							empleado.convenio,empleado.email,
-							empleado.dni,empleado.tipoEmpleado'
+							empleado.dni,empleado.idTipoEmpleado'
 							);
 		$this->db->where('empleado.idEmpleado', $codE);
 		$this->db->from('empleado');
+		$this->db->join('tipo_empleado', 'tipo_empleado.idTipoEmpleado = empleado.idTipoEmpleado', 'left');
 		$query = $this->db->get();
 
 		if ($query->num_rows() > 0) return $query;
@@ -69,11 +60,11 @@ class AbmEmpleados_model extends CI_Model {
 							empleado.nombreE,empleado.direccion,
 							empleado.telefono,empleado.nroLegajo,
 							empleado.convenio,empleado.email,
-							empleado.dni,empleado.tipoEmpleado'
+							empleado.dni,empleado.idTipoEmpleado'
 							);
 		if($tipo != null){
 
-			$this->db->where('empleado.tipoEmpleado', $tipo);
+			$this->db->where('empleado.idTipoEmpleado', $tipo);
 
 		}
 		$this->db->from('empleado');
@@ -83,8 +74,6 @@ class AbmEmpleados_model extends CI_Model {
 		if ($query->num_rows() > 0) return $query;
 		else return false;
 	}
-
-
 
 	function actualizarEmpleado($codE, $data){
 		$datos = array(
@@ -96,11 +85,17 @@ class AbmEmpleados_model extends CI_Model {
 			'nroLegajo'=>$data['nroLegajo'],
 			'email'=>$data['email'],
 			'convenio'=>$data['convenio'],
-			'tipoEmpleado'=>$data['tipoEmpleado']
+			'idTipoEmpleado'=>$data['idTipoEmpleado']
 		);
 
 		$this->db->where('empleado.idEmpleado', $codE);
 		$query = $this->db->update('empleado', $datos);
+	}
+
+	function getTipoEmpleado(){
+		$query = $this->db->get('tipo_empleado');
+		if ($query->num_rows() > 0) return $query;
+		else return false;
 	}
 
 	function eliminarEmpleado($codE){
