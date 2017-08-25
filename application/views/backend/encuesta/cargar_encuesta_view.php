@@ -343,8 +343,8 @@
 					<label for="inputPassword" class="control-label col-xs-6">¿Tiene alguna discapacidad? (*) </label>
 					<div class="col-xs-6">
 						<select class="form-control" name= "34" id= "b1_disc" required>
-						<option value="1">SI</option>
 						<option value="2">NO</option>
+						<option value="1">SI</option>
 						</select>
 					</div>
 				</div>
@@ -362,8 +362,8 @@
 						<label for="inputPassword" class="control-label col-xs-6">¿Tiene algún afiliado a cargo que no viva en este domicilio?</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "35" id= "b1_extra" required>
-							<option value="1">SI</option>
-							<option value="2" selected ="true">NO</option>
+								<option value="2" selected ="true">NO</option>
+								<option value="1">SI</option>
 							</select>
 						</div>
 					</div>
@@ -1635,7 +1635,7 @@
         <div class="form-group" id="btn_encuesta">
             <div class="col-xs-6">
 
-                 <input type="reset" class="btn btn-info" value="Nuevo integrante" id="btn_nuevo"> 
+                 <input type="button" class="btn btn-info" value="Nuevo integrante" id="btn_nuevo"> 
                 <!-- <input type="submit" class="btn btn-info" value="Nuevo integrante" id="btn_nuevo__"> -->
             </div>
 

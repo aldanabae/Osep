@@ -172,9 +172,9 @@
                 dataType: 'json',
             success: success,
             
-                error: function(xhr,status) { 
+            error: function(xhr,status) { 
                 console.log(xhr+"    "+status);
-                result ='fail';
+                alert('Existio un error en el almacenamiento, intente nuevamente');
             },
             beforeSend: function(){
                 // Code to display spinner
