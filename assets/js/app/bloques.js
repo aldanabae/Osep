@@ -146,7 +146,38 @@ var bloque1= {    // Bloque General
             bloque3b.estado= false // unificar
             $('body, html').animate({
             scrollTop: '0px'
-        }, 300);
+            }, 300);
+
+            // aqui reseteo todos los campos habiltados o no..
+            
+            $('#add_encuesta').find('input, select, textarea, input:checkbox').filter(function(index){
+                
+                console.log($(this).prop('type'));
+
+                if($(this).prop('type') == 'number'  || $(this).prop('type') == 'text' || $(this).prop('type') == 'textarea' ){
+
+                    $(this).val('');
+
+                }else{
+
+                    if( $(this).prop('type') == 'select-one' ){
+
+                        $(this).val($(this).children('option:first').val()); // dejo los select en seleccionar
+
+                    }else{
+
+                        $(this).checked=0;  // dejo los checkbox  deseleccionados
+
+                    }
+
+
+                }
+
+            })
+
+
+
+
         
         },
 
@@ -165,12 +196,26 @@ var bloque1= {    // Bloque General
                 
         },
 
-        init: function(){
+        init: function(){  // inicializa los bloques al inicio
 
             bloque_btn.hide();     // botonera abajo 
             encuesta.init();        // inicializo la encuesta
             var integrantes = parseInt($('#integrantes').val());
             bloque1.mapeoEncuestados(integrantes)  // analizo y grafico el mapa de encuestados
+            bloque9.estado=false;
+            bloque1.reset_block(); // actualizo los bloques
+            bloque1.conf.update();
+
+        },
+
+        reset_block: function(){
+
+            bloque7.estado= false;
+            bloque6.estado= false;
+            bloque5.estado= false;
+            bloque4.estado= false;
+            bloque3a.estado= false;
+            bloque3b.estado= false;
             bloque3a.init();
             bloque3b.init();
             bloque4.init();
@@ -214,11 +259,6 @@ var bloque1= {    // Bloque General
 
 
             //============= carga del mapa de encuestados
-
-
-            
-
-            bloque1.conf.update();
 
         },
 
@@ -538,15 +578,67 @@ var bloque1= {    // Bloque General
                             bloque1.conf.update();
                             
 
-                    });                     
+                    });      
+                    //======================================
 
-                    $( "#btn_bloques" ).on(
+                    $( "#btn_nuevo" ).on(
                         'click', function(){
-                            //bloque1.init();
-                            bloque1.action_block();
+
+                            var retorno= validations('#add_encuesta');  // devuelve la validacion de campos + id del focus
+                            
+                            if(retorno){
+
+                                bloque1.parse(); // guardo los datos
+                                bloque1.reset_block(); // reseteo los campos y bloques  
+                                bloque1.mapeoEncuestados();  // mapeo los encuestados
+                                // bloque1.reset_conf();
+                                // bloque1.init();
+
+                            }else{
+
+                                alert('[ERROR] complete los datos marcados con rojo');
+                                
+
+                            }
+
+                            
+                    }); 
+
+
+                    $( "#btn_bloques" ).on(   // genera los bloques 
+                        'click', function(){
+
+                            var retorno= validations('#bloque_1');  // devuelve la validacion de campos + id del focus
+                            
+                            if(retorno){
+
+                                bloque1.action_block();
+
+                            }else{
+
+                                alert('[ERROR] complete los datos marcados con rojo');
+                                
+                            }
+                            
+                    });  
+
+                    $( "#btn_continuar" ).on(   // genera los bloques 
+                        'click', function(){
+
+                            $('#add_encuesta').submit()
                             
                     });   
 
+
+
+
+
+
+
+
+
+
+                    //=====================================================
 
                         // DNI  encuestado
                     $( "#b1_dni" ).on(
@@ -575,11 +667,9 @@ var bloque1= {    // Bloque General
 
                                 encuesta.titular= true
 
-
                             }else{
 
                                 encuesta.titular= false
-
                             }
 
                             bloque1.conf.update();
@@ -590,10 +680,7 @@ var bloque1= {    // Bloque General
                         'change, click', function(){
 
                             bloque1.conf.pariente= $(this).val();
-
                             bloque1.conf.update();
-                            
-
                     });
 
 
@@ -677,26 +764,9 @@ var bloque1= {    // Bloque General
                     }); 
                         
 
-                    $( "#btn_nuevo" ).on(
-                        'click', function(){
-                            bloque1.parse();
-                            // encuesta.count ++;
-                            // bloque1.reset_conf();
-                            // bloque1.init();
-                            
-                    });  
-
-                        
-
-
             },
 
         action_block : function(){
-
-            var retorno= bloque1.validate('#add_encuesta');  // devuelve la validacion de campos + id del focus
-
-
-                if(retorno){
 
                     if(bloque1.conf.osep == "1"){
 
@@ -716,6 +786,7 @@ var bloque1= {    // Bloque General
 
                                             bloque3a.show_me();   // bebes
                                             bloque3b.hide_me();   // niños 
+
                                         }else{
 
                                             bloque3b.show_me();   // niños
@@ -793,10 +864,7 @@ var bloque1= {    // Bloque General
 
                         // compruebo encuestados y cantidad de personas
 
-
-
-
-                        if(encuesta.count < encuesta.integrantes){
+                        if(encuesta.count < (encuesta.integrantes - 1)){
                             
                             $('#btn_nuevo').show();  // muestro el boton nuevo integrante
                             $('#btn_continuar').hide();     // oculto  nuevo continuar 
@@ -807,13 +875,7 @@ var bloque1= {    // Bloque General
                             $('#btn_continuar').show();     // muestro continuar
                             
                         }        
-                
-                }else{
 
-                    alert('[ERROR] Faltan datos o algunos de ellos son incorrectos');
-                    
-                }
-        
             },
 
         parse: function(){
@@ -823,13 +885,16 @@ var bloque1= {    // Bloque General
             delete tmp[0];delete tmp[1];delete tmp[2];delete tmp[3];delete tmp[4];delete tmp[6];delete tmp[7];
 
             var datos = JSON.encode(parseData(tmp, true));
-            var resp = setAjax(datos, 'encuestaAjax', function(){
+            var resp = setAjax(datos, 'encuestaAjax', function(message){
+
+                
+                            alert('integrante almacenado correctamente '+ message.mensaje );
                             encuesta.count ++;
                             $('#hdnCantidad_encuestados').val(encuesta.count)
                             bloque1.reset_conf();
                             bloque1.init();
 
-            }) // envio el arreglo de datos mas el endPoint
+                }) // envio el arreglo de datos mas el endPoint
             
 
             },
@@ -861,9 +926,9 @@ var bloque1= {    // Bloque General
         validate: function( div){  // metodo de validacion generico
 
 
-            var validacion = false;
+            var validacion = false;  // variable de retorno para devolver
             var componentes= [];    // declaro un arreglo vacio
-            var retorno = false;    // variable de retorno para devolver
+            var red_css        = false; // si hay algun imput en rojo esta variable queda en verdadero
 
             $(div).find('input, select, textarea, input:checkbox').filter(function(index){
 
@@ -877,16 +942,15 @@ var bloque1= {    // Bloque General
            
             $.each(componentes,function (key, el){
 
-                if(el.prop('required')){  // si el campo es requierido  entonces debo validarlo 
+                if(el.prop('required')  ){  // si el campo es requierido  entonces debo validarlo 
 
 
                         if(el.val() == "" || el.val() == null  ){ // si es requerido  y esta vacio o null  debomarcarlo como que esta en falta
 
-                            console.log(el.prop('type'))
-        
                             el.parent().parent().addClass('has-error')
                             validacion = false; // validacion incorrecta
-        
+                            red_css = true;     // estoy colocando una clase de error
+
                         }else{    // si no esta vacio ni null devo verificar el tipo de input y su limite
 
                             if(el.prop('type') == 'number'){   // si es de tipo number  entonces debo ver el limite 
@@ -902,6 +966,7 @@ var bloque1= {    // Bloque General
 
                                     el.parent().parent().addClass('has-error')
                                     validacion = false;  // validadcion incorrecta
+                                    red_css = true;     // estoy colocando una clase de error
                                 }
 
                             }else{  // si no esta vacio y no es numerico  entonces esta correcto  el valor
@@ -918,7 +983,13 @@ var bloque1= {    // Bloque General
                 
             } );
             
-            return validacion;  // retorno el resultado de todo el analisis
+            if( validacion && !red_css )  {  // retorno el resultado de todo el analisis
+
+                return true;
+            }else{
+
+                return false;
+            }
 
 
         }
@@ -1995,13 +2066,7 @@ var bloque9 ={       // laboral
             }
             
         } ,
-        parse: function(){
 
-            var tmp = $(bloque6.template.html).find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
-
-            return parseData(tmp);
-
-        },
 
         reset: function(){
 
@@ -2020,20 +2085,49 @@ function submitEncuesta(){
              */
             // validar 
             //e.preventDefault();
-            if(true){
 
-                
-                // test
-                    bloque1.parse()
-                    return true
 
-                
+            // $( "#btn_continuar" ).on(
+            //     'click', function(){
+            //         /** validar los datos de los bloques desplegados
+            //          * guardar el encusstado como siempre
+            //          * continuar con el submit del formulario
+            //          */
+            //         var retorno= validations('#add_encuesta');  // devuelve la validacion de campos 
+            //         //e.preventDefault();
+            //         if(retorno){
 
-            }else{
+            //                 bloque1.parse();
 
-                alert('error error en los datos')
+            //                 $('#add_encuesta').submit();
 
-                return false
-            }
+                        
+
+            //         }else{
+
+            //             alert('error error en los datos')
+
+            //             return false
+            //         }
+
+            // });  
+
+                    /** validar los datos de los bloques desplegados
+                     * guardar el encusstado como siempre
+                     * continuar con el submit del formulario
+                     */
+                    var retorno= validations('#add_encuesta');  // devuelve la validacion de campos 
+                    //e.preventDefault();
+                    if(retorno){
+
+                            bloque1.parse();
+                            return true
+
+                    }else{
+
+                        alert('error error en los datos')
+
+                        return false
+                    }
             
     }; 

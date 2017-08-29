@@ -101,11 +101,8 @@ class CargarEncuesta extends CI_Controller{
 
                         }
 
+                        
                         $valor['departamento']= (array) $this->abmVisitas_model->getDepartamentos()->result(); // cargo los departamentos ....todos
-
-
-
-
                         $this->load->view("backend/encuesta/cargar_encuesta_inicio_view",$valor);
                         $this->load->view('backend/footer');
                         $this->load->view('backend/encuesta/script_js', $js);
@@ -152,6 +149,12 @@ class CargarEncuesta extends CI_Controller{
                                         $id_tlocalidad = $this->input->post('idLocalidad');
                                         $calle = $this->input->post('b0_calle');
                                         $numero = $this->input->post('numero');
+
+                                        if(is_null($numero)){  // compruebo si viene sin numero tildado en el formulario                
+                                                // si tiene -1 es calle sin numero
+                                                $numero= "-1";
+                                        }
+                                        
                                         $barrio = $this->input->post('barrio');
                                         $manzana = $this->input->post('barrio_m');
                                         $casa = $this->input->post('barrio_c');
@@ -161,6 +164,7 @@ class CargarEncuesta extends CI_Controller{
                                         $observaciones = $this->input->post('observaciones');
                                         $idRelev = $this->input->post('hdnIdrelev');  // recibo el id de relevamiento si existe en caso de edicion
                                         $idDireccion = $this->input->post('hdnIdDirec'); // recibo el id de la direccion si existe
+
 
                                         $op_embarazo = $_POST['embarazo'];
                                         $options['cantidad']= $_POST['cantidad'];
@@ -302,12 +306,14 @@ class CargarEncuesta extends CI_Controller{
                     $data['nivel'] = $this->Bienvenida_model->obtenerNivel($session_data['nivel']);
 
                    
-                    
+           
+             
                     $continuar = $this->input->post('continuar');
                     $resp['id_numRel']= $this->input->post('hdnid_numRel');
                     $resp['id_relevamiento']= $this->input->post('hdnid_relevamiento');
 
-                    if($continuar == 'continuar' && $resp['id_numRel'] != null  && $resp['id_relevamiento'] != null )
+
+                    if( $resp['id_numRel'] != null  && $resp['id_relevamiento'] != null )
                     {
 
                         $this->load->view('backend/header');
