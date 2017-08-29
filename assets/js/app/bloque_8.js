@@ -37,12 +37,17 @@ var cargar = {
 
 
                 event.preventDefault();
-                spnr.init();
-                    setTimeout(function () {
-                                spnr.stop();
-                                cargar.parse();
-                                $("#btn_guardar").hide()
-                    }, 2500);
+                if(validations('#add_encuesta')){
+
+                    spnr.init();
+                        setTimeout(function () {
+                                    
+                                    cargar.parse();
+                                    $("#btn_guardar").hide()
+                                    spnr.stop();
+                        }, 2000);
+
+                }
 
             });
             

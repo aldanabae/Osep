@@ -130,22 +130,6 @@
     }
 
 
-    function validateBlock( lista){
-
-        /**
-         * Aqui hay que recorrrer cada bloque y accionar el metodo validacion
-         * recorda añadir un parametro de Title para identificar el modulo donde salta la validacion
-         * 
-         * 
-         * 
-         * 
-         * 
-         */
-
-
-    }
-
-
 
     function cleanArray( actual ){   // limpiar arreglos de elementos vacios
         var newArray = new Array();
@@ -170,7 +154,10 @@
             url: url, 
             data: parametros, 
                 dataType: 'json',
-            success: success,
+            success: function(json){
+
+                success(json);
+            },
             
             error: function(xhr,status) { 
                 console.log(xhr+"    "+status);
@@ -247,7 +234,78 @@
         return cadena;
     }
 
+    //validations
 
+    function validations(div){  // metodo de validacion generico
+        
+        
+                    var validacion = false;  // variable de retorno para devolver
+                    var componentes= [];    // declaro un arreglo vacio
+                    var red_css        = false; // si hay algun imput en rojo esta variable queda en verdadero
+        
+                    $(div).find('input, select, textarea, input:checkbox').filter(function(index){
+        
+                        // filtro todos los elementos que eisten en el div seleccionado
+                        if($(this).is(':visible')){ 
+        
+                            componentes.push($(this));  // guardo los que estan visibles en un arreglo para analizar despues
+                        }
+                    })
+        
+                   
+                    $.each(componentes,function (key, el){
+        
+                        if(el.prop('required')  ){  // si el campo es requierido  entonces debo validarlo 
+        
+        
+                                if(el.val() == "" || el.val() == null  ){ // si es requerido  y esta vacio o null  debomarcarlo como que esta en falta
+        
+                                    el.parent().parent().addClass('has-error')
+                                    validacion = false; // validacion incorrecta
+                                    red_css = true;     // estoy colocando una clase de error
+        
+                                }else{    // si no esta vacio ni null devo verificar el tipo de input y su limite
+        
+                                    if(el.prop('type') == 'number'){   // si es de tipo number  entonces debo ver el limite 
+        
+                                        var limite = el.data('limit')          // traigo el limite establecido
+                                        var valor = parseInt(cleanString(el.val().trim()));     // limpio la cadena de . ,  y espacios
+                                        if(valor >=0  && valor<= limite ){  // ya tengo el limite  si esta fuera del valor lo pongo como en falta.
+        
+                                            el.parent().parent().removeClass('has-error')
+                                            validacion = true; // validacion correcta
+        
+                                        }else{ //no cumple con el parametro  lo pongo rojo
+        
+                                            el.parent().parent().addClass('has-error')
+                                            validacion = false;  // validadcion incorrecta
+                                            red_css = true;     // estoy colocando una clase de error
+                                        }
+        
+                                    }else{  // si no esta vacio y no es numerico  entonces esta correcto  el valor
+        
+        
+                                        el.parent().parent().removeClass('has-error')
+                                        validacion = true; // la validacion es correcta
+                                    }
+                
+                                }
+                                
+                        } // de otro modo es opcional
+        
+                        
+                    } );
+                    
+                    if( validacion && !red_css )  {  // retorno el resultado de todo el analisis
+        
+                        return true;
+                    }else{
+        
+                        return false;
+                    }
+        
+        
+                }
 
     //set Spinjs
 

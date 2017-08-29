@@ -26,7 +26,7 @@
 <input type="hidden" name="edades"  id="edades" value="<?php echo @$string_edad; ?>">
 
 
-<form id="add_encuesta" action="<?php echo(base_url('encuesta/cargarEncuesta/cargabloques_final'));  ?>" method="post" onsubmit="return submitEncuesta();">
+<form id="add_encuesta" action="<?php echo(base_url('encuesta/cargarEncuesta/cargabloques_final'));  ?>" method="post"  onsubmit = "return submitEncuesta();">
 
 
 <!--<div class="container">   contenedor principal -->
@@ -153,7 +153,7 @@
 				<div class="form-group" id= "b1_div_afiliado">
 					<label for="inputPassword" class="control-label col-xs-6">Número de Afiliado</label>
 						<div class="col-xs-2">
-							<input type="text" name="b1_afiliado"  class="form-control" placeholder="" id="b1_afiliado" required>
+							<input type="number" name="b1_afiliado"  class="form-control" placeholder="" data-limit= '99999999'  id="b1_afiliado" required>
 						</div>
 
 						<div class="col-xs-1 text-center">
@@ -1631,19 +1631,19 @@
 </div>	 <!-- Cierre row -->
 
 
-        <br>
-        <div class="form-group" id="btn_encuesta">
-            <div class="col-xs-6">
+			<br>
+			<div class="form-group" id="btn_encuesta">
+				<div class="col-xs-6">
 
-                 <input type="button" class="btn btn-info" value="Nuevo integrante" id="btn_nuevo"> 
-                <!-- <input type="submit" class="btn btn-info" value="Nuevo integrante" id="btn_nuevo__"> -->
-            </div>
+					<input type="button" class="btn btn-info" value="Guardar integrante" id="btn_nuevo"> 
+					<!-- <input type="submit" class="btn btn-info" value="Nuevo integrante" id="btn_nuevo__"> -->
+				</div>
 
-            <div class="col-xs-6 text-right">
-                <input type="submit" class="btn btn-primary" value="continuar" name="continuar" id="btn_continuar">
+				<div class="col-xs-6 text-right">
+					<input type="button" class="btn btn-primary" value="continuar" name="continuar" id="btn_continuar">
 
-            </div>		
-        </div>
+				</div>		
+			</div>
 
 
 

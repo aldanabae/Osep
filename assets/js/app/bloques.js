@@ -578,17 +578,39 @@ var bloque1= {    // Bloque General
                             bloque1.conf.update();
                             
 
-                    });                     
+                    });      
+                    //======================================
 
-                    $( "#btn_bloques" ).on(
+                    $( "#btn_nuevo" ).on(
                         'click', function(){
 
-                            
-                            var retorno= bloque1.validate('#bloque_1');  // devuelve la validacion de campos + id del focus
+                            var retorno= validations('#add_encuesta');  // devuelve la validacion de campos + id del focus
                             
                             if(retorno){
 
-                                bloque1.reset_block();  // reseteo los bloques para auto generar
+                                bloque1.parse(); // guardo los datos
+                                bloque1.reset_block(); // reseteo los campos y bloques  
+                                bloque1.mapeoEncuestados();  // mapeo los encuestados
+                                // bloque1.reset_conf();
+                                // bloque1.init();
+
+                            }else{
+
+                                alert('[ERROR] complete los datos marcados con rojo');
+                                
+
+                            }
+
+                            
+                    }); 
+
+
+                    $( "#btn_bloques" ).on(   // genera los bloques 
+                        'click', function(){
+
+                            var retorno= validations('#bloque_1');  // devuelve la validacion de campos + id del focus
+                            
+                            if(retorno){
 
                                 bloque1.action_block();
 
@@ -598,8 +620,25 @@ var bloque1= {    // Bloque General
                                 
                             }
                             
+                    });  
+
+                    $( "#btn_continuar" ).on(   // genera los bloques 
+                        'click', function(){
+
+                            $('#add_encuesta').submit()
+                            
                     });   
 
+
+
+
+
+
+
+
+
+
+                    //=====================================================
 
                         // DNI  encuestado
                     $( "#b1_dni" ).on(
@@ -725,32 +764,6 @@ var bloque1= {    // Bloque General
                     }); 
                         
 
-                    $( "#btn_nuevo" ).on(
-                        'click', function(){
-
-                            var retorno= bloque1.validate('#add_encuesta');  // devuelve la validacion de campos + id del focus
-                            
-                            
-                            if(retorno){
-
-                                bloque1.parse();
-                                // encuesta.count ++;
-                                // bloque1.reset_conf();
-                                // bloque1.init();
-
-                            }else{
-
-                                alert('[ERROR] complete los datos marcados con rojo');
-                                
-
-                            }
-
-                            
-                    });  
-
-                        
-
-
             },
 
         action_block : function(){
@@ -851,10 +864,7 @@ var bloque1= {    // Bloque General
 
                         // compruebo encuestados y cantidad de personas
 
-
-
-
-                        if(encuesta.count < encuesta.integrantes){
+                        if(encuesta.count < (encuesta.integrantes - 1)){
                             
                             $('#btn_nuevo').show();  // muestro el boton nuevo integrante
                             $('#btn_continuar').hide();     // oculto  nuevo continuar 
@@ -875,13 +885,16 @@ var bloque1= {    // Bloque General
             delete tmp[0];delete tmp[1];delete tmp[2];delete tmp[3];delete tmp[4];delete tmp[6];delete tmp[7];
 
             var datos = JSON.encode(parseData(tmp, true));
-            var resp = setAjax(datos, 'encuestaAjax', function(){
+            var resp = setAjax(datos, 'encuestaAjax', function(message){
+
+                
+                            alert('integrante almacenado correctamente '+ message.mensaje );
                             encuesta.count ++;
                             $('#hdnCantidad_encuestados').val(encuesta.count)
                             bloque1.reset_conf();
                             bloque1.init();
 
-            }) // envio el arreglo de datos mas el endPoint
+                }) // envio el arreglo de datos mas el endPoint
             
 
             },
@@ -934,8 +947,6 @@ var bloque1= {    // Bloque General
 
                         if(el.val() == "" || el.val() == null  ){ // si es requerido  y esta vacio o null  debomarcarlo como que esta en falta
 
-                            console.log(el.prop('type'))
-        
                             el.parent().parent().addClass('has-error')
                             validacion = false; // validacion incorrecta
                             red_css = true;     // estoy colocando una clase de error
@@ -2074,20 +2085,49 @@ function submitEncuesta(){
              */
             // validar 
             //e.preventDefault();
-            if(true){
 
-                
-                // test
-                    bloque1.parse()
-                    return true
 
-                
+            // $( "#btn_continuar" ).on(
+            //     'click', function(){
+            //         /** validar los datos de los bloques desplegados
+            //          * guardar el encusstado como siempre
+            //          * continuar con el submit del formulario
+            //          */
+            //         var retorno= validations('#add_encuesta');  // devuelve la validacion de campos 
+            //         //e.preventDefault();
+            //         if(retorno){
 
-            }else{
+            //                 bloque1.parse();
 
-                alert('error error en los datos')
+            //                 $('#add_encuesta').submit();
 
-                return false
-            }
+                        
+
+            //         }else{
+
+            //             alert('error error en los datos')
+
+            //             return false
+            //         }
+
+            // });  
+
+                    /** validar los datos de los bloques desplegados
+                     * guardar el encusstado como siempre
+                     * continuar con el submit del formulario
+                     */
+                    var retorno= validations('#add_encuesta');  // devuelve la validacion de campos 
+                    //e.preventDefault();
+                    if(retorno){
+
+                            bloque1.parse();
+                            return true
+
+                    }else{
+
+                        alert('error error en los datos')
+
+                        return false
+                    }
             
     }; 

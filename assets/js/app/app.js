@@ -151,361 +151,368 @@ $(function() {
 
 var filtro ={
 		
-		data:{			// todos los datos que se mueven en el control
-			valor: '1', // no se ve
-			edades:[],		// guardo un array de edades
-			estado: false,
-			limit: "",       // fija un limite de integrantes si viven 5  no pueden haber mas de 5 embarazadas
-			barrio: false,	// si completa barrio  o no debe condicionar 
-			calle: false,   //si completa calle 
-			numero: false,  // y si completa numero  barrio  y MC  no es necesario
-			tel_enc: ""
-		},
-		
-		init: function(){
-			// inicio del modulo  condicional a si esta abierto el relev
-			var valor= $('#hdnloc').val();
+			data:{			// todos los datos que se mueven en el control
+				valor: '1', // no se ve
+				edades:[],		// guardo un array de edades
+				estado: false,
+				limit: "",       // fija un limite de integrantes si viven 5  no pueden haber mas de 5 embarazadas
+				barrio: false,	// si completa barrio  o no debe condicionar 
+				calle: false,   //si completa calle 
+				numero: false,  // y si completa numero  barrio  y MC  no es necesario
+				tel_enc: ""
+			},
+			
+			init: function(){
+				// inicio del modulo  condicional a si esta abierto el relev
+				var valor= $('#hdnloc').val();
 
-			if(valor == ""){
-				filtro.bindComponent();
+				filtro.bindComponent();  // bindeo eventos de los componentes
 
-			}else{
-				filtro.bindComponent();
-				filtro.refresh();
-			}
+				if(valor != ""){ // si es distinto de vacio recreo los datos
 
-			filtro.update();
-
-		},
-		
-		refresh: function(){     // actualiza los datos en el modelito segun lo que trae de la bd  si tiene abierto el relevameinto
-
-				//cargo edades en el array
-				var edades = $('#hdnedades').val();
-				var embarazo = $('#hdnembarazo').val();
-				var departamento = $('#hdndep').val();
-				var localidad = $('#hdnloc').val();
-				var cantidad = $('#cantidad').val();
-				//=====================================
-				filtro.data.edades= edades.split(",");
-
-				//modifico variable de barrio
-				var barrio = $('#barrio').val();
-				if(barrio != ""){
-					filtro.data.barrio= true;
-				}else{
-					filtro.data.barrio= false;
+					filtro.refresh();
 				}
 
-				//modifico variable de calle
-				var calle = $('#calle').val();
+				filtro.update(); //Actualizo los datos
 
-				if(calle != ""){
-					filtro.data.calle= true;
-				}else{
-					filtro.data.calle= false;
-				}	
+			},
+		
+			refresh: function(){     // actualiza los datos en el modelito segun lo que trae de la bd  si tiene abierto el relevameinto
 
-				//modifico variable de numero
-				var numero = $('#numero').val();
+					//cargo edades en el array
+					var edades = $('#hdnedades').val();
+					var embarazo = $('#hdnembarazo').val();
+					var departamento = $('#hdndep').val();
+					var localidad = $('#hdnloc').val();
+					var cantidad = $('#cantidad').val();
+					//=====================================
+					filtro.data.edades= edades.split(",");
 
-				if(numero != ""){
-					filtro.data.numero= true;
-				}else{
-					filtro.data.numero= false;
-				}	
+					//modifico variable de barrio
+					var barrio = $('#barrio').val();
+					if(barrio != ""){
+						filtro.data.barrio= true;
+					}else{
+						filtro.data.barrio= false;
+					}
+
+					//modifico variable de calle
+					var calle = $('#calle').val();
+
+					if(calle != ""){
+						filtro.data.calle= true;
+					}else{
+						filtro.data.calle= false;
+					}	
+
+					//modifico variable de numero
+					var numero = $('#numero').val();
+
+					if(numero != "" ){
+
+						if( numero == "-1"){
+
+							filtro.data.numero= false;
+							$('#numero').val("");
+							$('#numero').attr('disabled', 'true');
+							$('#b0_sin_numero').prop('checked', 'true')
+
+						}else{
+
+							filtro.data.numero= true;
+
+						}
+
+					}else{
+						filtro.data.numero= false;
+					}	
 
 
-				// modifico el estado y valor 0 es si   1 es no embarazadas
+					// modifico el estado y valor 0 es si   1 es no embarazadas
 
-				filtro.data.valor= embarazo;
+					filtro.data.valor= embarazo;
 
-				if(embarazo == "0"){
+					if(embarazo == "0"){
 
-					filtro.data.estado= true;
+						filtro.data.estado= true;
 
-				}else{
+					}else{
 
-					filtro.data.estado= false;
-				}
+						filtro.data.estado= false;
+					}
 
-				// modifico cantidad de integrantes
-					filtro.data.limit= cantidad;
+					// modifico cantidad de integrantes
+						filtro.data.limit= cantidad;
+					
+					// peticion ajax a localidades
+					$("#departamento option[value=" + departamento +"]").attr("selected", true); // seteo el select departamento
+					cargarLocalidades(departamento , localidad);
+
+					$("#embarazo option[value=" + embarazo +"]").attr("selected", true); // seteo el select de embarazadas
+					
 				
-				// peticion ajax a localidades
-				$("#departamento option[value=" + departamento +"]").attr("selected", true); // seteo el select departamento
-				cargarLocalidades(departamento , localidad);
+			},
 
-				$("#embarazo option[value=" + embarazo +"]").attr("selected", true); // seteo el select de embarazadas
+
+			template: '#filter_embarazo', // marco el id del filtro que debo desplegar
+
+			update: function(){
+
+				// aqui va a eliminar  o agregar las edades en una lista  y  los hidden 
 				
-			
-		},
+				if(this.data.estado == true && this.data.valor == '0'){
+
+					this.show_me(); // si esta en verdadero 
+					// recorro el arreglo colocando los numeros de edades
+					// creo el campo hidden
+					$('#list_edades').unbind("click");
+						var listHtml = ""    // pongo el String de html en blanco
+					
+						$.each( this.data.edades , function (index, valor){
 
-
-		template: '#filter_embarazo', // marco el id del filtro que debo desplegar
-
-		update: function(){
-
-			// aqui va a eliminar  o agregar las edades en una lista  y  los hidden 
-			
-			if(this.data.estado == true && this.data.valor == '0'){
-
-				this.show_me(); // si esta en verdadero 
-				// recorro el arreglo colocando los numeros de edades
-				// creo el campo hidden
-				$('#list_edades').unbind("click");
-					var listHtml = ""    // pongo el String de html en blanco
-				
-					$.each( this.data.edades , function (index, valor){
-
-						
-						listHtml+= '<li>'+ valor +' años <a href="#" data-index = "'+ index +'"><span class="glyphicon glyphicon-remove"></span></a></li>';
-						listHtml+= '<input type="hidden" name="edades_emb[]"  value="'+ valor +'">'; // el hidden 
-
-					})                            
-                                            
-					$('#list_edades').html(listHtml);
-					$('#edad_embarazo').val("");
-					$('#list_edades a').on('click', function(event){ 
-
-						var datos = $(this).data("index"); // tomo el atributo data de la lista
-						//alert('click en el enlace'+ datos);
-						event.preventDefault();
-						filtro.data.edades.splice(datos,1)
-						filtro.update();
-					});
-
-
-
-			}else{
-
-				this.hide_me();
-				$('#edad_embarazo').val("");
-				this.data.edades.length=0;
-
-			}
-
-
-			if (filtro.data.calle && filtro.data.numero){
-
-				$("#barrio , #barrio_c , #barrio_m ").attr('required', false);
-
-			}else{
-
-
-				$("#barrio , #barrio_c , #barrio_m ").attr('required', true);
-				$("#calle , #numero ").attr('required', false);
-
-			}
-
-
-			// actualizo los campos de manzana y casa  
-			if(filtro.data.barrio ){
-
-				$('#manzana').show()
-				// $("#barrio , #barrio_c , #barrio_m ").attr('required', true);
-				// //  deshabilito el require de calle y nomero
-				// $("#calle , #numero ").attr('required', false);
-
-			}else{
-
-				$('#manzana').hide()
-				//$("#manzana :input").val("")
-				// $("#barrio , #barrio_c , #barrio_m ").attr('required', false);
-				// //  deshabilito el require de calle y nomero
-				// $("#calle , #numero ").attr('required', true);
-
-			}
-
-
-			if (filtro.data.tel_enc != ""){
-
-				$('#tel_super').val(filtro.data.tel_enc)
-			}
-
-
-		},
-
-
-		bindComponent: function(){
-
-                    $( "#embarazo" ).on(
-                        'change, click', function(){
-
-							var datoSelect = $(this).val();
-                           
-								if(datoSelect == '0'){ // es un si
-
-									filtro.data.estado= true;
-
-								}else{  // es un no
-
-									filtro.data.estado= false;
-								}
-
-							filtro.data.valor= datoSelect;
-                            filtro.update();
-                    });
-
-                    $( "#btn_nueva_edad" ).on(
-                        'click', function(){
-							var edad = $('#edad_embarazo').val();
-							var limite = filtro.data.limit;
-
-							if ((edad != "" && edad >= 11 ) && (filtro.data.edades.length < limite )){     // filtra edad a partir de 11 años
-
-								filtro.data.edades.push(edad) ;
-								filtro.update();	
-
-							}
-
-					});
-						
-                    $( "#departamento" ).on( 'change', function(){  // evento para cargar localidades 
-
-						var idDpto = $('#departamento').val();
-						cargarLocalidades(idDpto);
-
-                    });
-
-                    $( "#tel_titular").on(
-                        'focusout', function(){
-							var telefono = $('#tel_titular').val();
-
-							if (telefono != "" ){     // filtra edad a partir de 11 años
-
-								filtro.data.tel_enc = telefono ;
-								filtro.update();	
-
-							}
-
-                    });
-
-                    $( "#cantidad").on(
-                        'focusout', function(){
-
-							cantidad = parseInt($('#cantidad').val());
-							filtro.data.limit = cantidad ;
-							filtro.update();	
-
-                    });
-
-                    $( "#cantidad").on(
-                        'keyup', function(){
-							var valor = parseInt($('#cantidad').val());
-							if(valor >20 || valor <= 0 ){
-
-								alert('el numero de integrantes esta fuera del limite estipulado')
-								$('#cantidad').val("");
-								$('#cantidad').focus();
-							}
-
-                    });				
-
-                    $( "#barrio" ).on(
-                        'keyup', function(){
-
-							var barrio = $('#barrio').val();
-
-								if (barrio != ""){     // filtra edad a partir de 11 años
-
-									filtro.data.barrio = true ;
-										
-								}else{
-
-									filtro.data.barrio = false ;
-
-
-
-								}
-
-							filtro.update();
-
-                    });
-
-                    $( "#calle" ).on(
-                        'keyup', function(){  // evento para actualizar si coloco barrio 
-
-							var calle = $('#calle').val();
-
-								if (calle != ""){  
-
-									filtro.data.calle = true ;
-										
-								}else{
-
-									filtro.data.calle = false ;
-
-								}
-
-							filtro.update();
-
-                    });
-
-                    $( "#numero" ).on(
-                        'keyup', function(){  // evento para actualizar si coloco barrio 
-
-							var numero = $('#numero').val();
-
-							if (numero != ""){  
-
-								filtro.data.numero = true ;
-									
-							}else{
-
-								filtro.data.numero = false ;
-
-							}
-
-							filtro.update();
-                    });
-                    $( "#b0_sin_numero" ).on(
-                        'change', function(){  // evento para colocar calle sin numero
 							
-							$('#numero').val('');
-							if ($('#b0_sin_numero').prop('checked')){  
+							listHtml+= '<li>'+ valor +' años <a href="#" data-index = "'+ index +'"><span class="glyphicon glyphicon-remove"></span></a></li>';
+							listHtml+= '<input type="hidden" name="edades_emb[]"  value="'+ valor +'">'; // el hidden 
 
-								filtro.data.numero = true ;
-								$('#numero').attr('disabled', 'true');
-									
-							}else{
+						})                            
+												
+						$('#list_edades').html(listHtml);
+						$('#edad_embarazo').val("");
+						$('#list_edades a').on('click', function(event){ 
 
-								$('#numero').removeAttr("disabled");
-								filtro.data.numero = false ;
-
-							}
-
+							var datos = $(this).data("index"); // tomo el atributo data de la lista
+							//alert('click en el enlace'+ datos);
+							event.preventDefault();
+							filtro.data.edades.splice(datos,1)
 							filtro.update();
-                    });
-                    $( "#nom_facilitador" ).on(
-						'change', function(){  // evento para redireccionar la url con el nombre
-							var valor = $(this).val();
-							var segment= 'encuesta/cargarEncuesta/'+ valor;
-							var url = $("#localPath").val();
-							location.href = url + segment;
-
-                    });
+						});
 
 
 
+				}else{
+
+					this.hide_me();
+					$('#edad_embarazo').val("");
+					this.data.edades.length=0;
+
+				}
 
 
-        },
+				if (filtro.data.calle && filtro.data.numero){
+
+					$("#barrio , #barrio_c , #barrio_m ").attr('required', false);
+
+				}else{
+
+
+					$("#barrio , #barrio_c , #barrio_m ").attr('required', true);
+					$("#calle , #numero ").attr('required', false);
+
+				}
+
+
+				// actualizo los campos de manzana y casa  
+				if(filtro.data.barrio ){
+
+					$('#manzana').show()
+					// $("#barrio , #barrio_c , #barrio_m ").attr('required', true);
+					// //  deshabilito el require de calle y nomero
+					// $("#calle , #numero ").attr('required', false);
+
+				}else{
+
+					$('#manzana').hide()
+					//$("#manzana :input").val("")
+					// $("#barrio , #barrio_c , #barrio_m ").attr('required', false);
+					// //  deshabilito el require de calle y nomero
+					// $("#calle , #numero ").attr('required', true);
+
+				}
+
+
+				if (filtro.data.tel_enc != ""){
+
+					$('#tel_super').val(filtro.data.tel_enc)
+				}
+
+
+			},
+
+
+			bindComponent: function(){
+
+						$( "#embarazo" ).on(
+							'change, click', function(){
+
+								var datoSelect = $(this).val();
+							
+									if(datoSelect == '0'){ // es un si
+
+										filtro.data.estado= true;
+
+									}else{  // es un no
+
+										filtro.data.estado= false;
+									}
+
+								filtro.data.valor= datoSelect;
+								filtro.update();
+						});
+
+						$( "#btn_nueva_edad" ).on(
+							'click', function(){
+								var edad = $('#edad_embarazo').val();
+								var limite = filtro.data.limit;
+
+								if ((edad != "" && edad >= 11 ) && (filtro.data.edades.length < limite )){     // filtra edad a partir de 11 años
+
+									filtro.data.edades.push(edad) ;
+									filtro.update();	
+
+								}
+
+						});
+							
+						$( "#departamento" ).on( 'change', function(){  // evento para cargar localidades 
+
+							var idDpto = $('#departamento').val();
+							cargarLocalidades(idDpto);
+
+						});
+
+						$( "#tel_titular").on(
+							'focusout', function(){
+								var telefono = $('#tel_titular').val();
+
+								if (telefono != "" ){     // filtra edad a partir de 11 años
+
+									filtro.data.tel_enc = telefono ;
+									filtro.update();	
+
+								}
+
+						});
+
+						$( "#cantidad").on(
+							'focusout', function(){
+
+								cantidad = parseInt($('#cantidad').val());
+								filtro.data.limit = cantidad ;
+								filtro.update();	
+
+						});
+
+						$( "#cantidad").on(
+							'keyup', function(){
+								var valor = parseInt($('#cantidad').val());
+								if(valor >20 || valor <= 0 ){
+
+									alert('el numero de integrantes esta fuera del limite estipulado')
+									$('#cantidad').val("");
+									$('#cantidad').focus();
+								}
+
+						});				
+
+						$( "#barrio" ).on(
+							'keyup', function(){
+
+								var barrio = $('#barrio').val();
+
+									if (barrio != ""){     // filtra edad a partir de 11 años
+
+										filtro.data.barrio = true ;
+											
+									}else{
+
+										filtro.data.barrio = false ;
 
 
 
-        show_me: function(){
+									}
 
-            // Mostrar el bloque
-            $( filtro.template ).show();
-            filtro.data.estado= true;
-        },
+								filtro.update();
 
-        hide_me: function(){
-            // ocultar el bloque
-            $( filtro.template ).hide();
-            filtro.data.estado= false;
-        }, 
+						});
+
+						$( "#calle" ).on(
+							'keyup', function(){  // evento para actualizar si coloco barrio 
+
+								var calle = $('#calle').val();
+
+									if (calle != ""){  
+
+										filtro.data.calle = true ;
+											
+									}else{
+
+										filtro.data.calle = false ;
+
+									}
+
+								filtro.update();
+
+						});
+
+						$( "#numero" ).on(
+							'keyup', function(){  // evento para actualizar si coloco barrio 
+
+								var numero = $('#numero').val();
+
+								if (numero != ""){  
+
+									filtro.data.numero = true ;
+										
+								}else{
+
+									filtro.data.numero = false ;
+
+								}
+
+								filtro.update();
+						});
+						$( "#b0_sin_numero" ).on(
+							'change', function(){  // evento para colocar calle sin numero
+								
+								$('#numero').val('');
+								if ($('#b0_sin_numero').prop('checked')){  
+
+									filtro.data.numero = true ;
+									$('#numero').attr('disabled', 'true');
+										
+								}else{
+
+									$('#numero').removeAttr("disabled");
+									filtro.data.numero = false ;
+
+								}
+
+								filtro.update();
+						});
+						$( "#nom_facilitador" ).on(
+							'change', function(){  // evento para redireccionar la url con el nombre
+								var valor = $(this).val();
+								var segment= 'encuesta/cargarEncuesta/'+ valor;
+								var url = $("#localPath").val();
+								location.href = url + segment;
+
+						});
+			},
+
+
+
+			show_me: function(){
+
+				// Mostrar el bloque
+				$( filtro.template ).show();
+				filtro.data.estado= true;
+			},
+
+			hide_me: function(){
+				// ocultar el bloque
+				$( filtro.template ).hide();
+				filtro.data.estado= false;
+			}, 
 
 
 

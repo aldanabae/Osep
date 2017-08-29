@@ -5,14 +5,20 @@
 			<input type="hidden" id = "hdnid_numRel" name="hdnid_numRel" value="<?php echo($id_numRel);  ?>">
 			<input type="hidden" id = "hdnid_relevamiento" name="hdnid_relevamiento" value="<?php echo($id_relevamiento);  ?>">
 
-			
 		<form id="add_encuesta" action="<?php //echo(site_url('encuesta/cargarEncuesta/cargabloques'));  ?>" method="post">
 
 
 			<div class="row form-horizontal" id="bloque_8">      <!-- Bloque 8 Vivienda y habitat -->
 						<div class="panel panel-default">
 						
-							<div class="panel-heading orange">Bloque vivienda y entorno</div>
+							<div class="panel-heading orange">
+								<div class="col-xs-10">
+									
+									<p>Bloque vivienda y entorno</p>				
+								</div>
+
+								
+							</div>
 								<div class="panel-body" id="b8_spinner">
 
 									<blockquote>
