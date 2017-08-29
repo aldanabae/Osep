@@ -91,7 +91,7 @@
 								<td><?= $tabla->telefono;?></td>
 								<td><?= $tabla->email;?></td>
 								<td><?= $tabla->convenio;?></td>
-								<td><?= $tabla->tipoEmpleado;?></td><!-- Nombre via de administracion no codigo -->
+								<td><?= $tabla->nombreTipoE;?></td><!-- Nombre via de administracion no codigo -->
 								
 								<td>
 									<div class="hidden-sm hidden-xs action-buttons">
@@ -176,7 +176,7 @@
 
 										if( $contador == $limiteTabla )    break;
 
-											if($tabla->tipoEmpleado == "Facilitador"){
+											if($tabla->nombreTipoE == "Facilitador"){
 							?>
 
 							<tr>
@@ -190,7 +190,7 @@
 								<td><?= $tabla->telefono;?></td>
 								<td><?= $tabla->email;?></td>
 								<td><?= $tabla->convenio;?></td>
-								<td><?= $tabla->tipoEmpleado;?></td><!-- Nombre via de administracion no codigo -->
+								<td><?= $tabla->nombreTipoE;?></td><!-- Nombre via de administracion no codigo -->
 								
 								<td>
 									<div class="hidden-sm hidden-xs action-buttons">
@@ -277,7 +277,7 @@
 
 										if( $contador == $limiteTabla )    break;
 
-											if($tabla->tipoEmpleado == "Auditor"){
+											if($tabla->nombreTipoE == "Auditor"){
 							?>
 
 							<tr>
@@ -291,7 +291,7 @@
 								<td><?= $tabla->telefono;?></td>
 								<td><?= $tabla->email;?></td>
 								<td><?= $tabla->convenio;?></td>
-								<td><?= $tabla->tipoEmpleado;?></td><!-- Nombre via de administracion no codigo -->
+								<td><?= $tabla->nombreTipoE;?></td><!-- Nombre via de administracion no codigo -->
 								
 								<td>
 									<div class="hidden-sm hidden-xs action-buttons">
@@ -378,7 +378,7 @@
 
 										if( $contador == $limiteTabla )    break;
 
-											if($tabla->tipoEmpleado == "Directivo"){
+											if($tabla->nombreTipoE == "Directivo"){
 							?>
 
 							<tr>
@@ -392,7 +392,7 @@
 								<td><?= $tabla->telefono;?></td>
 								<td><?= $tabla->email;?></td>
 								<td><?= $tabla->convenio;?></td>
-								<td><?= $tabla->tipoEmpleado;?></td><!-- Nombre via de administracion no codigo -->
+								<td><?= $tabla->nombreTipoE;?></td><!-- Nombre via de administracion no codigo -->
 								
 								<td>
 									<div class="hidden-sm hidden-xs action-buttons">
@@ -479,7 +479,7 @@
 
 										if( $contador == $limiteTabla )    break;
 
-											if($tabla->tipoEmpleado == "Administrador"){
+											if($tabla->nombreTipoE == "Administrador"){
 							?>
 
 							<tr>
@@ -493,7 +493,7 @@
 								<td><?= $tabla->telefono;?></td>
 								<td><?= $tabla->email;?></td>
 								<td><?= $tabla->convenio;?></td>
-								<td><?= $tabla->tipoEmpleado;?></td><!-- Nombre via de administracion no codigo -->
+								<td><?= $tabla->nombreTipoE;?></td><!-- Nombre via de administracion no codigo -->
 								
 								<td>
 									<div class="hidden-sm hidden-xs action-buttons">
@@ -580,7 +580,7 @@
 
 										if( $contador == $limiteTabla )    break;
 
-											if($tabla->tipoEmpleado == "Administrador Base de Datos"){
+											if($tabla->nombreTipoE == "Administrador Base de Datos"){
 							?>
 
 							<tr>
@@ -594,7 +594,7 @@
 								<td><?= $tabla->telefono;?></td>
 								<td><?= $tabla->email;?></td>
 								<td><?= $tabla->convenio;?></td>
-								<td><?= $tabla->tipoEmpleado;?></td><!-- Nombre via de administracion no codigo -->
+								<td><?= $tabla->nombreTipoE;?></td><!-- Nombre via de administracion no codigo -->
 								
 								<td>
 									<div class="hidden-sm hidden-xs action-buttons">

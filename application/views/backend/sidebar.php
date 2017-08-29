@@ -110,7 +110,12 @@
 				<?php 
 					if ($nivel){							
 						foreach($nivel->result() as $niv){
-      						if ($niv->descripNivel == "Administrador Base de Datos" || $niv->descripNivel == "Facilitador" || $niv->descripNivel == "Administrador" || $niv->descripNivel == "Auditor" || $niv->descripNivel == "Creador Encuesta" || $niv->descripNivel == "Directivo"){
+      						if ($niv->descripNivel == "Administrador Base de Datos" || 
+      							$niv->descripNivel == "Facilitador" || 
+      							$niv->descripNivel == "Administrador" || 
+      							$niv->descripNivel == "Auditor" || 
+      							$niv->descripNivel == "Creador Encuesta" || 
+      							$niv->descripNivel == "Directivo"){
 				?>
 
 				<li class="">
