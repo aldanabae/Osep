@@ -149,7 +149,7 @@ var bloque1= {    // Bloque General
             
             $('#add_encuesta').find('input, select, textarea, input:checkbox').filter(function(index){
                 
-                console.log($(this).prop('type'));
+                //console.log($(this).prop('type'));
 
                 if($(this).prop('type') == 'number'  || $(this).prop('type') == 'text' || $(this).prop('type') == 'textarea' ){
 

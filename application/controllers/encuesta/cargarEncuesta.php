@@ -90,7 +90,7 @@ class CargarEncuesta extends CI_Controller{
                                 // si es otro tipo de usuario trae la lista de todos los fac
 
                                 //todo revisar
-                                $listado = $this->abmEmpleados_model->obtenerEmpleadoByTipo("Facilitador");
+                                $listado = $this->abmEmpleados_model->obtenerEmpleadoByTipo("5");  // listado por facilitador   el 5  es facilitador
 
                                 foreach($listado->result() as $lista){
 
@@ -357,7 +357,7 @@ class CargarEncuesta extends CI_Controller{
                         $data['nombreE'] = $session_data['nombreE'];
                         $data['apellidoE'] = $session_data['apellidoE'];
                         $data['nivel'] = $session_data['nivel'];
-                        $data['tipoEmpleado']=$session_data['tipoEmpleado'];
+                        $data['tipoEmpleado']=$session_data['idTipoEmpleado'];
 
                         $this->session->set_flashdata('username', $data);
                         $this->session->set_flashdata('nombreE', $data);
@@ -458,7 +458,7 @@ class CargarEncuesta extends CI_Controller{
                         $data['nombreE'] = $session_data['nombreE'];
                         $data['apellidoE'] = $session_data['apellidoE'];
                         $data['nivel'] = $session_data['nivel'];
-                        $data['tipoEmpleado']=$session_data['tipoEmpleado'];
+                        $data['tipoEmpleado']=$session_data['idTipoEmpleado'];
 
                         $this->session->set_flashdata('username', $data);
                         $this->session->set_flashdata('nombreE', $data);

@@ -333,8 +333,8 @@
 					<label for="inputPassword" class="control-label col-xs-6">¿Padece alguna enfermedad crónica? (*) </label>
 					<div class="col-xs-6">
 						<select class="form-control" name= "33" id= "b1_cronica" required>
-						<option value="1">SI</option>
 						<option value="2" selected ="true">NO</option>
+						<option value="1">SI</option>
 						</select>
 					</div>
 				</div>
