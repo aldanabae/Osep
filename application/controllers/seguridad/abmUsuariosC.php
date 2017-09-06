@@ -6,9 +6,9 @@ class AbmUsuariosC extends My_Controller{
 
 		$this->load->helper('form');
 		$this->load->helper('url');
-		$this->load->model('seguridad/abmUsuarios_model');
-		$this->load->model('seguridad/abmNiveles_model');
-		$this->load->model('bienvenida_model'); 
+		$this->load->model('seguridad/AbmUsuarios_model');
+		$this->load->model('seguridad/AbmNiveles_model');
+		$this->load->model('Bienvenida_model'); 
 		$this->load->library('form_validation');  
 	}
 

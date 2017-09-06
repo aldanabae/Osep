@@ -6,21 +6,25 @@ class Login extends CI_Controller {
 	function __construct(){
     	parent::__construct();
       $this->load->helper('url');
-    	$this->load->model('login_model','',TRUE);
+    	$this->load->model('Login_model','',TRUE);
   	} 
 
 	public function index(){
+
 		if($this->session->userdata('logged_in')){
 
       	redirect('bienvenidaC', 'refresh');
     }else{
 
+		
         $this->load->helper(array('form'));
         $this->load->view('login_view');
 		}
 	}	
 
 	function verificarLogin(){
+
+		
     	//This method will have the credentials validation
     	$this->load->library('form_validation');
 
@@ -32,7 +36,7 @@ class Login extends CI_Controller {
           $this->load->view('login_view');
     	}else{    		
           //Go to private area
-        redirect('bienvenidaC', 'refresh');
+        	redirect('bienvenidaC', 'refresh');
     	}
 
     }
@@ -41,7 +45,7 @@ class Login extends CI_Controller {
     	//Field validation succeeded.  Validate against database
     	$username = $this->input->post('username');
     	//query the database
-    	$result = $this->login_model->login($username, $password);
+    	$result = $this->Login_model->login($username, $password);
   
     	if($result){
           $sess_array = array();
@@ -83,7 +87,8 @@ class Login extends CI_Controller {
       }else{
           //If no session, redirect to login page
           redirect('login', 'refresh');
-      }
+	  }
+	  
     }
 
 
