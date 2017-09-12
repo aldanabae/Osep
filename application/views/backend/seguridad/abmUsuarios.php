@@ -58,9 +58,10 @@
 					<tbody>
 
 						<?php //Limitar los datos segun lo que trae el select de cantidad de lineas a mostrar
+
 							if ($tablaEmpleados){
-							$contador = 0;
-									
+
+								$contador = 0;
 								foreach($tablaEmpleados->result() as $tabla){
 									if( $contador == $limiteTabla )    break;
 						?>
@@ -71,16 +72,18 @@
 									<?php echo $tabla->apellidoE; ?> <?php echo $tabla->nombreE; ?>
 								</label>
 							</td>
+
+							
 							<td><?= $tabla->nroLegajo;?></td>
 							<td><?= $tabla->dni;?></td>
 							<td><?= $tabla->telefono;?></td>	
 							<td><?= $tabla->email;?></td>	
-							<td><?= $tabla->tipoEmpleado;?></td>
+							<td><?= $tabla->nombreTipoE; ?></td>
 							
 							<td>
 								<div class="hidden-sm hidden-xs action-buttons text-center">
 						
-										<?php if(!$this->abmUsuarios_model->tieneUsuario($tabla->idEmpleado)){?>			
+										<?php if(!$this->AbmUsuarios_model->tieneUsuario($tabla->idEmpleado)){?>			
 										
 										<a class="orange" href="<?php echo base_url()?>seguridad/abmUsuariosC/cargarNuevoUsuario/<?= $tabla->idEmpleado;?>">
 											<i class="ui-icon ace-icon fa fa-plus-circle orange bigger-130"></i> Asignar Usuario
@@ -188,6 +191,8 @@
 							$contador = 0;
 									
 								foreach($tablaUsuarios->result() as $tabla){
+
+									
 									if( $contador == $limiteTabla )    
 										break;
 						?>

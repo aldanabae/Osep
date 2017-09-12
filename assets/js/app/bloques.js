@@ -833,6 +833,7 @@ var bloque1= {    // Bloque General
                                     if((edad == 65 &&  responde) && ( bloque1.conf.embarazo == "2") ){
 
                                         bloque4.show_me();     // mujeres
+                                        bloque4.update();
 
                                     }
 
@@ -840,7 +841,7 @@ var bloque1= {    // Bloque General
                                     if(((edad >= 15 && edad <= 70) )  && ( bloque1.conf.embarazo == "2") ){
 
                                             bloque4.show_me();     // mujere
-
+                                            bloque4.update();
                                     }else{
 
                                             bloque4.hide_me();     // mujeres

@@ -4,15 +4,15 @@ class AbmNivelesC extends My_Controller{
 		parent::__construct();
 		$this->load->helper('form');
 		$this->load->helper('url');
-		$this->load->model('seguridad/abmNiveles_model');
-		$this->load->model('bienvenida_model');
+		$this->load->model('seguridad/AbmNiveles_model');
+		$this->load->model('Bienvenida_model');
 		$this->load->library('form_validation');   
 	}
 	function index(){
 		if (!isset($_POST['CargarTabla'])){
 			$data['nombresNiveles'] = '';
 			$data['limiteTabla'] = 1000;
-			$data['tablaNiveles'] = $this->abmNiveles_model->obtenerNiveles($data['nombresNiveles']);	
+			$data['tablaNiveles'] = $this->AbmNiveles_model->obtenerNiveles($data['nombresNiveles']);	
 		}
 		
     	$nombreVista="backend/seguridad/abmNiveles";
@@ -21,7 +21,7 @@ class AbmNivelesC extends My_Controller{
 	function mostrarTablaNiveles(){
 		$data['nombresNiveles'] = $this->input->post('nombresNiveles');
 		$data['limiteTabla'] = $this->input->post('longitudTabla');
-		$data['tablaNiveles'] = $this->abmNiveles_model->obtenerNiveles($data['nombresNiveles']);
+		$data['tablaNiveles'] = $this->AbmNiveles_model->obtenerNiveles($data['nombresNiveles']);
 		$nombreVista="backend/seguridad/abmNiveles";
 		$this->cargarVista($nombreVista,$data);
 	}
@@ -42,14 +42,14 @@ class AbmNivelesC extends My_Controller{
        		 redirect('/seguridad/abmNivelesC/cargarNuevoNivel','refresh');
         } else {
             if (isset($_POST['GuardarEnDB'])){
-			$this->abmNiveles_model->crearNivel($data);
+			$this->AbmNiveles_model->crearNivel($data);
 			}
 			redirect('/seguridad/abmNivelesC','refresh');
         }	
 	}
 	function editarNivel(){
 		$data['codN'] = $this->uri->segment(4);
-		$data['nivel1'] = $this->abmNiveles_model->obtenerNivel($data['codN']);
+		$data['nivel1'] = $this->AbmNiveles_model->obtenerNivel($data['codN']);
       	$nombreVista="backend/seguridad/abmNivelesModificar";
 		$this->cargarVista($nombreVista,$data);
 	}	
@@ -65,14 +65,14 @@ class AbmNivelesC extends My_Controller{
        		 redirect('/seguridad/abmNivelesC/editarNivel/'.$data['codN'],'refresh');
         } else {
            	if (isset($_POST['ActualizarEnDB'])){
-				$this->abmNiveles_model->actualizarNivel($this->uri->segment(4),$datos);
+				$this->AbmNiveles_model->actualizarNivel($this->uri->segment(4),$datos);
 			}
 			redirect('/seguridad/abmNivelesC','refresh');
         }
 	}
 	function borrarNivel(){
 		$codN = $this->uri->segment(4);
-		$this->abmNiveles_model->eliminarNivel($codN);
+		$this->AbmNiveles_model->eliminarNivel($codN);
 	
 		redirect('/seguridad/abmNivelesC','refresh');		
 	}

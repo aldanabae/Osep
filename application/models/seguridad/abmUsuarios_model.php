@@ -48,16 +48,20 @@ class AbmUsuarios_model extends CI_Model {
 			$this->db->select('empleado.idEmpleado,empleado.apellidoE,
 				empleado.nombreE,empleado.direccion,empleado.telefono,
 				empleado.dni,empleado.nroLegajo,empleado.email, 
-				empleado.convenio,empleado.tipoEmpleado'
+				empleado.convenio,empleado.idTipoEmpleado, tipo_empleado.nombreTipoE'
 				);
+
+
 			$this->db->from('empleado');
+			$this->db->join('tipo_empleado', 'empleado.idTipoEmpleado = tipo_empleado.idTipoEmpleado');
+			
 			$query = $this->db->get();
 
 		}else{
-			$this->db->select(empleado.idEmpleado,empleado.apellidoE,
+			$this->db->select('empleado.idEmpleado,empleado.apellidoE,
 				empleado.nombreE,empleado.direccion,empleado.telefono,
 				empleado.dni,empleado.nroLegajo,empleado.email,
-				empleado.convenio,empleado.tipoEmpleado
+				empleado.convenio,empleado.idTipoEmpleado'
 				);
 			$this->db->where('empleado.nroLegajo', $nroLegajo);
 			$this->db->from('empleado');
