@@ -235,7 +235,9 @@ class cargarEncuesta extends CI_Controller{
                                         //aqui debo verificar con el id del relevamiento cuantos integrantes hay relevados   y cuantos integrantes hay en total
 
                                         $cantidad_encuestados= $this->Relevamiento_model->getCantidadEncuestados($id_relevamiento);
+                                        $respondiente= $this->Relevamiento_model->getRespondiente($id_relevamiento);
                                         $options['cantidad_encuestados']= $cantidad_encuestados;
+                                        $options['respondiente']= $respondiente;
                 
 
                                         // si la cantidad de encuestados es igual a la cantidad de integrantes relevados 

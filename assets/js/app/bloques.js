@@ -47,7 +47,20 @@ var encuesta ={
                 encuesta.integrantes = parseInt( $('#integrantes').val());
                 encuesta.count= parseInt($('#hdnCantidad_encuestados').val());
 
-                if (encuesta.count == 0){
+                var respondiente= parseInt($('#hdnrespondiente').val());
+
+                if(respondiente == 2){  //debo mostrar el check de responsable de encuesta
+
+                    $('#id_responde').show();
+
+                }else{
+    
+                    $('#id_responde').hide();
+                    
+                }
+
+
+                if (encuesta.count == 0){    
 
                     encuesta.responde = false ;
 
@@ -56,6 +69,18 @@ var encuesta ={
                     encuesta.responde = true ;
 
                 }
+
+                if(encuesta.count > 0){
+                    
+                    $('#afiliado_externo').hide()
+    
+                }else{
+    
+                    $('#afiliado_externo').show()
+    
+                }
+
+
                     
 
             },
@@ -301,35 +326,9 @@ var bloque1= {    // Bloque General
             }
 
 
-            // verifico si tiene osep
 
 
-            if(bloque1.conf.osep == '1'){
 
-                $( "#b1_div_afiliado" ).show("slow");   // muestra el txt de numero de afiliado
-                $("#b1_cober").html( '');               // blanquea el select
-                    $.each(bloque1.data.tOsep.si, function(key, value){  // carga el select con el Si
-
-                        $("#b1_cober").append( '<option value="'+ value.id_resp +'">'+ value.respuesta +'</option>');
-
-                    });
-                
-                //$("#afiliado_externo").show();
-
-
-            }else{
-                
-                $("#b1_div_afiliado" ).hide("slow"); // oculta el txt de numero de afiliado
-                $("#b1_cober").html('');              // blanquea el select
-                $.each(bloque1.data.tOsep.no, function(key, value){   // carga el select
-
-                    $("#b1_cober").append( '<option value="'+ value.id_resp +'">'+ value.respuesta +'</option>');
-
-                });                
-                
-                //$("#afiliado_externo").hide(); 
-
-            }
 
             // verifico nivel educativo
 
@@ -548,9 +547,32 @@ var bloque1= {    // Bloque General
                         'change, click', function(){
 
                             bloque1.conf.osep= $(this).val();
+                            // verifico si tiene osep
+                            
+                            if(bloque1.conf.osep == '1'){
+                                
+                                    $( "#b1_div_afiliado" ).show("slow");   // muestra el txt de numero de afiliado
+                                    $("#b1_cober").html( '');               // blanquea el select
+                                        $.each(bloque1.data.tOsep.si, function(key, value){  // carga el select con el Si
+
+                                            $("#b1_cober").append( '<option value="'+ value.id_resp +'">'+ value.respuesta +'</option>');
+
+                                        });
+
+                                }else{
+                                    
+                                    $("#b1_div_afiliado" ).hide("slow"); // oculta el txt de numero de afiliado
+                                    $("#b1_cober").html('');              // blanquea el select
+                                    $.each(bloque1.data.tOsep.no, function(key, value){   // carga el select
+
+                                        $("#b1_cober").append( '<option value="'+ value.id_resp +'">'+ value.respuesta +'</option>');
+
+                                    });                
+
+                            }
                             bloque1.conf.update();
 
-                        });
+                    });
 
                         // embarazada  si o no
                     $( "#b1_embarazo" ).on(
