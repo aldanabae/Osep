@@ -50,66 +50,82 @@
 
 														<div class="row">
 
+															<div class="col-sm-12">
+															<h4>Como acceder al sistema de carga de encuestas</h4>
+
+															<hr/>
+															</div><!-- /.col -->
+
+																		<div class="col-sm-6 ">
+																			<h2>Paso 1</h2>
+																			<p>
+																				
+																				Ingresa a tu navegador , en la barra de direcciones coloca la direccion suministrada por el administrador.
+
+																				Completa los campos con los datos de acceso suministrados por el area de administracion.
+	
+																			</p>
+
+																		</div>
+																		<div class="col-sm-6 ">
+																			<a href="#" class="thumbnail">
+																			<img class="img-responsive"  src="<?php echo base_url('assets/images/helps/Screenshot_4.jpg') ?>" />
+																			</a>
+																		</div>
+
+
+																		<div class="col-sm-6 ">
+																			<h2>Paso 2</h2>
+																			<p>
+																				
+																				En la barra de  menú de la izquierda debes acceder al enlace >> Cargar relevamiento realizado
+																			
+
+	
+																			</p>
+
+																		</div>
+																		<div class="col-sm-6 ">
+																			<a href="#" class="thumbnail">
+																			<img class="img-responsive"  src="<?php echo base_url('assets/images/helps/Screenshot_4a.jpg') ?>" />
+																			</a>
+																		</div>
 
 
 
+																		<div class="col-sm-6 ">
+																			<h2>Paso 1</h2>
+																			<p>
+																				<ul class="generic-list">
+																					<li class="item">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur, numquam?</li>
+																					<li class="item">Voluptatum, corporis? Ut amet sequi dicta voluptatum totam fugiat dolorem.</li>
+																					<li class="item">Placeat reiciendis architecto dicta repellendus? Atque sequi iste placeat cupiditate!</li>
+																					<li class="item">Atque veritatis ratione sed officia veniam ullam suscipit? Sapiente, corrupti.</li>
+																				</ul>
+	
+																			</p>
 
-																<div class="col-sm-12">
-																		<h4>Como acceder al sistema de encuestas</h4>
-								
-																		<hr />
-
-																		<h2>Paso 1</h2>
-																		<p>
-																			Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.
-																		</p>
-																		<h2>Paso 1</h2>
-																		<p>
-																			Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.
-																		</p>
-																		<h2>Paso 1</h2>
-																		<p>
-																			Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.
-																		</p>
-																		<h3>h3. Heading 3</h3>
-																		<p>
-																			Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.
-																		</p>
-																		<h4>h4. Heading 4</h4>
-																		<h5>h5. Heading 5</h5>
-																		<h6>h6. Heading 6</h6>
-																	</div><!-- /.col -->
+																		</div>
+																		<div class="col-sm-6 ">
+																			<a href="#" class="thumbnail">
+																			<img class="img-responsive"  src="<?php echo base_url('assets/images/helps/carga_relev.jpg') ?>" />
+																			</a>
+																		</div>																		
 
 
 
-
-
-
-
+														</div><!-- /.col -->
 
 
 														</div>
 
-																
-
-
-
-
-
-
-
-
-
-
-
-
-													</div>
+													
 												<!-- fin tabla uno -->
 												<div id="tab2" class="tab-pane">
 													<p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.</p>
 													<p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
 
-													<?php var_dump($modelo);  ?>
+												
 												</div>
 
 												<div id="tab3" class="tab-pane">
@@ -445,8 +461,6 @@
 																				<address>
 																					<strong>Full Name</strong>
 							
-																					<br />
-																					<a href="mailto:#">first.last@example.com</a>
 																				</address>
 																			</div>
 																		</div>
