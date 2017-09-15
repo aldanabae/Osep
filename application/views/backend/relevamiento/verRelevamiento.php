@@ -1,8 +1,5 @@
 
 
-
-
-
 <div class="main-content">
     <div class="main-content-inner">
         <div class="page-content">
@@ -182,14 +179,6 @@
       <?php     }
             }
       ?> 
-
-
-
-
-
-
-
-
 
 
 
@@ -404,7 +393,7 @@
 
                                                             <?php $respEnc = $this->Relevamiento_model->getRespEncuestado($idE);
 
-                                                            var_dump($respEnc->result());
+                                                            
                                                                       if($respEnc){//Revisar si aunque no sea Afiliado este bloque si debe ser relevado siempre
                                                                           foreach ($respEnc->result() as $respE){
                                                                               if($respE->idBloque == 2){

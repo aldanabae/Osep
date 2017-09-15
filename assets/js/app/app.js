@@ -1,155 +1,149 @@
 
-$(function() {
+	$(function() {
 
-    $('.date-picker').datepicker({   // dispara Datepicker
-        autoclose: true,
-        todayHighlight: true
-    })
+		$('.date-picker').datepicker({   // dispara Datepicker
+			autoclose: true,
+			todayHighlight: true
+		})
 
 
-    $('[data-toggle="popover"]').popover(); 
-
-	
-	
-	    if ( localStorage.getItem('general')){
-            //localStorage.removeItem("general");
-			
-			//alert('hay datos debo cargarlos en el form');
-			var local = localStorage.getItem('general')
-			//console.log(local);
-        }else{
-			
-			//alert('debo cargar una nueva instancia de general')
-			
-		}
-
-    $("#encuesta_ini").submit(function () { 
-
-        var retorno = false;   // variable de retorno para el submit
-    // debo comprobar la existencia de la variable local
-        if ( localStorage.getItem('general')){
+		$('[data-toggle="popover"]').popover(); 
 
 		
-            localStorage.removeItem("general");
-        }
-
-        var general = $("#bloque_0").find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
 		
-		var tmp = parseData(general);
-
-        localStorage.setItem('general' , JSON.stringify(tmp));
-
-        retorno= true;
-
-        return retorno;
-
-
-
-    })
-
-	filtro.init();
-
-
-
-});
-
-
-		function cargarLocalidades(idDpto, selected= null){
-			//var idDpto = $('#departamento').val();
-			var path   = $("#localPath").val();
-			var parametros = {
-			"id_dpto" : idDpto
-			};
-			$.ajax({
-				type: 'POST',
-				url: path+'index.php/abms/abmVisitasC/getLocalidades', 
-				data: parametros, 
-			       	dataType: 'json',
-				success: function(resp) { 
-					if(resp){
-						cargarCombo(resp, selected);
-					}
-					else{
-						//document.getElementById("localidad").disabled=true;
-					}},
-				 error: function(xhr,status) { 
-					console.log(xhr+"    "+status);
-				},
-			});
-		}
-
-
-
-		function cargarCombo(listaLoc, itemSelected= null){
-			// document.getElementById("localidad").options.length=0;
-			// document.getElementById("localidad").options[0]=new Option();
-
-			var combo=$("#localidad");
-				combo.html("")
-
-			if(itemSelected == null){
-
-				combo.append('<option value="" disabled selected hidden>Seleccionar</option>');
-				for (var i in listaLoc){
-					combo.append('<option value="'+listaLoc[i].id_tlocalidad +'">'+ listaLoc[i].descloc +'</option>');
-				}
-
+			if ( localStorage.getItem('general')){
+				//localStorage.removeItem("general");
+				
+				//alert('hay datos debo cargarlos en el form');
+				var local = localStorage.getItem('general')
+				//console.log(local);
 			}else{
+				
+				//alert('debo cargar una nueva instancia de general')
+				
+			}
 
-				for (var i in listaLoc){
+		$("#encuesta_ini").submit(function () { 
 
-					if(listaLoc[i].id_tlocalidad == itemSelected){
+			var retorno = false;   // variable de retorno para el submit
+		// debo comprobar la existencia de la variable local
+			if ( localStorage.getItem('general')){
 
-						combo.append('<option value="'+listaLoc[i].id_tlocalidad +'"selected>'+ listaLoc[i].descloc +'</option>');
+			
+				localStorage.removeItem("general");
+			}
 
-					}else{
+			var general = $("#bloque_0").find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
+			
+			var tmp = parseData(general);
 
-						combo.append('<option value="'+listaLoc[i].id_tlocalidad +'">'+ listaLoc[i].descloc +'</option>');
+			localStorage.setItem('general' , JSON.stringify(tmp));
 
-					}
+			retorno= true;
+
+			return retorno;
+
+
+
+		})
+
+		filtro.init();
+
+
+
+	});
+
+
+	function cargarLocalidades(idDpto, selected= null){
+		//var idDpto = $('#departamento').val();
+		var path   = $("#localPath").val();
+		var parametros = {
+		"id_dpto" : idDpto
+		};
+		$.ajax({
+			type: 'POST',
+			url: path+'index.php/abms/abmVisitasC/getLocalidades', 
+			data: parametros, 
+				dataType: 'json',
+			success: function(resp) { 
+				if(resp){
+					cargarCombo(resp, selected);
+				}
+				else{
+					//document.getElementById("localidad").disabled=true;
+				}},
+				error: function(xhr,status) { 
+				console.log(xhr+"    "+status);
+			},
+		});
+	}
+
+
+	function cargarCombo(listaLoc, itemSelected= null){
+		// document.getElementById("localidad").options.length=0;
+		// document.getElementById("localidad").options[0]=new Option();
+
+		var combo=$("#localidad");
+			combo.html("")
+
+		if(itemSelected == null){
+
+			combo.append('<option value="" disabled selected hidden>Seleccionar</option>');
+			for (var i in listaLoc){
+				combo.append('<option value="'+listaLoc[i].id_tlocalidad +'">'+ listaLoc[i].descloc +'</option>');
+			}
+
+		}else{
+
+			for (var i in listaLoc){
+
+				if(listaLoc[i].id_tlocalidad == itemSelected){
+
+					combo.append('<option value="'+listaLoc[i].id_tlocalidad +'"selected>'+ listaLoc[i].descloc +'</option>');
+
+				}else{
+
+					combo.append('<option value="'+listaLoc[i].id_tlocalidad +'">'+ listaLoc[i].descloc +'</option>');
 
 				}
 
 			}
+
+		}
+		
+	}
+
+
+	function parseData(arreglo){
+		var parse= [];
+
+		arreglo.forEach(function(element) {
+
+			//parse = { 'idRespuesta': element.name  , 'idRespuesta': element.value }
+
+			parse.push({'idPregunta': element.name ,
+					'idRespuesta' : element.value})
 			
-		}
+		});
 
 
-		function parseData(arreglo){
-			var parse= [];
+		return parse;
 
-			arreglo.forEach(function(element) {
+	}
 
-				//parse = { 'idRespuesta': element.name  , 'idRespuesta': element.value }
+	function parseDato(arreglo){
+		var parse= {};
 
-				parse.push({'idPregunta': element.name ,
-					 'idRespuesta' : element.value})
-				
-			});
+		arreglo.forEach(function(element) {
 
+			parse[element.name]= element.value
+			
+		});
 
-			return parse;
+		return parse;
+	}
 
-
-		}
-
-
-		function parseDato(arreglo){
-			var parse= {};
-
-			arreglo.forEach(function(element) {
-
-				parse[element.name]= element.value
-				
-			});
-
-
-			return parse;
-
-
-		}
-
-var filtro ={
+	var filtro ={
 		
 			data:{			// todos los datos que se mueven en el control
 				valor: '1', // no se ve
@@ -500,7 +494,6 @@ var filtro ={
 			},
 
 
-
 			show_me: function(){
 
 				// Mostrar el bloque
@@ -516,5 +509,5 @@ var filtro ={
 
 
 
-		}
+	}
 

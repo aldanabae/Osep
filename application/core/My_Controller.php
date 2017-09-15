@@ -7,12 +7,12 @@ class My_Controller extends Ci_Controller {
     	parent::__construct();
 
       //Cargar todos los model del sistema
-    	$this->load->model('bienvenida_model');
-    	$this->load->model('abms/abmEmpleados_model');
-      $this->load->model('relevamiento/relevamiento_model');
-      $this->load->model('seguridad/abmNiveles_model');
-      $this->load->model('seguridad/abmUsuarios_model');
-      $this->load->model('abms/abmVisitas_model');
+    	$this->load->model('Bienvenida_model');
+    	$this->load->model('abms/AbmEmpleados_model');
+      $this->load->model('relevamiento/Relevamiento_model');
+      $this->load->model('seguridad/AbmNiveles_model');
+      $this->load->model('seguridad/AbmUsuarios_model');
+      $this->load->model('abms/AbmVisitas_model');
    
   	}
 
@@ -29,7 +29,7 @@ class My_Controller extends Ci_Controller {
 
         //mantener sidebar dinamica
         $session_data = $this->session->userdata('logged_in');
-        $data['nivel'] = $this->bienvenida_model->obtenerNivel($session_data['nivel']);
+        $data['nivel'] = $this->Bienvenida_model->obtenerNivel($session_data['nivel']);
 
 
         $this->load->view('backend/header');

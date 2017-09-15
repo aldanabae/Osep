@@ -1,5 +1,3 @@
-//choreado de motools
-
     var special = {'\b': '\\b', '\t': '\\t', '\n': '\\n', '\f': '\\f', '\r': '\\r', '"' : '\\"', '\\': '\\\\'};
 
     var escape = function(chr){
@@ -40,7 +38,6 @@
 
     JSON.secure = true;
 
-
     JSON.decode = function(string, secure){
         if (!string || typeOf(string) != 'string') return null;
 
@@ -54,11 +51,9 @@
     };
 
 
-
     function parseData(arreglo,option){
         //var parse= {};
         var parse = [];
-
 
         if(option){
 
@@ -101,35 +96,6 @@
 
         return parse;
     }
-
-
-    function enabledBlock(){
-
-        /*cargo los bloques en un array
-            recorro los estados, y si esta activo lo pongo en un segundo arregloo para validarlo
-
-            valido cada array, y si esta ok  saco los datos del bloque y los voy concatenando
-
-            cuando llego al final, guardo en local Storage como encuestados 
-
-            el bloque 2 se guarda en general..
-        */ 
-        var bloques = [bloque1, bloque3, bloque3a ,bloque3b, bloque4, bloque5, bloque6, bloque7, bloque9];
-        var arr = [];
-        $.each( bloques , function (index, valor){
-
-                if (valor.estado){
-
-                    arr.push(valor) ;
-                }
-        })
-
-        return arr;
-
-
-    }
-
-
 
     function cleanArray( actual ){   // limpiar arreglos de elementos vacios
         var newArray = new Array();
@@ -219,7 +185,6 @@
             return retorno;
 
     }
-
 
 
     function cleanString(cadena){// limpia String de comas y puntos ..  para numeros

@@ -6,8 +6,8 @@ class AbmEmpleadosC extends My_Controller{
 
 		$this->load->helper('form');
 		$this->load->helper('url');
-		$this->load->model('abms/abmEmpleados_model'); 
-		$this->load->model('bienvenida_model'); 
+		$this->load->model('abms/AbmEmpleados_model'); 
+		$this->load->model('Bienvenida_model'); 
 		$this->load->library('form_validation'); 
 	}
 
@@ -15,7 +15,7 @@ class AbmEmpleadosC extends My_Controller{
 		if (!isset($_POST['CargarTabla'])){
 			$data['nroLegajo'] = '';
 			$data['limiteTabla'] = "1000";
-			$data['tablaEmpleados'] = $this->abmEmpleados_model->obtenerEmpleados($data['nroLegajo']);	
+			$data['tablaEmpleados'] = $this->AbmEmpleados_model->obtenerEmpleados($data['nroLegajo']);	
 		}
 
 		$nombreVista="backend/abms/abmEmpleados";
@@ -25,14 +25,14 @@ class AbmEmpleadosC extends My_Controller{
 	function mostrarTablaEmpleados(){
 		$data['nroLegajo'] = $this->input->post('nroLegajo');	
 		$data['limiteTabla'] = "1000";
-		$data['tablaEmpleados'] = $this->abmEmpleados_model->obtenerEmpleados($data['nroLegajo']);	
+		$data['tablaEmpleados'] = $this->AbmEmpleados_model->obtenerEmpleados($data['nroLegajo']);	
 
       	$nombreVista="backend/abms/abmEmpleados";
 		$this->cargarVista($nombreVista, $data);
 	}
 
 	function cargarNuevoEmpleado(){	
-		$data['tipoEmpleado'] = $this->abmEmpleados_model->getTipoEmpleado();
+		$data['tipoEmpleado'] = $this->AbmEmpleados_model->getTipoEmpleado();
 		$nombreVista="backend/abms/abmEmpleadosAlta";
 		$this->cargarVista($nombreVista, $data);
 	}
@@ -63,7 +63,7 @@ class AbmEmpleadosC extends My_Controller{
 
         } else {
             if (isset($_POST['GuardarEnDB'])){
-				$this->abmEmpleados_model->crearEmpleado($data);
+				$this->AbmEmpleados_model->crearEmpleado($data);
 			}
 	
 			redirect('/abms/abmEmpleadosC','refresh');
@@ -72,8 +72,8 @@ class AbmEmpleadosC extends My_Controller{
 
 	function editarEmpleado(){
 		$data['codE'] = $this->uri->segment(4);
-		$data['empleado'] = $this->abmEmpleados_model->obtenerEmpleado($data['codE']);
-		$data['tipoEmpleado'] = $this->abmEmpleados_model->getTipoEmpleado();
+		$data['empleado'] = $this->AbmEmpleados_model->obtenerEmpleado($data['codE']);
+		$data['tipoEmpleado'] = $this->AbmEmpleados_model->getTipoEmpleado();
 		
 		$nombreVista="backend/abms/abmEmpleadosModificar";
 		$this->cargarVista($nombreVista, $data);
@@ -110,7 +110,7 @@ class AbmEmpleadosC extends My_Controller{
 
         } else {
            	if (isset($_POST['ActualizarEnDB'])){
-				$this->abmEmpleados_model->actualizarEmpleado($this->uri->segment(4),$datos);
+				$this->AbmEmpleados_model->actualizarEmpleado($this->uri->segment(4),$datos);
 			}
 
 			redirect('/abms/abmEmpleadosC','refresh');
@@ -119,7 +119,7 @@ class AbmEmpleadosC extends My_Controller{
 
 	function borrarEmpleado(){
 		$codE = $this->uri->segment(4);
-		$this->abmEmpleados_model->eliminarEmpleado($codE);
+		$this->AbmEmpleados_model->eliminarEmpleado($codE);
 
 		redirect('/abms/abmEmpleadosC','refresh');		
 	}

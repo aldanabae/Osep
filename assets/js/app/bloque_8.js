@@ -1,11 +1,4 @@
 
-
-
-
-
-
-
-
 $(function() {
   // Handler for .ready() called.
   cargar.bind();

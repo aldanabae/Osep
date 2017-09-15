@@ -109,6 +109,7 @@
 		<script src="<?php echo base_url() ?>assets/js/ace/ace.searchbox-autocomplete.js"></script>
 		<script src="<?php echo base_url() ?>assets/js/date-time/bootstrap-datepicker.js"></script>
 		<script src="<?php echo base_url() ?>assets/js/date-time/bootstrap-timepicker.js"></script>
+		
 		<!-- inline scripts related to this page -->
 		
 		<!-- the following scripts are used in demo only for onpage help and you don't need them -->

@@ -223,7 +223,29 @@ class Relevamiento_model extends CI_Model {
 	}
 
 
+	// este metodo devuelve si alguno de los encuestados es respondente  devuelve  true si ya hay uno  o false si no hay ninguno
+	public function getRespondiente($id_relevamiento ){
+		
+				$this->db->select();
+				$this->db->from('encuestado');
+				$this->db->where('idRelevamiento',$id_relevamiento);
+				$this->db->where('respondeR !=', 0);
+		
+				$query= $this->db->get();
 
+				if($query->num_rows() > 0){
+
+					return 1;  // es si hay uno que ya se marco como respondiente
+
+				}else{
+
+					return 2;  // no hay ninguno como respondiente
+				}
+
+				//si hay un encuestado que se marco como respondiente  devuelde un verdadero
+		
+			}
+		
 
 
 

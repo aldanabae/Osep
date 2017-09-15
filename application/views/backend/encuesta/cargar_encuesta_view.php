@@ -35,6 +35,9 @@
 <input type="hidden" name="hdnid_relevamiento"  id="hdnid_relevamiento" value="<?php echo @$id_relevamiento; ?>">
 <input type="hidden" name="hdnid_numRel"  id="hdnid_numRel" value="<?php echo @$id_numRel; ?>">
 <input type="hidden" name="hdnCantidad_encuestados"  id="hdnCantidad_encuestados" value="<?php echo @$cantidad_encuestados; ?>">
+<input type="hidden" name="hdnrespondiente"  id="hdnrespondiente" value="<?php echo @$respondiente; ?>">
+
+
 
 	<div class="row form-horizontal" id="bloque_1">   <!-- bloque 1 -->
 		<div class="panel panel-default">
@@ -174,6 +177,8 @@
 					<label for="inputEmail" class="control-label col-xs-6" id= "b1_label_cober" >¿Tiene otra cobertura de salud?</label>
 					<div class="col-xs-6">
 						<select class="form-control" name= "24" id= "b1_cober" required>
+
+						<option value="14">No, sólo OSEP</option><option value="15">Otra obra social</option><option value="16">Prepaga</option><option value="17">Otra cobertura</option>
 
 						</select>
 					</div>
@@ -333,8 +338,8 @@
 					<label for="inputPassword" class="control-label col-xs-6">¿Padece alguna enfermedad crónica? (*) </label>
 					<div class="col-xs-6">
 						<select class="form-control" name= "33" id= "b1_cronica" required>
-						<option value="1">SI</option>
 						<option value="2" selected ="true">NO</option>
+						<option value="1">SI</option>
 						</select>
 					</div>
 				</div>

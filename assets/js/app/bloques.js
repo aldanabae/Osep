@@ -9,9 +9,6 @@ $(function() {
   bloque1.bindComponent();
 
   // 1 SI  Y 2 ES NO
-    
-
-
 });
 
 
@@ -50,7 +47,20 @@ var encuesta ={
                 encuesta.integrantes = parseInt( $('#integrantes').val());
                 encuesta.count= parseInt($('#hdnCantidad_encuestados').val());
 
-                if (encuesta.count == 0){
+                var respondiente= parseInt($('#hdnrespondiente').val());
+
+                if(respondiente == 2){  //debo mostrar el check de responsable de encuesta
+
+                    $('#id_responde').show();
+
+                }else{
+    
+                    $('#id_responde').hide();
+                    
+                }
+
+
+                if (encuesta.count == 0){    
 
                     encuesta.responde = false ;
 
@@ -59,6 +69,18 @@ var encuesta ={
                     encuesta.responde = true ;
 
                 }
+
+                if(encuesta.count > 0){
+                    
+                    $('#afiliado_externo').hide()
+    
+                }else{
+    
+                    $('#afiliado_externo').show()
+    
+                }
+
+
                     
 
             },
@@ -152,7 +174,7 @@ var bloque1= {    // Bloque General
             
             $('#add_encuesta').find('input, select, textarea, input:checkbox').filter(function(index){
                 
-                console.log($(this).prop('type'));
+                //console.log($(this).prop('type'));
 
                 if($(this).prop('type') == 'number'  || $(this).prop('type') == 'text' || $(this).prop('type') == 'textarea' ){
 
@@ -304,35 +326,9 @@ var bloque1= {    // Bloque General
             }
 
 
-            // verifico si tiene osep
 
 
-            if(bloque1.conf.osep == '1'){
 
-                $( "#b1_div_afiliado" ).show("slow");   // muestra el txt de numero de afiliado
-                $("#b1_cober").html( '');               // blanquea el select
-                    $.each(bloque1.data.tOsep.si, function(key, value){  // carga el select con el Si
-
-                        $("#b1_cober").append( '<option value="'+ value.id_resp +'">'+ value.respuesta +'</option>');
-
-                    });
-                
-                //$("#afiliado_externo").show();
-
-
-            }else{
-                
-                $("#b1_div_afiliado" ).hide("slow"); // oculta el txt de numero de afiliado
-                $("#b1_cober").html('');              // blanquea el select
-                $.each(bloque1.data.tOsep.no, function(key, value){   // carga el select
-
-                    $("#b1_cober").append( '<option value="'+ value.id_resp +'">'+ value.respuesta +'</option>');
-
-                });                
-                
-                //$("#afiliado_externo").hide(); 
-
-            }
 
             // verifico nivel educativo
 
@@ -551,9 +547,32 @@ var bloque1= {    // Bloque General
                         'change, click', function(){
 
                             bloque1.conf.osep= $(this).val();
+                            // verifico si tiene osep
+                            
+                            if(bloque1.conf.osep == '1'){
+                                
+                                    $( "#b1_div_afiliado" ).show("slow");   // muestra el txt de numero de afiliado
+                                    $("#b1_cober").html( '');               // blanquea el select
+                                        $.each(bloque1.data.tOsep.si, function(key, value){  // carga el select con el Si
+
+                                            $("#b1_cober").append( '<option value="'+ value.id_resp +'">'+ value.respuesta +'</option>');
+
+                                        });
+
+                                }else{
+                                    
+                                    $("#b1_div_afiliado" ).hide("slow"); // oculta el txt de numero de afiliado
+                                    $("#b1_cober").html('');              // blanquea el select
+                                    $.each(bloque1.data.tOsep.no, function(key, value){   // carga el select
+
+                                        $("#b1_cober").append( '<option value="'+ value.id_resp +'">'+ value.respuesta +'</option>');
+
+                                    });                
+
+                            }
                             bloque1.conf.update();
 
-                        });
+                    });
 
                         // embarazada  si o no
                     $( "#b1_embarazo" ).on(
@@ -836,6 +855,7 @@ var bloque1= {    // Bloque General
                                     if((edad == 65 &&  responde) && ( bloque1.conf.embarazo == "2") ){
 
                                         bloque4.show_me();     // mujeres
+                                        bloque4.update();
 
                                     }
 
@@ -843,7 +863,7 @@ var bloque1= {    // Bloque General
                                     if(((edad >= 15 && edad <= 70) )  && ( bloque1.conf.embarazo == "2") ){
 
                                             bloque4.show_me();     // mujere
-
+                                            bloque4.update();
                                     }else{
 
                                             bloque4.hide_me();     // mujeres
@@ -923,82 +943,9 @@ var bloque1= {    // Bloque General
 
             },
 
-        validate: function( div){  // metodo de validacion generico
-
-
-            var validacion = false;  // variable de retorno para devolver
-            var componentes= [];    // declaro un arreglo vacio
-            var red_css        = false; // si hay algun imput en rojo esta variable queda en verdadero
-
-            $(div).find('input, select, textarea, input:checkbox').filter(function(index){
-
-                // filtro todos los elementos que eisten en el div seleccionado
-                if($(this).is(':visible')){ 
-
-                    componentes.push($(this));  // guardo los que estan visibles en un arreglo para analizar despues
-                }
-            })
-
-           
-            $.each(componentes,function (key, el){
-
-                if(el.prop('required')  ){  // si el campo es requierido  entonces debo validarlo 
-
-
-                        if(el.val() == "" || el.val() == null  ){ // si es requerido  y esta vacio o null  debomarcarlo como que esta en falta
-
-                            el.parent().parent().addClass('has-error')
-                            validacion = false; // validacion incorrecta
-                            red_css = true;     // estoy colocando una clase de error
-
-                        }else{    // si no esta vacio ni null devo verificar el tipo de input y su limite
-
-                            if(el.prop('type') == 'number'){   // si es de tipo number  entonces debo ver el limite 
-
-                                var limite = el.data('limit')          // traigo el limite establecido
-                                var valor = parseInt(cleanString(el.val().trim()));     // limpio la cadena de . ,  y espacios
-                                if(valor >=0  && valor<= limite ){  // ya tengo el limite  si esta fuera del valor lo pongo como en falta.
-
-                                    el.parent().parent().removeClass('has-error')
-                                    validacion = true; // validacion correcta
-
-                                }else{ //no cumple con el parametro  lo pongo rojo
-
-                                    el.parent().parent().addClass('has-error')
-                                    validacion = false;  // validadcion incorrecta
-                                    red_css = true;     // estoy colocando una clase de error
-                                }
-
-                            }else{  // si no esta vacio y no es numerico  entonces esta correcto  el valor
-
-
-                                el.parent().parent().removeClass('has-error')
-                                validacion = true; // la validacion es correcta
-                            }
-        
-                        }
-                        
-                } // de otro modo es opcional
-
-                
-            } );
-            
-            if( validacion && !red_css )  {  // retorno el resultado de todo el analisis
-
-                return true;
-            }else{
-
-                return false;
-            }
-
-
-        }
 
 
 }
-
-
-
 
 var bloque3a ={   // bloque 3  bebes
         estado: false,
@@ -1046,11 +993,6 @@ var bloque3a ={   // bloque 3  bebes
 
                     
                 }
-
-
-
-
-
 
         },
 
@@ -1117,26 +1059,8 @@ var bloque3a ={   // bloque 3  bebes
             $( bloque3a.template.html ).hide("slow");
             bloque3a.estado= false;
         },  
-
-        validate:function(){
-
-         var validacion = false;
-
-
-            return  validacion;
-            
-        } ,
-        parse: function(){
-
-            var tmp = $(bloque3a.template.html).find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
-
-
-
-            return parseData(tmp);
-
-        }   
+ 
 }
-
 
 
 var bloque3b ={     //Bloque Niños
@@ -1269,24 +1193,7 @@ var bloque3b ={     //Bloque Niños
             // ocultar el bloque
             $( bloque3b.template.html ).hide("slow");
             bloque3b.estado= false;
-        }, 
-
-        validate:function(){
-
-
-
-
-
-        } ,
-        parse: function(){
-
-            var tmp = $(bloque3b.template.html).find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
-
-            return parseData(tmp);
-
-        }  
-
-
+        }
 
 }
 
@@ -1513,15 +1420,6 @@ var bloque4 ={       // mUjer
             // ocultar el bloque
             $( bloque4.template.html ).hide("slow");
             bloque4.estado= false;
-        },  
-
-        validate:function(){
-            
-
-
-
-
-
         }
 
 }
@@ -1535,8 +1433,6 @@ var bloque5 ={       // Adultos mayores
             consulta:"",
             medico: "",
         },
-
-
 
         template: {
                     // asigno el nombre del selector de bloque
@@ -1638,25 +1534,8 @@ var bloque5 ={       // Adultos mayores
             // ocultar el bloque
             $( bloque5.template.html ).hide("slow");
             bloque5.estado= false;
-        },  
-
-
-        validate:function(){
-
-
-
-
-            
-        } ,
-        parse: function(){
-
-            var tmp = $(bloque5.template.html).find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
-
-            return parseData(tmp);
-
-        }        
+        },        
 }
-
 
 
 var bloque6 ={       // Discapacidad
@@ -1852,17 +1731,8 @@ var bloque6 ={       // Discapacidad
 
             }
             
-        } ,
-        parse: function(){
-
-            var tmp = $(bloque6.template.html).find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
-
-            return parseData(tmp);
-
-        }  
-
+        } 
 }
-
 
 
 var bloque7 ={       // embarazo
@@ -1965,8 +1835,6 @@ var bloque7 ={       // embarazo
 }
 
 
-
-
 var bloque9 ={       // laboral
 
         estado: false,
@@ -2032,48 +1900,6 @@ var bloque9 ={       // laboral
         }, 
 
 
-        validate:function(){
-
-            if(bloque9.estado){
-                var validacion = false;
-
-                if($('#b9_horas').val() != ""){
-
-                    validacion = true;
-
-                }else{
-                    validacion = false;
-                }
-
-
-                if($('#b9_lugar').val() != ""){
-
-                    validacion = true;
-
-                }else{
-                    validacion = false;
-                }
-
-                if($('#b9_ocupacion').val() != ""){
-
-                    validacion = true;
-
-                }else{
-                    validacion = false;
-                }                
-
-
-            }
-            
-        } ,
-
-
-        reset: function(){
-
-
-        } 
-
-
 }
 
 
@@ -2083,51 +1909,18 @@ function submitEncuesta(){
              * guardar el encusstado como siempre
              * continuar con el submit del formulario
              */
-            // validar 
+            var retorno= validations('#add_encuesta');  // devuelve la validacion de campos 
             //e.preventDefault();
+            if(retorno){
 
+                    bloque1.parse();
+                    return true
 
-            // $( "#btn_continuar" ).on(
-            //     'click', function(){
-            //         /** validar los datos de los bloques desplegados
-            //          * guardar el encusstado como siempre
-            //          * continuar con el submit del formulario
-            //          */
-            //         var retorno= validations('#add_encuesta');  // devuelve la validacion de campos 
-            //         //e.preventDefault();
-            //         if(retorno){
+            }else{
 
-            //                 bloque1.parse();
+                alert('error error en los datos')
 
-            //                 $('#add_encuesta').submit();
-
-                        
-
-            //         }else{
-
-            //             alert('error error en los datos')
-
-            //             return false
-            //         }
-
-            // });  
-
-                    /** validar los datos de los bloques desplegados
-                     * guardar el encusstado como siempre
-                     * continuar con el submit del formulario
-                     */
-                    var retorno= validations('#add_encuesta');  // devuelve la validacion de campos 
-                    //e.preventDefault();
-                    if(retorno){
-
-                            bloque1.parse();
-                            return true
-
-                    }else{
-
-                        alert('error error en los datos')
-
-                        return false
-                    }
+                return false
+            }
             
     }; 

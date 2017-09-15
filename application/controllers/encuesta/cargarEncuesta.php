@@ -3,7 +3,7 @@
 // Este es el controlador general de encuestas
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class CargarEncuesta extends CI_Controller{
+class cargarEncuesta extends CI_Controller{
 
 	function __construct(){
 		parent::__construct();
@@ -41,7 +41,7 @@ class CargarEncuesta extends CI_Controller{
                         $data['nombreE'] = $session_data['nombreE'];
                         $data['apellidoE'] = $session_data['apellidoE'];
                         $data['nivel'] = $session_data['nivel'];
-                        $data['tipoEmpleado']=$session_data['tipoEmpleado'];
+                        $data['tipoEmpleado']=$session_data['idTipoEmpleado'];
 
                         $this->session->set_flashdata('username', $data);
                         $this->session->set_flashdata('nombreE', $data);
@@ -88,7 +88,9 @@ class CargarEncuesta extends CI_Controller{
                                         
                         }else{
                                 // si es otro tipo de usuario trae la lista de todos los fac
-                                $listado = $this->abmEmpleados_model->obtenerEmpleadoByTipo("Facilitador");
+
+                                //todo revisar
+                                $listado = $this->abmEmpleados_model->obtenerEmpleadoByTipo("5");  // listado por facilitador   el 5  es facilitador
 
                                 foreach($listado->result() as $lista){
 
@@ -233,7 +235,9 @@ class CargarEncuesta extends CI_Controller{
                                         //aqui debo verificar con el id del relevamiento cuantos integrantes hay relevados   y cuantos integrantes hay en total
 
                                         $cantidad_encuestados= $this->Relevamiento_model->getCantidadEncuestados($id_relevamiento);
+                                        $respondiente= $this->Relevamiento_model->getRespondiente($id_relevamiento);
                                         $options['cantidad_encuestados']= $cantidad_encuestados;
+                                        $options['respondiente']= $respondiente;
                 
 
                                         // si la cantidad de encuestados es igual a la cantidad de integrantes relevados 
@@ -265,9 +269,6 @@ class CargarEncuesta extends CI_Controller{
                                         }
 
 
-                                       
-
-                                        
                                 }
                                 else
                                 {
@@ -358,7 +359,7 @@ class CargarEncuesta extends CI_Controller{
                         $data['nombreE'] = $session_data['nombreE'];
                         $data['apellidoE'] = $session_data['apellidoE'];
                         $data['nivel'] = $session_data['nivel'];
-                        $data['tipoEmpleado']=$session_data['tipoEmpleado'];
+                        $data['tipoEmpleado']=$session_data['idTipoEmpleado'];
 
                         $this->session->set_flashdata('username', $data);
                         $this->session->set_flashdata('nombreE', $data);
@@ -459,7 +460,7 @@ class CargarEncuesta extends CI_Controller{
                         $data['nombreE'] = $session_data['nombreE'];
                         $data['apellidoE'] = $session_data['apellidoE'];
                         $data['nivel'] = $session_data['nivel'];
-                        $data['tipoEmpleado']=$session_data['tipoEmpleado'];
+                        $data['tipoEmpleado']=$session_data['idTipoEmpleado'];
 
                         $this->session->set_flashdata('username', $data);
                         $this->session->set_flashdata('nombreE', $data);

@@ -23,16 +23,5 @@ $(document).ready(function(){
 
     });
 
-
-
-
-
-
-
-
-
-
-
-    
     
 });

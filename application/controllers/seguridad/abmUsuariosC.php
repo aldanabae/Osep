@@ -6,9 +6,9 @@ class AbmUsuariosC extends My_Controller{
 
 		$this->load->helper('form');
 		$this->load->helper('url');
-		$this->load->model('seguridad/abmUsuarios_model');
-		$this->load->model('seguridad/abmNiveles_model');
-		$this->load->model('bienvenida_model'); 
+		$this->load->model('seguridad/AbmUsuarios_model');
+		$this->load->model('seguridad/AbmNiveles_model');
+		$this->load->model('Bienvenida_model'); 
 		$this->load->library('form_validation');  
 	}
 
@@ -16,15 +16,16 @@ class AbmUsuariosC extends My_Controller{
 		if (!isset($_POST['CargarTabla1'])){
 			$data['nroLegajo'] = '';
 			$data['limiteTabla'] = "1000";
-			$data['tablaEmpleados'] = $this->abmUsuarios_model->obtenerEmpleados($data['nroLegajo']);
+			$data['tablaEmpleados'] = $this->AbmUsuarios_model->obtenerEmpleados($data['nroLegajo']);
 			$data['nombresNiveles']	="";
-			$data['niveles'] = $this->abmNiveles_model->obtenerNiveles($data['nombresNiveles']);
+			$data['niveles'] = $this->AbmNiveles_model->obtenerNiveles($data['nombresNiveles']);
+			 
 		}
 
 		if (!isset($_POST['CargarTabla2'])){
 			$data['nombresUsuarios'] = '';
 			$data['limiteTabla'] = 1000;
-			$data['tablaUsuarios'] = $this->abmUsuarios_model->obtenerUsuarios($data['nombresUsuarios']);	
+			$data['tablaUsuarios'] = $this->AbmUsuarios_model->obtenerUsuarios($data['nombresUsuarios']);	
 		}
 
         $nombreVista="backend/seguridad/abmUsuarios";
@@ -33,11 +34,11 @@ class AbmUsuariosC extends My_Controller{
 
 	function mostrarTablaUsuarios(){	
 		$data['dniE'] = $this->input->post('dniE');	
-		$data['tablaEmpleados'] = $this->abmUsuarios_model->obtenerEmpleados($data['dniE']);
+		$data['tablaEmpleados'] = $this->AbmUsuarios_model->obtenerEmpleados($data['dniE']);
 
 		$data['nombresUsuarios'] = $this->input->post('nombresUsuarios');	
 		$data['limiteTabla'] = $this->input->post('longitudTabla');
-		$data['tablaUsuarios'] = $this->abmUsuarios_model->obtenerUsuarios($data['nombresUsuarios']);
+		$data['tablaUsuarios'] = $this->AbmUsuarios_model->obtenerUsuarios($data['nombresUsuarios']);
 		$data['nombresNiveles']	="";
 		$data['niveles'] = $this->abmNiveles_model->obtenerNiveles($data['nombresNiveles']);
 
@@ -47,8 +48,8 @@ class AbmUsuariosC extends My_Controller{
 
 	function cargarNuevoUsuario(){	
 		$data['idEmp'] = $this->uri->segment(4);
-		$data['empleado'] = $this->abmUsuarios_model->obtenerEmpleado($data['idEmp']);
-		$data['nivelU'] = $this->abmUsuarios_model->getNiveles();
+		$data['empleado'] = $this->AbmUsuarios_model->obtenerEmpleado($data['idEmp']);
+		$data['nivelU'] = $this->AbmUsuarios_model->getNiveles();
 
 		$nombreVista="backend/seguridad/abmUsuariosAlta";
 		$this->cargarVista($nombreVista,$data);
@@ -70,7 +71,7 @@ class AbmUsuariosC extends My_Controller{
  		
        	//Verificar que no exista usuario con el nombreUsuario ingresado
 
-       	if($this->abmUsuarios_model->existeUsuario($this->input->post('usuario'))){
+       	if($this->AbmUsuarios_model->existeUsuario($this->input->post('usuario'))){
        		echo '<script >alert("El nombre de usuario ingresado ya se utiliza para otro responsable");</script>';
        		redirect('/seguridad/abmUsuariosC/cargarNuevoUsuario/'.$this->input->post('idEmpleado'),'refresh');
 
@@ -82,7 +83,7 @@ class AbmUsuariosC extends My_Controller{
 
         } else {
             if (isset($_POST['GuardarEnDB'])){
-			$this->abmUsuarios_model->crearUsuario($data);
+			$this->AbmUsuarios_model->crearUsuario($data);
 			}
 	
 			redirect('/seguridad/abmUsuariosC','refresh');
@@ -91,8 +92,8 @@ class AbmUsuariosC extends My_Controller{
 
 	function editarUsuario(){
 		$data['codU'] = $this->uri->segment(4);
-		$data['usuario'] = $this->abmUsuarios_model->obtenerUsuario($data['codU']);
-		$data['nivelU'] = $this->abmUsuarios_model->getNiveles();
+		$data['usuario'] = $this->AbmUsuarios_model->obtenerUsuario($data['codU']);
+		$data['nivelU'] = $this->AbmUsuarios_model->getNiveles();
 
 		$nombreVista="backend/seguridad/abmUsuariosModificar";
 		$this->cargarVista($nombreVista,$data);
@@ -121,7 +122,7 @@ class AbmUsuariosC extends My_Controller{
 
         } else {
            	if (isset($_POST['ActualizarEnDB'])){
-			$this->abmUsuarios_model->actualizarUsuario($this->uri->segment(4),$datos);
+			$this->AbmUsuarios_model->actualizarUsuario($this->uri->segment(4),$datos);
 			}
 
 			redirect('/seguridad/abmusuariosC','refresh');
@@ -130,7 +131,7 @@ class AbmUsuariosC extends My_Controller{
 
 	function borrarUsuario(){
 		$codU = $this->uri->segment(4);
-		$this->abmUsuarios_model->eliminarUsuario($codU);
+		$this->AbmUsuarios_model->eliminarUsuario($codU);
 
 		redirect('/seguridad/abmUsuariosC','refresh');		
 	}
