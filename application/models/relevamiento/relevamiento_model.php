@@ -298,10 +298,12 @@ class Relevamiento_model extends CI_Model {
 
 
 
-		public function finalizaEncuesta($idRelevamiento){
+		public function finalizaEncuesta($idRelevamiento, $idCriticidad){
 
 			$data = array(
-				'estado' => '0'
+				'estado' => '0',
+				'idCriticidad' => $idCriticidad
+
 			);
 
 			$this->db->where('idRelevamiento', $idRelevamiento);

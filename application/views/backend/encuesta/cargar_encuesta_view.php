@@ -147,20 +147,20 @@
 					<label for="inputPassword" class="control-label col-xs-6">¿Tiene OSEP?  (*) </label>
 					<div class="col-xs-6">
 						<select class="form-control" name= "108" id= "b1_osep" required>
-						<option value="1" checked>SI</option>
-						<option value="2">NO</option>
+							<option value="1" checked>SI</option>
+							<option value="2">NO</option>
 						</select>
 					</div>
 				</div>			
 
-				<div class="form-group" id= "b1_div_afiliado">
+				<div class="form-group " id= "b1_div_afiliado">
 					<label for="inputPassword" class="control-label col-xs-6">Número de Afiliado</label>
 						<div class="col-xs-2">
-							<input type="number" name="b1_afiliado"  class="form-control" placeholder="" data-limit= '99999999'  id="b1_afiliado" required>
+							<input type="number" name="b1_afiliado"  class="form-control"  data-limit= '99999999'  id="b1_afiliado" required>
 						</div>
 
 						<div class="col-xs-1 text-center">
-							<input type="number" name="b1_barra"  class="form-control" id="b1_barra" data-limit= '99999999' maxlength="2" min="0" max="15" required>
+							<input type="number" name="b1_barra"  class="form-control" id="b1_barra" data-limit='9999'  required>
 						</div>
 
 						<div class="col-xs-3" id="b1_otro_numero_afiliado">
@@ -388,27 +388,31 @@
 							</div>
 
 						<div class="col-xs-6 col-xs-offset-6 ">
-						<br>
 
-						<div class="form-group">					
-							<label class="control-label col-xs-3">Nombre</label>
-							<div class="col-xs-9">
-								<input type="text" class="form-control " id="b1_adicional_nombre"  name="b1_adicional_nombre">
-							</div>
-						</div>
+							<!-- campohidden de almacenamiento -->
+							<input type="hidden" name="hdnAfiliadoAcargo"  id="hdnAfiliadoAcargo" value="">
+							<br>
 
-						<div class="form-group">					
-							<label class="control-label col-xs-3">Telefono</label>
-							<div class="col-xs-9">
-								<input type="text" class="form-control" id="b1_adicional_tel"  name="b1_adicional_tel">
+							<div class="form-group">					
+								<label class="control-label col-xs-3">Nombre</label>
+								<div class="col-xs-9">
+									<input type="text" class="form-control " id="b1_adicional_nombre"  name="b1_adicional_nombre">
+								</div>
 							</div>
-						</div>
-						<hr>
+
+
+							<div class="form-group">					
+								<label class="control-label col-xs-3">Telefono</label>
+								<div class="col-xs-9">
+									<input type="text" class="form-control" id="b1_adicional_tel"  name="b1_adicional_tel">
+								</div>
+							</div>
+							<hr>
 
 
 							<!-- Button trigger modal -->
 							<button type="button" class="btn btn-primary text-left"  id="btn_add_afiliado">
-							Añadir Afiliado a Cargo
+								Añadir Afiliado a Cargo
 							</button>
 							
 						</div>
@@ -1092,7 +1096,7 @@
 <div class="row form-horizontal" id="bloque_5">      <!-- Bloque 5 Adultos mayores -->
 			<div class="panel panel-default">
 			
-				<div class="panel-heading orange">Salud de los adultos</div>
+				<div class="panel-heading orange">Salud de adulto mayor</div>
 					<div class="panel-body">
 
 						
@@ -1179,8 +1183,7 @@
 
 						<div class="form-group">
 							
-							<label class="control-label col-xs-6">¿Realiza habitualmente algún hobbie o actividad social, 
-							por ejemplo leer, hacer cursos o gimnasia, ir a un centro de jubilados o a la iglesia? </label>
+							<label class="control-label col-xs-6">¿Participa habitualmente de algún centro de jubilados, iglesia, taller de arte u otro espacio de tipo social?</label>
 							<div class="col-xs-6">
 								<select class="form-control" id="b5_activity" name="66" required>
 								<option value="" disabled selected hidden>Seleccionar</option>
@@ -1194,7 +1197,7 @@
 
 						<div class="form-group">
 							
-							<label class="control-label col-xs-6">¿Tiene alguna actividad o hobbie que haga frecuentemente para ocupar el tiempo libre ?</label>
+							<label class="control-label col-xs-6">¿Tiene alguna actividad por ejemplo leer, salir a caminar, tejer u otro hobbie que le guste hacer en su tiempo libre?</label>
 							<div class="col-xs-6">
 								<select class="form-control" id="b5_hobby" name="67" required>
 								<option value="" disabled selected hidden>Seleccionar</option>
@@ -1645,7 +1648,7 @@
 				</div>
 
 				<div class="col-xs-6 text-right">
-					<input type="button" class="btn btn-primary" value="continuar" name="continuar" id="btn_continuar">
+					<input type="button" class="btn btn-primary" value="Continuar" name="continuar" id="btn_continuar">
 
 				</div>		
 			</div>

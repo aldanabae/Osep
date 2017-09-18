@@ -795,6 +795,9 @@ var bloque1= {    // Bloque General
                                 if ((edad >= 65 ) && (bloque1.conf.discapacidad === "2") ){  //si es mayor a 65 y no tiene discapacidad  despliego ancianidad
 
                                         bloque5.show_me();     // adultos
+
+
+
                                 }else{
 
 
@@ -1479,6 +1482,7 @@ var bloque5 ={       // Adultos mayores
             bloque5.hide_me();
             bloque5.bindComponent();
             $('#b5_div_cual').hide(); // oculto el campo que pregunta cual
+            $('#b5_div_otro').hide(); // oculto la opcion otro para cuando coloque no
             bloque5.update();
 
         },
@@ -1600,7 +1604,7 @@ var bloque6 ={       // Discapacidad
             }else{
 
 
-                if(bloque6.data.consulta =="" || bloque1.conf.consulta =="33"){
+                if(bloque6.data.consulta =="" || bloque6.data.consulta =="33"){
 
                     $( "#b6_div_consulta_si" ).hide();
                     $( "#b6_div_consulta_no" ).hide();
@@ -1624,7 +1628,7 @@ var bloque6 ={       // Discapacidad
             // funcion de inicializacion
             bloque6.hide_me();
             bloque6.bindComponent();
-            $('#b6_div_otro').hide(); // oculto el campo que pregunta cual
+            $('#b6_div_otro').hide(); // oculto el campo que pregunta cual            
             bloque6.update();
 
         },
@@ -1918,7 +1922,7 @@ function submitEncuesta(){
 
             }else{
 
-                alert('error error en los datos')
+                alert('error .. Verifica la informacion Cargada')
 
                 return false
             }

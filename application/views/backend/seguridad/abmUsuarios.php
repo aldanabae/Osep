@@ -103,9 +103,9 @@
 											<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
 													
 												<li>
-													<a href="<?php echo base_url()?>seguridad/cargarNuevoUsuario/<?= $tabla->idEmpleado;?>" class="tooltip-info" data-rel="tooltip" title="Ver HCI">
+													<a href="<?php echo base_url()?>seguridad/abmUsuariosC/cargarNuevoUsuario/<?= $tabla->idEmpleado;?>" class="tooltip-info" data-rel="tooltip" title="Asignar Usuario">
 														<span class="blue">
-															<i class="ace-icon fa fa-search-plus bigger-120"></i>
+															<i class="ace-icon fa fa-plus-circle bigger-120"></i>
 														</span>
 													</a>
 												</li>

@@ -43,13 +43,41 @@ var cargar = {
                 }
 
             });
-            
+
+
+            $( "#b8_criticidad" ).on(     // preguntas mamo
+                'change', function( ){
+
+                    var estado = $(this).val();
+                    
+                    if(estado == "1"){
+
+                        $('#b8_criticidad').parent().parent().removeClass( "has-warning has-error" ).addClass( "has-success" );
+
+                    }else{
+
+                        if(estado == "2"){
+
+                            $('#b8_criticidad').parent().parent().removeClass( "has-success has-error" ).addClass( "has-warning" );
+                            
+                        }else{
+                            $('#b8_criticidad').parent().parent().removeClass( "has-warning has-success" ).addClass( "has-error" );
+                            
+                        }
+
+                    }
+                    
+
+
+
+            });
 
         },
 
         parse: function(){
 
             var tmp = $('#add_encuesta').find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
+                tmp.pop(); // elimino el ultimo elemento de criticidad por que lo quiero en otro lado
 
             var datos = JSON.encode(parseData(tmp));
             setAjax(datos, 'guardarEncuesta', function(){
