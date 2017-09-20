@@ -103,7 +103,7 @@ class cargarEncuesta extends CI_Controller{
 
                         }
 
-                        
+
                         $valor['departamento']= (array) $this->abmVisitas_model->getDepartamentos()->result(); // cargo los departamentos ....todos
                         $this->load->view("backend/encuesta/cargar_encuesta_inicio_view",$valor);
                         $this->load->view('backend/footer');
@@ -238,8 +238,7 @@ class cargarEncuesta extends CI_Controller{
                                         $respondiente= $this->Relevamiento_model->getRespondiente($id_relevamiento);
                                         $options['cantidad_encuestados']= $cantidad_encuestados;
                                         $options['respondiente']= $respondiente;
-                
-
+                                       
                                         // si la cantidad de encuestados es igual a la cantidad de integrantes relevados 
                                         // pasa al bloque final
                                         if(intval($options['cantidad']) == $options['cantidad_encuestados'] ){
@@ -374,7 +373,7 @@ class cargarEncuesta extends CI_Controller{
 
                         $retorno=['accion'=>'fail'];
                         //array test==================
-                         //$datosForm = '[{"id_relev":"10","numrelevamiento":"2"},["84","1"],["85","1"],["86","1"],["87","1"],["88","1"],["89","1"],["90","1"],["91","2"],["92","2"],["93","2"],["94","2"],["95","2"],["96","2"],["97","2"],["98","2"],["99","1"],["100","1"],["101","116"],["102","123"],["103","127"],["105","129"],["105","111"],["106","cfcccccccccccccccccccccc"]]';
+                         //$datosForm = '[{"id_relev":"3","numrelevamiento":"3"},["84","1"],["85","1"],["86","1"],["87","1"],["88","1"],["89","1"],["90","1"],["91","2"],["92","2"],["93","2"],["94","2"],["95","2"],["96","2"],["97","2"],["98","2"],["99","1"],["100","1"],["101","118"],["102","124"],["103","128"],["105","130"],["105","111"],["106",""],["idCriticidad","2"]]';
                         //=====================
 
                         $datosEncuesta= json_decode($datosForm); // convierto el String nuevamente en array
@@ -384,6 +383,8 @@ class cargarEncuesta extends CI_Controller{
 
                         $id_relevamiento = $datosEncuesta[0]->id_relev;                                 //numero de id del relevamiento
                         $numrelevamiento = $datosEncuesta[0]->numrelevamiento;
+                        $idCriticidad    = $datosEncuesta[0]->idCriticidad;
+
                         $limit = count($datosEncuesta);                                                 // limite del arreglo
 
                                 $valor= array();
@@ -438,7 +439,7 @@ class cargarEncuesta extends CI_Controller{
 
                                 // cierro la encuesta
                                 
-                                $this->Relevamiento_model->finalizaEncuesta($id_relevamiento);
+                                $this->Relevamiento_model->finalizaEncuesta($id_relevamiento, $idCriticidad );
                                 $retorno= ['mensaje'=> 'ok'];
                                 echo json_encode($retorno);
 

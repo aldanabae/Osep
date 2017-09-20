@@ -280,7 +280,7 @@ class Relevamiento_model extends CI_Model {
 	public function getRespuestaBreve(){ //  trae las respuestas que se llenan como breve
 			$this->db->select('idPregunta');
 			$this->db->from('pregunta');
-			$this->db->where('idTipoPregunta', '6' ); // que solo sean respuesta breve
+			$this->db->where("idTipoPregunta = '6' OR idTipoPregunta = '11'"); // que solo sean respuesta breve
 			//$this->db->where('idTipoPregunta', '11' ); // que solo sean respuesta breve
 			$query = $this->db->get();
 
@@ -298,10 +298,12 @@ class Relevamiento_model extends CI_Model {
 
 
 
-		public function finalizaEncuesta($idRelevamiento){
+		public function finalizaEncuesta($idRelevamiento, $idCriticidad){
 
 			$data = array(
-				'estado' => '0'
+				'estado' => '0',
+				'idCriticidad' => $idCriticidad
+
 			);
 
 			$this->db->where('idRelevamiento', $idRelevamiento);

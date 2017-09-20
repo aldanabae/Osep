@@ -76,8 +76,8 @@
             parse.push(
                 {
                     "id_relev":$('#hdnid_relevamiento').val(), // id unico del relevamiento
-                    "numrelevamiento":$('#hdnid_numRel').val()
-
+                    "numrelevamiento":$('#hdnid_numRel').val(),
+                    "idCriticidad":$('#b8_criticidad').val()
                 })
 
 
@@ -108,7 +108,7 @@
     }
 
 
-    function setAjax(datos, endpoint, success){
+    function setAjax(datos, endpoint, success, onerror){
         //var idDpto = $('#departamento').val();
         var path   = $("#localPath").val();
         var url= path+'index.php/encuesta/cargarEncuesta/'+ endpoint;
@@ -126,8 +126,9 @@
             },
             
             error: function(xhr,status) { 
-                console.log(xhr+"    "+status);
+                //console.log(xhr+"    "+status);
                 alert('Existio un error en el almacenamiento, intente nuevamente');
+                onerror;
             },
             beforeSend: function(){
                 // Code to display spinner
@@ -221,14 +222,15 @@
                     $.each(componentes,function (key, el){
         
                         if(el.prop('required')  ){  // si el campo es requierido  entonces debo validarlo 
-        
+                            
         
                                 if(el.val() == "" || el.val() == null  ){ // si es requerido  y esta vacio o null  debomarcarlo como que esta en falta
         
                                     el.parent().parent().addClass('has-error')
                                     validacion = false; // validacion incorrecta
                                     red_css = true;     // estoy colocando una clase de error
-        
+                                    
+
                                 }else{    // si no esta vacio ni null devo verificar el tipo de input y su limite
         
                                     if(el.prop('type') == 'number'){   // si es de tipo number  entonces debo ver el limite 
@@ -237,12 +239,30 @@
                                         var valor = parseInt(cleanString(el.val().trim()));     // limpio la cadena de . ,  y espacios
                                         if(valor >=0  && valor<= limite ){  // ya tengo el limite  si esta fuera del valor lo pongo como en falta.
         
+
+                                            if(el.prop('name') == "b1_afiliado"){
+                                                
+                                                //console.log(el.prop('name'));
+
+                                                $('#b1_afiliado').parent().parent().addClass('has-error')
+                                            }
+
+
                                             el.parent().parent().removeClass('has-error')
                                             validacion = true; // validacion correcta
-        
+                                            
                                         }else{ //no cumple con el parametro  lo pongo rojo
         
                                             el.parent().parent().addClass('has-error')
+
+                                            
+                                                if(el.prop('name') == "b1_afiliado"){
+                                                    
+                                                    console.log(el.prop('name'));
+
+                                                    $('#b1_afiliado').parent().parent().addClass('has-error')
+                                                }
+
                                             validacion = false;  // validadcion incorrecta
                                             red_css = true;     // estoy colocando una clase de error
                                         }

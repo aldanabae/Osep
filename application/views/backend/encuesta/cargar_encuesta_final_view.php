@@ -16,6 +16,7 @@
 									
 									<p>Bloque vivienda y entorno</p>				
 								</div>
+								<p class="text-right btn-sm"><a href="<?php echo base_url('encuesta/cargarEncuesta/');?>" ><i class="1 ace-icon fa fa-arrow-left"></i> Atras</a></p>
 
 								
 							</div>
@@ -290,9 +291,22 @@
 										</div>
 									</div>
 									
-									
-									
-									
+									<div id="b8_div_criticidad">
+										<!-- <div class="form-group has-warning">							 -->
+										<!-- <div class="form-group has-success">					 -->
+										<div class="form-group ">					
+											<label class="control-label col-xs-6"><dt>Nivel de criticidad</dt></label>
+											<div class="col-xs-6">
+												<select class="form-control" name="idCriticidad" id="b8_criticidad" required>
+													<option value="" disabled selected hidden>Seleccionar</option>
+													<option value="3">Alta</option>
+													<option value="2">Media</option>							
+													<option value="1">Nula</option>							
+												</select>
+											</div>
+											
+										</div>								
+									</div>	 <!-- fin_div_criticad -->
 									
 									
 									
