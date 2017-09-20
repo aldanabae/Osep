@@ -49,25 +49,26 @@ var encuesta ={
 
                 var respondiente= parseInt($('#hdnrespondiente').val());
 
-                if(respondiente == 2){  //debo mostrar el check de responsable de encuesta
+                // if(respondiente == 2){  //debo mostrar el check de responsable de encuesta
 
-                    $('#id_responde').show();
+                //     $('#id_responde').show();
 
-                }else{
+                // }else{
     
-                    $('#id_responde').hide();
+                //     $('#id_responde').hide();
                     
-                }
+                // }
 
 
-                if (encuesta.count == 0){    
+                if (encuesta.count == 0 || respondiente == 2){    
 
                     encuesta.responde = false ;
+                    $('#id_responde').show();
 
                 }else{
 
                     encuesta.responde = true ;
-
+                    $('#id_responde').hide();
                 }
 
                 if(encuesta.count > 0){
@@ -89,7 +90,16 @@ var encuesta ={
             encuesta.afiliado=''            // numero de afiliado
             encuesta.responde= false        // si responde la encuesta o no   
             
+            },
 
+            ocultarTodo:  function(){
+
+                bloque3a.hide_me();
+                bloque3b.hide_me();
+                bloque4.hide_me();
+                bloque5.hide_me();
+                bloque6.hide_me();
+                bloque7.hide_me();
 
             }
         
@@ -134,9 +144,14 @@ var bloque1= {    // Bloque General
             bloque1.conf.acargo=[],
                     encuesta.titular=false,
                     encuesta.afiliado=''
+
             if(encuesta.responde){
 
                 $('#id_responde').hide()
+                //aqui lo pongo en uno al hidden de rriba
+                $('#hdnrespondiente').val("1"); // asigno el valor a 1 para que este se observe como respondio la encuensta y no aparezca
+
+
             }else{
 
                 $('#id_responde').show()
@@ -197,6 +212,7 @@ var bloque1= {    // Bloque General
 
             })
 
+            $("#add_encuesta :checkbox").attr('checked', false); // pongo todos los check en false
 
 
 
@@ -648,15 +664,6 @@ var bloque1= {    // Bloque General
                             
                     });   
 
-
-
-
-
-
-
-
-
-
                     //=====================================================
 
                         // DNI  encuestado
@@ -787,16 +794,18 @@ var bloque1= {    // Bloque General
 
         action_block : function(){
 
+            //cierro todos los bloques que esten abiertos
+            encuesta.ocultarTodo();
+
                     if(bloque1.conf.osep == "1"){
 
                         
                         var edad = parseInt(bloque1.conf.edad);
 
-                                if ((edad >= 65 ) && (bloque1.conf.discapacidad === "2") ){  //si es mayor a 65 y no tiene discapacidad  despliego ancianidad
+                        //if ((edad >= 65 ) && (bloque1.conf.discapacidad === "2") ){ 
+                                if ((edad >= 65 ) ){  //si es mayor a 65 y no tiene discapacidad  despliego ancianidad
 
                                         bloque5.show_me();     // adultos
-
-
 
                                 }else{
 

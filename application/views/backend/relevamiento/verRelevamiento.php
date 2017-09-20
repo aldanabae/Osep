@@ -329,7 +329,7 @@
                                                   <div class="profile-info-row">
                                                     <div class="profile-info-name"> N° Afiliado </div>
                                                       <div class="profile-info-value">
-                                                        <?php if($enc->nroAfiliado!=""){
+                                                        <?php if($enc->nroAfiliado > 0 ){
                                                                   echo $enc->nroAfiliado;
                                                               }else{
                                                                 echo "No es afiliado a OSEP";
@@ -429,7 +429,7 @@
                                                             <div class="profile-user-info profile-user-info-striped">
 
                                                             <?php $respEnc = $this->Relevamiento_model->getRespEncuestado($idE);
-                                                                      if($respEnc && $enc->nroAfiliado != "" && $enc->nroAfiliado != NULL){
+                                                                      if($respEnc && $enc->nroAfiliado != "" && $enc->nroAfiliado != 0){
                                                                           foreach ($respEnc->result() as $respE){
                                                                               if($respE->idBloque == 3){
                                                                                   if($respE->respuesta!=""){
@@ -464,7 +464,7 @@
                                                             <div class="profile-user-info profile-user-info-striped">
 
                                                             <?php $respEnc = $this->Relevamiento_model->getRespEncuestado($idE);
-                                                                      if($respEnc && $enc->nroAfiliado != "" && $enc->nroAfiliado != NULL){
+                                                                      if($respEnc && $enc->nroAfiliado != "" && $enc->nroAfiliado != 0){
                                                                           foreach ($respEnc->result() as $respE){
                                                                               if($respE->idBloque == 4 || $respE->idBloque == 5){
                                                                                   if($respE->respuesta!=""){
@@ -499,7 +499,7 @@
                                                             <div class="profile-user-info profile-user-info-striped">
 
                                                             <?php $respEnc = $this->Relevamiento_model->getRespEncuestado($idE);
-                                                                      if($respEnc && $enc->nroAfiliado != "" && $enc->nroAfiliado != NULL){
+                                                                      if($respEnc && $enc->nroAfiliado != "" && $enc->nroAfiliado != 0){
                                                                           foreach ($respEnc->result() as $respE){
                                                                               if($respE->idBloque == 6){
                                                                                   if($respE->respuesta!=""){
@@ -534,7 +534,7 @@
                                                             <div class="profile-user-info profile-user-info-striped">
 
                                                             <?php $respEnc = $this->Relevamiento_model->getRespEncuestado($idE);
-                                                                      if($respEnc && $enc->nroAfiliado != "" && $enc->nroAfiliado != NULL){
+                                                                      if($respEnc && $enc->nroAfiliado != "" && $enc->nroAfiliado != 0){
                                                                           foreach ($respEnc->result() as $respE){
                                                                               if($respE->idBloque == 7){
                                                                                   if($respE->respuesta!=""){
@@ -569,7 +569,7 @@
                                                             <div class="profile-user-info profile-user-info-striped">
 
                                                             <?php $respEnc = $this->Relevamiento_model->getRespEncuestado($idE);
-                                                                      if($respEnc && $enc->nroAfiliado != "" && $enc->nroAfiliado != NULL){
+                                                                      if($respEnc && $enc->nroAfiliado != "" && $enc->nroAfiliado != 0){
                                                                           foreach ($respEnc->result() as $respE){
                                                                               if($respE->idBloque == 8){
                                                                                   if($respE->respuesta!=""){
@@ -604,7 +604,7 @@
                                                             <div class="profile-user-info profile-user-info-striped">
 
                                                             <?php $respEnc = $this->Relevamiento_model->getRespEncuestado($idE);
-                                                                      if($respEnc && $enc->nroAfiliado != "" && $enc->nroAfiliado != NULL){
+                                                                      if($respEnc && $enc->nroAfiliado != "" && $enc->nroAfiliado != 0){
                                                                           foreach ($respEnc->result() as $respE){
                                                                               if($respE->idBloque == 9){
                                                                                   if($respE->respuesta!=""){

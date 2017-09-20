@@ -221,7 +221,7 @@
 							</select>
 						</div>
 					</div>
-				</div>	<hr>		<!-- Datos ocupacionales cierre -->
+				</div>	<hr>		<!--  cierre -->
 
 
 
@@ -1391,7 +1391,7 @@
 								<label><input type="checkbox" name="72[]" value="101" >Otra persona que tiene una discapacidad, o un familiar con una discapacidad que no esta en ninguna organización</label>
 								</div>
 								<div class="checkbox ">
-								<label><input type="checkbox" name="72[]" value="10" >Otro</label>
+								<label><input type="checkbox" name="72[]" value="67" >Otro</label>
 								</div>
 
 							</div>

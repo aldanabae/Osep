@@ -238,8 +238,7 @@ class cargarEncuesta extends CI_Controller{
                                         $respondiente= $this->Relevamiento_model->getRespondiente($id_relevamiento);
                                         $options['cantidad_encuestados']= $cantidad_encuestados;
                                         $options['respondiente']= $respondiente;
-                
-
+                                       
                                         // si la cantidad de encuestados es igual a la cantidad de integrantes relevados 
                                         // pasa al bloque final
                                         if(intval($options['cantidad']) == $options['cantidad_encuestados'] ){

@@ -108,7 +108,7 @@
     }
 
 
-    function setAjax(datos, endpoint, success){
+    function setAjax(datos, endpoint, success, onerror){
         //var idDpto = $('#departamento').val();
         var path   = $("#localPath").val();
         var url= path+'index.php/encuesta/cargarEncuesta/'+ endpoint;
@@ -128,6 +128,7 @@
             error: function(xhr,status) { 
                 //console.log(xhr+"    "+status);
                 alert('Existio un error en el almacenamiento, intente nuevamente');
+                onerror;
             },
             beforeSend: function(){
                 // Code to display spinner

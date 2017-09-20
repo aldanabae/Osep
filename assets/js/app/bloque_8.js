@@ -36,7 +36,7 @@ var cargar = {
                         setTimeout(function () {
                                     
                                     cargar.parse();
-                                    $("#btn_guardar").hide()
+                                    
                                     spnr.stop();
                         }, 2000);
 
@@ -83,7 +83,7 @@ var cargar = {
             setAjax(datos, 'guardarEncuesta', function(){
 
                     cargar.notice();
-
+                    $("#btn_guardar").hide();
             });
         },
 
