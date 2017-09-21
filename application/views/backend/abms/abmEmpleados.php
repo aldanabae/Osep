@@ -2,18 +2,17 @@
 	<div class="main-content-inner">
 		<div class="page-content">
 			
-				<div class="page-header">
-						<h1>
-							 Gestionar Empleados
-						</h1>
-				</div>				
+			<div class="page-header">
+				<h1>
+					 Gestionar Empleados
+				</h1>
+			</div>				
 					
 
-		<!-- Empieza el cuadro con Responsables de la bd -->	
-	<form class="form-horizontal" role="form" action="<?php echo base_url() ?>abms/abmEmpleadosC/mostrarTablaEmpleados" method="post"><!-- Comienza formulario -->
-			
-			
-		<div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
+		<!-- Empieza el cuadro Empleados -->	
+		<form class="form-horizontal" role="form" action="<?php echo base_url() ?>abms/abmEmpleadosC/mostrarTablaEmpleados" method="post"><!-- Comienza formulario -->
+					
+			<div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
 				<div class="row">
 
 					<div class="col-xs-6">
@@ -21,10 +20,10 @@
 							<label>Mostrar Tipo Empleado
 							<select aria-controls="dynamic-table" class="form-control input-sm" name="tipoTabla" OnChange= "tipoROnChange(this)">
 								<option value="1">Todos</option>
-								<option value="2">Administrador</option>
-								<option value="3">Administrador Base de Datos</option>
-								<option value="4">Auditor</option>
-								<option value="5">Directivo</option>
+								<!-- <option value="2">Administrador</option> -->
+								<option value="3">Administrador de Usuarios</option>
+								<option value="4">Referente</option>
+								<option value="5">Coordinador</option>
 								<option value="6">Facilitador</option>							
 							</select> 
 							</label>
@@ -32,23 +31,22 @@
 					</div>
 
 					<div class="col-xs-6">
-							<div id="dynamic-table_filter" class="dataTables_filter">
+						<div id="dynamic-table_filter" class="dataTables_filter">
 
-								<label>Nº Legajo:
-									<input type="search" class="form-control input-sm" placeholder="" name="nroLegajo" aria-controls="dynamic-table">
-								</label>
+							<label>Nº Legajo:
+								<input type="search" class="form-control input-sm" placeholder="" name="nroLegajo" aria-controls="dynamic-table">
+							</label>
 
-								<button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
-									<i class="ace-icon fa fa-search  bigger-110 icon-only"></i>
-								</button>
+							<button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
+								<i class="ace-icon fa fa-search  bigger-110 icon-only"></i>
+							</button>
 
-							</div>
+						</div>
 					</div>
 				</div>
 
 
 				<div id="todos" style="display:;">
-
 					<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 						<thead>
 								<tr>
@@ -73,10 +71,9 @@
 
 							<?php //Limitar los datos segun lo que trae el select de cantidad de lineas a mostrar
 								if ($tablaEmpleados){
-								$contador = 0;
+									$contador = 0;
 										
 									foreach($tablaEmpleados->result() as $tabla){
-
 										if( $contador == $limiteTabla )  break;
 							?>
 
@@ -145,7 +142,6 @@
 
 
 				<div id="facilitador" style="display:none;">
-
 					<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 						<thead>
 								<tr>
@@ -170,12 +166,10 @@
 
 							<?php //Limitar los datos segun lo que trae el select de cantidad de lineas a mostrar
 								if ($tablaEmpleados){
-								$contador = 0;
+									$contador = 0;
 										
 									foreach($tablaEmpleados->result() as $tabla){
-
 										if( $contador == $limiteTabla )    break;
-
 											if($tabla->nombreTipoE == "Facilitador"){
 							?>
 
@@ -235,8 +229,7 @@
 							</tr>
 
 							<?php	 				}
-									$contador++;}
-
+									$contador++; }
 								}	
 							?>
 
@@ -245,8 +238,7 @@
 				</div>
 
 
-				<div id="auditor" style="display:none;">
-
+				<div id="referente" style="display:none;">
 					<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 						<thead>
 								<tr>
@@ -271,13 +263,11 @@
 
 							<?php //Limitar los datos segun lo que trae el select de cantidad de lineas a mostrar
 								if ($tablaEmpleados){
-								$contador = 0;
+									$contador = 0;
 										
 									foreach($tablaEmpleados->result() as $tabla){
-
-										if( $contador == $limiteTabla )    break;
-
-											if($tabla->nombreTipoE == "Auditor"){
+										if( $contador == $limiteTabla )    break;	
+											if($tabla->nombreTipoE == "Referente"){
 							?>
 
 							<tr>
@@ -336,8 +326,7 @@
 							</tr>
 
 							<?php	 				}
-									$contador++;}
-
+									$contador++; }
 								}	
 							?>
 
@@ -346,8 +335,7 @@
 				</div>
 
 
-				<div id="directivo" style="display:none;">
-
+				<div id="coordinador" style="display:none;">
 					<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 						<thead>
 								<tr>
@@ -372,13 +360,11 @@
 
 							<?php //Limitar los datos segun lo que trae el select de cantidad de lineas a mostrar
 								if ($tablaEmpleados){
-								$contador = 0;
+									$contador = 0;
 										
 									foreach($tablaEmpleados->result() as $tabla){
-
 										if( $contador == $limiteTabla )    break;
-
-											if($tabla->nombreTipoE == "Directivo"){
+											if($tabla->nombreTipoE == "Coordinador"){
 							?>
 
 							<tr>
@@ -437,8 +423,7 @@
 							</tr>
 
 							<?php	 				}
-									$contador++;}
-
+									$contador++; }
 								}	
 							?>
 
@@ -448,7 +433,6 @@
 
 
 				<div id="admin" style="display:none;">
-
 					<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 						<thead>
 								<tr>
@@ -473,12 +457,10 @@
 
 							<?php //Limitar los datos segun lo que trae el select de cantidad de lineas a mostrar
 								if ($tablaEmpleados){
-								$contador = 0;
+									$contador = 0;
 										
 									foreach($tablaEmpleados->result() as $tabla){
-
 										if( $contador == $limiteTabla )    break;
-
 											if($tabla->nombreTipoE == "Administrador"){
 							?>
 
@@ -538,8 +520,7 @@
 							</tr>
 
 							<?php	 				}
-									$contador++;}
-
+									$contador++; }
 								}	
 							?>
 
@@ -549,7 +530,6 @@
 
 
 				<div id="adminDB" style="display:none;">
-
 					<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 						<thead>
 								<tr>
@@ -574,13 +554,11 @@
 
 							<?php //Limitar los datos segun lo que trae el select de cantidad de lineas a mostrar
 								if ($tablaEmpleados){
-								$contador = 0;
+									$contador = 0;
 										
 									foreach($tablaEmpleados->result() as $tabla){
-
 										if( $contador == $limiteTabla )    break;
-
-											if($tabla->nombreTipoE == "Administrador Base de Datos"){
+											if($tabla->nombreTipoE == "Administrador de Usuarios"){
 							?>
 
 							<tr>
@@ -638,17 +616,16 @@
 								</td>
 							</tr>
 							<?php	 				}
-									$contador++;}
-
+									$contador++; }
 								}	
 							?>
 						</tbody>
 					</table>
 				</div>
 
-		</div><!-- Termina el cuadro con Medicamentos de la bd -->
+			</div><!-- Termina el cuadro Empleados -->
 
-	</form>
+		</form>
 
 
 		</div><!-- /.page-content -->
@@ -666,10 +643,10 @@
 	       		divM = document.getElementById("facilitador");
 	      		divM.style.display = "none";
 
-	      		divE = document.getElementById("auditor");
+	      		divE = document.getElementById("referente");
 	      		divE.style.display = "none";
 
-	      		divE = document.getElementById("directivo");
+	      		divE = document.getElementById("coordinador");
 	      		divE.style.display = "none";
 
 	      		divE = document.getElementById("admin");
@@ -685,10 +662,10 @@
 	       		divM = document.getElementById("facilitador");
 	      		divM.style.display = "none";
 
-	      		divE = document.getElementById("auditor");
+	      		divE = document.getElementById("referente");
 	      		divE.style.display = "none";
 
-	      		divE = document.getElementById("directivo");
+	      		divE = document.getElementById("coordinador");
 	      		divE.style.display = "none";
 
 	      		divE = document.getElementById("admin");
@@ -704,10 +681,10 @@
 	       		divM = document.getElementById("facilitador");
 	      		divM.style.display = "none";
 
-	      		divE = document.getElementById("auditor");
+	      		divE = document.getElementById("referente");
 	      		divE.style.display = "none";
 
-	      		divE = document.getElementById("directivo");
+	      		divE = document.getElementById("coordinador");
 	      		divE.style.display = "none";
 
 	      		divE = document.getElementById("admin");
@@ -723,10 +700,10 @@
 	       		divM = document.getElementById("facilitador");
 	      		divM.style.display = "none";
 
-	      		divE = document.getElementById("auditor");
+	      		divE = document.getElementById("referente");
 	      		divE.style.display = "";
 
-	      		divE = document.getElementById("directivo");
+	      		divE = document.getElementById("coordinador");
 	      		divE.style.display = "none";
 
 	      		divE = document.getElementById("admin");
@@ -743,10 +720,10 @@
 	       		divM = document.getElementById("facilitador");
 	      		divM.style.display = "none";
 
-	      		divE = document.getElementById("auditor");
+	      		divE = document.getElementById("referente");
 	      		divE.style.display = "none";
 
-	      		divE = document.getElementById("directivo");
+	      		divE = document.getElementById("coordinador");
 	      		divE.style.display = "";
 
 	      		divE = document.getElementById("admin");
@@ -762,10 +739,10 @@
 	       		divM = document.getElementById("facilitador");
 	      		divM.style.display = "";
 
-	      		divE = document.getElementById("auditor");
+	      		divE = document.getElementById("referente");
 	      		divE.style.display = "none";
 
-	      		divE = document.getElementById("directivo");
+	      		divE = document.getElementById("coordinador");
 	      		divE.style.display = "none";
 
 	      		divE = document.getElementById("admin");

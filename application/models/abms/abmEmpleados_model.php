@@ -17,18 +17,22 @@ class AbmEmpleados_model extends CI_Model {
 					'nroLegajo'=>$data['nroLegajo'],
 					'email'=>$data['email'],
 					'convenio'=>$data['convenio'],
+					'activo'=> 1,
 					'idTipoEmpleado'=>$data['tipoEmpleado']));
 		$codEmp = $this->db->insert_id();
 	}
 
 	function obtenerEmpleados($nroL){
 		if ($nroL == ''){
+			$this->db->where('empleado.activo', 1);
 			$this->db->from('empleado');
+			$this->db->order_by('apellidoE','asc');
 			$this->db->join('tipo_empleado', 'tipo_empleado.idTipoEmpleado = empleado.idTipoEmpleado', 'left');
 			$query = $this->db->get();
 
 		}else{
 			$this->db->where('empleado.nroLegajo', $nroL);
+			$this->db->where('empleado.activo', 1);
 			$this->db->from('empleado');
 			$this->db->join('tipo_empleado', 'tipo_empleado.idTipoEmpleado = empleado.idTipoEmpleado', 'left');
 			$query = $this->db->get();
@@ -99,7 +103,10 @@ class AbmEmpleados_model extends CI_Model {
 	}
 
 	function eliminarEmpleado($codE){
-		$this->db->delete('empleado',array('idEmpleado'=>$codE));
+		$datos = array('activo'=> 0);
+
+		$this->db->where('empleado.idEmpleado', $codE);
+		$query = $this->db->update('empleado', $datos);
 	}
 		
 }
