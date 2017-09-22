@@ -112,7 +112,7 @@ $dato_rel= $relevamiento; // array de relevamiento qeu viene del controlador
 
                             <div class="form-group">
                                 <label for="inputName" class="control-label col-xs-6">Número Relevamiento (*)</label>
-                                <div class="col-xs-6">
+                                <div class="col-xs-6 has-error">
                                     
                                     <input type="text" class="form-control"  name= "nroRelev" id="nroRelev" value= "<?php echo($dato_rel['nroRelevamiento']); ?>" readonly>
                                 </div>

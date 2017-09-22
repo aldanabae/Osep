@@ -368,7 +368,7 @@
 						<div class="col-xs-6">
 							<select class="form-control" name= "35" id= "b1_extra" required>
 								<option value="2" selected ="true">NO</option>
-								<option value="1" disabled>SI</option>
+								<option value="1" >SI</option>
 							</select>
 						</div>
 					</div>

@@ -53,7 +53,7 @@ class cargarEncuesta extends CI_Controller{
                         //cargo el header y el sidebar con los datos para el nivel de usuarios
                         $this->load->view('backend/header');
                         $this->load->view('backend/sidebar',$data);
-                        $js['javascript']= ["app.js"];
+                        $js['javascript']= ["app.js", "helpers.js"];
 
 
 
