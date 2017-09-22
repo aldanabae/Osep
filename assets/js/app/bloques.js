@@ -14,7 +14,7 @@ $(function() {
 
 var encuesta ={
 
-            titular: true,      // si es titular o no
+            titular: null,      // si es titular o no
             afiliado: '',       // numero de afiliado
             integrantes: 0,     // antidad de encuestados
             responde: false,    // si responde la encuesta o no    
@@ -49,17 +49,21 @@ var encuesta ={
 
                 var respondiente= parseInt($('#hdnrespondiente').val());
 
-                // if(respondiente == 2){  //debo mostrar el check de responsable de encuesta
+                var cantEncuestados = parseInt($('#hdnCantidad_encuestados').val());
 
-                //     $('#id_responde').show();
 
-                // }else{
+                // accion para cargar solo 3 tipos de datos ocupacionales o todo
+                if(cantEncuestados >0 ){  //quiere decir que es el primer encuestado del relevmiento
+
+                    encuesta.titular= false;
+
+                }else{                      // quiere decir que ya hay un titular relevado
     
-                //     $('#id_responde').hide();
+                    encuesta.titular= true;
                     
-                // }
+                }
 
-
+                // accion para mostrar o no el check de responde encuesta
                 if (encuesta.count == 0 || respondiente == 2){    
 
                     encuesta.responde = false ;
@@ -579,6 +583,7 @@ var bloque1= {    // Bloque General
                                     
                                     $("#b1_div_afiliado" ).hide("slow"); // oculta el txt de numero de afiliado
                                     $("#b1_cober").html('');              // blanquea el select
+                                    $("#b1_afiliado").val('');         // elimina el contenido del numero de afiliado
                                     $.each(bloque1.data.tOsep.no, function(key, value){   // carga el select
 
                                         $("#b1_cober").append( '<option value="'+ value.id_resp +'">'+ value.respuesta +'</option>');
@@ -915,6 +920,40 @@ var bloque1= {    // Bloque General
             var tmp = $('#add_encuesta').find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
             //saco los que no van a necesitar:::
             delete tmp[0];delete tmp[1];delete tmp[2];delete tmp[3];delete tmp[4];delete tmp[6];delete tmp[7];
+
+
+            $.each(tmp, function( index, value ) {
+
+                if(value.name == "b1_adicional_nombre" || value.name == "b1_adicional_tel" ){
+                    
+                    tmp.delete[index]
+                    
+                }
+
+            });
+
+
+            $.each(tmp, function( index, value ) {
+                
+                if (typeof(value) === "undefined") {
+                    
+                    tmp.splice(index, 1);
+                }
+                               
+            });
+
+
+
+
+
+
+
+
+                if($('#b1_adicional_nombre').is(":visible")){
+
+
+                }
+
 
             var datos = JSON.encode(parseData(tmp, true));
             var resp = setAjax(datos, 'encuestaAjax', function(message){

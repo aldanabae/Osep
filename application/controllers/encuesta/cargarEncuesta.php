@@ -311,7 +311,7 @@ class cargarEncuesta extends CI_Controller{
                     $continuar = $this->input->post('continuar');
                     $resp['id_numRel']= $this->input->post('hdnid_numRel');
                     $resp['id_relevamiento']= $this->input->post('hdnid_relevamiento');
-
+                    $resp['criticidad'] = $this->Relevamiento_model->getCriticidad();
 
                     if( $resp['id_numRel'] != null  && $resp['id_relevamiento'] != null )
                     {
@@ -551,28 +551,6 @@ class cargarEncuesta extends CI_Controller{
                         echo json_encode($retorno);
                 }
 
-
-
-//crearEncuestado
-
-
-
-                // var_dump($_POST);
-                //json_encode($_POST);
-
-
-                // $test= $_POST['datos'];
-
-                // //                 $test = '
-                // // [[{"nombre":"aldana ","Apellido":"baeza","dni":"333333333333333","edad":"31","sexo":"M","id_relev":"9","n_afiliado":"44454545/","respondeR":"0"}],["b1_nombre","baeza aldana"],["b1_edad","31"],["b1_dni","333333333333333"],["b1_genero","M"],["b1_parent","3"],["b1_osep","0"],["b1_afiliado","44454545"],["b1_barra",""],["b1_cober","0"],["b1_cronica","1"],["b1_disc","1"]]                
-
-                // //                 ';
-
-                // $result= json_decode($test);
-                // $prueba= $result;
-
-                // // var_dump($prueba);
-                // echo json_encode($prueba);
 
         }
 

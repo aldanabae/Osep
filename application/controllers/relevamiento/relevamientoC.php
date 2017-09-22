@@ -22,7 +22,6 @@ class RelevamientoC extends My_Controller{
 
 		
 
-
 		$nombreVista="backend/relevamiento/buscarRelevamiento";
 		$this->cargarVista($nombreVista, $data);
 

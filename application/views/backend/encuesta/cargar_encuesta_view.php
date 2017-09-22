@@ -368,7 +368,7 @@
 						<div class="col-xs-6">
 							<select class="form-control" name= "35" id= "b1_extra" required>
 								<option value="2" selected ="true">NO</option>
-								<option value="1">SI</option>
+								<option value="1" disabled>SI</option>
 							</select>
 						</div>
 					</div>
@@ -481,10 +481,10 @@
 							</div>	
 
 							<div class="form-group" id="b1_div_cual">
-								<label class="control-label col-xs-6" for="b0_cual"> ¿Cual?</label>
+								<label class="control-label col-xs-6" for="b0_cual"> ¿Cuál?</label>
 
 								<div class="col-xs-6" >
-									<input type="text" class="form-control" name = "81" id="b1_cual" required>
+									<input type="text" class="form-control" name = "114" id="b1_cual" required>
 								</div>
 							</div>
 
@@ -681,10 +681,10 @@
 							</div>	
 
 							<div class="form-group" id="b3a_div_cual">
-								<label class="control-label col-xs-6" for="b3a_cual"> ¿Cual?</label>
+								<label class="control-label col-xs-6" for="b3a_cual"> ¿Cuál?</label>
 
 								<div class="col-xs-6" >
-									<input type="text" class="form-control" name = "81" id="b3a_cual" required>
+									<input type="text" class="form-control" name = "114" id="b3a_cual" required>
 								</div>
 							</div>
 
@@ -853,10 +853,10 @@
 							</div>	
 
 							<div class="form-group" id="b3b_div_cual">
-								<label class="control-label col-xs-6" for="b3b_cual"> ¿Cual?</label>
+								<label class="control-label col-xs-6" for="b3b_cual"> ¿Cuál?</label>
 
 								<div class="col-xs-6" >
-									<input type="text" class="form-control" name = "81" id="b3b_cual" required>
+									<input type="text" class="form-control" name = "114" id="b3b_cual" required>
 								</div>
 							</div>
 
@@ -939,10 +939,10 @@
 
 
 									<div class="form-group" id="b4_div_otro">					
-										<label class="control-label col-xs-6"> ¿Cual? </label>
+										<label class="control-label col-xs-6"> ¿Cuál? </label>
 
 										<div class="col-xs-6">
-											<input type="text" class="form-control" name = "81" id="b4_otro" required>
+											<input type="text" class="form-control" name = "114" id="b4_otro" required>
 
 										</div>
 									</div>
@@ -1289,10 +1289,10 @@
 							</div>	
 
 							<div class="form-group" id="b5_div_cual">
-								<label class="control-label col-xs-6" for="b5_cual"> ¿Cual?</label>
+								<label class="control-label col-xs-6" for="b5_cual"> ¿Cuál?</label>
 
 								<div class="col-xs-6" >
-									<input type="text" class="form-control" name = "81" id="b5_cual" required>
+									<input type="text" class="form-control" name = "114" id="b5_cual" required>
 								</div>
 							</div>
 
@@ -1488,10 +1488,10 @@
 								</div>	
 
 								<div class="form-group" id="b6_div_otro">
-									<label class="control-label col-xs-6" for="b6_cual"> ¿Cual?</label>
+									<label class="control-label col-xs-6" for="b6_cual"> ¿Cuál?</label>
 
 									<div class="col-xs-6" >
-										<input type="text" class="form-control" name = "81" id="b6_cual" required>
+										<input type="text" class="form-control" name = "114" id="b6_cual" required>
 									</div>
 								</div>
 
@@ -1600,7 +1600,7 @@
 								</select>
 							</div>
 							<div class="col-xs-3">
-								<input type="text" class="form-control" id="b7_cual" name="81" placeholder=" ¿Cual?">
+								<input type="text" class="form-control" id="b7_cual" name="81" placeholder=" ¿Cuál?">
 							</div>
 
 						</div>

@@ -298,14 +298,23 @@
 											<label class="control-label col-xs-6"><dt>Nivel de criticidad</dt></label>
 											<div class="col-xs-6">
 												<select class="form-control" name="idCriticidad" id="b8_criticidad" required>
+													
 													<option value="" disabled selected hidden>Seleccionar</option>
-													<option value="3">Alta</option>
-													<option value="2">Media</option>							
-													<option value="1">Nula</option>							
+
+													<?php 
+													
+														foreach($criticidad as $item){
+
+															echo('<option value="'.$item->idCriticidad.'" data-desc= "'.$item->descCriticidad.'"> '.$item->nombreCriticidad.'</option>');
+
+														}
+													
+													?>					
 												</select>
 											</div>
-											
+
 										</div>								
+
 									</div>	 <!-- fin_div_criticad -->
 									
 									

@@ -291,8 +291,19 @@ class Relevamiento_model extends CI_Model {
 			{
 				return false;
 			}
-		
 	}
+	public function getCriticidad(){ //  trae los niveles de criticidad de mayor a menor
+
+			$this->db->select('*');
+			$this->db->from('criticidad');
+			$this->db->order_by("idCriticidad", "desc"); 
+			$query = $this->db->get();
+			return $query->result();
+
+	}
+
+
+
 
 
 
@@ -312,10 +323,13 @@ class Relevamiento_model extends CI_Model {
 		}
 
 
+
+		//AQUI esta el metodo que condiciona lo visible de cada relevamiento
+
 	public function obtenerRelevamientos($nivelUser){
 
 
-		if($nivelUser['nivel'] == '2'){
+		if($nivelUser['nivel'] == '1'){
 
 			$this->db->where('relevamiento.idEmpleado', $nivelUser['idEmpleado']);
 
