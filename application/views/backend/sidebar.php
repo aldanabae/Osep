@@ -50,47 +50,15 @@
 					try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
 				</script>
 
-			<!-- ICONOS DE ACCESOS RAPIDOS!!!
-
-			<div class="sidebar-shortcuts" id="sidebar-shortcuts">
-				<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-					<button class="btn btn-success">
-						<i class="ace-icon fa fa-bar-chart"></i>
-					</button>
-
-					<button class="btn btn-info">
-						<i class="ace-icon fa fa-ambulance"></i>
-					</button>
-
-						<!-- #section:basics/sidebar.layout.shortcuts 
-					<button class="btn btn-warning"
-						<i class="ace-icon fa fa-user-md"></i>
-					</button>
-
-					<button class="btn btn-danger">
-						<i class="ace-icon fa fa-cogs"></i>
-					</button>
-					<!-- /section:basics/sidebar.layout.shortcuts 
-				</div>
-
-				<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
-					<span class="btn btn-success"></span>
-
-					<span class="btn btn-info"></span>
-
-					<span class="btn btn-warning"></span>
-
-					<span class="btn btn-danger"></span>
-				</div>
-			</div><!-- /.sidebar-shortcuts
-			--> 
-
 			<ul class="nav nav-list">
 
 				<?php 
 					if ($nivel){							
 						foreach($nivel->result() as $niv){
-      						if ($niv->descripNivel == "Administrador Base de Datos" || $niv->descripNivel == "Administrador" || $niv->descripNivel == "Auditor" || $niv->descripNivel == "Directivo" || $niv->descripNivel == "Creador Encuesta"){
+      						if ($niv->descripNivel == "Administrador de Usuarios" || 
+      							$niv->descripNivel == "Administrador" || 
+      							$niv->descripNivel == "Referente" || 
+      							$niv->descripNivel == "Coordinador"){
 				?>
 
 				<li class="">
@@ -110,12 +78,11 @@
 				<?php 
 					if ($nivel){							
 						foreach($nivel->result() as $niv){
-      						if ($niv->descripNivel == "Administrador Base de Datos" || 
+      						if ($niv->descripNivel == "Administrador de Usuarios" || 
       							$niv->descripNivel == "Facilitador" || 
       							$niv->descripNivel == "Administrador" || 
-      							$niv->descripNivel == "Auditor" || 
-      							$niv->descripNivel == "Creador Encuesta" || 
-      							$niv->descripNivel == "Directivo"){
+      							$niv->descripNivel == "Referente" ||  
+      							$niv->descripNivel == "Coordinador"){
 				?>
 
 				<li class="">
@@ -129,7 +96,11 @@
 						<b class="arrow"></b>
 							<ul class="submenu">
 
-								<?php 	if ($niv->descripNivel == "Administrador Base de Datos" || $niv->descripNivel == "Facilitador" || $niv->descripNivel == "Administrador" || $niv->descripNivel == "Auditor" || $niv->descripNivel == "Creador Encuesta" || $niv->descripNivel == "Directivo"){
+								<?php 	if ($niv->descripNivel == "Administrador de Usuarios" || 
+											$niv->descripNivel == "Facilitador" || 
+											$niv->descripNivel == "Administrador" || 
+											$niv->descripNivel == "Referente" || 
+											$niv->descripNivel == "Coordinador"){
 								?>
 								<li class="">
 									<a href="<?php echo base_url()?>encuesta/cargarEncuesta/">
@@ -141,7 +112,9 @@
 								<?php 	}	
 								?>
 
-								<?php 	if ($niv->descripNivel == "Administrador Base de Datos" || $niv->descripNivel == "Administrador" || $niv->descripNivel == "Auditor" || $niv->descripNivel == "Creador Encuesta" || $niv->descripNivel == "Directivo"){
+								<?php 	if ($niv->descripNivel == "Administrador de Usuarios" || 
+											$niv->descripNivel == "Administrador" ||  
+											$niv->descripNivel == "Coordinador"){
 								?>
 
 								<li class="">
@@ -154,7 +127,11 @@
 								<?php 	}	
 								?>
 
-								<?php 	if ($niv->descripNivel == "Administrador Base de Datos" || $niv->descripNivel == "Facilitador" || $niv->descripNivel == "Administrador" || $niv->descripNivel == "Auditor" || $niv->descripNivel == "Creador Encuesta" || $niv->descripNivel == "Directivo"){
+								<?php 	if ($niv->descripNivel == "Administrador de Usuarios" || 
+											$niv->descripNivel == "Facilitador" || 
+											$niv->descripNivel == "Administrador" || 
+											$niv->descripNivel == "Referente" || 
+											$niv->descripNivel == "Coordinador"){
 								?>
 								<li class="">
 									<a  class="btn disabled" href="<?php echo base_url()?>abms/abmVisitasC/">
@@ -167,7 +144,10 @@
 								<?php 	}	
 								?>
 
-								<?php 	if ($niv->descripNivel == "Administrador Base de Datos" || $niv->descripNivel == "Administrador" || $niv->descripNivel == "Auditor" || $niv->descripNivel == "Creador Encuesta" || $niv->descripNivel == "Directivo"){
+								<?php 	if ($niv->descripNivel == "Administrador de Usuarios" || 
+											$niv->descripNivel == "Administrador" || 
+											$niv->descripNivel == "Referente" || 
+											$niv->descripNivel == "Coordinador"){
 								?>
 								<li class="">
 									<a href="<?php echo base_url()?>encuesta/abmencuesta">
@@ -178,7 +158,11 @@
 								</li>
 								<?php 	}	
 								?>
-								<?php 	if ($niv->descripNivel == "Administrador Base de Datos" || $niv->descripNivel == "Facilitador" || $niv->descripNivel == "Administrador" || $niv->descripNivel == "Auditor" || $niv->descripNivel == "Creador Encuesta" || $niv->descripNivel == "Directivo"){
+								<?php 	if ($niv->descripNivel == "Administrador de Usuarios" || 
+											$niv->descripNivel == "Facilitador" || 
+											$niv->descripNivel == "Administrador" || 
+											$niv->descripNivel == "Referente" || 
+											$niv->descripNivel == "Coordinador"){
 								?>	
 								<li class="">
 									<a href="<?php echo base_url()?>relevamiento/relevamientoC">
@@ -200,7 +184,8 @@
 				<?php 
 					if ($nivel){							
 						foreach($nivel->result() as $niv){
-      						if ($niv->descripNivel == "Administrador Base de Datos" || $niv->descripNivel == "Administrador" || $niv->descripNivel == "Auditor" || $niv->descripNivel == "Creador Encuesta"){
+      						if ($niv->descripNivel == "Administrador de Usuarios" || 
+      							$niv->descripNivel == "Administrador"){
 				?>
 
 				<li class="">
@@ -233,7 +218,11 @@
 				<?php 
 					if ($nivel){							
 						foreach($nivel->result() as $niv){
-      						if ($niv->descripNivel == "Administrador Base de Datos" || $niv->descripNivel == "Facilitador" || $niv->descripNivel == "Administrador" || $niv->descripNivel == "Auditor" || $niv->descripNivel == "Directivo" || $niv->descripNivel == "Creador Encuesta"){
+      						if ($niv->descripNivel == "Administrador de Usuarios" || 
+      							$niv->descripNivel == "Facilitador" || 
+      							$niv->descripNivel == "Administrador" || 
+      							$niv->descripNivel == "Referente" || 
+      							$niv->descripNivel == "Coordinador"){
 				?>
 
 				<li class="">
@@ -266,7 +255,7 @@
 				<?php 
 					if ($nivel){							
 						foreach($nivel->result() as $niv){
-      						if ($niv->descripNivel == "Administrador Base de Datos" || $niv->descripNivel == "Administrador" || $niv->descripNivel == "Auditor" || $niv->descripNivel == "Directivo" || $niv->descripNivel == "Creador Encuesta"){
+      						if ($niv->descripNivel == "Administrador de Usuarios"){
 				?>
 				<li class="">
 					<a href="#" class="dropdown-toggle">
