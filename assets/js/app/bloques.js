@@ -663,8 +663,8 @@ var bloque1= {    // Bloque General
                     });  
 
                     $( "#btn_continuar" ).on(   // genera los bloques 
-                        'click', function(){
-
+                        'click', function(e){
+                            e.preventDefault()
                             $('#add_encuesta').submit()
                             
                     });   
@@ -922,25 +922,51 @@ var bloque1= {    // Bloque General
             delete tmp[0];delete tmp[1];delete tmp[2];delete tmp[3];delete tmp[4];delete tmp[6];delete tmp[7];
 
 
-            $.each(tmp, function( index, value ) {
+            // var quitar=['b1_nombre','b1_edad','b1_dni','b1_genero','22','b1_barra','24','b1_adicional_nombre', 'b1_adicional_tel']
 
-                if(value.name == "b1_adicional_nombre" || value.name == "b1_adicional_tel" ){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // $.each(tmp, function( index, value ) {
+
+            //     if(value.name == "b1_adicional_nombre" || value.name == "b1_adicional_tel" ){
                     
-                    tmp.delete[index]
+            //         tmp.delete[index]
                     
-                }
+            //     }
 
-            });
+            // });
 
 
-            $.each(tmp, function( index, value ) {
+
+
+
+
+
+
+            // $.each(tmp, function( index, value ) {
                 
-                if (typeof(value) === "undefined") {
+            //     if (typeof(value) === "undefined") {
                     
-                    tmp.splice(index, 1);
-                }
+            //         tmp.splice(index, 1);
+            //     }
                                
-            });
+            // });
 
 
 
@@ -949,16 +975,16 @@ var bloque1= {    // Bloque General
 
 
 
-                if($('#b1_adicional_nombre').is(":visible")){
+                // if($('#b1_adicional_nombre').is(":visible")){
 
 
-                }
+                // }
 
 
-            var datos = JSON.encode(parseData(tmp, true));
-            var resp = setAjax(datos, 'encuestaAjax', function(message){
+                            var datos = JSON.encode(parseData(tmp, true));
+                            var resp = setAjax(datos, 'encuestaAjax', function(message){
 
-                
+                                
                             alert('integrante almacenado correctamente '+ message.mensaje );
                             encuesta.count ++;
                             $('#hdnCantidad_encuestados').val(encuesta.count)
@@ -1962,11 +1988,29 @@ function submitEncuesta(){
              * continuar con el submit del formulario
              */
             var retorno= validations('#add_encuesta');  // devuelve la validacion de campos 
-            //e.preventDefault();
+           
             if(retorno){
 
-                    bloque1.parse();
-                    return true
+
+                var tmp = $('#add_encuesta').find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
+                //saco los que no van a necesitar:::
+                delete tmp[0];delete tmp[1];delete tmp[2];delete tmp[3];delete tmp[4];delete tmp[6];delete tmp[7];
+    
+    
+                                var datos = JSON.encode(parseData(tmp, true));
+                                var resp = setAjax(datos, 'encuestaAjax', function(message){
+    
+                                    
+                                alert('integrante almacenado correctamente '+ message.mensaje );
+                                return true
+    
+                    }, function(){
+
+                        alert('ERROR GUARDANDO LOS DATOS' );
+                        return false;
+
+                    }) // envio el arreglo de datos mas el endPoint
+
 
             }else{
 
