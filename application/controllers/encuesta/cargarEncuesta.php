@@ -247,7 +247,7 @@ class cargarEncuesta extends CI_Controller{
 
                                                 $resp['id_numRel']= $nroRelevamiento;
                                                 $resp['id_relevamiento']= $id_relevamiento;
-
+                                                $resp['criticidad'] = $this->Relevamiento_model->getCriticidad();
 
                                            
                                                 $this->load->view("backend/encuesta/cargar_encuesta_final_view",$resp);

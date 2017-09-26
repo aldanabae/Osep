@@ -2008,9 +2008,3 @@ var bloque9 ={       // laboral
 
 }
 
-
-function submitEncuesta(){
-
-
-            
-    }; 
