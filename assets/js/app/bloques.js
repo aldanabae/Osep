@@ -628,7 +628,21 @@ var bloque1= {    // Bloque General
                             
                             if(retorno){
 
-                                bloque1.parse(); // guardo los datos
+                                bloque1.parse(
+
+
+                                    function(message){
+
+                                            // callback para resetear el formulario y volver a cargar
+                                            alert('integrante almacenado correctamente '+ message.mensaje );
+                                            encuesta.count ++;
+                                            $('#hdnCantidad_encuestados').val(encuesta.count)
+                                            bloque1.reset_conf();
+                                            bloque1.init();
+
+                                    }
+
+                                ); // guardo los datos
                                 bloque1.reset_block(); // reseteo los campos y bloques  
                                 bloque1.mapeoEncuestados();  // mapeo los encuestados
                                 // bloque1.reset_conf();
@@ -665,7 +679,44 @@ var bloque1= {    // Bloque General
                     $( "#btn_continuar" ).on(   // genera los bloques 
                         'click', function(e){
                             e.preventDefault()
-                            $('#add_encuesta').submit()
+
+
+
+
+            /** validar los datos de los bloques desplegados
+             * guardar el encusstado como siempre
+             * continuar con el submit del formulario
+             */
+            var retorno= validations('#add_encuesta');  // devuelve la validacion de campos 
+            
+             if(retorno){
+ 
+                bloque1.parse(
+
+                    function(message){   //callback para el success
+
+                        alert('integrante almacenado correctamente '+ message.mensaje );
+
+                        $('#add_encuesta').submit()
+                    }
+
+                ); // guardo los datos
+
+             }else{
+ 
+                 alert('error .. Verifica la informacion Cargada')
+ 
+                 return false
+             }
+
+
+
+
+
+
+
+
+                            //
                             
                     });   
 
@@ -915,7 +966,7 @@ var bloque1= {    // Bloque General
 
             },
 
-        parse: function(){
+        parse: function(onSuccess){
 
             var tmp = $('#add_encuesta').find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
             //saco los que no van a necesitar:::
@@ -923,20 +974,6 @@ var bloque1= {    // Bloque General
 
 
             // var quitar=['b1_nombre','b1_edad','b1_dni','b1_genero','22','b1_barra','24','b1_adicional_nombre', 'b1_adicional_tel']
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -970,7 +1007,7 @@ var bloque1= {    // Bloque General
 
 
 
-
+            
 
 
 
@@ -981,17 +1018,8 @@ var bloque1= {    // Bloque General
                 // }
 
 
-                            var datos = JSON.encode(parseData(tmp, true));
-                            var resp = setAjax(datos, 'encuestaAjax', function(message){
-
-                                
-                            alert('integrante almacenado correctamente '+ message.mensaje );
-                            encuesta.count ++;
-                            $('#hdnCantidad_encuestados').val(encuesta.count)
-                            bloque1.reset_conf();
-                            bloque1.init();
-
-                }) // envio el arreglo de datos mas el endPoint
+                            var datos = JSON.encode(parseData(tmp, true)); // encodea datos json para pasarlos
+                            var resp = setAjax(datos, 'encuestaAjax', onSuccess ) // envio el arreglo de datos mas el endPoint
             
 
             },
@@ -1983,40 +2011,6 @@ var bloque9 ={       // laboral
 
 function submitEncuesta(){
 
-            /** validar los datos de los bloques desplegados
-             * guardar el encusstado como siempre
-             * continuar con el submit del formulario
-             */
-            var retorno= validations('#add_encuesta');  // devuelve la validacion de campos 
-           
-            if(retorno){
 
-
-                var tmp = $('#add_encuesta').find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
-                //saco los que no van a necesitar:::
-                delete tmp[0];delete tmp[1];delete tmp[2];delete tmp[3];delete tmp[4];delete tmp[6];delete tmp[7];
-    
-    
-                                var datos = JSON.encode(parseData(tmp, true));
-                                var resp = setAjax(datos, 'encuestaAjax', function(message){
-    
-                                    
-                                alert('integrante almacenado correctamente '+ message.mensaje );
-                                return true
-    
-                    }, function(){
-
-                        alert('ERROR GUARDANDO LOS DATOS' );
-                        return false;
-
-                    }) // envio el arreglo de datos mas el endPoint
-
-
-            }else{
-
-                alert('error .. Verifica la informacion Cargada')
-
-                return false
-            }
             
     }; 
