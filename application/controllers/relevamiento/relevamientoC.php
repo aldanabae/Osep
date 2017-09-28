@@ -13,16 +13,10 @@ class RelevamientoC extends My_Controller{
 		$nivelUser= $this->session->userdata('logged_in');
 		
 		if (!isset($_POST['CargarTabla'])){
-			//$data['nombresNiveles'] = '';
-			$data['limiteTabla'] = 10000;  // le doy el limite de la tabla
-
+			$data['limiteTabla'] = 10000;  
 			$data['tablaRelevamientos'] = $this->Relevamiento_model->obtenerRelevamientos($nivelUser);
 		}
 			
-
-		
-
-
 		$nombreVista="backend/relevamiento/buscarRelevamiento";
 		$this->cargarVista($nombreVista, $data);
 

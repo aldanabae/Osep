@@ -58,6 +58,8 @@
                 <th>Fecha Realización</th>
                 <th>Criticidad</th>
                 <th>Facilitador</th>
+                <th>Departamento</th>
+                <th>Localidad</th>
                 <th>
                   <div class="hidden-sm hidden-xs action-buttons">
                     <a class="purple" href="">
@@ -86,7 +88,9 @@
               </td>
               <td><?= $tabla->fechaRelevamiento;?></td>
               <td><?= $tabla->nombreCriticidad;?></td>
-              <td><?= $tabla->apellidoE;?> <?php echo $tabla->nombreE;?></td><!-- Nombre via de administracion no codigo -->
+              <td><?= $tabla->apellidoE;?> <?php echo $tabla->nombreE;?></td>
+              <td><?= $tabla->id_tlocalidad;?></td>
+              <td><?= $tabla->id_tlocalidad;?></td>
               
               <td>
                 <div class="hidden-sm hidden-xs action-buttons">
