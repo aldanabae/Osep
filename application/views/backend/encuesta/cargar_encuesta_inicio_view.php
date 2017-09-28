@@ -14,6 +14,7 @@ $dato_rel= $relevamiento; // array de relevamiento qeu viene del controlador
 
         $completar = true;
         $cantidad= unserialize($dato_rel['cantEncuestados']);
+
         
     }
 
@@ -41,7 +42,6 @@ $dato_rel= $relevamiento; // array de relevamiento qeu viene del controlador
             }
         }
     }
-
 
 ?>
 

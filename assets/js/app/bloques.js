@@ -63,17 +63,17 @@ var encuesta ={
                     
                 }
 
-                // accion para mostrar o no el check de responde encuesta
-                if (encuesta.count == 0 || respondiente == 2){    
+                // // accion para mostrar o no el check de responde encuesta
+                // if (encuesta.count == 0 || respondiente == 2){    
 
-                    encuesta.responde = false ;
-                    $('#id_responde').show();
+                //     encuesta.responde = false ;
+                //     $('#id_responde').show();
 
-                }else{
+                // }else{
 
-                    encuesta.responde = true ;
-                    $('#id_responde').hide();
-                }
+                //     encuesta.responde = true ;
+                //     $('#id_responde').hide();
+                // }
 
                 if(encuesta.count > 0){
                     
@@ -680,44 +680,32 @@ var bloque1= {    // Bloque General
                         'click', function(e){
                             e.preventDefault()
 
+                                /** validar los datos de los bloques desplegados
+                                 * guardar el encusstado como siempre
+                                 * continuar con el submit del formulario
+                                 */
+                                var retorno= validations('#add_encuesta');  // devuelve la validacion de campos 
+                                
+                                if(retorno){
+                    
+                                    bloque1.parse(
 
+                                        function(message){   //callback para el success
 
+                                            alert('integrante almacenado correctamente '+ message.mensaje );
 
-            /** validar los datos de los bloques desplegados
-             * guardar el encusstado como siempre
-             * continuar con el submit del formulario
-             */
-            var retorno= validations('#add_encuesta');  // devuelve la validacion de campos 
-            
-             if(retorno){
- 
-                bloque1.parse(
+                                            $('#add_encuesta').submit()
+                                        }
 
-                    function(message){   //callback para el success
+                                    ); // guardo los datos
 
-                        alert('integrante almacenado correctamente '+ message.mensaje );
-
-                        $('#add_encuesta').submit()
-                    }
-
-                ); // guardo los datos
-
-             }else{
- 
-                 alert('error .. Verifica la informacion Cargada')
- 
-                 return false
-             }
-
-
-
-
-
-
-
-
-                            //
-                            
+                                }else{
+                    
+                                    alert('error .. Verifica la informacion Cargada')
+                    
+                                    return false
+                                }
+                        
                     });   
 
                     //=====================================================
@@ -970,55 +958,27 @@ var bloque1= {    // Bloque General
 
             var tmp = $('#add_encuesta').find("select, textarea, input, radio, input:checkbox").filter(":visible").serializeArray();
             //saco los que no van a necesitar:::
-            delete tmp[0];delete tmp[1];delete tmp[2];delete tmp[3];delete tmp[4];delete tmp[6];delete tmp[7];
+            //delete tmp[0];delete tmp[1];delete tmp[2];delete tmp[3];delete tmp[6];delete tmp[7];
 
 
-            // var quitar=['b1_nombre','b1_edad','b1_dni','b1_genero','22','b1_barra','24','b1_adicional_nombre', 'b1_adicional_tel']
+            var quitar=['b1_nombre','b1_edad','b1_dni','b1_genero','b1_afiliado', 'b1_barra','b1_adicional_nombre', 'b1_adicional_tel','responde']
+            var status= ""; // guardo el estado de la busqueda
+            var array_resp= [];
 
+            for(var i= 0; i < tmp.length; i++ ){
 
+                status = quitar.indexOf(tmp[i].name); // verifico si el nombre del parametro esta en la lista que hay que quitar
 
+                if (status == -1 ){ // quiere decir que no esta en la lista de las que hay que quitar
 
+                    array_resp.push(tmp[i])
 
-            // $.each(tmp, function( index, value ) {
-
-            //     if(value.name == "b1_adicional_nombre" || value.name == "b1_adicional_tel" ){
-                    
-            //         tmp.delete[index]
-                    
-            //     }
-
-            // });
-
-
+                }
+            }
 
 
 
-
-
-
-            // $.each(tmp, function( index, value ) {
-                
-            //     if (typeof(value) === "undefined") {
-                    
-            //         tmp.splice(index, 1);
-            //     }
-                               
-            // });
-
-
-
-            
-
-
-
-
-                // if($('#b1_adicional_nombre').is(":visible")){
-
-
-                // }
-
-
-                            var datos = JSON.encode(parseData(tmp, true)); // encodea datos json para pasarlos
+                            var datos = JSON.encode(parseData(array_resp, true)); // encodea datos json para pasarlos
                             var resp = setAjax(datos, 'encuestaAjax', onSuccess ) // envio el arreglo de datos mas el endPoint
             
 

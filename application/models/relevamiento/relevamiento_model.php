@@ -304,11 +304,6 @@ class Relevamiento_model extends CI_Model {
 
 
 
-
-
-
-
-
 		public function finalizaEncuesta($idRelevamiento, $idCriticidad){
 
 			$data = array(
@@ -321,6 +316,38 @@ class Relevamiento_model extends CI_Model {
 			$this->db->update('relevamiento', $data); 
 
 		}
+
+
+		public function updateAfiliado($idRelevamiento, $stringJson= NULL){
+
+			// if(){
+
+
+
+			// }else{
+
+
+
+			// }
+
+			$arrSerial= serialize(json_decode($stringJson));
+
+			$data = array(
+				
+				'adherentes' => $arrSerial
+
+			);
+
+			$this->db->where('idRelevamiento', $idRelevamiento);
+			$this->db->update('relevamiento', $data); 
+
+		}
+
+
+
+
+
+
 
 
 
@@ -402,6 +429,8 @@ class Relevamiento_model extends CI_Model {
 		if ($query->num_rows() > 0) return $query;
 		else return false;
 	}
+
+
 	public function getRespEncuestado($idEnc){
 		$this->db->where('idEncuestado', $idEnc);
 		$this->db->from('respuesta_elegida');
@@ -412,6 +441,8 @@ class Relevamiento_model extends CI_Model {
 		if ($query->num_rows() > 0) return $query;
 		else return false;
 	}
+
+
 	public function getRelevNro($nroRelev){
 		if ($nroRelev == ''){
 			$this->db->from('relevamiento');
@@ -419,6 +450,7 @@ class Relevamiento_model extends CI_Model {
 			$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
 			$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
 			$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+
 			$query = $this->db->get();
 		}else{
 			$this->db->where('nroRelevamiento', $nroRelev);

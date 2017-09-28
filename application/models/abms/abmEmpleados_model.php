@@ -69,8 +69,9 @@ class AbmEmpleados_model extends CI_Model {
 		if($tipo != null){
 
 			$this->db->where('empleado.idTipoEmpleado', $tipo);
-
+			//$this->db->where('empleado.activo', 1);
 		}
+		
 		$this->db->from('empleado');
 		$this->db->order_by("empleado.nombreE", "asc"); 
 		$query = $this->db->get();

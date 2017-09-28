@@ -75,7 +75,7 @@ class cargarEncuesta extends CI_Controller{
 
                         $usuario_id = $this->uri->segment(3);// id  que envia desde el form
                         
-                        if($session_data['nivel'] == "2"){    // verifico el tipo de usuario
+                        if($session_data['nivel'] == "1"){    // verifico el tipo de usuario
                                                               //Si el usuario es facilitador loso paso su nombre
                                 $usuario_merge= $data['nombreE']. " " .$data['apellidoE']; // junto el nombre y apellido
                                 $valor['listado'][]= [$session_data['idEmpleado'], $usuario_merge]; // paso el array con los datos
@@ -288,8 +288,6 @@ class cargarEncuesta extends CI_Controller{
 
 
 
-
-
         function cargabloques_final()
     {
 
@@ -342,8 +340,6 @@ class cargarEncuesta extends CI_Controller{
 
 
     }
-
-
 
 
 
@@ -552,6 +548,15 @@ class cargarEncuesta extends CI_Controller{
                 }
 
 
+        }
+
+
+
+        function prueba(){
+
+                
+                $id_encuestado= $this->Relevamiento_model->updateAfiliado(1);
+var_dump($id_encuestado);
         }
 
 
