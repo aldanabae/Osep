@@ -267,19 +267,33 @@ class Relevamiento_model extends CI_Model {
 
 
 	public function getRespuestaBreve(){ //  trae las respuestas que se llenan como breve
-		$this->db->select('idPregunta');
-		$this->db->from('pregunta');
-		$this->db->where("idTipoPregunta = '6' OR idTipoPregunta = '11'"); // que solo sean respuesta breve
-		//$this->db->where('idTipoPregunta', '11' ); // que solo sean respuesta breve
-		$query = $this->db->get();
+			$this->db->select('idPregunta');
+			$this->db->from('pregunta');
+			$this->db->where("idTipoPregunta = '6' OR idTipoPregunta = '11'"); // que solo sean respuesta breve
+			//$this->db->where('idTipoPregunta', '11' ); // que solo sean respuesta breve
+			$query = $this->db->get();
 
-		if ($query->num_rows() > 0){
-			return $query;
-
-		}else {
-			return false;
-		}	
+			if ($query->num_rows() > 0){
+				return $query;
+			} 
+			else 
+			{
+				return false;
+			}
 	}
+	public function getCriticidad(){ //  trae los niveles de criticidad de mayor a menor
+
+			$this->db->select('*');
+			$this->db->from('criticidad');
+			$this->db->order_by("idCriticidad", "desc"); 
+			$query = $this->db->get();
+			return $query->result();
+
+	}
+
+
+
+
 
 
 	public function finalizaEncuesta($idRelevamiento, $idCriticidad){
@@ -293,9 +307,45 @@ class Relevamiento_model extends CI_Model {
 	}
 
 
+		public function updateAfiliado($idRelevamiento, $stringJson= NULL){
+
+			// if(){
+
+
+
+			// }else{
+
+
+
+			// }
+
+			$arrSerial= serialize(json_decode($stringJson));
+
+			$data = array(
+				
+				'adherentes' => $arrSerial
+
+			);
+
+			$this->db->where('idRelevamiento', $idRelevamiento);
+			$this->db->update('relevamiento', $data); 
+
+		}
+
+
+
+
+
+
+
+
+
+		//AQUI esta el metodo que condiciona lo visible de cada relevamiento
+
 	public function obtenerRelevamientos($nivelUser){
 
-		if($nivelUser['nivel'] == '2'){
+
+		if($nivelUser['nivel'] == '1'){
 
 			$query = $this->db-> query('SELECT idRelevamiento, nroRelevamiento, fechaRelevamiento, nombreCriticidad, nombreE, apellidoE, descloc, descdep FROM relevamiento
 										INNER JOIN criticidad ON relevamiento.idCriticidad=criticidad.idCriticidad
@@ -397,6 +447,7 @@ class Relevamiento_model extends CI_Model {
 			$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
 			$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
 			$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+
 			$query = $this->db->get();
 		}else{
 			$this->db->where('nroRelevamiento', $nroRelev);

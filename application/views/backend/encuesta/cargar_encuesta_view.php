@@ -1,7 +1,7 @@
 
 <div class="main-content">
 	<div class="main-content-inner">
-		<div class="page-content">
+		<div class="page-content ">
 
 <input type="hidden" name="localPath"  id="localPath" value="<?php echo base_url(); ?>">
 <!-- Aqui va un bucle que pone als edades en String  separados por un caracter-->
@@ -26,7 +26,7 @@
 <input type="hidden" name="edades"  id="edades" value="<?php echo @$string_edad; ?>">
 
 
-<form id="add_encuesta" action="<?php echo(base_url('encuesta/cargarEncuesta/cargabloques_final'));  ?>" method="post"  onsubmit = "return submitEncuesta();">
+<form id="add_encuesta" action="<?php echo(base_url('encuesta/cargarEncuesta/cargabloques_final'));  ?>" method="post" >
 
 
 <!--<div class="container">   contenedor principal -->
@@ -89,14 +89,14 @@
 				</div>
 
 			<div class="form-group ">
-				 <label for="inputName" id ="lblTitular" class="control-label col-xs-6">      </label>
+				 <label for="inputName" id ="lblTitular" class="control-label col-xs-6 lbl bigger-120">      </label>
 				 <div class="col-xs-6  ">
 					 <input type="text" class="form-control"  name ="b1_nombre"  id ="b1_nombre"  required>
 				 </div>
 			</div>
 
 				<div class="form-group  ">
-					 <label for="inputEmail" class="control-label col-xs-6">Edad (*) </label>
+					 <label for="inputEmail" class="control-label col-xs-6 lbl bigger-120 ">Edad (*) </label>
 					 <div class="col-xs-6">
 						 <input type="number" name="b1_edad"  class="form-control" id="b1_edad" data-limit= '120' required>
 						 
@@ -105,7 +105,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="inputEmail" class="control-label col-xs-6" id= "b1_txt_dni">Dni (*) </label>
+					<label for="inputEmail" class="control-label col-xs-6 lbl bigger-120" id= "b1_txt_dni">Dni (*) </label>
 					<div class="col-xs-4">
 						<input type="number" name="b1_dni"  class="form-control" data-limit= '99999999' id="b1_dni" required>
 					</div>
@@ -113,21 +113,30 @@
 				</div>
 
 				<div class="form-group">
-					 <label for="inputPassword" class="control-label col-xs-6">Sexo (*) </label>
-						<div class="col-xs-2">
-							<label class="radio-inline">
-								<input type="radio" name="b1_genero" value="M" checked = "true" required> Masculino
-							</label>
-						</div>
-						<div class="col-xs-2">
-							<label class="radio-inline">
-								<input type="radio" name="b1_genero" value="F"> Femenino
-							</label>
-						</div>
+						<label for="inputPassword" class="control-label col-xs-6 lbl bigger-120">Sexo (*) </label>
+						   <div class="col-xs-2">
+								<div class="radio">
+										<label>
+											<input type="radio" class="ace input-lg" name="b1_genero" value="M" checked = "true" required>
+											<span class="lbl bigger-120"> Masculino</span>
+										</label>
+									</div>
+						   </div>
+						   <div class="col-xs-2">
+								<div class="radio">
+										<label>
+											<input type="radio" class="ace input-lg" name="b1_genero" value="F">
+											<span class="lbl bigger-120"> Femenino</span>
+										</label>
+									</div>
+						   </div>
 				</div>
+
+
+
 			 
 				<div class="form-group ">
-					<label class="control-label col-xs-6">Vínculo con el titular (*)</label>
+					<label class="control-label col-xs-6 lbl bigger-120">Vínculo con el titular (*)</label>
 					<div class="col-xs-6">
 						<select class="form-control" name= "22" id= "b1_parent" required>
 
@@ -144,7 +153,7 @@
 
 
 				<div class="form-group" id="tOsep">
-					<label for="inputPassword" class="control-label col-xs-6">¿Tiene OSEP?  (*) </label>
+					<label for="inputPassword" class="control-label col-xs-6 lbl bigger-120">¿Tiene OSEP?  (*) </label>
 					<div class="col-xs-6">
 						<select class="form-control" name= "108" id= "b1_osep" required>
 							<option value="1" checked>SI</option>
@@ -154,7 +163,7 @@
 				</div>			
 
 				<div class="form-group " id= "b1_div_afiliado">
-					<label for="inputPassword" class="control-label col-xs-6">Número de Afiliado</label>
+					<label for="inputPassword" class="control-label col-xs-6 lbl bigger-120">Número de Afiliado</label>
 						<div class="col-xs-2">
 							<input type="number" name="b1_afiliado"  class="form-control"  data-limit= '99999999'  id="b1_afiliado" required>
 						</div>
@@ -174,7 +183,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="inputEmail" class="control-label col-xs-6" id= "b1_label_cober" >¿Tiene otra cobertura de salud?</label>
+					<label for="inputEmail" class="control-label col-xs-6 lbl bigger-120" id= "b1_label_cober" >¿Tiene otra cobertura de salud?</label>
 					<div class="col-xs-6">
 						<select class="form-control" name= "24" id= "b1_cober" required>
 
@@ -194,7 +203,7 @@
 					</blockquote>
 
 					<div class="form-group">
-						<label class="control-label col-xs-6">¿Estudia? (*) </label>
+						<label class="control-label col-xs-6 lbl bigger-120">¿Estudia? (*) </label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "25" id= "b1_estudio" required>
 								<option value="" disabled selected hidden>Seleccionar</option>
@@ -205,7 +214,7 @@
 					</div>	
 
 					<div class="form-group" id ="b1_div_nivel">
-						<label for="inputEmail" class="control-label col-xs-6">¿Cuál es su nivel educativo? (*) </label>
+						<label for="inputEmail" class="control-label col-xs-6 lbl bigger-120">¿Cuál es su nivel educativo? (*) </label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "26" id= "b1_nivel" required>
 							<option value="" disabled selected hidden>Seleccionar</option>
@@ -232,7 +241,7 @@
 					
 
 					<div class="form-group">
-						<label for="inputEmail" class="control-label col-xs-6">¿A qué se dedica actualmente? (*) </label>
+						<label for="inputEmail" class="control-label col-xs-6 lbl bigger-120">¿A qué se dedica actualmente? (*) </label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "27" id= "b1_ocupacion" required>
 								<!--completo dinamicamente en base a si es titular-->
@@ -245,7 +254,7 @@
 
 
 						<div class="form-group">
-							<label class="control-label col-xs-6">¿Contribuye con la economía familiar?  (*) </label>
+							<label class="control-label col-xs-6 lbl bigger-120">¿Contribuye con la economía familiar?  (*) </label>
 							<div class="col-xs-6">
 								<select class="form-control" id="b9_contribulle" name="28" required>
 								<option value="" disabled selected hidden>Seleccionar</option>
@@ -258,28 +267,28 @@
 
 
 						<div class="form-group">	
-							<label class="control-label col-xs-6">¿Cuántas horas trabajó la semana pasada? (*) </label>
+							<label class="control-label col-xs-6 lbl bigger-120">¿Cuántas horas trabajó la semana pasada? (*) </label>
 							<div class="col-xs-6">
 								<input type="number" class="form-control" id="b9_horas"  name="29" data-limit= '168' placeholder=" hs" required>
 							</div>
 						</div>	
 
 						<div class="form-group">		
-							<label class="control-label col-xs-6">¿En qué lugar trabaja?</label>
+							<label class="control-label col-xs-6 lbl bigger-120">¿En qué lugar trabaja?</label>
 							<div class="col-xs-6">
 								<input type="text" class="form-control" id="b9_lugar"  name="30" placeholder="Repartición" required>
 							</div>
 						</div>	
 
 						<div class="form-group">	
-							<label class="control-label col-xs-6">Detalle la tarea realizada</label>
+							<label class="control-label col-xs-6 lbl bigger-120">Detalle la tarea realizada</label>
 							<div class="col-xs-6">
 								<input type="text" class="form-control" id="b9_ocupacion"  name="31"  placeholder="Ocupación">
 							</div>
 						</div>	
 
 						<div class="form-group">	
-							<label class="control-label col-xs-6">Observaciones</label>
+							<label class="control-label col-xs-6 lbl bigger-120">Observaciones</label>
 							<div class="col-xs-6">
 								<input type="text" class="form-control" id="b9_obs"  name="32" >
 							</div>
@@ -290,7 +299,7 @@
 					<div id="bloque_9_int_juv">
 
 						<div class="form-group">							
-							<label class="control-label col-xs-6">¿Contribuye con la economía familiar?  (*) </label>
+							<label class="control-label col-xs-6 lbl bigger-120">¿Contribuye con la economía familiar?  (*) </label>
 							<div class="col-xs-6">
 								<select class="form-control" id="b9_contribulle" name="28" required>
 								<option value="" disabled selected hidden>Seleccionar</option>
@@ -302,7 +311,7 @@
 						</div>	
 
 						<div class="form-group">
-							<label class="control-label col-xs-6">Concretamente, ¿cuál es la actividad que realizaba usted antes de 
+							<label class="control-label col-xs-6 lbl bigger-120">Concretamente, ¿cuál es la actividad que realizaba usted antes de 
 								jubilarse o la persona que originó la pensión?</label>
 							<div class="col-xs-6">
 								<input type="text" class="form-control" id="b9_ocupacion"  name="110" >
@@ -310,7 +319,7 @@
 						</div>	
 
 						<div class="form-group">					
-							<label class="control-label col-xs-6">Observaciones</label>
+							<label class="control-label col-xs-6 lbl bigger-120">Observaciones</label>
 							<div class="col-xs-6">
 								<input type="text" class="form-control" id="b9_obs"  name="32">
 							</div>
@@ -325,7 +334,7 @@
 
 
 				<div class="form-group" id= "b1_div_embarazo">
-					<label for="inputPassword" class="control-label col-xs-6">¿Esta embarazada? (*) </label>
+					<label for="inputPassword" class="control-label col-xs-6 lbl bigger-120">¿Esta embarazada? (*) </label>
 					<div class="col-xs-6">
 						<select class="form-control" name= "107" id= "b1_embarazo" required>
 						<option value="1">SI</option>
@@ -335,7 +344,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="inputPassword" class="control-label col-xs-6">¿Padece alguna enfermedad crónica? (*) </label>
+					<label for="inputPassword" class="control-label col-xs-6 lbl bigger-120">¿Padece alguna enfermedad crónica? (*) </label>
 					<div class="col-xs-6">
 						<select class="form-control" name= "33" id= "b1_cronica" required>
 						<option value="2" selected ="true">NO</option>
@@ -345,7 +354,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="inputPassword" class="control-label col-xs-6">¿Tiene alguna discapacidad? (*) </label>
+					<label for="inputPassword" class="control-label col-xs-6 lbl bigger-120">¿Tiene alguna discapacidad? (*) </label>
 					<div class="col-xs-6">
 						<select class="form-control" name= "34" id= "b1_disc" required>
 						<option value="2">NO</option>
@@ -364,11 +373,11 @@
 
 
 					<div class="form-group">
-						<label for="inputPassword" class="control-label col-xs-6">¿Tiene algún afiliado a cargo que no viva en este domicilio?</label>
+						<label for="inputPassword" class="control-label col-xs-6 lbl bigger-120">¿Tiene algún afiliado a cargo que no viva en este domicilio?</label>
 						<div class="col-xs-6">
 							<select class="form-control" name= "35" id= "b1_extra" required>
 								<option value="2" selected ="true">NO</option>
-								<option value="1">SI</option>
+								<option value="1" >SI</option>
 							</select>
 						</div>
 					</div>
@@ -394,7 +403,7 @@
 							<br>
 
 							<div class="form-group">					
-								<label class="control-label col-xs-3">Nombre</label>
+								<label class="control-label col-xs-3 lbl bigger-120">Nombre</label>
 								<div class="col-xs-9">
 									<input type="text" class="form-control " id="b1_adicional_nombre"  name="b1_adicional_nombre">
 								</div>
@@ -402,7 +411,7 @@
 
 
 							<div class="form-group">					
-								<label class="control-label col-xs-3">Telefono</label>
+								<label class="control-label col-xs-3 lbl bigger-120">Telefono</label>
 								<div class="col-xs-9">
 									<input type="text" class="form-control" id="b1_adicional_tel"  name="b1_adicional_tel">
 								</div>
@@ -434,7 +443,7 @@
 
 						<div class="form-group">
 							
-							<label class="control-label col-xs-6">¿Recuerda si realizó al menos una consulta médica por OSEP en el último año ? </label>
+							<label class="control-label col-xs-6 lbl bigger-120">¿Recuerda si realizó al menos una consulta médica por OSEP en el último año ? </label>
 							<div class="col-xs-6">
 								<select class="form-control" id="b1_consulta" name="38" required>
 									<option value="" disabled selected hidden>Seleccionar</option>
@@ -448,7 +457,7 @@
 						
 						<div class="form-group" id="b1_div_consulta_si">
 							
-							<label class="control-label col-xs-6">¿Dónde concurrió a atenderse la última vez? </label>
+							<label class="control-label col-xs-6 lbl bigger-120">¿Dónde concurrió a atenderse la última vez? </label>
 							<div class="col-xs-6">
 								<select class="form-control" id="b1_atencion_si" name="39" required>
 								<option value="" disabled selected hidden>Seleccionar</option>
@@ -465,7 +474,7 @@
 						
 							<div class="form-group" >
 								
-								<label class="control-label col-xs-6">¿Por qué? </label>
+								<label class="control-label col-xs-6 lbl bigger-120">¿Por qué? </label>
 								<div class="col-xs-6">
 									<select class="form-control" id="b1_atencion_no" name="40" required>
 										<option value="" disabled selected hidden>Seleccionar</option>
@@ -481,10 +490,10 @@
 							</div>	
 
 							<div class="form-group" id="b1_div_cual">
-								<label class="control-label col-xs-6" for="b0_cual"> ¿Cual?</label>
+								<label class="control-label col-xs-6 lbl bigger-120" for="b0_cual"> ¿Cuál?</label>
 
 								<div class="col-xs-6" >
-									<input type="text" class="form-control" name = "81" id="b1_cual" required>
+									<input type="text" class="form-control" name = "114" id="b1_cual" required>
 								</div>
 							</div>
 
@@ -681,10 +690,10 @@
 							</div>	
 
 							<div class="form-group" id="b3a_div_cual">
-								<label class="control-label col-xs-6" for="b3a_cual"> ¿Cual?</label>
+								<label class="control-label col-xs-6" for="b3a_cual"> ¿Cuál?</label>
 
 								<div class="col-xs-6" >
-									<input type="text" class="form-control" name = "81" id="b3a_cual" required>
+									<input type="text" class="form-control" name = "114" id="b3a_cual" required>
 								</div>
 							</div>
 
@@ -853,10 +862,10 @@
 							</div>	
 
 							<div class="form-group" id="b3b_div_cual">
-								<label class="control-label col-xs-6" for="b3b_cual"> ¿Cual?</label>
+								<label class="control-label col-xs-6" for="b3b_cual"> ¿Cuál?</label>
 
 								<div class="col-xs-6" >
-									<input type="text" class="form-control" name = "81" id="b3b_cual" required>
+									<input type="text" class="form-control" name = "114" id="b3b_cual" required>
 								</div>
 							</div>
 
@@ -939,10 +948,10 @@
 
 
 									<div class="form-group" id="b4_div_otro">					
-										<label class="control-label col-xs-6"> ¿Cual? </label>
+										<label class="control-label col-xs-6"> ¿Cuál? </label>
 
 										<div class="col-xs-6">
-											<input type="text" class="form-control" name = "81" id="b4_otro" required>
+											<input type="text" class="form-control" name = "114" id="b4_otro" required>
 
 										</div>
 									</div>
@@ -1289,10 +1298,10 @@
 							</div>	
 
 							<div class="form-group" id="b5_div_cual">
-								<label class="control-label col-xs-6" for="b5_cual"> ¿Cual?</label>
+								<label class="control-label col-xs-6" for="b5_cual"> ¿Cuál?</label>
 
 								<div class="col-xs-6" >
-									<input type="text" class="form-control" name = "81" id="b5_cual" required>
+									<input type="text" class="form-control" name = "114" id="b5_cual" required>
 								</div>
 							</div>
 
@@ -1488,10 +1497,10 @@
 								</div>	
 
 								<div class="form-group" id="b6_div_otro">
-									<label class="control-label col-xs-6" for="b6_cual"> ¿Cual?</label>
+									<label class="control-label col-xs-6" for="b6_cual"> ¿Cuál?</label>
 
 									<div class="col-xs-6" >
-										<input type="text" class="form-control" name = "81" id="b6_cual" required>
+										<input type="text" class="form-control" name = "114" id="b6_cual" required>
 									</div>
 								</div>
 
@@ -1600,7 +1609,7 @@
 								</select>
 							</div>
 							<div class="col-xs-3">
-								<input type="text" class="form-control" id="b7_cual" name="81" placeholder=" ¿Cual?">
+								<input type="text" class="form-control" id="b7_cual" name="81" placeholder=" ¿Cuál?">
 							</div>
 
 						</div>

@@ -3,7 +3,7 @@
 // Este es el controlador general de encuestas
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class cargarEncuesta extends CI_Controller{
+class CargarEncuesta extends CI_Controller{
 
 	function __construct(){
 		parent::__construct();
@@ -53,7 +53,7 @@ class cargarEncuesta extends CI_Controller{
                         //cargo el header y el sidebar con los datos para el nivel de usuarios
                         $this->load->view('backend/header');
                         $this->load->view('backend/sidebar',$data);
-                        $js['javascript']= ["app.js"];
+                        $js['javascript']= ["app.js", "helpers.js"];
 
 
 
@@ -75,7 +75,7 @@ class cargarEncuesta extends CI_Controller{
 
                         $usuario_id = $this->uri->segment(3);// id  que envia desde el form
                         
-                        if($session_data['nivel'] == "2"){    // verifico el tipo de usuario
+                        if($session_data['nivel'] == "1"){    // verifico el tipo de usuario
                                                               //Si el usuario es facilitador loso paso su nombre
                                 $usuario_merge= $data['nombreE']. " " .$data['apellidoE']; // junto el nombre y apellido
                                 $valor['listado'][]= [$session_data['idEmpleado'], $usuario_merge]; // paso el array con los datos
@@ -247,7 +247,7 @@ class cargarEncuesta extends CI_Controller{
 
                                                 $resp['id_numRel']= $nroRelevamiento;
                                                 $resp['id_relevamiento']= $id_relevamiento;
-
+                                                $resp['criticidad'] = $this->Relevamiento_model->getCriticidad();
 
                                            
                                                 $this->load->view("backend/encuesta/cargar_encuesta_final_view",$resp);
@@ -288,8 +288,6 @@ class cargarEncuesta extends CI_Controller{
 
 
 
-
-
         function cargabloques_final()
     {
 
@@ -311,7 +309,7 @@ class cargarEncuesta extends CI_Controller{
                     $continuar = $this->input->post('continuar');
                     $resp['id_numRel']= $this->input->post('hdnid_numRel');
                     $resp['id_relevamiento']= $this->input->post('hdnid_relevamiento');
-
+                    $resp['criticidad'] = $this->Relevamiento_model->getCriticidad();
 
                     if( $resp['id_numRel'] != null  && $resp['id_relevamiento'] != null )
                     {
@@ -342,8 +340,6 @@ class cargarEncuesta extends CI_Controller{
 
 
     }
-
-
 
 
 
@@ -552,28 +548,15 @@ class cargarEncuesta extends CI_Controller{
                 }
 
 
-
-//crearEncuestado
-
+        }
 
 
-                // var_dump($_POST);
-                //json_encode($_POST);
 
+        function prueba(){
 
-                // $test= $_POST['datos'];
-
-                // //                 $test = '
-                // // [[{"nombre":"aldana ","Apellido":"baeza","dni":"333333333333333","edad":"31","sexo":"M","id_relev":"9","n_afiliado":"44454545/","respondeR":"0"}],["b1_nombre","baeza aldana"],["b1_edad","31"],["b1_dni","333333333333333"],["b1_genero","M"],["b1_parent","3"],["b1_osep","0"],["b1_afiliado","44454545"],["b1_barra",""],["b1_cober","0"],["b1_cronica","1"],["b1_disc","1"]]                
-
-                // //                 ';
-
-                // $result= json_decode($test);
-                // $prueba= $result;
-
-                // // var_dump($prueba);
-                // echo json_encode($prueba);
-
+                
+                $id_encuestado= $this->Relevamiento_model->updateAfiliado(1);
+var_dump($id_encuestado);
         }
 
 

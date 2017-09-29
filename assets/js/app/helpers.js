@@ -126,7 +126,8 @@
             },
             
             error: function(xhr,status) { 
-                //console.log(xhr+"    "+status);
+                console.log(xhr+"    "+status);
+                
                 alert('Existio un error en el almacenamiento, intente nuevamente');
                 onerror;
             },

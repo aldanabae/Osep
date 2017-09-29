@@ -55,6 +55,11 @@ $route['translate_uri_dashes'] = FALSE;
 
 
 $route['apiV1']='api/AuditoriaC';
+
+
+
 $route['encuesta/cargarEncuesta/(:num)']='encuesta/cargarEncuesta/init/$1';
 $route['help']='help/help';
 
+//enrutamiento para pdf
+$route['pdf/Pdfc/(:num)']='pdf/Pdfc/printPdf/$1';

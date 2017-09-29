@@ -125,6 +125,7 @@ class RelevamientoC extends My_Controller{
 		// $this->cargarVista($nombreVista, $data);
 		// var_dump($data['encuesta']);
 		// var_dump($armoEncuesta);
+
 	}
 
 	function verRelevamiento(){
@@ -133,6 +134,8 @@ class RelevamientoC extends My_Controller{
 		$data['relevamiento'] = $this->Relevamiento_model->getRelevamiento($data['nroRelev']);
 		$data['respElegidas'] = $this->Relevamiento_model->getRespElegidas($data['nroRelev']);
 		$data['encuestados'] = $this->Relevamiento_model->getEncuestados($data['nroRelev']);
+
+		
       	$nombreVista="backend/relevamiento/verRelevamiento";
 		$this->cargarVista($nombreVista,$data);
 	}
