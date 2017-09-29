@@ -3,7 +3,7 @@
 // Este es el controlador general de encuestas
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class cargarEncuesta extends CI_Controller{
+class CargarEncuesta extends CI_Controller{
 
 	function __construct(){
 		parent::__construct();
