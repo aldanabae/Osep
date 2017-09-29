@@ -31,7 +31,7 @@
                   <div class="widget-main">
 
                     <h4 class="row header smaller lighter blue">
-                      <span class="col-xs-12"> Bloque Identificación del Territorio/Facilitador/Familia Relevada</span><!-- /.col -->
+                      <span class="col-xs-12"> Bloque Identificación del Territorio/Facilitador/Familia Relevada</span>
                     </h4>
 
                     <div class="widget-main">

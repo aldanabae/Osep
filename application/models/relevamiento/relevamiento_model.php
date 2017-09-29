@@ -134,7 +134,7 @@ class Relevamiento_model extends CI_Model {
 	public function getRelevamientoByUser($id_user){
 		$state= '1';     // seteo a estado 1  o abierto
 		
-		$this->db->select();
+		$this->db->select('*');
 		$this->db->from('relevamiento');
 		$this->db->join('direccion', 'direccion.idDireccion = relevamiento.idDireccion');
 		$this->db->where('idEmpleado', $id_user);
@@ -347,26 +347,27 @@ class Relevamiento_model extends CI_Model {
 
 		if($nivelUser['nivel'] == '1'){
 
-			$this->db->where('relevamiento.idEmpleado', $nivelUser['idEmpleado']);
-
+			$query = $this->db-> query('SELECT idRelevamiento, nroRelevamiento, fechaRelevamiento, nombreCriticidad, nombreE, apellidoE, descloc, descdep FROM relevamiento
+										INNER JOIN criticidad ON relevamiento.idCriticidad=criticidad.idCriticidad
+										INNER JOIN empleado ON relevamiento.idEmpleado=empleado.idEmpleado
+										INNER JOIN direccion ON relevamiento.idDireccion=direccion.idDireccion
+										INNER JOIN localidad ON direccion.id_tlocalidad=localidad.id_tlocalidad
+										INNER JOIN departamento ON localidad.id_tdeparta=departamento.id_tdeparta 
+										WHERE estado = 0 && relevamiento.idEmpleado = $nivelUser');
 		}else{
 
-			$this->db->select('*');
+			$query = $this->db-> query('SELECT idRelevamiento, nroRelevamiento, fechaRelevamiento, nombreCriticidad, nombreE, apellidoE, descloc, descdep FROM relevamiento
+										INNER JOIN criticidad ON relevamiento.idCriticidad=criticidad.idCriticidad
+										INNER JOIN empleado ON relevamiento.idEmpleado=empleado.idEmpleado
+										INNER JOIN direccion ON relevamiento.idDireccion=direccion.idDireccion
+										INNER JOIN localidad ON direccion.id_tlocalidad=localidad.id_tlocalidad
+										INNER JOIN departamento ON localidad.id_tdeparta=departamento.id_tdeparta 
+										WHERE estado = 0');
 		}
 
-		$this->db->where('estado','0');	  // deberia solo mostrar relevamientos cerrados
-		$this->db->from('relevamiento');
-		$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
-		$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
-		$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
-		$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
-		$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
-
-		// $this->db->where('relevamiento.idEmpleado', '16');
-		$query = $this->db->get();	
-		//var_dump($query);
 		if ($query->num_rows() > 0) return $query;
 		else return false;
+
 	}
 
 
@@ -379,8 +380,8 @@ class Relevamiento_model extends CI_Model {
 		//$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
 		$this->db->where('idRelevamiento', $nroRelev);
 
-	
 		$query = $this->db->get();
+
 		if ($query->num_rows() > 0) return $query;
 		else return false;
 	}
@@ -460,5 +461,6 @@ class Relevamiento_model extends CI_Model {
 		if ($query->num_rows() > 0) return $query;
 		else return false;
 	}
+
 }
 ?>
