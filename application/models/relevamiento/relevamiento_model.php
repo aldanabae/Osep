@@ -5,6 +5,8 @@ class Relevamiento_model extends CI_Model {
 		parent:: __construct();
 		$this->load->database();
 	}
+
+	
 	public function obtenerRespPreg(){
 		$this->db->select('*');
 		$this->db->from('respuesta_pregunta');
@@ -18,6 +20,8 @@ class Relevamiento_model extends CI_Model {
 			return false;
 		}	
 	}
+
+
 	public function obtenerPreguntas(){
 		$this->db->select('*');
 		$this->db->from('pregunta');
@@ -35,6 +39,8 @@ class Relevamiento_model extends CI_Model {
 			return false;
 		}
 	}
+
+
 	public function obtenerRespuestas(){
 		$this->db->select('*');
 		$this->db->from('respuesta');
@@ -48,6 +54,8 @@ class Relevamiento_model extends CI_Model {
 			return false;
 		}	
 	}
+
+
 	public function obtenerEncuesta(){
 		$this->db->select('*');
 		$this->db->from('encuesta');
@@ -61,6 +69,8 @@ class Relevamiento_model extends CI_Model {
 			return false;
 		}	
 	}
+
+
 	public function obtenerBloques(){
 		$this->db->select('*');
 		$this->db->from('bloque');
@@ -102,10 +112,8 @@ class Relevamiento_model extends CI_Model {
 	}
 
 
-
 // metodo para crear una direccion para relevamiento
-	public function crearDireccion($data){
-		
+	public function crearDireccion($data){	
 		$this->db->insert('direccion', 
 			array(  'calle'=> $data['calle'], 
 					'casa'=> $data['casa'],
@@ -121,9 +129,9 @@ class Relevamiento_model extends CI_Model {
 		return $idDireccion;
 	}
 
+
 	// este metodo me devuelve el relevamiento parte inicial en base a el id de usuario en busca del  ultimo relevameinto abierto
 	public function getRelevamientoByUser($id_user){
-
 		$state= '1';     // seteo a estado 1  o abierto
 		
 		$this->db->select();
@@ -140,7 +148,6 @@ class Relevamiento_model extends CI_Model {
 
 
 	public function editDireccion($idDireccion, $updateData){
-
 		$data = array(
 				'calle' => $updateData['calle'],
 				'casa' => $updateData['casa'],
@@ -158,12 +165,10 @@ class Relevamiento_model extends CI_Model {
 		$this->db->update('direccion', $data); 
 
 		return $idDireccion;
-
 	}
 
 
 	public function editRelevamiento($idRelevamiento, $updateData){
-
 		$data = array(
 				'nroRelevamiento' => $updateData['nroRelevamiento'],
 				'fechaRelevamiento' => $updateData['fechaRelevamiento'],
@@ -180,17 +185,14 @@ class Relevamiento_model extends CI_Model {
 				'estado' => $updateData['estado']
 				);
 
-			$this->db->where('idRelevamiento', $idRelevamiento);
-			$this->db->update('relevamiento', $data); 
-			
-			return $idRelevamiento;
-
-
+		$this->db->where('idRelevamiento', $idRelevamiento);
+		$this->db->update('relevamiento', $data); 
+		
+		return $idRelevamiento;
 	}
 
 
 // modelo de encuestado
-
 	public function crearEncuestado($data){
 		$this->db->insert('encuestado', 
 			array('nombreEncuestado'=> $data->nombre, 
@@ -210,7 +212,6 @@ class Relevamiento_model extends CI_Model {
 
 	// este metodo devuelve la cantidad de encuestados para un relevamiento recibiendo el id de relevamiento
 	public function getCantidadEncuestados($id_relevamiento){
-
 		$this->db->select();
 		$this->db->from('encuestado');
 		$this->db->where('idRelevamiento', $id_relevamiento);
@@ -224,8 +225,7 @@ class Relevamiento_model extends CI_Model {
 
 
 	// este metodo devuelve si alguno de los encuestados es respondente  devuelve  true si ya hay uno  o false si no hay ninguno
-	public function getRespondiente($id_relevamiento ){
-		
+	public function getRespondiente($id_relevamiento ){		
 				$this->db->select();
 				$this->db->from('encuestado');
 				$this->db->where('idRelevamiento',$id_relevamiento);
@@ -234,25 +234,15 @@ class Relevamiento_model extends CI_Model {
 				$query= $this->db->get();
 
 				if($query->num_rows() > 0){
-
 					return 1;  // es si hay uno que ya se marco como respondiente
 
 				}else{
-
 					return 2;  // no hay ninguno como respondiente
 				}
 
 				//si hay un encuestado que se marco como respondiente  devuelde un verdadero
-		
 			}
 		
-
-
-
-
-
-
-
 	
 	public function obtenerEncuestado($dni){
 		$this->db->select('encuestado.idEncuestado');
@@ -262,7 +252,6 @@ class Relevamiento_model extends CI_Model {
 		if ($query->num_rows() > 0) return $query;
 		else return false;
 	}
-
 
 
 	public function crearRespuestaElegida($data){
@@ -304,18 +293,18 @@ class Relevamiento_model extends CI_Model {
 
 
 
-		public function finalizaEncuesta($idRelevamiento, $idCriticidad){
 
-			$data = array(
-				'estado' => '0',
-				'idCriticidad' => $idCriticidad
 
-			);
 
-			$this->db->where('idRelevamiento', $idRelevamiento);
-			$this->db->update('relevamiento', $data); 
+	public function finalizaEncuesta($idRelevamiento, $idCriticidad){
+		$data = array(
+			'estado' => '0',
+			'idCriticidad' => $idCriticidad
+		);
 
-		}
+		$this->db->where('idRelevamiento', $idRelevamiento);
+		$this->db->update('relevamiento', $data); 
+	}
 
 
 		public function updateAfiliado($idRelevamiento, $stringJson= NULL){
@@ -363,15 +352,15 @@ class Relevamiento_model extends CI_Model {
 		}else{
 
 			$this->db->select('*');
-
 		}
+
 		$this->db->where('estado','0');	  // deberia solo mostrar relevamientos cerrados
 		$this->db->from('relevamiento');
 		$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
 		$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
 		$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
 		$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
-
+		$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
 
 		// $this->db->where('relevamiento.idEmpleado', '16');
 		$query = $this->db->get();	
@@ -379,7 +368,6 @@ class Relevamiento_model extends CI_Model {
 		if ($query->num_rows() > 0) return $query;
 		else return false;
 	}
-
 
 
 	public function getRelevamiento($nroRelev){
@@ -396,6 +384,8 @@ class Relevamiento_model extends CI_Model {
 		if ($query->num_rows() > 0) return $query;
 		else return false;
 	}
+
+
 	public function getDireccion($idD){
 		$this->db->where('idDireccion', $idD);
 		$this->db->from('direccion');
@@ -404,6 +394,8 @@ class Relevamiento_model extends CI_Model {
 		if ($query->num_rows() > 0) return $query;
 		else return false;
 	}
+
+
 	public function getDepartamento($idDpto){
 		$this->db->where('id_tdeparta', $idDpto);
 		$this->db->from('departamento');
@@ -411,6 +403,8 @@ class Relevamiento_model extends CI_Model {
 		if ($query->num_rows() > 0) return $query;
 		else return false;
 	}
+
+
 	//Buscar todas las respuestas elegidas de un relevamiento y de los encuestados de ese relevamiento
 	public function getRespElegidas($nroRelev){
 		$this->db->where('idRelevamiento', $nroRelev);
@@ -422,6 +416,8 @@ class Relevamiento_model extends CI_Model {
 		if ($query->num_rows() > 0) return $query;
 		else return false;
 	}
+
+
 	public function getEncuestados($nroRelev){
 		$this->db->where('idRelevamiento', $nroRelev);
 		$this->db->from('encuestado');
