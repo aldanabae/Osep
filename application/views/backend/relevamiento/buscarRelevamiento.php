@@ -14,7 +14,7 @@
           <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
             <div class="row">
 
-              <div class="col-xs-6">
+              <!-- <div class="col-xs-6">
                 <div class="dataTables_length" id="longitudTabla">
                   <label>Mostrar 
                   <select aria-controls="dynamic-table" class="form-control input-sm" name="longitudTabla">
@@ -34,21 +34,50 @@
                     <i class="fa fa-check bigger-110 icon-only"></i> Filtrar
                   </button>
                 </div>
-              </div>
+              </div> -->
+                <div class="col-xs-6">
+                    <div class="dataTables_length" id="longitudTabla">
+                        <label>Seleccionar Filtro 
+                          <select aria-controls="dynamic-table" class="form-control input-sm" name="longitudTabla">
+                            <option value="1">Longitud tabla</option>
+                            <option value="2">Criticidad</option>
+                            <option value="3">Departamento</option>
+                            <option value="4">Facilitador</option>
+                            <option value="6">Localidad</option>
+                          </select> 
+                        </label>
 
-              <div class="col-xs-6">
-                  <div id="dynamic-table_filter" class="dataTables_filter">
+                        <div>
+                          <label>Algoo:
+                            <select aria-controls="dynamic-table" class="form-control input-sm" name="longitudTabla">
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                            </select>
+                          </label> 
 
-                    <label>Número Relevamiento:
-                      <input type="search" class="form-control input-sm" placeholder="" name="nroRelev" aria-controls="dynamic-table">
-                    </label>
+                          <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
+                            <i class="fa fa-check bigger-110 icon-only"></i> Filtrar
+                          </button>
+                        </div>                      
 
-                    <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
-                      <i class="ace-icon fa fa-search  bigger-110 icon-only"></i>
-                    </button>
+                        
+                    </div>
+                </div>
 
-                  </div>
-              </div>
+                <div class="col-xs-6">
+                    <div id="dynamic-table_filter" class="dataTables_filter">
+
+                      <label>Número Relevamiento:
+                        <input type="search" class="form-control input-sm" placeholder="" name="nroRelev" aria-controls="dynamic-table">
+                      </label>
+
+                      <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
+                        <i class="ace-icon fa fa-search  bigger-110 icon-only"></i>
+                      </button>
+
+                    </div>
+                </div>
             </div>
 
             <table id="dynamic-table" class="table table-striped table-bordered table-hover">

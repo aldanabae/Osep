@@ -10,7 +10,7 @@ class RelevamientoC extends My_Controller{
 	
 	function index(){
 
-		$nivelUser= $this->session->userdata('logged_in');
+		$nivelUser = $this->session->userdata('logged_in');
 		
 		if (!isset($_POST['CargarTabla'])){
 			$data['limiteTabla'] = 10000;  
@@ -141,9 +141,10 @@ class RelevamientoC extends My_Controller{
 	}
 
 	function mostrarRelevamiento(){
+		$sesion = $this->session->userdata('logged_in');
 		$data['nroRelev'] = $this->input->post('nroRelev');	
 		$data['limiteTabla'] = $this->input->post('longitudTabla');
-		$data['tablaRelevamientos'] = $this->Relevamiento_model->getRelevNro($data['nroRelev']);
+		$data['tablaRelevamientos'] = $this->Relevamiento_model->getRelevNro($data['nroRelev'], $sesion);
       	$nombreVista="backend/relevamiento/buscarRelevamiento";
 		$this->cargarVista($nombreVista, $data);
 	}
