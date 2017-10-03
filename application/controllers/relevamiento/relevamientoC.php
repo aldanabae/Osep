@@ -143,8 +143,15 @@ class RelevamientoC extends My_Controller{
 	function mostrarRelevamiento(){
 		$sesion = $this->session->userdata('logged_in');
 		$data['nroRelev'] = $this->input->post('nroRelev');	
-		$data['limiteTabla'] = $this->input->post('longitudTabla');
-		$data['tablaRelevamientos'] = $this->Relevamiento_model->getRelevNro($data['nroRelev'], $sesion);
+		$data['filtroLon'] = $this->input->post('filtroLon');
+		$data['filtroCri'] = $this->input->post('filtroCri');
+		$data['filtroDpto'] = $this->input->post('filtroDpto');
+		$data['filtroFac'] = $this->input->post('filtroFac');
+		$data['filtroLoc'] = $this->input->post('filtroLoc');
+
+		$data['limiteTabla'] = "10000";
+		$data['tablaRelevamientos'] = $this->Relevamiento_model->getRelevNro($data['nroRelev'], $sesion, $data);
+
       	$nombreVista="backend/relevamiento/buscarRelevamiento";
 		$this->cargarVista($nombreVista, $data);
 	}

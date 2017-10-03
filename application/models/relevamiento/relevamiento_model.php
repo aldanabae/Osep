@@ -341,7 +341,8 @@ class Relevamiento_model extends CI_Model {
 	public function obtenerRelevamientos($nivelUser){
 		if($nivelUser['nivel'] == '1'){
 			$idEmpleado = $nivelUser['idEmpleado'];
-			$query = $this->db-> query('SELECT idRelevamiento, nroRelevamiento, fechaRelevamiento, nombreCriticidad, nombreE, apellidoE, descloc, descdep FROM relevamiento
+			$query = $this->db->query('SELECT idRelevamiento, nroRelevamiento, fechaRelevamiento, nombreCriticidad, nombreE, apellidoE, descloc, descdep 
+										FROM relevamiento
 										INNER JOIN criticidad ON relevamiento.idCriticidad=criticidad.idCriticidad
 										INNER JOIN empleado ON relevamiento.idEmpleado=empleado.idEmpleado
 										INNER JOIN direccion ON relevamiento.idDireccion=direccion.idDireccion
@@ -349,7 +350,8 @@ class Relevamiento_model extends CI_Model {
 										INNER JOIN departamento ON localidad.id_tdeparta=departamento.id_tdeparta 
 										WHERE estado = 0 && relevamiento.idEmpleado = '.$idEmpleado);
 		}else{
-			$query = $this->db-> query('SELECT idRelevamiento, nroRelevamiento, fechaRelevamiento, nombreCriticidad, nombreE, apellidoE, descloc, descdep FROM relevamiento
+			$query = $this->db->query('SELECT idRelevamiento, nroRelevamiento, fechaRelevamiento, nombreCriticidad, nombreE, apellidoE, descloc, descdep 
+										FROM relevamiento
 										INNER JOIN criticidad ON relevamiento.idCriticidad=criticidad.idCriticidad
 										INNER JOIN empleado ON relevamiento.idEmpleado=empleado.idEmpleado
 										INNER JOIN direccion ON relevamiento.idDireccion=direccion.idDireccion
@@ -431,13 +433,76 @@ class Relevamiento_model extends CI_Model {
 		else return false;
 	}
 
-
-//Arreglar esta funcion con la query de obtenerRelevamientos
-	public function getRelevNro($nroRelev, $sesion){
+//Arreglar que tambien si es facilitador solo traiga las que le correspondan en cada filtro
+//Arreglar que tambien si es facilitador solo traiga las que le correspondan en cada filtro
+//Arreglar que tambien si es facilitador solo traiga las que le correspondan en cada filtro
+	public function getRelevNro($nroRelev, $sesion, $data){
 		$idEmpleado = $sesion['idEmpleado'];
-		if ($nroRelev == "#"){
-			return false;
+
+		if ($nroRelev == ""){
+			if($data['filtroLon'] != ""){
+
+			}elseif($data['filtroCri'] != ""){
+				$this->db->where('estado', '0');
+				$this->db->where('relevamiento.idCriticidad', $data['filtroCri']);
+				//$this->db->where('relevamiento.idEmpleado', $idEmpleado);
+				$this->db->from('relevamiento');
+				$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+				$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+				$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+				$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+				$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
+				$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+				$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+				$query = $this->db->get();
+
+			}elseif ($data['filtroDpto'] != ""){
+				$this->db->where('estado', '0');
+				$this->db->where('localidad.id_tdeparta', $data['filtroDpto']);
+				//$this->db->where('relevamiento.idEmpleado', $idEmpleado);
+				$this->db->from('relevamiento');
+				$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+				$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+				$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+				$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+				$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
+				$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+				$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+				$query = $this->db->get();
+
+			}elseif ($data['filtroFac'] != ""){
+				$this->db->where('estado', '0');
+				$this->db->where('relevamiento.idEmpleado', $data['filtroFac']);
+				$this->db->from('relevamiento');
+				$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+				$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+				$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+				$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+				$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
+				$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+				$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+				$query = $this->db->get();
+
+			}elseif ($data['filtroLoc'] != ""){
+				$this->db->where('estado', '0');
+				$this->db->where('direccion.id_tlocalidad', $data['filtroLoc']);
+				//$this->db->where('relevamiento.idEmpleado', $idEmpleado);
+				$this->db->from('relevamiento');
+				$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+				$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+				$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+				$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+				$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
+				$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+				$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+				$query = $this->db->get();
+
+			}else{
+				return false;
+			}
+
 		}else{
+			//Recordar que solo muestra los del facilitador que esta logeado. REVISAR!!!!
 			$this->db->where('nroRelevamiento', $nroRelev);
 			$this->db->where('estado', '0');
 			$this->db->where('relevamiento.idEmpleado', $idEmpleado);

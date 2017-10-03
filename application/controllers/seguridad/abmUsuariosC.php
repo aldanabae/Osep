@@ -40,7 +40,7 @@ class AbmUsuariosC extends My_Controller{
 		$data['limiteTabla'] = $this->input->post('longitudTabla');
 		$data['tablaUsuarios'] = $this->AbmUsuarios_model->obtenerUsuarios($data['nombresUsuarios']);
 		$data['nombresNiveles']	="";
-		$data['niveles'] = $this->abmNiveles_model->obtenerNiveles($data['nombresNiveles']);
+		$data['niveles'] = $this->AbmNiveles_model->obtenerNiveles($data['nombresNiveles']);
 
 		$nombreVista="backend/seguridad/abmUsuarios";
 		$this->cargarVista($nombreVista,$data);
