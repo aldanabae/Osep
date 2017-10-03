@@ -174,7 +174,18 @@
 
                             <?php     }
                                   }
+                                  
                             ?> 
+
+
+                            <div class="profile-info-row">
+                              <div class="profile-info-name"> Observaciones Iniciales </div>
+                                <div class="profile-info-value">
+                                  <span class="editable" id="country">
+                                  <?php echo $relev->observacion; ?>
+                                  </span>
+                                </div>
+                            </div>
 
                             <?php if($respElegidas){
                                     foreach ($respElegidas->result() as $respE){
