@@ -24,7 +24,7 @@ class AbmEmpleadosC extends My_Controller{
 
 	function mostrarTablaEmpleados(){
 		$data['nroLegajo'] = $this->input->post('nroLegajo');	
-		$data['limiteTabla'] = "1000";
+		$data['limiteTabla'] = "10000";
 		$data['tablaEmpleados'] = $this->AbmEmpleados_model->obtenerEmpleados($data['nroLegajo']);	
 
       	$nombreVista="backend/abms/abmEmpleados";

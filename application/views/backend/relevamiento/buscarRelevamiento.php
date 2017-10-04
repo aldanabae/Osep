@@ -14,41 +14,110 @@
           <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
             <div class="row">
 
-              <div class="col-xs-6">
-                <div class="dataTables_length" id="longitudTabla">
-                  <label>Mostrar 
-                  <select aria-controls="dynamic-table" class="form-control input-sm" name="longitudTabla">
-                    <option value="10000">Todos</option>
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="40">40</option>
-                    <option value="60">60</option>
-                    <option value="80">80</option>
-                    <option value="100">100</option>
-                    <option value="250">250</option>
-                    <option value="500">500</option>
-                  </select> lineas
-                  </label>
+                <div class="col-xs-6">
+                    <div class="dataTables_length">
+                        <label>Seleccionar Filtro 
+                          <select aria-controls="dynamic-table" class="form-control input-sm" name="filtro" OnChange= "tipoFOnChange(this)">
+                            <option value="1">Longitud tabla</option>
+                            <option value="2">Criticidad</option>
+                            <option value="3">Departamento</option>
+                            <option value="4">Facilitador</option>
+                            <option value="5">Localidad</option>
+                          </select> 
+                        </label>
 
-                  <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
-                    <i class="fa fa-check bigger-110 icon-only"></i> Filtrar
-                  </button>
+                        <div id="longitud" style="display:;">
+                          <label>Mostrar
+                            <select aria-controls="dynamic-table" class="form-control input-sm" name="filtroLon">
+                              <option value="">-- Seleccione Cantidad --</option>
+                              <option value="1">Todos</option>
+                              <option value="2">10</option>
+                              <option value="3">25</option>
+                              <option value="3">50</option>
+                              <option value="3">100</option>
+                            </select>
+                           </label> 
+
+                          <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
+                            <i class="fa fa-check bigger-110 icon-only"></i> Filtrar
+                          </button>
+                        </div>
+
+                        <div id="criticidad" style="display:none;">
+                          <label>Criticidad
+                            <select aria-controls="dynamic-table" class="form-control input-sm" name="filtroCri">
+                              <option value="">-- Seleccione Criticidad --</option>
+                              <option value="1">Nula</option>
+                              <option value="2">Media</option>
+                              <option value="3">Alta</option>
+                            </select>
+                           </label>
+                            
+                          <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
+                            <i class="fa fa-check bigger-110 icon-only"></i> Filtrar
+                          </button>
+                        </div> 
+
+                        <div id="departamento" style="display:none;">
+                          <label>Departamento
+                            <select aria-controls="dynamic-table" class="form-control input-sm" name="filtroDpto">
+                              <option value="">-- Seleccione Departamento --</option>
+                              <option value="1">Capital</option>
+                              <option value="2">Maipu</option>
+                              <option value="3">Guaymallen</option>
+                            </select>
+                          </label>
+                            
+                          <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
+                            <i class="fa fa-check bigger-110 icon-only"></i> Filtrar
+                          </button>
+                        </div>
+
+                        <div id="facilitador" style="display:none;">
+                          <label>Facilitador
+                            <select aria-controls="dynamic-table" class="form-control input-sm" name="filtroFac">
+                              <option value="">-- Seleccione Facilitador --</option>
+                              <option value="16">Pepe</option>
+                              <option value="2">Pepa</option>
+                              <option value="3">Pig</option>
+                            </select>
+                          </label>
+
+                          <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
+                            <i class="fa fa-check bigger-110 icon-only"></i> Filtrar
+                          </button>
+                        </div>
+
+                        <div id="localidad" style="display:none;">
+                          <label>Localidad
+                            <select aria-controls="dynamic-table" class="form-control input-sm" name="filtroLoc">
+                              <option value="">-- Seleccione Localidad --</option>
+                              <option value="116">4ta Seccion</option>
+                              <option value="80">2da Seccion</option>
+                              <option value="3">La Puntilla</option>
+                            </select>
+                          </label>
+
+                          <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
+                            <i class="fa fa-check bigger-110 icon-only"></i> Filtrar
+                          </button>
+                        </div>                   
+                    </div>
                 </div>
-              </div>
 
-              <div class="col-xs-6">
-                  <div id="dynamic-table_filter" class="dataTables_filter">
+                <div class="col-xs-6">
+                    <div id="dynamic-table_filter" class="dataTables_filter">
 
-                    <label>Número Relevamiento:
-                      <input type="search" class="form-control input-sm" placeholder="" name="nroRelev" aria-controls="dynamic-table">
-                    </label>
+                      <label>Número Relevamiento:
+                        <input type="search" class="form-control input-sm" placeholder="" name="nroRelev" aria-controls="dynamic-table">
+                      </label>
 
-                    <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
-                      <i class="ace-icon fa fa-search  bigger-110 icon-only"></i>
-                    </button>
+                      <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
+                        <i class="ace-icon fa fa-search  bigger-110 icon-only"></i>
+                      </button>
 
-                  </div>
-              </div>
+                    </div>
+                </div>
             </div>
 
             <table id="dynamic-table" class="table table-striped table-bordered table-hover">
@@ -138,6 +207,93 @@
 </div><!-- /.main-content -->
 
 
+
+<script>
+  function tipoFOnChange(sel) {
+      if (sel.value=="1"){
+            divT = document.getElementById("longitud");
+            divT.style.display = "";
+
+            divM = document.getElementById("criticidad");
+            divM.style.display = "none";
+
+            divE = document.getElementById("departamento");
+            divE.style.display = "none";
+
+            divE = document.getElementById("facilitador");
+            divE.style.display = "none";
+
+            divE = document.getElementById("localidad");
+            divE.style.display = "none";
+
+      }else if (sel.value=="2"){
+            divT = document.getElementById("longitud");
+            divT.style.display = "none";
+
+            divM = document.getElementById("criticidad");
+            divM.style.display = "";
+
+            divE = document.getElementById("departamento");
+            divE.style.display = "none";
+
+            divE = document.getElementById("facilitador");
+            divE.style.display = "none";
+
+            divE = document.getElementById("localidad");
+            divE.style.display = "none";
+
+    }else if (sel.value=="3"){
+            divT = document.getElementById("longitud");
+            divT.style.display = "none";
+
+            divM = document.getElementById("criticidad");
+            divM.style.display = "none";
+
+            divE = document.getElementById("departamento");
+            divE.style.display = "";
+
+            divE = document.getElementById("facilitador");
+            divE.style.display = "none";
+
+            divE = document.getElementById("localidad");
+            divE.style.display = "none";
+
+      }else if (sel.value=="4"){
+            divT = document.getElementById("longitud");
+            divT.style.display = "none";
+
+            divM = document.getElementById("criticidad");
+            divM.style.display = "none";
+
+            divE = document.getElementById("departamento");
+            divE.style.display = "none";
+
+            divE = document.getElementById("facilitador");
+            divE.style.display = "";
+
+            divE = document.getElementById("localidad");
+            divE.style.display = "none";
+
+      }else if (sel.value=="5"){
+
+            divT = document.getElementById("longitud");
+            divT.style.display = "none";
+
+            divM = document.getElementById("criticidad");
+            divM.style.display = "none";
+
+            divE = document.getElementById("departamento");
+            divE.style.display = "none";
+
+            divE = document.getElementById("facilitador");
+            divE.style.display = "none";
+
+            divE = document.getElementById("localidad");
+            divE.style.display = "";
+
+      }
+  }
+  </script>
 
 
 

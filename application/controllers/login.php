@@ -10,21 +10,17 @@ class Login extends CI_Controller {
   	} 
 
 	public function index(){
-
 		if($this->session->userdata('logged_in')){
 
       	redirect('bienvenidaC', 'refresh');
     }else{
 
-		
         $this->load->helper(array('form'));
         $this->load->view('login_view');
 		}
 	}	
 
 	function verificarLogin(){
-
-		
     	//This method will have the credentials validation
     	$this->load->library('form_validation');
 
@@ -51,13 +47,13 @@ class Login extends CI_Controller {
           $sess_array = array();
       		    foreach($result as $row){
         		      $sess_array = array(
-						'id' => $row->idUsuario,
-						'idEmpleado'=> $row->idEmpleado,
-						'username' => $row->usuario,
-						'nombreE' => $row->nombreE,
-						'apellidoE' => $row->apellidoE,
-						'nivel' => $row->idNivel,
-						'idTipoEmpleado'=>$row->idTipoEmpleado
+        						'id' => $row->idUsuario,
+        						'idEmpleado'=> $row->idEmpleado,
+        						'username' => $row->usuario,
+        						'nombreE' => $row->nombreE,
+        						'apellidoE' => $row->apellidoE,
+        						'nivel' => $row->idNivel,
+        						'idTipoEmpleado'=>$row->idTipoEmpleado
         		      );
 
         	        $this->session->set_userdata('logged_in', $sess_array);
@@ -66,7 +62,6 @@ class Login extends CI_Controller {
 
     	}else{
           $this->form_validation->set_message('check_database', 'Usuario o Contraseña inválidos.'); 
-     
       		return FALSE;
     	}
   	}
@@ -87,8 +82,7 @@ class Login extends CI_Controller {
       }else{
           //If no session, redirect to login page
           redirect('login', 'refresh');
-	  }
-	  
+      }  
     }
 
 

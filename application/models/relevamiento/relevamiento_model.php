@@ -92,7 +92,7 @@ class Relevamiento_model extends CI_Model {
 
 	//======================================
 
-	// todo dar vuelta la fecha para que se guarde
+// todo dar vuelta la fecha para que se guarde
 	public function crearRelevamiento($data){
 		$this->db->insert('relevamiento', 
 
@@ -131,7 +131,7 @@ class Relevamiento_model extends CI_Model {
 	}
 
 
-	// este metodo me devuelve el relevamiento parte inicial en base a el id de usuario en busca del  ultimo relevameinto abierto
+// este metodo me devuelve el relevamiento parte inicial en base a el id de usuario en busca del  ultimo relevameinto abierto
 	public function getRelevamientoByUser($id_user){
 		$state= '1';     // seteo a estado 1  o abierto
 		
@@ -211,7 +211,7 @@ class Relevamiento_model extends CI_Model {
 	}
 
 
-	// este metodo devuelve la cantidad de encuestados para un relevamiento recibiendo el id de relevamiento
+// este metodo devuelve la cantidad de encuestados para un relevamiento recibiendo el id de relevamiento
 	public function getCantidadEncuestados($id_relevamiento){
 		$this->db->select();
 		$this->db->from('encuestado');
@@ -225,24 +225,24 @@ class Relevamiento_model extends CI_Model {
 	}
 
 
-	// este metodo devuelve si alguno de los encuestados es respondente  devuelve  true si ya hay uno  o false si no hay ninguno
+// este metodo devuelve si alguno de los encuestados es respondente  devuelve  true si ya hay uno  o false si no hay ninguno
 	public function getRespondiente($id_relevamiento ){		
-				$this->db->select();
-				$this->db->from('encuestado');
-				$this->db->where('idRelevamiento',$id_relevamiento);
-				$this->db->where('respondeR !=', 0);
-		
-				$query= $this->db->get();
+		$this->db->select();
+		$this->db->from('encuestado');
+		$this->db->where('idRelevamiento',$id_relevamiento);
+		$this->db->where('respondeR !=', 0);
 
-				if($query->num_rows() > 0){
-					return 1;  // es si hay uno que ya se marco como respondiente
+		$query= $this->db->get();
 
-				}else{
-					return 2;  // no hay ninguno como respondiente
-				}
+		if($query->num_rows() > 0){
+			return 1;  // es si hay uno que ya se marco como respondiente
 
-				//si hay un encuestado que se marco como respondiente  devuelde un verdadero
-			}
+		}else{
+			return 2;  // no hay ninguno como respondiente
+		}
+
+		//si hay un encuestado que se marco como respondiente  devuelde un verdadero
+	}
 		
 	
 	public function obtenerEncuestado($dni){
@@ -282,6 +282,8 @@ class Relevamiento_model extends CI_Model {
 				return false;
 			}
 	}
+
+
 	public function getCriticidad(){ //  trae los niveles de criticidad de mayor a menor
 
 			$this->db->select('*');
@@ -291,10 +293,6 @@ class Relevamiento_model extends CI_Model {
 			return $query->result();
 
 	}
-
-
-
-
 
 
 	public function finalizaEncuesta($idRelevamiento, $idCriticidad){
@@ -308,56 +306,53 @@ class Relevamiento_model extends CI_Model {
 	}
 
 
-		public function updateAfiliado($idRelevamiento, $stringJson= NULL){
-
-			// if(){
 
 
 
-			// }else{
+	public function updateAfiliado($idRelevamiento, $stringJson= NULL){
+
+		// if(){
 
 
 
-			// }
-
-			$arrSerial= serialize(json_decode($stringJson));
-
-			$data = array(
-				
-				'adherentes' => $arrSerial
-
-			);
-
-			$this->db->where('idRelevamiento', $idRelevamiento);
-			$this->db->update('relevamiento', $data); 
-
-		}
+		// }else{
 
 
 
+		// }
 
+		$arrSerial= serialize(json_decode($stringJson));
 
+		$data = array(
+			
+			'adherentes' => $arrSerial
+
+		);
+
+		$this->db->where('idRelevamiento', $idRelevamiento);
+		$this->db->update('relevamiento', $data); 
+
+	}
 
 
 
 
-		//AQUI esta el metodo que condiciona lo visible de cada relevamiento
-
+		
+//AQUI esta el metodo que condiciona lo visible de cada relevamiento
 	public function obtenerRelevamientos($nivelUser){
-
-
 		if($nivelUser['nivel'] == '1'){
-
-			$query = $this->db-> query('SELECT idRelevamiento, nroRelevamiento, fechaRelevamiento, nombreCriticidad, nombreE, apellidoE, descloc, descdep FROM relevamiento
+			$idEmpleado = $nivelUser['idEmpleado'];
+			$query = $this->db->query('SELECT idRelevamiento, nroRelevamiento, fechaRelevamiento, nombreCriticidad, nombreE, apellidoE, descloc, descdep 
+										FROM relevamiento
 										INNER JOIN criticidad ON relevamiento.idCriticidad=criticidad.idCriticidad
 										INNER JOIN empleado ON relevamiento.idEmpleado=empleado.idEmpleado
 										INNER JOIN direccion ON relevamiento.idDireccion=direccion.idDireccion
 										INNER JOIN localidad ON direccion.id_tlocalidad=localidad.id_tlocalidad
 										INNER JOIN departamento ON localidad.id_tdeparta=departamento.id_tdeparta 
-										WHERE estado = 0 && relevamiento.idEmpleado = $nivelUser');
+										WHERE estado = 0 && relevamiento.idEmpleado = '.$idEmpleado);
 		}else{
-
-			$query = $this->db-> query('SELECT idRelevamiento, nroRelevamiento, fechaRelevamiento, nombreCriticidad, nombreE, apellidoE, descloc, descdep FROM relevamiento
+			$query = $this->db->query('SELECT idRelevamiento, nroRelevamiento, fechaRelevamiento, nombreCriticidad, nombreE, apellidoE, descloc, descdep 
+										FROM relevamiento
 										INNER JOIN criticidad ON relevamiento.idCriticidad=criticidad.idCriticidad
 										INNER JOIN empleado ON relevamiento.idEmpleado=empleado.idEmpleado
 										INNER JOIN direccion ON relevamiento.idDireccion=direccion.idDireccion
@@ -368,7 +363,6 @@ class Relevamiento_model extends CI_Model {
 
 		if ($query->num_rows() > 0) return $query;
 		else return false;
-
 	}
 
 
@@ -407,7 +401,7 @@ class Relevamiento_model extends CI_Model {
 	}
 
 
-	//Buscar todas las respuestas elegidas de un relevamiento y de los encuestados de ese relevamiento
+//Buscar todas las respuestas elegidas de un relevamiento y de los encuestados de ese relevamiento
 	public function getRespElegidas($nroRelev){
 		$this->db->where('idRelevamiento', $nroRelev);
 		$this->db->from('respuesta_elegida');
@@ -440,27 +434,91 @@ class Relevamiento_model extends CI_Model {
 		else return false;
 	}
 
+//Arreglar que tambien si es facilitador solo traiga las que le correspondan en cada filtro
+//Arreglar que tambien si es facilitador solo traiga las que le correspondan en cada filtro
+//Arreglar que tambien si es facilitador solo traiga las que le correspondan en cada filtro
+	public function getRelevNro($nroRelev, $sesion, $data){
+		$idEmpleado = $sesion['idEmpleado'];
 
-	public function getRelevNro($nroRelev){
-		if ($nroRelev == ''){
-			$this->db->from('relevamiento');
-			$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
-			$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
-			$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
-			$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+		if ($nroRelev == ""){
+			if($data['filtroLon'] != ""){
 
-			$query = $this->db->get();
+			}elseif($data['filtroCri'] != ""){
+				$this->db->where('estado', '0');
+				$this->db->where('relevamiento.idCriticidad', $data['filtroCri']);
+				//$this->db->where('relevamiento.idEmpleado', $idEmpleado);
+				$this->db->from('relevamiento');
+				$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+				$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+				$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+				$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+				$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
+				$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+				$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+				$query = $this->db->get();
+
+			}elseif ($data['filtroDpto'] != ""){
+				$this->db->where('estado', '0');
+				$this->db->where('localidad.id_tdeparta', $data['filtroDpto']);
+				//$this->db->where('relevamiento.idEmpleado', $idEmpleado);
+				$this->db->from('relevamiento');
+				$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+				$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+				$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+				$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+				$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
+				$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+				$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+				$query = $this->db->get();
+
+			}elseif ($data['filtroFac'] != ""){
+				$this->db->where('estado', '0');
+				$this->db->where('relevamiento.idEmpleado', $data['filtroFac']);
+				$this->db->from('relevamiento');
+				$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+				$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+				$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+				$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+				$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
+				$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+				$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+				$query = $this->db->get();
+
+			}elseif ($data['filtroLoc'] != ""){
+				$this->db->where('estado', '0');
+				$this->db->where('direccion.id_tlocalidad', $data['filtroLoc']);
+				//$this->db->where('relevamiento.idEmpleado', $idEmpleado);
+				$this->db->from('relevamiento');
+				$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+				$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+				$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+				$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+				$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
+				$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+				$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+				$query = $this->db->get();
+
+			}else{
+				return false;
+			}
+
 		}else{
+			//Recordar que solo muestra los del facilitador que esta logeado. REVISAR!!!!
 			$this->db->where('nroRelevamiento', $nroRelev);
+			$this->db->where('estado', '0');
+			$this->db->where('relevamiento.idEmpleado', $idEmpleado);
 			$this->db->from('relevamiento');
 			$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
 			$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
 			$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
 			$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+			$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
+			$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+			$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
 			$query = $this->db->get();
 		}
 		if ($query->num_rows() > 0) return $query;
-		else return false;
+		else return false;  
 	}
 
 
@@ -468,3 +526,4 @@ class Relevamiento_model extends CI_Model {
 
 }
 ?>
+
