@@ -17,24 +17,24 @@
                 <div class="col-xs-6">
                     <div class="dataTables_length">
                         <label>Seleccionar Filtro 
-                          <select aria-controls="dynamic-table" class="form-control input-sm" name="filtro" OnChange= "tipoFOnChange(this)">
-                            <option value="1">Longitud tabla</option>
-                            <option value="2">Criticidad</option>
-                            <option value="3">Departamento</option>
-                            <option value="4">Facilitador</option>
-                            <option value="5">Localidad</option>
+                          <select aria-controls="dynamic-table" class="form-control input-sm" id= "filtro" name="filtro" OnChange= "tipoFOnChange(this)">
+                            <option value="longitud">Longitud tabla</option>
+                            <option value="criticidad">Criticidad</option>
+                            <option value="departamento">Departamento</option>
+                            <option value="facilitador">Facilitador</option>
+                            <option value="localidad">Localidad</option>
                           </select> 
                         </label>
 
                         <div id="longitud" style="display:;">
                           <label>Mostrar
-                            <select aria-controls="dynamic-table" class="form-control input-sm" name="filtroLon">
+                            <select aria-controls="dynamic-table" class="form-control input-sm" name="longitudTabla">
                               <option value="">-- Seleccione Cantidad --</option>
-                              <option value="1">Todos</option>
+                              <option value="100000">Todos</option>
                               <option value="2">10</option>
-                              <option value="3">25</option>
-                              <option value="3">50</option>
-                              <option value="3">100</option>
+                              <option value="4">25</option>
+                              <option value="50">50</option>
+                              <option value="100">100</option>
                             </select>
                            </label> 
 
@@ -45,11 +45,11 @@
 
                         <div id="criticidad" style="display:none;">
                           <label>Criticidad
-                            <select aria-controls="dynamic-table" class="form-control input-sm" name="filtroCri">
-                              <option value="">-- Seleccione Criticidad --</option>
+                            <select aria-controls="dynamic-table" class="form-control input-sm" id="criticidad" name="filtroCri">
+                              <!-- <option value="">-- Seleccione Criticidad --</option>
                               <option value="1">Nula</option>
                               <option value="2">Media</option>
-                              <option value="3">Alta</option>
+                              <option value="3">Alta</option> -->
                             </select>
                            </label>
                             
@@ -146,7 +146,7 @@
                     $contador = 0;
                       
                     foreach($tablaRelevamientos->result() as $tabla){
-                      if($contador == $limiteTabla)   break;
+                      if($contador == $limiteTabla) break;
                 ?>
 
                 <tr>
@@ -208,92 +208,148 @@
 
 
 
-<script>
-  function tipoFOnChange(sel) {
-      if (sel.value=="1"){
-            divT = document.getElementById("longitud");
-            divT.style.display = "";
+  <script type="text/javascript">
+    function tipoFOnChange(sel) {
+        if (sel.value=="longitud"){
+              divT = document.getElementById("longitud");
+              divT.style.display = "";
 
-            divM = document.getElementById("criticidad");
-            divM.style.display = "none";
+              divM = document.getElementById("criticidad");
+              divM.style.display = "none";
 
-            divE = document.getElementById("departamento");
-            divE.style.display = "none";
+              divE = document.getElementById("departamento");
+              divE.style.display = "none";
 
-            divE = document.getElementById("facilitador");
-            divE.style.display = "none";
+              divE = document.getElementById("facilitador");
+              divE.style.display = "none";
 
-            divE = document.getElementById("localidad");
-            divE.style.display = "none";
+              divE = document.getElementById("localidad");
+              divE.style.display = "none";
 
-      }else if (sel.value=="2"){
-            divT = document.getElementById("longitud");
-            divT.style.display = "none";
+        }else if (sel.value=="criticidad"){
+              divT = document.getElementById("longitud");
+              divT.style.display = "none";
 
-            divM = document.getElementById("criticidad");
-            divM.style.display = "";
+              divM = document.getElementById("criticidad");
+              divM.style.display = "";
 
-            divE = document.getElementById("departamento");
-            divE.style.display = "none";
+              divE = document.getElementById("departamento");
+              divE.style.display = "none";
 
-            divE = document.getElementById("facilitador");
-            divE.style.display = "none";
+              divE = document.getElementById("facilitador");
+              divE.style.display = "none";
 
-            divE = document.getElementById("localidad");
-            divE.style.display = "none";
+              divE = document.getElementById("localidad");
+              divE.style.display = "none";
 
-    }else if (sel.value=="3"){
-            divT = document.getElementById("longitud");
-            divT.style.display = "none";
+              var filtro = $('#filtro').val();
 
-            divM = document.getElementById("criticidad");
-            divM.style.display = "none";
+          var parametros = {
+          "filtro" : filtro,
+          };
+          $.ajax({
+            type: 'POST',
+            url: '<?php echo base_url(); ?>index.php/relevamiento/RelevamientoC/cargarFiltros', 
+            data: parametros, 
+                  dataType: 'json',
+            success: function(resp) { 
+              if(resp){
+                cargarCombo(resp);
+              }
+              else{
+                document.getElementById("criticidad").disabled=true;
+              }},
+             error: function(xhr,status) { 
+              console.log(xhr+"    "+status);
+            },
+          });
 
-            divE = document.getElementById("departamento");
-            divE.style.display = "";
+        }else if (sel.value=="departamento"){
+              divT = document.getElementById("longitud");
+              divT.style.display = "none";
 
-            divE = document.getElementById("facilitador");
-            divE.style.display = "none";
+              divM = document.getElementById("criticidad");
+              divM.style.display = "none";
 
-            divE = document.getElementById("localidad");
-            divE.style.display = "none";
+              divE = document.getElementById("departamento");
+              divE.style.display = "";
 
-      }else if (sel.value=="4"){
-            divT = document.getElementById("longitud");
-            divT.style.display = "none";
+              divE = document.getElementById("facilitador");
+              divE.style.display = "none";
 
-            divM = document.getElementById("criticidad");
-            divM.style.display = "none";
+              divE = document.getElementById("localidad");
+              divE.style.display = "none";
 
-            divE = document.getElementById("departamento");
-            divE.style.display = "none";
+        }else if (sel.value=="facilitador"){
+              divT = document.getElementById("longitud");
+              divT.style.display = "none";
 
-            divE = document.getElementById("facilitador");
-            divE.style.display = "";
+              divM = document.getElementById("criticidad");
+              divM.style.display = "none";
 
-            divE = document.getElementById("localidad");
-            divE.style.display = "none";
+              divE = document.getElementById("departamento");
+              divE.style.display = "none";
 
-      }else if (sel.value=="5"){
+              divE = document.getElementById("facilitador");
+              divE.style.display = "";
 
-            divT = document.getElementById("longitud");
-            divT.style.display = "none";
+              divE = document.getElementById("localidad");
+              divE.style.display = "none";
 
-            divM = document.getElementById("criticidad");
-            divM.style.display = "none";
+        }else if (sel.value=="localidad"){
 
-            divE = document.getElementById("departamento");
-            divE.style.display = "none";
+              divT = document.getElementById("longitud");
+              divT.style.display = "none";
 
-            divE = document.getElementById("facilitador");
-            divE.style.display = "none";
+              divM = document.getElementById("criticidad");
+              divM.style.display = "none";
 
-            divE = document.getElementById("localidad");
-            divE.style.display = "";
+              divE = document.getElementById("departamento");
+              divE.style.display = "none";
 
-      }
-  }
-  </script>
+              divE = document.getElementById("facilitador");
+              divE.style.display = "none";
+
+              divE = document.getElementById("localidad");
+              divE.style.display = "";
+
+        }
+    }
+
+    function cargarLocalidades(){
+          var filtro = $('#criticidad').val();
+
+          var parametros = {
+          "filtro" : filtro,
+          };
+          $.ajax({
+            type: 'POST',
+            url: '<?php echo base_url(); ?>index.php/RelevamientoC/cargarFiltros', 
+            data: parametros, 
+                  dataType: 'json',
+            success: function(resp) { 
+              if(resp){
+                cargarCombo(resp);
+              }
+              else{
+                document.getElementById("criticidad").disabled=true;
+              }},
+             error: function(xhr,status) { 
+              console.log(xhr+"    "+status);
+            },
+          });
+        }
+
+    function cargarCombo(lista){
+      // document.getElementById("criticidad").options.length=0;
+      // document.getElementById("criticidad").options[0]=new Option("Selecciona una opción", "");
+
+      var combo=$("#criticidad");
+          for (var i in lista){
+              combo.append('<option value="'+lista[i].idCriticidad +'">'+ lista[i].nombreCriticidad +'</option>');
+          }
+    }
+</script>
 
 
 

@@ -13,7 +13,7 @@ class RelevamientoC extends My_Controller{
 		$nivelUser = $this->session->userdata('logged_in');
 		
 		if (!isset($_POST['CargarTabla'])){
-			$data['limiteTabla'] = 10000;  
+			$data['limiteTabla'] = 1000000;  
 			$data['tablaRelevamientos'] = $this->Relevamiento_model->obtenerRelevamientos($nivelUser);
 		}
 			
@@ -130,12 +130,12 @@ class RelevamientoC extends My_Controller{
 
 	function verRelevamiento(){
 		$data['nroRelev'] = $this->uri->segment(4);
+
 		//Obtener todo lo necesario para mostrar un relevamiento completo
 		$data['relevamiento'] = $this->Relevamiento_model->getRelevamiento($data['nroRelev']);
 		$data['respElegidas'] = $this->Relevamiento_model->getRespElegidas($data['nroRelev']);
 		$data['encuestados'] = $this->Relevamiento_model->getEncuestados($data['nroRelev']);
 
-		
       	$nombreVista="backend/relevamiento/verRelevamiento";
 		$this->cargarVista($nombreVista,$data);
 	}
@@ -143,17 +143,27 @@ class RelevamientoC extends My_Controller{
 	function mostrarRelevamiento(){
 		$sesion = $this->session->userdata('logged_in');
 		$data['nroRelev'] = $this->input->post('nroRelev');	
-		$data['filtroLon'] = $this->input->post('filtroLon');
 		$data['filtroCri'] = $this->input->post('filtroCri');
 		$data['filtroDpto'] = $this->input->post('filtroDpto');
 		$data['filtroFac'] = $this->input->post('filtroFac');
 		$data['filtroLoc'] = $this->input->post('filtroLoc');
+		$data['limiteTabla'] = $this->input->post('longitudTabla');
 
-		$data['limiteTabla'] = "10000";
 		$data['tablaRelevamientos'] = $this->Relevamiento_model->getRelevNro($data['nroRelev'], $sesion, $data);
+
+		if($data['limiteTabla'] == ""){
+			$data['limiteTabla'] = 1000000;
+		}
 
       	$nombreVista="backend/relevamiento/buscarRelevamiento";
 		$this->cargarVista($nombreVista, $data);
+	}
+
+	function cargarFiltros(){
+		$data['filtro'] = $this->input->post('filtro');
+		$data['datosFiltro'] = $this->Relevamiento_model->getDatosFiltro($data['filtro']);
+
+		echo json_encode($data['datosFiltro']);
 	}
 
 	// function index(){
