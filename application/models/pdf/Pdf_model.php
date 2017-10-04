@@ -37,7 +37,7 @@ class Pdf_model extends CI_Model {
 
         $dato = $this->Pdf_model->getMergeQuest($query);
 
-        return $query->result();
+        return $dato;
 
     }
 
