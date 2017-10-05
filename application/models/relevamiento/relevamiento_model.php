@@ -56,7 +56,6 @@ class Relevamiento_model extends CI_Model {
 	}
 
 
-
 	public function obtenerEncuesta(){
 		$this->db->select('*');
 		$this->db->from('encuesta');
@@ -286,13 +285,11 @@ class Relevamiento_model extends CI_Model {
 
 
 	public function getCriticidad(){ //  trae los niveles de criticidad de mayor a menor
-
 			$this->db->select('*');
 			$this->db->from('criticidad');
 			$this->db->order_by("idCriticidad", "desc"); 
 			$query = $this->db->get();
 			return $query->result();
-
 	}
 
 
@@ -442,9 +439,20 @@ class Relevamiento_model extends CI_Model {
 		$idEmpleado = $sesion['idEmpleado'];
 
 		if ($nroRelev == ""){
-			if($data['filtroLon'] != ""){
+			if($data['limiteTabla'] != ""){ //Filtro por Longitud de Tabla
+				$this->db->where('estado', '0');
+				//$this->db->where('relevamiento.idEmpleado', $idEmpleado);
+				$this->db->from('relevamiento');
+				$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+				$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+				$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+				$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+				$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
+				$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+				$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+				$query = $this->db->get();
 
-			}elseif($data['filtroCri'] != ""){
+			}elseif($data['filtroCri'] != ""){ //Filtro por Criticidad
 				$this->db->where('estado', '0');
 				$this->db->where('relevamiento.idCriticidad', $data['filtroCri']);
 				//$this->db->where('relevamiento.idEmpleado', $idEmpleado);
@@ -458,7 +466,7 @@ class Relevamiento_model extends CI_Model {
 				$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
 				$query = $this->db->get();
 
-			}elseif ($data['filtroDpto'] != ""){
+			}elseif($data['filtroDpto'] != ""){ //Filtro por Departamentos
 				$this->db->where('estado', '0');
 				$this->db->where('localidad.id_tdeparta', $data['filtroDpto']);
 				//$this->db->where('relevamiento.idEmpleado', $idEmpleado);
@@ -472,7 +480,7 @@ class Relevamiento_model extends CI_Model {
 				$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
 				$query = $this->db->get();
 
-			}elseif ($data['filtroFac'] != ""){
+			}elseif($data['filtroFac'] != ""){ //Filtro por Facilitador
 				$this->db->where('estado', '0');
 				$this->db->where('relevamiento.idEmpleado', $data['filtroFac']);
 				$this->db->from('relevamiento');
@@ -485,7 +493,7 @@ class Relevamiento_model extends CI_Model {
 				$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
 				$query = $this->db->get();
 
-			}elseif ($data['filtroLoc'] != ""){
+			}elseif($data['filtroLoc'] != ""){ //Filtro por Localidad
 				$this->db->where('estado', '0');
 				$this->db->where('direccion.id_tlocalidad', $data['filtroLoc']);
 				//$this->db->where('relevamiento.idEmpleado', $idEmpleado);
@@ -518,12 +526,47 @@ class Relevamiento_model extends CI_Model {
 			$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
 			$query = $this->db->get();
 		}
+
 		if ($query->num_rows() > 0) return $query;
 		else return false;  
 	}
 
+	public function getDatosFiltro($filtro){
+		if($filtro == "criticidad"){
+			$this->db->select('*');
+			$this->db->from('criticidad');
+			$this->db->order_by("idCriticidad", "asc"); 
+			$query = $this->db->get();
 
-	
+		}elseif($filtro == "departamento"){
+			$this->db->select('*');
+			$this->db->from('departamento');
+			$this->db->order_by("descdep", "asc"); 
+			$query = $this->db->get();
+
+		}elseif($filtro == "facilitador"){
+			$this->db->select('*');
+			$this->db->where('idTipoEmpleado','5');
+			$this->db->from('empleado');
+			$this->db->order_by('apellidoE', 'asc'); 
+			$query = $this->db->get();
+
+		}elseif($filtro == "localidad"){
+			$this->db->select('*');
+			$this->db->from('localidad'); 
+			$this->db->order_by('descloc', 'asc');
+			$query = $this->db->get();
+		}
+
+		if ($query->num_rows() > 0) {
+			foreach ($query->result() as $fila){
+				$data[] = $fila;
+			}	
+			return $data;
+		}else{
+			return false;
+		}
+	}
 
 }
 ?>
