@@ -99,9 +99,6 @@ class Pdf_model extends CI_Model {
 
 
 
-
-
-
         private function getRespuesta($idRespuesta){ // solo devuelve un String de la respuesta que eligio
 
             /*
@@ -126,6 +123,34 @@ class Pdf_model extends CI_Model {
         }
 
 
+
+        public function getBloques_e( $arr_dif = null){  // este metodo trae los bloques con la diferencia que quita los que le pasas en el arreglo por parametro
+            // en arr_dif estan los ID de cada bloque que debe ser removido en la respuesta el parametro es opcional
+
+            $allBloques = $this->Relevamiento_model->obtenerBloques();// aqui trae todos los bloques
+            $output= [];
+            //en esta instancia se eliminan los bloques reportados
+
+            if(is_array($arr_dif) && !is_null($arr_dif ) ){ // verifico que reciba un array  y no este null
+
+                foreach($allBloques as $valor){  //bucle entre todos los registros de bloques
+
+                    $tmp= (int) $valor->idBloque; //saco el id de bloque como int
+                    
+                    if( !in_array( $tmp ,$arr_dif)){  // si el item NO esta en el array de parametros que recibo, comienzo a llenar el array de salida
+
+                        array_push($output,$valor ); //agrego un item 
+                    }
+                }
+            }else{
+
+                $output=$allBloques;
+
+            }
+
+            //var_dump($output);
+            return $output;
+        }
 
 
 }
