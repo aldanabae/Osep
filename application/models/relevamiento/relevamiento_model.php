@@ -534,32 +534,37 @@ class Relevamiento_model extends CI_Model {
 		if($filtro == "criticidad"){
 			$this->db->select('*');
 			$this->db->from('criticidad');
-			$this->db->order_by("idCriticidad", "desc"); 
+			$this->db->order_by("idCriticidad", "asc"); 
 			$query = $this->db->get();
 
 		}elseif($filtro == "departamento"){
 			$this->db->select('*');
 			$this->db->from('departamento');
-			$this->db->order_by("descdep", "desc"); 
+			$this->db->order_by("descdep", "asc"); 
 			$query = $this->db->get();
 
 		}elseif($filtro == "facilitador"){
 			$this->db->select('*');
 			$this->db->where('idTipoEmpleado','5');
 			$this->db->from('empleado');
-			$this->db->order_by('apellidoE', 'desc'); 
+			$this->db->order_by('apellidoE', 'asc'); 
 			$query = $this->db->get();
 
 		}elseif($filtro == "localidad"){
 			$this->db->select('*');
-			$this->db->from('localidad');
-			$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left'); 
-			$this->db->order_by('id_tdeparta', 'desc');
+			$this->db->from('localidad'); 
+			$this->db->order_by('descloc', 'asc');
 			$query = $this->db->get();
 		}
 
-		if ($query->num_rows() > 0) return $query;
-		else return false;
+		if ($query->num_rows() > 0) {
+			foreach ($query->result() as $fila){
+				$data[] = $fila;
+			}	
+			return $data;
+		}else{
+			return false;
+		}
 	}
 
 }

@@ -45,11 +45,10 @@
 
                         <div id="criticidad" style="display:none;">
                           <label>Criticidad
-                            <select aria-controls="dynamic-table" class="form-control input-sm" id="criticidad" name="filtroCri">
-                              <!-- <option value="">-- Seleccione Criticidad --</option>
-                              <option value="1">Nula</option>
-                              <option value="2">Media</option>
-                              <option value="3">Alta</option> -->
+                            <select aria-controls="dynamic-table" class="form-control input-sm" id="comboC" name="filtroCri">
+
+                              <!-- Combo se carga con JS -->
+
                             </select>
                            </label>
                             
@@ -60,11 +59,10 @@
 
                         <div id="departamento" style="display:none;">
                           <label>Departamento
-                            <select aria-controls="dynamic-table" class="form-control input-sm" name="filtroDpto">
-                              <option value="">-- Seleccione Departamento --</option>
-                              <option value="1">Capital</option>
-                              <option value="2">Maipu</option>
-                              <option value="3">Guaymallen</option>
+                            <select aria-controls="dynamic-table" class="form-control input-sm" id="comboD" name="filtroDpto">
+
+                              <!-- Combo se carga con JS -->
+
                             </select>
                           </label>
                             
@@ -75,11 +73,10 @@
 
                         <div id="facilitador" style="display:none;">
                           <label>Facilitador
-                            <select aria-controls="dynamic-table" class="form-control input-sm" name="filtroFac">
-                              <option value="">-- Seleccione Facilitador --</option>
-                              <option value="16">Pepe</option>
-                              <option value="2">Pepa</option>
-                              <option value="3">Pig</option>
+                            <select aria-controls="dynamic-table" class="form-control input-sm" id="comboF" name="filtroFac">
+
+                              <!-- Combo se carga con JS -->
+
                             </select>
                           </label>
 
@@ -90,11 +87,10 @@
 
                         <div id="localidad" style="display:none;">
                           <label>Localidad
-                            <select aria-controls="dynamic-table" class="form-control input-sm" name="filtroLoc">
-                              <option value="">-- Seleccione Localidad --</option>
-                              <option value="116">4ta Seccion</option>
-                              <option value="80">2da Seccion</option>
-                              <option value="3">La Puntilla</option>
+                            <select aria-controls="dynamic-table" class="form-control input-sm" id="comboL" name="filtroLoc">
+
+                              <!-- Combo se carga con JS -->
+
                             </select>
                           </label>
 
@@ -207,150 +203,176 @@
 </div><!-- /.main-content -->
 
 
+<!--JS para cargar combos dinamicos-->
 
-  <script type="text/javascript">
-    function tipoFOnChange(sel) {
-        if (sel.value=="longitud"){
-              divT = document.getElementById("longitud");
-              divT.style.display = "";
+    <script type="text/javascript">
+      function tipoFOnChange(sel) {
+          if (sel.value=="longitud"){
+                divT = document.getElementById("longitud");
+                divT.style.display = "";
 
-              divM = document.getElementById("criticidad");
-              divM.style.display = "none";
+                divM = document.getElementById("criticidad");
+                divM.style.display = "none";
 
-              divE = document.getElementById("departamento");
-              divE.style.display = "none";
+                divE = document.getElementById("departamento");
+                divE.style.display = "none";
 
-              divE = document.getElementById("facilitador");
-              divE.style.display = "none";
+                divE = document.getElementById("facilitador");
+                divE.style.display = "none";
 
-              divE = document.getElementById("localidad");
-              divE.style.display = "none";
+                divE = document.getElementById("localidad");
+                divE.style.display = "none";
 
-        }else if (sel.value=="criticidad"){
-              divT = document.getElementById("longitud");
-              divT.style.display = "none";
+          }else if (sel.value=="criticidad"){
+                divT = document.getElementById("longitud");
+                divT.style.display = "none";
 
-              divM = document.getElementById("criticidad");
-              divM.style.display = "";
+                divM = document.getElementById("criticidad");
+                divM.style.display = "";
 
-              divE = document.getElementById("departamento");
-              divE.style.display = "none";
+                divE = document.getElementById("departamento");
+                divE.style.display = "none";
 
-              divE = document.getElementById("facilitador");
-              divE.style.display = "none";
+                divE = document.getElementById("facilitador");
+                divE.style.display = "none";
 
-              divE = document.getElementById("localidad");
-              divE.style.display = "none";
+                divE = document.getElementById("localidad");
+                divE.style.display = "none";
 
-              var filtro = $('#filtro').val();
+                buscarDatos();
 
-          var parametros = {
-          "filtro" : filtro,
-          };
-          $.ajax({
-            type: 'POST',
-            url: '<?php echo base_url(); ?>index.php/relevamiento/RelevamientoC/cargarFiltros', 
-            data: parametros, 
-                  dataType: 'json',
-            success: function(resp) { 
-              if(resp){
-                cargarCombo(resp);
-              }
-              else{
-                document.getElementById("criticidad").disabled=true;
-              }},
-             error: function(xhr,status) { 
-              console.log(xhr+"    "+status);
-            },
-          });
+          }else if (sel.value=="departamento"){
+                divT = document.getElementById("longitud");
+                divT.style.display = "none";
 
-        }else if (sel.value=="departamento"){
-              divT = document.getElementById("longitud");
-              divT.style.display = "none";
+                divM = document.getElementById("criticidad");
+                divM.style.display = "none";
 
-              divM = document.getElementById("criticidad");
-              divM.style.display = "none";
+                divE = document.getElementById("departamento");
+                divE.style.display = "";
 
-              divE = document.getElementById("departamento");
-              divE.style.display = "";
+                divE = document.getElementById("facilitador");
+                divE.style.display = "none";
 
-              divE = document.getElementById("facilitador");
-              divE.style.display = "none";
+                divE = document.getElementById("localidad");
+                divE.style.display = "none";
 
-              divE = document.getElementById("localidad");
-              divE.style.display = "none";
+                buscarDatos();
 
-        }else if (sel.value=="facilitador"){
-              divT = document.getElementById("longitud");
-              divT.style.display = "none";
+          }else if (sel.value=="facilitador"){
+                divT = document.getElementById("longitud");
+                divT.style.display = "none";
 
-              divM = document.getElementById("criticidad");
-              divM.style.display = "none";
+                divM = document.getElementById("criticidad");
+                divM.style.display = "none";
 
-              divE = document.getElementById("departamento");
-              divE.style.display = "none";
+                divE = document.getElementById("departamento");
+                divE.style.display = "none";
 
-              divE = document.getElementById("facilitador");
-              divE.style.display = "";
+                divE = document.getElementById("facilitador");
+                divE.style.display = "";
 
-              divE = document.getElementById("localidad");
-              divE.style.display = "none";
+                divE = document.getElementById("localidad");
+                divE.style.display = "none";
 
-        }else if (sel.value=="localidad"){
+                buscarDatos();
 
-              divT = document.getElementById("longitud");
-              divT.style.display = "none";
+          }else if (sel.value=="localidad"){
 
-              divM = document.getElementById("criticidad");
-              divM.style.display = "none";
+                divT = document.getElementById("longitud");
+                divT.style.display = "none";
 
-              divE = document.getElementById("departamento");
-              divE.style.display = "none";
+                divM = document.getElementById("criticidad");
+                divM.style.display = "none";
 
-              divE = document.getElementById("facilitador");
-              divE.style.display = "none";
+                divE = document.getElementById("departamento");
+                divE.style.display = "none";
 
-              divE = document.getElementById("localidad");
-              divE.style.display = "";
+                divE = document.getElementById("facilitador");
+                divE.style.display = "none";
 
-        }
-    }
+                divE = document.getElementById("localidad");
+                divE.style.display = "";
 
-    function cargarLocalidades(){
-          var filtro = $('#criticidad').val();
+                buscarDatos();
 
-          var parametros = {
-          "filtro" : filtro,
-          };
-          $.ajax({
-            type: 'POST',
-            url: '<?php echo base_url(); ?>index.php/RelevamientoC/cargarFiltros', 
-            data: parametros, 
-                  dataType: 'json',
-            success: function(resp) { 
-              if(resp){
-                cargarCombo(resp);
-              }
-              else{
-                document.getElementById("criticidad").disabled=true;
-              }},
-             error: function(xhr,status) { 
-              console.log(xhr+"    "+status);
-            },
-          });
-        }
-
-    function cargarCombo(lista){
-      // document.getElementById("criticidad").options.length=0;
-      // document.getElementById("criticidad").options[0]=new Option("Selecciona una opción", "");
-
-      var combo=$("#criticidad");
-          for (var i in lista){
-              combo.append('<option value="'+lista[i].idCriticidad +'">'+ lista[i].nombreCriticidad +'</option>');
           }
-    }
-</script>
+      }
 
+      function buscarDatos(){
+        var filtro = $('#filtro').val();
+
+        var parametros = {
+        "filtro" : filtro,
+        };
+        $.ajax({
+          type: 'POST',
+          url: '<?php echo base_url(); ?>index.php/relevamiento/RelevamientoC/cargarFiltros', 
+          data: parametros, 
+                dataType: 'json',
+          success: function(resp) { 
+            if(resp){
+              cargarCombo(resp);
+            }
+            else{
+              document.getElementById("comboC").disabled=true;
+              document.getElementById("comboD").disabled=true;
+              document.getElementById("comboF").disabled=true;
+              document.getElementById("comboL").disabled=true;
+            }},
+           error: function(xhr,status) { 
+            console.log(xhr+"    "+status);
+          },
+        });
+      }
+
+      function cargarCombo(lista){
+        var filtro = $('#filtro').val();
+
+        if(filtro == "criticidad"){
+            document.getElementById("comboC").options.length=0;
+            document.getElementById("comboC").options[0]=new Option("--Selecciona una Opción--", "");
+
+            var combo=$("#comboC");
+
+            for (var i in lista){
+                combo.append('<option value="'+lista[i].idCriticidad +'">'+ lista[i].nombreCriticidad +'</option>');
+            }
+
+        }else if(filtro == "departamento"){
+            document.getElementById("comboD").options.length=0;
+            document.getElementById("comboD").options[0]=new Option("--Selecciona una Opción--", "");
+
+            var combo=$("#comboD");
+
+            for (var i in lista){
+                combo.append('<option value="'+lista[i].id_tdeparta +'">'+ lista[i].descdep +'</option>');
+            }
+
+        }else if(filtro == "facilitador"){
+            document.getElementById("comboF").options.length=0;
+            document.getElementById("comboF").options[0]=new Option("--Selecciona una Opción--", "");
+
+            var combo=$("#comboF");
+
+            for (var i in lista){
+                combo.append('<option value="'+lista[i].idEmpleado +'">'+ lista[i].apellidoE+" "+lista[i].nombreE +'</option>');
+            }
+
+        }else{//filtro == "localidad"
+            document.getElementById("comboL").options.length=0;
+            document.getElementById("comboL").options[0]=new Option("--Selecciona una Opción--", "");
+
+            var combo=$("#comboL");
+
+            for (var i in lista){
+                combo.append('<option value="'+lista[i].id_tlocalidad +'">'+ lista[i].descloc +'</option>');
+            }
+        }
+
+        
+      }
+    </script>
 
 
 <!--Para que se vean los botones de la tabla responsive-->
@@ -364,3 +386,16 @@
       if('ontouchstart' in document.documentElement) document.write("<script src='../assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
     </script>
     <script src="../assets/js/bootstrap.js"></script> 
+
+
+<!--Para que se vean los botones de la tabla responsive-->
+
+    <script type="text/javascript">
+      window.jQuery || document.write("<script src='../../assets/js/jquery.js'>"+"<"+"/script>");
+    </script>
+
+
+    <script type="text/javascript">
+      if('ontouchstart' in document.documentElement) document.write("<script src='../../assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
+    </script>
+    <script src="../../assets/js/bootstrap.js"></script>
