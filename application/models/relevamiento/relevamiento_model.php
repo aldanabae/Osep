@@ -436,99 +436,275 @@ class Relevamiento_model extends CI_Model {
 //Arreglar que tambien si es facilitador solo traiga las que le correspondan en cada filtro
 	public function getRelevNro($nroRelev, $sesion, $data){
 		$idEmpleado = $sesion['idEmpleado'];
+		$nivelU = $sesion['nivel'];
 
-		if ($nroRelev == ""){
-			if($data['limiteTabla'] != ""){ //Filtro por Longitud de Tabla
-				$this->db->where('estado', '0');
-				//$this->db->where('relevamiento.idEmpleado', $idEmpleado);
-				$this->db->from('relevamiento');
-				$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
-				$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
-				$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
-				$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
-				$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
-				$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
-				$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
-				$query = $this->db->get();
+		if($nivelU == 1){ //Si es Facilitador
+			if ($nroRelev == ""){
+				if($data['limiteTabla'] != ""){ //Filtro por Longitud de Tabla
+					$this->db->where('estado', '0');
+					$this->db->where('relevamiento.idEmpleado', $idEmpleado);
+					$this->db->from('relevamiento');
+					$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+					$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+					$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+					$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+					$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
+					$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+					$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+					$query = $this->db->get();
 
-			}elseif($data['filtroCri'] != ""){ //Filtro por Criticidad
-				$this->db->where('estado', '0');
-				$this->db->where('relevamiento.idCriticidad', $data['filtroCri']);
-				//$this->db->where('relevamiento.idEmpleado', $idEmpleado);
-				$this->db->from('relevamiento');
-				$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
-				$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
-				$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
-				$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
-				$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
-				$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
-				$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
-				$query = $this->db->get();
+				}elseif($data['filtroCri'] != ""){ //Filtro por Criticidad
+					$this->db->where('estado', '0');
+					$this->db->where('relevamiento.idCriticidad', $data['filtroCri']);
+					$this->db->where('relevamiento.idEmpleado', $idEmpleado);
+					$this->db->from('relevamiento');
+					$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+					$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+					$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+					$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+					$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
+					$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+					$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+					$query = $this->db->get();
 
-			}elseif($data['filtroDpto'] != ""){ //Filtro por Departamentos
-				$this->db->where('estado', '0');
-				$this->db->where('localidad.id_tdeparta', $data['filtroDpto']);
-				//$this->db->where('relevamiento.idEmpleado', $idEmpleado);
-				$this->db->from('relevamiento');
-				$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
-				$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
-				$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
-				$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
-				$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
-				$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
-				$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
-				$query = $this->db->get();
+				}elseif($data['filtroDpto'] != ""){ //Filtro por Departamentos
+					$this->db->where('estado', '0');
+					$this->db->where('localidad.id_tdeparta', $data['filtroDpto']);
+					$this->db->where('relevamiento.idEmpleado', $idEmpleado);
+					$this->db->from('relevamiento');
+					$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+					$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+					$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+					$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+					$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
+					$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+					$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+					$query = $this->db->get();
 
-			}elseif($data['filtroFac'] != ""){ //Filtro por Facilitador
-				$this->db->where('estado', '0');
-				$this->db->where('relevamiento.idEmpleado', $data['filtroFac']);
-				$this->db->from('relevamiento');
-				$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
-				$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
-				$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
-				$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
-				$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
-				$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
-				$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
-				$query = $this->db->get();
+				}elseif($data['filtroFac'] != ""){ //Filtro por Facilitador
+					$this->db->where('estado', '0');
+					$this->db->where('relevamiento.idEmpleado', $data['filtroFac']);
+					$this->db->from('relevamiento');
+					$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+					$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+					$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+					$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+					$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
+					$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+					$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+					$query = $this->db->get();
 
-			}elseif($data['filtroLoc'] != ""){ //Filtro por Localidad
-				$this->db->where('estado', '0');
-				$this->db->where('direccion.id_tlocalidad', $data['filtroLoc']);
-				//$this->db->where('relevamiento.idEmpleado', $idEmpleado);
-				$this->db->from('relevamiento');
-				$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
-				$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
-				$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
-				$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
-				$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
-				$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
-				$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
-				$query = $this->db->get();
+				}elseif($data['filtroLoc'] != ""){ //Filtro por Localidad
+					$this->db->where('estado', '0');
+					$this->db->where('direccion.id_tlocalidad', $data['filtroLoc']);
+					$this->db->where('relevamiento.idEmpleado', $idEmpleado);
+					$this->db->from('relevamiento');
+					$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+					$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+					$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+					$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+					$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
+					$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+					$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+					$query = $this->db->get();
+
+				}else{
+					return false;
+				}
 
 			}else{
-				return false;
+				$this->db->where('nroRelevamiento', $nroRelev);
+				$this->db->where('estado', '0');
+				$this->db->where('relevamiento.idEmpleado', $idEmpleado);
+				$this->db->from('relevamiento');
+				$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+				$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+				$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+				$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+				$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
+				$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+				$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+				$query = $this->db->get();
 			}
 
-		}else{
-			//Recordar que solo muestra los del facilitador que esta logeado. REVISAR!!!!
-			$this->db->where('nroRelevamiento', $nroRelev);
-			$this->db->where('estado', '0');
-			$this->db->where('relevamiento.idEmpleado', $idEmpleado);
-			$this->db->from('relevamiento');
-			$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
-			$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
-			$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
-			$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
-			$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
-			$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
-			$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
-			$query = $this->db->get();
+		}elseif($nivelU == 2){ //Si es Referente
+			if($nroRelev == ""){
+				if($data['limiteTabla'] != ""){ //Filtro por Longitud de Tabla
+					$this->db->where('estado', '0');
+					$this->db->where('relevamiento.idReferente', $idEmpleado);
+					$this->db->from('relevamiento');
+					$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+					$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+					$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+					$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+					$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
+					$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+					$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+					$query = $this->db->get();
+
+				}elseif($data['filtroCri'] != ""){ //Filtro por Criticidad
+					$this->db->where('estado', '0');
+					$this->db->where('relevamiento.idCriticidad', $data['filtroCri']);
+					$this->db->where('relevamiento.idReferente', $idEmpleado);
+					$this->db->from('relevamiento');
+					$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+					$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+					$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+					$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+					$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
+					$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+					$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+					$query = $this->db->get();
+
+				}elseif($data['filtroDpto'] != ""){ //Filtro por Departamentos
+					$this->db->where('estado', '0');
+					$this->db->where('localidad.id_tdeparta', $data['filtroDpto']);
+					$this->db->where('relevamiento.idReferente', $idEmpleado);
+					$this->db->from('relevamiento');
+					$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+					$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+					$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+					$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+					$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
+					$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+					$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+					$query = $this->db->get();
+
+				}elseif($data['filtroFac'] != ""){ //Filtro por Facilitador
+					$this->db->where('estado', '0');
+					$this->db->where('relevamiento.idEmpleado', $data['filtroFac']);
+					$this->db->from('relevamiento');
+					$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+					$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+					$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+					$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+					$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
+					$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+					$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+					$query = $this->db->get();
+
+				}elseif($data['filtroLoc'] != ""){ //Filtro por Localidad
+					$this->db->where('estado', '0');
+					$this->db->where('direccion.id_tlocalidad', $data['filtroLoc']);
+					$this->db->where('relevamiento.idReferente', $idEmpleado);
+					$this->db->from('relevamiento');
+					$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+					$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+					$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+					$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+					$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
+					$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+					$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+					$query = $this->db->get();
+
+				}else{
+					return false;
+				}
+
+			}else{
+				$this->db->where('nroRelevamiento', $nroRelev);
+				$this->db->where('estado', '0');
+				$this->db->where('relevamiento.idReferente', $idEmpleado);
+				$this->db->from('relevamiento');
+				$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+				$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+				$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+				$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+				$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
+				$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+				$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+				$query = $this->db->get();
+			}
+
+		}elseif($nivelU == 3 || $nivelU == 4 || $nivelU == 5){
+			if ($nroRelev == ""){
+				if($data['limiteTabla'] != ""){ //Filtro por Longitud de Tabla
+					$this->db->where('estado', '0');
+					$this->db->from('relevamiento');
+					$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+					$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+					$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+					$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+					$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
+					$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+					$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+					$query = $this->db->get();
+
+				}elseif($data['filtroCri'] != ""){ //Filtro por Criticidad
+					$this->db->where('estado', '0');
+					$this->db->where('relevamiento.idCriticidad', $data['filtroCri']);
+					$this->db->from('relevamiento');
+					$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+					$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+					$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+					$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+					$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
+					$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+					$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+					$query = $this->db->get();
+
+				}elseif($data['filtroDpto'] != ""){ //Filtro por Departamentos
+					$this->db->where('estado', '0');
+					$this->db->where('localidad.id_tdeparta', $data['filtroDpto']);
+					$this->db->from('relevamiento');
+					$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+					$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+					$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+					$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+					$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
+					$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+					$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+					$query = $this->db->get();
+
+				}elseif($data['filtroFac'] != ""){ //Filtro por Facilitador
+					$this->db->where('estado', '0');
+					$this->db->where('relevamiento.idEmpleado', $data['filtroFac']);
+					$this->db->from('relevamiento');
+					$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+					$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+					$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+					$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+					$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
+					$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+					$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+					$query = $this->db->get();
+
+				}elseif($data['filtroLoc'] != ""){ //Filtro por Localidad
+					$this->db->where('estado', '0');
+					$this->db->where('direccion.id_tlocalidad', $data['filtroLoc']);
+					$this->db->from('relevamiento');
+					$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+					$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+					$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+					$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+					$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
+					$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+					$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+					$query = $this->db->get();
+
+				}else{
+					return false;
+				}
+
+			}else{
+				$this->db->where('nroRelevamiento', $nroRelev);
+				$this->db->where('estado', '0');
+				$this->db->from('relevamiento');
+				$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
+				$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
+				$this->db->join('empleado','empleado.idEmpleado=relevamiento.idEmpleado','left');
+				$this->db->join('visita','visita.idVisita=relevamiento.idVisita','left');
+				$this->db->join('direccion','direccion.idDireccion=relevamiento.idDireccion','left');
+				$this->db->join('localidad','localidad.id_tlocalidad=direccion.id_tlocalidad','left');
+				$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+				$query = $this->db->get();
+			}
 		}
 
 		if ($query->num_rows() > 0) return $query;
 		else return false;  
 	}
+	
 
 	public function getDatosFiltro($filtro){
 		if($filtro == "criticidad"){
