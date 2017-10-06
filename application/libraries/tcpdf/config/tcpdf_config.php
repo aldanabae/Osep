@@ -115,10 +115,9 @@ define ('PDF_HEADER_TITLE', 'TCPDF Example');
  * Header description string.
 
  */
- $hoy = date("Y-m-d H:i:s"); 
  
 
-define ('PDF_HEADER_STRING', "Osep ".$hoy );
+define ('PDF_HEADER_STRING', "Osep ");
 
 /**
  * Document unit of measure [pt=point, mm=millimeter, cm=centimeter, in=inch].

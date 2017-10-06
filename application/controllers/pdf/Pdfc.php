@@ -14,7 +14,10 @@ class Pdfc extends CI_Controller{
             $this->load->library('Pdf');
             $this->load->model('relevamiento/Relevamiento_model');
             $this->load->model('pdf/Pdf_model');
-
+            $this->load->model('abms/abmEmpleados_model');
+            $this->load->model('seguridad/AbmNiveles_model');
+            $this->load->model('seguridad/AbmUsuarios_model');
+            $this->load->model('Bienvenida_model');
     }
 
 
@@ -30,14 +33,32 @@ class Pdfc extends CI_Controller{
 
 
     function printPdf(){
+
+
+        $session_data = $this->session->userdata('logged_in');
+        $data['username'] = $session_data['username'];
+        $data['nombreE'] = $session_data['nombreE'];
+        $data['nivel'] = $session_data['nivel'];
+        $this->session->set_flashdata('username', $data);
+        $this->session->set_flashdata('nombreE', $data);
+        $this->session->set_flashdata('nivel', $data);
+        //mantener sidebar dinamica
+        $session_data = $this->session->userdata('logged_in');
+        $data['nivel'] = $this->Bienvenida_model->obtenerNivel($session_data['nivel']);
+
+
+
+
+
         ob_start();
+        date_default_timezone_set('America/Argentina/Mendoza');
         $data['nroRelev'] = $this->uri->segment(3);
 		// aqui traigo los datos generales del relevamiento
 		$data['relevamiento'] = $this->Relevamiento_model->getRelevamiento($data['nroRelev']);
 
         if( $data['relevamiento'] != false){
 
-
+            //var_dump($_SESSION);
             //trae tods los datos de integrantes pertenecientes al mism relevamiento
             // $data['encuestados'] = $this->Relevamiento_model->getEncuestados($data['nroRelev']);
 
@@ -46,23 +67,14 @@ class Pdfc extends CI_Controller{
             $relevamiento = $data['relevamiento']->result()[0]; // consulta de datos de relevamiento la paso a esta variable
 
                 
-            // create new PDF document
-            $pdf = new Pdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-            
-            // set document information
-            $pdf->SetCreator(PDF_CREATOR);
-            $pdf->SetAuthor('Nicola Asuni');
-            $pdf->SetTitle('Relevamiento_N_22212');
-            $pdf->SetSubject('TCPDF Tutorial');
-        
             
             
             $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
             $pdf->SetCreator(PDF_CREATOR);
-            $pdf->SetAuthor('Israel Parra');
-            $pdf->SetTitle('Ejemplo de provincías con TCPDF');
-            $pdf->SetSubject('Tutorial TCPDF');
-            $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
+            $pdf->SetAuthor('Osep');
+            $pdf->SetTitle('Impresion PDF Relevamiento');
+            $pdf->SetSubject('Osep Relevamiento');
+            $pdf->SetKeywords('TCPDF, PDF, osep, tms, relevamiento');
 
         // datos por defecto de cabecera, se pueden modificar en el archivo tcpdf_config_alt.php de libraries/config
             $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, 'Relevamiento N°'. $relevamiento->nroRelevamiento, PDF_HEADER_STRING);
@@ -112,8 +124,24 @@ class Pdfc extends CI_Controller{
             $direccion= $this->Pdf_model->getDireccion_e($relevamiento->idDireccion); // traigo la direccion a partir del id de direccion 
 
             $dataB10 = $this->Pdf_model->getRespuesta_e($data['nroRelev'],null,10);
-            
 
+            $usuario_gen= $_SESSION['logged_in']; // guardo el nombre de sesion en esta variable para usarlo en la reneracion del pdf
+
+            
+        $date = new DateTime();
+
+
+
+            $encabezado = '
+            <h2><u>Relevamiento de datos</u></h2><br>
+            <ul>
+                <li><b>Fecha de Generacion: '.$date->format('d/m/Y').'</b></li><br>
+                <li><i>Hora: </i>'.$date->format('H:i:s').'</li><br>
+                <li>Usuario: '.$usuario_gen['nombreE'].' '.$usuario_gen['apellidoE'].' </li><br>
+            </ul>';
+            $pdf->writeHTML($encabezado, true, false, false, false, '');
+
+            
             $tbl_relev = 
                         '<table cellpadding="4" border="1" >
                         <tr>

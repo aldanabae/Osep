@@ -52,16 +52,26 @@ var cargar = {
                     
                     if(estado == "1"){
 
-                        $('#b8_criticidad').parent().parent().removeClass( "has-warning has-error" ).addClass( "has-success" );
+                        $('#b8_criticidad').parent().parent().removeClass( "has-warning has-error has-info" ).addClass( "has-success" );
 
                     }else{
 
                         if(estado == "2"){
 
-                            $('#b8_criticidad').parent().parent().removeClass( "has-success has-error" ).addClass( "has-warning" );
+                            $('#b8_criticidad').parent().parent().removeClass( "has-success has-error has-info" ).addClass( "has-warning" );
                             
                         }else{
-                            $('#b8_criticidad').parent().parent().removeClass( "has-warning has-success" ).addClass( "has-error" );
+
+                            if(estado == "3"){
+                                
+                                $('#b8_criticidad').parent().parent().removeClass( "has-warning has-success has-info" ).addClass( "has-error" );
+                                
+                            }else{
+
+                                $('#b8_criticidad').parent().parent().removeClass( "has-warning has-success has-error" ).addClass( "has-info" );
+
+                            }
+
                             
                         }
 
