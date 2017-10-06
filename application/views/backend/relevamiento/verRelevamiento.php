@@ -4,10 +4,32 @@
     <div class="main-content-inner">
         <div class="page-content">
 
+
+<?php 
+
+$hoy = date("Y-m-d H:i:s"); 
+
+echo($hoy);
+
+
+
+
+?>
+
+
             <div class="page-header">
                 <h1>
-                    Ver Relevamiento
+                    <a href="<?php echo base_url('relevamiento/relevamientoC')?>">
+										<i class="menu-icon fa fa-caret-right"></i>
+										Ver Relevamiento
+								</a>
                 </h1>
+
+                <a href="<?php echo base_url('pdf/Pdfc/'.$nroRelev)?>" target="_blank">
+										<i class="menu-icon fa fa-caret-right"></i>
+										Imprimir Relevamiento
+								</a>
+                
             </div>  
 
 <!Primera Caja de Datos/ Datos Generales>
