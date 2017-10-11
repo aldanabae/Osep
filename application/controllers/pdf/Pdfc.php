@@ -128,9 +128,7 @@ class Pdfc extends CI_Controller{
             $usuario_gen= $_SESSION['logged_in']; // guardo el nombre de sesion en esta variable para usarlo en la reneracion del pdf
 
             
-        $date = new DateTime();
-
-
+            $date = new DateTime();
 
             $encabezado = '
             <h2><u>Relevamiento de datos</u></h2><br>
@@ -161,7 +159,7 @@ class Pdfc extends CI_Controller{
                                 </tr>
                                 <tr>
                                     <td bgcolor="#F7F7F7" align="center">Criticidad</td>
-                                    <td  align="left">'.$relevamiento->idCriticidad.'</td>
+                                    <td  align="left">'.$relevamiento->nombreCriticidad.'</td>
                                 </tr>
                                 <tr>
                                     <td bgcolor="#F7F7F7" align="center">Telefono Titular</td>
@@ -179,9 +177,17 @@ class Pdfc extends CI_Controller{
                                 <tr>
                                     <td bgcolor="#F7F7F7" align="center">Observaciones Iniciales</td>
                                     <td  align="left">'.$relevamiento->observacion.'</td>
-                                </tr>
-                                
-                        </table>';
+                                </tr>';
+
+                                $obs_gener= $this->Pdf_model->getRespuesta_e($data['nroRelev'],null,1)[0];
+
+                                $tbl_relev.='<tr>
+                                    <td bgcolor="#F7F7F7" align="center">'.$obs_gener[0].'</td>
+                                    <td  align="left">'.$obs_gener[1].'</td>
+                                </tr>';
+
+
+                                $tbl_relev.=' </table>';
 
                 $pdf->writeHTML($tbl_relev, true, false, false, false, '');
 
