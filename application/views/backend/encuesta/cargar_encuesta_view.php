@@ -218,6 +218,7 @@
 						<div class="col-xs-6">
 							<select class="form-control" name= "26" id= "b1_nivel" required>
 							<option value="" disabled selected hidden>Seleccionar</option>
+							<option value="146">Ninguno</option>
 							<option value="18">Inicial</option>
 							<option value="19">Primario incompleto</option>
 							<option value="20">Primario completo</option>
@@ -227,6 +228,7 @@
 							<option value="24">Terciario completo</option>
 							<option value="25">Universitario incompleto</option>
 							<option value="26">Universitario completo</option>
+							<option value="147">Educación especial</option>
 							</select>
 						</div>
 					</div>

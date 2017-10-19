@@ -254,7 +254,8 @@
 											<select class="form-control" name="103" required>
 												<option value="" disabled selected hidden>Seleccionar</option>
 												<option value="127" >Membrana, teja, losa, baldosa</option>
-												<option value="128" >Madera, caña , paja</option>		
+												<option value="128" >Madera, caña , paja</option>	
+												<option value="126" >Chapa de metal, cartón</option>		
 
 											</select>
 										</div>
