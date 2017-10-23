@@ -4,9 +4,9 @@ var bloque_btn= $("#btn_encuesta");
 //var bloque9= $("#bloque_9");
 
 $(function() {
-  // Handler for .ready() called.
-
-  bloque1.bindComponent();
+  
+  $('#b1_nombre').focus();  // seteo el foco en el primer campo
+    bloque1.bindComponent();
 
   // 1 SI  Y 2 ES NO
 });
@@ -221,6 +221,7 @@ var bloque1= {    // Bloque General
 
         reset_block: function(){
 
+            $('#b1_nombre').focus();  // seteo el foco en el primer campo
             bloque7.estado= false;
             bloque6.estado= false;
             bloque5.estado= false;
@@ -487,7 +488,7 @@ var bloque1= {    // Bloque General
 
                     // genero
                     $( "#bloque_1 input[name$='b1_genero']" ).on(
-                        'change, click', function(){
+                        'change click', function(){
 
                             bloque1.conf.genero= $(this).val();
                             bloque1.conf.embarazo= '2';
@@ -514,7 +515,7 @@ var bloque1= {    // Bloque General
 
                         // nivel de estudios
                     $( "#b1_estudio" ).on(
-                        'change, click', function(){
+                        'change click', function(){
 
                             bloque1.conf.estudio= $(this).val();
                             bloque1.conf.update();
@@ -522,7 +523,7 @@ var bloque1= {    // Bloque General
                     });
                         // tiene osep
                     $( "#b1_osep" ).on(
-                        'change, click', function(){
+                        'change click', function(){
 
                             bloque1.conf.osep= $(this).val();
                             // verifico si tiene osep
@@ -555,7 +556,7 @@ var bloque1= {    // Bloque General
 
                         // embarazada  si o no
                     $( "#b1_embarazo" ).on(
-                        'change, click', function(){
+                        'change click', function(){
 
                             bloque1.conf.embarazo= $(this).val();
                             bloque1.conf.update();
@@ -563,7 +564,7 @@ var bloque1= {    // Bloque General
                         });
 
                     $( "#b1_disc" ).on(
-                        'change, click', function(){
+                        'change  click', function(){
 
                             bloque1.conf.discapacidad= $(this).val();
                             bloque1.conf.update();
@@ -571,7 +572,7 @@ var bloque1= {    // Bloque General
                     });
 
                     $( "#b1_ocupacion" ).on(
-                        'change', function(){
+                        'change  click', function(){
                             bloque1.conf.ocupacion= $(this).val();
                             bloque1.conf.update();
                             
@@ -580,7 +581,7 @@ var bloque1= {    // Bloque General
                     //======================================
 
                     $( "#btn_nuevo" ).on(
-                        'click', function(){
+                        'change  click', function(){
 
                             var retorno= validations('#add_encuesta');  // devuelve la validacion de campos + id del focus
                             
@@ -687,7 +688,7 @@ var bloque1= {    // Bloque General
 
                     // evento para relenar vinculo con el titular  o Titular
                     $( "#b1_parent" ).on(
-                        'change, click', function(){
+                        'change click', function(){
 
                             var vinculo= $(this).val();
 
@@ -705,7 +706,7 @@ var bloque1= {    // Bloque General
                     });                        
 
                     $( "#b1_extra" ).on(         // muestra o no los campos de afiliado externo...
-                        'change, click', function(){
+                        'change click', function(){
 
                             bloque1.conf.pariente= $(this).val();
                             bloque1.conf.update();
@@ -735,7 +736,7 @@ var bloque1= {    // Bloque General
 
 
                     $( "#responde" ).on(        // check de si responde o no la encuesta 
-                        'click', function(){
+                        'change click', function(){
 
  
                         if($("#responde").is(':checked')) {  
@@ -750,7 +751,7 @@ var bloque1= {    // Bloque General
 
 
                     $( "#check_afiliado" ).on(   // es el check que indica si usar o no el mismo numero del titular
-                        'click', function(){
+                        ' click', function(){
 
  
                         if($("#check_afiliado").is(':checked')) {  
@@ -768,7 +769,7 @@ var bloque1= {    // Bloque General
                     // preguntas de utilizacion de servicios
 
                     $( "#b1_consulta" ).on(
-                        'change', function(){
+                        'change ', function(){
 
                             bloque1.conf.consulta= $(this).val();
                             bloque1.conf.update();
@@ -776,7 +777,7 @@ var bloque1= {    // Bloque General
                     });
 
                     $( "#b1_div_consulta_no" ).on(
-                        'change', function(){
+                        'change ', function(){
                             var seleccion = $('#b1_atencion_no').val();
                             if(seleccion == "42") {
 
@@ -1156,7 +1157,7 @@ var bloque3b ={     //Bloque Niños
         bindComponent: function(){
 
                     $( "#b3b_escuela" ).on(
-                        'change', function(){
+                        'change click', function(){
 
                             bloque3b.data.escuela= $(this).val();
                             bloque3b.update();
