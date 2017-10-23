@@ -379,7 +379,7 @@
             var combo=$("#comboL");
 
             for (var i in lista){
-                combo.append('<option value="'+lista[i].id_tlocalidad +'">'+ lista[i].descloc +'</option>');
+                combo.append('<option value="'+lista[i].id_tlocalidad +'">'+ lista[i].descdep+" - "+lista[i].descloc +'</option>');
             }
         }
 
