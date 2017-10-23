@@ -14,6 +14,11 @@
           <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
             <div class="row">
 
+                <!-- Defino nivel de Usuario y guardo su -->
+                <?php $nivelU = $this->session->userdata('logged_in');
+                      // $idEmpleado = $nivelU['idEmpleado'];
+                ?>
+
                 <div class="col-xs-6">
                     <div class="dataTables_length">
                         <label>Seleccionar Filtro 
@@ -21,7 +26,12 @@
                             <option value="longitud">Longitud tabla</option>
                             <option value="criticidad">Criticidad</option>
                             <option value="departamento">Departamento</option>
-                            <option value="facilitador">Facilitador</option>
+
+                            <!-- Si es facilitador no muestro combo facilitadores -->
+                            <?php if($nivelU['nivel'] != 1){
+                                echo '<option value="facilitador">Facilitador</option>';
+                            }?>
+
                             <option value="localidad">Localidad</option>
                           </select> 
                         </label>
@@ -31,8 +41,8 @@
                             <select aria-controls="dynamic-table" class="form-control input-sm" name="longitudTabla">
                               <option value="">-- Seleccione Cantidad --</option>
                               <option value="100000">Todos</option>
-                              <option value="2">10</option>
-                              <option value="4">25</option>
+                              <option value="10">10</option>
+                              <option value="25">25</option>
                               <option value="50">50</option>
                               <option value="100">100</option>
                             </select>
@@ -203,98 +213,101 @@
 </div><!-- /.main-content -->
 
 
+
 <!--JS para cargar combos dinamicos-->
 
     <script type="text/javascript">
+
       function tipoFOnChange(sel) {
           if (sel.value=="longitud"){
-                divT = document.getElementById("longitud");
-                divT.style.display = "";
+              divT = document.getElementById("longitud");
+              divT.style.display = "";
 
-                divM = document.getElementById("criticidad");
-                divM.style.display = "none";
+              divM = document.getElementById("criticidad");
+              divM.style.display = "none";
 
-                divE = document.getElementById("departamento");
-                divE.style.display = "none";
+              divE = document.getElementById("departamento");
+              divE.style.display = "none";
 
-                divE = document.getElementById("facilitador");
-                divE.style.display = "none";
+              divE = document.getElementById("facilitador");
+              divE.style.display = "none";
 
-                divE = document.getElementById("localidad");
-                divE.style.display = "none";
+              divE = document.getElementById("localidad");
+              divE.style.display = "none";
 
           }else if (sel.value=="criticidad"){
-                divT = document.getElementById("longitud");
-                divT.style.display = "none";
+              divT = document.getElementById("longitud");
+              divT.style.display = "none";
 
-                divM = document.getElementById("criticidad");
-                divM.style.display = "";
+              divM = document.getElementById("criticidad");
+              divM.style.display = "";
 
-                divE = document.getElementById("departamento");
-                divE.style.display = "none";
+              divE = document.getElementById("departamento");
+              divE.style.display = "none";
 
-                divE = document.getElementById("facilitador");
-                divE.style.display = "none";
+              divE = document.getElementById("facilitador");
+              divE.style.display = "none";
 
-                divE = document.getElementById("localidad");
-                divE.style.display = "none";
+              divE = document.getElementById("localidad");
+              divE.style.display = "none";
 
-                buscarDatos();
+              buscarDatos();
 
           }else if (sel.value=="departamento"){
-                divT = document.getElementById("longitud");
-                divT.style.display = "none";
+              divT = document.getElementById("longitud");
+              divT.style.display = "none";
 
-                divM = document.getElementById("criticidad");
-                divM.style.display = "none";
+              divM = document.getElementById("criticidad");
+              divM.style.display = "none";
 
-                divE = document.getElementById("departamento");
-                divE.style.display = "";
+              divE = document.getElementById("departamento");
+              divE.style.display = "";
 
-                divE = document.getElementById("facilitador");
-                divE.style.display = "none";
+              divE = document.getElementById("facilitador");
+              divE.style.display = "none";
 
-                divE = document.getElementById("localidad");
-                divE.style.display = "none";
+              divE = document.getElementById("localidad");
+              divE.style.display = "none";
 
-                buscarDatos();
+              buscarDatos();
 
           }else if (sel.value=="facilitador"){
-                divT = document.getElementById("longitud");
-                divT.style.display = "none";
 
-                divM = document.getElementById("criticidad");
-                divM.style.display = "none";
+              divT = document.getElementById("longitud");
+              divT.style.display = "none";
 
-                divE = document.getElementById("departamento");
-                divE.style.display = "none";
+              divM = document.getElementById("criticidad");
+              divM.style.display = "none";
 
-                divE = document.getElementById("facilitador");
-                divE.style.display = "";
+              divE = document.getElementById("departamento");
+              divE.style.display = "none";
 
-                divE = document.getElementById("localidad");
-                divE.style.display = "none";
+              divE = document.getElementById("facilitador");
+              divE.style.display = "";
 
-                buscarDatos();
+              divE = document.getElementById("localidad");
+              divE.style.display = "none";
+
+              buscarDatos();
 
           }else if (sel.value=="localidad"){
 
-                divT = document.getElementById("longitud");
-                divT.style.display = "none";
+              divT = document.getElementById("longitud");
+              divT.style.display = "none";
 
-                divM = document.getElementById("criticidad");
-                divM.style.display = "none";
+              divM = document.getElementById("criticidad");
+              divM.style.display = "none";
 
-                divE = document.getElementById("departamento");
-                divE.style.display = "none";
+              divE = document.getElementById("departamento");
+              divE.style.display = "none";
 
-                divE = document.getElementById("facilitador");
-                divE.style.display = "none";
+              divE = document.getElementById("facilitador");
+              divE.style.display = "none";
 
-                divE = document.getElementById("localidad");
-                divE.style.display = "";
+              divE = document.getElementById("localidad");
+              divE.style.display = "";
 
-                buscarDatos();
+              buscarDatos();
 
           }
       }
