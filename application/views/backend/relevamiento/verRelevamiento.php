@@ -4,11 +4,60 @@
     <div class="main-content-inner">
         <div class="page-content">
 
-            <div class="page-header">
-                <h1>
-                    Ver Relevamiento
-                </h1>
-            </div>  
+            <div class="row">
+
+                <div class="page-header col-xs-6">
+            
+                  <h1>Ver Relevamiento</h1>
+
+                </div>
+
+
+                <div class="col-xs-6">
+                    
+                    <a class="btn btn-xs btn-success pull-left" href="<?php echo base_url('relevamiento/relevamientoC')?>" >
+												<i class="fa fa-th-list bigger-110"></i>
+
+												Volver
+												<i class="menu-icon fa fa-caret-left"></i>
+                    </a>
+                      
+
+                      <a class="btn btn-xs btn-success pull-right" href="<?php echo base_url('pdf/Pdfc/'.$nroRelev)?>" target="_blank">
+                          <i class="fa fa-file-pdf-o bigger-110"></i>
+  
+                          Generar  PDF
+                          <i class="ace-icon fa fa-print  align-top bigger-125 icon-on-right"></i>
+                      </a>
+        
+                </div>
+                <!-- <div class="col-xs-8">
+    
+                  <h2>
+                    <a href="<?php echo base_url('relevamiento/relevamientoC')?>">
+                      <i class="menu-icon fa fa-caret-left"></i>
+                      Ver Relevamiento
+                    </a>
+                  </h2>
+                      
+                </div>
+    
+                <div class="col-xs-4 text-center ">
+                    <div>
+                        <p>
+                          <a href="<?php echo base_url('pdf/Pdfc/'.$nroRelev)?>" target="_blank">
+                            <i class="fa fa-file-pdf-o fa-2x"></i>
+                              Descargar PDF
+                          </a>
+                        </p>
+                  </div>
+                </div> -->
+
+
+
+  
+
+            </div>
 
 <!Primera Caja de Datos/ Datos Generales>
             <div class="widget-box"> <!-- Empieza el recuadro con su titulo -->

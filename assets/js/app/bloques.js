@@ -203,7 +203,7 @@ var bloque1= {    // Bloque General
 
                 tOsep:{si:[{"id_resp":14,"respuesta":"No, sólo OSEP"},{"id_resp":15,"respuesta":"Otra obra social"},{"id_resp":16,"respuesta":"Prepaga"},{"id_resp":17,"respuesta":"Otra cobertura"},],no:[{"id_resp":138,"respuesta":"No (Salud Pública)"},{"id_resp":139,"respuesta":"Obra social"},{"id_resp":16,"respuesta":"Prepaga"},{"id_resp":17,"respuesta":"Otra cobertura"},]},
 
-                educativo:[{"id_resp":18,"respuesta":"Inicial"},{"id_resp":19,"respuesta":"Primario incompleto"},{"id_resp":20,"respuesta":"Primario completo"},{"id_resp":21,"respuesta":"Secundario incompleto"},{"id_resp":22,"respuesta":"Secundario completo"},{"id_resp":23,"respuesta":"Terciario incompleto"},{"id_resp":24,"respuesta":"Terciario completo"},{"id_resp":25,"respuesta":"Universitario incompleto"},{"id_resp":26,"respuesta":"Universitario completo"},]
+                educativo:[{"id_resp":146,"respuesta":"Ninguno"},{"id_resp":18,"respuesta":"Inicial"},{"id_resp":19,"respuesta":"Primario incompleto"},{"id_resp":20,"respuesta":"Primario completo"},{"id_resp":21,"respuesta":"Secundario incompleto"},{"id_resp":22,"respuesta":"Secundario completo"},{"id_resp":23,"respuesta":"Terciario incompleto"},{"id_resp":24,"respuesta":"Terciario completo"},{"id_resp":25,"respuesta":"Universitario incompleto"},{"id_resp":26,"respuesta":"Universitario completo"},{"id_resp":147,"respuesta":"Educación especial"}]
                 
         },
 

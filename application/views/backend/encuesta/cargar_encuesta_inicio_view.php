@@ -125,7 +125,7 @@ $dato_rel= $relevamiento; // array de relevamiento qeu viene del controlador
                                 </div>
                             </div>
                             
-                            <div class="form-group">
+                            <div class="form-group ">
                                 <label class="control-label col-xs-6">Departamento (*)</label>
                                 <div class="col-xs-6">
                                     <select class="form-control" id="departamento" name ="idDep" id ="select_dep" required>
