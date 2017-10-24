@@ -306,7 +306,6 @@ class Relevamiento_model extends CI_Model {
 
 
 
-
 	public function updateAfiliado($idRelevamiento, $stringJson= NULL){
 
 		// if(){
@@ -334,11 +333,10 @@ class Relevamiento_model extends CI_Model {
 
 
 
-
 		
 //AQUI esta el metodo que condiciona lo visible de cada relevamiento
 	public function obtenerRelevamientos($nivelUser){
-		if($nivelUser['nivel'] == '1'){
+		if($nivelUser['nivel'] == '1'){//Si es Facilitador cargo al inicio solo sus relevamientos
 			$idEmpleado = $nivelUser['idEmpleado'];
 			$query = $this->db->query('SELECT idRelevamiento, nroRelevamiento, fechaRelevamiento, nombreCriticidad, nombreE, apellidoE, descloc, descdep 
 										FROM relevamiento
@@ -348,6 +346,18 @@ class Relevamiento_model extends CI_Model {
 										INNER JOIN localidad ON direccion.id_tlocalidad=localidad.id_tlocalidad
 										INNER JOIN departamento ON localidad.id_tdeparta=departamento.id_tdeparta 
 										WHERE estado = 0 && relevamiento.idEmpleado = '.$idEmpleado);
+
+		}elseif($nivelUser['nivel'] == '2'){//Si es Referente cargo al inicio solo sus relevamientos y los de sus facilitadores asociados
+			$idEmpleado = $nivelUser['idEmpleado'];
+			$query = $this->db->query('SELECT idRelevamiento, nroRelevamiento, fechaRelevamiento, nombreCriticidad, nombreE, apellidoE, descloc, descdep 
+										FROM relevamiento
+										INNER JOIN criticidad ON relevamiento.idCriticidad=criticidad.idCriticidad
+										INNER JOIN empleado ON relevamiento.idEmpleado=empleado.idEmpleado
+										INNER JOIN direccion ON relevamiento.idDireccion=direccion.idDireccion
+										INNER JOIN localidad ON direccion.id_tlocalidad=localidad.id_tlocalidad
+										INNER JOIN departamento ON localidad.id_tdeparta=departamento.id_tdeparta 
+										WHERE estado = 0 && empleado.idReferente = '.$idEmpleado);
+
 		}else{
 			$query = $this->db->query('SELECT idRelevamiento, nroRelevamiento, fechaRelevamiento, nombreCriticidad, nombreE, apellidoE, descloc, descdep 
 										FROM relevamiento
@@ -532,7 +542,7 @@ class Relevamiento_model extends CI_Model {
 			if($nroRelev == ""){
 				if($data['limiteTabla'] != ""){ //Filtro por Longitud de Tabla
 					$this->db->where('estado', '0');
-					$this->db->where('relevamiento.idReferente', $idEmpleado);
+					$this->db->where('empleado.idReferente', $idEmpleado);
 					$this->db->from('relevamiento');
 					$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
 					$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
@@ -546,7 +556,7 @@ class Relevamiento_model extends CI_Model {
 				}elseif($data['filtroCri'] != ""){ //Filtro por Criticidad
 					$this->db->where('estado', '0');
 					$this->db->where('relevamiento.idCriticidad', $data['filtroCri']);
-					$this->db->where('relevamiento.idReferente', $idEmpleado);
+					$this->db->where('empleado.idReferente', $idEmpleado);
 					$this->db->from('relevamiento');
 					$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
 					$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
@@ -560,7 +570,7 @@ class Relevamiento_model extends CI_Model {
 				}elseif($data['filtroDpto'] != ""){ //Filtro por Departamentos
 					$this->db->where('estado', '0');
 					$this->db->where('localidad.id_tdeparta', $data['filtroDpto']);
-					$this->db->where('relevamiento.idReferente', $idEmpleado);
+					$this->db->where('empleado.idReferente', $idEmpleado);
 					$this->db->from('relevamiento');
 					$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
 					$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
@@ -587,7 +597,7 @@ class Relevamiento_model extends CI_Model {
 				}elseif($data['filtroLoc'] != ""){ //Filtro por Localidad
 					$this->db->where('estado', '0');
 					$this->db->where('direccion.id_tlocalidad', $data['filtroLoc']);
-					$this->db->where('relevamiento.idReferente', $idEmpleado);
+					$this->db->where('empleado.idReferente', $idEmpleado);
 					$this->db->from('relevamiento');
 					$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
 					$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
@@ -605,7 +615,7 @@ class Relevamiento_model extends CI_Model {
 			}else{
 				$this->db->where('nroRelevamiento', $nroRelev);
 				$this->db->where('estado', '0');
-				$this->db->where('relevamiento.idReferente', $idEmpleado);
+				$this->db->where('empleado.idReferente', $idEmpleado);
 				$this->db->from('relevamiento');
 				$this->db->join('encuesta','encuesta.idEncuesta=relevamiento.idEncuesta','left');
 				$this->db->join('criticidad','criticidad.idCriticidad=relevamiento.idCriticidad','left');
@@ -617,7 +627,7 @@ class Relevamiento_model extends CI_Model {
 				$query = $this->db->get();
 			}
 
-		}elseif($nivelU == 3 || $nivelU == 4 || $nivelU == 5){
+		}elseif($nivelU == 3 || $nivelU == 4 || $nivelU == 5){//Si es Admin o Coordinador
 			if ($nroRelev == ""){
 				if($data['limiteTabla'] != ""){ //Filtro por Longitud de Tabla
 					$this->db->where('estado', '0');
@@ -707,7 +717,10 @@ class Relevamiento_model extends CI_Model {
 	}
 	
 
-	public function getDatosFiltro($filtro){
+	public function getDatosFiltro($filtro, $sesion){
+		$idEmpleado = $sesion['idEmpleado'];
+		$nivelU = $sesion['nivel'];
+
 		if($filtro == "criticidad"){
 			$this->db->select('*');
 			$this->db->from('criticidad');
@@ -715,22 +728,41 @@ class Relevamiento_model extends CI_Model {
 			$query = $this->db->get();
 
 		}elseif($filtro == "departamento"){
-			$this->db->select('*');
-			$this->db->from('departamento');
-			$this->db->order_by("descdep", "asc"); 
-			$query = $this->db->get();
+			if($nivelU == 2){
+				//Arreglar acaaaaaaaa
+				//Arreglar acaaaaaaaa
+				//Arreglar acaaaaaaaa
+				//Arreglar acaaaaaaaa
+				//Arreglar acaaaaaaaa
+			}else{
+				$this->db->select('*');
+				$this->db->from('departamento');
+				$this->db->order_by("descdep", "asc"); 
+				$query = $this->db->get();
+			}
 
 		}elseif($filtro == "facilitador"){
-			$this->db->select('*');
-			$this->db->where('idTipoEmpleado','5');
-			$this->db->from('empleado');
-			$this->db->order_by('apellidoE', 'asc'); 
-			$query = $this->db->get();
+			if($nivelU == 2){
+				$this->db->select('*');
+				$this->db->where('idTipoEmpleado','5');
+				$this->db->where('idReferente', $idEmpleado);
+				$this->db->from('empleado');
+				$this->db->order_by('apellidoE', 'asc'); 
+				$query = $this->db->get();
+
+			}else{
+				$this->db->select('*');
+				$this->db->where('idTipoEmpleado','5');
+				$this->db->from('empleado');
+				$this->db->order_by('apellidoE', 'asc'); 
+				$query = $this->db->get();
+			}
 
 		}elseif($filtro == "localidad"){
 			$this->db->select('*');
-			$this->db->from('localidad'); 
-			$this->db->order_by('descloc', 'asc');
+			$this->db->from('localidad');
+			$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+			$this->db->order_by('descdep', 'asc');
 			$query = $this->db->get();
 		}
 

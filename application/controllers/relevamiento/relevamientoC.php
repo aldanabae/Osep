@@ -160,8 +160,9 @@ class RelevamientoC extends My_Controller{
 	}
 
 	function cargarFiltros(){
+		$sesion = $this->session->userdata('logged_in');
 		$data['filtro'] = $this->input->post('filtro');
-		$data['datosFiltro'] = $this->Relevamiento_model->getDatosFiltro($data['filtro']);
+		$data['datosFiltro'] = $this->Relevamiento_model->getDatosFiltro($data['filtro'], $sesion);
 
 		echo json_encode($data['datosFiltro']);
 	}
