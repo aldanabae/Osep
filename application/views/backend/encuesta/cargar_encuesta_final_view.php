@@ -33,7 +33,7 @@
 									<div class="form-group">							
 										<label class="control-label col-xs-6">Red de energía eléctrica</label>
 										<div class="col-xs-6">
-											<select class="form-control" name="84" required>
+											<select class="form-control" name="84" id="b8_electrica" required>
 												<option value="1" selected="true">SI</option>
 												<option value="2">NO</option>							
 											</select>

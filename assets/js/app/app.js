@@ -336,7 +336,7 @@
 			bindComponent: function(){
 
 						$( "#embarazo" ).on(
-							'change, click', function(){
+							'change click', function(){
 
 								var datoSelect = $(this).val();
 							

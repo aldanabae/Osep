@@ -221,7 +221,9 @@
         
                    
                     $.each(componentes,function (key, el){
-        
+                        
+                        var setInput= false; // si es true es cuando esta en foco el primer error, si es falso es que no hay ninguno en foco
+
                         if(el.prop('required')  ){  // si el campo es requierido  entonces debo validarlo 
                             
         
@@ -246,11 +248,13 @@
                                                 //console.log(el.prop('name'));
 
                                                 $('#b1_afiliado').parent().parent().addClass('has-error')
+                                                
                                             }
 
 
                                             el.parent().parent().removeClass('has-error')
                                             validacion = true; // validacion correcta
+                                            
                                             
                                         }else{ //no cumple con el parametro  lo pongo rojo
         
@@ -266,7 +270,10 @@
 
                                             validacion = false;  // validadcion incorrecta
                                             red_css = true;     // estoy colocando una clase de error
+                                            setInput= setFocuselement(el, setInput);
                                         }
+
+                                        
         
                                     }else{  // si no esta vacio y no es numerico  entonces esta correcto  el valor
         
@@ -293,6 +300,22 @@
         
                 }
 
+
+                function setFocuselement(el, validation){
+
+                    /**
+                     * si validation esta en verdaddero es por que ya el foco esta en el imput del primer error
+                     * Si esta en falso es que puedo colocarlo por esta funcion en el foco
+                     */
+                    if (!validation){
+
+                        el.focus();
+                        return true;
+                    }else{
+
+                        return false;
+                    }
+                }
     //set Spinjs
 
     var spnr= {

@@ -1,6 +1,7 @@
 
 $(function() {
   // Handler for .ready() called.
+  $('#b8_electrica').focus();  // seteo el foco en el primer campo
   cargar.bind();
     
 });

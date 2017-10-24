@@ -4,9 +4,9 @@ var bloque_btn= $("#btn_encuesta");
 //var bloque9= $("#bloque_9");
 
 $(function() {
-  // Handler for .ready() called.
-
-  bloque1.bindComponent();
+  
+  $('#b1_nombre').focus();  // seteo el foco en el primer campo
+    bloque1.bindComponent();
 
   // 1 SI  Y 2 ES NO
 });
@@ -221,6 +221,7 @@ var bloque1= {    // Bloque General
 
         reset_block: function(){
 
+            $('#b1_nombre').focus();  // seteo el foco en el primer campo
             bloque7.estado= false;
             bloque6.estado= false;
             bloque5.estado= false;
@@ -256,7 +257,7 @@ var bloque1= {    // Bloque General
 
             $('#b1_afiliado_varon').hide(); // oculto el formulario de varon entre 15 y 64
 
-            $('#b1_otro_numero_afiliado').hide(); // oculto el formulario de varon entre 15 y 64
+            //$('#b1_otro_numero_afiliado').hide(); // oculto el formulario de varon entre 15 y 64
 
 
             //============= carga del mapa de encuestados
@@ -296,13 +297,13 @@ var bloque1= {    // Bloque General
 
             // verifico si es un adherente , como segunda encuenta cargada
 
-            if(encuesta.count >=1){
+            // if(encuesta.count >=1){
 
-                $('#b1_otro_numero_afiliado').show(); // muestro el check de
-            }else{
+            //     $('#b1_otro_numero_afiliado').show(); // muestro el check de
+            // }else{
 
-                 $('#b1_otro_numero_afiliado').hide(); // oculto el formulario de varon entre 15 y 64
-            }
+            //      $('#b1_otro_numero_afiliado').hide(); // oculto el formulario de varon entre 15 y 64
+            // }
 
 
             // verifico nivel educativo
@@ -460,8 +461,8 @@ var bloque1= {    // Bloque General
 
                if(bloque1.conf.consulta == '1'){
 
-                    $( "#b1_div_consulta_si" ).show("slow");
-                    $( "#b1_div_consulta_no" ).hide("slow");
+                    $( "#b1_div_consulta_si" ).show();
+                    $( "#b1_div_consulta_no" ).hide();
                  
                 }else{
 
@@ -473,8 +474,8 @@ var bloque1= {    // Bloque General
 
                     }else{
 
-                        $( "#b1_div_consulta_si" ).hide("slow");
-                        $( "#b1_div_consulta_no" ).show("slow");
+                        $( "#b1_div_consulta_si" ).hide();
+                        $( "#b1_div_consulta_no" ).show();
                     }
 
                     
@@ -487,7 +488,7 @@ var bloque1= {    // Bloque General
 
                     // genero
                     $( "#bloque_1 input[name$='b1_genero']" ).on(
-                        'change, click', function(){
+                        'change click', function(){
 
                             bloque1.conf.genero= $(this).val();
                             bloque1.conf.embarazo= '2';
@@ -514,7 +515,7 @@ var bloque1= {    // Bloque General
 
                         // nivel de estudios
                     $( "#b1_estudio" ).on(
-                        'change, click', function(){
+                        'change click', function(){
 
                             bloque1.conf.estudio= $(this).val();
                             bloque1.conf.update();
@@ -522,14 +523,14 @@ var bloque1= {    // Bloque General
                     });
                         // tiene osep
                     $( "#b1_osep" ).on(
-                        'change, click', function(){
+                        'change click', function(){
 
                             bloque1.conf.osep= $(this).val();
                             // verifico si tiene osep
                             
                             if(bloque1.conf.osep == '1'){
                                 
-                                    $( "#b1_div_afiliado" ).show("slow");   // muestra el txt de numero de afiliado
+                                    $( "#b1_div_afiliado" ).show();   // muestra el txt de numero de afiliado
                                     $("#b1_cober").html( '');               // blanquea el select
                                         $.each(bloque1.data.tOsep.si, function(key, value){  // carga el select con el Si
 
@@ -539,7 +540,7 @@ var bloque1= {    // Bloque General
 
                                 }else{
                                     
-                                    $("#b1_div_afiliado" ).hide("slow"); // oculta el txt de numero de afiliado
+                                    $("#b1_div_afiliado" ).hide(); // oculta el txt de numero de afiliado
                                     $("#b1_cober").html('');              // blanquea el select
                                     $("#b1_afiliado").val('');         // elimina el contenido del numero de afiliado
                                     $.each(bloque1.data.tOsep.no, function(key, value){   // carga el select
@@ -555,7 +556,7 @@ var bloque1= {    // Bloque General
 
                         // embarazada  si o no
                     $( "#b1_embarazo" ).on(
-                        'change, click', function(){
+                        'change click', function(){
 
                             bloque1.conf.embarazo= $(this).val();
                             bloque1.conf.update();
@@ -563,7 +564,7 @@ var bloque1= {    // Bloque General
                         });
 
                     $( "#b1_disc" ).on(
-                        'change, click', function(){
+                        'change  click', function(){
 
                             bloque1.conf.discapacidad= $(this).val();
                             bloque1.conf.update();
@@ -571,7 +572,7 @@ var bloque1= {    // Bloque General
                     });
 
                     $( "#b1_ocupacion" ).on(
-                        'change', function(){
+                        'change  click', function(){
                             bloque1.conf.ocupacion= $(this).val();
                             bloque1.conf.update();
                             
@@ -580,7 +581,7 @@ var bloque1= {    // Bloque General
                     //======================================
 
                     $( "#btn_nuevo" ).on(
-                        'click', function(){
+                        'change  click', function(){
 
                             var retorno= validations('#add_encuesta');  // devuelve la validacion de campos + id del focus
                             
@@ -687,7 +688,7 @@ var bloque1= {    // Bloque General
 
                     // evento para relenar vinculo con el titular  o Titular
                     $( "#b1_parent" ).on(
-                        'change, click', function(){
+                        'change click', function(){
 
                             var vinculo= $(this).val();
 
@@ -705,7 +706,7 @@ var bloque1= {    // Bloque General
                     });                        
 
                     $( "#b1_extra" ).on(         // muestra o no los campos de afiliado externo...
-                        'change, click', function(){
+                        'change click', function(){
 
                             bloque1.conf.pariente= $(this).val();
                             bloque1.conf.update();
@@ -735,7 +736,7 @@ var bloque1= {    // Bloque General
 
 
                     $( "#responde" ).on(        // check de si responde o no la encuesta 
-                        'click', function(){
+                        'change click', function(){
 
  
                         if($("#responde").is(':checked')) {  
@@ -750,7 +751,7 @@ var bloque1= {    // Bloque General
 
 
                     $( "#check_afiliado" ).on(   // es el check que indica si usar o no el mismo numero del titular
-                        'click', function(){
+                        ' click', function(){
 
  
                         if($("#check_afiliado").is(':checked')) {  
@@ -768,7 +769,7 @@ var bloque1= {    // Bloque General
                     // preguntas de utilizacion de servicios
 
                     $( "#b1_consulta" ).on(
-                        'change', function(){
+                        'change ', function(){
 
                             bloque1.conf.consulta= $(this).val();
                             bloque1.conf.update();
@@ -776,7 +777,7 @@ var bloque1= {    // Bloque General
                     });
 
                     $( "#b1_div_consulta_no" ).on(
-                        'change', function(){
+                        'change ', function(){
                             var seleccion = $('#b1_atencion_no').val();
                             if(seleccion == "42") {
 
@@ -984,18 +985,18 @@ var bloque3a ={   // bloque 3  bebes
 
                 if(bloque3a.data.leche == '1'){
                     // oculto por que no la recibe
-                    $( "#b3a_div_porque_no" ).hide("slow");
+                    $( "#b3a_div_porque_no" ).hide();
 
                 }else{
                     // mjuestro por que no la recibe
-                    $( "#b3a_div_porque_no" ).show("slow");
+                    $( "#b3a_div_porque_no" ).show();
                 }
 
 
                 if(bloque3a.data.consulta == '1'){
 
-                    $( "#b3a_div_consulta_si" ).show("slow");
-                    $( "#b3a_div_consulta_no" ).hide("slow");
+                    $( "#b3a_div_consulta_si" ).show();
+                    $( "#b3a_div_consulta_no" ).hide();
                  
                 }else{
 
@@ -1007,8 +1008,8 @@ var bloque3a ={   // bloque 3  bebes
 
                     }else{
 
-                        $( "#b3a_div_consulta_si" ).hide("slow");
-                        $( "#b3a_div_consulta_no" ).show("slow");
+                        $( "#b3a_div_consulta_si" ).hide();
+                        $( "#b3a_div_consulta_no" ).show();
                     }
 
                     
@@ -1050,11 +1051,11 @@ var bloque3a ={   // bloque 3  bebes
                             var seleccion = $(this).val();
                             if(seleccion == "42") {
 
-                                $('#b3a_div_cual').show("slow");
+                                $('#b3a_div_cual').show();
 
                             }else{
 
-                                $('#b3a_div_cual').hide("slow");
+                                $('#b3a_div_cual').hide();
                                 $('#b3a_cual').val('');
                             }
                             bloque3a.update();
@@ -1070,13 +1071,13 @@ var bloque3a ={   // bloque 3  bebes
         show_me: function(){
 
             // Mostrar el bloque
-            $( bloque3a.template.html ).show("slow");
+            $( bloque3a.template.html ).show();
             bloque3a.estado= true;
         },
 
         hide_me: function(){
             // ocultar el bloque
-            $( bloque3a.template.html ).hide("slow");
+            $( bloque3a.template.html ).hide();
             bloque3a.estado= false;
         },  
  
@@ -1109,7 +1110,7 @@ var bloque3b ={     //Bloque Niños
 
                 if(bloque3b.data.activity == '53' ||  bloque3b.data.activity == '52' ||  bloque3b.data.activity == '55'){
                     // si tien control hecho muestra complejidad
-                    $( "#b3b_div_donde" ).show("slow");
+                    $( "#b3b_div_donde" ).show();
 
                 }else{
                     // si no se lo hizo muestra por que no..
@@ -1120,8 +1121,8 @@ var bloque3b ={     //Bloque Niños
                 // consulta de uso de servicios
                 if(bloque3b.data.consulta == '1'){
 
-                    $( "#b3b_div_consulta_si" ).show("slow");
-                    $( "#b3b_div_consulta_no" ).hide("slow");
+                    $( "#b3b_div_consulta_si" ).show();
+                    $( "#b3b_div_consulta_no" ).hide();
                  
                 }else{
 
@@ -1133,8 +1134,8 @@ var bloque3b ={     //Bloque Niños
 
                     }else{
 
-                        $( "#b3b_div_consulta_si" ).hide("slow");
-                        $( "#b3b_div_consulta_no" ).show("slow");
+                        $( "#b3b_div_consulta_si" ).hide();
+                        $( "#b3b_div_consulta_no" ).show();
                     }
 
                     
@@ -1156,7 +1157,7 @@ var bloque3b ={     //Bloque Niños
         bindComponent: function(){
 
                     $( "#b3b_escuela" ).on(
-                        'change', function(){
+                        'change click', function(){
 
                             bloque3b.data.escuela= $(this).val();
                             bloque3b.update();
@@ -1169,10 +1170,6 @@ var bloque3b ={     //Bloque Niños
                             bloque3b.data.activity= $(this).val();
                             bloque3b.update();
                     });
-
-
-
-
 
                     $( "#b3b_consulta" ).on(
                         'change', function(){
@@ -1187,13 +1184,13 @@ var bloque3b ={     //Bloque Niños
                         'change', function(){
 
                             var seleccion = $(this).val();
-                            if(seleccion == "6") {
+                            if(seleccion == "42") {
 
-                                $('#b3b_div_cual').show("slow");
+                                $('#b3b_div_cual').show();
 
                             }else{
 
-                                $('#b3b_div_cual').hide("slow");
+                                $('#b3b_div_cual').hide();
                                 $('#b3b_cual').val('');
                             }
                             bloque3b.update();
@@ -1205,13 +1202,13 @@ var bloque3b ={     //Bloque Niños
         show_me: function(){
 
             // Mostrar el bloque
-            $( bloque3b.template.html ).show("slow");
+            $( bloque3b.template.html ).show();
             bloque3b.estado= true;
         },
 
         hide_me: function(){
             // ocultar el bloque
-            $( bloque3b.template.html ).hide("slow");
+            $( bloque3b.template.html ).hide();
             bloque3b.estado= false;
         }
 
@@ -1432,13 +1429,13 @@ var bloque4 ={       // mUjer
         show_me: function(){
 
             // Mostrar el bloque
-            $( bloque4.template.html ).show("slow");
+            $( bloque4.template.html ).show();
             bloque4.estado= true;
         },
 
         hide_me: function(){
             // ocultar el bloque
-            $( bloque4.template.html ).hide("slow");
+            $( bloque4.template.html ).hide();
             bloque4.estado= false;
         }
 
@@ -1464,8 +1461,8 @@ var bloque5 ={       // Adultos mayores
 
                 if(bloque5.data.consulta == '1'){
 
-                    $( "#b5_div_consulta_si" ).show("slow");
-                    $( "#b5_div_consulta_no" ).hide("slow");
+                    $( "#b5_div_consulta_si" ).show();
+                    $( "#b5_div_consulta_no" ).hide();
                  
                 }else{
 
@@ -1477,19 +1474,19 @@ var bloque5 ={       // Adultos mayores
 
                     }else{
 
-                        $( "#b5_div_consulta_si" ).hide("slow");
-                        $( "#b5_div_consulta_no" ).show("slow");
+                        $( "#b5_div_consulta_si" ).hide();
+                        $( "#b5_div_consulta_no" ).show();
                     }
 
                     
                 }
 
                 if(bloque5.data.medico == '1'){
-                    $( "#b5_div_esde_osep" ).show("slow");
+                    $( "#b5_div_esde_osep" ).show();
 
                 }else{
 
-                    $( "#b5_div_esde_osep" ).hide("slow");
+                    $( "#b5_div_esde_osep" ).hide();
                 }
 
         },
@@ -1527,11 +1524,11 @@ var bloque5 ={       // Adultos mayores
                             var seleccion = $(this).val();
                             if(seleccion == "42") {
 
-                                $('#b5_div_cual').show("slow");
+                                $('#b5_div_cual').show();
 
                             }else{
 
-                                $('#b5_div_cual').hide("slow");
+                                $('#b5_div_cual').hide();
                                 $('#b5_cual').val('');
                             }
                             bloque5.update();
@@ -1547,13 +1544,13 @@ var bloque5 ={       // Adultos mayores
         show_me: function(){
 
             // Mostrar el bloque
-            $( bloque5.template.html ).show("slow");
+            $( bloque5.template.html ).show();
             bloque5.estado= true;
         },
 
         hide_me: function(){
             // ocultar el bloque
-            $( bloque5.template.html ).hide("slow");
+            $( bloque5.template.html ).hide();
             bloque5.estado= false;
         },        
 }
@@ -1594,10 +1591,10 @@ var bloque6 ={       // Discapacidad
 
             if( vista){
 
-                $('#b6_div_profesional').show("slow");
+                $('#b6_div_profesional').show();
             }else{
 
-                $('#b6_div_profesional').hide("slow");
+                $('#b6_div_profesional').hide();
             }
 
             var edad = parseInt(bloque1.conf.edad);
@@ -1615,8 +1612,8 @@ var bloque6 ={       // Discapacidad
 
             if(bloque6.data.consulta == '1'){
 
-                $( "#b6_div_consulta_si" ).show("slow");
-                $( "#b6_div_consulta_no" ).hide("slow");
+                $( "#b6_div_consulta_si" ).show();
+                $( "#b6_div_consulta_no" ).hide();
                 
             }else{
 
@@ -1628,8 +1625,8 @@ var bloque6 ={       // Discapacidad
 
                 }else{
 
-                    $( "#b6_div_consulta_si" ).hide("slow");
-                    $( "#b6_div_consulta_no" ).show("slow");
+                    $( "#b6_div_consulta_si" ).hide();
+                    $( "#b6_div_consulta_no" ).show();
                 }
 
                 
@@ -1665,7 +1662,7 @@ var bloque6 ={       // Discapacidad
 
                bloque6.update();
             });
-            $('#b6_div_profesional').hide("slow");
+            $('#b6_div_profesional').hide();
 
              $( "#b6_consulta" ).on(
                     'change', function(){
@@ -1698,7 +1695,7 @@ var bloque6 ={       // Discapacidad
         show_me: function(){
 
             // Mostrar el bloque
-            $( bloque6.template.html ).show("slow");
+            $( bloque6.template.html ).show();
             bloque6.estado= true;
         },
 
@@ -1771,23 +1768,23 @@ var bloque7 ={       // embarazo
 
                 if(bloque7.uso == '1'){
                     // si tien control hecho muestra complejidad
-                    $( "#b7_div_complejo" ).show("slow");
-                    $( "#b7_div_porque_no" ).hide("slow");
+                    $( "#b7_div_complejo" ).show();
+                    $( "#b7_div_porque_no" ).hide();
 
                 }else{
                     // si no se lo hizo muestra por que no..
-                    $( "#b7_div_porque_no" ).show("slow");
-                    $( "#b7_div_complejo" ).hide("slow");
+                    $( "#b7_div_porque_no" ).show();
+                    $( "#b7_div_complejo" ).hide();
 
                 }
                 if(bloque7.problem == '1'){
                     
-                    $( "#b7_cual" ).show("slow");
+                    $( "#b7_cual" ).show();
 
 
                 }else{
 
-                    $( "#b7_cual" ).hide("slow");
+                    $( "#b7_cual" ).hide();
                 }
         },
 
@@ -1819,13 +1816,13 @@ var bloque7 ={       // embarazo
         show_me: function(){
 
             // Mostrar el bloque
-            $( bloque7.template.html ).show("slow");
+            $( bloque7.template.html ).show();
             bloque7.estado= true;
         },
 
         hide_me: function(){
             // ocultar el bloque
-            $( bloque7.template.html ).hide("slow");
+            $( bloque7.template.html ).hide();
             bloque7.estado= false;
         }, 
 
@@ -1910,13 +1907,13 @@ var bloque9 ={       // laboral
         show_me: function(){
 
             // Mostrar el bloque
-            $( bloque9.template.html ).show("slow");
+            $( bloque9.template.html ).show();
             bloque9.estado= true;
         },
 
         hide_me: function(){
             // ocultar el bloque
-            $( bloque9.template.html ).hide("slow");
+            $( bloque9.template.html ).hide();
             bloque9.estado= false;
         }, 
 
