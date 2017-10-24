@@ -14300,9 +14300,9 @@ ul.attachment-list > li {
 }
 .dataTables_wrapper .row:last-child {
   border-bottom: 1px solid #e0e0e0;
-  padding-top: 12px;
+  padding-top: 2px;
   padding-bottom: 12px;
-  background-color: #EFF3F8;
+  background-color: rgba(97, 39, 97, 0); /*Cambio #EFF3F8*/
 }
 .dataTables_wrapper .dataTables_scroll + .row {
   border-top: 1px solid #e0e0e0;
@@ -16171,6 +16171,9 @@ img.editable-click:hover {
 }
 .input-group.date .input-group-addon {
   cursor: pointer;
+}
+.fecha input {
+  margin-left: 0 !important;
 }
 .datepicker td,
 .daterangepicker td,

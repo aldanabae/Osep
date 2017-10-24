@@ -334,7 +334,7 @@ class Relevamiento_model extends CI_Model {
 
 
 		
-//AQUI esta el metodo que condiciona lo visible de cada relevamiento
+//Que relevamientos mostrar segun quien se logea
 	public function obtenerRelevamientos($nivelUser){
 		if($nivelUser['nivel'] == '1'){//Si es Facilitador cargo al inicio solo sus relevamientos
 			$idEmpleado = $nivelUser['idEmpleado'];
@@ -442,9 +442,8 @@ class Relevamiento_model extends CI_Model {
 		else return false;
 	}
 
-//Arreglar que tambien si es facilitador solo traiga las que le correspondan en cada filtro
-//Arreglar que tambien si es facilitador solo traiga las que le correspondan en cada filtro
-//Arreglar que tambien si es facilitador solo traiga las que le correspondan en cada filtro
+
+//Querys que traen los relevamientos segun quien es el usuario
 	public function getRelevNro($nroRelev, $sesion, $data){
 		$idEmpleado = $sesion['idEmpleado'];
 		$nivelU = $sesion['nivel'];
@@ -728,12 +727,15 @@ class Relevamiento_model extends CI_Model {
 			$query = $this->db->get();
 
 		}elseif($filtro == "departamento"){
-			if($nivelU == 2){
-				//Arreglar acaaaaaaaa
-				//Arreglar acaaaaaaaa
-				//Arreglar acaaaaaaaa
-				//Arreglar acaaaaaaaa
-				//Arreglar acaaaaaaaa
+			if($nivelU == 2){ //Solo cargo el combo con los dptos que le corresponden a este Referente
+				$this->db->select('*');
+				$this->db->where('empleado.idEmpleado', $idEmpleado);
+				$this->db->from('departamento');
+				$this->db->join('referente_dpto','referente_dpto.id_tdeparta=departamento.id_tdeparta','left');
+				$this->db->join('empleado','empleado.idEmpleado=referente_dpto.idEmpleado','left');
+				$this->db->order_by("descdep", "asc"); 
+				$query = $this->db->get();
+
 			}else{
 				$this->db->select('*');
 				$this->db->from('departamento');
@@ -742,7 +744,7 @@ class Relevamiento_model extends CI_Model {
 			}
 
 		}elseif($filtro == "facilitador"){
-			if($nivelU == 2){
+			if($nivelU == 2){ //Solo cargo el combo con los facilitadores a cargo de este Referente
 				$this->db->select('*');
 				$this->db->where('idTipoEmpleado','5');
 				$this->db->where('idReferente', $idEmpleado);
@@ -759,14 +761,26 @@ class Relevamiento_model extends CI_Model {
 			}
 
 		}elseif($filtro == "localidad"){
-			$this->db->select('*');
-			$this->db->from('localidad');
-			$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
-			$this->db->order_by('descdep', 'asc');
-			$query = $this->db->get();
+			if($nivelU == 2){ //Solo cargo el combo con las localidades de los dptos que le corresponden a este Referente
+				$this->db->select('*');
+				$this->db->where('empleado.idEmpleado', $idEmpleado);
+				$this->db->from('localidad');
+				$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+				$this->db->join('referente_dpto','referente_dpto.id_tdeparta=departamento.id_tdeparta','left');
+				$this->db->join('empleado','empleado.idEmpleado=referente_dpto.idEmpleado','left');
+				$this->db->order_by("descdep", "asc"); 
+				$query = $this->db->get();
+
+			}else{
+				$this->db->select('*');
+				$this->db->from('localidad');
+				$this->db->join('departamento','departamento.id_tdeparta=localidad.id_tdeparta','left');
+				$this->db->order_by('descdep', 'asc');
+				$query = $this->db->get();
+			}
 		}
 
-		if ($query->num_rows() > 0) {
+		if ($query->num_rows() > 0){
 			foreach ($query->result() as $fila){
 				$data[] = $fila;
 			}	
