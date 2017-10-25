@@ -2671,7 +2671,7 @@ select[multiple].form-group-lg .form-control {
     width: auto;
   }
   .form-inline .input-group > .form-control {
-    width: 100%;
+    width: 105%;
   }
   .form-inline .control-label {
     margin-bottom: 0;

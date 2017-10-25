@@ -47,9 +47,9 @@
                             </select>
                            </label> 
 
-                          <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
+                          <!-- <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
                             <i class="fa fa-check bigger-110 icon-only"></i> Filtrar
-                          </button>
+                          </button> -->
                         </div>
 
                         <div id="criticidad" style="display:none;">
@@ -61,9 +61,9 @@
                             </select>
                            </label>
                             
-                          <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
+                          <!-- <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
                             <i class="fa fa-check bigger-110 icon-only"></i> Filtrar
-                          </button>
+                          </button> -->
                         </div> 
 
                         <div id="departamento" style="display:none;">
@@ -75,9 +75,9 @@
                             </select>
                           </label>
                             
-                          <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
+                          <!-- <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
                             <i class="fa fa-check bigger-110 icon-only"></i> Filtrar
-                          </button>
+                          </button> -->
                         </div>
 
                         <div id="facilitador" style="display:none;">
@@ -89,9 +89,9 @@
                             </select>
                           </label>
 
-                          <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
+                          <!-- <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
                             <i class="fa fa-check bigger-110 icon-only"></i> Filtrar
-                          </button>
+                          </button> -->
                         </div>
 
                         <div id="localidad" style="display:none;">
@@ -103,28 +103,36 @@
                             </select>
                           </label>
 
-                          <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
+                          <!-- <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
                             <i class="fa fa-check bigger-110 icon-only"></i> Filtrar
-                          </button>
+                          </button> -->
                         </div>                   
                     </div>
 
-                    <div class="col-xs-4">
+                    <div class="col-xs-3">
                         <label for="id-date-range-picker-1">Rango de Fechas</label>
                         <div class="row">
                             <div class="input-group fecha">
                               <span class="input-group-addon" onclick="$('#id-date-range-picker-1').focus();">
                                 <i class="fa fa-calendar bigger-110"></i>
                               </span>
-                              <input class="form-control" name="fechas" id="id-date-range-picker-1" type="text">
+                              <input class="form-control" name="fechas" id="id-date-range-picker-1" type="text" readOnly>
                             </div>
                         </div>
+
+
+                    </div>
+
+                    <div class="col-xs-1">
+                        <button class="btn-2 btn-warning btn" type="submit" nombre="CargarTabla">
+                            <i class="fa fa-check bigger-110 icon-only"></i> Filtrar
+                          </button>
                     </div>
 
                     <div class="col-xs-4">
                       <div id="dynamic-table_filter" class="dataTables_filter">
 
-                        <label>Número Relevamiento:
+                        <label>N° Relevamiento:
                           <input type="search" class="form-control input-sm" placeholder="" name="nroRelev" aria-controls="dynamic-table">
                         </label>
 
@@ -182,7 +190,7 @@
                     <div class="hidden-sm hidden-xs action-buttons">
 
                         <a class="orange" href="<?php echo base_url() ?>relevamiento/relevamientoC/verRelevamiento/<?php echo $tabla->idRelevamiento;?>">
-                          <i class="ui-icon ace-icon fa fa-search-plus orange bigger-130"></i>Ver Relevamiento
+                          <i class="ui-icon ace-icon fa fa-search-plus orange bigger-130"></i> Ver Relevamiento
                         </a>
                     </div>
 

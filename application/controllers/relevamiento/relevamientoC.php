@@ -148,6 +148,24 @@ class RelevamientoC extends My_Controller{
 		$data['filtroFac'] = $this->input->post('filtroFac');
 		$data['filtroLoc'] = $this->input->post('filtroLoc');
 		$data['limiteTabla'] = $this->input->post('longitudTabla');
+		$fechas = $this->input->post('fechas');
+
+		if($fechas != ""){
+			$largo = strlen($fechas);
+			$fechaI = substr($fechas,-($largo), ($largo-13));
+			$fechaF = substr($fechas, -10);
+
+			//Ordenarlas como en la DB
+			 $fecha1= $this->ordenarFechas($fechaI);
+			 $fecha2= $this->ordenarFechas($fechaF);
+			 $data['fechaI']= strtotime($fecha1);
+			 $data['fechaF']= strtotime($fecha2);
+
+			 //Revisar estoooooooo!!!!!
+			 //Revisar estoooooooo!!!!!
+			 //Revisar estoooooooo!!!!!
+
+		}
 
 		$data['tablaRelevamientos'] = $this->Relevamiento_model->getRelevNro($data['nroRelev'], $sesion, $data);
 
@@ -165,6 +183,15 @@ class RelevamientoC extends My_Controller{
 		$data['datosFiltro'] = $this->Relevamiento_model->getDatosFiltro($data['filtro'], $sesion);
 
 		echo json_encode($data['datosFiltro']);
+	}
+
+	function ordenarFechas($fecha){
+		$largo = strlen($fecha);
+		$mes = substr($fecha,-($largo), ($largo-8));
+		$dia = substr($fecha,-7, 2);
+		$anio = substr($fecha,-4);
+		$fechaDB = $anio.'-'.$mes.'-'.$dia;
+		return $fechaDB;
 	}
 
 	// function index(){

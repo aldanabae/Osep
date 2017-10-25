@@ -5363,6 +5363,22 @@ body.mob-safari .sidebar.sidebar-fixed {
  }
  */
 }
+.btn-2 {
+  display: inline-block;
+  color: #FFF !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-image: none !important;
+  border: 5px solid #FFF;
+  border-radius: 0;
+  box-shadow: none !important;
+  -webkit-transition: background-color 0.15s, border-color 0.15s, opacity 0.15s;
+  -o-transition: background-color 0.15s, border-color 0.15s, opacity 0.15s;
+  transition: background-color 0.15s, border-color 0.15s, opacity 0.15s;
+  cursor: pointer;
+  vertical-align: middle;
+  margin: 10px 10px 10px 0px;
+  position: relative;
+}
 .btn.active,
 .open > .btn.active.dropdown-toggle {
   box-shadow: none;
@@ -8784,6 +8800,7 @@ select {
   color: #858585;
   background-color: #ffffff;
   border: 1px solid #d5d5d5;
+  font-size: 13px;
 }
 .form-control:focus,
 select:focus {
@@ -14256,7 +14273,7 @@ ul.attachment-list > li {
 }
 .dataTables_filter input[type=text],
 .dataTables_filter input[type=search] {
-  width: 125px;
+  width: 40%;
   height: 18px;
   line-height: 18px;
   -webkit-box-sizing: content-box;
@@ -14300,7 +14317,7 @@ ul.attachment-list > li {
 }
 .dataTables_wrapper .row:last-child {
   border-bottom: 1px solid #e0e0e0;
-  padding-top: 2px;
+  padding-top: 0px;
   padding-bottom: 12px;
   background-color: rgba(97, 39, 97, 0); /*Cambio #EFF3F8*/
 }
