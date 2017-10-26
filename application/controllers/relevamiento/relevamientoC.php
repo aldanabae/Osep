@@ -128,6 +128,7 @@ class RelevamientoC extends My_Controller{
 
 	}
 
+
 	function verRelevamiento(){
 		$data['nroRelev'] = $this->uri->segment(4);
 
@@ -139,6 +140,7 @@ class RelevamientoC extends My_Controller{
       	$nombreVista="backend/relevamiento/verRelevamiento";
 		$this->cargarVista($nombreVista,$data);
 	}
+
 
 	function mostrarRelevamiento(){
 		$sesion = $this->session->userdata('logged_in');
@@ -156,15 +158,23 @@ class RelevamientoC extends My_Controller{
 			$fechaF = substr($fechas, -10);
 
 			//Ordenarlas como en la DB
-			 $fecha1= $this->ordenarFechas($fechaI);
-			 $fecha2= $this->ordenarFechas($fechaF);
-			 $data['fechaI']= strtotime($fecha1);
-			 $data['fechaF']= strtotime($fecha2);
+			$data['fechaI'] = $this->ordenarFechas($fechaI);
+			$data['fechaF'] = $this->ordenarFechas($fechaF);
 
-			 //Revisar estoooooooo!!!!!
-			 //Revisar estoooooooo!!!!!
-			 //Revisar estoooooooo!!!!!
+		}else{ //En caso que solo se ultilice algun filtro de los combos sin fechas
 
+			$data['fechaI'] = NULL;
+			$data['fechaF'] = NULL;
+		}
+
+		if($data['nroRelev'] == "" && $data['filtroCri']  == "" && $data['filtroDpto']  == "" && 
+			$data['filtroFac']  == "" && $data['filtroLoc']  == "" && $data['limiteTabla']  == ""){ //En caso que solo se filtre por fechas
+			$data['nroRelev'] = NULL;
+			$data['filtroCri'] = NULL;
+			$data['filtroDpto'] = NULL;
+			$data['filtroFac'] = NULL;
+			$data['filtroLoc'] = NULL;
+			$data['limiteTabla'] = NULL;
 		}
 
 		$data['tablaRelevamientos'] = $this->Relevamiento_model->getRelevNro($data['nroRelev'], $sesion, $data);
@@ -177,6 +187,7 @@ class RelevamientoC extends My_Controller{
 		$this->cargarVista($nombreVista, $data);
 	}
 
+
 	function cargarFiltros(){
 		$sesion = $this->session->userdata('logged_in');
 		$data['filtro'] = $this->input->post('filtro');
@@ -184,6 +195,7 @@ class RelevamientoC extends My_Controller{
 
 		echo json_encode($data['datosFiltro']);
 	}
+
 
 	function ordenarFechas($fecha){
 		$largo = strlen($fecha);
@@ -193,6 +205,10 @@ class RelevamientoC extends My_Controller{
 		$fechaDB = $anio.'-'.$mes.'-'.$dia;
 		return $fechaDB;
 	}
+
+
+
+
 
 	// function index(){
 	// 	//Falta cargar validaciones para que controle el login solo en este controlador sin heredar del controlador generico

@@ -436,10 +436,10 @@
 
 <!--Para que se vean el Date Range Picker-->
 
-    <script src="../assets/js/bootstrap.js"></script>
-    <script src="../assets/js/date-time/moment.js"></script>
-    <script src="../assets/js/date-time/es.js"></script>
-    <script src="../assets/js/date-time/daterangepicker.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/bootstrap.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/date-time/moment.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/date-time/es.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/date-time/daterangepicker.js"></script>
         
     <script type="text/javascript">
       $(function() {
