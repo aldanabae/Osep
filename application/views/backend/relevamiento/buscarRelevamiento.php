@@ -14,13 +14,12 @@
           <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
             <div class="row">
 
-                <!-- Defino nivel de Usuario y guardo su -->
+                <!-- Defino nivel de Usuario y guardo-->
                 <?php $nivelU = $this->session->userdata('logged_in');
-                      // $idEmpleado = $nivelU['idEmpleado'];
                 ?>
 
-                <div class="col-xs-6">
-                    <div class="dataTables_length">
+                <div class="dataTables_length">
+                    <div class="col-xs-4">
                         <label>Seleccionar Filtro 
                           <select aria-controls="dynamic-table" class="form-control input-sm" id= "filtro" name="filtro" OnChange= "tipoFOnChange(this)">
                             <option value="longitud">Longitud tabla</option>
@@ -48,9 +47,9 @@
                             </select>
                            </label> 
 
-                          <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
+                          <!-- <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
                             <i class="fa fa-check bigger-110 icon-only"></i> Filtrar
-                          </button>
+                          </button> -->
                         </div>
 
                         <div id="criticidad" style="display:none;">
@@ -62,9 +61,9 @@
                             </select>
                            </label>
                             
-                          <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
+                          <!-- <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
                             <i class="fa fa-check bigger-110 icon-only"></i> Filtrar
-                          </button>
+                          </button> -->
                         </div> 
 
                         <div id="departamento" style="display:none;">
@@ -76,9 +75,9 @@
                             </select>
                           </label>
                             
-                          <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
+                          <!-- <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
                             <i class="fa fa-check bigger-110 icon-only"></i> Filtrar
-                          </button>
+                          </button> -->
                         </div>
 
                         <div id="facilitador" style="display:none;">
@@ -90,9 +89,9 @@
                             </select>
                           </label>
 
-                          <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
+                          <!-- <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
                             <i class="fa fa-check bigger-110 icon-only"></i> Filtrar
-                          </button>
+                          </button> -->
                         </div>
 
                         <div id="localidad" style="display:none;">
@@ -104,26 +103,47 @@
                             </select>
                           </label>
 
-                          <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
+                          <!-- <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
                             <i class="fa fa-check bigger-110 icon-only"></i> Filtrar
-                          </button>
+                          </button> -->
                         </div>                   
                     </div>
-                </div>
 
-                <div class="col-xs-6">
-                    <div id="dynamic-table_filter" class="dataTables_filter">
+                    <div class="col-xs-3">
+                        <label for="id-date-range-picker-1">Rango de Fechas</label>
+                        <div class="row">
+                            <div class="input-group fecha">
+                              <span class="input-group-addon" onclick="$('#id-date-range-picker-1').focus();">
+                                <i class="fa fa-calendar bigger-110"></i>
+                              </span>
+                              <input class="form-control" name="fechas" id="id-date-range-picker-1" type="text" readOnly>
+                            </div>
+                        </div>
 
-                      <label>Número Relevamiento:
-                        <input type="search" class="form-control input-sm" placeholder="" name="nroRelev" aria-controls="dynamic-table">
-                      </label>
-
-                      <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
-                        <i class="ace-icon fa fa-search  bigger-110 icon-only"></i>
-                      </button>
 
                     </div>
+
+                    <div class="col-xs-1">
+                        <button class="btn-2 btn-warning btn" type="submit" nombre="CargarTabla">
+                            <i class="fa fa-check bigger-110 icon-only"></i> Filtrar
+                          </button>
+                    </div>
+
+                    <div class="col-xs-4">
+                      <div id="dynamic-table_filter" class="dataTables_filter">
+
+                        <label>N° Relevamiento:
+                          <input type="search" class="form-control input-sm" placeholder="" name="nroRelev" aria-controls="dynamic-table">
+                        </label>
+
+                        <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
+                          <i class="ace-icon fa fa-search  bigger-110 icon-only"></i>
+                        </button>
+
+                      </div>
+                    </div>
                 </div>
+                
             </div>
 
             <table id="dynamic-table" class="table table-striped table-bordered table-hover">
@@ -170,7 +190,7 @@
                     <div class="hidden-sm hidden-xs action-buttons">
 
                         <a class="orange" href="<?php echo base_url() ?>relevamiento/relevamientoC/verRelevamiento/<?php echo $tabla->idRelevamiento;?>">
-                          <i class="ui-icon ace-icon fa fa-search-plus orange bigger-130"></i>Ver Relevamiento
+                          <i class="ui-icon ace-icon fa fa-search-plus orange bigger-130"></i> Ver Relevamiento
                         </a>
                     </div>
 
@@ -412,3 +432,32 @@
       if('ontouchstart' in document.documentElement) document.write("<script src='../../assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
     </script>
     <script src="../../assets/js/bootstrap.js"></script>
+
+
+<!--Para que se vean el Date Range Picker-->
+
+    <script src="<?php echo base_url() ?>assets/js/bootstrap.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/date-time/moment.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/date-time/es.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/date-time/daterangepicker.js"></script>
+        
+    <script type="text/javascript">
+      $(function() {
+        moment.locale('es');
+        $('#id-date-range-picker-1').daterangepicker({
+          locale : {
+          applyLabel: 'Aplicar',
+          clearLabel: 'Cancelar',
+          fromLabel: 'De',
+          toLabel: 'Hasta',
+          weekLabel: 'W',
+          customRangeLabel: 'Fecha Personalizada',
+          daysOfWeek: moment()._locale._weekdaysMin,
+          monthNames: moment()._locale._monthsShort,
+          firstDay: 0
+          }
+        })
+
+        if(location.protocol == 'file:') alert("For retrieving data from server, you should access this page using a webserver.");
+      });
+    </script>

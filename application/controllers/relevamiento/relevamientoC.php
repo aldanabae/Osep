@@ -128,6 +128,7 @@ class RelevamientoC extends My_Controller{
 
 	}
 
+
 	function verRelevamiento(){
 		$data['nroRelev'] = $this->uri->segment(4);
 
@@ -140,6 +141,7 @@ class RelevamientoC extends My_Controller{
 		$this->cargarVista($nombreVista,$data);
 	}
 
+
 	function mostrarRelevamiento(){
 		$sesion = $this->session->userdata('logged_in');
 		$data['nroRelev'] = $this->input->post('nroRelev');	
@@ -148,6 +150,32 @@ class RelevamientoC extends My_Controller{
 		$data['filtroFac'] = $this->input->post('filtroFac');
 		$data['filtroLoc'] = $this->input->post('filtroLoc');
 		$data['limiteTabla'] = $this->input->post('longitudTabla');
+		$fechas = $this->input->post('fechas');
+
+		if($fechas != ""){
+			$largo = strlen($fechas);
+			$fechaI = substr($fechas,-($largo), ($largo-13));
+			$fechaF = substr($fechas, -10);
+
+			//Ordenarlas como en la DB
+			$data['fechaI'] = $this->ordenarFechas($fechaI);
+			$data['fechaF'] = $this->ordenarFechas($fechaF);
+
+		}else{ //En caso que solo se ultilice algun filtro de los combos sin fechas
+
+			$data['fechaI'] = NULL;
+			$data['fechaF'] = NULL;
+		}
+
+		if($data['nroRelev'] == "" && $data['filtroCri']  == "" && $data['filtroDpto']  == "" && 
+			$data['filtroFac']  == "" && $data['filtroLoc']  == "" && $data['limiteTabla']  == ""){ //En caso que solo se filtre por fechas
+			$data['nroRelev'] = NULL;
+			$data['filtroCri'] = NULL;
+			$data['filtroDpto'] = NULL;
+			$data['filtroFac'] = NULL;
+			$data['filtroLoc'] = NULL;
+			$data['limiteTabla'] = NULL;
+		}
 
 		$data['tablaRelevamientos'] = $this->Relevamiento_model->getRelevNro($data['nroRelev'], $sesion, $data);
 
@@ -159,6 +187,7 @@ class RelevamientoC extends My_Controller{
 		$this->cargarVista($nombreVista, $data);
 	}
 
+
 	function cargarFiltros(){
 		$sesion = $this->session->userdata('logged_in');
 		$data['filtro'] = $this->input->post('filtro');
@@ -166,6 +195,20 @@ class RelevamientoC extends My_Controller{
 
 		echo json_encode($data['datosFiltro']);
 	}
+
+
+	function ordenarFechas($fecha){
+		$largo = strlen($fecha);
+		$mes = substr($fecha,-($largo), ($largo-8));
+		$dia = substr($fecha,-7, 2);
+		$anio = substr($fecha,-4);
+		$fechaDB = $anio.'-'.$mes.'-'.$dia;
+		return $fechaDB;
+	}
+
+
+
+
 
 	// function index(){
 	// 	//Falta cargar validaciones para que controle el login solo en este controlador sin heredar del controlador generico
