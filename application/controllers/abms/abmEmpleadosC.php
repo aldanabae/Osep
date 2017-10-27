@@ -123,4 +123,18 @@ class AbmEmpleadosC extends My_Controller{
 
 		redirect('/abms/abmEmpleadosC','refresh');		
 	}
+
+	function cargarCombos(){
+		$data['tipoE'] = $this->input->post('tipoE');
+		$data['datosCombo'] = $this->abmEmpleados_model->getDatosCombo($data['tipoE']);
+
+		echo json_encode($data['datosCombo']);
+	}
+
+	/* 		$sesion = $this->session->userdata('logged_in');
+		$data['filtro'] = $this->input->post('filtro');
+		$data['datosFiltro'] = $this->Relevamiento_model->getDatosFiltro($data['filtro'], $sesion);
+
+		echo json_encode($data['datosFiltro']);
+	}*/
 }

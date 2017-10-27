@@ -109,6 +109,18 @@ class AbmEmpleados_model extends CI_Model {
 		$this->db->where('empleado.idEmpleado', $codE);
 		$query = $this->db->update('empleado', $datos);
 	}
+
+	//Cargar combos segun si es Referente y Facilitador 
+	public function getDatosCombo($tipoE){
+
+		if($tipoE == 3 || $tipoE == 4){
+			$this->db->select('*');
+			$this->db->from('departamento');
+			$this->db->order_by("descdep", "asc"); 
+			$query = $this->db->get();
+
+		}
+	}
 		
 }
 ?>

@@ -46,10 +46,6 @@
                               <option value="100">100</option>
                             </select>
                            </label> 
-
-                          <!-- <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
-                            <i class="fa fa-check bigger-110 icon-only"></i> Filtrar
-                          </button> -->
                         </div>
 
                         <div id="criticidad" style="display:none;">
@@ -60,10 +56,6 @@
 
                             </select>
                            </label>
-                            
-                          <!-- <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
-                            <i class="fa fa-check bigger-110 icon-only"></i> Filtrar
-                          </button> -->
                         </div> 
 
                         <div id="departamento" style="display:none;">
@@ -74,10 +66,6 @@
 
                             </select>
                           </label>
-                            
-                          <!-- <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
-                            <i class="fa fa-check bigger-110 icon-only"></i> Filtrar
-                          </button> -->
                         </div>
 
                         <div id="facilitador" style="display:none;">
@@ -88,10 +76,6 @@
 
                             </select>
                           </label>
-
-                          <!-- <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
-                            <i class="fa fa-check bigger-110 icon-only"></i> Filtrar
-                          </button> -->
                         </div>
 
                         <div id="localidad" style="display:none;">
@@ -102,10 +86,6 @@
 
                             </select>
                           </label>
-
-                          <!-- <button class="btn btn-warning btn-xs" type="submit" nombre="CargarTabla">
-                            <i class="fa fa-check bigger-110 icon-only"></i> Filtrar
-                          </button> -->
                         </div>                   
                     </div>
 
@@ -234,7 +214,7 @@
 
 
 
-<!--JS para cargar combos dinamicos-->
+<!--JS para cargar COMBOS DINAMICOS-->
 
     <script type="text/javascript">
 
@@ -408,33 +388,33 @@
     </script>
 
 
-<!--Para que se vean los botones de la tabla responsive-->
+<!--Para que se vea el boton SALIR-->
 
     <script type="text/javascript">
-      window.jQuery || document.write("<script src='../assets/js/jquery.js'>"+"<"+"/script>");
+      window.jQuery || document.write("<script src='<?php echo base_url() ?>assets/js/jquery.js'>"+"<"+"/script>");
     </script>
 
 
     <script type="text/javascript">
-      if('ontouchstart' in document.documentElement) document.write("<script src='../assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
+      if('ontouchstart' in document.documentElement) document.write("<script src='<?php echo base_url() ?>assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
     </script>
-    <script src="../assets/js/bootstrap.js"></script> 
+    <script src="<?php echo base_url() ?>assets/js/bootstrap.js"></script> 
 
 
-<!--Para que se vean los botones de la tabla responsive-->
+<!--Para que se vea el boton SALIR-->
 
     <script type="text/javascript">
-      window.jQuery || document.write("<script src='../../assets/js/jquery.js'>"+"<"+"/script>");
+      window.jQuery || document.write("<script src='<?php echo base_url() ?>assets/js/jquery.js'>"+"<"+"/script>");
     </script>
 
 
     <script type="text/javascript">
-      if('ontouchstart' in document.documentElement) document.write("<script src='../../assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
+      if('ontouchstart' in document.documentElement) document.write("<script src='<?php echo base_url() ?>assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
     </script>
-    <script src="../../assets/js/bootstrap.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/bootstrap.js"></script>
 
 
-<!--Para que se vean el Date Range Picker-->
+<!--Para que se vea el DATE RANGE PICKER-->
 
     <script src="<?php echo base_url() ?>assets/js/bootstrap.js"></script>
     <script src="<?php echo base_url() ?>assets/js/date-time/moment.js"></script>
