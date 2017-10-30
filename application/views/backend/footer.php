@@ -73,10 +73,6 @@
 		<script src="<?php echo base_url() ?>assets/js/bootstrap.js"></script>
 
 		<!-- page specific plugin scripts -->
-
-		<!--[if lte IE 8]>
-		  <script src="<?php echo base_url() ?>assets/js/excanvas.js"></script>
-		<![endif]-->
 		<script src="<?php echo base_url() ?>assets/js/jquery-ui.custom.js"></script>
 		<script src="<?php echo base_url() ?>assets/js/jquery.ui.touch-punch.js"></script>
 		<script src="<?php echo base_url() ?>assets/js/jquery.easypiechart.js"></script>

@@ -26,101 +26,122 @@
 								
 								<div class="form-group"> <!-- Empieza una linea del formulario -->
 									<label class="col-sm-3 control-label no-padding-right" for="apellidoE"> Apellidos Empleado(*) </label>
-										<div class="col-sm-4">
-											<input class="form-control" id="apellidoE" name="apellidoE" placeholder=""  type="text">
-						                </div> 
+									<div class="col-sm-4">
+										<input class="form-control" id="apellidoE" name="apellidoE" placeholder=""  type="text">
+					                </div> 
 								</div>
 
 								<div class="form-group"> <!-- Empieza una linea del formulario -->
 									<label class="col-sm-3 control-label no-padding-right" for="nombreE"> Nombres Empleado(*) </label>
-										<div class="col-sm-4">
-											<input class="form-control" id="nombreE" name="nombreE" placeholder=""  type="text">
-						                </div> 
+									<div class="col-sm-4">
+										<input class="form-control" id="nombreE" name="nombreE" placeholder=""  type="text">
+					                </div> 
 								</div>
 
 								<div class="form-group"> <!-- Empieza una linea del formulario -->
 									<label class="col-sm-3 control-label no-padding-right" for="nroLegajo"> N° Legajo(*) </label>
-										<div class="col-sm-4">
-											<input class="form-control" id="nroLegajo" name="nroLegajo" placeholder=""  type="number">
-						                </div> 
+									<div class="col-sm-4">
+										<input class="form-control" id="nroLegajo" name="nroLegajo" placeholder=""  type="number">
+					                </div> 
 								</div>
 
 								<div class="form-group"> <!-- Empieza una linea del formulario -->
 									<label class="col-sm-3 control-label no-padding-right" for="dni">Nº Documento(*) </label>
-										<div class="col-sm-4">
-											<input class="form-control" id="dni" name="dni" placeholder=""  type="number" min="1000000" max="70000000">
-						                </div> 
+									<div class="col-sm-4">
+										<input class="form-control" id="dni" name="dni" placeholder=""  type="number" min="1000000" max="70000000">
+					                </div> 
 								</div>
 
 								<div class="form-group"> <!-- Empieza una linea del formulario -->
 									<label class="col-sm-3 control-label no-padding-right" for="telefono"> Teléfono </label>
-										<div class="col-sm-4">
-											<input class="form-control" id="telefono" name="telefono" placeholder=""  type="tel">
-						                </div> 
+									<div class="col-sm-4">
+										<input class="form-control" id="telefono" name="telefono" placeholder=""  type="tel">
+					                </div> 
 								</div>
 
 								<div class="form-group"> <!-- Empieza una linea del formulario -->
 									<label class="col-sm-3 control-label no-padding-right" for="email"> E-Mail</label>
-										<div class="col-sm-4">
-											<input class="form-control" id="email" name="email" placeholder=""  type="email">
-						                </div> 
+									<div class="col-sm-4">
+										<input class="form-control" id="email" name="email" placeholder=""  type="email">
+					                </div> 
 								</div>
 
 								<div class="form-group"> <!-- Empieza una linea del formulario -->
 									<label class="col-sm-3 control-label no-padding-right" for="direccion"> Dirección </label>
-										<div class="col-sm-4">
-											<input class="form-control" id="direccion" name="direccion" placeholder=""  type="text">
-						                </div> 
-								</div>
-
-								<!-- <div class="form-group"> 
-									<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tipo Empleado(*) </label>
 									<div class="col-sm-4">
-											<div>
-												<select class="form-control" id="tipoEmpleado" name="tipoEmpleado">
-													<option value="">--- Seleccione Tipo Empleado ---</option>
-													<option value="Auditor">Auditor</option>
-													<option value="Administrador">Administrador</option>
-													<option value="Administrador Base de Datos">Administrador Base de Datos</option>
-													<option value="Directivo">Directivo</option>
-													<option value="Facilitador">Facilitador</option>
-												</select>
-											</div>
-									</div>
-								</div> -->
+										<input class="form-control" id="direccion" name="direccion" placeholder=""  type="text">
+					                </div> 
+								</div>
 
 								<div class="form-group"> 
 									<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tipo Empleado(*) </label>
-
 										<div class="col-sm-4">
 											<div>
-												<select class="form-control" id="tipoEmpleado" name="tipoEmpleado" placeholder="--- Seleccione Tipo Empleado ---">
+												<select class="form-control" id="tipoEmpleado" name="tipoEmpleado" OnChange="tipoEOnChange(this)" placeholder="--- Seleccione Tipo Empleado ---" >
 													<option value="">--- Seleccione Tipo Empleado ---</option>
 													<?php foreach ($tipoEmpleado->result() as $tipoE){
                            														
                         							?>
-
-													<option value="<?=$tipoE->idTipoEmpleado?>"><?=$tipoE->nombreTipoE;?></option>
-																					
+													<option value="<?=$tipoE->idTipoEmpleado?>"><?=$tipoE->nombreTipoE;?></option>																					
 													<?php
 														}
 													?>
-
 												</select>
 											</div>									
 										</div>
+								</div>
+
+								<div id="dptosReferente" style="display:none;">
+									<div class="form-group"> 
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Departamento/s Gestionado/s(*) </label>
+											<div class="col-sm-4">
+												<div>
+													<select class="form-control" id="comboDpto" name="dptos" placeholder="--- Seleccione Tipo Empleado ---" OnChange= "tipoEOnChange(this)">
+														<option value="">--- Seleccione Departamento ---</option>
+
+														<!-- Combo se carga con JS -->
+
+													</select>
+												</div>									
+											</div>
+									</div>
+								</div>
+
+								<div id="refteFacilitador1" style="display:none;">
+									<div class="form-group"> 
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Referente a quien responde(*) </label>
+											<div class="col-sm-4">
+												<div>
+													<select class="form-control" id="comboRef1" name="referente1" placeholder="--- Seleccione Tipo Empleado ---" OnChange= "tipoEOnChange(this)">
+														
+														<!-- Combo se carga con JS -->
+
+													</select>
+												</div>									
+											</div>
+									</div>
+								</div>
+
+								<div id="refteFacilitador2" style="display:none;">
+									<div class="form-group"> <!-- Empieza una linea del formulario -->
+										<label class="col-sm-3 control-label no-padding-right" for="direccion"> Referente a quien responde(*) </label>
+										<div class="col-sm-4">
+											<!-- <input class="form-control" id="referente" name="referente" placeholder="" type="text" value="<?=$emp->apellidoE?>" readOnly> -->
+											<input class="form-control" id="comboRef2" name="referente2" placeholder="" type="text" value="" readOnly>
+						                </div> 
+									</div>
 								</div>
 														
 								<div class="form-group"> <!-- Empieza linea del form con desplegable -->
 									<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tipo Convenio(*) </label>
 									<div class="col-sm-4">
-											<div>
-												<select class="form-control" id="convenio" name="convenio"><!-- Codigo de Combo con datos de la BD -->
-													<option value="">--- Seleccione Tipo Convenio ---</option>
-													<option value="Planta Permanente">Planta Permanente</option>
-													<option value="Contratado">Contratado</option>
-												</select>
-											</div>
+										<div>
+											<select class="form-control" id="convenio" name="convenio"><!-- Codigo de Combo con datos de la BD -->
+												<option value="">--- Seleccione Tipo Convenio ---</option>
+												<option value="Planta Permanente">Planta Permanente</option>
+												<option value="Contratado">Contratado</option>
+											</select>
+										</div>
 									</div>
 								</div>
 
@@ -155,8 +176,120 @@
 </div><!-- /.main-content -->
 
 
+<!--JS para cargar COMBOS DINAMICOS-->
 
-<!--Para que se vean los botones de la tabla responsive-->
+    <script type="text/javascript">
+
+      	function tipoEOnChange(sel) {
+          	if (sel.value=="3" || sel.value=="4"){
+          		divT = document.getElementById("dptosReferente");
+              	divT.style.display = "";
+
+              	divM = document.getElementById("refteFacilitador1");
+              	divM.style.display = "none";
+
+             	divE = document.getElementById("refteFacilitador2");
+              	divE.style.display = "none";
+
+              	buscarDatos();
+
+          	}else if(sel.value=="5"){
+          		divT = document.getElementById("dptosReferente");
+              	divT.style.display = "none";
+
+              	divM = document.getElementById("refteFacilitador1");
+              	divM.style.display = "";
+
+             	divE = document.getElementById("refteFacilitador2");
+              	divE.style.display = "none";
+
+              	buscarDatos();
+
+          	}else if(sel.value=="6"){
+          		divT = document.getElementById("dptosReferente");
+              	divT.style.display = "none";
+
+              	divM = document.getElementById("refteFacilitador1");
+              	divM.style.display = "none";
+
+             	divE = document.getElementById("refteFacilitador2");
+              	divE.style.display = "";
+
+              	buscarDatos();
+          	}
+        }
+
+
+        function buscarDatos(){
+        var tipoE = $('#tipoEmpleado').val();
+
+        var parametros = {
+        "tipoE" : tipoE,
+        };
+        $.ajax({
+          type: 'POST',
+          url: '<?php echo base_url(); ?>index.php/abms/AbmEmpleadosC/cargarCombos', 
+          data: parametros, 
+                dataType: 'json',
+          success: function(resp) { 
+            if(resp){
+              cargarCombo(resp);
+            }
+            else{
+              document.getElementById("comboDpto").disabled=true;
+              document.getElementById("comboRef1").disabled=true;
+              document.getElementById("comboRef2").disabled=true;
+            }},
+           error: function(xhr,status) { 
+            console.log(xhr+"    "+status);
+          },
+        });
+      }
+
+      function cargarCombo(lista){
+        var tipoE = $('#tipoEmpleado').val();
+
+        if(tipoE == "3" || tipoE == "4"){
+            document.getElementById("comboDpto").options.length=0;
+            document.getElementById("comboDpto").options[0]=new Option("--Selecciona una Opción--", "");
+
+            var combo=$("#comboDpto");
+
+            for (var i in lista){
+                combo.append('<option value="'+lista[i].id_tdeparta +'">'+ lista[i].descdep +'</option>');
+            }
+
+        }else if(tipoE == "5"){
+            document.getElementById("comboRef1").options.length=0;
+            document.getElementById("comboRef1").options[0]=new Option("--Selecciona una Opción--", "");
+
+            var combo=$("#comboRef1");
+
+            for (var i in lista){
+                combo.append('<option value="'+lista[i].idEmpleado +'">'+ lista[i].apellidoE+" "+lista[i].nombreE +'</option>');
+            }
+
+        }else if(tipoE == "6"){
+            document.getElementById("comboF").options.length=0;
+            document.getElementById("comboF").options[0]=new Option("--Selecciona una Opción--", "");
+
+            var combo=$("#comboRef2");
+
+            for (var i in lista){
+                // combo.append('<option value="'+lista[i].idEmpleado +'">'+ lista[i].apellidoE+" "+lista[i].nombreE +'</option>');
+                // combo.append('<input class="form-control" id="comboRef2" name="referente" placeholder="" type="text" value="'+ lista[i].apellidoE+" "+lista[i].nombreE +'" readOnly>');
+            }
+        }
+
+    </script>
+
+
+
+
+
+
+
+<!--Para que se vea el boton SALIR-->
 
 		<script type="text/javascript">
 			window.jQuery || document.write("<script src='../../assets/js/jquery.js'>"+"<"+"/script>");
@@ -167,3 +300,5 @@
 			if('ontouchstart' in document.documentElement) document.write("<script src='../../assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
 		</script>
 		<script src="../../assets/js/bootstrap.js"></script>
+
+

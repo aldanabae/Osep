@@ -99,7 +99,9 @@
 												</select>
 											</div>									
 										</div>
+										* Asignar el nivel mas abarcativo si tiene mas de un tipo de puesto
 								</div>
+
 														
 								<div class="clearfix form-actions"> <!-- Empiezan botones de guardar y limpiar -->
 									<div class="col-md-offset-3 col-md-9">
