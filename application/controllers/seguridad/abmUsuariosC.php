@@ -125,7 +125,7 @@ class AbmUsuariosC extends My_Controller{
 			$this->AbmUsuarios_model->actualizarUsuario($this->uri->segment(4),$datos);
 			}
 
-			redirect('/seguridad/abmusuariosC','refresh');
+			redirect('/seguridad/abmUsuariosC','refresh');
         }	
 	}
 
