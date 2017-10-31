@@ -98,7 +98,11 @@ class AbmEmpleados_model extends CI_Model {
 	}
 
 	function getTipoEmpleado(){
-		$query = $this->db->get('tipo_empleado');
+		$this->db->select('*');
+		$this->db->from('tipo_empleado');
+		$this->db->order_by("nombreTipoE", "asc"); 
+		$query = $this->db->get();
+
 		if ($query->num_rows() > 0) return $query;
 		else return false;
 	}
@@ -112,15 +116,30 @@ class AbmEmpleados_model extends CI_Model {
 
 	//Cargar combos segun si es Referente y Facilitador 
 	public function getDatosCombo($tipoE){
-
 		if($tipoE == 3 || $tipoE == 4){
 			$this->db->select('*');
 			$this->db->from('departamento');
 			$this->db->order_by("descdep", "asc"); 
 			$query = $this->db->get();
 
+		}elseif($tipoE == 5){
+			$this->db->select('*');
+			$this->db->where('empleado.idTipoEmpleado', 3); 
+			$this->db->or_where('empleado.idTipoEmpleado', 4);
+			$this->db->or_where('empleado.idTipoEmpleado', 6);	
+			$this->db->from('empleado');
+			$this->db->order_by('apellidoE', 'asc'); 
+			$query = $this->db->get();
 		}
-	}
-		
+
+		if ($query->num_rows() > 0){
+			foreach ($query->result() as $fila){
+				$data[] = $fila;
+			}	
+			return $data;
+		}else{
+			return false;
+		}
+	}	
 }
 ?>

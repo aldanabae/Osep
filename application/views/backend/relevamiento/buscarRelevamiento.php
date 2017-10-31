@@ -21,7 +21,7 @@
                 <div class="dataTables_length">
                     <div class="col-xs-4">
                         <label>Seleccionar Filtro 
-                          <select aria-controls="dynamic-table" class="form-control input-sm" id= "filtro" name="filtro" OnChange= "tipoFOnChange(this)">
+                          <select aria-controls="dynamic-table" class="form-control input-sm" id= "filtro" name="filtro" OnChange="tipoFOnChange(this)">
                             <option value="longitud">Longitud tabla</option>
                             <option value="criticidad">Criticidad</option>
                             <option value="departamento">Departamento</option>
@@ -99,8 +99,6 @@
                               <input class="form-control" name="fechas" id="id-date-range-picker-1" type="text" readOnly>
                             </div>
                         </div>
-
-
                     </div>
 
                     <div class="col-xs-1">

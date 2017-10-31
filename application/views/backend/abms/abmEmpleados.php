@@ -58,11 +58,19 @@
 									<th>Convenio</th>
 									<th>Tipo Empleado</th>
 									<th>
+										<!-- 
+										Quito boton agregar Empleado hasta que este hecho completo!!!
+										Quito boton agregar Empleado hasta que este hecho completo!!!
+										Quito boton agregar Empleado hasta que este hecho completo!!!
+										Quito boton agregar Empleado hasta que este hecho completo!!!
+
 										<div class="hidden-sm hidden-xs action-buttons text-center text-center">
 											<a class="orange" href="<?php echo base_url() ?>abms/abmEmpleadosC/cargarNuevoEmpleado">
 												<i class="ui-icon ace-icon fa fa-plus-circle orange bigger-130"></i>Agregar Empleado
 											</a>
-										</div>
+										</div> 
+										
+										-->
 									</th>
 								</tr>
 						</thead>
