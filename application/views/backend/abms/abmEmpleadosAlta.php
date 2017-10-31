@@ -77,14 +77,13 @@
 									<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tipo Empleado(*) </label>
 										<div class="col-sm-4">
 											<div>
-												<select class="form-control" id="tipoEmpleado" name="tipoEmpleado" OnChange="tipoEOnChange(this)" placeholder="--- Seleccione Tipo Empleado ---" >
+												<select aria-controls="dynamic-table" class="form-control input-sm" id="tipoEmpleado" name="tipoEmpleado" OnChange="tipoEOnChange(this)">
 													<option value="">--- Seleccione Tipo Empleado ---</option>
-													<?php foreach ($tipoEmpleado->result() as $tipoE){
-                           														
+													<?php 	foreach ($tipoEmpleado->result() as $tipoE){						
                         							?>
 													<option value="<?=$tipoE->idTipoEmpleado?>"><?=$tipoE->nombreTipoE;?></option>																					
 													<?php
-														}
+															}
 													?>
 												</select>
 											</div>									
@@ -96,9 +95,8 @@
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Departamento/s Gestionado/s(*) </label>
 											<div class="col-sm-4">
 												<div>
-													<select class="form-control" id="comboDpto" name="dptos" placeholder="--- Seleccione Tipo Empleado ---" OnChange= "tipoEOnChange(this)">
-														<option value="">--- Seleccione Departamento ---</option>
-
+													<select aria-controls="dynamic-table" class="chosen-select form-control" id="comboDpto" name="dptos" multiple ="multiple" data-placeholder="Selecciones una o mas opciones">
+													
 														<!-- Combo se carga con JS -->
 
 													</select>
@@ -107,28 +105,19 @@
 									</div>
 								</div>
 
-								<div id="refteFacilitador1" style="display:none;">
+								<div id="refteFacilitador" style="display:none;">
 									<div class="form-group"> 
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Referente a quien responde(*) </label>
 											<div class="col-sm-4">
 												<div>
-													<select class="form-control" id="comboRef1" name="referente1" placeholder="--- Seleccione Tipo Empleado ---" OnChange= "tipoEOnChange(this)">
+													<select class="form-control" id="comboRef" name="referente">
+														<option value="">--- Seleccione Referente ---</option>
 														
 														<!-- Combo se carga con JS -->
 
 													</select>
 												</div>									
 											</div>
-									</div>
-								</div>
-
-								<div id="refteFacilitador2" style="display:none;">
-									<div class="form-group"> <!-- Empieza una linea del formulario -->
-										<label class="col-sm-3 control-label no-padding-right" for="direccion"> Referente a quien responde(*) </label>
-										<div class="col-sm-4">
-											<!-- <input class="form-control" id="referente" name="referente" placeholder="" type="text" value="<?=$emp->apellidoE?>" readOnly> -->
-											<input class="form-control" id="comboRef2" name="referente2" placeholder="" type="text" value="" readOnly>
-						                </div> 
 									</div>
 								</div>
 														
@@ -181,41 +170,24 @@
     <script type="text/javascript">
 
       	function tipoEOnChange(sel) {
-          	if (sel.value=="3" || sel.value=="4"){
+          	if (sel.value == 3 || sel.value == 4){
           		divT = document.getElementById("dptosReferente");
               	divT.style.display = "";
 
-              	divM = document.getElementById("refteFacilitador1");
+              	divM = document.getElementById("refteFacilitador");
               	divM.style.display = "none";
-
-             	divE = document.getElementById("refteFacilitador2");
-              	divE.style.display = "none";
 
               	buscarDatos();
 
-          	}else if(sel.value=="5"){
+          	}else if(sel.value == 5){
           		divT = document.getElementById("dptosReferente");
               	divT.style.display = "none";
 
-              	divM = document.getElementById("refteFacilitador1");
+              	divM = document.getElementById("refteFacilitador");
               	divM.style.display = "";
 
-             	divE = document.getElementById("refteFacilitador2");
-              	divE.style.display = "none";
-
               	buscarDatos();
 
-          	}else if(sel.value=="6"){
-          		divT = document.getElementById("dptosReferente");
-              	divT.style.display = "none";
-
-              	divM = document.getElementById("refteFacilitador1");
-              	divM.style.display = "none";
-
-             	divE = document.getElementById("refteFacilitador2");
-              	divE.style.display = "";
-
-              	buscarDatos();
           	}
         }
 
@@ -237,8 +209,7 @@
             }
             else{
               document.getElementById("comboDpto").disabled=true;
-              document.getElementById("comboRef1").disabled=true;
-              document.getElementById("comboRef2").disabled=true;
+              document.getElementById("comboRef").disabled=true;
             }},
            error: function(xhr,status) { 
             console.log(xhr+"    "+status);
@@ -250,8 +221,8 @@
         var tipoE = $('#tipoEmpleado').val();
 
         if(tipoE == "3" || tipoE == "4"){
-            document.getElementById("comboDpto").options.length=0;
-            document.getElementById("comboDpto").options[0]=new Option("--Selecciona una Opción--", "");
+            // document.getElementById("comboDpto").options.length=0;
+            // document.getElementById("comboDpto").options[0]=new Option("--Selecciona una Opción--", "");
 
             var combo=$("#comboDpto");
 
@@ -260,35 +231,22 @@
             }
 
         }else if(tipoE == "5"){
-            document.getElementById("comboRef1").options.length=0;
-            document.getElementById("comboRef1").options[0]=new Option("--Selecciona una Opción--", "");
+            document.getElementById("comboRef").options.length=0;
+            document.getElementById("comboRef").options[0]=new Option("--Selecciona una Opción--", "");
 
-            var combo=$("#comboRef1");
+            var combo=$("#comboRef");
 
             for (var i in lista){
                 combo.append('<option value="'+lista[i].idEmpleado +'">'+ lista[i].apellidoE+" "+lista[i].nombreE +'</option>');
             }
 
-        }else if(tipoE == "6"){
-            document.getElementById("comboF").options.length=0;
-            document.getElementById("comboF").options[0]=new Option("--Selecciona una Opción--", "");
-
-            var combo=$("#comboRef2");
-
-            for (var i in lista){
-                // combo.append('<option value="'+lista[i].idEmpleado +'">'+ lista[i].apellidoE+" "+lista[i].nombreE +'</option>');
-                // combo.append('<input class="form-control" id="comboRef2" name="referente" placeholder="" type="text" value="'+ lista[i].apellidoE+" "+lista[i].nombreE +'" readOnly>');
-            }
         }
+    }
 
     </script>
 
 
-
-
-
-
-
+<script src="<?php echo base_url() ?>assets/js/chosen.jquery.js"></script>
 <!--Para que se vea el boton SALIR-->
 
 		<script type="text/javascript">

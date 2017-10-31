@@ -47,6 +47,8 @@ class AbmEmpleadosC extends My_Controller{
 			'tipoEmpleado' => $this->input->post('tipoEmpleado'),
 			'nroLegajo' => $this->input->post('nroLegajo'),
 			'email' => $this->input->post('email'),
+			'idDpto' => $this->input->post('dptos'),
+			'idRefente' => $this->input->post('referente'),
 			'convenio' => $this->input->post('convenio'));
  
         $this->form_validation->set_rules('nombreE','Nombre Empleado','trim|required');
@@ -126,15 +128,8 @@ class AbmEmpleadosC extends My_Controller{
 
 	function cargarCombos(){
 		$data['tipoE'] = $this->input->post('tipoE');
-		$data['datosCombo'] = $this->abmEmpleados_model->getDatosCombo($data['tipoE']);
+		$data['datosCombo'] = $this->AbmEmpleados_model->getDatosCombo($data['tipoE']);
 
 		echo json_encode($data['datosCombo']);
 	}
-
-	/* 		$sesion = $this->session->userdata('logged_in');
-		$data['filtro'] = $this->input->post('filtro');
-		$data['datosFiltro'] = $this->Relevamiento_model->getDatosFiltro($data['filtro'], $sesion);
-
-		echo json_encode($data['datosFiltro']);
-	}*/
 }
