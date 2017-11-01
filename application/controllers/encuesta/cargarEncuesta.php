@@ -75,9 +75,6 @@ class CargarEncuesta extends CI_Controller{
 
                         $usuario_id = $this->uri->segment(3);// id  que envia desde el form
 
-
-
-                        
                         
                         if($session_data['nivel'] == "1"){    // verifico el tipo de usuario
                                                               //Si el usuario es facilitador solo paso su nombre

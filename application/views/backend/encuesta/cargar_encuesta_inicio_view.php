@@ -86,15 +86,14 @@ $dato_rel= $relevamiento; // array de relevamiento qeu viene del controlador
 
                                             echo '<select class="form-control" id="nom_facilitador" name ="nom_facilitador" required>';
 
-                                            echo '<option value="" disabled selected hidden>Seleccionar</option>';
+                                            //echo '<option value="" disabled selected hidden>Seleccionar</option>';
 
-                                                if($session_data['nivel'] != '1'){ // si es distinto a uno que cargue todos los facilitadores y el usuario 
+                                                if($user_actual['nivel'] != '1'){ // si es distinto a uno que cargue todos los facilitadores y el usuario 
 
                                                     echo '<option value="'.$user_actual['idEmpleado'].'">'.$user_actual['nombreE'].' '.$user_actual['apellidoE']. '</option>';
 
-
                                                 }
-
+                                                
                                                 foreach($listado as $list){
 
                                                     if($list[0] == $selectedItem){
