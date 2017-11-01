@@ -95,11 +95,12 @@
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Departamento/s Gestionado/s(*) </label>
 											<div class="col-sm-4">
 												<div>
-													<select aria-controls="dynamic-table" class="chosen-select form-control" id="comboDpto" name="dptos" multiple ="multiple" data-placeholder="Selecciones una o mas opciones">
+													<select aria-controls="dynamic-table" class="chosen-select form-control" id="comboDpto" name="dptos[]" multiple ="multiple" data-placeholder="Selecciones una o mas opciones">
 													
 														<!-- Combo se carga con JS -->
 
 													</select>
+													* Seleccione una o más opciones manteniendo la tecla CTRL presionada y haciendo click en cada una.
 												</div>									
 											</div>
 									</div>
@@ -167,86 +168,82 @@
 
 <!--JS para cargar COMBOS DINAMICOS-->
 
-    <script type="text/javascript">
+	    <script type="text/javascript">
 
-      	function tipoEOnChange(sel) {
-          	if (sel.value == 3 || sel.value == 4){
-          		divT = document.getElementById("dptosReferente");
-              	divT.style.display = "";
+	      	function tipoEOnChange(sel) {
+		        if (sel.value == 3 || sel.value == 4 || sel.value == 6){
+		          	divT = document.getElementById("dptosReferente");
+		              divT.style.display = "";
 
-              	divM = document.getElementById("refteFacilitador");
-              	divM.style.display = "none";
+		            divM = document.getElementById("refteFacilitador");
+		            divM.style.display = "none";
 
-              	buscarDatos();
+		            buscarDatos();
 
-          	}else if(sel.value == 5){
-          		divT = document.getElementById("dptosReferente");
-              	divT.style.display = "none";
+		        }else if(sel.value == 5){
+		          	divT = document.getElementById("dptosReferente");
+		            divT.style.display = "none";
 
-              	divM = document.getElementById("refteFacilitador");
-              	divM.style.display = "";
+		            divM = document.getElementById("refteFacilitador");
+		            divM.style.display = "";
 
-              	buscarDatos();
+		            buscarDatos();
+		        }
+	        }
 
-          	}
-        }
+	        function buscarDatos(){
+		        var tipoE = $('#tipoEmpleado').val();
 
+		        var parametros = {
+		        "tipoE" : tipoE,
+		        };
+		        $.ajax({
+		          type: 'POST',
+		          url: '<?php echo base_url(); ?>index.php/abms/AbmEmpleadosC/cargarCombos', 
+		          data: parametros, 
+		                dataType: 'json',
+		          success: function(resp) { 
+		            if(resp){
+		              cargarCombo(resp);
+		            }
+		            else{
+		              document.getElementById("comboDpto").disabled=true;
+		              document.getElementById("comboRef").disabled=true;
+		            }},
+		           error: function(xhr,status) { 
+		            console.log(xhr+"    "+status);
+		          },
+		        });
+	      	}
 
-        function buscarDatos(){
-        var tipoE = $('#tipoEmpleado').val();
+	    	function cargarCombo(lista){
+		        var tipoE = $('#tipoEmpleado').val();
 
-        var parametros = {
-        "tipoE" : tipoE,
-        };
-        $.ajax({
-          type: 'POST',
-          url: '<?php echo base_url(); ?>index.php/abms/AbmEmpleadosC/cargarCombos', 
-          data: parametros, 
-                dataType: 'json',
-          success: function(resp) { 
-            if(resp){
-              cargarCombo(resp);
-            }
-            else{
-              document.getElementById("comboDpto").disabled=true;
-              document.getElementById("comboRef").disabled=true;
-            }},
-           error: function(xhr,status) { 
-            console.log(xhr+"    "+status);
-          },
-        });
-      }
+		        if(tipoE == "3" || tipoE == "4" || tipoE == "6"){
+		            var combo=$("#comboDpto");
 
-      function cargarCombo(lista){
-        var tipoE = $('#tipoEmpleado').val();
+		            for (var i in lista){
+		                combo.append('<option value="'+lista[i].id_tdeparta +'">'+ lista[i].descdep +'</option>');
+		            }
 
-        if(tipoE == "3" || tipoE == "4"){
-            // document.getElementById("comboDpto").options.length=0;
-            // document.getElementById("comboDpto").options[0]=new Option("--Selecciona una Opción--", "");
+		        }else if(tipoE == "5"){
+		            document.getElementById("comboRef").options.length=0;
+		            document.getElementById("comboRef").options[0]=new Option("--Selecciona una Opción--", "");
 
-            var combo=$("#comboDpto");
+		            var combo=$("#comboRef");
 
-            for (var i in lista){
-                combo.append('<option value="'+lista[i].id_tdeparta +'">'+ lista[i].descdep +'</option>');
-            }
+		            for (var i in lista){
+		                combo.append('<option value="'+lista[i].idEmpleado +'">'+ lista[i].apellidoE+" "+lista[i].nombreE +'</option>');
+		            }
+		        }
+	    	}
 
-        }else if(tipoE == "5"){
-            document.getElementById("comboRef").options.length=0;
-            document.getElementById("comboRef").options[0]=new Option("--Selecciona una Opción--", "");
+	    </script>
 
-            var combo=$("#comboRef");
-
-            for (var i in lista){
-                combo.append('<option value="'+lista[i].idEmpleado +'">'+ lista[i].apellidoE+" "+lista[i].nombreE +'</option>');
-            }
-
-        }
-    }
-
-    </script>
+<!--Para cargar el Select CHOSEN-->
+		<script src="<?php echo base_url() ?>assets/js/chosen.jquery.js"></script>
 
 
-<script src="<?php echo base_url() ?>assets/js/chosen.jquery.js"></script>
 <!--Para que se vea el boton SALIR-->
 
 		<script type="text/javascript">

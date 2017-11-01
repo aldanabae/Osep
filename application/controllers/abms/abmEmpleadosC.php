@@ -39,18 +39,18 @@ class AbmEmpleadosC extends My_Controller{
 
 	function recibirDatos(){
 		$data = array(
-			'nombreE' => $this->input->post('nombreE'),
-			'apellidoE' => $this->input->post('apellidoE'),
-			'telefono' => $this->input->post('telefono'),
-			'direccion' => $this->input->post('direccion'),
-			'dni' => $this->input->post('dni'),
-			'tipoEmpleado' => $this->input->post('tipoEmpleado'),
-			'nroLegajo' => $this->input->post('nroLegajo'),
-			'email' => $this->input->post('email'),
-			'idDpto' => $this->input->post('dptos'),
-			'idRefente' => $this->input->post('referente'),
-			'convenio' => $this->input->post('convenio'));
- 
+		'nombreE' => $this->input->post('nombreE'),
+		'apellidoE' => $this->input->post('apellidoE'),
+		'telefono' => $this->input->post('telefono'),
+		'direccion' => $this->input->post('direccion'),
+		'dni' => $this->input->post('dni'),
+		'tipoEmpleado' => $this->input->post('tipoEmpleado'),
+		'nroLegajo' => $this->input->post('nroLegajo'),
+		'email' => $this->input->post('email'),
+		'idDptos' => $this->input->post('dptos'),
+		'idReferente' => $this->input->post('referente'),
+		'convenio' => $this->input->post('convenio'));
+
         $this->form_validation->set_rules('nombreE','Nombre Empleado','trim|required');
         $this->form_validation->set_rules('apellidoE','Apellido Empleado','trim|required');
         $this->form_validation->set_rules('dni','Nº Documento','trim|required');
@@ -92,17 +92,15 @@ class AbmEmpleadosC extends My_Controller{
 					'idTipoEmpleado' => $this->input->post('idTipoEmpleado'),
 					'nroLegajo' => $this->input->post('nroLegajo'),
 					'email' => $this->input->post('email'),
+					'idDptos' => $this->input->post('dptos'),
+					'idReferente' => $this->input->post('referente'),
 					'convenio' => $this->input->post('convenio'));
  
         $this->form_validation->set_rules('nombreE','Nombre Empleado','trim|required');
         $this->form_validation->set_rules('apellidoE','Apellido Empleado','trim|required');
-        $this->form_validation->set_rules('telefono','Telefono','trim|required');
-        $this->form_validation->set_rules('direccion','Direccion','trim|required');
         $this->form_validation->set_rules('dni','Nº Documento','trim|required');
         $this->form_validation->set_rules('idTipoEmpleado','Tipo Responsable','trim|required');
         $this->form_validation->set_rules('nroLegajo','Nº Legajo','trim|required');
-        $this->form_validation->set_rules('email','E-Mail','trim|required');
-        $this->form_validation->set_rules('convenio','Convenio','trim|required');
 
        	$this->form_validation->set_message('required','Debe completar este campo');  
  

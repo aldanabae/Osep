@@ -17,9 +17,27 @@ class AbmEmpleados_model extends CI_Model {
 					'nroLegajo'=>$data['nroLegajo'],
 					'email'=>$data['email'],
 					'convenio'=>$data['convenio'],
+					'idReferente'=>$data['idReferente'],
 					'activo'=> 1,
 					'idTipoEmpleado'=>$data['tipoEmpleado']));
 		$codEmp = $this->db->insert_id();
+	
+		$cantDptos = count($data['idDptos']);
+
+		if($cantDptos >= 0){
+
+			for ($i = 0; $i < $cantDptos; $i++){
+				$this->db->insert('zona_referente', 
+				array('idEmpleado'=>$codEmp, 
+						'id_tdeparta'=>$data['idDptos'][$i]));
+				$codZonaRef = $this->db->insert_id();
+			}
+		}
+
+		if($data['tipoEmpleado'] == 6){
+			$this->db->where('empleado.idEmpleado', $codEmp);
+			$query = $this->db->update('empleado',array('idReferente'=>$codEmp));
+		}
 	}
 
 	function obtenerEmpleados($nroL){
@@ -90,11 +108,31 @@ class AbmEmpleados_model extends CI_Model {
 			'nroLegajo'=>$data['nroLegajo'],
 			'email'=>$data['email'],
 			'convenio'=>$data['convenio'],
+			'idReferente'=>$data['idReferente'],
 			'idTipoEmpleado'=>$data['idTipoEmpleado']
 		);
 
 		$this->db->where('empleado.idEmpleado', $codE);
 		$query = $this->db->update('empleado', $datos);
+
+		$this->db->delete('zona_referente',array('idEmpleado'=>$codE));
+
+		$cantDptos = count($data['idDptos']);
+
+		if($cantDptos >= 0){
+
+			for ($i = 0; $i < $cantDptos; $i++){
+				$this->db->insert('zona_referente', 
+				array('idEmpleado'=>$codE, 
+						'id_tdeparta'=>$data['idDptos'][$i]));
+				$codZonaRef = $this->db->insert_id();
+			}
+		}
+
+		if($data['idTipoEmpleado'] == 6){
+			$this->db->where('empleado.idEmpleado', $codE);
+			$query = $this->db->update('empleado',array('idReferente'=>$codE));
+		}
 	}
 
 	function getTipoEmpleado(){
@@ -116,7 +154,7 @@ class AbmEmpleados_model extends CI_Model {
 
 	//Cargar combos segun si es Referente y Facilitador 
 	public function getDatosCombo($tipoE){
-		if($tipoE == 3 || $tipoE == 4){
+		if($tipoE == 3 || $tipoE == 4 || $tipoE == 6){
 			$this->db->select('*');
 			$this->db->from('departamento');
 			$this->db->order_by("descdep", "asc"); 

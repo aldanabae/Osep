@@ -88,9 +88,11 @@
 											<i class="ace-icon fa fa-pencil bigger-130"></i>	
 										</a>
 
+										<!-- Quito la posibilidad de Eliminar Niveles de USUARIO 
 										<a class="red" href="<?php echo base_url()?>seguridad/abmNivelesC/borrarNivel/<?= $tabla->idNivel;?>">
 											<i class="ace-icon fa fa-trash-o bigger-130"></i>
-										</a>
+										</a> 
+										-->
 								</div>
 
 								<div class="hidden-md hidden-lg">
