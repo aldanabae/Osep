@@ -76,7 +76,7 @@ $dato_rel= $relevamiento; // array de relevamiento qeu viene del controlador
                                     <?php
 
                                         $limite = count($listado);  // me fijo la cantidad de elementos que vienen en el arreglo
-                                                                    // si es uno pongo un text  bloqueado, si no pongo un select
+                                        $user_actual= $_SESSION['logged_in'];                            // si es uno pongo un text  bloqueado, si no pongo un select
                                                                     
                                         if( $limite == 1){
                                             print '<select class="form-control" id="nom_facilitador" name ="nom_facilitador" >
@@ -85,7 +85,15 @@ $dato_rel= $relevamiento; // array de relevamiento qeu viene del controlador
                                         }else{
 
                                             echo '<select class="form-control" id="nom_facilitador" name ="nom_facilitador" required>';
-                                                echo '<option value="" disabled selected hidden>Seleccionar</option>';
+
+                                            //echo '<option value="" disabled selected hidden>Seleccionar</option>';
+
+                                                if($user_actual['nivel'] != '1'){ // si es distinto a uno que cargue todos los facilitadores y el usuario 
+
+                                                    echo '<option value="'.$user_actual['idEmpleado'].'">'.$user_actual['nombreE'].' '.$user_actual['apellidoE']. '</option>';
+
+                                                }
+                                                
                                                 foreach($listado as $list){
 
                                                     if($list[0] == $selectedItem){

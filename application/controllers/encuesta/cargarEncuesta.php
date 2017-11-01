@@ -74,9 +74,10 @@ class CargarEncuesta extends CI_Controller{
                         */
 
                         $usuario_id = $this->uri->segment(3);// id  que envia desde el form
+
                         
                         if($session_data['nivel'] == "1"){    // verifico el tipo de usuario
-                                                              //Si el usuario es facilitador loso paso su nombre
+                                                              //Si el usuario es facilitador solo paso su nombre
                                 $usuario_merge= $data['nombreE']. " " .$data['apellidoE']; // junto el nombre y apellido
                                 $valor['listado'][]= [$session_data['idEmpleado'], $usuario_merge]; // paso el array con los datos
                                 // ene ste caso por als que envie cualquier dato por la url el valor que paso es el mismo del usuario facilitador
@@ -87,6 +88,8 @@ class CargarEncuesta extends CI_Controller{
 
                                         
                         }else{
+
+
                                 // si es otro tipo de usuario trae la lista de todos los fac
 
                                 //todo revisar
@@ -97,6 +100,7 @@ class CargarEncuesta extends CI_Controller{
                                         $valor['listado'][]= [$lista->idEmpleado, $lista->nombreE. " ". $lista->apellidoE];
 
                                 }  
+                                
                                 // devuelvo la info del id que me pasan por la url, si no tiene relevamiento abierto solo devuelve el ultimo id+1
                                 $valor['relevamiento']= $this->quiz_lib->get_last_data_user($usuario_id);
                                 $valor['selectedItem']=$usuario_id;
