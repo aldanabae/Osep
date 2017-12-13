@@ -232,26 +232,12 @@
 					</a>
 					<b class="arrow"></b>
 				</li>
-				<li class="">
-					<a href="<?php echo base_url('bienvenidaC') ?>">
-						<i class="menu-icon fa fa-reply-all"></i>
-						<span class="menu-text"> Inicio</span>
-					</a>
-					<b class="arrow"></b>
-				</li>
 
-				<li class="">
-					<a href="<?php echo base_url('login/logout') ?>">
-						<i class="menu-icon fa fa-power-off"></i>
-						<span class="menu-text"> Salir</span>
-					</a>
-					<b class="arrow"></b>
-				</li>				
 				<?php 		}
 						}	
 					}
 				?>
-					
+
 				<?php 
 					if ($nivel){							
 						foreach($nivel->result() as $niv){
@@ -284,12 +270,27 @@
 							</li>
 						</ul>
 				</li>
-
 				<?php 		}
 						}	
 					}
-				?>		
+				?>
 
+				<li class="">
+					<a href="<?php echo base_url('bienvenidaC') ?>">
+						<i class="menu-icon fa fa-reply-all"></i>
+						<span class="menu-text"> Inicio</span>
+					</a>
+					<b class="arrow"></b>
+				</li>
+
+				<li class="">
+					<a href="<?php echo base_url('login/logout') ?>">
+						<i class="menu-icon fa fa-power-off"></i>
+						<span class="menu-text"> Salir</span>
+					</a>
+					<b class="arrow"></b>
+				</li>				
+	
 			</ul><!-- /.nav-list -->
 
 				<!-- #section:basics/sidebar.layout.minimize -->

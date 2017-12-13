@@ -1582,7 +1582,7 @@ pre.prettyprint {
 }
 @media (min-width: 480px) and (max-width: 540px), (max-width: 360px) {
   .navbar:not(.navbar-collapse) .navbar-buttons .user-menu {
-    padding-top: 42px !important;
+    padding-top: 5px !important;
   }
   .navbar:not(.navbar-collapse) .navbar-buttons .nav-user-photo {
     margin-right: 0;
@@ -5354,7 +5354,7 @@ body.mob-safari .sidebar.sidebar-fixed {
   transition: background-color 0.15s, border-color 0.15s, opacity 0.15s;
   cursor: pointer;
   vertical-align: middle;
-  margin: 0;
+  margin: 5px;
   position: relative;
   /**
  &:hover, &:focus, &.focus, .open > &.dropdown-toggle {

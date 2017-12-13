@@ -144,7 +144,7 @@
 												Guardar
 										</button>
 									</label>
-										&nbsp; &nbsp; &nbsp;
+
 									<label>
 										<button class="btn" type="reset">
 											<i class="ace-icon fa fa-undo bigger-110"></i>

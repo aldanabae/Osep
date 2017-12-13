@@ -48,7 +48,6 @@
 																		Guardar
 																</button>
 
-																&nbsp; &nbsp; &nbsp;
 																<button class="btn" align="center" type="reset">
 																	<i class="ace-icon fa fa-undo bigger-110"></i>
 																		Limpiar
